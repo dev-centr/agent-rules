@@ -5,7 +5,8 @@ Rename this file to match how you use it (for example `laptop.md`) and point you
 Constants use `NAME = value` with an inline comment after `#` where helpful.
 
 ```text
-CODE_ROOT = C:\Users\you\src\code      # Root of your code hive on this machine
-GITHUB_USER = your-github-username
-ISSUES_REPO = C:\Users\you\src\code\github.com\your-github-username\.issues
+CODE_ROOT = <your-code-root>              # e.g. /home/you/src
+GITHUB_USER = <your-github-username>
+ISSUES_REPO = <path-to-.issues-repo>        # optional
+ENVIRONMENT = linux                         # windows | mac | linux
 ```

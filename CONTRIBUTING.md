@@ -10,4 +10,10 @@ Open pull requests against **this** repository ([`dev-centr/agent-rules`](https:
 
 ## Profiles
 
-Add new device templates under `profiles/` with clear constant names. Prefer one file per machine or role rather than many overlapping names.
+Add new device templates under `profiles/` with clear constant names. Prefer one file per machine or role rather than many overlapping names. Use **placeholder** values in upstream examples; personal paths belong in forks. Profiles must set **`ENVIRONMENT`** (`windows`, `mac`, or `linux`).
+
+## Layout
+
+- `general/environment.md` — cross-platform.
+- `general/windows.md`, `general/mac.md`, `general/linux.md` — OS-specific tooling and shells.
+- `general/documentation.md` — optional doc authoring (Diátaxis, Antora when used).

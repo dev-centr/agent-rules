@@ -41,18 +41,20 @@ flowchart TB
 
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
 2. Optional: on Windows, a directory junction can point at this clone for a short path (for example `mklink /J Z:\code\agent-rules <path-to-this-repo>`).
-3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, …).
+3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, **`ENVIRONMENT`** …). Set **`ENVIRONMENT`** to `windows`, `mac`, or `linux` so the agent loads the matching `general/windows.md`, `general/mac.md`, or `general/linux.md`.
 4. If your agent only accepts a single text blob, copy `RULES.md` into its rules or settings. Do not rely on one-line “read this file” indirection if your tool has been flaky.
 
 ## Read order in this repository
 
 When the agent can read files from the clone, use this order:
 
-1. `profiles/<your-profile>.md` — your machine constants (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, …).
+1. `profiles/<your-profile>.md` — machine constants, including **`ENVIRONMENT`** (`windows` \| `mac` \| `linux`).
 2. `general/global.md` — baseline expectations.
-3. `general/environment.md` — shell, tools, Git layout.
-4. `general/creator.md` — rules for projects you own.
-5. `general/folder-schema.md` — path patterns (uses `CODE_ROOT`).
+3. `general/environment.md` — cross-platform environment principles.
+4. **One** of `general/windows.md`, `general/mac.md`, or `general/linux.md` — chosen by `ENVIRONMENT`.
+5. `general/creator.md` — rules for projects you own.
+6. `general/folder-schema.md` — path patterns (uses `CODE_ROOT`).
+7. `general/documentation.md` — when authoring or publishing docs (optional; Diátaxis, Antora when relevant).
 
 Create a **machine-local** `MEMORIES.md` in this repository root (gitignored) for facts that rarely change. See **Machine-local memories** below.
 
@@ -65,7 +67,7 @@ For **Dev-Centr automation** acting on behalf of the user, the product should lo
 Example line:
 
 ```text
-antora-supplemental is a GitHub org; clones live under $CODE_ROOT/github.com/antora-supplemental/
+my-org is a GitHub org; clones live under $CODE_ROOT/github.com/my-org/
 ```
 
 Adjust the path to match your `CODE_ROOT` and layout.

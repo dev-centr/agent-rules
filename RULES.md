@@ -6,11 +6,13 @@ If the tool **can** read files from a clone of this repository, use the **read o
 
 ## Read order (when loading from disk)
 
-1. `profiles/<your-profile>.md` — copy from `profiles/my-desktop.md` or `profiles/my-laptop.md`, rename, and fill **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, …). If a constant is missing, ask the user to set it before guessing paths.
+1. `profiles/<your-profile>.md` — copy from `profiles/my-desktop.md` or `profiles/my-laptop.md`, rename, and fill **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, `ENVIRONMENT`, …). `ENVIRONMENT` must be one of: `windows`, `mac`, `linux` (it selects which OS file you read next). If a constant is missing, ask the user to set it before guessing paths.
 2. `general/global.md`
 3. `general/environment.md`
-4. `general/creator.md`
-5. `general/folder-schema.md`
+4. **One** of: `general/windows.md`, `general/mac.md`, or `general/linux.md` — match the `ENVIRONMENT` value from your profile.
+5. `general/creator.md`
+6. `general/folder-schema.md`
+7. When authoring or publishing documentation: `general/documentation.md`
 
 Create `MEMORIES.md` in this repo root when you need stable machine-local facts (gitignored). Create it if absent when you need that class of fact.
 
@@ -23,6 +25,7 @@ Define these in your active profile under `profiles/` (see `profiles/my-desktop.
 - `CODE_ROOT` — root directory for all clones (for example `Z:\code` or `/home/you/src`).
 - `GITHUB_USER` — your GitHub username for path examples.
 - `ISSUES_REPO` — path to your `.issues` repository, if you use that workflow.
+- `ENVIRONMENT` — `windows`, `mac`, or `linux` (selects `general/windows.md`, `general/mac.md`, or `general/linux.md`).
 
 ## Global (summary)
 
@@ -34,8 +37,9 @@ Define these in your active profile under `profiles/` (see `profiles/my-desktop.
 
 ## Must read (full detail in repo)
 
-- Read `general/environment.md` before acting.
+- Read `general/environment.md` and the matching OS file before acting.
 - Read `general/creator.md` before acting.
+- Read `general/documentation.md` when you work on documentation or Antora-style sites.
 - Read `MEMORIES.md` in this repo root when you need stable machine-local facts. That file is **gitignored**; create it if absent.
 
 ## Memory file
@@ -43,7 +47,7 @@ Define these in your active profile under `profiles/` (see `profiles/my-desktop.
 `MEMORIES.md` is **machine-local only**. Example entry:
 
 ```text
-antora-supplemental is a GitHub org; clones live under $CODE_ROOT/github.com/antora-supplemental/
+example-org is a GitHub org; clones live under $CODE_ROOT/github.com/example-org/
 ```
 
 Replace `$CODE_ROOT` with your actual root when you paste paths, or reference the constant from your profile.

@@ -9,12 +9,10 @@ Do not apply these rules to third-party open-source contributions unless explici
 
 - Use `gh api` to perform repo transfers when you own the orgs.
 - When creating issue reports, store them in the `.issues` repository path defined by `ISSUES_REPO` in your active `profiles/*.md` file, according to that repository's instructions.
-- Use Antora guidelines in Dev-Centr's docs: `dev-centr/devcentr` — see `docs/modules/publishing/pages/antora-deployment.adoc` in that repository.
 
 ## Architecture and data
 
 - Formally endorse and use `SDL` for all software projects' configuration and data files. If SDL is inappropriate, use `json5`. Prefer `.json5` over `.json` to support comments, trailing commas, and other human-friendly features.
-- When creating documentation, populate content to satisfy the Diátaxis model.
 
 ## Changelogs
 
