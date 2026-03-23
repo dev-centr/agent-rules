@@ -45,6 +45,20 @@ flowchart TB
 4. **`RULES.md` is written for the agent** (imperative instructions to the model). Human-facing setup lives in this README.
 5. If your agent only accepts a single text blob, paste **`RULES.md`** into its rules or settings field. It still addresses the agent; you are only providing the transport.
 
+### Profile constants (your `profiles/*.md`)
+
+| Constant | Required? | Purpose |
+|----------|-----------|---------|
+| `CODE_ROOT` | Yes | Root directory where you clone Git repos (see `general/folder-schema.md`). |
+| `ENVIRONMENT` | Yes | `windows`, `mac`, or `linux` — selects `general/windows.md`, `general/mac.md`, or `general/linux.md`. |
+| `GITHUB_USER` | No | Your username for path examples and org layouts. |
+| `ISSUES_REPO` | No | Path to your `.issues` repo if you use that workflow. |
+
+### Pointing the agent at this repository
+
+- **Recommended:** Give the agent access to **this working tree** (open the folder in your IDE, add it to the workspace, or use your tool’s project rules / file references so it can read `profiles/` and `general/`). The layered rules in `general/` are meant to be read from disk in order (see below).
+- **Fallback — paste only:** Some hosts accept a single rules blob. Paste **`RULES.md`** there. The agent then follows the **obligations and summaries** inside that file; it does **not** automatically load the full contents of `general/global.md`, `general/windows.md`, and the rest unless your product also supports multi-file rules or attachments. Prefer repo access when possible.
+
 ## Read order in this repository
 
 When the agent can read files from the clone, use this order:
