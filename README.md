@@ -42,7 +42,8 @@ flowchart TB
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
 2. Optional: on Windows, a directory junction can point at this clone for a short path (for example `mklink /J Z:\code\agent-rules <path-to-this-repo>`).
 3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, **`ENVIRONMENT`** …). Set **`ENVIRONMENT`** to `windows`, `mac`, or `linux` so the agent loads the matching `general/windows.md`, `general/mac.md`, or `general/linux.md`.
-4. If your agent only accepts a single text blob, copy `RULES.md` into its rules or settings. Do not rely on one-line “read this file” indirection if your tool has been flaky.
+4. **`RULES.md` is written for the agent** (imperative instructions to the model). Human-facing setup lives in this README.
+5. If your agent only accepts a single text blob, paste **`RULES.md`** into its rules or settings field. It still addresses the agent; you are only providing the transport.
 
 ## Read order in this repository
 
