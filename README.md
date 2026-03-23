@@ -42,8 +42,8 @@ flowchart TB
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
 2. Optional: on Windows, a directory junction can point at this clone for a short path (for example `mklink /J Z:\code\agent-rules <path-to-this-repo>`).
 3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, **`ENVIRONMENT`** …). Set **`ENVIRONMENT`** to `windows`, `mac`, or `linux` so the agent loads the matching `general/windows.md`, `general/mac.md`, or `general/linux.md`.
-4. **`RULES.md` is written for the agent** (imperative instructions to the model). Human-facing setup lives in this README.
-5. If your agent only accepts a single text blob, paste **`RULES.md`** into its rules or settings field. It still addresses the agent; you are only providing the transport.
+4. **`RULES.md` is written for the agent**. It serves as a preamble that commands the AI to assemble its context in one step.
+5. In your AI agent's system prompt or custom instructions field, paste the contents of **`RULES.md`**. Before saving, fill in the **Dev Configuration** section at the top of the pasted block with your actual `CODE_ROOT` and `AGENT_RULES_PATH`.
 
 ### Profile constants (your `profiles/*.md`)
 
@@ -54,22 +54,21 @@ flowchart TB
 | `GITHUB_USER` | No | Your username for path examples and org layouts. |
 | `ISSUES_REPO` | No | Path to your `.issues` repo if you use that workflow. |
 
-### Pointing the agent at this repository
+## Pointing the agent at this repository
 
-- **Recommended:** Give the agent access to **this working tree** (open the folder in your IDE, add it to the workspace, or use your tool’s project rules / file references so it can read `profiles/` and `general/`). The layered rules in `general/` are meant to be read from disk in order (see below).
-- **Fallback — paste only:** Some hosts accept a single rules blob. Paste **`RULES.md`** there. The agent then follows the **obligations and summaries** inside that file; it does **not** automatically load the full contents of `general/global.md`, `general/windows.md`, and the rest unless your product also supports multi-file rules or attachments. Prefer repo access when possible.
+This repository uses a **1-step assembly architecture** optimized for local AI harnesses (e.g., Cursor, Windsurf, VSCode, Antigravity) that have filesystem access.
 
-## Read order in this repository
+When you paste `RULES.md` into your agent and define `$AGENT_RULES_PATH`, you are commanding the AI to perform a batched semantic read of all foundational modules simultaneously using its native tools (e.g., `view_file`, `read_file`). This prevents multi-turn ping-pong delays and avoids the common truncation issues associated with traditional CLI `cat` output.
 
-When the agent can read files from the clone, use this order:
+The agent will automatically pull:
 
-1. `profiles/<your-profile>.md` — machine constants, including **`ENVIRONMENT`** (`windows` \| `mac` \| `linux`).
-2. `general/global.md` — baseline expectations.
-3. `general/environment.md` — cross-platform environment principles.
-4. **One** of `general/windows.md`, `general/mac.md`, or `general/linux.md` — chosen by `ENVIRONMENT`.
-5. `general/creator.md` — rules for projects you own.
-6. `general/folder-schema.md` — path patterns (uses `CODE_ROOT`).
-7. `general/documentation.md` — when authoring or publishing docs (optional; Diátaxis, Antora when relevant).
+1. `profiles/<infer-profile-name>.md`
+2. `general/global.md`
+3. `general/environment.md`
+4. `general/<windows|mac|linux>.md`
+5. `general/creator.md`
+6. `general/folder-schema.md`
+(and `general/documentation.md` selectively).
 
 Create a **machine-local** `MEMORIES.md` in this repository root (gitignored) for facts that rarely change. See **Machine-local memories** below.
 

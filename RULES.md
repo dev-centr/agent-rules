@@ -1,16 +1,26 @@
 # Agent rules (entrypoint)
 
-You are operating under this rules set. Prefer loading the **files below from the repository clone** when paths resolve. If the host cannot read the filesystem, follow the **obligations and summaries** in this document as your only source.
+> **Dev Configuration (Fill these in before passing to AI)**:
+> `CODE_ROOT= # insert the path to your code hive`
+> `AGENT_RULES_PATH=$CODE_ROOT/github.com/<your-username>/agent-rules`
 
-## Read these files in order (when the repo is available)
+You are operating under this rules set.
 
-1. `profiles/<active-profile>.md` — machine constants. Required keys: `CODE_ROOT`, `ENVIRONMENT` (`windows`, `mac`, or `linux`). Also `GITHUB_USER`, `ISSUES_REPO` when present. If any required value is missing or ambiguous, **ask the user** before inferring paths or OS behavior.
-2. `general/global.md`
-3. `general/environment.md`
-4. Exactly **one** of `general/windows.md`, `general/mac.md`, or `general/linux.md`, matching `ENVIRONMENT`.
-5. `general/creator.md`
-6. `general/folder-schema.md`
-7. When the task involves authoring or publishing project documentation: `general/documentation.md`
+## Context Assembly (CRITICAL FIRST STEP)
+
+You must read all foundational rules in a single step using your native file reading tools. Do not read them sequentially. All paths below are strictly relative to `$AGENT_RULES_PATH`. Resolve that absolute path based on the variables above.
+
+Read these files **simultaneously in parallel tool calls** to assemble your full context:
+
+- `profiles/<infer-profile-name>.md` (contains machine constants, including `ENVIRONMENT`)
+- `general/global.md`
+- `general/environment.md`
+- `general/<windows|mac|linux>.md` (infer OS from host or profile)
+- `general/creator.md`
+- `general/folder-schema.md`
+- `general/documentation.md` (only if the task involves authoring or publishing project documentation)
+
+*(Fallback)*: If you lack native file reading tools, use a terminal to read them all in one command (e.g. `cat`), but beware of output truncation. If the host cannot read the filesystem, follow the **obligations** below as your only source.
 
 ## Machine-local memory
 
@@ -29,12 +39,7 @@ You are operating under this rules set. Prefer loading the **files below from th
 - Treat `.gitignore` as an allow-list unless the project says otherwise.
 - For Python, use a `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - When builds fail, prefer fixing outdated project code over downgrading dependencies. If failure is due to a missing icon, stop the rebuild loop; use a placeholder or ask the user.
-- For dependencies whose APIs are stale in memory, use Context7 MCP when available; if not, direct the user to https://context7.com/
-
-## Before acting (full detail lives in the files above)
-
-- You **must** have applied `general/global.md`, `general/environment.md`, the correct OS file, and `general/creator.md` before substantive work, unless the user explicitly scopes a trivial task that cannot interact with those concerns.
-- You **must** read `general/documentation.md` when changing how documentation is written, structured, or published.
+- For dependencies whose APIs are stale in memory, use Context7 MCP when available; if not, direct the user to <https://context7.com/>
 
 ## Dev-Centr product scope
 
