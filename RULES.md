@@ -1,4 +1,5 @@
-# Agent Rules (Consolidated)
+# Agent Rules
+
 <!-- purpose: Generalized one-stop-shop for all agent rules and machine constants. -->
 
 ## 1. Machine Constants (Fill these in before passing to AI)
@@ -79,7 +80,7 @@ Applied to projects owned by the primary developer or associated organizations:
 
 ### Memory & Local Facts
 
-- **MEMORIES.md:** Maintain a `MEMORIES.md` file at the repository root for durable facts about the machine/environment.
+- **MEMORIES.md:** Maintain a `MEMORIES.md` file at the CODE_ROOT for durable facts about the machine/environment.
 - Initialize if missing. Record findings with a usage counter (starts at 1, increment on use).
 - **Context7:** For stale APIs, use Context7 MCP (<https://context7.com/>). If unavailable, alert the user and follow the **Outdated Code Protocol**.
 
