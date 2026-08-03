@@ -68,23 +68,27 @@ The agent will automatically pull:
 4. `general/<windows|mac|linux>.md`
 5. `general/creator.md`
 6. `general/folder-schema.md`
-(and `general/documentation.md` selectively).
+(and `general/documentation.md` / `general/app-architecture.md` selectively).
 
-Create a **machine-local** `MEMORIES.md` in this repository root (gitignored) for facts that rarely change. See **Machine-local memories** below.
+Create **`$CODE_ROOT/MEMORIES.md`** for workstation facts (see **Machine-local memories** below). Do not commit per-repo `MEMORIES.md`.
 
-For **Dev-Centr automation** acting on behalf of the user, the product should load rules from [devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules), not from this forkable repo.
+For **Dev-Centr automation** acting on behalf of the user, the product should load rules from [devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules), not from this repository.
 
 ## Machine-local memories
 
-`MEMORIES.md` in the **repository root** is **gitignored**. Use it for durable facts about **this machine**, not for project tickets.
+Canonical file: **`$CODE_ROOT/MEMORIES.md`**. Workstation-only; never commit.
+
+Committed template / format: [MEMORIES.example.md](./MEMORIES.example.md).
+
+`MEMORIES.md` inside this `agent-rules` clone remains gitignored for backwards compatibility; prefer `$CODE_ROOT/MEMORIES.md`.
+
+Do **not** commit per-repo `MEMORIES.md`. Project facts → `AGENTS.md` + docs.
 
 Example line:
 
 ```text
-my-org is a GitHub org; clones live under $CODE_ROOT/github.com/my-org/
+Flutter SDK: `C:\flutter-sdk\flutter\bin` — refresh PATH if `flutter` missing (counter: 1)
 ```
-
-Adjust the path to match your `CODE_ROOT` and layout.
 
 ## Relation to Dev-Centr templates
 

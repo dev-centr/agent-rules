@@ -23,12 +23,14 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/creator.md`
 - `general/folder-schema.md`
 - `general/documentation.md` (only if the task involves authoring or publishing project documentation)
+- `general/app-architecture.md` (only if the task involves scaffolding, building, shipping, packaging, or maintaining an application, CLI, TUI, publishable library, game client, or service)
 
 *(Fallback)*: If you lack native file reading tools, use a terminal to read them all in one command (e.g. `cat`), but beware of output truncation. If the host cannot read the filesystem, follow the **obligations** below as your only source.
 
 ## Machine-local memory
 
-- Read `MEMORIES.md` at the **repository root** when you need durable facts about this machine. That file is **gitignored**; **create** it if you need to record stable local facts and it does not exist yet.
+- Read **`$CODE_ROOT/MEMORIES.md`** for durable facts about **this workstation** (paths, PATH gaps, hardware). Create it if missing (see `MEMORIES.example.md`). Never commit it.
+- Do **not** use per-repo `MEMORIES.md` for project knowledge — put that in `AGENTS.md` + docs/README.
 
 ## Constants (interpret from the active profile)
 
@@ -39,7 +41,7 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 
 ## Obligations (always)
 
-- **OS/Shell:** Assume **Windows 10/11** and **PowerShell 7** unless explicitly told otherwise.
+- **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
 - Write explanations in plain language.
 - Treat `.gitignore` as an allow-list unless the project says otherwise (exclude `*` then allow specific).
 - For Python, use a `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
@@ -50,12 +52,10 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 
 These rules are for **end-user / project** agents. **Dev-Centr application automation** (acting on behalf of the user) must load `https://github.com/dev-centr/devcentr-agent-rules` instead of this repository—do not conflate the two.
 
-## Memory file format (when writing `MEMORIES.md`)
+## Memory file format (when writing `$CODE_ROOT/MEMORIES.md`)
 
-Stable facts only; one example line shape:
+Stable workstation facts only; see `MEMORIES.example.md`. One line shape:
 
 ```text
-<org-or-label> is a GitHub org; clones live under $CODE_ROOT/github.com/<org-or-label>/
+<fact about this machine> (counter: 1)
 ```
-
-Use the profile’s `CODE_ROOT` when expanding paths.

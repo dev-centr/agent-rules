@@ -13,3 +13,17 @@ Read this file when you **author, structure, or publish** project documentation 
 ## Relationship to creator rules
 
 - Changelog placement and ownership expectations live in `general/creator.md`. This file covers **how** documentation is shaped and **when** Antora-specific paths apply.
+- Shippable **product** architecture (About, updates, packaging, pipelines) lives in `general/app-architecture.md` and the local general-knowledge Software Product Essentials pages—not here.
+
+## Titles for news, blogs, and essays
+
+When authoring or reviewing titles:
+
+1. **First-party news** — omit the org; notification line unless another actor did it.
+2. **Action essays** — invisible **[On]**; drop surplus *the*; no bare imperatives.
+3. **Framing** — prefer `X as Y` / process / `A X` / *when* / disproof / questions over rigid `X is Y`.
+4. **Modifiers** — attach to an object.
+5. **Docs topics** — concept names.
+6. One idea per news item; big idea first.
+
+See each site’s `STYLE.adoc`. Philosophy: **Titles as orientation**. Cursor `.cursor/rules/*.mdc` is a directory. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/MEMORIES.md` only (never per-repo `MEMORIES.md`).

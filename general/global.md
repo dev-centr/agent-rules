@@ -34,10 +34,12 @@ These apply universally unless a profile says otherwise.
   - If `ENVIRONMENT` is missing, ask the user which file applies before assuming an OS.
 - You **must** read `general/creator.md` before acting.
 - Read `general/documentation.md` when you are authoring, structuring, or publishing project documentation (optional layer for doc-heavy work).
+- Read `general/app-architecture.md` when you are scaffolding, building, shipping, packaging, or maintaining an application, CLI, TUI, publishable library, game client, or service (optional layer; points at local Software Product Essentials docs).
 
 ## Memory management
 
-- If the user has to teach you something or you have to probe the local environment and it seems likely you will use that information in a future prompt, you **must** read `MEMORIES.md` before acting. `MEMORIES.md` is **machine-local** and **gitignored**. Record your findings so you do not have to figure it out every time you run into the same unknown. Every memory needs a counter initialized to 1. When you use a memory, increment its counter. If this file does not exist, initialize it.
+- If the user teaches you something about **this machine/environment**, or you probe the local environment and will need it again, you **must** read and update **`$CODE_ROOT/MEMORIES.md`** (create if missing; see `MEMORIES.example.md`). It is machine-local and never committed. Every memory needs a counter starting at 1; increment on reuse.
+- Project knowledge belongs in the repo (`AGENTS.md`, README, docs, `STYLE.adoc`) — not in MEMORIES and not in a per-repo `MEMORIES.md`.
 
 ## Outdated code protocol fallback
 
