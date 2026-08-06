@@ -1,12 +1,40 @@
-# Agent rules
+<a id="readme-top"></a>
 
-Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app’s rules field.
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
+<div align="center">
+  <h1>Agent Rules</h1>
+  <p>Forkable modular agent rules with 1-step assembly for local AI coding assistants.</p>
+  <p>
+    <a href="https://github.com/dev-centr/agent-rules/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/dev-centr/agent-rules/issues">Request Feature</a>
+  </p>
+</div>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+## About The Project
+
+Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app's rules field.
 
 **Fork** this repository to your own org or user when you need a private or personalized copy (for example [`AMDphreak/agent-rules`](https://github.com/AMDphreak/agent-rules)). Upstream portable improvements with pull requests here.
 
 **Dev-Centr product behavior** (when the app acts on behalf of the user) does **not** live here. It belongs in [dev-centr/devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules).
 
-## Architecture
+### Architecture
 
 ```mermaid
 flowchart TB
@@ -37,7 +65,7 @@ flowchart TB
 - **devcentr-agent-rules**: rules for when the Dev-Centr app acts on behalf of the user (separate repository).
 - **templates**: project templates; README there links to forkable agent rules, not to personal copies.
 
-## Quick start
+## Installation
 
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
 2. Optional path convenience: on Windows, a directory junction can point at this clone (for example `mklink /J …\agent-rules <path-to-this-repo>`). **Junctions are temporary.** Prefer configuring [`dev-centr/rules-manager`](https://github.com/dev-centr/rules-manager) (`rules_repo_path`) to compose and watch global + machine sections into `$CODE_ROOT/agent-rules.composed.md`.
@@ -54,7 +82,9 @@ flowchart TB
 | `GITHUB_USER` | No | Your username for path examples and org layouts. |
 | `ISSUES_REPO` | No | Path to your `.issues` repo if you use that workflow. |
 
-## Pointing the agent at this repository
+## Usage
+
+### Pointing the agent at this repository
 
 This repository uses a **1-step assembly architecture** optimized for local AI harnesses (e.g., Cursor, Windsurf, VSCode, Antigravity) that have filesystem access.
 
@@ -74,7 +104,7 @@ Create **`$CODE_ROOT/MEMORIES.md`** for workstation facts (see **Machine-local m
 
 For **Dev-Centr automation** acting on behalf of the user, the product should load rules from [devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules), not from this repository.
 
-## Machine-local memories
+### Machine-local memories
 
 Canonical file: **`$CODE_ROOT/MEMORIES.md`**. Workstation-only; never commit.
 
@@ -90,10 +120,30 @@ Example line:
 Flutter SDK: `C:\flutter-sdk\flutter\bin` — refresh PATH if `flutter` missing (counter: 1)
 ```
 
-## Relation to Dev-Centr templates
+### Relation to Dev-Centr templates
 
 Project templates (workspaces, payloads, template docs) live in [dev-centr/templates](https://github.com/dev-centr/templates). That repo **links** to agent rules here; it should not embed a second copy of personal rules.
 
-## License
+## Contributing
 
-Add a license file if you want this repository to be reusable by others.
+Add a license file if you want this repository to be reusable by others. Pull requests with portable rule improvements are welcome.
+
+## Contact
+
+DevCentr.org - support@devcentr.org
+
+Project Link: https://github.com/dev-centr/agent-rules
+
+Site: https://devcentr.org
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/dev-centr/agent-rules.svg?style=for-the-badge
+[contributors-url]: https://github.com/dev-centr/agent-rules/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dev-centr/agent-rules.svg?style=for-the-badge
+[forks-url]: https://github.com/dev-centr/agent-rules/network/members
+[stars-shield]: https://img.shields.io/github/stars/dev-centr/agent-rules.svg?style=for-the-badge
+[stars-url]: https://github.com/dev-centr/agent-rules/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dev-centr/agent-rules.svg?style=for-the-badge
+[issues-url]: https://github.com/dev-centr/agent-rules/issues
