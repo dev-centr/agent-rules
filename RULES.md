@@ -34,7 +34,7 @@
 
 ## Creator (owned orgs)
 - Transfers: `gh api`.
-- Config: SDL preferred; else JSON5 (`.json5` over `.json`).
+- Config: SDL (`.sdl`) for DevCentr-owned / `sdlang-d` surfaces; **KDL** (`.kdl`) for greenfield outside that stack; JSON5 when stuck in the JSON family. Do **not** adopt Extended SDL/XDL.
 - Changelog: every project; README links to it; timeline + `changelog-details/date - title`.
 
 ## Docs

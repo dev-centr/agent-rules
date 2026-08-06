@@ -12,7 +12,7 @@ Do not apply these rules to third-party open-source contributions unless explici
 
 ## Architecture and data
 
-- Formally endorse and use `SDL` for all software projects' configuration and data files. If SDL is inappropriate, use `json5`. Prefer `.json5` over `.json` to support comments, trailing commas, and other human-friendly features.
+- Formally endorse **SDL (`.sdl`)** for DevCentr-owned configuration and catalogs parsed with `sdlang-d`. Prefer **KDL (`.kdl`)** for greenfield / cross-language node documents outside that stack (DUB: `kdl`). If neither fits (tool requires JSON-shaped files), use `json5` over `.json`. Do **not** adopt Extended SDL/XDL (`newsdlang`).
 
 ## Changelogs
 
