@@ -44,6 +44,7 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
 - Write explanations in plain language.
 - Treat `.gitignore` as an allow-list unless the project says otherwise (exclude `*` then allow specific).
+- **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
 - For Python, use a `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - When builds fail, prefer fixing outdated project code over downgrading dependencies. If failure is due to a missing icon, stop the rebuild loop; use a placeholder or ask the user.
 - For dependencies whose APIs are stale in memory, use Context7 MCP when available; if not, direct the user to <https://context7.com/>

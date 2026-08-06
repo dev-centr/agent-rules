@@ -40,10 +40,10 @@ flowchart TB
 ## Quick start
 
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
-2. Optional: on Windows, a directory junction can point at this clone for a short path (for example `mklink /J Z:\code\agent-rules <path-to-this-repo>`).
+2. Optional path convenience: on Windows, a directory junction can point at this clone (for example `mklink /J …\agent-rules <path-to-this-repo>`). **Junctions are temporary.** Prefer configuring [`dev-centr/rules-manager`](https://github.com/dev-centr/rules-manager) (`rules_repo_path`) to compose and watch global + machine sections into `$CODE_ROOT/agent-rules.composed.md`.
 3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, **`ENVIRONMENT`** …). Set **`ENVIRONMENT`** to `windows`, `mac`, or `linux` so the agent loads the matching `general/windows.md`, `general/mac.md`, or `general/linux.md`.
 4. **`RULES.md` is written for the agent**. It serves as a preamble that commands the AI to assemble its context in one step.
-5. In your AI agent's system prompt or custom instructions field, paste the contents of **`RULES.md`**. Before saving, fill in the **Dev Configuration** section at the top of the pasted block with your actual `CODE_ROOT` and `AGENT_RULES_PATH`.
+5. In your AI agent's system prompt or custom instructions field, paste the contents of **`RULES.md`** (or the composed file from rules-manager). Before saving, fill in the **Dev Configuration** section at the top of the pasted block with your actual `CODE_ROOT` and `AGENT_RULES_PATH`.
 
 ### Profile constants (your `profiles/*.md`)
 
