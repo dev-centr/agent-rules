@@ -1,0 +1,14 @@
+---
+description: Fetch and sync with remote before multi-file edit passes
+alwaysApply: true
+---
+
+# Sync with remote before multi-file work
+
+Before a multi-file edit pass (sites, refactors, features spanning several files):
+
+1. In **each** affected git repo: `git fetch`
+2. Check `git status -sb` for `behind`
+3. If the branch tracks a remote and is behind, **pull/rebase (or merge) before coding**
+
+Do not invent a large change set against a stale local HEAD.
