@@ -41,6 +41,7 @@
 - Structure: Diátaxis (tutorials, how-to, explanation, reference).
 - Format: AsciiDoc unless host requires Markdown (e.g. npm).
 - Antora: follow `dev-centr` publishing guidance.
+- **One Antora site per org** with a hub (e.g. docs.devcentr.org): wire `docs/` into the hub playbook; never publish a second Antora site on project GitHub Pages. Deduplicate errant sites. See `general/antora-docs-sites.md`. (Does not apply to mixing Antora with other docs systems.)
 - **Public README layout:** when creating/revising GitHub-facing READMEs, follow `general/readme-layout.md` (Best-README adapted: linked badges, centered header, role-grouped Built With, back-to-top). Hand-edit per repo; blanks in `dev-centr/readme-template`.
 - Titles: follow site `STYLE.adoc` / `AGENTS.md` (not MEMORIES). Short defaults — first-party news omits org; action essays pass implied [On] and drop surplus *the*; prefer `X as Y` / *when* / disproof / questions over rigid `X is Y`; attach floating modifiers to an object; docs topics = concept names. Philosophy: `Titles as orientation`. Cursor rules = `.cursor/rules/*.mdc` dir; this file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `MEMORIES.md`.

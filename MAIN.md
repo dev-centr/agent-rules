@@ -23,6 +23,7 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/creator.md`
 - `general/folder-schema.md`
 - `general/documentation.md` (only if the task involves authoring or publishing project documentation)
+- `general/antora-docs-sites.md` (only if the task involves Antora sites, playbooks, GitHub Pages for docs, or wiring components into an org docs hub)
 - `general/readme-layout.md` (only if the task involves creating or revising a GitHub-facing README.md / README.adoc)
 - `general/app-architecture.md` (only if the task involves scaffolding, building, shipping, packaging, or maintaining an application, CLI, TUI, publishable library, game client, or service)
 

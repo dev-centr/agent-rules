@@ -10,6 +10,7 @@ Read this file when you **author, structure, or publish** project documentation 
 ## Antora (when used)
 
 - If the project uses **Antora**, follow the publishing and layout guidance in the Dev-Centr documentation repository: `dev-centr/devcentr` — see `docs/modules/publishing/pages/antora-deployment.adoc` for deployment-oriented details.
+- **One Antora site per org** that already has a hub (e.g. https://docs.devcentr.org). Do not publish secondary per-repo Antora sites on GitHub Pages. Keep `docs/` in the product repo; **wire** into the hub playbook. See `general/antora-docs-sites.md`. Actively deduplicate when you find errant sites. Does **not** apply to mixtures of different docs systems (Antora + Fumadocs is fine).
 
 ## Relationship to creator rules
 
