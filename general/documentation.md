@@ -5,6 +5,7 @@ Read this file when you **author, structure, or publish** project documentation 
 ## Structure
 
 - When you design documentation for a project, consider the **Diátaxis** model (tutorials, how-to, explanation, reference) so material is easy to navigate.
+- **GitHub README layout** (linked badges, centered header, Built With grouping, back-to-top, contributors image) is specified in `general/readme-layout.md`. Blanks: `dev-centr/readme-template`. Hand-edit per repo; do not batch-script cross-repo README rewrites.
 
 ## Antora (when used)
 

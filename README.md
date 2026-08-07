@@ -1,16 +1,15 @@
 <a id="readme-top"></a>
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
 <div align="center">
+  <a href="https://github.com/dev-centr/agent-rules/graphs/contributors"><img src="https://img.shields.io/github/contributors/dev-centr/agent-rules.svg?style=for-the-badge" alt="Contributors"></a>
+  <a href="https://github.com/dev-centr/agent-rules/network/members"><img src="https://img.shields.io/github/forks/dev-centr/agent-rules.svg?style=for-the-badge" alt="Forks"></a>
+  <a href="https://github.com/dev-centr/agent-rules/stargazers"><img src="https://img.shields.io/github/stars/dev-centr/agent-rules.svg?style=for-the-badge" alt="Stargazers"></a>
+  <a href="https://github.com/dev-centr/agent-rules/issues"><img src="https://img.shields.io/github/issues/dev-centr/agent-rules.svg?style=for-the-badge" alt="Issues"></a>
+
   <h1>Agent Rules</h1>
   <p>Forkable modular agent rules with 1-step assembly for local AI coding assistants.</p>
   <p>
     <a href="https://github.com/dev-centr/agent-rules/issues">Report Bug</a>
-    ·
+    &middot;
     <a href="https://github.com/dev-centr/agent-rules/issues">Request Feature</a>
   </p>
 </div>
@@ -18,7 +17,12 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -65,6 +69,14 @@ flowchart TB
 - **devcentr-agent-rules**: rules for when the Dev-Centr app acts on behalf of the user (separate repository).
 - **templates**: project templates; README there links to forkable agent rules, not to personal copies.
 
+### Built With
+
+* **Rules format** — Markdown modules under `general/` and `profiles/`
+* **Assembly** — paste `RULES.md`, or compose via [rules-manager](https://github.com/dev-centr/rules-manager)
+* **Optional template blanks** — [readme-template](https://github.com/dev-centr/readme-template)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Installation
 
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
@@ -81,6 +93,8 @@ flowchart TB
 | `ENVIRONMENT` | Yes | `windows`, `mac`, or `linux` — selects `general/windows.md`, `general/mac.md`, or `general/linux.md`. |
 | `GITHUB_USER` | No | Your username for path examples and org layouts. |
 | `ISSUES_REPO` | No | Path to your `.issues` repo if you use that workflow. |
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Usage
 
@@ -124,9 +138,21 @@ Flutter SDK: `C:\flutter-sdk\flutter\bin` — refresh PATH if `flutter` missing 
 
 Project templates (workspaces, payloads, template docs) live in [dev-centr/templates](https://github.com/dev-centr/templates). That repo **links** to agent rules here; it should not embed a second copy of personal rules.
 
+Public README blanks live in [dev-centr/readme-template](https://github.com/dev-centr/readme-template).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Contributing
 
 Add a license file if you want this repository to be reusable by others. Pull requests with portable rule improvements are welcome.
+
+### Top contributors
+
+<a href="https://github.com/dev-centr/agent-rules/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dev-centr/agent-rules" alt="contributors" />
+</a>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
 
@@ -137,13 +163,3 @@ Project Link: https://github.com/dev-centr/agent-rules
 Site: https://devcentr.org
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/dev-centr/agent-rules.svg?style=for-the-badge
-[contributors-url]: https://github.com/dev-centr/agent-rules/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/dev-centr/agent-rules.svg?style=for-the-badge
-[forks-url]: https://github.com/dev-centr/agent-rules/network/members
-[stars-shield]: https://img.shields.io/github/stars/dev-centr/agent-rules.svg?style=for-the-badge
-[stars-url]: https://github.com/dev-centr/agent-rules/stargazers
-[issues-shield]: https://img.shields.io/github/issues/dev-centr/agent-rules.svg?style=for-the-badge
-[issues-url]: https://github.com/dev-centr/agent-rules/issues

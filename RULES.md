@@ -41,6 +41,7 @@
 - Structure: Diátaxis (tutorials, how-to, explanation, reference).
 - Format: AsciiDoc unless host requires Markdown (e.g. npm).
 - Antora: follow `dev-centr` publishing guidance.
+- **Public README layout:** when creating/revising GitHub-facing READMEs, follow `general/readme-layout.md` (Best-README adapted: linked badges, centered header, role-grouped Built With, back-to-top). Hand-edit per repo; blanks in `dev-centr/readme-template`.
 - Titles: follow site `STYLE.adoc` / `AGENTS.md` (not MEMORIES). Short defaults — first-party news omits org; action essays pass implied [On] and drop surplus *the*; prefer `X as Y` / *when* / disproof / questions over rigid `X is Y`; attach floating modifiers to an object; docs topics = concept names. Philosophy: `Titles as orientation`. Cursor rules = `.cursor/rules/*.mdc` dir; this file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `MEMORIES.md`.
 - **App shipping architecture:** when scaffolding/building/shipping apps, read `general/app-architecture.md` and adhere to Software Product Essentials under `$CODE_ROOT/github.com/dev-centr/general-knowledge/docs/modules/ROOT/pages/explanation/architecture/` (hub: `software-product-essentials.adoc`). About/build info, debug dump, Windows auto-update, installers, and CI release pipelines are core—not polish.
