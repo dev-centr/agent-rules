@@ -1,7 +1,10 @@
 = Usage
 
 . Clone into your code hive, for example `$CODE_ROOT/github.com/<your-org-or-user>/agent-rules`.
+. Copy a profile template from `profiles/` and set constants (see xref:profiles.adoc[Profiles]).
 . Point your assistant at `RULES.md`, or compose with https://github.com/dev-centr/rules-manager[`rules-manager`].
 . Put machine-local facts in **`$CODE_ROOT/MEMORIES.md`** (never commit). Format: `MEMORIES.example.md` in this repository.
 
 Fork the repository when you need private constants. Upstream portable improvements with pull requests to `dev-centr/agent-rules`.
+
+For assembly details and module load order, see xref:assembly.adoc[Assembly].

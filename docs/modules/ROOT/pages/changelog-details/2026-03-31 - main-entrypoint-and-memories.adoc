@@ -1,0 +1,13 @@
+= 2026-03-31 – MAIN.md entrypoint and MEMORIES clarification
+
+== MAIN.md modular entrypoint
+
+`MAIN.md` became the modular context-assembly file listing parallel reads from `profiles/` and `general/`. `RULES.md` remains the consolidated paste preamble for apps without filesystem access.
+
+== MEMORIES location
+
+Documented **`$CODE_ROOT/MEMORIES.md`** as the single workstation memory file:
+
+* Gitignored; never committed.
+* Per-repo `MEMORIES.md` deprecated for project facts (use `AGENTS.md` + docs).
+* Format template: `MEMORIES.example.md` in this repository.
