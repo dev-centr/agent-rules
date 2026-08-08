@@ -1,0 +1,10 @@
+= Changelog details
+
+Full changelog entries for xref:changelog.adoc[agent-rules].
+
+* xref:2026-08-08 - Documentation standards expansion.adoc[2026-08-08 — Documentation standards expansion]
+* xref:2026-08-07 - Antora component docs.adoc[2026-08-07 — Antora component docs]
+* xref:2026-08-06 - README layout and Antora org policy.adoc[2026-08-06 — README layout and one Antora site policy]
+* xref:2026-08-03 - App shipping architecture layer.adoc[2026-08-03 — App shipping architecture layer]
+* xref:2026-03-31 - RULES.md preamble consolidation.adoc[2026-03-31 — RULES.md preamble consolidation]
+* xref:2026-03-23 - Initial forkable agent rules.adoc[2026-03-23 — Initial forkable agent rules]

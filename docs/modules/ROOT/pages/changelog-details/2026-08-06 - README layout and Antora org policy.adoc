@@ -1,0 +1,13 @@
+= 2026-08-06 — README layout and one Antora site policy
+
+== Summary
+
+Documented public README layout conventions and org-wide Antora publishing policy.
+
+== Changes
+
+* `general/readme-layout.md` — Best-README–adapted layout: HTML-linked shields in centered header, role-grouped Built With, back-to-top, contrib.rocks tiering.
+* `general/antora-docs-sites.md` — **One Antora site per org**; wire `docs/` into hub playbook; dedupe secondary GitHub Pages Antora sites.
+* `general/creator.md` — Prefer SDL (`.sdl`) in DevCentr stack; KDL (`.kdl`) greenfield; ban Extended SDL/XDL.
+* `RULES.md` / README — Sync-before-work habit; rules-manager path for composed rules.
+* README aligned with public template layout (centered chrome, TOC, Built With).

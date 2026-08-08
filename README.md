@@ -27,6 +27,7 @@
     </li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#changelog">Changelog</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -143,6 +144,12 @@ Flutter SDK: `C:\flutter-sdk\flutter\bin` — refresh PATH if `flutter` missing 
 Project templates (workspaces, payloads, template docs) live in [dev-centr/templates](https://github.com/dev-centr/templates). That repo **links** to agent rules here; it should not embed a second copy of personal rules.
 
 Public README blanks live in [dev-centr/readme-template](https://github.com/dev-centr/readme-template).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Changelog
+
+Notable functional changes: [changelog on the docs site](https://docs.devcentr.org/agent-rules/changelog.html).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

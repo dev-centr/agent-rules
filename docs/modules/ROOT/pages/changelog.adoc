@@ -1,0 +1,47 @@
+= Changelog
+:description: Notable functional changes to forkable agent rules, profiles, and documentation standards.
+
+Timeline of notable changes to **agent-rules**.
+Detailed notes live under xref:changelog-details/index.adoc[changelog-details].
+
+== 2026-08-08 — Documentation standards expansion
+
+xref:changelog-details/2026-08-08 - Documentation standards expansion.adoc[Details]
+
+* Expanded README, Antora, and changelog guidance across `RULES.md` and `general/*.md`.
+* README header: **Explore the docs »** hub CTA; no separate Docs/CI shields in the centered chrome.
+
+== 2026-08-07 — Antora component docs
+
+xref:changelog-details/2026-08-07 - Antora component docs.adoc[Details]
+
+* Added Antora component under `docs/` (overview, usage, architecture).
+* Removed personal-repo path examples from upstream-facing text.
+
+== 2026-08-06 — README layout and one Antora site policy
+
+xref:changelog-details/2026-08-06 - README layout and Antora org policy.adoc[Details]
+
+* Documented Best-README–adapted public README layout (`general/readme-layout.md`).
+* **One Antora site per org** policy; dedupe errant per-repo GitHub Pages Antora builds.
+* SDL in-stack / KDL greenfield config rules; sync-before-work habit in rules.
+
+== 2026-08-03 — App shipping architecture layer
+
+xref:changelog-details/2026-08-03 - App shipping architecture layer.adoc[Details]
+
+* Agents building apps must read `general/app-architecture.md` and Software Product Essentials.
+
+== 2026-03-31 — RULES.md preamble consolidation
+
+xref:changelog-details/2026-03-31 - RULES.md preamble consolidation.adoc[Details]
+
+* Consolidated paste preamble into `RULES.md`; `MAIN.md` as human assembly entrypoint.
+* Clarified `$CODE_ROOT/MEMORIES.md` as the canonical workstation memory file.
+
+== 2026-03-23 — Initial forkable agent rules
+
+xref:changelog-details/2026-03-23 - Initial forkable agent rules.adoc[Details]
+
+* Canonical forkable rules for Dev-Centr coding assistants.
+* 1-step assembly architecture, OS-specific layers, placeholder profiles with `ENVIRONMENT`.

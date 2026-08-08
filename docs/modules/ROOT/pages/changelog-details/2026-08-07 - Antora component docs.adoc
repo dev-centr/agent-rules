@@ -1,0 +1,12 @@
+= 2026-08-07 — Antora component docs
+
+== Summary
+
+Introduced an Antora documentation component for this repository and scrubbed personal-repo references from public-facing text.
+
+== Changes
+
+* Added `docs/antora.yml` and ROOT pages: overview, usage, architecture.
+* Wired component into `dev-centr/docs` hub playbook (`agent-rules` source).
+* README and docs point at `https://docs.devcentr.org/agent-rules/` instead of personal clones.
+* Distinguished **agent-rules** (forkable end-user rules) from **devcentr-agent-rules** (product automation).
