@@ -34,7 +34,9 @@
 
 Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app's rules field.
 
-**Fork** this repository to your own org or user when you need a private or personalized copy (for example [`AMDphreak/agent-rules`](https://github.com/AMDphreak/agent-rules)). Upstream portable improvements with pull requests here.
+**Fork** this repository to your own org or user when you need a private or personalized copy. Upstream portable improvements with pull requests here.
+
+Docs: https://docs.devcentr.org/agent-rules/
 
 **Dev-Centr product behavior** (when the app acts on behalf of the user) does **not** live here. It belongs in [dev-centr/devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules).
 

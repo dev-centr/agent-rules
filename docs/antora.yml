@@ -1,0 +1,6 @@
+name: agent-rules
+title: Agent Rules
+version: master
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
