@@ -1,0 +1,42 @@
+= Changelog
+
+Notable changes to agent-rules rules, profiles, and documentation. Entries are in reverse chronological order. Each entry links to a detailed changelog article where helpful.
+
+== 2026-08-08 – Antora docs and personal-reference cleanup
+
+* Added Antora component under `docs/` (overview, usage, architecture).
+* Removed personal-repo references from README, CONTRIBUTING, and RULES.md; generic fork guidance instead.
+* Wired into https://docs.devcentr.org/agent-rules/[Dev-Centr docs hub] (playbook already lists this component).
+
+See xref:ROOT:changelog-details/2026-08-08 - antora-docs-and-personal-ref-cleanup.adoc[Detailed changelog].
+
+== 2026-08-06 – Antora org policy and README layout rules
+
+* `general/antora-docs-sites.md`: one Antora site per org; wire components into hub; dedupe errant GitHub Pages sites.
+* `general/readme-layout.md`: Best-README adapted layout (HTML badges, centered header, role-grouped Built With).
+* SDLang in-stack preference; KDL greenfield; ban Extended SDL/XDL in creator rules.
+* Sync-before-work habit and rules-manager path documentation.
+
+See xref:ROOT:changelog-details/2026-08-06 - antora-policy-and-readme-layout.adoc[Detailed changelog].
+
+== 2026-08-03 – Software Product Essentials pointer
+
+* `general/app-architecture.md` points agents at general-knowledge Software Product Essentials when building apps.
+
+See xref:ROOT:changelog-details/2026-08-03 - software-product-essentials.adoc[Detailed changelog].
+
+== 2026-03-31 – MAIN.md entrypoint and MEMORIES clarification
+
+* Reorganized into `MAIN.md` modular assembly entrypoint and consolidated `RULES.md` preamble.
+* Clarified `$CODE_ROOT/MEMORIES.md` as the canonical workstation memory location.
+
+See xref:ROOT:changelog-details/2026-03-31 - main-entrypoint-and-memories.adoc[Detailed changelog].
+
+== 2026-03-23 – Initial forkable rules and 1-step assembly
+
+* Initial commit: canonical forkable agent rules for Dev-Centr.
+* OS layers split (`general/windows.md`, `general/mac.md`, `general/linux.md`); `ENVIRONMENT` profile constant.
+* 1-step assembly architecture in `RULES.md` / `MAIN.md` (parallel batched reads).
+* README profile constants table; human vs agent audience clarified.
+
+See xref:ROOT:changelog-details/2026-03-23 - initial-forkable-rules.adoc[Detailed changelog].

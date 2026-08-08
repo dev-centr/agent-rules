@@ -1,0 +1,68 @@
+= Module reference
+
+`general/` modules are Markdown rule files the agent loads during assembly.
+
+== Always loaded
+
+[cols="1,2"]
+|===
+| Module | Covers
+
+| `global.md`
+| Core habits: plain language, gitignore allow-list, sync-before-work, Python venv/uv, build-failure policy, changelogs.
+
+| `environment.md`
+| Cross-platform tooling defaults (Node/pnpm, git hosts, path refresh patterns).
+
+| `windows.md` / `mac.md` / `linux.md`
+| OS-specific shell, paths, and tooling (selected by `ENVIRONMENT`).
+
+| `creator.md`
+| Owned-project rules: transfers, issues workflow, SDL/KDL config preference, changelog structure.
+
+| `folder-schema.md`
+| Code hive layout (`$CODE_ROOT/<host>/<owner>/<repo>`, forks, clones).
+|===
+
+== Task-gated (MAIN.md)
+
+[cols="1,2"]
+|===
+| Module | Load when
+
+| `documentation.md`
+| Authoring or publishing project documentation (Diátaxis, Antora pointers).
+
+| `antora-docs-sites.md`
+| Antora sites, org hub policy, deduplicating errant Pages deployments.
+
+| `readme-layout.md`
+| Creating or revising GitHub-facing READMEs (Best-README adapted).
+
+| `app-architecture.md`
+| Scaffolding, building, shipping, packaging applications.
+|===
+
+== Repository files
+
+[cols="1,2"]
+|===
+| File | Audience
+
+| `README.md`
+| Humans — install, usage, architecture diagram, contributing.
+
+| `RULES.md`
+| Agents — consolidated preamble; paste into app rules field.
+
+| `MAIN.md`
+| Agents with filesystem access — modular parallel assembly.
+
+| `MEMORIES.example.md`
+| Template for `$CODE_ROOT/MEMORIES.md` format.
+
+| `CONTRIBUTING.md`
+| Humans — where portable vs fork-only changes go.
+|===
+
+Source files live at the repository root and under `general/`; this page is an index for navigation.

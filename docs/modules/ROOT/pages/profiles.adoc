@@ -1,0 +1,37 @@
+= Profiles
+
+Machine-specific constants live in `profiles/*.md`. The agent reads **one** profile during context assembly (inferred from filename or your configuration).
+
+== Template files
+
+| File | Purpose |
+|------|---------|
+| `profiles/my-desktop.md` | Desktop workstation template |
+| `profiles/my-laptop.md` | Laptop template |
+
+Rename to match how you use the machine (for example `desktop.md`) and point your agent at that name.
+
+== Constants
+
+```text
+CODE_ROOT = <your-code-root>              # e.g. Z:\code or /home/you/src
+GITHUB_USER = <your-github-username>      # optional; path examples
+ISSUES_REPO = <path-to-.issues-repo>      # optional; omit if unused
+ENVIRONMENT = windows                     # windows | mac | linux
+```
+
+| Constant | Required? | Purpose |
+|----------|-----------|---------|
+| `CODE_ROOT` | Yes | Root directory for Git clones (see xref:../folder-schema.adoc[folder schema]). |
+| `ENVIRONMENT` | Yes | Selects `general/windows.md`, `general/mac.md`, or `general/linux.md`. |
+| `GITHUB_USER` | No | Username for path examples and org layouts. |
+| `ISSUES_REPO` | No | Path to your `.issues` workflow repository. |
+
+== Fork vs upstream
+
+* **Portable rules** → pull requests to https://github.com/dev-centr/agent-rules[`dev-centr/agent-rules`].
+* **Personal constants, org examples, private paths** → your fork only; never upstream personal workstation facts.
+
+== Workstation memory
+
+Profile constants are not the same as `$CODE_ROOT/MEMORIES.md`. Profiles hold stable machine identity; MEMORIES holds discovered facts (PATH gaps, tool locations) with usage counters. See xref:troubleshooting.adoc#memories[troubleshooting].

@@ -1,0 +1,21 @@
+= 2026-08-08 – Antora docs and personal-reference cleanup
+
+== Summary
+
+Introduced an Antora documentation component and removed upstream personal-repository references so the canonical repo reads as org-neutral forkable content.
+
+== Documentation added
+
+* `docs/antora.yml` — component metadata (`agent-rules`, start page `ROOT:index.adoc`).
+* `docs/modules/ROOT/pages/index.adoc` — overview (what this repo is / is not).
+* `docs/modules/ROOT/pages/usage.adoc` — clone, paste, rules-manager, MEMORIES.
+* `docs/modules/ROOT/pages/architecture.adoc` — relationship to `devcentr-agent-rules` and workstation memory.
+
+== Text cleanup
+
+* `README.md`, `CONTRIBUTING.md`, `RULES.md` — replaced personal fork examples with generic guidance.
+* README adds hub docs URL; personal constants stay in the user's fork.
+
+== Hub wiring
+
+`dev-centr/docs` playbook already includes `https://github.com/dev-centr/agent-rules.git` with `start_path: docs`. Published URL: https://docs.devcentr.org/agent-rules/

@@ -1,0 +1,25 @@
+= 2026-08-06 – Antora org policy and README layout rules
+
+== Antora org policy
+
+Added `general/antora-docs-sites.md`:
+
+* One Antora site per org with a hub (Dev-Centr → https://docs.devcentr.org).
+* Product repos keep `docs/` close to code; wire into hub playbook — do not publish secondary per-repo Antora sites on GitHub Pages.
+* Actively deduplicate errant standalone Antora Pages deployments.
+
+Referenced from `general/documentation.md` and `RULES.md`.
+
+== README layout
+
+Expanded `general/readme-layout.md` with Best-README adapted patterns:
+
+* HTML `<a href><img>` badges inside centered headers (GitHub AsciiDoc/Markdown centering trap).
+* Role-grouped Built With sections.
+* Tier guidance (full vs simplified vs skip).
+
+== Other rule updates
+
+* Creator rules: SDLang in-stack; KDL greenfield; reject Extended SDL/XDL.
+* Ported sync-before-work habit into global rules and `.cursor/rules/`.
+* rules-manager path documentation in README installation section.

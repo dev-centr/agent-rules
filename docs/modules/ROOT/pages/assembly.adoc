@@ -1,0 +1,55 @@
+= Assembly
+
+Agent rules assemble in one batched read when the harness has filesystem access.
+
+== Entry points
+
+[cols="1,2"]
+|===
+| File | When to use
+
+| `RULES.md`
+| Paste into an app's system prompt or custom instructions. Fill the Constants block at the top before saving.
+
+| `MAIN.md`
+| Modular assembly file when you want explicit parallel-read instructions and optional module gating (documentation, Antora, app architecture).
+
+| rules-manager
+| Compose global + machine sections into `$CODE_ROOT/agent-rules.composed.md` with file watching. https://github.com/dev-centr/rules-manager[`dev-centr/rules-manager`]
+|===
+
+== Parallel read set (MAIN.md)
+
+When `$AGENT_RULES_PATH` points at this clone, the agent reads **simultaneously**:
+
+1. `profiles/<infer-profile-name>.md`
+2. `general/global.md`
+3. `general/environment.md`
+4. `general/<windows|mac|linux>.md` (from profile `ENVIRONMENT` or host OS)
+5. `general/creator.md`
+6. `general/folder-schema.md`
+
+Conditionally (task-gated in `MAIN.md`):
+
+* `general/documentation.md` — authoring or publishing docs
+* `general/antora-docs-sites.md` — Antora sites, playbooks, hub wiring
+* `general/readme-layout.md` — GitHub-facing README layout
+* `general/app-architecture.md` — building or shipping applications
+
+Plus **`$CODE_ROOT/MEMORIES.md`** for workstation facts.
+
+== Why one step
+
+Local harnesses (Cursor, Windsurf, VS Code agents) support native file reads. Batching avoids:
+
+* Multi-turn ping-pong between modules
+* CLI `cat` truncation on large rule sets
+* Partial context when the agent stops after the first file
+
+== Paste-only fallback
+
+If the host cannot read the filesystem, `RULES.md` obligations are the only source. Fill Constants manually; you lose modular depth until filesystem access is available.
+
+== Dev-Centr product automation
+
+When the **Dev-Centr application** acts on behalf of the user, load https://github.com/dev-centr/devcentr-agent-rules[`devcentr-agent-rules`] instead of this repository. See xref:architecture.adoc[Architecture].

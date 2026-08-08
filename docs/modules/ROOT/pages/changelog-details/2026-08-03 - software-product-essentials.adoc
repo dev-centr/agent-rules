@@ -1,0 +1,7 @@
+= 2026-08-03 – Software Product Essentials pointer
+
+Added `general/app-architecture.md` directing agents to the general-knowledge **Software Product Essentials** hub when scaffolding, building, shipping, or packaging applications.
+
+Covers About/build info, debug dump, Windows auto-update, installers, and CI release pipelines as core product architecture — not polish.
+
+Cross-reference: `general-knowledge` → `software-product-essentials.adoc`.

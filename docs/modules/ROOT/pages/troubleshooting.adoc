@@ -1,0 +1,55 @@
+= Troubleshooting
+
+Common setup mistakes and how to fix them.
+
+== Agent ignores modular rules
+
+**Symptom:** Agent only follows the short `RULES.md` preamble.
+
+**Fix:** Ensure the harness can read `$AGENT_RULES_PATH` (or your clone path). Use `MAIN.md` assembly instructions or rules-manager composed output. Paste-only mode cannot load `general/` modules.
+
+== Wrong OS layer loaded
+
+**Symptom:** Windows path examples on Linux, or macOS guidance on Windows.
+
+**Fix:** Set `ENVIRONMENT` in your active `profiles/*.md` to `windows`, `mac`, or `linux`. Verify the agent reads `general/<os>.md` during assembly.
+
+== MEMORIES [[memories]]
+
+**Symptom:** Workstation facts committed to git or stored in per-repo `MEMORIES.md`.
+
+**Fix:**
+
+* Use **`$CODE_ROOT/MEMORIES.md`** only (gitignored on your machine).
+* Project facts → `AGENTS.md` + docs, not MEMORIES.
+* Format: `MEMORIES.example.md` in this repository.
+
+== Personal constants in upstream PRs
+
+**Symptom:** Pull request to `dev-centr/agent-rules` contains your `CODE_ROOT`, username, or org-specific paths.
+
+**Fix:** Keep personal constants in your fork. Upstream only portable rule improvements.
+
+== Stale local HEAD before multi-file edits
+
+**Symptom:** Large doc or rule change conflicts with remote.
+
+**Fix:** `git fetch` and check `git status -sb` for `behind`. Pull/rebase before multi-file work (see `general/global.md`).
+
+== Docs not on hub
+
+**Symptom:** README links to `github.io` Antora site instead of https://docs.devcentr.org/agent-rules/
+
+**Fix:** Component is wired in `dev-centr/docs` playbook. Do not enable per-repo GitHub Pages for Antora. See `general/antora-docs-sites.md`.
+
+== rules-manager vs junction
+
+**Symptom:** Windows directory junction to this repo breaks after moves.
+
+**Fix:** Prefer rules-manager `rules_repo_path` to compose into `$CODE_ROOT/agent-rules.composed.md`. Junctions are temporary convenience only.
+
+== Product vs forkable rules confused
+
+**Symptom:** Dev-Centr app automation loads this repo instead of product rules.
+
+**Fix:** Product automation → https://github.com/dev-centr/devcentr-agent-rules[`devcentr-agent-rules`]. This repo is for end-user/project agents only.

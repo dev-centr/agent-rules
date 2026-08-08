@@ -1,0 +1,26 @@
+= 2026-03-23 – Initial forkable rules and 1-step assembly
+
+== Initial repository
+
+Canonical forkable agent rules and profiles for Dev-Centr coding assistants.
+
+Structure:
+
+* `general/` — portable rule modules (global, environment, OS layers, creator, folder-schema, documentation).
+* `profiles/` — machine constants templates (`CODE_ROOT`, `ENVIRONMENT`, optional `GITHUB_USER`, `ISSUES_REPO`).
+* `RULES.md` — agent-directed preamble; commands 1-step assembly.
+* `MAIN.md` — modular assembly with parallel file reads.
+
+== OS layers
+
+Split platform specifics into `general/windows.md`, `general/mac.md`, `general/linux.md`. Profile constant `ENVIRONMENT` selects the active layer.
+
+== 1-step assembly
+
+Optimized for local harnesses with filesystem access: agent batches semantic reads of profile + general modules in one turn instead of sequential CLI `cat` (avoids truncation and ping-pong).
+
+== README
+
+* Profile constants table.
+* Full clone vs paste-only setup paths.
+* Clarified human (README) vs agent (`RULES.md`) audience.

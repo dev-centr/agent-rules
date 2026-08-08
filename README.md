@@ -4,6 +4,7 @@
   <a href="https://github.com/dev-centr/agent-rules/network/members"><img src="https://img.shields.io/github/forks/dev-centr/agent-rules.svg?style=for-the-badge" alt="Forks"></a>
   <a href="https://github.com/dev-centr/agent-rules/stargazers"><img src="https://img.shields.io/github/stars/dev-centr/agent-rules.svg?style=for-the-badge" alt="Stargazers"></a>
   <a href="https://github.com/dev-centr/agent-rules/issues"><img src="https://img.shields.io/github/issues/dev-centr/agent-rules.svg?style=for-the-badge" alt="Issues"></a>
+  <a href="https://docs.devcentr.org/agent-rules/"><img src="https://img.shields.io/badge/docs-Dev--Centr-22c55e?style=for-the-badge" alt="Docs"></a>
 
   <h1>Agent Rules</h1>
   <p>Forkable modular agent rules with 1-step assembly for local AI coding assistants.</p>
@@ -26,6 +27,7 @@
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#changelog">Changelog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -153,6 +155,12 @@ Add a license file if you want this repository to be reusable by others. Pull re
 <a href="https://github.com/dev-centr/agent-rules/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=dev-centr/agent-rules" alt="contributors" />
 </a>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Changelog
+
+Notable changes are recorded in the docs changelog: https://docs.devcentr.org/agent-rules/changelog.html
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
