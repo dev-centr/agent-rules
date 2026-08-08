@@ -16,7 +16,9 @@ Do not apply these rules to third-party open-source contributions unless explici
 
 ## Changelogs
 
-- When you create a project, integrate a changelog into its docs. If it lacks docs, put the changelog in the repo base.
+- All **functional** changes should appear in the changelog. Prefer the project’s existing changelog style when one exists (`general/global.md`).
+- When you create a project, integrate a changelog into its docs (or docs substructure for an existing documentation system). If it lacks docs, put the changelog in the repo base.
 - Put a link to the changelog in the README in a Changelog section.
-- The changelog should contain a timeline with quick summaries and links to very detailed changelogs for each date in a `changelog-details` subfolder that names files by `date - title`.
-- If you add docs afterward, update its changelog structure.
+- Structure: an index page named **changelog** (timeline of dates + short summaries + links) and detail pages under `changelog-details/` named `date - title`. Wire the changelog into the active docs system (Antora nav, etc.) when docs exist.
+- If no changelog exists, **create it** and **backfill** from observed functional changes in git history. Unpack commits when the subject line is too thin.
+- Wiring may require commits in **related** repositories (e.g. org docs hub playbook). If any of those repos cross **org** boundaries and CI/docs fetch needs auth, **alert the user** that a cross-repo deploy key or org/repo secret must be added (say which secret and which org/repo).

@@ -36,3 +36,8 @@ When you find a secondary Antora site in an Antora org:
 
 - Repo-local `antora-playbook.yml` for **developer preview** of one component is fine if it does **not** get published as an org-facing site.
 - Production publish path for Dev-Centr Antora components is always the `dev-centr/docs` aggregator.
+
+## Default UI and search
+
+- Prefer **Valentus** (`antora-supplemental/valentus-theme`) with org brand colors/logo from the org’s central assets.
+- Every published site: `@antora/lunr-extension` plus the AI search/help extension from `antora-supplemental` (`antora-search-chat`; see also `antora-ai-help-extension`). Details in `general/documentation.md`.
