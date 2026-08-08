@@ -9,8 +9,11 @@ Read this file when you **author, structure, or publish** project documentation 
 
 ## Antora (when used)
 
+- **Default stack:** Antora + **Valentus** UI (`antora-supplemental/valentus-theme`). Customize colors and logo from the org’s existing brand assets (org `.github` profile, eponymous site repo, or other central branding repo)—do not invent a one-off palette per component.
 - If the project uses **Antora**, follow the publishing and layout guidance in the Dev-Centr documentation repository: `dev-centr/devcentr` — see `docs/modules/publishing/pages/antora-deployment.adoc` for deployment-oriented details.
-- **One Antora site per org** that already has a hub (e.g. https://docs.devcentr.org). Do not publish secondary per-repo Antora sites on GitHub Pages. Keep `docs/` in the product repo; **wire** into the hub playbook. See `general/antora-docs-sites.md`. Actively deduplicate when you find errant sites. Does **not** apply to mixtures of different docs systems (Antora + Fumadocs is fine).
+- **One Antora site per org** that already has a hub (e.g. https://docs.devcentr.org). Do not publish secondary per-repo Antora sites on GitHub Pages. Keep `docs/` in the product repo; **wire** into the hub playbook. See `general/antora-docs-sites.md`. Actively deduplicate when you find errant sites. Does **not** apply to mixtures of different docs systems (Antora + Fumadocs is fine). Repo-local `antora-playbook.yml` for **preview/validation CI** is fine if it does **not** publish a second public site.
+- **Search:** Enable `@antora/lunr-extension` on every published Antora site. Add the AI-assisted search/help layer from **`antora-supplemental`** — prefer [`@antora-supplemental/antora-search-chat`](https://github.com/antora-supplemental/antora-search-chat) (Lunr-first Search/Ask omnibox). Related: [`antora-ai-help-extension`](https://github.com/antora-supplemental/antora-ai-help-extension). Register Lunr before wrappers that depend on it.
+- If `antora-supplemental` (or those extensions) cannot be found after a reasonable search (rename/move), **stop and alert the user** (email, Slack, or whatever channel is available) so they can notify whoever owns this automation rule — then wait for a reply before inventing a substitute.
 
 ## Relationship to creator rules
 

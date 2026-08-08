@@ -1,0 +1,12 @@
+= 2026-03-31 — RULES.md preamble consolidation
+
+== Summary
+
+Reorganized the human vs agent entrypoints and clarified workstation memory location.
+
+== Changes
+
+* `MAIN.md` — Human-oriented assembly entrypoint listing modules to paste or compose.
+* `RULES.md` — Generalized consolidated preamble for direct paste into agent rules fields.
+* Clarified **`$CODE_ROOT/MEMORIES.md`** as canonical workstation memory (not per-repo `MEMORIES.md` in this clone).
+* `MEMORIES.example.md` committed as format reference; per-repo copy remains gitignored.

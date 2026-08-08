@@ -1,0 +1,15 @@
+= 2026-08-08 — Documentation standards expansion
+
+== Summary
+
+Expanded agent-facing documentation rules so README, Antora, and changelog expectations match Dev-Centr org docs automation practice.
+
+== Changes
+
+* `RULES.md` — AsciiDoc-by-default README format; Valentus + Lunr + `antora-search-chat`; changelog backfill and cross-repo wiring alerts.
+* `general/readme-layout.md` — Format-choice table; **Explore the docs »** hub CTA instead of a Docs shield; optional CI badges; TOC when >3 sections.
+* `general/documentation.md` — Valentus default UI; Lunr + AI search extensions; alert-and-wait if `antora-supplemental` is missing.
+* `general/creator.md` — Functional changelog requirement; index + `changelog-details/` structure; git backfill; cross-org secret alerts.
+* `general/antora-docs-sites.md` — Default UI and search section.
+* `general/global.md` — Load `antora-docs-sites.md` and `readme-layout.md` when relevant.
+* `README.md` — Centered **Explore the docs »** link to `https://docs.devcentr.org/agent-rules/`.

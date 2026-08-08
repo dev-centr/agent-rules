@@ -1,0 +1,11 @@
+= 2026-08-03 — App shipping architecture layer
+
+== Summary
+
+Agents scaffolding or shipping applications must follow product-architecture guidance, not just coding style rules.
+
+== Changes
+
+* Added `general/app-architecture.md` optional layer.
+* `RULES.md` — Point agents at Software Product Essentials under `general-knowledge` when building apps (About, updates, installers, CI release pipelines as core—not polish).
+* Separated app shipping architecture from Dev-Centr product automation (`devcentr-agent-rules`).

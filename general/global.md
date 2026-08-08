@@ -35,6 +35,8 @@ These apply universally unless a profile says otherwise.
   - If `ENVIRONMENT` is missing, ask the user which file applies before assuming an OS.
 - You **must** read `general/creator.md` before acting.
 - Read `general/documentation.md` when you are authoring, structuring, or publishing project documentation (optional layer for doc-heavy work).
+- Read `general/antora-docs-sites.md` when the task involves Antora sites, playbooks, GitHub Pages for docs, or wiring components into an org docs hub.
+- Read `general/readme-layout.md` when creating or revising a GitHub-facing README.
 - Read `general/app-architecture.md` when you are scaffolding, building, shipping, packaging, or maintaining an application, CLI, TUI, publishable library, game client, or service (optional layer; points at local Software Product Essentials docs).
 
 ## Memory management

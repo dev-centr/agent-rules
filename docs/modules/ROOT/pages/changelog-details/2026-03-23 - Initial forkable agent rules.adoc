@@ -1,0 +1,14 @@
+= 2026-03-23 — Initial forkable agent rules
+
+== Summary
+
+First public release of canonical forkable agent rules for Dev-Centr coding assistants.
+
+== Changes
+
+* Repository structure: `general/`, `profiles/`, `RULES.md`, `README.md`.
+* **1-step assembly** — Paste `RULES.md`; agent batches reads of profile + general modules via native file tools.
+* Split OS layers: `general/windows.md`, `general/mac.md`, `general/linux.md` selected by profile `ENVIRONMENT`.
+* Added `general/documentation.md`, trimmed `general/creator.md`, placeholder profiles with required constants.
+* README: profile constants table; clone vs paste-only setup; human vs agent audience clarification.
+* `RULES.md` as agent-directed entrypoint.
