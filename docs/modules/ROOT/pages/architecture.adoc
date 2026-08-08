@@ -1,0 +1,24 @@
+= Architecture
+
+```mermaid
+flowchart TB
+  subgraph forkable [agent-rules forkable]
+    G[general/]
+    P[profiles/]
+    R[RULES.md]
+  end
+  subgraph product [devcentr-agent-rules]
+    X[Dev-Centr product rules]
+  end
+  subgraph local [Workstation only]
+    M["$CODE_ROOT/MEMORIES.md"]
+  end
+  R --> G
+  R --> P
+  M -.-> forkable
+  product -.->|used by Dev-Centr app| forkable
+```
+
+* **agent-rules** — shared forkable end-user instructions
+* **devcentr-agent-rules** — rules for when the Dev-Centr app acts on behalf of the user
+* **MEMORIES.md** — machine-local facts; gitignored; never committed
