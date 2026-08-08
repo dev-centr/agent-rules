@@ -13,18 +13,17 @@ Do **not** batch-script README rewrites across repos. Hand-edit each file so sta
 | **Package registry that only parses Markdown** (npm, crates.io listing copy, etc.) | Keep or add a **Markdown** README (or registry-facing copy) for the registry. Do **not** delete a Markdown copy that exists for that reason. Deep docs may still be AsciiDoc/Antora. |
 | **Major user-facing + Best-README HTML centering** | GitHub’s AsciiDoc subset centers poorly; **`README.md`** as the repo face is fine (deep docs under `docs/`). |
 
-## Required badges (org repos)
+## Docs link (org repos)
 
-For **organization** repositories that have a README (not personal-user profile repos unless they publish under an org docs hub):
+For **organization** repositories with a README: include an **Explore the docs »** text link in the centered header (same pattern as `dev-centr/readme-template` / `switchyard`), pointing at the **org docs hub** component URL (e.g. `https://docs.devcentr.org/<component>/`), not a secondary per-repo Pages Antora site. Do **not** add a separate `Docs | Org` shield — that fights the established contributors/forks/stars/issues/(license) chrome.
 
-1. **Org docs badge** — Label reflects the org’s docs domain / brand, not “GitHub Pages”. Example look: **`Docs | Dev-Centr`**. Link to the **org Antora (or docs) hub** page for this component (e.g. `https://docs.devcentr.org/<component>/`), never to a secondary per-repo Pages Antora site. If the component is not wired yet, still point at the hub (or the intended hub path) and wire the playbook.
-2. **CI/CD status badge** — Every repo with CI/CD (GitHub Actions, Netlify, Vercel, etc.) needs a status badge that opens the workflow/dashboard for that pipeline.
+**CI status badges** are optional. Prefer leaving them out of the centered header unless the repo already uses one; do not require a CI chip for every workflow-enabled repo.
 
-Personal-user repos: skip the org docs badge unless that user publishes a docs site you should link.
+Personal-user repos: skip the org-hub docs CTA unless that user publishes a docs site you should link.
 
 ## Why the prior refresh broke
 
-1. **Badge targets** — Shields must open the *thing they represent* (docs hub page, CI run list, contributors graph, stargazers, issues, license blob, tech homepage). Never the shield image URL.
+1. **Badge targets** — Shields must open the *thing they represent* (contributors graph, stargazers, issues, license blob, tech homepage). Never the shield image URL. Docs discovery is the **Explore the docs »** text link (hub URL), not an extra Docs shield.
 2. **Markdown inside `<div align="center">`** — GitHub often does **not** resolve `[![x][shield]][url]` inside HTML blocks, so badges appear to link only to the image (or nowhere useful). **In the centered header, use HTML:** `<a href="DEST"><img src="https://img.shields.io/…" alt="…"></a>`.
 3. **AsciiDoc `env-github` trap** — Do **not** strip `link=` under `ifdef::env-github[]`. Prefer HTML `<a href><img>` on GitHub, or always keep `link=` on `image:` macros.
 4. **Centering** — One centered block for **badges + title + one-liner + quick links**. Title-only centering with badges left above is incomplete.
@@ -35,7 +34,7 @@ Personal-user repos: skip the org docs badge unless that user publishes a docs s
 
 | Audience | Layout |
 |----------|--------|
-| **User-facing / downstream** (apps, installable CLIs, public libs, product sites) | Full: centered header, linked shields (incl. org docs + CI when applicable), structured Built With, TOC when >3 sections, section back-to-top, Contact, optional contrib.rocks |
+| **User-facing / downstream** (apps, installable CLIs, public libs, product sites) | Full: centered header (contributors/forks/stars/issues/license as applicable), **Explore the docs »** → hub when docs exist, structured Built With, TOC when >3 sections, section back-to-top, Contact, optional contrib.rocks |
 | **Internal / non-downstream** | Simplified: linked shields + short About + install/usage if needed + License/Contact. Skip LinkedIn, empty Roadmap/Acknowledgments, contrib.rocks, demo marketing links |
 | **Skip** | School repos, org `.github` profiles, archived, package-tap / registry-instruction-only, empty repos |
 
@@ -48,8 +47,6 @@ Include a TOC when the README has **more than three** sections (collapsible `<de
 ```markdown
 <a id="readme-top"></a>
 <div align="center">
-  <a href="https://docs.devcentr.org/COMPONENT/"><img src="https://img.shields.io/badge/Docs%20%7C%20Dev--Centr-0A66C2?style=for-the-badge" alt="Docs | Dev-Centr"></a>
-  <a href="https://github.com/OWNER/REPO/actions"><img src="https://img.shields.io/github/actions/workflow/status/OWNER/REPO/ci.yml?branch=main&style=for-the-badge" alt="CI"></a>
   <a href="https://github.com/OWNER/REPO/graphs/contributors"><img src="https://img.shields.io/github/contributors/OWNER/REPO.svg?style=for-the-badge" alt="Contributors"></a>
   <a href="https://github.com/OWNER/REPO/network/members"><img src="https://img.shields.io/github/forks/OWNER/REPO.svg?style=for-the-badge" alt="Forks"></a>
   <a href="https://github.com/OWNER/REPO/stargazers"><img src="https://img.shields.io/github/stars/OWNER/REPO.svg?style=for-the-badge" alt="Stargazers"></a>
@@ -61,7 +58,7 @@ Include a TOC when the README has **more than three** sections (collapsible `<de
   <p align="center">
     project_description
     <br />
-    <a href="DOCS_OR_REPO"><strong>Explore the docs »</strong></a>
+    <a href="https://docs.devcentr.org/COMPONENT/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="DEMO_OR_OMIT">View Demo</a>
@@ -73,7 +70,7 @@ Include a TOC when the README has **more than three** sections (collapsible `<de
 </div>
 ```
 
-Omit license / demo / docs / CI badges when absent. Swap `Docs | Dev-Centr` and the docs URL for the owning org’s brand and hub. Collapsible TOC via `<details>` is fine when the README has more than three sections.
+Omit license / demo / docs links when absent. Point **Explore the docs** at the org hub component URL when the org has a docs site. Collapsible TOC via `<details>` is fine when the README has more than three sections.
 
 ### Built With (outside the HTML header)
 

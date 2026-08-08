@@ -8,6 +8,8 @@
   <h1>Agent Rules</h1>
   <p>Forkable modular agent rules with 1-step assembly for local AI coding assistants.</p>
   <p>
+    <a href="https://docs.devcentr.org/agent-rules/"><strong>Explore the docs »</strong></a>
+    <br /><br />
     <a href="https://github.com/dev-centr/agent-rules/issues">Report Bug</a>
     &middot;
     <a href="https://github.com/dev-centr/agent-rules/issues">Request Feature</a>
