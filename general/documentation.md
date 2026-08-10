@@ -41,3 +41,21 @@ When authoring or reviewing titles:
 6. One idea per news item; big idea first.
 
 See each site’s `STYLE.adoc`. Philosophy: **Titles as orientation**. Cursor `.cursor/rules/*.mdc` is a directory. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/MEMORIES.md` only (never per-repo `MEMORIES.md`).
+
+## News and blog body copy (anti-terse)
+
+Do **not** ship telegraphic bullet-essay posts when the channel is News/blog.
+Develop scenes and claims the way narrative journalism does.
+
+**Resource (required reading before drafting News/blog):** Laurie Hertzel, [Six Writing Tips for Crafting Scenes](https://niemanstoryboard.org/2005/03/24/six-tips-for-crafting-scenes/) (Nieman Storyboard; from the 2005 Nieman Seminar for Narrative Editors).
+
+Copy these parameters into the draft checklist (Hertzel’s six tips):
+
+1. **Write with a camera angle** — Aim the “camera”; choose close/intimate vs wide/sweeping; do not describe everything at once.
+2. **Use both scene and summary** — Scene *shows* (real time, place, action, dialogue, detail). Summary *tells* (compresses time, bridges scenes). Prefer stepping stones over a continuous sidewalk of detail; do not stay stuck in summary-only gist, and do not scene every minor beat.
+3. **Use telling details and metaphor** — Significant details only (not random inventory); fold sensory description into action; metaphor when it clarifies.
+4. **Vary your pace** — Slow down for decisive moments (more sentences, tension). Speed up fast action with shorter, clipped lines. Do not give every fact equal weight.
+5. **Move forward and backward in time** — A scene mostly runs chronologically; flashback / brief “fore-story” is allowed if time cues keep the reader oriented; delay resolving the climactic decision only when control stays clear.
+6. **Know where to end your scene** — Close with completion that still pulls the reader forward; avoid endings that feel fully sealed.
+
+Also apply existing house stance: news = outward shared record; blog = inward ideas/craft; lead with why it matters; one framing beat per post; shipping minutiae → changelog.
