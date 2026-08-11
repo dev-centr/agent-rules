@@ -27,6 +27,7 @@
     </li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#cursor-skills">Cursor skills</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -88,6 +89,7 @@ flowchart TB
 3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, **`ENVIRONMENT`** …). Set **`ENVIRONMENT`** to `windows`, `mac`, or `linux` so the agent loads the matching `general/windows.md`, `general/mac.md`, or `general/linux.md`.
 4. **`RULES.md` is written for the agent**. It serves as a preamble that commands the AI to assemble its context in one step.
 5. In your AI agent's system prompt or custom instructions field, paste the contents of **`RULES.md`** (or the composed file from rules-manager). Before saving, fill in the **Dev Configuration** section at the top of the pasted block with your actual `CODE_ROOT` and `AGENT_RULES_PATH`.
+6. Optional: Cursor skills — start at [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md) (junction into `~/.cursor/skills/`; keep skill bodies out of always-on User Rules).
 
 ### Profile constants (your `profiles/*.md`)
 
@@ -143,6 +145,16 @@ Flutter SDK: `C:\flutter-sdk\flutter\bin` — refresh PATH if `flutter` missing 
 Project templates (workspaces, payloads, template docs) live in [dev-centr/templates](https://github.com/dev-centr/templates). That repo **links** to agent rules here; it should not embed a second copy of personal rules.
 
 Public README blanks live in [dev-centr/readme-template](https://github.com/dev-centr/readme-template).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Cursor skills
+
+Optional, on-demand curricula live under `skills/` and are **not** part of `RULES.md` / `MAIN.md` assembly.
+
+- Shop file: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md) — configure yourself or drop that recipe into a permissive agent
+- Hub docs: https://docs.devcentr.org/agent-rules/ (Bootstrap Cursor skills page)
+- Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

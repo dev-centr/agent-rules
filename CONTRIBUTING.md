@@ -17,3 +17,4 @@ Add new device templates under `profiles/` with clear constant names. Prefer one
 - `general/environment.md` — cross-platform.
 - `general/windows.md`, `general/mac.md`, `general/linux.md` — OS-specific tooling and shells.
 - `general/documentation.md` — optional doc authoring (Diátaxis, Antora when used).
+- `skills/BOOTSTRAP.md` — shop entry for optional Cursor skills (not MAIN assembly). Deep docs: general-knowledge *Vibe coding bootstrap*.

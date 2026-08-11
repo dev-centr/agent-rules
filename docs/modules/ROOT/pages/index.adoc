@@ -13,8 +13,10 @@ https://docs.devcentr.org/agent-rules/
 
 * Shared end-user / project agent instructions (`RULES.md`, `general/`, `profiles/`)
 * Assembled locally (paste or via rules-manager)
+* Optional on-demand Cursor skills under `skills/` — start at xref:bootstrap.adoc[Bootstrap Cursor skills]
 
 == What this is not
 
 * **Not** Dev-Centr product automation — that lives in https://github.com/dev-centr/devcentr-agent-rules[`devcentr-agent-rules`]
 * **Not** a place for personal workstation constants — keep those in your own fork or in `$CODE_ROOT/MEMORIES.md`
+* **Not** always-on dumping ground for long curricula — those belong in skills (see `skills/BOOTSTRAP.md`)
