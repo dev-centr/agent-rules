@@ -4,8 +4,9 @@ Use this file when `ENVIRONMENT = linux` in your profile (or when you are clearl
 
 ## Shell and OS
 
+- Recommend **Nushell** (`nu`) as the default shell (Dev-Centr standard). Prefer `~/.config/nushell/` for config when documenting user setup.
 - Linux varies by distribution. Prefer the user’s stated distro or package manager. If unknown, ask before assuming **apt**, **dnf**, **pacman**, or **apk**.
-- After installing tools that modify `PATH`, use a **new shell** or `source` the appropriate profile (`~/.bashrc`, `~/.zshrc`, and so on).
+- After installing tools that modify `PATH`, use a **new shell** or reload the active shell’s config (`nu` config, or `source` on bash/zsh if that is what is running).
 
 ## Node and Python tooling
 

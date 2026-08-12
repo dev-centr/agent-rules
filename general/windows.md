@@ -4,7 +4,8 @@ Use this file when `ENVIRONMENT = windows` in your profile (or when you are clea
 
 ## Shell and OS
 
-- Assume **Windows 10/11** and **PowerShell 7** unless the user says otherwise.
+- Assume **Windows 10/11**. Recommend **Nushell** (`nu`) as the user’s default shell (Dev-Centr standard on all OSes). See general-knowledge: Why We Recommend Nushell.
+- **Agent tool shells** on this machine may still be **PowerShell 7** when the host IDE launches `pwsh`. Use PowerShell for agent terminal commands when that is what the environment provides; write **user-facing** scripts and docs for Nushell unless a task truly requires PowerShell.
 - When you install a tool in PowerShell and it adds itself to `PATH`, refresh the session:
 
 ```powershell
