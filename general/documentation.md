@@ -63,3 +63,7 @@ Copy these parameters into the draft checklist (Hertzel’s six tips):
 Also apply existing house stance: news = outward shared record; blog = inward ideas/craft; lead with why it matters; one framing beat per post; shipping minutiae → changelog.
 
 For **news body copy** use Cursor skill `writing-news`; for **blog body copy** use `writing-blog`. See [`skills/CATALOG.md`](../skills/CATALOG.md). Keep them out of always-on rules: [`skills/BOOTSTRAP.md`](../skills/BOOTSTRAP.md).
+
+## Pull request titles and summaries
+
+When opening or drafting a PR, follow [`general/pull-requests.md`](./pull-requests.md): simple-language titles; inviting plain-English intros; screenshots for UI-visible changes. Org shortcut: [`agents/editorial/pull-requests.md`](../agents/editorial/pull-requests.md).

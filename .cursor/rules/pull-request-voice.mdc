@@ -1,0 +1,16 @@
+---
+description: Plain-English inviting PR titles and summaries
+alwaysApply: false
+globs: "**/*"
+---
+
+# Pull request voice
+
+When creating or drafting a pull request:
+
+1. Read `$AGENT_RULES_PATH/general/pull-requests.md` (portable) or `agents/editorial/pull-requests.md` (org).
+2. **Title:** simple language (e.g. `Make dark mode cover the preview and title bar`).
+3. **Summary/intro:** plain English, inviting; lead with the human problem; short bullets; soft close.
+4. **UI-visible changes:** before/after screenshots at minimum.
+
+Do not put these only in `MEMORIES.md`.

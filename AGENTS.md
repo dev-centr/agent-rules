@@ -38,6 +38,7 @@ After portable `agent-rules` assembly (see `MAIN.md`), read **in one parallel ba
 - `AGENTS.md` (this file — org obligations + precedence)
 - `agents/_MAIN.md` (orchestrator)
 - `agents/editorial/titles.md` (when authoring or reviewing news, blog, or doc titles)
+- `agents/editorial/pull-requests.md` (when opening or drafting a pull request)
 - `agents/engineering/dub.md` (when working on DUB / D packages in org repos)
 - `skills/CATALOG.md` (when installing, authoring, or auditing Cursor skills)
 
