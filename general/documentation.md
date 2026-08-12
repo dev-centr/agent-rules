@@ -15,6 +15,11 @@ Read this file when you **author, structure, or publish** project documentation 
 - **Search:** Enable `@antora/lunr-extension` on every published Antora site. Add the AI-assisted search/help layer from **`antora-supplemental`** — prefer [`@antora-supplemental/antora-search-chat`](https://github.com/antora-supplemental/antora-search-chat) (Lunr-first Search/Ask omnibox). Related: [`antora-ai-help-extension`](https://github.com/antora-supplemental/antora-ai-help-extension). Register Lunr before wrappers that depend on it.
 - **Math formulas:** Ship KaTeX (or equivalent) on every docs surface **whether or not** the page uses math yet. Antora: `stem: latexmath` in the playbook + Valentus/`site-math.js`. Markdown: `remark-math` + `rehype-katex`. Encode real formulas as `stem:[…]` / `$…$`, not plain text.
 - **Images with commas in the caption/alt:** AsciiDoc splits `image::file.svg[alt text, more text]` on commas into `width` / `height`. That emits HTML like `width="Zero Trust IdP"`, and figures look broken even though the file is in `_images/`. Always quote: `image::file.svg[alt="Setup: OAuth App, IdP, policy"]` or `image::file.png[alt="vault, hosting, MCP",width=640]`.
+- **Hand-authored SVG / AsciiDoc encoding (agent, not Antora):** Antora copies `modules/*/images/` as-is; it does not generate those Access/GCP mock SVGs (Mermaid in the hub is client-side and separate). When you write `.svg` or `.adoc` on Windows:
+  - Save **UTF-8 without BOM**. Do not write Windows-1252 smart punctuation into SVG (browsers parse SVG as UTF-8 XML → *Encoding error*).
+  - Prefer **ASCII** in SVG text labels (`"`, `'`, `--`, `...`, `->`). Escape `&` `<` `>` as `&amp;` `&lt;` `&gt;`. Declare `<?xml version="1.0" encoding="UTF-8"?>` on new SVGs.
+  - Never “fix” encoding by re-saving mojibake (`â€œ` etc.) — that double-encodes. If you see those literals in source, recover once (`latin-1` bytes → UTF-8) or replace with ASCII.
+  - Before commit: open the SVG URL / parse as XML; skim the page for `â€œ` / `Ã`.
 - If `antora-supplemental` (or those extensions) cannot be found after a reasonable search (rename/move), **stop and alert the user** (email, Slack, or whatever channel is available) so they can notify whoever owns this automation rule — then wait for a reply before inventing a substitute.
 
 ## Relationship to creator rules
