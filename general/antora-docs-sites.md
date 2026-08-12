@@ -51,6 +51,7 @@ Rules:
 2. Wire member-only components there (e.g. `team-docs`, team SOPs cross-linking `agent-rules` org layer) — **not** into the public `docs` playbook.
 3. Public hub may link the sister URL with a **members only** label; do not paste SOP bodies into public pages.
 4. Sister site uses Valentus + Lunr (and org search extensions when available) for consistency with the public hub.
+5. Put **Cloudflare Access** on the custom domain **and** the host `*.pages.dev`. Reader identities are GitHub org membership (or Google / email PIN), not Cloudflare dashboard users. Public how-to: `general-knowledge` → Protect a static site with Cloudflare Access.
 
 ## Default UI and search
 
