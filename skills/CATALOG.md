@@ -26,6 +26,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | --- | --- | --- | --- |
 | `writing-news` | News item, ship note, org announcement, news channel body | active | `skills/writing-news/` |
 | `writing-blog` | Blog post, essay, philosophy, thinking-in-public body | active | `skills/writing-blog/` |
+| `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` — not a refactor |
 
 ## Adding a skill (checklist)
 

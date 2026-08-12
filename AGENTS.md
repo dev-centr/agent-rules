@@ -59,7 +59,8 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 ## AI ops
 
 - Stale APIs: Context7 MCP; else Outdated Code Protocol (`general/global.md`).
-- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`).
+- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`, `fix-docs-encoding`).
+- **Docs encoding:** hand-authored Antora SVG/adoc breakage is usually **transcode corruption** (Windows mojibake / invalid SVG XML), not Antora plugins and not a refactor. Use skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — run its script `--check` / `--fix` after figure edits. Always-on tips: `general/documentation.md`.
 - Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills* on docs.devcentr.org.
 
 ## Local shortcut (team convention)

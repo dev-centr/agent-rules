@@ -44,6 +44,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Titles / stance / Nieman anti-terse** → `general/documentation.md` (loaded when drafting docs).
 - **News body** → skill `writing-news` (`skills/writing-news/`).
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
+- **Docs mojibake / SVG XML** → skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — transcode check/fix, not a refactor.
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.
