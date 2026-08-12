@@ -2,10 +2,12 @@
 
 ```mermaid
 flowchart TB
-  subgraph forkable [agent-rules forkable]
+  subgraph agentrules [agent-rules]
+    R[RULES.md portable]
+    A[AGENTS.md org]
     G[general/]
+    AM[agents/]
     P[profiles/]
-    R[RULES.md]
   end
   subgraph product [devcentr-agent-rules]
     X[Dev-Centr product rules]
@@ -15,10 +17,13 @@ flowchart TB
   end
   R --> G
   R --> P
-  M -.-> forkable
-  product -.->|used by Dev-Centr app| forkable
+  A --> AM
+  M -.-> agentrules
+  product -.->|used by Dev-Centr app| agentrules
 ```
 
-* **agent-rules** — shared forkable end-user instructions
+* **agent-rules** — portable rules + org layer (`AGENTS.md`, `agents/`, team skills)
 * **devcentr-agent-rules** — rules for when the Dev-Centr app acts on behalf of the user
 * **MEMORIES.md** — machine-local facts; gitignored; never committed
+
+On `dev-centr/*` work, org layer **overrides** personal portable rules where they conflict. See xref:org-layer.adoc[Org layer].

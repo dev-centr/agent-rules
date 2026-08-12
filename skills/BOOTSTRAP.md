@@ -17,7 +17,7 @@ If docs are not published yet locally: `$CODE_ROOT/github.com/dev-centr/general-
 | `general/documentation.md` | Titles + thin always-on News/blog tips (Nieman scene checklist) |
 | `~/.cursor/skills-cursor/` | Cursor built-ins — **do not author here** |
 
-Skills are for **heavy or mode-split** curricula (e.g. news vs blog voice packs). Keep short always-on tips in `general/documentation.md`.
+Skills are for **heavy curricula** split **one skill per job** (e.g. `writing-news`, `writing-blog` — not a router skill). Keep short always-on tips in `general/documentation.md`. Inventory: `skills/CATALOG.md`.
 
 ## On-ramp A — configure yourself
 
@@ -42,6 +42,8 @@ Attach source notes or an export. Same end state as on-ramp A.
 ## House writing split
 
 - **Titles / stance / Nieman anti-terse** → `general/documentation.md` (loaded when drafting docs).
-- **Optional deeper mode packs** → `skills/<name>/` (on demand). Example shape used in a personal fork: `writing-news-vs-blog` (router `SKILL.md` + `news.md` + `blog.md`).
+- **News body** → skill `writing-news` (`skills/writing-news/`).
+- **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
+- One skill per job; descriptions must trigger on the matching task.
 
-Portable skills may be upstreamed here; personal-only packs stay in your fork.
+Portable skills upstream here; personal-only packs stay in your fork until PR.

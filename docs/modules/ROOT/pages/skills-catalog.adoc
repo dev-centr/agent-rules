@@ -1,0 +1,38 @@
+= Skills catalog
+:navtitle: Skills catalog
+:description: Team Cursor skills in agent-rules — one skill per job, junction installs, CATALOG.md governance.
+
+Living source::
+https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
+
+== Policy
+
+* **One skill per job** — separate `writing-news` and `writing-blog`, not a combined router skill
+* **`description`** states WHAT + WHEN so Cursor triggers on the right task
+* Junction canonical tree into `~/.cursor/skills/<name>/`
+* Update `CATALOG.md` on every add/move/deprecate
+
+== Registered (org)
+
+[cols="1,2",options="header"]
+|===
+| Skill | Triggers on
+
+| `writing-news`
+| News item, ship note, org announcement, news-channel body
+
+| `writing-blog`
+| Blog post, essay, philosophy, thinking-in-public body
+|===
+
+Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].
+
+== Install
+
+[source,powershell]
+----
+cmd /c mklink /J "$env:USERPROFILE\.cursor\skills\writing-news" `
+  "$env:code\github.com\dev-centr\agent-rules\skills\writing-news"
+----
+
+See xref:bootstrap.adoc[Bootstrap Cursor skills] and `skills/BOOTSTRAP.md` in the repo.

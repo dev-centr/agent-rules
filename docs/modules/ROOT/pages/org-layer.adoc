@@ -1,0 +1,38 @@
+= Org layer (AGENTS.md)
+:navtitle: Org layer
+:description: Dev-Centr org instructions in agent-rules — AGENTS.md, agents modules, precedence over personal rules.
+
+The **`dev-centr/agent-rules`** repository holds both portable rules and the **org layer** for Dev-Centr team work.
+
+== Files
+
+[source,text]
+----
+agent-rules/
+  RULES.md              # Portable — forkable baseline
+  AGENTS.md             # Org — overrides personal on dev-centr work
+  agents/
+    _MAIN.md
+    editorial/
+    engineering/
+  skills/               # Team Cursor skills (writing-news, writing-blog, …)
+----
+
+== Precedence
+
+On any `dev-centr/*` repository, **org rules win** over personal portable rules where they conflict. Cursor does not enforce this automatically — stack `AGENTS.md` after personal `RULES.md` in User Rules and instruct the agent explicitly.
+
+Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent-rules-setup.html[Org agent rules setup] (member-only).
+
+== Junction shortcut
+
+[source,powershell]
+----
+cmd /c mklink /J "$env:code\github.com\dev-centr\AGENTS.md" `
+  "$env:code\github.com\dev-centr\agent-rules\AGENTS.md"
+----
+
+== See also
+
+* xref:skills-catalog.adoc[Skills catalog]
+* xref:architecture.adoc[Architecture]

@@ -70,7 +70,7 @@ flowchart TB
   product -.->|used by Dev-Centr app| other
 ```
 
-- **agent-rules** (this repository): shared forkable end-user instructions and profiles.
+- **agent-rules** (this repository): portable rules (`RULES.md`, `general/`, `profiles/`) **and** org layer (`AGENTS.md`, `agents/`, org `skills/`). Org members clone `dev-centr/agent-rules`; optional junction of `AGENTS.md` one level up in the org folder.
 - **devcentr-agent-rules**: rules for when the Dev-Centr app acts on behalf of the user (separate repository).
 - **templates**: project templates; README there links to forkable agent rules, not to personal copies.
 

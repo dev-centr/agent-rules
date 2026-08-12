@@ -1,4 +1,6 @@
 * xref:index.adoc[Overview]
 * xref:usage.adoc[Usage]
+* xref:org-layer.adoc[Org layer]
 * xref:bootstrap.adoc[Bootstrap Cursor skills]
+* xref:skills-catalog.adoc[Skills catalog]
 * xref:architecture.adoc[Architecture]

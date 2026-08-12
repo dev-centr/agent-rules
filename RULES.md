@@ -53,5 +53,5 @@
 - AsciiDoc: checklists `* [ ]`; blank line after **bold** headings; list continuations `+`; images `image::`.
 - MEMORIES: **only** `$CODE_ROOT/MEMORIES.md` (workstation facts). Create if missing; counter from 1. Never commit. Format: see `MEMORIES.example.md` in this repository (or your fork’s copy).
 - Stale APIs: Context7 MCP (https://context7.com/); else Outdated Code Protocol.
-- Cursor skills (optional, on demand): see `skills/BOOTSTRAP.md` — do **not** paste skill bodies into this always-on preamble.
+- Cursor skills (optional, on demand): see `skills/BOOTSTRAP.md` and `skills/CATALOG.md` — do **not** paste skill bodies into this always-on preamble. Dev-Centr org members: also load `AGENTS.md` from this repo; org layer overrides personal on `dev-centr/*` work.
 - Outdated Code Protocol: `AI-LOCAL-LIBRARY-DOCS.local.json5` + `docs/_local-library-docs/`; prefer local indexed docs/source; for Dlang prefer cloning source.

@@ -61,4 +61,4 @@ Copy these parameters into the draft checklist (Hertzel’s six tips):
 
 Also apply existing house stance: news = outward shared record; blog = inward ideas/craft; lead with why it matters; one framing beat per post; shipping minutiae → changelog.
 
-For **heavier mode-split curricula** (separate news vs blog agent packs) keep them out of always-on rules: see [`skills/BOOTSTRAP.md`](../skills/BOOTSTRAP.md).
+For **news body copy** use Cursor skill `writing-news`; for **blog body copy** use `writing-blog`. See [`skills/CATALOG.md`](../skills/CATALOG.md). Keep them out of always-on rules: [`skills/BOOTSTRAP.md`](../skills/BOOTSTRAP.md).
