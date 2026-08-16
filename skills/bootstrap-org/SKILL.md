@@ -2,14 +2,17 @@
 name: bootstrap-org
 description: >-
   Stand up a new GitHub organization, company, nonprofit, OSS collective, or
-  similar public identity: decide whether a new org is warranted, fill org
-  About/website, design logo/avatar, create a public .github profile README,
-  ship github.io or custom-domain site, docs hub, news vs blog, partner/transfer
-  repos, and optional email/DNS/infra. Load named SDLang profiles (oss-collective,
-  product-org, nonprofit, web-app, docs-hub, forks-org) with SolidStart static +
-  solid-ui house defaults. Use when the user asks to bootstrap an org, create a
-  GitHub organization, start a company or nonprofit, populate org data, add an
-  org profile, set up .github, github.io, an Antora docs hub, pick a bootstrap
+  a new library, CLI, desktop (Tauri), or SolidStart web app: decide whether a
+  new org is warranted, fill org About/website, design logo/avatar, create a
+  public .github profile README, ship github.io or custom-domain site, docs hub,
+  news vs blog, partner/transfer repos, and optional email/DNS/infra. Load a
+  named SDLang profile from the first prompt (oss-collective, product-org,
+  nonprofit, web-app, library, cli, desktop, docs-hub, forks-org) or accept an
+  attached/pasted profile { } block; SolidStart static + solid-ui house
+  defaults unless the profile overrides. Use when the user asks to bootstrap an
+  org or project, create a GitHub organization, start a company or nonprofit,
+  scaffold a CLI/library/Tauri/desktop/web app, populate org data, add an org
+  profile, set up .github, github.io, an Antora docs hub, pick a bootstrap
   profile, or wants a fast-path org/business bootstrap.
 ---
 
@@ -25,14 +28,15 @@ Deep commands, skip-unless table, SDL schema, and pitfalls: [reference.md](refer
 
 Before Intake, resolve **one** profile. Overlay: catalog `defaults` → named/pasted profile → explicit prompt overrides (prompt wins).
 
-1. **Named in the prompt** (`oss-collective`, `product-org`, `nonprofit`, `web-app`, `docs-hub`, `forks-org`, or “use the product-org profile”) → read `profiles/<name>.sdl`.
+1. **Named in the prompt** (`oss-collective`, `product-org`, `nonprofit`, `web-app`, `library`, `cli`, `desktop`, `docs-hub`, `forks-org`, or “use the cli profile”) → read `profiles/<name>.sdl`.
 2. **Attached / `@`-mentioned `.sdl` file** → read that file. If it has no `profile "…"` wrapper, treat the body as overlays on `defaults`.
 3. **Inline SDL** in the prompt (`profile "…" { … }` or a `defaults { }` + tags) → parse and overlay; do not require saving it unless they ask.
-4. **None of the above** → AskQuestion (or list) the catalog names. Do not start scaffolding until they pick one **or** say “defaults only” (catalog `defaults`, `oss-collective` session scope).
+4. **Implied** (“new CLI”, “Tauri app”, “D library”, “SolidStart site”) → pick the matching catalog name, announce it, continue unless they contradict.
+5. **None of the above** → AskQuestion (or list) the catalog names, grouped org vs project. Do not start scaffolding until they pick one **or** say “defaults only” (catalog `defaults`; org fallback `oss-collective`, project fallback `web-app`).
 
 House site/docs unless the profile overrides: **SolidStart** (`ssr` false, `preset` `"static"`) + **solid-ui** + Tailwind, **pnpm**, **dprint**, allow-list gitignore, **Antora + Valentus v2**, GitHub Pages, Cloudflare **dns-only** in front of github.io. Do not re-poll the framework after a profile loaded.
 
-Announce the loaded profile name and the skip/session_scope tags in one short line, then continue.
+Announce the loaded profile name, `kind`, and the skip/session_scope tags in one short line, then continue.
 
 ## Intake (poll first)
 
@@ -40,27 +44,30 @@ Batch remaining questions (AskQuestion when available). Skip items the profile a
 
 **Must know** (not in SDL profiles)
 
-- Org login / slug (or candidates) and **display name**
-- One-line purpose; what is **in** vs **out** of this org
-- Empty org already created in the UI, or still deciding
+- One-line purpose; what is **in** vs **out** of this banner/repo
+- If `kind` is **org**: login / slug (or candidates), display name, empty org already in the UI or still deciding
+- If `kind` is **project**: owner (user vs org), repo name (or candidates)
 
 **Ask when missing and not skipped by the profile**
 
 - Custom domain bought / verified? (else github.io)
 - Sibling / partner orgs to cross-link (do not absorb)
-- Repos to transfer vs leave
+- Repos to transfer vs leave (org)
 - Auth/login this session? (`web-app` then Netlify overlay)
+- Registry / language (`library`)
 - Legal entity needed *this session*? Profile default is no
 
 Forge and stacks come from the profile. Session scope comes from the profile unless they widen/narrow it.
 
 ## Gate — should this be a new org?
 
+Run this gate only when `kind` is **org** (or they asked for a new org alongside a project).
+
 A new org pays off when there is a **name that belongs on a landing page**, roughly **3–5 projects** they would ship under that banner, and a reason outsiders follow the **org** not the person.
 
 Otherwise keep work on the personal account (topics, lists). Do not fold a sharp sibling org into a vague umbrella. Aligned peers: **cross-link, do not absorb**.
 
-If the gate fails, stop after saying so. If it passes, proceed.
+If the gate fails, stop after saying so. If it passes, proceed. For `kind` **project**, skip the gate and use the project checklist.
 
 ## Stance
 
@@ -77,7 +84,7 @@ If the gate fails, stop after saying so. If it passes, proceed.
 Copy the checklist and tick as you go. **Skip** phases the session scope and [reference.md](reference.md) skip-unless table exclude.
 
 ```
-Org bootstrap:
+Org bootstrap (kind org):
 - [ ] 0 Profile + intake + gate
 - [ ] 1 Org identity (About / website / location)
 - [ ] 2 Logo + 256px avatar asset
@@ -87,6 +94,14 @@ Org bootstrap:
 - [ ] 6 News vs blog (split)
 - [ ] 7 Partners, transfers, personal-hub update
 - [ ] 8 Domain / email / infra (hand off — optional)
+
+Project bootstrap (kind project):
+- [ ] 0 Profile + intake
+- [ ] 1 Repo identity (About / homepage / license)
+- [ ] 2 Scaffold per profile (library / cli / desktop / web-app)
+- [ ] 3 Optional SolidStart static + solid-ui marketing site
+- [ ] 4 Docs contribute to the org hub (no second public docs site)
+- [ ] 5 Product Essentials Band A for that artifact type
 ```
 
 ### 1. Identity
@@ -163,8 +178,6 @@ Do not restate those procedures here. Point at Business Bootstrap (email tutoria
 
 ## Done when
 
-- Org About is filled; avatar asset exists (uploaded or waiting on user)
-- Public `.github` + `profile/README.md` render (`?view_as=public`)
-- Session-scoped site and/or docs exist **or** were explicitly skipped
-- News/blog not conflated
-- Deeper ops linked, not silently skipped as “finished”
+**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); session-scoped site/docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
+
+**Project.** Repo About filled; scaffold matches the loaded profile; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.

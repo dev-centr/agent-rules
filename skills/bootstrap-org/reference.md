@@ -12,6 +12,9 @@ Agent loads this after `SKILL.md`. Commands assume GitHub `gh` unless the profil
 | `product-org` | org | Company shipping a product |
 | `nonprofit` | org | Public-good / donate |
 | `web-app` | project | Standalone SolidStart app (not the org hub) |
+| `library` | project | Publishable library (DUB/npm/crates — poll registry) |
+| `cli` | project | Command-line tool (`--version` / `--help`) |
+| `desktop` | project | Desktop GUI (Tauri + solid-ui) |
 | `docs-hub` | org | Docs are the public face |
 | `forks-org` | org | Supplemental forks / splinter |
 
@@ -20,7 +23,7 @@ Merge order: catalog `defaults` → file or inline `profile` → user sentences 
 - `skip "…"` tags add to the skip-unless table for this session.
 - `session_scope` sets the phase checklist; they may widen it.
 - `site { if_auth { host "netlify" } }` applies only when they confirm login/dynamic this session.
-- Unknown tags: keep them, do not fail. Do not invent a seventh built-in name mid-session; extra files live beside the catalog if they asked to save one.
+- Unknown tags: keep them, do not fail. Do not invent a new built-in name mid-session; extra files live beside the catalog if they asked to save one.
 
 Classic SDL only (no Extended SDL/XDL). Strings are quoted; nested blocks as in the catalog.
 

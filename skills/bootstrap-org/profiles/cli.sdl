@@ -1,0 +1,35 @@
+// Command-line tool. --version / --help are day one; marketing site is optional SolidStart static.
+profile "cli" {
+	kind "project"
+	summary "CLI: version and help flags, redacted debug dump; optional SolidStart static marketing; Product Essentials for CLI."
+
+	session_scope "repo" "docs-link"
+
+	site {
+		optional true
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		role "marketing-or-skip"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		contribute_to_org_hub true
+		second_public_site false
+	}
+
+	product_essentials {
+		version_flag true
+		help_flag true
+		debug_dump true
+	}
+
+	skip "org-hub-competing-site" "email" "infra" "self-host-chat"
+
+	ship_layer "general/app-architecture.md"
+}

@@ -1,0 +1,43 @@
+// Desktop GUI. House shell is Tauri with Solid + solid-ui; Windows installer/updates are core, not polish.
+profile "desktop" {
+	kind "project"
+	summary "Desktop GUI: Tauri + SolidStart/solid-ui UI; Band A Product Essentials; optional static marketing site."
+
+	session_scope "app" "docs-link"
+
+	desktop {
+		shell "tauri"
+		ui "solid-ui"
+		framework "solidstart"
+	}
+
+	site {
+		optional true
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		role "marketing-or-skip"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		contribute_to_org_hub true
+		second_public_site false
+	}
+
+	product_essentials {
+		about_version true
+		help_link true
+		debug_dump true
+		windows_installer true
+		auto_update true
+	}
+
+	skip "org-hub-competing-site" "self-host-chat"
+
+	ship_layer "general/app-architecture.md"
+}

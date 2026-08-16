@@ -1,0 +1,37 @@
+// Publishable library. Docs contribute to the org hub; marketing site is optional.
+profile "library" {
+	kind "project"
+	summary "Library: in-repo docs for the org Antora hub; optional SolidStart static marketing; Product Essentials for libraries."
+
+	session_scope "repo" "docs" "registry"
+
+	site {
+		optional true
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		role "marketing-or-skip"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		contribute_to_org_hub true
+		second_public_site false
+	}
+
+	product_essentials {
+		version_visible true
+		changelog true
+		license true
+	}
+
+	registry "poll"
+
+	skip "org-hub-competing-site" "email" "infra" "self-host-chat"
+
+	ship_layer "general/app-architecture.md"
+}

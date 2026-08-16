@@ -55,6 +55,18 @@ profile "web-app" file="web-app.sdl" {
 	use_when "SolidStart product site" "SPA/MPA" "not an org hub"
 }
 
+profile "library" file="library.sdl" {
+	use_when "publishable library" "crate" "DUB package" "npm package"
+}
+
+profile "cli" file="cli.sdl" {
+	use_when "command-line tool" "CLI" "--help"
+}
+
+profile "desktop" file="desktop.sdl" {
+	use_when "desktop GUI" "Tauri" "tray app"
+}
+
 profile "docs-hub" file="docs-hub.sdl" {
 	use_when "docs-first org" "thin marketing site"
 }
