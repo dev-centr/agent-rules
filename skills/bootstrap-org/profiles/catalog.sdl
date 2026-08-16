@@ -1,5 +1,6 @@
 // Named bootstrap profiles. Load defaults, then overlay the named profile file.
 // Prompt may name a profile, @-mention a .sdl file, or paste a profile { } block.
+// Public selector (same files, compiled at site build): https://devcentr.org/templates/
 
 defaults {
 	forge "github"

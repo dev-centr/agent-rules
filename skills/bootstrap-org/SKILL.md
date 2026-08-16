@@ -28,7 +28,7 @@ Deep commands, skip-unless table, SDL schema, and pitfalls: [reference.md](refer
 
 Before Intake, resolve **one** profile. Overlay: catalog `defaults` → named/pasted profile → explicit prompt overrides (prompt wins).
 
-1. **Named in the prompt** (`oss-collective`, `product-org`, `nonprofit`, `web-app`, `library`, `cli`, `desktop`, `docs-hub`, `forks-org`, or “use the cli profile”) → read `profiles/<name>.sdl`.
+1. **Named in the prompt** (any `profile "…"` name in `profiles/catalog.sdl`) → read `profiles/<name>.sdl`. Public list: https://devcentr.org/templates/
 2. **Attached / `@`-mentioned `.sdl` file** → read that file. If it has no `profile "…"` wrapper, treat the body as overlays on `defaults`.
 3. **Inline SDL** in the prompt (`profile "…" { … }` or a `defaults { }` + tags) → parse and overlay; do not require saving it unless they ask.
 4. **Implied** (“new CLI”, “Tauri app”, “D library”, “SolidStart site”) → pick the matching catalog name, announce it, continue unless they contradict.

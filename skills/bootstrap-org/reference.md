@@ -4,19 +4,9 @@ Agent loads this after `SKILL.md`. Commands assume GitHub `gh` unless the profil
 
 ## SDL profiles
 
-`profiles/catalog.sdl` lists names and **defaults**. Each sibling `profiles/<name>.sdl` is overlays only.
+Authoritative inventory is `profiles/catalog.sdl` plus one file per name. Do **not** keep a second name table in this file.
 
-| Name | Kind | Use when |
-| --- | --- | --- |
-| `oss-collective` | org | OSS collective / github.io hub |
-| `product-org` | org | Company shipping a product |
-| `nonprofit` | org | Public-good / donate |
-| `web-app` | project | Standalone SolidStart app (not the org hub) |
-| `library` | project | Publishable library (DUB/npm/crates — poll registry) |
-| `cli` | project | Command-line tool (`--version` / `--help`) |
-| `desktop` | project | Desktop GUI (Tauri + solid-ui) |
-| `docs-hub` | org | Docs are the public face |
-| `forks-org` | org | Supplemental forks / splinter |
+Compiled JSON (`profiles/catalog.json`) is a build artifact of those SDL files. The public selector on https://devcentr.org/templates/ is compiled from the same tree at site build — not a hand-maintained copy.
 
 Merge order: catalog `defaults` → file or inline `profile` → user sentences in the prompt.
 
