@@ -1,0 +1,31 @@
+// Nonprofit / public-good org. Hub + docs like OSS; funding ask is in scope, Workspace is not.
+profile "nonprofit" {
+	kind "org"
+	summary "Nonprofit: identity, static hub, docs, optional donate/sponsors; skip Workspace."
+
+	session_scope "identity" "site" "docs" "news-blog" "funding"
+
+	site {
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		donate "on-site-balance-and-floor"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		repo "docs"
+	}
+
+	funding {
+		sponsors true
+		fiscal_host "when-shared-money"
+		ask "balance-plus-floor"
+	}
+
+	skip "google-workspace" "self-host-chat" "github-private"
+}

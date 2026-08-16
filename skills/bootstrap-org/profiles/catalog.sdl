@@ -1,0 +1,64 @@
+// Named bootstrap profiles. Load defaults, then overlay the named profile file.
+// Prompt may name a profile, @-mention a .sdl file, or paste a profile { } block.
+
+defaults {
+	forge "github"
+	package_manager "pnpm"
+	formatter "dprint"
+	gitignore "allow-list"
+	node "current-lts"
+
+	site {
+		framework "solidstart"
+		ui "solid-ui"
+		css "tailwindcss"
+		ssr false
+		preset "static"
+		host "github-pages"
+		cloudflare "dns-only"
+		news "/news/"
+		blog "/blog/"
+		cta "Explore the docs »"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		one_site_per_org true
+		math true
+	}
+
+	github_profile {
+		public true
+		private false
+		readme "profile/README.md"
+	}
+
+	legal_entity "not-this-session"
+	connectors "composio-when-no-cli"
+}
+
+profile "oss-collective" file="oss-collective.sdl" {
+	use_when "OSS collective" "new GitHub org landing" "github.io"
+}
+
+profile "product-org" file="product-org.sdl" {
+	use_when "product company" "shipping app + org hub"
+}
+
+profile "nonprofit" file="nonprofit.sdl" {
+	use_when "nonprofit" "public-good org" "donate page"
+}
+
+profile "web-app" file="web-app.sdl" {
+	use_when "SolidStart product site" "SPA/MPA" "not an org hub"
+}
+
+profile "docs-hub" file="docs-hub.sdl" {
+	use_when "docs-first org" "thin marketing site"
+}
+
+profile "forks-org" file="forks-org.sdl" {
+	use_when "supplemental forks" "splinter org" "rebrand warehouse"
+}

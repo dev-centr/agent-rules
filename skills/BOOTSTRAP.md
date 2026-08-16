@@ -45,6 +45,8 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **News body** → skill `writing-news` (`skills/writing-news/`).
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - **Docs mojibake / SVG XML** → skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — transcode check/fix, not a refactor.
+- **DUB registry publish** → skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish`; not `dub publish`.
+- **GitHub org / company identity (fast path)** → skill `bootstrap-org` (`skills/bootstrap-org/`) — named SDL profiles in `profiles/`; email/vault/infra stay in Business Bootstrap.
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

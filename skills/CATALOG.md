@@ -27,6 +27,8 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | `writing-news` | News item, ship note, org announcement, news channel body | active | `skills/writing-news/` |
 | `writing-blog` | Blog post, essay, philosophy, thinking-in-public body | active | `skills/writing-blog/` |
 | `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` — not a refactor |
+| `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", register/publish a D package on code.dlang.org | active | `dubx` + `dub-publish`; official `dub` has no publish command |
+| `bootstrap-org` | bootstrap an org, create a GitHub organization, start a company/nonprofit, populate org data, org profile, `.github`, github.io, Antora docs hub, SolidStart, solid-ui, fast-path org/business bootstrap, named SDL profile | active | Fast identity path; `profiles/*.sdl`; capability-area literature stays in business-bootstrap |
 
 ## Adding a skill (checklist)
 

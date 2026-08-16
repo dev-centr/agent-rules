@@ -59,7 +59,9 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 ## AI ops
 
 - Stale APIs: Context7 MCP; else Outdated Code Protocol (`general/global.md`).
-- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`, `fix-docs-encoding`).
+- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`, `fix-docs-encoding`, `publish-to-dub`, `bootstrap-org`).
+- **Org / company bootstrap:** skill `bootstrap-org` (`skills/bootstrap-org/`) when standing up a GitHub organization, nonprofit, OSS collective, or similar public identity. Poll for missing decisions. Deep email/vault/chat/infra stays in Business Bootstrap.
+- **DUB publish:** official `dub` has no publish command. Use skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish` — when the user says publish to dub / dlang. Always-on pins: `agents/engineering/dub.md`.
 - **Docs encoding:** hand-authored Antora SVG/adoc breakage is usually **transcode corruption** (Windows mojibake / invalid SVG XML), not Antora plugins and not a refactor. Use skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — run its script `--check` / `--fix` after figure edits. Always-on tips: `general/documentation.md`.
 - Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills* on docs.devcentr.org.
 

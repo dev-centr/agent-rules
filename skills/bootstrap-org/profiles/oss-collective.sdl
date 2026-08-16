@@ -1,0 +1,27 @@
+// Public GitHub org + static hub. Skip mail/infra until a domain actually exists.
+profile "oss-collective" {
+	kind "org"
+	summary "OSS collective: identity, SolidStart static hub, Antora docs, news vs blog."
+
+	session_scope "identity" "site" "docs" "news-blog"
+
+	site {
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		repo "{org}.github.io"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		repo "docs"
+	}
+
+	skip "email" "infra" "github-private" "legal-entity" "self-host-chat"
+
+	partners "cross-link-do-not-absorb"
+}

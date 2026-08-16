@@ -1,0 +1,28 @@
+// Docs-first org. Thin or skipped marketing site; one Antora hub is the public face.
+profile "docs-hub" {
+	kind "org"
+	summary "Docs-first: Antora + Valentus is the public site; marketing github.io optional stub only."
+
+	session_scope "identity" "docs"
+
+	site {
+		optional true
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		role "stub-or-skip"
+	}
+
+	docs {
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+		repo "docs"
+		public_face true
+		math true
+	}
+
+	skip "news-until-newsworthy" "email" "infra" "github-private"
+}

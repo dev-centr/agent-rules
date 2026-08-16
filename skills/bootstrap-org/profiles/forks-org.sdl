@@ -1,0 +1,33 @@
+// Supplemental / splinter / forks warehouse. License and split first; keep the public surface thin.
+profile "forks-org" {
+	kind "org"
+	summary "Forks/splinter org: license first, thin profile + optional hub; no over-sync of upstream."
+
+	session_scope "identity" "site"
+
+	license "confirm-before-rebrand"
+
+	site {
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		role "thin"
+	}
+
+	docs {
+		optional true
+		generator "antora"
+		theme "valentus"
+		pin "v2"
+	}
+
+	hive {
+		forks ".forks/"
+		clones ".clones/"
+		avoid "mirror-every-upstream-live"
+	}
+
+	skip "news-until-newsworthy" "blog" "email" "infra" "github-private" "workflow-templates"
+}

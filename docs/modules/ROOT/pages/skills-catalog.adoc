@@ -23,6 +23,15 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 
 | `writing-blog`
 | Blog post, essay, philosophy, thinking-in-public body
+
+| `fix-docs-encoding`
+| Mojibake, SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows
+
+| `publish-to-dub`
+| "publish to dub", "publish to dlang", "publish dlang"; register a D package on code.dlang.org
+
+| `bootstrap-org`
+| Bootstrap an org; create a GitHub organization; start a company/nonprofit; populate org data; `.github` profile; github.io; docs hub; SolidStart / solid-ui; named SDL profile; fast-path business bootstrap
 |===
 
 Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].

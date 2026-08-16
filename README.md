@@ -155,6 +155,7 @@ Optional, on-demand curricula live under `skills/` and are **not** part of `RULE
 - Shop file: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md) — configure yourself or drop that recipe into a permissive agent
 - Hub docs: https://docs.devcentr.org/agent-rules/ (Bootstrap Cursor skills page)
 - Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills*
+- Org identity fast path: skill `bootstrap-org` (not a substitute for [Business Bootstrap](https://docs.devcentr.org/business-bootstrap/))
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,0 +1,32 @@
+// Standalone product site (not the org hub). SolidStart static + solid-ui unless login/dynamic forces another host.
+profile "web-app" {
+	kind "project"
+	summary "Product web app: SolidStart static + solid-ui; i18n + GitHub icon; Product Essentials Band A."
+
+	session_scope "app-site" "docs-link"
+
+	site {
+		framework "solidstart"
+		ui "solid-ui"
+		preset "static"
+		ssr false
+		host "github-pages"
+		i18n "top-bar"
+		github_icon true
+		if_auth {
+			host "netlify"
+			preset "netlify"
+		}
+	}
+
+	product_essentials {
+		about_version true
+		help_link true
+		error_boundary true
+		privacy_if_accounts true
+	}
+
+	skip "org-hub-competing-site" "self-host-chat"
+
+	ship_layer "general/app-architecture.md"
+}
