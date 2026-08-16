@@ -6,7 +6,7 @@ Agent loads this after `SKILL.md`. Commands assume GitHub `gh` unless the profil
 
 Authoritative inventory is `profiles/catalog.sdl` plus one file per name. Do **not** keep a second name table in this file.
 
-Compiled JSON (`profiles/catalog.json`) is a build artifact of those SDL files. The public selector on https://devcentr.org/templates/ is compiled from the same tree at site build — not a hand-maintained copy.
+Compiled JSON (`profiles/catalog.json`) is a build artifact of those SDL files. The public selector on https://devcentr.org/skills/?cat=bootstrap is compiled from the same tree at site build — not a hand-maintained copy.
 
 Merge order: catalog `defaults` → file or inline `profile` → user sentences in the prompt.
 
