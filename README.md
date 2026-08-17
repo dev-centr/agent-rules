@@ -118,7 +118,7 @@ The agent will automatically pull:
 4. `general/<windows|mac|linux>.md`
 5. `general/creator.md`
 6. `general/folder-schema.md`
-(and `general/documentation.md` / `general/app-architecture.md` selectively).
+(and `general/documentation.md` when the task is docs). Heavy playbooks are Cursor skills — see `skills/CATALOG.md` (`antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, …).
 
 Create **`$CODE_ROOT/MEMORIES.md`** for workstation facts (see **Machine-local memories** below). Do not commit per-repo `MEMORIES.md`.
 

@@ -1,10 +1,8 @@
 # Pull request voice (org default)
 
-When opening PRs for Dev-Centr work **or** drafting upstream gifts from this org’s guidance, follow the portable module:
+When opening PRs for Dev-Centr work **or** drafting upstream gifts from this org’s guidance, use Cursor skill **`draft-pr`**.
 
-→ [`general/pull-requests.md`](../../general/pull-requests.md)
-
-## Short form (always)
+Short form:
 
 - **Title:** simple language; orient the reviewer.
 - **Intro:** plain English, inviting; lead with the human problem; short bullets; invite feedback.

@@ -8,3 +8,7 @@ Applies to **devcentr** and other org repos that use DUB. Repo-specific override
 - `arsd-official` for Dev Center is **11.5.3** (matches dlangui). Do not `dub add-local` `.forks/arsd` as 10.9.10.
 - Intentional local package: `unit-threaded` 0.7.55 → `devcentr/unit-threaded` via `dub add-local`.
 - Do not recreate deprecated `%LOCALAPPDATA%\dub\packages\local-overrides.json`; prefer `dub add-local`.
+
+## Publishing to code.dlang.org
+
+Official `dub` has **no** `publish` command. When the user asks to **publish to dub / dlang**, use Cursor skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish`. Do not paste that skill body here.

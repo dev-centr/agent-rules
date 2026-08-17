@@ -50,6 +50,15 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **GitHub org / project bootstrap (fast path)** → skill `bootstrap-org` (`skills/bootstrap-org/`) — name or paste an SDL profile from `profiles/` (`cli`, `desktop`, `library`, `web-app`, org names); email/vault/infra stay in Business Bootstrap.
 - **Tag / ship a version** → skill `tag-release` (`skills/tag-release/`) — SemVer + optional `+dep` labels; GitHub rolling `v2` in `github.md`; registry ranges in `registries.md`.
 - **Authoring a skill / `SKILL.md` / skill `description`** → skill `write-skill` (`skills/write-skill/`) — description = trigger words, not a lay blurb; layout leftover is Cursor `create-skill`.
+- **Ship an app** → skill `ship-app` (`skills/ship-app/`) — Software Product Essentials; About, Help, debug dump, auto-update, installer, CI.
+- **Antora / org docs hub** → skill `antora-org-site` (`skills/antora-org-site/`) — one public hub; Lunr + math; **Valentus is a suggestion, confirm first**.
+- **Public README** → skill `public-readme` (`skills/public-readme/`) — GitHub adapter default; other forges swap metric URLs.
+- **Draft a PR** → skill `draft-pr` (`skills/draft-pr/`).
+- **Git commit** → skill `git-commit` (`skills/git-commit/`) — only when the user asks to commit.
+- **Owned changelog** → skill `owned-changelog` (`skills/owned-changelog/`).
+- **Env names registry** → skill `env-names-registry` (`skills/env-names-registry/`) — names only, never secret values.
+- **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`) when Context7 is unavailable.
+- **Issue reports** → skill `issue-reports` (`skills/issue-reports/`) — durable draft; never chat-only.
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

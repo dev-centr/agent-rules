@@ -38,8 +38,8 @@ After portable `agent-rules` assembly (see `MAIN.md`), read **in one parallel ba
 - `AGENTS.md` (this file — org obligations + precedence)
 - `agents/_MAIN.md` (orchestrator)
 - `agents/editorial/titles.md` (when authoring or reviewing news, blog, or doc titles)
-- `agents/editorial/pull-requests.md` (when opening or drafting a pull request)
 - `agents/engineering/dub.md` (when working on DUB / D packages in org repos)
+- Cursor skill `draft-pr` when opening a pull request
 - `skills/CATALOG.md` (when installing, authoring, or auditing Cursor skills)
 
 Repo-local `AGENTS.md` in the active project is **additive** — read it when you open that repository.
@@ -49,17 +49,17 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 ## Org obligations (always on dev-centr work)
 
 - **Sync before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`; pull/rebase before coding on a stale HEAD.
-- **One Antora site per org:** hub at [docs.devcentr.org](https://docs.devcentr.org); wire project `docs/` into the hub playbook; do not publish a second public Antora site on project GitHub Pages. See `general/antora-docs-sites.md`.
-- **Public README chrome:** follow `general/readme-layout.md`; hub link **Explore the docs »** → org docs.
-- **Changelogs:** every owned project; functional changes; README links; index + `changelog-details/date - title`.
+- **One Antora site per org:** skill `antora-org-site` (hub at [docs.devcentr.org](https://docs.devcentr.org); Valentus is a suggestion — confirm).
+- **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
+- **Changelogs:** every owned project, functional changes — skill `owned-changelog`.
 - **Config:** SDL (`.sdl`) on DevCentr-owned / `sdlang-d` surfaces; KDL (`.kdl`) greenfield outside that stack; JSON5 in the JSON family. No Extended SDL/XDL.
-- **Issues:** draft in `ISSUES_REPO` per its instructions — not only in chat.
+- **Issues:** skill `issue-reports` — not only in chat.
 - **Skills:** canonical copies under `skills/` in this repo; junction into `~/.cursor/skills/<name>/`. Inventory in `skills/CATALOG.md`. Do **not** paste skill bodies into this always-on preamble.
 
 ## AI ops
 
-- Stale APIs: Context7 MCP; else Outdated Code Protocol (`general/global.md`).
-- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`, `fix-docs-encoding`, `publish-to-dub`, `bootstrap-org`, `tag-release`, `write-skill`).
+- Stale APIs: Context7 MCP; else skill `outdated-code-protocol`.
+- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; one skill per job. Do not paste bodies here.
 - **Skill authoring:** skill `write-skill` (`skills/write-skill/`) when creating or editing `SKILL.md` or a skill `description`. That field is trigger words, not a lay blurb. Cursor `create-skill` still owns layout.
 - **Release tags:** skill `tag-release` (`skills/tag-release/`) when the user asks to tag/ship a version, cut `vX.Y.Z`, or maintain rolling GitHub `v2`. `+` dual-axis labels where a peer/engine exists; GitHub moving aliases in `github.md` (the platform does not compute 2.x).
 - **Org / company / project bootstrap:** skill `bootstrap-org` (`skills/bootstrap-org/`). Name a profile in the first prompt (see `skills/bootstrap-org/profiles/catalog.sdl` or https://devcentr.org/skills/?cat=bootstrap), attach/paste an SDL `profile "…" { }` block, or let the agent infer (`new CLI` → `cli`) and poll only leftovers. Deep email/vault/chat/infra stays in Business Bootstrap.

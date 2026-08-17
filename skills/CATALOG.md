@@ -31,6 +31,15 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | `bootstrap-org` | bootstrap an org, create a GitHub organization, start a company/nonprofit, library, CLI, desktop, Tauri, SolidStart, solid-ui, populate org data, org profile, `.github`, github.io, Antora docs hub, named SDL profile, paste a profile block, fast-path org/business/project bootstrap | active | Fast identity/project path; `profiles/*.sdl` is the list (site `/skills?cat=bootstrap` compiles it); IT literature stays in business-bootstrap |
 | `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x`, GitHub Releases, pin vs float, `+` build metadata / dual-axis labels | active | One skill; `github.md` (moving aliases — GitHub does not compute 2.x) and `registries.md` (range rolling). Not a per-platform skill family. |
 | `write-skill` | author/edit a Cursor skill, `SKILL.md`, skill frontmatter, YAML `description`; trigger words vs lay blurb; create-skill; `agent-rules/skills`; `~/.cursor/skills`; how to write skills | active | Wins over create-skill on `description` / auto-invoke. Layout leftover: Cursor `create-skill`. |
+| `ship-app` | scaffolding/shipping a GUI, CLI, TUI, library, game, service; Software Product Essentials; About; debug dump; auto-update; installer; CI release; 1.0 | active | Pointers into general-knowledge architecture docs |
+| `antora-org-site` | Antora site, docs hub, antora-playbook, GitHub Pages for docs, Lunr, antora-search-chat, Valentus, KaTeX, one Antora site per org | active | Valentus is a suggestion — confirm before applying |
+| `public-readme` | README.md, README.adoc, public repo face, Best-README, Explore the docs, shields.io, Built With | active | GitHub adapter default; other forges swap metric URLs |
+| `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary, PR screenshots | active | Voice in `skills/draft-pr/voice.md` |
+| `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User must ask to commit |
+| `owned-changelog` | changelog, changelog-details, backfill from git, wire changelog into docs, functional change in an owned project | active | Match existing repo style when present |
+| `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`, ENV.md, new integration, Netlify env; names only | active | Never store secret values |
+| `outdated-code-protocol` | Context7 unavailable, stale APIs, `AI-LOCAL-LIBRARY-DOCS.local.json5`, `_local-library-docs`, Dlang clone-source | active | Fallback when Context7 is missing |
+| `issue-reports` | issue report, bug report, feature request, `gh issue create`, `ISSUES_REPO`, `.issues` submissions | active | Durable draft; never chat-only |
 
 ## Adding a skill (checklist)
 

@@ -1,5 +1,5 @@
 # Agent Rules
-<!-- Generalized agent preamble. Fill Constants before paste. Detail lives in general/*.md when assembling from MAIN.md. -->
+<!-- Generalized agent preamble. Fill Constants before paste. Detail lives in general/*.md when assembling from MAIN.md. Do **not** paste skill bodies into this file. -->
 
 ## Constants
 - CODE_ROOT: `REQUIRED_PATH`
@@ -15,7 +15,8 @@
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
 - Task lists in files: mark done with checkmark emojis.
-- Changelogs: match the repo’s existing style.
+- Changelogs: match the repo’s existing style; owned-project layout is skill `owned-changelog`.
+- Never write secret values into git, docs, `MEMORIES.md`, or `.env.example` (name-only registry: skill `env-names-registry`).
 
 ## Environment
 - OS/Shell: default Windows 10/11 unless profile says otherwise; recommend Nushell as user default; agent terminals may still be PowerShell 7 when the IDE provides `pwsh`.
@@ -35,24 +36,19 @@
 ## Creator (owned orgs)
 - Transfers: `gh api`.
 - Config: SDL (`.sdl`) for DevCentr-owned / `sdlang-d` surfaces; **KDL** (`.kdl`) for greenfield outside that stack; JSON5 when stuck in the JSON family. Do **not** adopt Extended SDL/XDL.
-- Changelog: every project; functional changes; README links to it; index + `changelog-details/date - title`; backfill from git if missing; wire into docs; alert user if cross-org secrets are required.
+- Changelog: every owned project, functional changes — skill `owned-changelog`.
+- Issues: never only in chat — skill `issue-reports`.
 
 ## Docs
 - Structure: Diátaxis (tutorials, how-to, explanation, reference).
 - Format: AsciiDoc by default; retain Markdown on upstream forks; keep/add Markdown when a package registry only parses Markdown.
-- Antora: Valentus theme + org branding; Lunr + `antora-supplemental` AI search (`antora-search-chat`); follow `dev-centr` publishing guidance. If those extensions cannot be found, alert the user and wait.
-- **Math on every docs site:** `stem: latexmath` + KaTeX/`site-math.js` (Antora); `remark-math` + `rehype-katex` (Markdown). Enable even when unused; encode formulas as stem/`$…$`, not raw prose.
-- **One Antora site per org** with a hub (e.g. docs.devcentr.org): wire `docs/` into the hub playbook; never publish a second Antora site on project GitHub Pages. Deduplicate errant sites. See `general/antora-docs-sites.md`. (Does not apply to mixing Antora with other docs systems.)
-- **Public README layout:** when creating/revising GitHub-facing READMEs, follow `general/readme-layout.md` (Best-README adapted: centered for-the-badge chrome, **Explore the docs »** → org hub, TOC if >3 sections, role-grouped Built With, back-to-top). Do not add Docs/CI shields that break the established look. Hand-edit per repo; blanks in `dev-centr/readme-template`.
-- Titles: follow site `STYLE.adoc` / `AGENTS.md` (not MEMORIES). **News = outward** (shared record); **blog = inward** (ideas, ideals, philosophy, tutorials, thinking in public). Short defaults — first-party news omits org; action essays pass implied [On] and drop surplus *the*; prefer `X as Y` / *when* / disproof / questions over rigid `X is Y`; attach floating modifiers to an object; docs topics = concept names. Philosophy: `Titles as orientation`. Cursor rules = `.cursor/rules/*.mdc` dir; this file stays the paste preamble.
-- **Pull requests:** when opening or drafting a PR, read `general/pull-requests.md`. **Title** in simple plain language. **Summary/intro** in inviting plain English (lead with the human problem; short bullets; soft close). **UI-visible** changes need before/after screenshots at minimum. Tone: gift to maintainers, not a lecture.
-- **News/blog body (anti-terse):** before drafting, read Laurie Hertzel, [Six Writing Tips for Crafting Scenes](https://niemanstoryboard.org/2005/03/24/six-tips-for-crafting-scenes/) (Nieman Storyboard). Apply her parameters: (1) write with a camera angle; (2) use both scene and summary; (3) telling details and metaphor; (4) vary pace; (5) move forward/backward in time with clear cues; (6) end scenes with pull-forward completion. Full checklist in `general/documentation.md`. Do not ship telegraphic bullet-essays on the narrative channel.
+- Titles: follow site `STYLE.adoc` / `AGENTS.md` (not MEMORIES). **News = outward**; **blog = inward**. First-party news omits org; action essays pass implied [On]; prefer `X as Y` / *when* / disproof / questions; attach floating modifiers to an object; docs topics = concept names. Philosophy: `Titles as orientation`. Cursor rules = `.cursor/rules/*.mdc` dir; this file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `MEMORIES.md`.
-- **App shipping architecture:** when scaffolding/building/shipping apps, read `general/app-architecture.md` and adhere to Software Product Essentials under `$CODE_ROOT/github.com/dev-centr/general-knowledge/docs/modules/ROOT/pages/explanation/architecture/` (hub: `software-product-essentials.adoc`; delivery-class templates under `classes/`; interactive CentrMark checklists under `examples/product-essentials/` → `.devcentr/checklists/` with progress in `.cmk.checks/`). About/build info, Help, debug dump, auto-update (Windows + Unix apply safety), installers, and CI release pipelines are core—not polish.
+- On demand (do not inline): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `writing-news`, `writing-blog` — `skills/CATALOG.md`.
 
 ## AI ops
 - AsciiDoc: checklists `* [ ]`; blank line after **bold** headings; list continuations `+`; images `image::`.
 - MEMORIES: **only** `$CODE_ROOT/MEMORIES.md` (workstation facts). Create if missing; counter from 1. Never commit. Format: see `MEMORIES.example.md` in this repository (or your fork’s copy).
-- Stale APIs: Context7 MCP (https://context7.com/); else Outdated Code Protocol.
-- Cursor skills (optional, on demand): see `skills/BOOTSTRAP.md` and `skills/CATALOG.md` — do **not** paste skill bodies into this always-on preamble. Dev-Centr org members: also load `AGENTS.md` from this repo; org layer overrides personal on `dev-centr/*` work.
-- Outdated Code Protocol: `AI-LOCAL-LIBRARY-DOCS.local.json5` + `docs/_local-library-docs/`; prefer local indexed docs/source; for Dlang prefer cloning source.
+- Stale APIs: Context7 MCP (https://context7.com/); else skill `outdated-code-protocol`.
+- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — do **not** paste skill bodies here. Dev-Centr org members: also load `AGENTS.md` from this repo; org layer overrides personal on `dev-centr/*` work.
+- Commits / PRs: skills `git-commit` and `draft-pr` (load when the user asks to commit or open a PR).

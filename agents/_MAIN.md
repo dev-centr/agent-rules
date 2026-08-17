@@ -5,7 +5,7 @@ Entry point for **Dev-Centr org** instruction modules in `dev-centr/agent-rules`
 ## Always relevant on org repos
 
 - Editorial titles when writing outward (news) or inward (blog) copy → `editorial/titles.md`
-- Pull request titles and inviting summaries → `editorial/pull-requests.md` (detail in `../general/pull-requests.md`)
+- Pull request titles and inviting summaries → Cursor skill `draft-pr`
 - Skills governance when adding or junctioning Cursor skills → `../skills/CATALOG.md`
 
 ## Load by task
@@ -17,9 +17,15 @@ Entry point for **Dev-Centr org** instruction modules in `dev-centr/agent-rules`
 | Tag / ship a version, GitHub rolling `v2` | Cursor skill `tag-release` |
 | Authoring a skill / `SKILL.md` / skill `description` | Cursor skill `write-skill` |
 | News / blog / essay titles | `editorial/titles.md` |
-| Opening or drafting a pull request | `editorial/pull-requests.md` |
+| Opening or drafting a pull request | Cursor skill `draft-pr` |
 | News body copy (ship note, org announcement) | Cursor skill `writing-news` |
 | Blog body copy (essay, philosophy, tutorial narrative) | Cursor skill `writing-blog` |
+| Antora site / docs hub | Cursor skill `antora-org-site` |
+| Public README | Cursor skill `public-readme` |
+| Shipping an app | Cursor skill `ship-app` |
+| Changelog (owned project) | Cursor skill `owned-changelog` |
+| Issue report / bug / feature request | Cursor skill `issue-reports` |
+| Git commit | Cursor skill `git-commit` |
 
 ## Not here
 

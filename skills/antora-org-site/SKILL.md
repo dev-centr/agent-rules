@@ -1,0 +1,39 @@
+---
+name: antora-org-site
+description: >-
+  Use when creating, wiring, or publishing an Antora site or docs hub;
+  antora-playbook.yml; GitHub Pages for docs; one Antora site per org;
+  Lunr; antora-search-chat; docs.devcentr.org; Valentus theme; KaTeX;
+  stem latexmath; alias-component-to-latest.
+---
+
+# Antora org site
+
+Minimum bar for a published Antora site in an owned org. Detail and hub table: [reference.md](reference.md). Encoding/mojibake: skill `fix-docs-encoding` (transcode, not a refactor).
+
+## Required
+
+1. **One public Antora site per org** that already has a hub. Keep `docs/` in the product repo; **wire** the component into the hub playbook. Do not publish a second public Antora site on project GitHub Pages (or Netlify/etc. solely for that).
+2. **Lunr** on every published site (`@antora/lunr-extension`). Register Lunr before wrappers.
+3. **AI search** from `antora-supplemental` — prefer [`antora-search-chat`](https://github.com/antora-supplemental/antora-search-chat). If those packages cannot be found after a reasonable search, **stop and alert the user**; wait before inventing a substitute.
+4. **Math on every docs surface**, even unused: Antora `stem: latexmath` + KaTeX/`site-math.js`; Markdown `remark-math` + `rehype-katex`. Real formulas as `stem:[…]` / `$…$`, not raw prose.
+5. Versioned components: `@antora-supplemental/alias-component-to-latest` (or equivalent) until core ships opt-in. Prefer comments on [antora/antora#291](https://gitlab.com/antora/antora/-/issues/291) over duplicate issues.
+6. Brand from the org’s existing assets. Do not invent a one-off palette per component.
+7. Repo-local `antora-playbook.yml` for **preview/validation CI** is fine if it does **not** publish a second public site.
+8. A **member-only** sister Antora site is allowed (private playbook + Access). See [reference.md](reference.md).
+
+Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
+
+## Valentus (suggestion — confirm)
+
+**Suggest** Valentus (`antora-supplemental/valentus-theme`) as the house default. **Ask before applying it.** Keep an existing theme unless they confirm a switch. After they choose Valentus, customize colors/logo from org brand assets — do not re-poll the UI on every later pass.
+
+## AsciiDoc figures
+
+- Quote image alt text that contains commas: `image::file.svg[alt="Setup: OAuth App, IdP, policy"]`.
+- UTF-8 without BOM; ASCII punctuation in SVG labels; skill `fix-docs-encoding` on touched `docs/` before commit.
+- Hub deploy: pushing a component repo alone may not refresh the aggregator — redeploy the docs hub playbook so `_images/` goes live.
+
+## Deduplicate
+
+When you find a second public Antora site in an Antora org: confirm the component is (or will be) in the hub, then disable the errant Pages/workflow and point README/About at the hub URL.

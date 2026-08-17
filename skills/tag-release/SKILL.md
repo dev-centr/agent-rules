@@ -82,7 +82,7 @@ Prerelease (`v1.2.3-rc.1`): only when they asked for a pre. Do not use GitHub's 
 
 1. Read repo `AGENTS.md`, existing tags (`git tag -l "v*"`), changelog, `package.json` / `dub.sdl` / Cargo version.
 2. Pick the next `X.Y.Z` and, if a peer axis exists, the public label `X.Y.Z+name.N`.
-3. Stamp version files + changelog **before** the tag (match repo style). About / `--version` / CI `RELEASE_TAG` stay one truth (`general/app-architecture.md`).
+3. Stamp version files + changelog **before** the tag (match repo style). About / `--version` / CI `RELEASE_TAG` stay one truth (skill `ship-app`).
 4. Commit if they asked to ship (do not tag dirty trees).
 5. Annotated tag; push **that tag**:
 

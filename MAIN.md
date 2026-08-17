@@ -23,10 +23,8 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/creator.md`
 - `general/folder-schema.md`
 - `general/documentation.md` (only if the task involves authoring or publishing project documentation)
-- `general/pull-requests.md` (only if the task involves opening or drafting a pull request)
-- `general/antora-docs-sites.md` (only if the task involves Antora sites, playbooks, GitHub Pages for docs, or wiring components into an org docs hub)
-- `general/readme-layout.md` (only if the task involves creating or revising a GitHub-facing README.md / README.adoc)
-- `general/app-architecture.md` (only if the task involves scaffolding, building, shipping, packaging, or maintaining an application, CLI, TUI, publishable library, game client, or service)
+
+Optional heavy curricula are **Cursor skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
 
 *(Fallback)*: If you lack native file reading tools, use a terminal to read them all in one command (e.g. `cat`), but beware of output truncation. If the host cannot read the filesystem, follow the **obligations** below as your only source.
 

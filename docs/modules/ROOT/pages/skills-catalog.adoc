@@ -38,6 +38,33 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 
 | `write-skill`
 | Author/edit a Cursor skill, `SKILL.md`, skill `description`; trigger words vs lay blurb; how to write skills
+
+| `ship-app`
+| Scaffold/ship a GUI, CLI, TUI, library, game, or service; Software Product Essentials
+
+| `antora-org-site`
+| Antora site or docs hub; Lunr; one public site per org; Valentus (confirm)
+
+| `public-readme`
+| Public README.md / README.adoc; Best-README chrome
+
+| `draft-pr`
+| Open or draft a pull request; `gh pr create`
+
+| `git-commit`
+| Create a git commit when asked
+
+| `owned-changelog`
+| Changelog / changelog-details on an owned project
+
+| `env-names-registry`
+| Env var names registry; `.env.example`; never secret values
+
+| `outdated-code-protocol`
+| Context7 unavailable; local library-docs fallback
+
+| `issue-reports`
+| Draft/file an issue report; never chat-only
 |===
 
 Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].
