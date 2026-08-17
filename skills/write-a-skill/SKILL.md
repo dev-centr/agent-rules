@@ -1,12 +1,12 @@
 ---
-name: write-skill
+name: write-a-skill
 description: >-
   Use when authoring or editing a Cursor skill, SKILL.md, skill frontmatter,
   or a skill YAML `description` field; when adding a skill under
   agent-rules/skills or ~/.cursor/skills; when create-skill would fill
   description with a lay description of the skill; when writing trigger
   words, invocation phrases, or when a skill should be called; when the
-  user asks how to write skills.
+  user asks how to write a skill or write-a-skill.
 ---
 
 # Write a Cursor skill

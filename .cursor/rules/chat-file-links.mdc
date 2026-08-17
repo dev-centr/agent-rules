@@ -13,11 +13,11 @@ Write the basename as link text, with a workspace-relative path (forward slashes
 
 [`RULES.md`](RULES.md)
 
-[`SKILL.md`](skills/write-skill/SKILL.md)
+[`SKILL.md`](skills/write-a-skill/SKILL.md)
 
 Cursor also auto-linkifies backtick-wrapped workspace-relative paths:
 
-`skills/write-skill/SKILL.md`
+`skills/write-a-skill/SKILL.md`
 
 ## Line ranges
 

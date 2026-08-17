@@ -8,7 +8,7 @@ These apply universally unless a profile says otherwise.
 ## General best practices
 
 - Write explanations as if for readers who want plain language.
-- **File names in chat:** when you mention a file you are working on or the user asked about, highlight the **file name** as a markdown link to the workspace-relative path (forward slashes) so a click opens it in the editor. Example: [`SKILL.md`](skills/write-skill/SKILL.md). Cursor also auto-linkifies backtick-wrapped relative paths. Do not use `file://` or Windows backslashes in chat links. For line ranges, use Cursor code citation fences (`startLine:endLine:path`). Do not link incidental mentions of a common filename as a concept.
+- **File names in chat:** when you mention a file you are working on or the user asked about, highlight the **file name** as a markdown link to the workspace-relative path (forward slashes) so a click opens it in the editor. Example: [`SKILL.md`](skills/write-a-skill/SKILL.md). Cursor also auto-linkifies backtick-wrapped relative paths. Do not use `file://` or Windows backslashes in chat links. For line ranges, use Cursor code citation fences (`startLine:endLine:path`). Do not link incidental mentions of a common filename as a concept.
 - Use `.gitignore` as an allow-list with additional exclusions. Exclude all files by default and update the allowlist when adding new files.
 - Always put Python projects in a `venv`.
 - When building a project fails, check for outdated code instead of downgrading dependencies. If a build fails because of a missing icon, stop building. Instead, import icons from a free icon library online to build the app, or ask the user to add the missing icon.
