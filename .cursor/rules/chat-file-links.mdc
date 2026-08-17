@@ -1,0 +1,31 @@
+---
+description: Mentioned files in chat as clickable editor links
+alwaysApply: true
+---
+
+# File links in chat
+
+When you mention a file you are working on, just edited, or that the user asked about, make the **file name** a clickable link that opens it in the sidebar editor. Do not leave a bare path the user has to hunt for.
+
+## Format (Cursor chat)
+
+Write the basename as link text, with a workspace-relative path (forward slashes):
+
+[`RULES.md`](RULES.md)
+
+[`SKILL.md`](skills/write-skill/SKILL.md)
+
+Cursor also auto-linkifies backtick-wrapped workspace-relative paths:
+
+`skills/write-skill/SKILL.md`
+
+## Line ranges
+
+Use a Cursor code citation fence (`startLine:endLine:filepath`), not a markdown URL with `#L`.
+
+## Do not
+
+- Use `file://` or `openmd://` in chat (unreliable)
+- Use Windows backslashes (`\`) in chat links (they percent-encode and fail to open)
+- Use drive-letter markdown links like `[x](C:/...)` (treated as a URI scheme)
+- Link every incidental mention of a well-known filename (`package.json` as a concept). Only files in this conversation's work

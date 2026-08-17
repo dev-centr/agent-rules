@@ -44,6 +44,7 @@ Optional heavy curricula are **Cursor skills** under `skills/` (not MAIN assembl
 
 - **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
 - Write explanations in plain language.
+- **File names in chat:** when you mention a file you are working on or the user asked about, write the file name as a markdown link to the workspace-relative path (forward slashes) so a click opens it in the editor. Do not use `file://` or Windows backslashes in chat links.
 - Treat `.gitignore` as an allow-list unless the project says otherwise (exclude `*` then allow specific).
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
 - For Python, use a `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.

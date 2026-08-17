@@ -10,6 +10,7 @@
 
 ## Core
 - Plain language: keep explanations easy to read.
+- **File names in chat:** when you mention a file you are working on or the user asked about, write the **file name** as a markdown link to the workspace-relative path (forward slashes) so a click opens it in the editor. Do not use `file://` or Windows backslashes in chat links.
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `MEMORIES.md`.
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
