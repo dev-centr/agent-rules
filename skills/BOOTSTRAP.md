@@ -21,7 +21,7 @@ Skills are for **heavy curricula** split **one skill per job** (e.g. `writing-ne
 
 ## On-ramp A — configure yourself
 
-1. Create `skills/<skill-name>/` with `SKILL.md` (`name` + `description` WHAT/WHEN) and progressive-disclosure siblings.
+1. Create `skills/<skill-name>/` with `SKILL.md` (`name` + trigger-word `description` — skill `write-skill`, not create-skill’s WHAT+WHEN blurb) and progressive-disclosure siblings.
 2. Junction or copy into `~/.cursor/skills/<skill-name>/` (Windows: `mklink /J`).
 3. Optional: one AI-ops line in `RULES.md` naming the skill.
 4. New agent chat → verify discovery.
@@ -33,6 +33,7 @@ Paste (and `@`-mention this file):
 ```text
 Follow skills/BOOTSTRAP.md in this agent-rules clone.
 Install a Cursor skill under skills/<name>/; junction to ~/.cursor/skills/<name>/.
+YAML description = trigger words (skill write-skill), not a lay blurb. create-skill is layout only.
 Do not paste the skill body into always-on User Rules — thin pointer only.
 Read the general-knowledge vibe-coding / bootstrap-cursor-skills pages for framing if needed.
 ```
@@ -48,6 +49,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **DUB registry publish** → skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish`; not `dub publish`.
 - **GitHub org / project bootstrap (fast path)** → skill `bootstrap-org` (`skills/bootstrap-org/`) — name or paste an SDL profile from `profiles/` (`cli`, `desktop`, `library`, `web-app`, org names); email/vault/infra stay in Business Bootstrap.
 - **Tag / ship a version** → skill `tag-release` (`skills/tag-release/`) — SemVer + optional `+dep` labels; GitHub rolling `v2` in `github.md`; registry ranges in `registries.md`.
+- **Authoring a skill / `SKILL.md` / skill `description`** → skill `write-skill` (`skills/write-skill/`) — description = trigger words, not a lay blurb; layout leftover is Cursor `create-skill`.
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

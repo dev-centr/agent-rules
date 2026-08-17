@@ -156,6 +156,7 @@ Optional, on-demand curricula live under `skills/` and are **not** part of `RULE
 - Hub docs: https://docs.devcentr.org/agent-rules/ (Bootstrap Cursor skills page)
 - Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills*
 - Org identity fast path: skill `bootstrap-org` (not a substitute for [Business Bootstrap](https://docs.devcentr.org/business-bootstrap/))
+- Authoring skills: `write-skill` — YAML `description` is trigger words, not a lay blurb
 - Release tags: skill `tag-release` (SemVer, optional `+` dual-axis labels, GitHub rolling `v2`)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

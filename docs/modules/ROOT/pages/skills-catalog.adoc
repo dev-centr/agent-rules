@@ -8,7 +8,7 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 == Policy
 
 * **One skill per job** — separate `writing-news` and `writing-blog`, not a combined router skill
-* **`description`** states WHAT + WHEN so Cursor triggers on the right task
+* **`description`** is trigger words (utterances, filenames, task phrases) — not a lay summary of the skill. Skill `write-skill`.
 * Junction canonical tree into `~/.cursor/skills/<name>/`
 * Update `CATALOG.md` on every add/move/deprecate
 
@@ -35,6 +35,9 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 
 | `tag-release`
 | Tag a release; ship `vX.Y.Z`; rolling GitHub `v2`/`v2.x`; `+` dual-axis labels; pin vs float
+
+| `write-skill`
+| Author/edit a Cursor skill, `SKILL.md`, skill `description`; trigger words vs lay blurb; how to write skills
 |===
 
 Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].
