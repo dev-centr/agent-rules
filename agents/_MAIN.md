@@ -13,6 +13,8 @@ Entry point for **Dev-Centr org** instruction modules in `dev-centr/agent-rules`
 | Task signal | Module |
 | --- | --- |
 | DUB, `dub.json`, registry pins, `dub add-local` | `engineering/dub.md` |
+| "publish to dub" / "publish to dlang" / "publish dlang" | Cursor skill `publish-to-dub` |
+| Tag / ship a version, GitHub rolling `v2` | Cursor skill `tag-release` |
 | News / blog / essay titles | `editorial/titles.md` |
 | Opening or drafting a pull request | `editorial/pull-requests.md` |
 | News body copy (ship note, org announcement) | Cursor skill `writing-news` |

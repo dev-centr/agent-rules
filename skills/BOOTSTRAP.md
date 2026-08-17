@@ -47,6 +47,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Docs mojibake / SVG XML** → skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — transcode check/fix, not a refactor.
 - **DUB registry publish** → skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish`; not `dub publish`.
 - **GitHub org / project bootstrap (fast path)** → skill `bootstrap-org` (`skills/bootstrap-org/`) — name or paste an SDL profile from `profiles/` (`cli`, `desktop`, `library`, `web-app`, org names); email/vault/infra stay in Business Bootstrap.
+- **Tag / ship a version** → skill `tag-release` (`skills/tag-release/`) — SemVer + optional `+dep` labels; GitHub rolling `v2` in `github.md`; registry ranges in `registries.md`.
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

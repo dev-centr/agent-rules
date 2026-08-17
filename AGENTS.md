@@ -59,7 +59,8 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 ## AI ops
 
 - Stale APIs: Context7 MCP; else Outdated Code Protocol (`general/global.md`).
-- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`, `fix-docs-encoding`, `publish-to-dub`, `bootstrap-org`).
+- Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; separate skills per job (`writing-news`, `writing-blog`, `fix-docs-encoding`, `publish-to-dub`, `bootstrap-org`, `tag-release`).
+- **Release tags:** skill `tag-release` (`skills/tag-release/`) when the user asks to tag/ship a version, cut `vX.Y.Z`, or maintain rolling GitHub `v2`. `+` dual-axis labels where a peer/engine exists; GitHub moving aliases in `github.md` (the platform does not compute 2.x).
 - **Org / company / project bootstrap:** skill `bootstrap-org` (`skills/bootstrap-org/`). Name a profile in the first prompt (see `skills/bootstrap-org/profiles/catalog.sdl` or https://devcentr.org/skills/?cat=bootstrap), attach/paste an SDL `profile "…" { }` block, or let the agent infer (`new CLI` → `cli`) and poll only leftovers. Deep email/vault/chat/infra stays in Business Bootstrap.
 - **DUB publish:** official `dub` has no publish command. Use skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish` — when the user says publish to dub / dlang. Always-on pins: `agents/engineering/dub.md`.
 - **Docs encoding:** hand-authored Antora SVG/adoc breakage is usually **transcode corruption** (Windows mojibake / invalid SVG XML), not Antora plugins and not a refactor. Use skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — run its script `--check` / `--fix` after figure edits. Always-on tips: `general/documentation.md`.

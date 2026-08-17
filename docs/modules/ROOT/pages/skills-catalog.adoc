@@ -32,6 +32,9 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 
 | `bootstrap-org`
 | Bootstrap an org or project; GitHub organization; company/nonprofit; library/CLI/desktop/Tauri/SolidStart; `.github`; named or pasted SDL profile; fast-path business bootstrap
+
+| `tag-release`
+| Tag a release; ship `vX.Y.Z`; rolling GitHub `v2`/`v2.x`; `+` dual-axis labels; pin vs float
 |===
 
 Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].

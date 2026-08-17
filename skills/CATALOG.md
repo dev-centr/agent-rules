@@ -29,6 +29,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` — not a refactor |
 | `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", register/publish a D package on code.dlang.org | active | `dubx` + `dub-publish`; official `dub` has no publish command |
 | `bootstrap-org` | bootstrap an org, create a GitHub organization, start a company/nonprofit, library, CLI, desktop, Tauri, SolidStart, solid-ui, populate org data, org profile, `.github`, github.io, Antora docs hub, named SDL profile, paste a profile block, fast-path org/business/project bootstrap | active | Fast identity/project path; `profiles/*.sdl` is the list (site `/skills?cat=bootstrap` compiles it); IT literature stays in business-bootstrap |
+| `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x`, GitHub Releases, pin vs float, `+` build metadata / dual-axis labels | active | One skill; `github.md` (moving aliases — GitHub does not compute 2.x) and `registries.md` (range rolling). Not a per-platform skill family. |
 
 ## Adding a skill (checklist)
 

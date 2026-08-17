@@ -15,7 +15,7 @@ agent-rules/
     _MAIN.md
     editorial/
     engineering/
-  skills/               # Team Cursor skills (writing-news, writing-blog, publish-to-dub, bootstrap-org, …)
+  skills/               # Team Cursor skills (writing-news, writing-blog, publish-to-dub, bootstrap-org, tag-release, …)
 ----
 
 == Precedence
