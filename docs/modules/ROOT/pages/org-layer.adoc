@@ -28,20 +28,19 @@ Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent
 
 **Why not inside `.github`?** Profile repos are for GitHub's org landing page, not where developers look for engineering policy. A dedicated `{org}/agent-rules` repo is discoverable; `.github` only gets a pointer.
 
-Owned orgs should **not** fork or copy this tree. Create **`{org}/agent-rules`** as an org-owned **wrapper**:
+Owned orgs should **not** fork, copy, or **git-submodule** this tree (a submodule pins a SHA and goes stale). Create **`{org}/agent-rules`** as an org-owned **wrapper**:
 
 [source,text]
 ----
 {org}/agent-rules/
-  README.md
+  README.md              # pointer to github.com/dev-centr/agent-rules
   AGENTS.md              # thin org overlay only
-  template/              # submodule → dev-centr/agent-rules (canonical)
 {org}/.github/
-  AGENT-RULES.md         # pointer to the wrapper repo (not a submodule here)
+  AGENT-RULES.md         # pointer to the wrapper (not a submodule here)
 ----
 
 * **Org-specific** guidance → commit in `{org}/agent-rules/AGENTS.md`
-* **Shared** portable rules/skills → commit in `template/` and PR upstream to `dev-centr/agent-rules`
+* **Shared** portable rules/skills → PR this repo (`dev-centr/agent-rules`); clone/fetch it as `AGENT_RULES_PATH`
 * **Dev-Centr** keeps canonical `AGENTS.md` + `agents/` here; satellite orgs only overlay what differs (`ORG`, docs host, forge quirks)
 
 Script: `scripts/setup-org-agent-rules-wrapper.ps1`.

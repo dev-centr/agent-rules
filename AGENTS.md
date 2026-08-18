@@ -4,7 +4,7 @@
 ## Constants (fill before paste)
 
 - `CODE_ROOT` — your code hive (see `profiles/*.md`)
-- `AGENT_RULES_PATH` — this repository for **dev-centr** work: `$CODE_ROOT/github.com/dev-centr/agent-rules`. Satellite orgs: `$CODE_ROOT/github.com/{org}/agent-rules/template` (wrapper submodule) + org overlay in that wrapper's `AGENTS.md`
+- `AGENT_RULES_PATH` — shared tree: `$CODE_ROOT/github.com/dev-centr/agent-rules` (clone/fetch this repo; do not submodule it). Satellite orgs add overlay `$CODE_ROOT/github.com/{org}/agent-rules/AGENTS.md` only.
 - `ORG` — `dev-centr`
 - `ISSUES_REPO` — path to your `.issues` workflow repo when used (often personal; see profile)
 - `MEMORIES` — `$CODE_ROOT/MEMORIES.md` (workstation only; never commit)

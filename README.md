@@ -37,7 +37,7 @@
 
 Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app's rules field.
 
-**Org wrapper:** each owned org gets `{org}/agent-rules` with `template/` submoduled to this repo and a thin org `AGENTS.md`. `{org}/.github/AGENT-RULES.md` points there — not a submodule inside `.github`. Script: `scripts/setup-org-agent-rules-wrapper.ps1`. Fork only when you need a *diverging* private tree.
+**Org wrapper:** each owned org gets `{org}/agent-rules` with a pointer README and a thin org `AGENTS.md` — **no git submodule** (a SHA pin goes stale). `{org}/.github/AGENT-RULES.md` points at the wrapper. Shared rules stay in this repo; clone/fetch it. Script: `scripts/setup-org-agent-rules-wrapper.ps1`. Fork only when you need a *diverging* private tree.
 
 Docs: https://docs.devcentr.org/agent-rules/
 

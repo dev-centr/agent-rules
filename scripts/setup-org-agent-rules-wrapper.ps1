@@ -1,4 +1,4 @@
-# Create or repair {org}/agent-rules wrapper (template/ submodule + .github pointer).
+# Create or repair {org}/agent-rules wrapper (pointer README + overlay, no submodule).
 # Usage:
 #   pwsh setup-org-agent-rules-wrapper.ps1 -Org FoodTruckNerdz
 #   pwsh setup-org-agent-rules-wrapper.ps1 -Org FoodTruckNerdz -CodeRoot Z:\code\github.com
@@ -7,7 +7,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Org,
     [string]$CodeRoot = $(if ($env:code) { $env:code + '\github.com' } elseif ($env:CODE_ROOT) { $env:CODE_ROOT + '\github.com' } else { 'Z:\code\github.com' }),
-    [string]$TemplateUrl = 'https://github.com/dev-centr/agent-rules.git'
+    [string]$CanonicalUrl = 'https://github.com/dev-centr/agent-rules'
 )
 
 function Set-Utf8NoBomContent {
@@ -20,19 +20,20 @@ function Write-WrapperReadme($path, $orgName) {
     $text = @'
 # agent-rules ({0})
 
-This repository is the org-facing wrapper for shared agent rules.
+Org overlay for agent rules. Shared portable rules and Cursor skills are **not** copied here — a git submodule would pin a SHA and go stale.
+
+Canonical: https://github.com/dev-centr/agent-rules
+
+Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Junction skills from there into `~/.cursor/skills/<name>/`.
 
 ## Layout
 
-- `template/` - git submodule to `dev-centr/agent-rules` (canonical source)
-- `AGENTS.md` - this org's thin overlay and entrypoint
+- `AGENTS.md` — this org's overlay (ORG, docs host, forge quirks)
 
 ## Contribution flow
 
 - Org-specific guidance: commit in this repo
-- Shared portable rules/skills: commit in `template/` and open a PR upstream to `dev-centr/agent-rules`
-
-Do not copy the template tree into this repository.
+- Shared rules/skills: PR https://github.com/dev-centr/agent-rules
 '@ -f $orgName
     Set-Utf8NoBomContent (Join-Path $path 'README.md') $text
 }
@@ -41,14 +42,14 @@ function Write-WrapperAgents($path, $orgName) {
     $text = @'
 # {0} org overlay
 
-Primary rules source is `template/` (submodule to `dev-centr/agent-rules`).
-
-Use this file only for org-specific overrides that should not apply globally.
+Shared rules and Cursor skills live in **dev-centr/agent-rules**. This repo is the org overlay only — it does not vendor a snapshot.
 
 When assembling context for this org's repos, resolve:
 
-- `AGENT_RULES_PATH` = `template/` inside this wrapper (or the org clone path)
+- `AGENT_RULES_PATH` = `$CODE_ROOT/github.com/dev-centr/agent-rules`
 - Org overlay = this `AGENTS.md`
+
+Shared changes: PR `dev-centr/agent-rules`. Org-only: commit here.
 '@ -f $orgName
     Set-Utf8NoBomContent (Join-Path $path 'AGENTS.md') $text
 }
@@ -57,13 +58,26 @@ function Write-DotGithubPointer($path, $orgName) {
     $text = @'
 # Agent Rules
 
-Org rules live in:
+- Overlay: https://github.com/{0}/agent-rules
+- Shared: https://github.com/dev-centr/agent-rules
 
-- https://github.com/{0}/agent-rules
-
-That repository wraps the shared template (`dev-centr/agent-rules`) as a `template/` submodule and keeps org-specific overlays in one obvious place.
+The wrapper holds org-specific `AGENTS.md` only. Do not submodule the canonical tree — clone/fetch `dev-centr/agent-rules` instead.
 '@ -f $orgName
     Set-Utf8NoBomContent (Join-Path $path 'AGENT-RULES.md') $text
+}
+
+function Remove-TemplateSubmodule {
+    if ((Test-Path '.gitmodules') -or (Test-Path 'template')) {
+        git submodule deinit -f -- template 2>$null | Out-Null
+        git rm -f template 2>$null | Out-Null
+        $mod = Join-Path '.git' 'modules\template'
+        if (Test-Path $mod) { Remove-Item -Recurse -Force $mod }
+        if ((Test-Path '.gitmodules') -and -not (Get-Content '.gitmodules' -ErrorAction SilentlyContinue | Where-Object { $_.Trim() })) {
+            git rm -f .gitmodules 2>$null | Out-Null
+            if (Test-Path '.gitmodules') { Remove-Item -Force '.gitmodules' }
+        }
+        if (Test-Path 'template') { Remove-Item -Recurse -Force 'template' }
+    }
 }
 
 $wrapperPath = Join-Path $CodeRoot "$Org\agent-rules"
@@ -71,7 +85,7 @@ $dotGithubPath = Join-Path $CodeRoot "$Org\.github"
 
 gh repo view "$Org/agent-rules" 2>$null
 if ($LASTEXITCODE -ne 0) {
-    gh repo create "$Org/agent-rules" --public --description "Org wrapper for shared agent-rules template" | Out-Null
+    gh repo create "$Org/agent-rules" --public --description "Org overlay for shared agent-rules (canonical: $CanonicalUrl)" | Out-Null
 }
 
 if (-not (Test-Path $wrapperPath)) {
@@ -84,17 +98,15 @@ try {
     git checkout main 2>$null
     git pull --ff-only 2>$null
 
+    Remove-TemplateSubmodule
     Write-WrapperReadme $wrapperPath $Org
     Write-WrapperAgents $wrapperPath $Org
 
-    if (-not (Test-Path '.gitmodules')) {
-        git submodule add $TemplateUrl template
-    }
-
-    git add README.md AGENTS.md .gitmodules template
+    git add README.md AGENTS.md
+    git add -u
     if (git diff --cached --quiet) { Write-Host "wrapper unchanged: $Org/agent-rules" }
     else {
-        git commit -m "Maintain org agent-rules wrapper with dev-centr template submodule."
+        git commit -m "Point at canonical agent-rules instead of a pinning submodule."
         git push
         Write-Host "pushed: $Org/agent-rules"
     }
@@ -123,7 +135,7 @@ if (Test-Path $dotGithubPath) {
 
         if (git diff --cached --quiet) { Write-Host ".github unchanged: $Org" }
         else {
-            git commit -m "Point contributors to org-level agent-rules wrapper repository."
+            git commit -m "Point contributors at the org overlay and canonical agent-rules."
             git push
             Write-Host "updated: $Org/.github"
         }

@@ -55,7 +55,7 @@ Agent rules wrapper (after `.github` exists — not inside it):
 pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-wrapper.ps1 -Org {org}
 ```
 
-Creates `{org}/agent-rules` with `template/` → `dev-centr/agent-rules` submodule and adds `AGENT-RULES.md` pointer in `.github`. Org overlay in wrapper `AGENTS.md`; shared changes PR upstream to `dev-centr/agent-rules`.
+Creates `{org}/agent-rules` with a pointer README and overlay `AGENTS.md` (no submodule) and adds `AGENT-RULES.md` in `.github`. Shared changes PR `dev-centr/agent-rules`; clone/fetch that repo as `AGENT_RULES_PATH`.
 
 Visibility if they created `.github` private by mistake:
 
