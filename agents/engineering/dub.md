@@ -12,3 +12,5 @@ Applies to **devcentr** and other org repos that use DUB. Repo-specific override
 ## Publishing to code.dlang.org
 
 Official `dub` has **no** `publish` command. When the user asks to **publish to dub / dlang**, use Cursor skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish`. Do not paste that skill body here.
+
+Always **set registry categories** (1–4 taxonomy ids) as part of that skill — infer, `dubx categories`, verify JSON. Do not leave them empty for the web UI.

@@ -14,7 +14,7 @@ description: >-
 
 - GitHub (Actions `uses:`, zip/download URLs, GitHub Releases): [github.md](github.md)
 - Registries that resolve ranges (`^2`, `~>2.0`, Cargo, PyPI, DUB): [registries.md](registries.md)
-- After DUB git tags, if they also asked to publish to code.dlang.org: skill `publish-to-dub`
+- After DUB git tags, if they also asked to publish to code.dlang.org: skill `publish-to-dub` (that skill always POSTs categories)
 
 Do **not** invent tags. If they asked only to merge, register, or document, skip tagging.
 

@@ -28,7 +28,7 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 | Mojibake, SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows
 
 | `publish-to-dub`
-| "publish to dub", "publish to dlang", "publish dlang"; register a D package on code.dlang.org
+| "publish to dub", "publish to dlang", "publish dlang"; DUB categories; register a D package on code.dlang.org
 
 | `bootstrap-org`
 | Bootstrap an org or project; GitHub organization; company/nonprofit; library/CLI/desktop/Tauri/SolidStart; `.github`; named or pasted SDL profile; fast-path business bootstrap

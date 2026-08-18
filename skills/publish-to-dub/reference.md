@@ -13,7 +13,7 @@ Short aliases on `dubx` are the same verbs as `dub-publish`. `dubx publish <args
 | Exists? | `dubx status -n NAME` |
 | Queue metadata refresh | `dubx update -n NAME` |
 | Docs URL | `dubx docs-url -n NAME --docs-url URL` |
-| Categories (max 4) | `dubx categories -n NAME --category ID [--category ID …]` |
+| Categories (max 4, **required**) | `dubx categories -n NAME --category ID [--category ID …]` — POST immediately; not optional |
 | Logo | `dubx logo -n NAME --logo-file PATH` |
 | Reset logo | `dubx logo-delete -n NAME` |
 | Hook status (safe) | `dubx hooks -n NAME` |
@@ -52,15 +52,44 @@ Install binaries: `%LOCALAPPDATA%\Programs\dlang-supplemental\dubx` and `...\dub
 
 CI: reusable workflow `dlang-supplemental/dub-publish/.github/workflows/register-package.yml` + secrets `DUB_REGISTRY_USER` / `DUB_REGISTRY_PASSWORD`.
 
+## Categories — always populate and POST
+
+Never leave `categories` empty on a package you register or audit. Infer 1–4 ids, run `dubx categories`, verify.
+
+Read live (public JSON; empty if unset):
+
+```powershell
+(Invoke-RestMethod "https://code.dlang.org/packages/NAME.json").categories
+```
+
+Owner list after login: `https://code.dlang.org/my_packages`. Cookie jar: `%LOCALAPPDATA%\dlang-supplemental\dub-publish\cookies.txt`.
+
+`dubx categories` **pushes** to `POST /my_packages/:name/set_categories`. It does **not** wait for git tags or `dubx update`. `update` refreshes recipe/versions only.
+
+Pick the **most specific** dotted path from the [registry taxonomy](https://code.dlang.org). Do not also send ancestors — browse/search already matches prefixes (`library.tui` shows under `library`). Max 4. Ask only when two siblings are equally plausible.
+
+| Signal | Prefer |
+| --- | --- |
+| CLI / desktop tooling | `library.development` + `application.desktop.development` (or a child: `.build`, `.packaging`, …) |
+| D bindings | `library.binding` (Deimos: `library.binding.deimos`) |
+| TUI | `library.tui` — **not** `library.gui` |
+| GUI | `library.gui` |
+| BetterC | `library.betterc` |
+| VCS | `library.vcs` |
+| Config / file formats | `library.data` |
+| Phobos candidate only | `library.std_aspirant` — never for a third-party binding |
+
+If JSON already matches the chosen set, skip the POST. If empty or wrong, overwrite.
+
 ## Category ids (max 4)
 
-Dotted path from the [registry taxonomy](https://code.dlang.org). Pick the most specific matches.
+Dotted path from the taxonomy. Pick the most specific matches.
 
 **Libraries** — `library`, `library.audio`, `library.betterc`, `library.binding`, `library.binding.deimos`, `library.crypto`, `library.development`, `library.development.parsing`, `library.data`, `library.data_structures`, `library.database`, `library.filesystem`, `library.gamedev`, `library.geospatial`, `library.graphics`, `library.gui`, `library.tui`, `library.testing`, `library.memory`, `library.network`, `library.network.messaging`, `library.scripting`, `library.vcs`, `library.video`, `library.vibed`, `library.wasm`, `library.web`, `library.web.auth`, `library.web.communication`, `library.web.framework`, `library.web.cms`, `library.general`, `library.generic`, `library.encoding`, `library.i18n`, `library.scientific`, `library.scientific.linalg`, `library.scientific.numeric`, `library.scientific.newton`, `library.scientific.bioinformatics`, `library.optimized_cpu`, `library.optimized_mem`, `library.nogc`, `library.std_aspirant`
 
 **Applications** — `application`, `application.desktop`, `application.desktop.development`, `application.desktop.development.analyzer`, `application.desktop.development.build`, `application.desktop.development.compiler`, `application.desktop.development.debugger`, `application.desktop.development.documentation`, `application.desktop.development.packaging`, `application.desktop.development.plugin`, `application.desktop.development.ide`, `application.desktop.editor`, `application.desktop.game`, `application.desktop.graphics`, `application.desktop.multimedia`, `application.desktop.network`, `application.desktop.photo`, `application.desktop.productivity`, `application.desktop.web`, `application.mobile`, `application.server`, `application.server.messaging`, `application.server.database`, `application.server.game`, `application.server.web`, `application.web`, `application.web.development`, `application.web.communication`, `application.web.productivity`
 
-Typical CLI/tooling package: `library.development` + `application.desktop.development`. Binding: `library.binding`. TUI: `library.tui`.
+Typical CLI/tooling package: `library.development` + `application.desktop.development`. Binding: `library.binding`. TUI: `library.tui`. Always POST after register.
 
 ## See also
 
