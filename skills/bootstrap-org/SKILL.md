@@ -1,19 +1,13 @@
 ---
 name: bootstrap-org
 description: >-
-  Stand up a new GitHub organization, company, nonprofit, OSS collective, or
-  a new library, CLI, desktop (Tauri), or SolidStart web app: decide whether a
-  new org is warranted, fill org About/website, design logo/avatar, create a
-  public .github profile README, ship github.io or custom-domain site, docs hub,
-  news vs blog, partner/transfer repos, and optional email/DNS/infra. Load a
-  named SDLang profile from the first prompt (oss-collective, product-org,
-  nonprofit, web-app, library, cli, desktop, docs-hub, forks-org) or accept an
-  attached/pasted profile { } block; SolidStart static + solid-ui house
-  defaults unless the profile overrides. Use when the user asks to bootstrap an
-  org or project, create a GitHub organization, start a company or nonprofit,
-  scaffold a CLI/library/Tauri/desktop/web app, populate org data, add an org
-  profile, set up .github, github.io, an Antora docs hub, pick a bootstrap
-  profile, or wants a fast-path org/business bootstrap.
+  Use when the user asks to bootstrap an org or project, initialize an org,
+  create a GitHub organization, start a company or nonprofit, scaffold a
+  CLI/library/Tauri/desktop/web app, populate org data, set up .github,
+  github.io, an Antora docs hub, pick a bootstrap profile, paste a profile { }
+  block, or create an org agent-rules overlay. Named SDL profiles:
+  oss-collective, product-org, nonprofit, web-app, library, cli, desktop,
+  docs-hub, forks-org.
 ---
 
 # Bootstrap a new organization
@@ -89,11 +83,12 @@ Org bootstrap (kind org):
 - [ ] 1 Org identity (About / website / location)
 - [ ] 2 Logo + 256px avatar asset
 - [ ] 3 Public .github profile
+- [ ] 3a Agent-rules overlay (house workflow - pointer repo, not a submodule)
 - [ ] 4 Public website
 - [ ] 5 Docs hub (one per org)
 - [ ] 6 News vs blog (split)
 - [ ] 7 Partners, transfers, personal-hub update
-- [ ] 8 Domain / email / infra (hand off — optional)
+- [ ] 8 Domain / email / infra (hand off - optional)
 
 Project bootstrap (kind project):
 - [ ] 0 Profile + intake
@@ -131,6 +126,20 @@ Settled profile recipe:
 `.github-private` only when **member-only text actually differs**. Same copy → do not keep a private profile.
 
 Optional in `.github`: `workflow-templates/` only if they will publish org starters; changelog on bootstrap.
+
+### 3a. Agent-rules overlay (house workflow)
+
+This step is **this hive's org init**, not a GitHub or industry default. Skip for orgs the user does not own, third-party banners, or when they say they do not want house agent-rules.
+
+Do **not** `git submodule` `dev-centr/agent-rules`. A submodule pins a SHA; wrapper clones go stale. Shared rules and Cursor skills live in one canonical clone (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Junction skills from there.
+
+After `{org}/.github` exists, run:
+
+```powershell
+pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-wrapper.ps1 -Org {org}
+```
+
+That creates `{org}/agent-rules` (pointer README + overlay `AGENTS.md` only) and writes `{org}/.github/AGENT-RULES.md`. Org-only text stays in the wrapper. Shared changes: PR `dev-centr/agent-rules`. Details: [reference.md](reference.md).
 
 ### 4. Public website
 
@@ -178,6 +187,6 @@ Do not restate those procedures here. Point at Business Bootstrap (email tutoria
 
 ## Done when
 
-**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); session-scoped site/docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
+**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; session-scoped site/docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
 
 **Project.** Repo About filled; scaffold matches the loaded profile; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.

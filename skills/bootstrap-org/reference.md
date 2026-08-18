@@ -31,6 +31,7 @@ Classic SDL only (no Extended SDL/XDL). Strings are quoted; nested blocks as in 
 | News feed | Something actually newsworthy |
 | Blog route | Essays that are not news |
 | Workflow templates in `.github` | They will publish org starter workflows |
+| Agent-rules overlay (`{org}/agent-rules`) | House-owned org this hive is initializing (not a third-party org) |
 | Legal entity / bank / Workspace | They asked this session |
 
 ## `gh` snippets
@@ -49,13 +50,17 @@ gh repo create {org}/.github --public --confirm
 # content: profile/README.md  +  profile/assets/  (+ optional root README for maintainers)
 ```
 
-Agent rules wrapper (after `.github` exists — not inside it):
+Agent rules wrapper (after `.github` exists - not inside it). **House workflow** for orgs this hive owns, not a requirement for every GitHub org:
 
 ```powershell
 pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-wrapper.ps1 -Org {org}
 ```
 
-Creates `{org}/agent-rules` with a pointer README and overlay `AGENTS.md` (no submodule) and adds `AGENT-RULES.md` in `.github`. Shared changes PR `dev-centr/agent-rules`; clone/fetch that repo as `AGENT_RULES_PATH`.
+Creates `{org}/agent-rules` with a pointer README and overlay `AGENTS.md`. Does **not** add a git submodule (a SHA pin goes stale). Writes `AGENT-RULES.md` in `{org}/.github`. Shared rules: clone/fetch `dev-centr/agent-rules` as `AGENT_RULES_PATH`. Shared changes: PR that repo. Org-only: commit the wrapper.
+
+Skip this script for orgs the user does not own.
+
+Git submodules record one commit. `git pull` on the wrapper does not float `dev-centr/agent-rules`. Dependabot can bump a SHA, but that is still a pin. House orgs therefore **point** at the canonical repo instead of vendoring it.
 
 Visibility if they created `.github` private by mistake:
 

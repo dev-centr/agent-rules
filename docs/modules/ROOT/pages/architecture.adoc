@@ -27,3 +27,5 @@ flowchart TB
 * **MEMORIES.md** — machine-local facts; gitignored; never committed
 
 On `dev-centr/*` work, org layer **overrides** personal portable rules where they conflict. See xref:org-layer.adoc[Org layer].
+
+House org init (skill `bootstrap-org`, not a universal GitHub practice): satellite `{org}/agent-rules` repos are **pointer overlays** (`AGENTS.md` only). They must not git-submodule this tree. Shared skills: clone/fetch this repo, then junction `skills/<name>/` into `~/.cursor/skills/<name>/`.

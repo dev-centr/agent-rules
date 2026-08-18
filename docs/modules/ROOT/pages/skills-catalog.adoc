@@ -31,7 +31,7 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 | "publish to dub", "publish to dlang", "publish dlang"; DUB categories; register a D package on code.dlang.org
 
 | `bootstrap-org`
-| Bootstrap an org or project; GitHub organization; company/nonprofit; library/CLI/desktop/Tauri/SolidStart; `.github`; named or pasted SDL profile; fast-path business bootstrap
+| Bootstrap or initialize an org or project; GitHub organization; company/nonprofit; library/CLI/desktop/Tauri/SolidStart; `.github`; named or pasted SDL profile; house `{org}/agent-rules` overlay (pointer, not a submodule)
 
 | `tag-release`
 | Tag a release; ship `vX.Y.Z`; rolling GitHub `v2`/`v2.x`; `+` dual-axis labels; pin vs float

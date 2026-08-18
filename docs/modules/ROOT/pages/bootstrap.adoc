@@ -20,5 +20,6 @@ It is intentionally short. Full framing and worked examples live in general-know
 
 == Related
 
+* xref:org-layer.adoc[Org layer] (house `{org}/agent-rules` overlay - pointer, not a submodule)
 * xref:usage.adoc[Usage]
 * xref:home::tools/agent-rules.adoc[Hub portal]

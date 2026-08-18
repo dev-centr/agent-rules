@@ -47,7 +47,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - **Docs mojibake / SVG XML** → skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — transcode check/fix, not a refactor.
 - **DUB registry publish** → skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish`; not `dub publish`. Always POST categories.
-- **GitHub org / project bootstrap (fast path)** → skill `bootstrap-org` (`skills/bootstrap-org/`) — name or paste an SDL profile from `profiles/` (`cli`, `desktop`, `library`, `web-app`, org names); email/vault/infra stay in Business Bootstrap.
+- **GitHub org / project bootstrap (fast path)** → skill `bootstrap-org` (`skills/bootstrap-org/`) — name or paste an SDL profile from `profiles/` (`cli`, `desktop`, `library`, `web-app`, org names); house org init adds a pointer `{org}/agent-rules` overlay (no submodule). Email/vault/infra stay in Business Bootstrap.
 - **Tag / ship a version** → skill `tag-release` (`skills/tag-release/`) — SemVer + optional `+dep` labels; GitHub rolling `v2` in `github.md`; registry ranges in `registries.md`.
 - **Authoring a skill / `SKILL.md` / skill `description`** → skill `write-a-skill` (`skills/write-a-skill/`) — description = trigger words, not a lay blurb; layout leftover is Cursor `create-skill`.
 - **Ship an app** → skill `ship-app` (`skills/ship-app/`) — Software Product Essentials; About, Help, debug dump, auto-update, installer, CI.
