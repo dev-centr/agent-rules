@@ -24,6 +24,30 @@ On any `dev-centr/*` repository, **org rules win** over personal portable rules 
 
 Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent-rules-setup.html[Org agent rules setup] (member-only).
 
+== Other orgs: wrapper repo, do not copy
+
+**Why not inside `.github`?** Profile repos are for GitHub's org landing page, not where developers look for engineering policy. A dedicated `{org}/agent-rules` repo is discoverable; `.github` only gets a pointer.
+
+Owned orgs should **not** fork or copy this tree. Create **`{org}/agent-rules`** as an org-owned **wrapper**:
+
+[source,text]
+----
+{org}/agent-rules/
+  README.md
+  AGENTS.md              # thin org overlay only
+  template/              # submodule → dev-centr/agent-rules (canonical)
+{org}/.github/
+  AGENT-RULES.md         # pointer to the wrapper repo (not a submodule here)
+----
+
+* **Org-specific** guidance → commit in `{org}/agent-rules/AGENTS.md`
+* **Shared** portable rules/skills → commit in `template/` and PR upstream to `dev-centr/agent-rules`
+* **Dev-Centr** keeps canonical `AGENTS.md` + `agents/` here; satellite orgs only overlay what differs (`ORG`, docs host, forge quirks)
+
+Script: `scripts/setup-org-agent-rules-wrapper.ps1`.
+
+Rationale: one obvious place per org, one upstream template, no duplicate skill bodies, PR flow to `dev-centr/agent-rules` stays intact.
+
 == Junction shortcut
 
 [source,powershell]

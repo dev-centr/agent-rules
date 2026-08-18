@@ -65,6 +65,9 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 
 | `issue-reports`
 | Draft/file an issue report; never chat-only
+
+| `polyglot-ci`
+| GitHub Actions matrix; win/mac/lin/BSD; x64/arm64; cosmocc; Binary Tailor pack
 |===
 
 Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].

@@ -4,7 +4,7 @@
 ## Constants (fill before paste)
 
 - `CODE_ROOT` — your code hive (see `profiles/*.md`)
-- `AGENT_RULES_PATH` — this repository, e.g. `$CODE_ROOT/github.com/dev-centr/agent-rules` (org canonical) or your fork
+- `AGENT_RULES_PATH` — this repository for **dev-centr** work: `$CODE_ROOT/github.com/dev-centr/agent-rules`. Satellite orgs: `$CODE_ROOT/github.com/{org}/agent-rules/template` (wrapper submodule) + org overlay in that wrapper's `AGENTS.md`
 - `ORG` — `dev-centr`
 - `ISSUES_REPO` — path to your `.issues` workflow repo when used (often personal; see profile)
 - `MEMORIES` — `$CODE_ROOT/MEMORIES.md` (workstation only; never commit)
@@ -65,6 +65,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Org / company / project bootstrap:** skill `bootstrap-org` (`skills/bootstrap-org/`). Name a profile in the first prompt (see `skills/bootstrap-org/profiles/catalog.sdl` or https://devcentr.org/skills/?cat=bootstrap), attach/paste an SDL `profile "…" { }` block, or let the agent infer (`new CLI` → `cli`) and poll only leftovers. Deep email/vault/chat/infra stays in Business Bootstrap.
 - **DUB publish:** official `dub` has no publish command. Use skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish` — when the user says publish to dub / dlang. Always-on pins: `agents/engineering/dub.md`.
 - **Docs encoding:** hand-authored Antora SVG/adoc breakage is usually **transcode corruption** (Windows mojibake / invalid SVG XML), not Antora plugins and not a refactor. Use skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — run its script `--check` / `--fix` after figure edits. Always-on tips: `general/documentation.md`.
+- **Polyglot / multi-OS CI:** skill `polyglot-ci` (`skills/polyglot-ci/`) when generating GitHub Actions matrices for win/mac/lin/BSD, APE, or Binary Tailor packs. macOS is arm64 only.
 - Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills* on docs.devcentr.org.
 
 ## Local shortcut (team convention)

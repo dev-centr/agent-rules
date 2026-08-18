@@ -1,0 +1,78 @@
+# Copy to .github/workflows/release.yml and replace the Build step.
+name: Release matrix
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            triplet: linux-x64
+          - os: ubuntu-24.04-arm
+            triplet: linux-arm64
+          - os: windows-latest
+            triplet: windows-x64
+          # Enable when the org can use GitHub-hosted Windows ARM:
+          # - os: windows-11-arm
+          #   triplet: windows-arm64
+          - os: macos-14
+            triplet: macos-arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: echo "replace with dub/cargo/pnpm/cmake for ${{ matrix.triplet }}"
+      - name: Upload slice
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-${{ matrix.triplet }}
+          path: |
+            app
+            app.exe
+            **/${{ matrix.triplet }}/**
+
+  pack:
+    if: github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: dev-centr/binary-tailor
+          path: binary-tailor
+      - uses: actions/checkout@v4
+        with:
+          repository: dev-centr/macho-memload
+          path: macho-memload
+      - uses: dlang-community/setup-dlang@v1
+        with:
+          compiler: ldc-latest
+      - run: dub build --compiler=ldc2
+        working-directory: binary-tailor
+      - uses: actions/download-artifact@v4
+        with:
+          path: slices
+      - name: Pack one download
+        shell: bash
+        run: |
+          args=()
+          shopt -s globstar nullglob
+          for f in slices/**/app slices/**/app.exe; do
+            trip=$(basename "$(dirname "$f")")
+            trip=${trip#app-}
+            args+=("${trip}=${f}")
+          done
+          binary-tailor/binary-tailor pack -o app.bin --name app --version "${GITHUB_REF_NAME#v}" "${args[@]}"
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: app.bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

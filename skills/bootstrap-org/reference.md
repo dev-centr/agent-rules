@@ -49,6 +49,14 @@ gh repo create {org}/.github --public --confirm
 # content: profile/README.md  +  profile/assets/  (+ optional root README for maintainers)
 ```
 
+Agent rules wrapper (after `.github` exists — not inside it):
+
+```powershell
+pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-wrapper.ps1 -Org {org}
+```
+
+Creates `{org}/agent-rules` with `template/` → `dev-centr/agent-rules` submodule and adds `AGENT-RULES.md` pointer in `.github`. Org overlay in wrapper `AGENTS.md`; shared changes PR upstream to `dev-centr/agent-rules`.
+
 Visibility if they created `.github` private by mistake:
 
 ```powershell

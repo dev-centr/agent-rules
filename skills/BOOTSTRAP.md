@@ -59,6 +59,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Env names registry** → skill `env-names-registry` (`skills/env-names-registry/`) — names only, never secret values.
 - **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`) when Context7 is unavailable.
 - **Issue reports** → skill `issue-reports` (`skills/issue-reports/`) — durable draft; never chat-only.
+- **Polyglot CI / release matrix** → skill `polyglot-ci` (`skills/polyglot-ci/`) — win/mac/lin/BSD, macOS arm64 only, Binary Tailor pack.
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

@@ -8,6 +8,7 @@ Do not apply these rules to third-party open-source contributions unless explici
 ## Organization and GitHub
 
 - Use `gh api` to perform repo transfers when you own the orgs.
+- **Agent rules per org:** create `{org}/agent-rules` wrapper (`template/` submodule → `dev-centr/agent-rules`, thin org `AGENTS.md`). Point `{org}/.github/AGENT-RULES.md` at the wrapper — do **not** submodule rules into `.github`. Script: `scripts/setup-org-agent-rules-wrapper.ps1`.
 - Issue reports: skill **`issue-reports`** — durable draft, never only in chat. Follow `ISSUES_REPO` instructions when that constant is set.
 
 ## Architecture and data
