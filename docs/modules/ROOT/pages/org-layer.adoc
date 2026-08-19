@@ -9,7 +9,7 @@ The **`dev-centr/agent-rules`** repository holds both portable rules and the **o
 [source,text]
 ----
 agent-rules/
-  RULES.md              # Portable — forkable baseline
+  user.md              # Portable — forkable baseline
   AGENTS.md             # Org — overrides personal on dev-centr work
   agents/
     _MAIN.md
@@ -20,7 +20,7 @@ agent-rules/
 
 == Precedence
 
-On any `dev-centr/*` repository, **org rules win** over personal portable rules where they conflict. Harnesses do **not** enforce this automatically — stack `AGENTS.md` after personal `RULES.md` in the always-on slot and instruct the agent explicitly.
+On any `dev-centr/*` repository, **org rules win** over personal portable rules where they conflict. Harnesses do **not** enforce this automatically — stack `AGENTS.md` after personal `user.md` in the always-on slot and instruct the agent explicitly.
 
 Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent-rules-setup.html[Org agent rules setup] (member-only).
 

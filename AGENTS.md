@@ -7,30 +7,30 @@
 - `AGENT_RULES_PATH` — shared tree: `$CODE_ROOT/github.com/dev-centr/agent-rules` (clone/fetch this repo; do not submodule it). Satellite orgs add overlay `$CODE_ROOT/github.com/{org}/agent-rules/AGENTS.md` only.
 - `ORG` — `dev-centr`
 - `ISSUES_REPO` — path to your `.issues` workflow repo when used (often personal; see profile)
-- `MEMORIES` — `$CODE_ROOT/MEMORIES.md` (this user's machine; never commit)
-- `HARNESS` — `$CODE_ROOT/HARNESS.md` (harness config on this machine; never commit)
+- `MACHINE` — `$CODE_ROOT/machine.md` (machine rules — this user's workstation; never commit)
+- `HARNESS` — `$CODE_ROOT/harness.md` (harness rules — discovery + behaviors; never commit)
 
 ## Layering (do not conflate)
 
 | Layer | Files in this repo | When it applies |
 | --- | --- | --- |
-| Portable | `RULES.md` + `general/*` + your `profiles/*.md` | All coding work |
+| Portable | `user.md` + `general/*` + your `profiles/*.md` | All coding work |
 | **Org** | **`AGENTS.md`** + `agents/*` + org `skills/*` | Any `dev-centr` org repo |
 | Product | `devcentr-agent-rules` (separate repo) | Dev-Centr app acting **for** the user |
 | Project | `<repo>/AGENTS.md` | That repository only |
 
-Workstation facts → `MEMORIES`. Harness config → `HARNESS`. Project facts → repo `AGENTS.md` + docs. Editorial policy → `agents/editorial/` + site `STYLE.adoc`.
+Machine rules → `MACHINE`. Harness rules → `HARNESS`. Project facts → repo `AGENTS.md` + docs. Editorial policy → `agents/editorial/` + site `STYLE.adoc`.
 
 ## Precedence (org work — explicit)
 
 Harnesses **do not** automatically rank rule layers. When working in any **`dev-centr/*`** repository:
 
-1. **Org wins on conflict:** this `AGENTS.md` and `agents/*` **override** personal portable rules (`RULES.md`, personal fork overlays) where they disagree.
+1. **Org wins on conflict:** this `AGENTS.md` and `agents/*` **override** personal portable rules (`user.md`, personal fork overlays) where they disagree.
 2. **Repo adds, does not weaken:** per-repo `AGENTS.md` adds facts; it must not contradict org policy.
 3. **Product scope only:** `devcentr-agent-rules` applies when the Dev-Centr app acts for the user — not for normal editing.
-4. **Machine files stay local:** `MEMORIES` and `HARNESS` never override org editorial or engineering policy.
+4. **Machine files stay local:** `MACHINE` and `HARNESS` never override org editorial or engineering policy.
 
-**Always-on stack order:** personal `RULES.md` first (portable baseline), then **this `AGENTS.md`** (org override). Instruct the agent to apply org layer after assembly and treat org as authoritative on dev-centr work.
+**Always-on stack order:** personal `user.md` first (portable baseline), then **this `AGENTS.md`** (org override). Instruct the agent to apply org layer after assembly and treat org as authoritative on dev-centr work.
 
 ## Context assembly (org pass)
 

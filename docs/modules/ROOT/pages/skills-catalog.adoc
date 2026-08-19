@@ -12,7 +12,7 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 
 * **One skill per job** — separate `writing-news` and `writing-blog`, not a combined router skill
 * **`description`** is trigger words (utterances, filenames, task phrases) — not a lay summary of the skill. Skill `write-a-skill`.
-* Install per `$CODE_ROOT/HARNESS.md` or read `$AGENT_RULES_PATH/skills/<name>/` directly
+* Install per `$CODE_ROOT/harness.md` or read `$AGENT_RULES_PATH/skills/<name>/` directly
 * Update `CATALOG.md` on every add/move/deprecate
 
 == Registered (org)
@@ -22,7 +22,7 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 | Skill | Triggers on
 
 | `harness-setup`
-| New machine/harness setup, populate HARNESS.md, template boundary
+| New machine/harness setup, populate harness.md, template boundary
 
 | `writing-news`
 | News item, ship note, org announcement, news-channel body
@@ -81,7 +81,7 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 
 == Install
 
-Install method is **machine-specific** — record in `$CODE_ROOT/HARNESS.md`. Example when `SKILLS_INSTALL = junction` and `HARNESS_NAME = cursor`:
+Install method is **machine-specific** — record in `$CODE_ROOT/harness.md`. Example when `SKILLS_INSTALL = junction` and `HARNESS_NAME = cursor`:
 
 [source,powershell]
 ----

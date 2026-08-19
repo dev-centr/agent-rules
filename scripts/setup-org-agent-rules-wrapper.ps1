@@ -24,7 +24,7 @@ Org overlay for agent rules. Shared portable rules and agent skills are **not** 
 
 Canonical: https://github.com/dev-centr/agent-rules
 
-Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Install skills per `$CODE_ROOT/HARNESS.md` (see skill `harness-setup`).
+Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Install skills per `$CODE_ROOT/harness.md` (see skill `harness-setup`).
 
 ## Layout
 

@@ -16,7 +16,7 @@ When writing or editing **news** or **blog** titles in Dev-Centr sites, follow e
 - First-party news omits the org name unless another actor did the action.
 - Prefer `X as Y` / process / *when* / disproof / questions over rigid `X is Y`.
 - Attach floating modifiers to an object.
-- Philosophy: **Titles as orientation** (not MEMORIES).
+- Philosophy: **Titles as orientation** (not machine.md).
 
 ## Body copy
 

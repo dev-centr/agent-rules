@@ -12,20 +12,20 @@ If docs are not published yet locally: `$CODE_ROOT/github.com/dev-centr/general-
 
 | Path | Role |
 |------|------|
-| `skills/<name>/SKILL.md` (+ siblings) | Canonical curriculum — **not** part of `MAIN.md` / `RULES.md` assembly |
-| `$SKILLS_DISCOVERY_ROOT/<name>/` | Harness discovery path when installed (from `$CODE_ROOT/HARNESS.md`) |
-| `RULES.md` / always-on slot | At most a **one-line** pointer |
+| `skills/<name>/SKILL.md` (+ siblings) | Canonical curriculum — **not** part of `MAIN.md` / `user.md` assembly |
+| `$SKILLS_DISCOVERY_ROOT/<name>/` | Harness discovery path when installed (from `$CODE_ROOT/harness.md`) |
+| `user.md` / always-on slot | At most a **one-line** pointer |
 | `general/documentation.md` | Titles + thin always-on News/blog tips (Nieman scene checklist) |
-| `$CODE_ROOT/HARNESS.md` | Machine-local: harness name, discovery root, install method |
+| `$CODE_ROOT/harness.md` | Machine-local: harness name, discovery root, install method |
 
 Skills are for **heavy curricula** split **one skill per job** (e.g. `writing-news`, `writing-blog` — not a router skill). Keep short always-on tips in `general/documentation.md`. Inventory: `skills/CATALOG.md`.
 
 ## On-ramp A — configure yourself
 
-1. Run skill **`harness-setup`** if `$CODE_ROOT/HARNESS.md` is missing.
+1. Run skill **`harness-setup`** if `$CODE_ROOT/harness.md` is missing.
 2. Create `skills/<skill-name>/` with `SKILL.md` (`name` + trigger-word `description` — skill `write-a-skill`) and progressive-disclosure siblings.
-3. Install into `$SKILLS_DISCOVERY_ROOT` per `SKILLS_INSTALL` in `$HARNESS.md` (junction, copy, or harness-native — **record method in HARNESS.md, not in templates**).
-4. Optional: one AI-ops line in `RULES.md` naming the skill.
+3. Install into `$SKILLS_DISCOVERY_ROOT` per `SKILLS_INSTALL` in `$harness.md` (junction, copy, or harness-native — **record method in harness.md, not in templates**).
+4. Optional: one AI-ops line in `user.md` naming the skill.
 5. New agent chat → verify discovery (or direct read from `$AGENT_RULES_PATH/skills/<name>/`).
 
 ## On-ramp B — drop this into a permissive agent
@@ -34,8 +34,8 @@ Paste (and `@`-mention this file):
 
 ```text
 Follow skills/BOOTSTRAP.md in this agent-rules clone.
-Run skill harness-setup if $CODE_ROOT/HARNESS.md is missing.
-Install agent skills under skills/<name>/ per HARNESS.md.
+Run skill harness-setup if $CODE_ROOT/harness.md is missing.
+Install agent skills under skills/<name>/ per harness.md.
 YAML description = trigger words (skill write-a-skill), not a lay blurb.
 Do not paste skill bodies into always-on rules — thin pointer only.
 Read docs.devcentr.org/agent-rules/harness-neutral.html for architecture.
@@ -65,7 +65,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Issue reports** → skill `issue-reports` (`skills/issue-reports/`).
 - **`.issues` record + push** → skill `issues-repo-record` (`skills/issues-repo-record/`).
 - **Polyglot CI / release matrix** → skill `polyglot-ci` (`skills/polyglot-ci/`).
-- **Harness setup / HARNESS.md** → skill `harness-setup` (`skills/harness-setup/`).
+- **Harness setup / harness.md** → skill `harness-setup` (`skills/harness-setup/`).
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

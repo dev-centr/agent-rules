@@ -9,7 +9,7 @@ description: >-
 
 Voice: [voice.md](voice.md). Mechanical `gh` steps below. Org shortcut: `agents/editorial/pull-requests.md` (still this skill).
 
-Do not put PR voice only in `MEMORIES.md`.
+Do not put PR voice only in `machine.md`.
 
 ## Title and intro
 

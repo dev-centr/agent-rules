@@ -34,7 +34,7 @@ Include versions only if the harness explicitly provides version strings (otherw
 
 Write to ONE of these locations (pick the first that is available/allowed):
 
-1. `$CODE_ROOT/MEMORIES.md` (recommended; workstation file and conventionally gitignored)
+1. `$CODE_ROOT/machine.md` (recommended; workstation file and conventionally gitignored)
 2. `$CODE_ROOT/TOOL-INVENTORY.md` (only if your workspace explicitly allows it / gitignore it)
 
 **Format:**

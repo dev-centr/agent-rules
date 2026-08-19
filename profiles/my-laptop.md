@@ -1,6 +1,6 @@
 # Device profile: laptop (template)
 
-Rename this file to match how you use it (for example `laptop.md`) and point your agent configuration at it. Update any path references in `RULES.md` after copying into an app.
+Rename this file to match how you use it (for example `laptop.md`) and point your agent configuration at it. Update any path references in `user.md` after copying into an app.
 
 Constants use `NAME = value` with an inline comment after `#` where helpful.
 

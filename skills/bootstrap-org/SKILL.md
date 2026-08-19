@@ -68,7 +68,7 @@ If the gate fails, stop after saying so. If it passes, proceed. For `kind` **pro
 - User often **creates the empty org in the GitHub UI**. Populate; do not block on automating org creation (`gh` cannot fully replace that UI).
 - Copy is for **visitors**, not the maintainer or the agent. Philosophy and “division of labor” live on the **site/docs**, not as agent notes on the profile.
 - **Minimal profile.** Settings + website already hold name, URL, and notable repos. Do not restack those on `profile/README.md`.
-- **Allow-list gitignore** (`*` then `!path`). Update it when adding files. Never allow-list `MEMORIES.md`.
+- **Allow-list gitignore** (`*` then `!path`). Update it when adding files. Never allow-list `machine.md`.
 - Changelogs, About descriptions, and README hub links belong on new repos.
 - **Do not commit or push unless asked.**
 - UI-bound: org creation, avatar upload, enabling Pages the first time, buying/verifying a domain, Cloudflare dashboard clicks.
@@ -131,7 +131,7 @@ Optional in `.github`: `workflow-templates/` only if they will publish org start
 
 This step is **this hive's org init**, not a GitHub or industry default. Skip for orgs the user does not own, third-party banners, or when they say they do not want house agent-rules.
 
-Do **not** `git submodule` `dev-centr/agent-rules`. A submodule pins a SHA; wrapper clones go stale. Shared rules and agent skills live in one canonical clone (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Install skills per `$CODE_ROOT/HARNESS.md`.
+Do **not** `git submodule` `dev-centr/agent-rules`. A submodule pins a SHA; wrapper clones go stale. Shared rules and agent skills live in one canonical clone (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Install skills per `$CODE_ROOT/harness.md`.
 
 After `{org}/.github` exists, run:
 

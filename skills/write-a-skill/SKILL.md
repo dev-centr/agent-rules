@@ -10,7 +10,7 @@ description: >-
 
 # Write an agent skill
 
-Harness-neutral skill bodies live under `$AGENT_RULES_PATH/skills/<name>/`. Install/discovery is recorded in `$CODE_ROOT/HARNESS.md` — not in forkable templates.
+Harness-neutral skill bodies live under `$AGENT_RULES_PATH/skills/<name>/`. Install/discovery is recorded in `$CODE_ROOT/harness.md` — not in forkable templates.
 
 Some harnesses ship layout scaffolds (e.g. Cursor `create-skill`). **This file wins on `description` and on auto-invocation.**
 
@@ -37,14 +37,14 @@ More before/after pairs: [examples.md](examples.md).
 
 Canonical: `$AGENT_RULES_PATH/skills/<name>/`.
 
-Install into `$SKILLS_DISCOVERY_ROOT` per `$CODE_ROOT/HARNESS.md` (`SKILLS_INSTALL`). When discovery is `none`, agents read the canonical path directly.
+Install into `$SKILLS_DISCOVERY_ROOT` per `$CODE_ROOT/harness.md` (`SKILLS_INSTALL`). When discovery is `none`, agents read the canonical path directly.
 
-Inventory: `skills/CATALOG.md`. Thin pointer only in `AGENTS.md` / `RULES.md`.
+Inventory: `skills/CATALOG.md`. Thin pointer only in `AGENTS.md` / `user.md`.
 
 ## Checklist
 
 - [ ] `description` is trigger words only — not a lay summary
 - [ ] Third person; one job per skill
-- [ ] Canonical under `skills/<name>/`; install per `$HARNESS.md`
+- [ ] Canonical under `skills/<name>/`; install per `$harness.md`
 - [ ] Catalog row + optional one-line pointer; body not pasted into always-on rules
 - [ ] No machine paths or harness-specific install baked into the skill policy body

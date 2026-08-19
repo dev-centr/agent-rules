@@ -3,8 +3,8 @@ name: record-rule
 description: >-
   Use when the user says make that a rule, save this rule, record a rule,
   add a rule, create a rule, write a rule, persist this preference,
-  remember this, add to agent-rules, AGENTS.md rule, RULES.md update,
-  harness boundary, HARNESS.md, or wants to persist an instruction across sessions.
+  remember this, add to agent-rules, AGENTS.md rule, user.md update,
+  harness boundary, harness.md, or wants to persist an instruction across sessions.
 ---
 
 # Record a rule
@@ -17,12 +17,12 @@ Read `general/harness-boundary.md` first.
 
 | Scope | Where | Format |
 | --- | --- | --- |
-| **Portable** (all coding work, all orgs) | `agent-rules/RULES.md` (one-liner) + `agent-rules/general/<slug>.md` (detail) | Markdown |
+| **Portable** (all coding work, all orgs) | `agent-rules/user.md` (one-liner) + `agent-rules/general/<slug>.md` (detail) | Markdown |
 | **Org** (one org's repos) | `agent-rules/AGENTS.md` or `agent-rules/agents/<topic>.md` | Markdown |
 | **Project** (one repo) | `<repo>/AGENTS.md` | Markdown |
 | **Harness-local IDE** | `$LOCAL_RULES_DIR` or `<repo>/.cursor/rules/*.mdc` per `IDE_PROJECT_RULES` in `$HARNESS` | per harness |
-| **Workstation fact** | `$CODE_ROOT/MEMORIES.md` | Markdown |
-| **Harness config** | `$CODE_ROOT/HARNESS.md` | Markdown |
+| **Workstation fact** | `$CODE_ROOT/machine.md` | Markdown |
+| **Harness config** | `$CODE_ROOT/harness.md` | Markdown |
 
 Pick the narrowest scope. If unclear, ask.
 
@@ -36,6 +36,6 @@ Pick the narrowest scope. If unclear, ask.
 
 ## Do not
 
-- Paste full rule bodies into `RULES.md` or `AGENTS.md`
-- Record machine paths in forkable templates — use `MEMORIES.md` or `HARNESS.md`
+- Paste full rule bodies into `user.md` or `AGENTS.md`
+- Record machine paths in forkable templates — use `machine.md` or `harness.md`
 - Duplicate without searching `general/*.md`, `agents/*.md`, and harness-local overlays first

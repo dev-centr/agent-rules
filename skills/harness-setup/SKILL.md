@@ -2,7 +2,7 @@
 name: harness-setup
 description: >-
   Use when setting up agent rules on a new machine or harness, probing harness
-  capabilities, populating HARNESS.md, harness-neutral setup, discovering
+  capabilities, populating harness.md, harness-neutral setup, discovering
   SKILLS_DISCOVERY_ROOT, LOCAL_RULES_DIR, ALWAYS_ON_RULES, first-time
   agent-rules install, polyglot harness, Cursor Claude Hermes T3code,
   template vs machine boundary, or before editing templates with machine paths.
@@ -10,14 +10,14 @@ description: >-
 
 # Harness setup
 
-Probe **this workstation's active harness**, populate **`$CODE_ROOT/HARNESS.md`**, and respect the **template vs machine-local** division in `general/harness-boundary.md`.
+Probe **this workstation's active harness**, populate **`$CODE_ROOT/harness.md`**, and respect the **template vs machine-local** division in `general/harness-boundary.md`.
 
 ## When to run
 
 - First clone of `agent-rules` on a machine
 - User switches harness (Cursor → Claude Code, etc.)
 - Agent is about to edit templates and machine paths are not yet recorded
-- `$CODE_ROOT/HARNESS.md` is missing or clearly stale
+- `$CODE_ROOT/harness.md` is missing or clearly stale
 
 ## Step 1 — Resolve CODE_ROOT
 
@@ -26,7 +26,7 @@ Read the active machine profile in the user's fork (`profiles/<machine>.md`) or 
 - Windows: `$env:code`, `$env:CODE_ROOT`
 - Else: common hive roots the user mentions
 
-If unknown, ask once; then record in the fork profile **and** reference from `HARNESS.md` — not in upstream templates.
+If unknown, ask once; then record in the fork profile **and** reference from `harness.md` — not in upstream templates.
 
 ## Step 2 — Discover harness capabilities
 
@@ -46,22 +46,22 @@ Best-effort probe (use whatever the harness exposes):
 
 **Cursor-like harnesses** often expose: User Rules, `~/.cursor/skills`, `~/.cursor/rules`, `.mdc` project rules, markdown workspace links, line-range citation fences.
 
-**Other harnesses** may load skills only by direct file read — set `SKILLS_DISCOVERY_ROOT = none` and document that in `HARNESS.md`.
+**Other harnesses** may load skills only by direct file read — set `SKILLS_DISCOVERY_ROOT = none` and document that in `harness.md`.
 
 Do not assume Cursor. Discover and record.
 
-## Step 3 — Write `$CODE_ROOT/HARNESS.md`
+## Step 3 — Write `$CODE_ROOT/harness.md`
 
-Create or update from `HARNESS.example.md` at `$AGENT_RULES_PATH`. Use concrete paths on **this machine only**.
+Create or update from `harness.example.md` at `$AGENT_RULES_PATH`. Use concrete paths on **this machine only**.
 
-Never write these values into `RULES.md`, `AGENTS.md`, `general/*`, `agents/*`, or upstream `profiles/*` templates.
+Never write these values into `user.md`, `AGENTS.md`, `general/*`, `agents/*`, or upstream `profiles/*` templates.
 
 ## Step 4 — Install skills (if applicable)
 
 When `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking:
 
 1. Read `skills/CATALOG.md` for team skills needed.
-2. Link `$AGENT_RULES_PATH/skills/<name>/` → discovery root per `HARNESS.md`.
+2. Link `$AGENT_RULES_PATH/skills/<name>/` → discovery root per `harness.md`.
 3. Follow `skills/BOOTSTRAP.md` for house conventions.
 
 ## Step 5 — Verify boundary awareness
@@ -69,8 +69,8 @@ When `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking:
 Confirm the agent will:
 
 - Load `general/harness.md` + `general/harness-boundary.md` during MAIN assembly
-- Route workstation facts → `$CODE_ROOT/MEMORIES.md`
-- Route harness config → `$CODE_ROOT/HARNESS.md`
+- Route workstation facts → `$CODE_ROOT/machine.md`
+- Route harness config → `$CODE_ROOT/harness.md`
 - Load skills from `$AGENT_RULES_PATH/skills/<name>/` on demand when discovery is unavailable
 
 ## Editing templates — stop checklist
@@ -78,11 +78,11 @@ Confirm the agent will:
 Before committing changes under `$AGENT_RULES_PATH`:
 
 - [ ] No concrete paths, usernames, or harness names in forkable files (unless placeholder)
-- [ ] Harness-specific install steps live in `HARNESS.md` or harness-local overlay, not in skill policy bodies
+- [ ] Harness-specific install steps live in `harness.md` or harness-local overlay, not in skill policy bodies
 - [ ] New always-on content is a one-line pointer, not a skill body dump
 
 ## Do not
 
-- Paste `HARNESS.md` into always-on rules — at most one line: “Read `$CODE_ROOT/HARNESS.md` when harness behavior matters.”
-- Commit `$CODE_ROOT/HARNESS.md` or `$CODE_ROOT/MEMORIES.md`
+- Paste `harness.md` into always-on rules — at most one line: “Read `$CODE_ROOT/harness.md` when harness behavior matters.”
+- Commit `$CODE_ROOT/harness.md` or `$CODE_ROOT/machine.md`
 - Hardcode Cursor paths in upstream PRs

@@ -33,4 +33,4 @@ If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, images, fro
 
 ## Always-on rules preamble
 
-If the always-on rules slot still says only `Issues: never only in chat — skill issue-reports`, update that line to match `RULES.md` / org `AGENTS.md`: file for bugs, blockers, and external coordination; use `owned-changelog` for owned functional changes. Re-paste or re-compose via `rules-manager` after pulling agent-rules updates.
+If the always-on rules slot still says only `Issues: never only in chat — skill issue-reports`, update that line to match `user.md` / org `AGENTS.md`: file for bugs, blockers, and external coordination; use `owned-changelog` for owned functional changes. Re-paste or re-compose via `rules-manager` after pulling agent-rules updates.

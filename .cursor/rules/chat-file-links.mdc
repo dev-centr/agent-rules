@@ -11,7 +11,7 @@ When you mention a file you are working on, just edited, or that the user asked 
 
 Write the basename as link text, with a workspace-relative path (forward slashes):
 
-[`RULES.md`](RULES.md)
+[`user.md`](user.md)
 
 [`SKILL.md`](skills/write-a-skill/SKILL.md)
 

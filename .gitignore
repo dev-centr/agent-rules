@@ -1,5 +1,7 @@
 # Machine-local only: stable facts about this workstation (paths, org quirks).
 # See README.md for an example entry.
-# Machine-local only. Prefer $CODE_ROOT/MEMORIES.md as canonical.
-# This path stays ignored for backwards compatibility.
+# Machine-local only. Prefer $CODE_ROOT/machine.md as canonical.
+# Legacy path MEMORIES.md stays ignored for backwards compatibility.
 MEMORIES.md
+machine.md
+harness.md

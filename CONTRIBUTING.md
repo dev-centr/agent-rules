@@ -4,7 +4,7 @@
 
 Portable rules belong in `general/`.
 
-Open pull requests against **this** repository ([`dev-centr/agent-rules`](https://github.com/dev-centr/agent-rules)) for shared improvements. Keep personal constants and org-specific examples in **your own fork** or machine files (`$CODE_ROOT/HARNESS.md`, `$CODE_ROOT/MEMORIES.md`).
+Open pull requests against **this** repository ([`dev-centr/agent-rules`](https://github.com/dev-centr/agent-rules)) for shared improvements. Keep personal constants and org-specific examples in **your own fork** or machine files (`$CODE_ROOT/harness.md`, `$CODE_ROOT/machine.md`).
 
 **Dev-Centr product behavior** (automation acting for the user) belongs in [dev-centr/devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules), not in this repository.
 
@@ -19,7 +19,7 @@ Add new device templates under `profiles/` with clear constant names. Prefer one
 ## Layout
 
 - `general/harness.md`, `general/harness-boundary.md` — harness-neutral operations and template boundary
-- `HARNESS.example.md` — machine-local harness config template (copy to `$CODE_ROOT/HARNESS.md`)
+- `harness.example.md` — machine-local harness config template (copy to `$CODE_ROOT/harness.md`)
 - `general/environment.md` — cross-platform.
 - `general/windows.md`, `general/mac.md`, `general/linux.md` — OS-specific tooling and shells.
 - `general/documentation.md` — optional doc authoring (Diátaxis, Antora when used).

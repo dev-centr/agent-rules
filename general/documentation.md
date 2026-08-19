@@ -28,7 +28,7 @@ When authoring or reviewing titles:
 5. **Docs topics** — concept names.
 6. One idea per news item; big idea first.
 
-See each site’s `STYLE.adoc`. Philosophy: **Titles as orientation**. In-repo IDE rules per `IDE_PROJECT_RULES` in `$CODE_ROOT/HARNESS.md`. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/MEMORIES.md`. Harness config → `$CODE_ROOT/HARNESS.md`.
+See each site’s `STYLE.adoc`. Philosophy: **Titles as orientation**. In-repo IDE rules per `IDE_PROJECT_RULES` in `$CODE_ROOT/harness.md`. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/machine.md`. Harness config → `$CODE_ROOT/harness.md`.
 
 ## News and blog body copy (anti-terse)
 

@@ -8,7 +8,7 @@ These apply universally unless a profile says otherwise.
 ## General best practices
 
 - Write explanations as if for readers who want plain language.
-- **File names in chat:** follow `$CODE_ROOT/HARNESS.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: highlight the **file name** as a markdown link to the workspace-relative path (forward slashes). Example: [`SKILL.md`](skills/write-a-skill/SKILL.md). Detail: `general/harness.md`.
+- **File names in chat:** follow `$CODE_ROOT/harness.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: highlight the **file name** as a markdown link to the workspace-relative path (forward slashes). Example: [`SKILL.md`](skills/write-a-skill/SKILL.md). Detail: `general/harness.md`.
 - Use `.gitignore` as an allow-list with additional exclusions. Exclude all files by default and update the allowlist when adding new files.
 - Always put Python projects in a `venv`.
 - When building a project fails, check for outdated code instead of downgrading dependencies. If a build fails because of a missing icon, stop building. Instead, import icons from a free icon library online to build the app, or ask the user to add the missing icon.
@@ -18,7 +18,7 @@ These apply universally unless a profile says otherwise.
 
 ## AI operations and formatting
 
-- When a repo depends on external libraries or frameworks whose APIs are likely to be stale in AI memory, use Context7 MCP when `MCP_CONTEXT7 = available` in `$CODE_ROOT/HARNESS.md`. If no docs have been indexed, alert the user that they should submit the project's docs, and provide a URL for the docs and Context7 (<https://context7.com/>). If Context7 is not found, explain Context7 and MCP and direct the user to their docs overview: <https://context7.com/docs/overview>.
+- When a repo depends on external libraries or frameworks whose APIs are likely to be stale in AI memory, use Context7 MCP when `MCP_CONTEXT7 = available` in `$CODE_ROOT/harness.md`. If no docs have been indexed, alert the user that they should submit the project's docs, and provide a URL for the docs and Context7 (<https://context7.com/>). If Context7 is not found, explain Context7 and MCP and direct the user to their docs overview: <https://context7.com/docs/overview>.
   - If the user confirms this is unavailable, use skill **`outdated-code-protocol`**.
 - AI formatting pitfalls (AsciiDoc):
   - Checklist: fails to include asterisk. `* [ ]`
@@ -41,9 +41,9 @@ These apply universally unless a profile says otherwise.
 
 ## Memory management
 
-- **Harness config:** read and update **`$CODE_ROOT/HARNESS.md`** when discovery paths or chat behaviors change (see `HARNESS.example.md`; skill `harness-setup`).
-- **Workstation facts:** if the user teaches you something about **this machine/environment**, or you probe the local environment and will need it again, read and update **`$CODE_ROOT/MEMORIES.md`** (create if missing; see `MEMORIES.example.md`). Never commit. Every memory needs a counter starting at 1; increment on reuse.
-- Project knowledge belongs in the repo (`AGENTS.md`, README, docs, `STYLE.adoc`) — not in MEMORIES and not in a per-repo `MEMORIES.md`.
+- **Harness config:** read and update **`$CODE_ROOT/harness.md`** when discovery paths or chat behaviors change (see `harness.example.md`; skill `harness-setup`).
+- **Workstation facts:** if the user teaches you something about **this machine/environment**, or you probe the local environment and will need it again, read and update **`$CODE_ROOT/machine.md`** (create if missing; see `machine.example.md`). Never commit. Every memory needs a counter starting at 1; increment on reuse.
+- Project knowledge belongs in the repo (`AGENTS.md`, README, docs, `STYLE.adoc`) — not in `machine.md` at `$CODE_ROOT` and not in a per-repo `machine.md`.
 
 ## Outdated code protocol
 

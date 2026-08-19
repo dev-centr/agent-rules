@@ -10,7 +10,7 @@ Load before any edit under $AGENT_RULES_PATH when the change might embed worksta
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
 │  FORKABLE TEMPLATES (PR upstream; placeholders only)            │
-│  RULES.md · AGENTS.md · general/* · agents/* · skills/* bodies  │
+│  user.md · AGENTS.md · general/* · agents/* · skills/* bodies  │
 │  profiles/*-template.md · profiles/team-default.md · *.example  │
 └─────────────────────────────────────────────────────────────────┘
                               ▲
@@ -18,7 +18,7 @@ Load before any edit under $AGENT_RULES_PATH when the change might embed worksta
                               │
 ┌─────────────────────────────────────────────────────────────────┐
 │  MACHINE-LOCAL (this user's machine; gitignored at CODE_ROOT)   │
-│  $CODE_ROOT/HARNESS.md · $CODE_ROOT/MEMORIES.md                 │
+│  $CODE_ROOT/harness.md · $CODE_ROOT/machine.md                 │
 │  profiles/<machine>.md in YOUR fork · LOCAL_RULES_DIR overlay   │
 └─────────────────────────────────────────────────────────────────┘
                               ▲
@@ -43,7 +43,7 @@ Load before any edit under $AGENT_RULES_PATH when the change might embed worksta
 | Bad (committed template) | Good |
 | --- | --- |
 | `Z:\code\github.com\AMDphreak\.issues` | `$ISSUES_REPO` or `<path-to-.issues-repo>` |
-| `~/.cursor/skills/` | `$SKILLS_DISCOVERY_ROOT` or “per `HARNESS.md`” |
+| `~/.cursor/skills/` | `$SKILLS_DISCOVERY_ROOT` or “per `harness.md`” |
 | `Cursor Settings User Rules` | `$ALWAYS_ON_RULES` or “always-on rules slot” |
 | `amdphreak` | `<your-github-username>` or `$GITHUB_USER` |
 
@@ -53,20 +53,20 @@ Use skill **`record-rule`**. Pick scope:
 
 | Scope | Where |
 | --- | --- |
-| Portable | `RULES.md` one-liner + `general/<slug>.md` |
+| Portable | `user.md` one-liner + `general/<slug>.md` |
 | Org | `AGENTS.md` or `agents/<topic>.md` |
 | Project | `<repo>/AGENTS.md` |
 | Harness-local IDE | `$LOCAL_RULES_DIR` or `<repo>/.cursor/rules/*.mdc` per `IDE_PROJECT_RULES` |
-| Workstation fact | `$CODE_ROOT/MEMORIES.md` |
-| Harness config | `$CODE_ROOT/HARNESS.md` |
+| Workstation fact | `$CODE_ROOT/machine.md` |
+| Harness config | `$CODE_ROOT/harness.md` |
 
 ## Before editing agent-rules
 
-1. Read `$CODE_ROOT/HARNESS.md` and `$CODE_ROOT/MEMORIES.md`.
+1. Read `$CODE_ROOT/harness.md` and `$CODE_ROOT/machine.md`.
 2. Ask: “Is this forkable policy or this machine only?”
 3. If machine-only → write the machine file, **not** the template.
 4. If unsure → ask the user; default to narrowest scope.
 
 ## Setup missing?
 
-Run skill **`harness-setup`** to probe the active harness and create/update `$CODE_ROOT/HARNESS.md`.
+Run skill **`harness-setup`** to probe the active harness and create/update `$CODE_ROOT/harness.md`.

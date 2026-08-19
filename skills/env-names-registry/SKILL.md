@@ -12,7 +12,7 @@ The user often skips host env setup. Keep a **name-only** registry per repo. Nev
 
 ## Never in git or docs
 
-- Do **not** write real API keys, tokens, or passwords in markdown, rules, `MEMORIES.md`, `.env.example`, comments, or commits.
+- Do **not** write real API keys, tokens, or passwords in markdown, rules, `machine.md`, `.env.example`, comments, or commits.
 - `.env.example` uses **empty** values (or `your-key-here` only if the host requires a non-empty placeholder).
 - Do not echo or suggest committing secret values the user pasted in chat.
 

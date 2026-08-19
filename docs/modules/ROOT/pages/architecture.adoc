@@ -3,7 +3,7 @@
 ```mermaid
 flowchart TB
   subgraph agentrules [agent-rules forkable]
-    R[RULES.md portable]
+    R[user.md portable]
     A[AGENTS.md org]
     G[general/]
     AM[agents/]
@@ -14,8 +14,8 @@ flowchart TB
     X[Dev-Centr product rules]
   end
   subgraph local [Machine-local]
-    H["$CODE_ROOT/HARNESS.md"]
-    M["$CODE_ROOT/MEMORIES.md"]
+    H["$CODE_ROOT/harness.md"]
+    M["$CODE_ROOT/machine.md"]
   end
   R --> G
   R --> P
@@ -28,8 +28,8 @@ flowchart TB
 
 * **agent-rules** — portable rules + org layer (`AGENTS.md`, `agents/`, team skills)
 * **devcentr-agent-rules** — rules for when the Dev-Centr app acts on behalf of the user
-* **HARNESS.md** — harness config on this user's machine (discovery paths, chat behaviors)
-* **MEMORIES.md** — workstation facts; gitignored; never committed
+* **harness.md** — harness config on this user's machine (discovery paths, chat behaviors)
+* **machine.md** — workstation facts; gitignored; never committed
 
 On `dev-centr/*` work, org layer **overrides** personal portable rules where they conflict. See xref:org-layer.adoc[Org layer].
 

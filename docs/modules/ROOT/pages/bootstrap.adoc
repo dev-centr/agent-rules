@@ -1,6 +1,6 @@
 = Bootstrap agent skills
 :navtitle: Bootstrap skills
-:description: In-repo shop entry for agent skills under skills/ — harness-neutral install via HARNESS.md; no always-on dump.
+:description: In-repo shop entry for agent skills under skills/ — harness-neutral install via harness.md; no always-on dump.
 
 This component’s **shop file** is the Markdown recipe in the repository:
 
@@ -10,9 +10,9 @@ Architecture (illustrated): xref:harness-neutral.adoc[Harness-neutral architectu
 
 == Quick rules
 
-* Curricula under `skills/<name>/` are **not** part of `MAIN.md` / `RULES.md` context assembly.
-* Install per `$CODE_ROOT/HARNESS.md` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly.
-* Always-on rules / `RULES.md`: one-line pointer at most.
+* Curricula under `skills/<name>/` are **not** part of `MAIN.md` / `user.md` context assembly.
+* Install per `$CODE_ROOT/harness.md` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly.
+* Always-on rules / `user.md`: one-line pointer at most.
 * Titles + Nieman anti-terse tips stay in `general/documentation.md`.
 * First-time setup: skill `harness-setup`.
 

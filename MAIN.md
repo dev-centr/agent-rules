@@ -1,7 +1,7 @@
 # Main Rules
 
 <!--
-This is a modular context assembly file. For a consolidated, all-in-one ruleset, use **[RULES.md](./RULES.md)** instead.
+This is a modular context assembly file. For a consolidated, all-in-one ruleset, use **[user.md](./user.md)** instead.
 -->
 
 > **Dev Configuration (Fill these in before passing to AI)**:
@@ -17,8 +17,8 @@ You must read all foundational rules in a single step using your native file rea
 Read these files **simultaneously in parallel tool calls** to assemble your full context:
 
 - `profiles/<infer-profile-name>.md` (machine constants: `CODE_ROOT`, `ENVIRONMENT`, …)
-- `$CODE_ROOT/HARNESS.md` (harness discovery + chat behaviors — create via skill `harness-setup` if missing; see `HARNESS.example.md`)
-- `$CODE_ROOT/MEMORIES.md` (workstation facts — create from `MEMORIES.example.md` if missing)
+- `$CODE_ROOT/harness.md` (harness discovery + chat behaviors — create via skill `harness-setup` if missing; see `harness.example.md`)
+- `$CODE_ROOT/machine.md` (workstation facts — create from `machine.example.md` if missing)
 - `general/harness.md`
 - `general/harness-boundary.md`
 - `general/global.md`
@@ -34,9 +34,9 @@ Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly
 
 ## Machine-local files (this user's machine)
 
-- **`$CODE_ROOT/HARNESS.md`** — harness name, skill discovery paths, always-on injection slot, chat/citation behaviors. Never commit. Template: `HARNESS.example.md`.
-- **`$CODE_ROOT/MEMORIES.md`** — durable workstation facts (paths, PATH gaps, hardware). Never commit. Template: `MEMORIES.example.md`.
-- Do **not** use per-repo `MEMORIES.md` for project knowledge — put that in `AGENTS.md` + docs/README.
+- **`$CODE_ROOT/harness.md`** — harness name, skill discovery paths, always-on injection slot, chat/citation behaviors. Never commit. Template: `harness.example.md`.
+- **`$CODE_ROOT/machine.md`** — durable workstation facts (paths, PATH gaps, hardware). Never commit. Template: `machine.example.md`.
+- Do **not** use per-repo `machine.md` for project knowledge — put that in `AGENTS.md` + docs/README.
 
 ## Constants (interpret from the active profile)
 
@@ -49,7 +49,7 @@ Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly
 
 - **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
 - Write explanations in plain language.
-- **File names in chat:** follow `$CODE_ROOT/HARNESS.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: markdown workspace-relative links — see `general/harness.md`.
+- **File names in chat:** follow `$CODE_ROOT/harness.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: markdown workspace-relative links — see `general/harness.md`.
 - **Template boundary:** never embed machine paths or harness-specific paths in forkable templates — see `general/harness-boundary.md`.
 - Treat `.gitignore` as an allow-list unless the project says otherwise (exclude `*` then allow specific).
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
@@ -63,11 +63,11 @@ These rules are for **end-user / project** agents. **Dev-Centr application autom
 
 ## Optional agent skills (this repo)
 
-Files under `skills/` are **not** auto-loaded by MAIN assembly. Shop entry: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md). Install per `$CODE_ROOT/HARNESS.md` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly. Deep docs: xref:agent-rules:harness-neutral.adoc[Harness-neutral architecture] on docs.devcentr.org.
+Files under `skills/` are **not** auto-loaded by MAIN assembly. Shop entry: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md). Install per `$CODE_ROOT/harness.md` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly. Deep docs: xref:agent-rules:harness-neutral.adoc[Harness-neutral architecture] on docs.devcentr.org.
 
-## Memory file format (when writing `$CODE_ROOT/MEMORIES.md`)
+## Memory file format (when writing `$CODE_ROOT/machine.md`)
 
-Stable workstation facts only; see `MEMORIES.example.md`. One line shape:
+Stable workstation facts only; see `machine.example.md`. One line shape:
 
 ```text
 <fact about this machine> (counter: 1)

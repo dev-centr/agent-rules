@@ -1,8 +1,8 @@
-# HARNESS.example.md (committed template)
+# harness.example.md (committed template)
 
-Copy to **`$CODE_ROOT/HARNESS.md`** on each workstation. That file is **machine-local** (this user's machine, any harness on it) and must **not** be committed.
+Copy to **`$CODE_ROOT/harness.md`** on each workstation. That file is **machine-local** (harness rules for this user's machine) and must **not** be committed.
 
-Your agent discovers how this workstation runs AI assistants and writes concrete values here — **never** into forkable templates (`RULES.md`, `AGENTS.md`, `profiles/*.md` in upstream, skill bodies).
+Your agent discovers how this workstation runs AI assistants and writes concrete values here — **never** into forkable templates (`user.md`, `AGENTS.md`, `profiles/*.md` in upstream, skill bodies).
 
 Polyglot harness use is normal: one machine may run Cursor, Claude Code, Hermes, or T3code on different days. Record what applies **on this machine**; re-probe when the harness changes.
 
@@ -52,7 +52,7 @@ MCP_CONTEXT7 = available
 
 ```text
 HARNESS_NAME = other
-ALWAYS_ON_RULES = pasted RULES.md preamble in harness system prompt
+ALWAYS_ON_RULES = pasted user.md preamble in harness system prompt
 SKILLS_DISCOVERY_ROOT = none — read $AGENT_RULES_PATH/skills/<name>/SKILL.md on demand
 LOCAL_RULES_DIR = none
 SKILLS_INSTALL = none
@@ -62,12 +62,13 @@ IDE_PROJECT_RULES = none
 MCP_CONTEXT7 = unavailable
 ```
 
-## Relationship to other machine files
+## Relationship to other layers
 
 | File | Role |
 | --- | --- |
-| `$CODE_ROOT/HARNESS.md` | **This file** — harness name, discovery paths, chat behaviors |
-| `$CODE_ROOT/MEMORIES.md` | Workstation facts — tool paths, PATH gaps, hardware (see `MEMORIES.example.md`) |
+| `$CODE_ROOT/harness.md` | **Harness rules** — discovery paths, chat behaviors, always-on slot |
+| `$CODE_ROOT/machine.md` | **Machine rules** — tool paths, PATH gaps, hardware (see `machine.example.md`) |
+| `user.md` in **agent-rules** | **User rules** — portable preamble (forkable) |
 | `profiles/<machine>.md` in **your fork** | Machine constants: `CODE_ROOT`, `GITHUB_USER`, `ENVIRONMENT`, `ISSUES_REPO` |
 | `LOCAL_RULES_DIR` overlay | Per-harness local rules (e.g. `%USERPROFILE%\.cursor\rules\*.mdc`) |
 

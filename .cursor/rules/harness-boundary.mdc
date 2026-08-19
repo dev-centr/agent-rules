@@ -1,5 +1,5 @@
 ---
-description: Template vs machine-local boundary — read HARNESS.md; never commit workstation facts into forkable agent-rules templates
+description: Template vs machine-local boundary — read harness.md; never commit workstation facts into forkable agent-rules templates
 alwaysApply: true
 ---
 
@@ -7,6 +7,6 @@ alwaysApply: true
 
 This machine-local overlay reinforces portable policy. Full text: [`general/harness-boundary.md`](general/harness-boundary.md).
 
-- **Forkable templates** (`RULES.md`, `AGENTS.md`, `general/*`, `agents/*`, `skills/*`) — placeholders only; PR upstream.
-- **Machine-local** — `$CODE_ROOT/HARNESS.md`, `$CODE_ROOT/MEMORIES.md`, `%USERPROFILE%\.cursor\rules\*.mdc`.
-- Before editing agent-rules templates, read `$CODE_ROOT/HARNESS.md`. Missing setup → skill **`harness-setup`**.
+- **Forkable templates** (`user.md`, `AGENTS.md`, `general/*`, `agents/*`, `skills/*`) — placeholders only; PR upstream.
+- **Machine-local** — `$CODE_ROOT/harness.md`, `$CODE_ROOT/machine.md`, `%USERPROFILE%\.cursor\rules\*.mdc`.
+- Before editing agent-rules templates, read `$CODE_ROOT/harness.md`. Missing setup → skill **`harness-setup`**.

@@ -6,7 +6,7 @@
   <a href="https://github.com/dev-centr/agent-rules/issues"><img src="https://img.shields.io/github/issues/dev-centr/agent-rules.svg?style=for-the-badge" alt="Issues"></a>
 
   <h1>Agent Rules</h1>
-  <p>Forkable modular agent rules with 1-step assembly for local AI coding assistants.</p>
+  <p>Forkable, harness-neutral agent rules — <code>user.md</code>, <code>harness.md</code>, <code>machine.md</code> layers; 1-step assembly for local AI coding assistants.</p>
   <p>
     <a href="https://docs.devcentr.org/agent-rules/"><strong>Explore the docs »</strong></a>
     <br /><br />
@@ -37,7 +37,7 @@
 
 ## About The Project
 
-Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app's rules field. **Harness-neutral:** templates do not assume Cursor, Claude Code, Hermes, or any single AI toolkit — machine and harness facts live in `$CODE_ROOT/HARNESS.md` and `$CODE_ROOT/MEMORIES.md`.
+Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app's rules field. **Harness-neutral:** templates do not assume Cursor, Claude Code, Hermes, or any single AI toolkit — machine and harness facts live in `$CODE_ROOT/harness.md` and `$CODE_ROOT/machine.md`.
 
 **Org wrapper (house init):** each org this hive owns gets `{org}/agent-rules` with a pointer README and a thin org `AGENTS.md` — **no git submodule** (a SHA pin goes stale). Not a requirement for every GitHub org. `{org}/.github/AGENT-RULES.md` points at the wrapper. Shared rules stay in this repo; clone/fetch it. Script: `scripts/setup-org-agent-rules-wrapper.ps1`. Fork only when you need a *diverging* private tree.
 
@@ -52,12 +52,12 @@ flowchart TB
   subgraph forkable [agent-rules forkable]
     G[general/]
     P[profiles/]
-    R[RULES.md]
+    R[user.md]
     M[README.md]
   end
   subgraph machine [Machine-local]
-    H["$CODE_ROOT/HARNESS.md"]
-    MEM["$CODE_ROOT/MEMORIES.md"]
+    H["$CODE_ROOT/harness.md"]
+    MEM["$CODE_ROOT/machine.md"]
   end
   subgraph product [devcentr-agent-rules]
     X[Dev-Centr product rules]
@@ -69,15 +69,15 @@ flowchart TB
   product -.->|used by Dev-Centr app| forkable
 ```
 
-- **agent-rules** (this repository): portable rules (`RULES.md`, `general/`, `profiles/`) **and** org layer (`AGENTS.md`, `agents/`, org `skills/`). Satellite orgs clone/fetch `dev-centr/agent-rules` as `AGENT_RULES_PATH` — wrapper repos hold only org overlay text.
+- **agent-rules** (this repository): portable rules (`user.md`, `general/`, `profiles/`) **and** org layer (`AGENTS.md`, `agents/`, org `skills/`). Satellite orgs clone/fetch `dev-centr/agent-rules` as `AGENT_RULES_PATH` — wrapper repos hold only org overlay text.
 - **devcentr-agent-rules**: rules for when the Dev-Centr app acts on behalf of the user (separate repository).
-- **HARNESS.md** + **MEMORIES.md**: this user's machine; never commit. See `HARNESS.example.md` and `MEMORIES.example.md`.
+- **harness.md** + **machine.md**: this user's machine; never commit. See `harness.example.md` and `machine.example.md`.
 
 ### Built With
 
 * **Rules format** — Markdown modules under `general/` and `profiles/`
-* **Assembly** — paste `RULES.md`, or compose via [rules-manager](https://github.com/dev-centr/rules-manager)
-* **Harness setup** — skill `harness-setup` populates `$CODE_ROOT/HARNESS.md`
+* **Assembly** — paste `user.md`, or compose via [rules-manager](https://github.com/dev-centr/rules-manager)
+* **Harness setup** — skill `harness-setup` populates `$CODE_ROOT/harness.md`
 * **Optional template blanks** — [readme-template](https://github.com/dev-centr/readme-template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -87,9 +87,9 @@ flowchart TB
 1. Clone into your code hive, for example `$CODE_ROOT/github.com/<your-username>/agent-rules` (see `general/folder-schema.md`).
 2. Optional path convenience: on Windows, a directory junction can point at this clone. **Junctions are temporary.** Prefer configuring [`dev-centr/rules-manager`](https://github.com/dev-centr/rules-manager) (`rules_repo_path`) to compose and watch global + machine sections into `$CODE_ROOT/agent-rules.composed.md`.
 3. Copy `profiles/my-desktop.md` or `profiles/my-laptop.md` to a name you like, set **constants** (`CODE_ROOT`, `GITHUB_USER`, `ISSUES_REPO`, **`ENVIRONMENT`** …).
-4. Run skill **`harness-setup`** (or copy `HARNESS.example.md` → `$CODE_ROOT/HARNESS.md`) so the agent records harness discovery paths and chat behaviors on **this machine**.
-5. **`RULES.md` is written for the agent**. Paste it (or the composed file) into your harness always-on rules slot. Fill Constants before saving.
-6. Optional: agent skills — start at [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md); install per `$HARNESS.md`; keep skill bodies out of always-on rules.
+4. Run skill **`harness-setup`** (or copy `harness.example.md` → `$CODE_ROOT/harness.md`) so the agent records harness discovery paths and chat behaviors on **this machine**.
+5. **`user.md` is written for the agent**. Paste it (or the composed file) into your harness always-on rules slot. Fill Constants before saving.
+6. Optional: agent skills — start at [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md); install per `$harness.md`; keep skill bodies out of always-on rules.
 
 ### Profile constants (your `profiles/*.md`)
 
@@ -108,12 +108,12 @@ flowchart TB
 
 This repository uses a **1-step assembly architecture** optimized for local AI harnesses (Cursor, Claude Code, Hermes, T3code, Windsurf, and others) that have filesystem access.
 
-When you paste `RULES.md` into your agent and define `$AGENT_RULES_PATH`, you command the AI to perform a batched read of foundational modules simultaneously using native file tools.
+When you paste `user.md` into your agent and define `$AGENT_RULES_PATH`, you command the AI to perform a batched read of foundational modules simultaneously using native file tools.
 
 The agent will automatically pull:
 
 1. `profiles/<infer-profile-name>.md`
-2. `$CODE_ROOT/HARNESS.md` and `$CODE_ROOT/MEMORIES.md`
+2. `$CODE_ROOT/harness.md` and `$CODE_ROOT/machine.md`
 3. `general/harness.md`, `general/harness-boundary.md`, `general/global.md`
 4. `general/environment.md`, `general/<windows|mac|linux>.md`, `general/creator.md`, `general/folder-schema.md`
 5. (when docs) `general/documentation.md`
@@ -127,10 +127,10 @@ For **Dev-Centr automation** acting on behalf of the user, load [devcentr-agent-
 
 | File | Purpose |
 |------|---------|
-| `$CODE_ROOT/HARNESS.md` | Harness name, skill discovery, always-on slot, chat/citation behaviors |
-| `$CODE_ROOT/MEMORIES.md` | Workstation facts — tool paths, PATH gaps, hardware |
+| `$CODE_ROOT/harness.md` | Harness name, skill discovery, always-on slot, chat/citation behaviors |
+| `$CODE_ROOT/machine.md` | Workstation facts — tool paths, PATH gaps, hardware |
 
-Templates: [HARNESS.example.md](./HARNESS.example.md), [MEMORIES.example.md](./MEMORIES.example.md). Never commit either file.
+Templates: [harness.example.md](./harness.example.md), [machine.example.md](./machine.example.md). Never commit either file.
 
 ### Satellite orgs (no wrapper changes needed)
 
@@ -140,7 +140,7 @@ Orgs with `{org}/agent-rules` **pointer overlays** resolve `AGENT_RULES_PATH` to
 
 ## Agent skills
 
-Optional, on-demand curricula live under `skills/` and are **not** part of `RULES.md` / `MAIN.md` assembly.
+Optional, on-demand curricula live under `skills/` and are **not** part of `user.md` / `MAIN.md` assembly.
 
 - Shop file: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md)
 - Harness setup: skill `harness-setup`
@@ -152,7 +152,7 @@ Optional, on-demand curricula live under `skills/` and are **not** part of `RULE
 
 ## Contributing
 
-Portable rule improvements welcome as pull requests. Do not embed machine paths or harness-specific install steps in forkable templates — use placeholders and `$HARNESS.md`.
+Portable rule improvements welcome as pull requests. Do not embed machine paths or harness-specific install steps in forkable templates — use placeholders and `$harness.md`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

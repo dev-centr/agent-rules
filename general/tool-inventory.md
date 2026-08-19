@@ -15,7 +15,7 @@ Agents should keep a lightweight, local record of what tools/skills are availabl
    - Include tool names (and versions if the harness provides them).
    - Do **not** include secrets, tokens, credentials, or environment values.
 2. Write the record to a **local, machine-only** file (by convention, either:
-   - `$CODE_ROOT/MEMORIES.md` (gitignored workstation file), or
+   - `$CODE_ROOT/machine.md` (gitignored workstation file), or
    - a sibling file like `$CODE_ROOT/TOOL-INVENTORY.md` if your workspace ignores it).
 3. Add a timestamp and a short “why/what changed” label if available (e.g. `installed record-rule`, `updated vercel-cli`).
 

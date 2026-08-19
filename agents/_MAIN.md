@@ -10,14 +10,14 @@ Read this file during org context assembly (`AGENTS.md` pass).
 
 ## Task → skill routing
 
-Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/HARNESS.md`, or direct read):
+Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.md`, or direct read):
 
 | Trigger / task | Skill |
 | --- | --- |
 | "publish to dub" / "publish to dlang" / "publish dlang" / DUB categories | `publish-to-dub` |
 | Bootstrap / initialize an org, `{org}/agent-rules` overlay | `bootstrap-org` |
 | Authoring a skill / `SKILL.md` / skill `description` | `write-a-skill` |
-| New machine or harness setup / populate HARNESS.md | `harness-setup` |
+| New machine or harness setup / populate harness.md | `harness-setup` |
 | Opening or drafting a pull request | `draft-pr` |
 | News body copy (ship note, org announcement) | `writing-news` |
 | Blog body copy (essay, philosophy, tutorial narrative) | `writing-blog` |
@@ -36,5 +36,5 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/HARNESS.
 
 ## Machine-local (never in templates)
 
-- Harness config → `$CODE_ROOT/HARNESS.md`
-- Workstation facts → `$CODE_ROOT/MEMORIES.md`
+- Harness config → `$CODE_ROOT/harness.md`
+- Workstation facts → `$CODE_ROOT/machine.md`
