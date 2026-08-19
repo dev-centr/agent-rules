@@ -24,7 +24,7 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/folder-schema.md`
 - `general/documentation.md` (only if the task involves authoring or publishing project documentation)
 
-Optional heavy curricula are **Cursor skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
+Optional heavy curricula are **Cursor skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
 
 *(Fallback)*: If you lack native file reading tools, use a terminal to read them all in one command (e.g. `cat`), but beware of output truncation. If the host cannot read the filesystem, follow the **obligations** below as your only source.
 

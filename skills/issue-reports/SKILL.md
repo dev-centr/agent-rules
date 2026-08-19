@@ -3,7 +3,7 @@ name: issue-reports
 description: >-
   Use when filing is warranted (bug, blocker, external coordination, user
   asked) — not after every owned-repo change. gh issue create; ISSUES_REPO;
-  .issues submissions; do not leave the issue only in chat.
+  .issues submissions; issues-repo-record; do not leave the issue only in chat.
 ---
 
 # Issue reports
@@ -12,41 +12,20 @@ description: >-
 
 Draft the report as a durable artifact, then submit to the forge. Do **not** leave the body only in chat or in a one-shot `gh` argument that the shell can mangle.
 
-If `ISSUES_REPO` is set in the profile / Cursor `machine.mdc`, **follow that repository's README**. Typical house layout:
+If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, images, front matter, commit, and **push** (recording is submitting; always push). Follow that repo’s README for paths.
 
-```text
-ISSUES_REPO/
-  submissions/{issue-short-name}/   # lowercase
-    issue.md                        # shared base description
-    screenshots/                    # descriptive names
-    {org}-{repo}-{issue-number}.md  # per-forge copy after submit
-```
+## Draft and submit
 
-GitHub CLI cannot upload images; keep screenshots in the submission folder (and `images/` when the house repo says so).
-
-## Draft
-
-1. Create `submissions/{short-name}/` if using the house store.
-2. Write `issue.md` — **do not put the title in the issue body**.
+1. Write the body in `ISSUES_REPO/submissions/{short-name}/issue.md` — **no title in the body**.
+2. If screenshots are needed: skill `issues-repo-record` — push `images/` **before** embedding URLs.
 3. Pass the file into `gh` (or `glab`) so the body is not expanded by the shell.
-4. After submit, add `{org}-{repo}-{issue-number}.md` with front matter:
-
-```markdown
----
-title: Feature Request: …
-repository: OWNER/REPO
-issue_number: 123
-url: https://github.com/OWNER/REPO/issues/123
-submitted: YYYY-MM-DD
----
-```
-
-5. Format markdown under `submissions/` per that repo (e.g. prettier) before committing.
+4. Skill `issues-repo-record` — record outcome (`submitted`, `pending`, or `blocked`), commit, push.
 
 ## Do not
 
 - File issues for routine owned-repo work that changelog + PR already capture
 - Invent an issues store when `ISSUES_REPO` is unset — still write a file (repo `docs/` or a path they name) rather than chat-only
+- Leave `ISSUES_REPO` submission files uncommitted or unpushed (skill `issues-repo-record`)
 - Put secrets in issue bodies
 - Commit `archives/` / `*.sqlite` if that repo uses issues-browser backups
 

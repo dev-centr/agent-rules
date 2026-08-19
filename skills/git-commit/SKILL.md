@@ -9,6 +9,8 @@ description: >-
 
 Only create a commit when the user asked. If unclear, ask first.
 
+**Exception:** skill `issues-repo-record` — recording in `ISSUES_REPO` is part of filing; commit there without a separate ask.
+
 ## Safety
 
 - NEVER update git config

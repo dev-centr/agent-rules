@@ -42,6 +42,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`, ENV.md, new integration, Netlify env; names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, `AI-LOCAL-LIBRARY-DOCS.local.json5`, `_local-library-docs`, Dlang clone-source | active | Fallback when Context7 is missing |
 | `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create`, `ISSUES_REPO`, `.issues` submissions | active | How-to only; when filing warranted — not after every owned-repo change |
+| `issues-repo-record` | record issue/PR to `.issues`, `submissions/`, push ISSUES_REPO, embed screenshot in gh body, `raw.githubusercontent.com`, unfiled/pending/blocked submission | active | Always commit+push; images push before embed; pairs with `issue-reports` and `draft-pr` |
 | `polyglot-ci` | GitHub Actions, release.yml, win/mac/lin/BSD, x64, arm64, macos-14, ubuntu-24.04-arm, cosmocc, APE, binary-tailor, polyglot pack, Intel Mac runners | active | macOS arm64 only; pack with Binary Tailor |
 
 ## Adding a skill (checklist)

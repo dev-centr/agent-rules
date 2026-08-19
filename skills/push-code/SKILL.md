@@ -9,6 +9,8 @@ description: >-
 
 Only push when the user asked. If they only asked to commit, use skill `git-commit` and stop before push.
 
+**Exception:** skill `issues-repo-record` — every `ISSUES_REPO` record ends with push (including image-only pushes before embed).
+
 ## Safety
 
 Same as skill `git-commit`, plus:

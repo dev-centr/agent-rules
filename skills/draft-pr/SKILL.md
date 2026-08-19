@@ -79,3 +79,7 @@ EOF
 ```
 
 Never update git config. Return the PR URL when done.
+
+## Record in ISSUES_REPO
+
+When `ISSUES_REPO` is set, archive the PR body under `submissions/{short-name}/` (skill **`issues-repo-record`**) — same push-always rules as issues. Push any `images/` URLs before they appear in the PR body. Record `{org}-{repo}-{pr-number}.md` after `gh pr create` succeeds, or `status: pending` / `status: blocked` when submit did not complete.

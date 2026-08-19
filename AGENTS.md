@@ -40,6 +40,7 @@ After portable `agent-rules` assembly (see `MAIN.md`), read **in one parallel ba
 - `agents/editorial/titles.md` (when authoring or reviewing news, blog, or doc titles)
 - `agents/engineering/dub.md` (when working on DUB / D packages in org repos)
 - Cursor skill `draft-pr` when opening a pull request
+- Cursor skill `issues-repo-record` when recording to `ISSUES_REPO`
 - `skills/CATALOG.md` (when installing, authoring, or auditing Cursor skills)
 
 Repo-local `AGENTS.md` in the active project is **additive** — read it when you open that repository.
@@ -53,7 +54,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
 - **Changelogs:** every owned project, functional changes — skill `owned-changelog`.
 - **Config:** SDL (`.sdl`) on DevCentr-owned / `sdlang-d` surfaces; KDL (`.kdl`) greenfield outside that stack; JSON5 in the JSON family. No Extended SDL/XDL.
-- **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work (`owned-changelog`). When filing: skill `issue-reports`; never chat-only.
+- **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work (`owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push); never chat-only.
 - **Skills:** canonical copies under `skills/` in this repo; junction into `~/.cursor/skills/<name>/`. Inventory in `skills/CATALOG.md`. Do **not** paste skill bodies into this always-on preamble.
 
 ## AI ops

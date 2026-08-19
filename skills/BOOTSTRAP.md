@@ -54,12 +54,13 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Antora / org docs hub** → skill `antora-org-site` (`skills/antora-org-site/`) — one public hub; Lunr + math; **Valentus is a suggestion, confirm first**.
 - **Public README** → skill `public-readme` (`skills/public-readme/`) — GitHub adapter default; other forges swap metric URLs.
 - **Draft a PR** → skill `draft-pr` (`skills/draft-pr/`).
-- **Git commit** → skill `git-commit` (`skills/git-commit/`) — only when the user asks to commit.
-- **Push code** → skill `push-code` (`skills/push-code/`) — logical commits, then push; when the user asks to push.
+- **Git commit** → skill `git-commit` (`skills/git-commit/`) — only when the user asks to commit (`issues-repo-record` excepts `ISSUES_REPO`).
+- **Push code** → skill `push-code` (`skills/push-code/`) — logical commits, then push; when the user asks to push (`issues-repo-record` always pushes `ISSUES_REPO`).
 - **Owned changelog** → skill `owned-changelog` (`skills/owned-changelog/`).
 - **Env names registry** → skill `env-names-registry` (`skills/env-names-registry/`) — names only, never secret values.
 - **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`) when Context7 is unavailable.
 - **Issue reports** → skill `issue-reports` (`skills/issue-reports/`) — when filing warranted (bugs, blockers, external coordination); how-to only; never chat-only.
+- **`.issues` record + push** → skill `issues-repo-record` (`skills/issues-repo-record/`) — layout, images before embed, commit, always push; pairs with `issue-reports` and `draft-pr`.
 - **Polyglot CI / release matrix** → skill `polyglot-ci` (`skills/polyglot-ci/`) — win/mac/lin/BSD, macOS arm64 only, Binary Tailor pack.
 - One skill per job; descriptions must trigger on the matching task.
 

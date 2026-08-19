@@ -25,6 +25,7 @@ Entry point for **Dev-Centr org** instruction modules in `dev-centr/agent-rules`
 | Shipping an app | Cursor skill `ship-app` |
 | Changelog (owned project) | Cursor skill `owned-changelog` |
 | Bug/blocker/external issue (when filing warranted) | Cursor skill `issue-reports` |
+| Record issue/PR in `ISSUES_REPO` / `.issues` | Cursor skill `issues-repo-record` |
 | Git commit | Cursor skill `git-commit` |
 | Push code / git push | Cursor skill `push-code` |
 

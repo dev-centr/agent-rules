@@ -36,7 +36,7 @@ These apply universally unless a profile says otherwise.
   - If `ENVIRONMENT` is missing, ask the user which file applies before assuming an OS.
 - You **must** read `general/creator.md` before acting.
 - Read `general/documentation.md` when you are authoring, structuring, or publishing project documentation (optional layer for doc-heavy work).
-- Heavy curricula are Cursor skills (not always-on reads): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `env-names-registry` — see `skills/CATALOG.md`.
+- Heavy curricula are Cursor skills (not always-on reads): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `env-names-registry` — see `skills/CATALOG.md`.
 
 ## Memory management
 
