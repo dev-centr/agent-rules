@@ -1,0 +1,12 @@
+---
+description: GitHub org profile assets, profile/assets/, .github logos, org avatar PNG 256, profile README images
+alwaysApply: false
+---
+
+# GitHub org profile assets
+
+Org profile images and brand archives belong in **`{org}/.github/profile/assets/`** (not repo-root `assets/`).
+
+Load Cursor skill **`github-profile-assets`** when creating, moving, exporting, or locating profile logos, favicons, or revision folders under `.github`.
+
+Bootstrap context (create the repo, minimal profile copy): skill **`bootstrap-org`**.

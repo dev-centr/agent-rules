@@ -107,7 +107,7 @@ After repos exist: per-repo About + homepage (`gh repo edit`). Website field on 
 
 ### 2. Brand
 
-SVG mark in `.github` (and later site/docs). Export a **256×256 PNG** for Settings → General avatar (user uploads). Harbor the SVG in org-wide repos; copy into profile assets, favicon, docs UI.
+SVG mark in `.github` **`profile/assets/`** (and later site/docs). Export a **256×256 PNG** for Settings → General avatar (user uploads). Harbor revisions under `profile/assets/brand/`; copy into site favicon/docs UI. Skill **`github-profile-assets`** for layout and export.
 
 If a logo already exists, copy all variants — do not redesign unless asked.
 
