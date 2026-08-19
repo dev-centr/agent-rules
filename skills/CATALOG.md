@@ -45,6 +45,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | `issues-repo-record` | record issue/PR to `.issues`, `submissions/`, push ISSUES_REPO, embed screenshot in gh body, `raw.githubusercontent.com`, unfiled/pending/blocked submission | active | Always commit+push; images push before embed; pairs with `issue-reports` and `draft-pr` |
 | `polyglot-ci` | GitHub Actions, release.yml, win/mac/lin/BSD, x64, arm64, macos-14, ubuntu-24.04-arm, cosmocc, APE, binary-tailor, polyglot pack, Intel Mac runners | active | macOS arm64 only; pack with Binary Tailor |
 | `record-rule` | make that a rule, save this rule, record a rule, add a rule, create a rule, persist this preference, remember this, add to agent-rules, `.cursor/rules`, AGENTS.md rule, RULES.md update | active | Persists instructions to the right agent-rules layer + Cursor `.mdc` |
+| `tool-inventory` | tools changed, installed/removed/updated tools or skills, record tool inventory, update local tool list snapshot | active | Writes a local, non-secret tool inventory snapshot (timestamp + tool names) via `MEMORIES.md` or `TOOL-INVENTORY.md` |
 
 ## Adding a skill (checklist)
 
