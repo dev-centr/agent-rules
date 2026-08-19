@@ -58,7 +58,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Owned changelog** → skill `owned-changelog` (`skills/owned-changelog/`).
 - **Env names registry** → skill `env-names-registry` (`skills/env-names-registry/`) — names only, never secret values.
 - **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`) when Context7 is unavailable.
-- **Issue reports** → skill `issue-reports` (`skills/issue-reports/`) — durable draft; never chat-only.
+- **Issue reports** → skill `issue-reports` (`skills/issue-reports/`) — when filing warranted (bugs, blockers, external coordination); how-to only; never chat-only.
 - **Polyglot CI / release matrix** → skill `polyglot-ci` (`skills/polyglot-ci/`) — win/mac/lin/BSD, macOS arm64 only, Binary Tailor pack.
 - One skill per job; descriptions must trigger on the matching task.
 

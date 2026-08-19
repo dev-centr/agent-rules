@@ -24,7 +24,7 @@ Entry point for **Dev-Centr org** instruction modules in `dev-centr/agent-rules`
 | Public README | Cursor skill `public-readme` |
 | Shipping an app | Cursor skill `ship-app` |
 | Changelog (owned project) | Cursor skill `owned-changelog` |
-| Issue report / bug / feature request | Cursor skill `issue-reports` |
+| Bug/blocker/external issue (when filing warranted) | Cursor skill `issue-reports` |
 | Git commit | Cursor skill `git-commit` |
 
 ## Not here

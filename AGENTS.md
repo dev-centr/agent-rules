@@ -53,7 +53,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
 - **Changelogs:** every owned project, functional changes — skill `owned-changelog`.
 - **Config:** SDL (`.sdl`) on DevCentr-owned / `sdlang-d` surfaces; KDL (`.kdl`) greenfield outside that stack; JSON5 in the JSON family. No Extended SDL/XDL.
-- **Issues:** skill `issue-reports` — not only in chat.
+- **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work (`owned-changelog`). When filing: skill `issue-reports`; never chat-only.
 - **Skills:** canonical copies under `skills/` in this repo; junction into `~/.cursor/skills/<name>/`. Inventory in `skills/CATALOG.md`. Do **not** paste skill bodies into this always-on preamble.
 
 ## AI ops

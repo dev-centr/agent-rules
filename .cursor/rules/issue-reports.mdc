@@ -1,0 +1,25 @@
+---
+description: When to file GitHub issues — bugs, blockers, external coordination; not routine owned-repo changes
+alwaysApply: true
+---
+
+# Issue filing policy
+
+File an issue when there is a **problem or coordination need** worth tracking outside chat.
+
+**File when:**
+
+- Bug or regression worth tracking
+- Blocked on external/unowned repo, vendor, or org we don't control
+- Cross-repo work that outlives the chat session
+- User explicitly asks for an issue
+
+**Do not file when:**
+
+- Normal owned-repo feature/fix (changelog + PR already capture it)
+- Exploratory research with no open blocker
+- "We changed code" alone
+
+**Changelog vs issue:** owned functional changes → skill `owned-changelog`. Issues → problems and external coordination.
+
+**How to file:** skill `issue-reports` (draft, `.issues` layout, `gh issue create`). Do not leave the report only in chat.

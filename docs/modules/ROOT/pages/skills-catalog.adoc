@@ -64,7 +64,7 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 | Context7 unavailable; local library-docs fallback
 
 | `issue-reports`
-| Draft/file an issue report; never chat-only
+| Draft/file when warranted (bug, blocker, external coordination); how-to only; never chat-only
 
 | `polyglot-ci`
 | GitHub Actions matrix; win/mac/lin/BSD; x64/arm64; cosmocc; Binary Tailor pack

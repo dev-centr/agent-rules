@@ -9,7 +9,7 @@ Do not apply these rules to third-party open-source contributions unless explici
 
 - Use `gh api` to perform repo transfers when you own the orgs.
 - **Agent rules per org (house workflow, not every GitHub org):** when initializing an org this hive owns, create `{org}/agent-rules` as a pointer README + thin org `AGENTS.md` — **no submodule** of `dev-centr/agent-rules`; clone/fetch the canonical repo. Point `{org}/.github/AGENT-RULES.md` at the wrapper — do **not** submodule rules into `.github`. Script: `scripts/setup-org-agent-rules-wrapper.ps1`. Skill `bootstrap-org` phase 3a.
-- Issue reports: skill **`issue-reports`** — durable draft, never only in chat. Follow `ISSUES_REPO` instructions when that constant is set.
+- **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work. When filing: skill **`issue-reports`**; never chat-only. Follow `ISSUES_REPO` when set.
 
 ## Architecture and data
 
