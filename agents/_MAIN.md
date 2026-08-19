@@ -26,6 +26,7 @@ Entry point for **Dev-Centr org** instruction modules in `dev-centr/agent-rules`
 | Changelog (owned project) | Cursor skill `owned-changelog` |
 | Bug/blocker/external issue (when filing warranted) | Cursor skill `issue-reports` |
 | Git commit | Cursor skill `git-commit` |
+| Push code / git push | Cursor skill `push-code` |
 
 ## Not here
 

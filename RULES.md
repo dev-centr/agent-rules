@@ -53,4 +53,4 @@
 - MEMORIES: **only** `$CODE_ROOT/MEMORIES.md` (workstation facts). Create if missing; counter from 1. Never commit. Format: see `MEMORIES.example.md` in this repository (or your fork’s copy).
 - Stale APIs: Context7 MCP (https://context7.com/); else skill `outdated-code-protocol`.
 - Cursor skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — do **not** paste skill bodies here. Dev-Centr org members: also load `AGENTS.md` from this repo; org layer overrides personal on `dev-centr/*` work.
-- Commits / PRs: skills `git-commit` and `draft-pr` (load when the user asks to commit or open a PR).
+- Commits / push / PRs: skills `git-commit`, `push-code`, and `draft-pr` (load when the user asks to commit, push, or open a PR).

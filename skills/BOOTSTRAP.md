@@ -55,6 +55,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Public README** → skill `public-readme` (`skills/public-readme/`) — GitHub adapter default; other forges swap metric URLs.
 - **Draft a PR** → skill `draft-pr` (`skills/draft-pr/`).
 - **Git commit** → skill `git-commit` (`skills/git-commit/`) — only when the user asks to commit.
+- **Push code** → skill `push-code` (`skills/push-code/`) — logical commits, then push; when the user asks to push.
 - **Owned changelog** → skill `owned-changelog` (`skills/owned-changelog/`).
 - **Env names registry** → skill `env-names-registry` (`skills/env-names-registry/`) — names only, never secret values.
 - **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`) when Context7 is unavailable.

@@ -37,6 +37,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Team SOP: member-only [team.docs.devc
 | `public-readme` | README.md, README.adoc, public repo face, Best-README, Explore the docs, shields.io, Built With | active | GitHub adapter default; other forges swap metric URLs |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary, PR screenshots | active | Voice in `skills/draft-pr/voice.md` |
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User must ask to commit |
+| `push-code` | pushing code, git push, push changes, push to remote, push my commits | active | Split dirty tree into logical commits, then push |
 | `owned-changelog` | changelog, changelog-details, backfill from git, wire changelog into docs, functional change in an owned project | active | Match existing repo style when present |
 | `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`, ENV.md, new integration, Netlify env; names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, `AI-LOCAL-LIBRARY-DOCS.local.json5`, `_local-library-docs`, Dlang clone-source | active | Fallback when Context7 is missing |
