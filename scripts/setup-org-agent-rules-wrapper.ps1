@@ -20,11 +20,11 @@ function Write-WrapperReadme($path, $orgName) {
     $text = @'
 # agent-rules ({0})
 
-Org overlay for agent rules. Shared portable rules and Cursor skills are **not** copied here - a git submodule would pin a SHA and go stale.
+Org overlay for agent rules. Shared portable rules and agent skills are **not** copied here - a git submodule would pin a SHA and go stale.
 
 Canonical: https://github.com/dev-centr/agent-rules
 
-Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Junction skills from there into `~/.cursor/skills/<name>/`.
+Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Install skills per `$CODE_ROOT/HARNESS.md` (see skill `harness-setup`).
 
 ## Layout
 
@@ -42,7 +42,7 @@ function Write-WrapperAgents($path, $orgName) {
     $text = @'
 # {0} org overlay
 
-Shared rules and Cursor skills live in **dev-centr/agent-rules**. This repo is the org overlay only - it does not vendor a snapshot.
+Shared rules and agent skills live in **dev-centr/agent-rules**. This repo is the org overlay only - it does not vendor a snapshot.
 
 When assembling context for this org's repos, resolve:
 

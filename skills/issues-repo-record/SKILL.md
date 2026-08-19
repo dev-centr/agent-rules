@@ -19,7 +19,7 @@ Every record step ends with **commit and push** to `origin` (usually `main`). Th
 
 Do **not** leave submission files uncommitted or unpushed.
 
-Resolve `ISSUES_REPO` from the profile / Cursor `machine.mdc` (e.g. `$CODE_ROOT/github.com/AMDphreak/.issues`). Follow that repo’s README; house layout:
+Resolve `ISSUES_REPO` from the machine profile (`profiles/<machine>.md`) or `$ISSUES_REPO` in constants (e.g. `$CODE_ROOT/github.com/<GITHUB_USER>/.issues`). Follow that repo’s README; house layout:
 
 ```text
 ISSUES_REPO/
@@ -118,7 +118,7 @@ submitted: YYYY-MM-DD
 status: pending
 ---
 
-<One paragraph: what happened.>
+Normal-talk intro/summary (plain English, 1 paragraph): what happened and why it’s pending.
 
 Retry when ready:
 
@@ -147,7 +147,9 @@ status: blocked
 blocked_reason: permission_denied
 ---
 
-<What blocked submission. What the user must change — not “retry later” boilerplate.>
+Normal-talk intro/summary (plain English) of what blocked the submission.
+
+Then: what the user must change — not “retry later” boilerplate.
 ```
 
 `blocked_reason` examples: `permission_denied`, `auth_required`, `policy_rejected`, `issues_disabled_permanent`.

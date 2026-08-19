@@ -2,30 +2,37 @@
 
 ```mermaid
 flowchart TB
-  subgraph agentrules [agent-rules]
+  subgraph agentrules [agent-rules forkable]
     R[RULES.md portable]
     A[AGENTS.md org]
     G[general/]
     AM[agents/]
     P[profiles/]
+    SK[skills/*]
   end
   subgraph product [devcentr-agent-rules]
     X[Dev-Centr product rules]
   end
-  subgraph local [Workstation only]
+  subgraph local [Machine-local]
+    H["$CODE_ROOT/HARNESS.md"]
     M["$CODE_ROOT/MEMORIES.md"]
   end
   R --> G
   R --> P
   A --> AM
+  H -.-> agentrules
   M -.-> agentrules
+  SK -.->|load on demand| agentrules
   product -.->|used by Dev-Centr app| agentrules
 ```
 
 * **agent-rules** — portable rules + org layer (`AGENTS.md`, `agents/`, team skills)
 * **devcentr-agent-rules** — rules for when the Dev-Centr app acts on behalf of the user
-* **MEMORIES.md** — machine-local facts; gitignored; never committed
+* **HARNESS.md** — harness config on this user's machine (discovery paths, chat behaviors)
+* **MEMORIES.md** — workstation facts; gitignored; never committed
 
 On `dev-centr/*` work, org layer **overrides** personal portable rules where they conflict. See xref:org-layer.adoc[Org layer].
 
-House org init (skill `bootstrap-org`, not a universal GitHub practice): satellite `{org}/agent-rules` repos are **pointer overlays** (`AGENTS.md` only). They must not git-submodule this tree. Shared skills: clone/fetch this repo, then junction `skills/<name>/` into `~/.cursor/skills/<name>/`.
+**Harness-neutral detail:** xref:harness-neutral.adoc[Harness-neutral architecture].
+
+House org init (skill `bootstrap-org`, not a universal GitHub practice): satellite `{org}/agent-rules` repos are **pointer overlays** (`AGENTS.md` only). They must not git-submodule this tree. Shared updates: `git pull` in `$AGENT_RULES_PATH` clone — no wrapper repo changes required unless org policy differs.

@@ -18,4 +18,4 @@ Do not apply these rules to third-party open-source contributions unless explici
 ## Changelogs
 
 - Every **owned** project records **functional** changes. Match an existing changelog’s style when one exists.
-- How to create, backfill, and wire: Cursor skill **`owned-changelog`** (`skills/owned-changelog/`).
+- How to create, backfill, and wire: skill **`owned-changelog`** (`skills/owned-changelog/`).

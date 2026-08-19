@@ -17,8 +17,10 @@ If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, images, fro
 ## Draft and submit
 
 1. Write the body in `ISSUES_REPO/submissions/{short-name}/issue.md` — **no title in the body**.
+   - The first lines of the body must be a **normal-talk introduction/summary** (plain English, 1–3 sentences).
+   - Only after that intro/summary should you add structured sections (steps, expected/actual, screenshots, etc.).
 2. If screenshots are needed: skill `issues-repo-record` — push `images/` **before** embedding URLs.
-3. Pass the file into `gh` (or `glab`) so the body is not expanded by the shell.
+3. Follow `cli-body-file-first` for any CLI submission of multi-line formatted text (bodies, comments, edits); delete any temp file after the command succeeds.
 4. Skill `issues-repo-record` — record outcome (`submitted`, `pending`, or `blocked`), commit, push.
 
 ## Do not
@@ -29,6 +31,6 @@ If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, images, fro
 - Put secrets in issue bodies
 - Commit `archives/` / `*.sqlite` if that repo uses issues-browser backups
 
-## User Rules preamble
+## Always-on rules preamble
 
-If Cursor Settings User Rules still say only `Issues: never only in chat — skill issue-reports`, update that line to match `RULES.md` / org `AGENTS.md`: file for bugs, blockers, and external coordination; use `owned-changelog` for owned functional changes. Re-paste or re-compose via `rules-manager` after pulling agent-rules updates.
+If the always-on rules slot still says only `Issues: never only in chat — skill issue-reports`, update that line to match `RULES.md` / org `AGENTS.md`: file for bugs, blockers, and external coordination; use `owned-changelog` for owned functional changes. Re-paste or re-compose via `rules-manager` after pulling agent-rules updates.

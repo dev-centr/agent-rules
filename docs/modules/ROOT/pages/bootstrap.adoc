@@ -1,25 +1,23 @@
-= Bootstrap Cursor skills
+= Bootstrap agent skills
 :navtitle: Bootstrap skills
-:description: In-repo shop entry for Cursor skills under skills/—thin pointers to general-knowledge; no always-on dump.
+:description: In-repo shop entry for agent skills under skills/ — harness-neutral install via HARNESS.md; no always-on dump.
 
 This component’s **shop file** is the Markdown recipe in the repository:
 
 * link:https://github.com/dev-centr/agent-rules/blob/main/skills/BOOTSTRAP.md[`skills/BOOTSTRAP.md`]
 
-It is intentionally short. Full framing and worked examples live in general-knowledge (avoid duplicating them here):
-
-* xref:general-knowledge::explanation/infrastructure/vibe-coding-bootstrap.adoc[Vibe coding bootstrap]
-* xref:general-knowledge::how-to/bootstrap-cursor-skills.adoc[Bootstrap Cursor skills]
+Architecture (illustrated): xref:harness-neutral.adoc[Harness-neutral architecture].
 
 == Quick rules
 
 * Curricula under `skills/<name>/` are **not** part of `MAIN.md` / `RULES.md` context assembly.
-* Install or junction into `~/.cursor/skills/<name>/` for Cursor discovery.
-* User Rules / `RULES.md`: one-line pointer at most.
+* Install per `$CODE_ROOT/HARNESS.md` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly.
+* Always-on rules / `RULES.md`: one-line pointer at most.
 * Titles + Nieman anti-terse tips stay in `general/documentation.md`.
+* First-time setup: skill `harness-setup`.
 
 == Related
 
-* xref:org-layer.adoc[Org layer] (house `{org}/agent-rules` overlay - pointer, not a submodule)
+* xref:harness-neutral.adoc[Harness-neutral architecture]
+* xref:org-layer.adoc[Org layer]
 * xref:usage.adoc[Usage]
-* xref:home::tools/agent-rules.adoc[Hub portal]

@@ -132,5 +132,5 @@ Tracking hostnames (`links`, not `click` unless making a privacy claim); do not 
 Capability-area literature stays in Business Bootstrap. Fast path page: `business-bootstrap` **Fast org bootstrap**.
 
 - Stage defaults, stack map, bootstrap org email, org infra repo pattern
-- Vibe coding / Cursor skills bootstrap (AI studio — sibling, not this skill)
+- Vibe coding / agent skills bootstrap (AI studio — sibling, not this skill)
 - Agent-rules shop: `skills/BOOTSTRAP.md` (installing skills, not orgs)

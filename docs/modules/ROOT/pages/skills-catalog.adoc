@@ -1,15 +1,18 @@
 = Skills catalog
 :navtitle: Skills catalog
-:description: Team Cursor skills in agent-rules — one skill per job, junction installs, CATALOG.md governance.
+:description: Team agent skills in agent-rules — one skill per job, harness-neutral install, CATALOG.md governance.
 
 Living source::
 https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
+
+Architecture::
+xref:harness-neutral.adoc[Harness-neutral architecture]
 
 == Policy
 
 * **One skill per job** — separate `writing-news` and `writing-blog`, not a combined router skill
 * **`description`** is trigger words (utterances, filenames, task phrases) — not a lay summary of the skill. Skill `write-a-skill`.
-* Junction canonical tree into `~/.cursor/skills/<name>/`
+* Install per `$CODE_ROOT/HARNESS.md` or read `$AGENT_RULES_PATH/skills/<name>/` directly
 * Update `CATALOG.md` on every add/move/deprecate
 
 == Registered (org)
@@ -17,6 +20,9 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 [cols="1,2",options="header"]
 |===
 | Skill | Triggers on
+
+| `harness-setup`
+| New machine/harness setup, populate HARNESS.md, template boundary
 
 | `writing-news`
 | News item, ship note, org announcement, news-channel body
@@ -28,22 +34,22 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 | Mojibake, SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows
 
 | `publish-to-dub`
-| "publish to dub", "publish to dlang", "publish dlang"; DUB categories; register a D package on code.dlang.org
+| "publish to dub", "publish to dlang", "publish dlang"; DUB categories
 
 | `bootstrap-org`
-| Bootstrap or initialize an org or project; GitHub organization; company/nonprofit; library/CLI/desktop/Tauri/SolidStart; `.github`; named or pasted SDL profile; house `{org}/agent-rules` overlay (pointer, not a submodule)
+| Bootstrap or initialize an org or project; house `{org}/agent-rules` overlay
 
 | `tag-release`
-| Tag a release; ship `vX.Y.Z`; rolling GitHub `v2`/`v2.x`; `+` dual-axis labels; pin vs float
+| Tag a release; ship `vX.Y.Z`; rolling GitHub `v2`/`v2.x`
 
 | `write-a-skill`
-| Author/edit a Cursor skill, `SKILL.md`, skill `description`; trigger words vs lay blurb; how to write skills
+| Author/edit agent skill, `SKILL.md`, skill `description`; trigger words
 
 | `ship-app`
-| Scaffold/ship a GUI, CLI, TUI, library, game, or service; Software Product Essentials
+| Scaffold/ship a GUI, CLI, TUI, library, game, or service
 
 | `antora-org-site`
-| Antora site or docs hub; Lunr; one public site per org; Valentus (confirm)
+| Antora site or docs hub; Lunr; one public site per org
 
 | `public-readme`
 | Public README.md / README.adoc; Best-README chrome
@@ -67,15 +73,15 @@ https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md
 | Context7 unavailable; local library-docs fallback
 
 | `issue-reports`
-| Draft/file when warranted (bug, blocker, external coordination); how-to only; never chat-only
+| Draft/file when warranted (bug, blocker, external coordination)
 
 | `polyglot-ci`
-| GitHub Actions matrix; win/mac/lin/BSD; x64/arm64; cosmocc; Binary Tailor pack
+| GitHub Actions matrix; win/mac/lin/BSD; x64/arm64
 |===
 
-Team SOP: link:https://team.docs.devcentr.org/home/latest/how-to/cursor-skills-team.html[Cursor skills (team)].
-
 == Install
+
+Install method is **machine-specific** — record in `$CODE_ROOT/HARNESS.md`. Example when `SKILLS_INSTALL = junction` and `HARNESS_NAME = cursor`:
 
 [source,powershell]
 ----
@@ -83,4 +89,4 @@ cmd /c mklink /J "$env:USERPROFILE\.cursor\skills\writing-news" `
   "$env:code\github.com\dev-centr\agent-rules\skills\writing-news"
 ----
 
-See xref:bootstrap.adoc[Bootstrap Cursor skills] and `skills/BOOTSTRAP.md` in the repo.
+See xref:bootstrap.adoc[Bootstrap agent skills] and `skills/BOOTSTRAP.md` in the repo.

@@ -2,7 +2,10 @@
 
 . Clone into your code hive, for example `$CODE_ROOT/github.com/<your-org-or-user>/agent-rules`.
 . Point your assistant at `RULES.md`, or compose with https://github.com/dev-centr/rules-manager[`rules-manager`].
-. Put machine-local facts in **`$CODE_ROOT/MEMORIES.md`** (never commit). Format: `MEMORIES.example.md` in this repository.
-. Optional: install Cursor skills from this repo — shop file link:https://github.com/dev-centr/agent-rules/blob/main/skills/BOOTSTRAP.md[`skills/BOOTSTRAP.md`] · Antora xref:bootstrap.adoc[Bootstrap Cursor skills] · org identity skill xref:skills-catalog.adoc[bootstrap-org].
+. Run skill `harness-setup` (or copy `HARNESS.example.md` → `$CODE_ROOT/HARNESS.md`).
+. Put workstation facts in **`$CODE_ROOT/MEMORIES.md`** (never commit). Format: `MEMORIES.example.md` in this repository.
+. Optional: install agent skills — shop file link:https://github.com/dev-centr/agent-rules/blob/main/skills/BOOTSTRAP.md[`skills/BOOTSTRAP.md`] · xref:harness-neutral.adoc[Harness-neutral architecture] · xref:bootstrap.adoc[Bootstrap agent skills].
 
 Fork the repository when you need private constants. Upstream portable improvements with pull requests to `dev-centr/agent-rules`.
+
+Satellite orgs with `{org}/agent-rules` pointer overlays: **`git pull` in the canonical clone** — no wrapper changes unless org policy differs.

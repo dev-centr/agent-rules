@@ -20,6 +20,6 @@ When writing or editing **news** or **blog** titles in Dev-Centr sites, follow e
 
 ## Body copy
 
-- **News body** → Cursor skill `writing-news` (junction from `skills/writing-news/`).
-- **Blog body** → Cursor skill `writing-blog` (junction from `skills/writing-blog/`).
+- **News body** → skill `writing-news` (`skills/writing-news/`).
+- **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - Nieman anti-terse checklist stays in `general/documentation.md` (thin always-on layer).

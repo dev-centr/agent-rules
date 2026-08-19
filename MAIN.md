@@ -16,7 +16,11 @@ You must read all foundational rules in a single step using your native file rea
 
 Read these files **simultaneously in parallel tool calls** to assemble your full context:
 
-- `profiles/<infer-profile-name>.md` (contains machine constants, including `ENVIRONMENT`)
+- `profiles/<infer-profile-name>.md` (machine constants: `CODE_ROOT`, `ENVIRONMENT`, …)
+- `$CODE_ROOT/HARNESS.md` (harness discovery + chat behaviors — create via skill `harness-setup` if missing; see `HARNESS.example.md`)
+- `$CODE_ROOT/MEMORIES.md` (workstation facts — create from `MEMORIES.example.md` if missing)
+- `general/harness.md`
+- `general/harness-boundary.md`
 - `general/global.md`
 - `general/environment.md`
 - `general/<windows|mac|linux>.md` (infer OS from host or profile)
@@ -24,13 +28,14 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/folder-schema.md`
 - `general/documentation.md` (only if the task involves authoring or publishing project documentation)
 
-Optional heavy curricula are **Cursor skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
+Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `harness-setup`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
 
 *(Fallback)*: If you lack native file reading tools, use a terminal to read them all in one command (e.g. `cat`), but beware of output truncation. If the host cannot read the filesystem, follow the **obligations** below as your only source.
 
-## Machine-local memory
+## Machine-local files (this user's machine)
 
-- Read **`$CODE_ROOT/MEMORIES.md`** for durable facts about **this workstation** (paths, PATH gaps, hardware). Create it if missing (see `MEMORIES.example.md`). Never commit it.
+- **`$CODE_ROOT/HARNESS.md`** — harness name, skill discovery paths, always-on injection slot, chat/citation behaviors. Never commit. Template: `HARNESS.example.md`.
+- **`$CODE_ROOT/MEMORIES.md`** — durable workstation facts (paths, PATH gaps, hardware). Never commit. Template: `MEMORIES.example.md`.
 - Do **not** use per-repo `MEMORIES.md` for project knowledge — put that in `AGENTS.md` + docs/README.
 
 ## Constants (interpret from the active profile)
@@ -44,20 +49,21 @@ Optional heavy curricula are **Cursor skills** under `skills/` (not MAIN assembl
 
 - **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
 - Write explanations in plain language.
-- **File names in chat:** when you mention a file you are working on or the user asked about, write the file name as a markdown link to the workspace-relative path (forward slashes) so a click opens it in the editor. Do not use `file://` or Windows backslashes in chat links.
+- **File names in chat:** follow `$CODE_ROOT/HARNESS.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: markdown workspace-relative links — see `general/harness.md`.
+- **Template boundary:** never embed machine paths or harness-specific paths in forkable templates — see `general/harness-boundary.md`.
 - Treat `.gitignore` as an allow-list unless the project says otherwise (exclude `*` then allow specific).
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
 - For Python, use a `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - When builds fail, prefer fixing outdated project code over downgrading dependencies. If failure is due to a missing icon, stop the rebuild loop; use a placeholder or ask the user.
-- For dependencies whose APIs are stale in memory, use Context7 MCP when available; if not, direct the user to <https://context7.com/>
+- For dependencies whose APIs are stale in memory, use Context7 MCP when `MCP_CONTEXT7 = available` in `$HARNESS`; if not, direct the user to <https://context7.com/> or skill `outdated-code-protocol`.
 
 ## Dev-Centr product scope
 
 These rules are for **end-user / project** agents. **Dev-Centr application automation** (acting on behalf of the user) must load `https://github.com/dev-centr/devcentr-agent-rules` instead of this repository—do not conflate the two.
 
-## Optional Cursor skills (this repo)
+## Optional agent skills (this repo)
 
-Files under `skills/` are **not** auto-loaded by MAIN assembly. Shop entry: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md). Install or junction into `~/.cursor/skills/<name>/` for Cursor discovery. Deep framing: general-knowledge *Vibe coding bootstrap* / *Bootstrap Cursor skills*.
+Files under `skills/` are **not** auto-loaded by MAIN assembly. Shop entry: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md). Install per `$CODE_ROOT/HARNESS.md` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly. Deep docs: xref:agent-rules:harness-neutral.adoc[Harness-neutral architecture] on docs.devcentr.org.
 
 ## Memory file format (when writing `$CODE_ROOT/MEMORIES.md`)
 

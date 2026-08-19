@@ -1,6 +1,6 @@
 # Pull request voice (org default)
 
-When opening PRs for Dev-Centr work **or** drafting upstream gifts from this org’s guidance, use Cursor skill **`draft-pr`**.
+When opening PRs for Dev-Centr work **or** drafting upstream gifts from this org’s guidance, use skill **`draft-pr`**.
 
 Short form:
 

@@ -15,12 +15,12 @@ agent-rules/
     _MAIN.md
     editorial/
     engineering/
-  skills/               # Team Cursor skills — see skills/CATALOG.md
+  skills/               # Team agent skills — see skills/CATALOG.md
 ----
 
 == Precedence
 
-On any `dev-centr/*` repository, **org rules win** over personal portable rules where they conflict. Cursor does not enforce this automatically — stack `AGENTS.md` after personal `RULES.md` in User Rules and instruct the agent explicitly.
+On any `dev-centr/*` repository, **org rules win** over personal portable rules where they conflict. Harnesses do **not** enforce this automatically — stack `AGENTS.md` after personal `RULES.md` in the always-on slot and instruct the agent explicitly.
 
 Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent-rules-setup.html[Org agent rules setup] (member-only).
 
@@ -47,7 +47,17 @@ Do **not** fork, copy, or **git-submodule** this tree into the wrapper (a submod
 
 Script: `scripts/setup-org-agent-rules-wrapper.ps1`.
 
-Rationale: one obvious place per org, one live canonical tree (`git pull`), no duplicate skill bodies. Initialize with `scripts/setup-org-agent-rules-wrapper.ps1` after `{org}/.github` exists. Skill `bootstrap-org` phase 3a.
+== Propagation (satellite orgs)
+
+Satellite wrapper repos **do not vendor** shared rules. After this repo merges:
+
+. `git pull` in `$CODE_ROOT/github.com/dev-centr/agent-rules`
+. Re-compose always-on rules if using rules-manager
+. Run skill `harness-setup` only if harness paths changed on this machine
+
+No wrapper-repo PR is required unless `{org}/agent-rules/AGENTS.md` itself changes.
+
+Rationale: one obvious place per org, one live canonical tree (`git pull`), no duplicate skill bodies. Skill `bootstrap-org` phase 3a.
 
 == Junction shortcut
 
@@ -59,5 +69,6 @@ cmd /c mklink /J "$env:code\github.com\dev-centr\AGENTS.md" `
 
 == See also
 
+* xref:harness-neutral.adoc[Harness-neutral architecture]
 * xref:skills-catalog.adoc[Skills catalog]
 * xref:architecture.adoc[Architecture]

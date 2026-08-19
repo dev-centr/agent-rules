@@ -101,4 +101,4 @@ git push origin "v$Version"
 - Force-push `main` / `master` as part of tagging
 - Treat GitHub `releases/latest` as a substitute for `v2`
 - Put `+` in workflow `on.push.tags` globs that would fire twice
-- Paste this skill into always-on User Rules
+- Paste this skill into always-on rules

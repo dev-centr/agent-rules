@@ -131,7 +131,7 @@ Optional in `.github`: `workflow-templates/` only if they will publish org start
 
 This step is **this hive's org init**, not a GitHub or industry default. Skip for orgs the user does not own, third-party banners, or when they say they do not want house agent-rules.
 
-Do **not** `git submodule` `dev-centr/agent-rules`. A submodule pins a SHA; wrapper clones go stale. Shared rules and Cursor skills live in one canonical clone (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Junction skills from there.
+Do **not** `git submodule` `dev-centr/agent-rules`. A submodule pins a SHA; wrapper clones go stale. Shared rules and agent skills live in one canonical clone (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Install skills per `$CODE_ROOT/HARNESS.md`.
 
 After `{org}/.github` exists, run:
 

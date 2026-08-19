@@ -12,11 +12,16 @@ https://docs.devcentr.org/agent-rules/
 == What this is
 
 * Shared end-user / project agent instructions (`RULES.md`, `general/`, `profiles/`)
+* **Harness-neutral** templates — machine/harness facts in `$CODE_ROOT/HARNESS.md` and `$CODE_ROOT/MEMORIES.md`
 * Assembled locally (paste or via rules-manager)
-* Optional on-demand Cursor skills under `skills/` — start at xref:bootstrap.adoc[Bootstrap Cursor skills]
+* Optional on-demand agent skills under `skills/` — start at xref:bootstrap.adoc[Bootstrap agent skills]
+
+== Start here
+
+* xref:harness-neutral.adoc[Harness-neutral architecture] — illustrated guide for any AI harness
 
 == What this is not
 
 * **Not** Dev-Centr product automation — that lives in https://github.com/dev-centr/devcentr-agent-rules[`devcentr-agent-rules`]
-* **Not** a place for personal workstation constants — keep those in your own fork or in `$CODE_ROOT/MEMORIES.md`
+* **Not** a place for workstation constants — keep those in `$CODE_ROOT/MEMORIES.md` and `$CODE_ROOT/HARNESS.md`
 * **Not** always-on dumping ground for long curricula — those belong in skills (see `skills/BOOTSTRAP.md`)

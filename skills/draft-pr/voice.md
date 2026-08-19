@@ -1,6 +1,6 @@
 # Pull requests (portable)
 
-Read this file when you **open or draft a pull request** (upstream gift, fork PR, or internal review). Complements the mechanical `gh pr create` steps in User Rules.
+Read this file when you **open or draft a pull request** (upstream gift, fork PR, or internal review). Complements the mechanical `gh pr create` steps in always-on rules.
 
 ## Title
 

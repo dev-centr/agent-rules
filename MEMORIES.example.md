@@ -1,6 +1,9 @@
 # MEMORIES.example.md (committed template)
 
-Copy to **`$CODE_ROOT/MEMORIES.md`** on each workstation (that file is machine-local and must not be committed).
+Copy to **`$CODE_ROOT/MEMORIES.md`** on each workstation. That file is **machine-local** (this user's machine — paths, tools, hardware) and must **not** be committed.
+
+**Harness config** (skill discovery, always-on injection, chat behaviors) belongs in **`$CODE_ROOT/HARNESS.md`** — see `HARNESS.example.md` and skill `harness-setup`.
+
 Do **not** create per-repo `MEMORIES.md` for project knowledge — use `AGENTS.md` + docs instead.
 
 Format (usage counter starts at 1; increment when reused):
@@ -20,8 +23,12 @@ Examples of what belongs here:
 - Screenshot folders, hardware quirks on this PC
 - “This machine’s CODE_ROOT is …”
 
-Examples of what does **not** belong here (put in the repo):
+Examples of what does **not** belong here (put elsewhere):
 
-- How to build/deploy the project → README / docs
-- Product architecture gotchas → docs explanation or `AGENTS.md`
-- Editorial voice → `STYLE.adoc`
+| Fact type | Where |
+| --- | --- |
+| Harness name, skill discovery paths | `$CODE_ROOT/HARNESS.md` |
+| How to build/deploy the project | README / docs |
+| Product architecture gotchas | docs explanation or `AGENTS.md` |
+| Editorial voice | `STYLE.adoc` |
+| Forkable agent policy | `RULES.md`, `AGENTS.md`, `general/*` |

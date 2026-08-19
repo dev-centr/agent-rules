@@ -15,6 +15,7 @@ Do not put PR voice only in `MEMORIES.md`.
 
 - **Title:** simple plain language. A skimming maintainer should know the change. Prefer orientation over ticket-speak.
 - **Intro:** inviting plain English — a gift, not a lecture.
+  - The PR body must start with this normal-talk intro/summary immediately at the top (right after `## Summary`).
   1. Human problem in one or two sentences
   2. What the PR tries to do (short bullets)
   3. Surprises / tradeoffs early
@@ -38,15 +39,15 @@ Analyze **all** commits that will be in the PR, not only the latest. Then sequen
 
 1. Create a new branch if needed
 2. Push with `-u` if the branch has no upstream
-3. `gh pr create` with the body via a here-string (do not let the shell expand the summary)
+3. `gh pr create` body via file-based `--body-file` (prefer skill `cli-body-file-first`)
 
 PowerShell:
 
 ```powershell
 git push -u origin HEAD
-gh pr create --title "the pr title" --body @"
+$prBodyFile = Join-Path $env:TEMP ("gh-pr-body-$([Guid]::NewGuid()).md")
+Set-Content -Encoding UTF8 -Path $prBodyFile -Value @'
 ## Summary
-
 Hi! <plain-English problem>.
 
 This PR tries to <goal>:
@@ -57,13 +58,15 @@ This PR tries to <goal>:
 Happy to adjust anything that doesn’t fit the project’s taste.
 
 ## Screenshots
-
 <!-- UI-visible: before/after at minimum -->
 
 ## How to try it
-
 1. …
-"@
+
+'@
+
+gh pr create --title "the pr title" --body-file $prBodyFile
+Remove-Item -Force $prBodyFile
 ```
 
 POSIX bash (if that is the shell):
