@@ -35,6 +35,22 @@
   </ol>
 </details>
 
+## Layer names vs harness vocabulary
+
+Our files name **layers**; harness products say **rules** a lot. Full table: https://docs.devcentr.org/agent-rules/harness-neutral.html#layer-names-vs-harness-vocabulary
+
+| Our layer | File | Typical harness equivalent |
+|-----------|------|----------------------------|
+| **User** | [`user.md`](user.md) | Cursor **User Rules**; Claude user `CLAUDE.md`; system prompt / custom instructions |
+| **Harness** | `$CODE_ROOT/harness.md` | Injection + discovery wiring (`ALWAYS_ON_RULES` in harness.md) |
+| **Machine** | `$CODE_ROOT/machine.md` | Local env notes — **not** synced User Rules |
+| **Org** | [`AGENTS.md`](AGENTS.md) | Stacked after user.md in always-on slot |
+| **Project** | `<repo>/AGENTS.md` | Cursor `.cursor/rules/*.mdc`; project `CLAUDE.md` |
+
+**`user.md`** = portable policy *content*. **`harness.md`** = where that content is *injected* on this machine. Core templates stay **`.md`**; **`.mdc`** is for Cursor-local adapters only (see docs).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## About The Project
 
 Canonical **forkable agent rules** and **profiles** for coding assistants under Dev-Centr. Content is meant to be read by agents (from disk) or pasted into an app's rules field. **Harness-neutral:** templates do not assume Cursor, Claude Code, Hermes, or any single AI toolkit — machine and harness facts live in `$CODE_ROOT/harness.md` and `$CODE_ROOT/machine.md`.

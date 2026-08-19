@@ -12,6 +12,22 @@ Machine-specific values live in $CODE_ROOT/harness.md (see harness.example.md).
 - **Skills are canonical in this repo** under `$AGENT_RULES_PATH/skills/<name>/`. Harness-specific install/discovery is recorded in `harness.md`, not duplicated in skill bodies.
 - **Layer precedence is not automatic.** Harnesses do not rank portable vs org vs project rules — the agent must follow explicit stacking instructions in `AGENTS.md` / `user.md`.
 
+## Layer names vs harness vocabulary
+
+Harness UIs say *rules*; our filenames say *layer*. Teaching translation (full table in docs):
+
+| Layer | Path | Role | Examples in products |
+| --- | --- | --- | --- |
+| User | `user.md` | Portable always-on policy (content) | Cursor User Rules; Claude user `CLAUDE.md`; custom instructions |
+| Harness | `$CODE_ROOT/harness.md` | Where content is injected; discovery | `ALWAYS_ON_RULES`; `~/.cursor/skills`; local `.mdc` dir |
+| Machine | `$CODE_ROOT/machine.md` | Workstation facts | Tool paths — not User Rules, usually not synced |
+| Org | `AGENTS.md` | Org override | Stack after `user.md` |
+| Project | `<repo>/AGENTS.md` | Repo-only | `.cursor/rules/*.mdc`, project `CLAUDE.md` |
+
+**`user.md` is not "about the human"** — it is user-*layer* policy. **Payload** (`user.md`) vs **injection** (`harness.md` → `ALWAYS_ON_RULES`) stay separate.
+
+Core files stay **`.md`** for harness-neutral paste; **`.mdc`** (YAML frontmatter) is Cursor adapter format only — see `.cursor/rules/` and https://docs.devcentr.org/agent-rules/harness-neutral.html
+
 ## First read on session start
 
 When `$CODE_ROOT` is known, read in parallel:

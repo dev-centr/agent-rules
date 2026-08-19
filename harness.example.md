@@ -64,6 +64,8 @@ MCP_CONTEXT7 = unavailable
 
 ## Relationship to other layers
 
+See **Layer names vs harness vocabulary** in https://docs.devcentr.org/agent-rules/harness-neutral.html — how `user.md`, `harness.md`, and `machine.md` map to Cursor User Rules, `CLAUDE.md`, etc.
+
 | File | Role |
 | --- | --- |
 | `$CODE_ROOT/harness.md` | **Harness rules** — discovery paths, chat behaviors, always-on slot |

@@ -1,5 +1,8 @@
 # User rules
-<!-- Portable user-layer preamble. Fill Constants before paste. Detail lives in general/*.md when assembling from MAIN.md. Do **not** paste skill bodies into this file. -->
+<!-- Portable user-layer preamble (forkable). Fill Constants before paste.
+     Name = *user layer*, not "rules for users who aren't AI folks" — see harness-neutral
+     "Layer names vs harness vocabulary" for how this maps to Cursor User Rules, CLAUDE.md, etc.
+     Detail lives in general/*.md when assembling from MAIN.md. Do **not** paste skill bodies here. -->
 
 ## Constants
 - CODE_ROOT: `REQUIRED_PATH`

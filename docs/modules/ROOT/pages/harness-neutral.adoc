@@ -82,7 +82,65 @@ Gitignored at `$CODE_ROOT` (or in your fork's filled profile). Same human may us
 
 === Project layer
 
-Facts about **one repository** → `<repo>/AGENTS.md` + docs. not machine.md.
+Facts about **one repository** → `<repo>/AGENTS.md` + docs — not `$CODE_ROOT/machine.md`.
+
+== Layer names vs harness vocabulary
+
+Our filenames describe **layers** (who owns the file, what lifecycle it has). Harness products use **their own labels** — often the word *rules* everywhere. The table below is the teaching translation: same job, different product names.
+
+**`user.md` is not "rules about the human."** It is the **user-layer policy payload** — portable instructions you want on every task before org/project context. Newcomers ask *"what rules go in here?"* Answer: coding standards, git habits, doc voice, tool preferences — anything forkable that is not machine paths and not org-only. *Who* it applies to is everyone using your fork; *where* it lands is recorded in `$CODE_ROOT/harness.md` (`ALWAYS_ON_RULES`).
+
+[cols="1,1,2,2",options="header"]
+|===
+| Our layer | Repo / path | What it holds | Common harness names (examples)
+
+| **User**
+| `user.md` in agent-rules (paste or compose)
+| Portable always-on policy — team/personal baseline
+| Cursor **User Rules** (Settings, often account-synced); Claude Code **user** `CLAUDE.md`; generic **system prompt** / **custom instructions** / **rules file** path you configure
+
+| **Harness**
+| `$CODE_ROOT/harness.md` (from `harness.example.md`)
+| How *this* AI runtime is wired on this machine — discovery, injection slot, chat behavior
+| Not a standard product label; record in `ALWAYS_ON_RULES`, skill install paths, MCP flags. Cursor: Settings + `~/.cursor/skills` + `%USERPROFILE%\.cursor\rules`
+
+| **Machine**
+| `$CODE_ROOT/machine.md` (from `machine.example.md`)
+| Workstation facts — tool paths, PATH gaps, hardware; shared across harnesses on same box
+| Usually **no** dedicated UI — not User Rules. Sometimes "environment notes" or "dotfiles"; never sync to Cursor User Rules
+
+| **Org**
+| `AGENTS.md` + `agents/*`
+| Org policy overriding user layer on org repos
+| Same payload as user layer; stacked **after** `user.md` in always-on slot; sometimes repo `AGENTS.md` only
+
+| **Project**
+| `<repo>/AGENTS.md`
+| This repository only
+| Cursor **Project Rules** (`.cursor/rules/*.mdc`); Claude **project** `CLAUDE.md`; GitHub Copilot **instructions**
+
+| **Skills**
+| `$AGENT_RULES_PATH/skills/<name>/`
+| Heavy on-demand playbooks
+| Cursor **skills** (`~/.cursor/skills`); elsewhere: direct read of `SKILL.md` only
+|===
+
+=== Payload vs injection (important)
+
+* **`user.md`** = canonical *content* (Markdown, harness-neutral).
+* **`ALWAYS_ON_RULES`** in `harness.md` = *where that content is injected* — different per harness.
+* Cursor **User Rules sync across machines** (account); `machine.md` and `harness.md` do **not** — they stay at `$CODE_ROOT`.
+* Cursor **local** `%USERPROFILE%\.cursor\rules\*.mdc` = harness-local overlay (`LOCAL_RULES_DIR`), not a substitute for `user.md`.
+
+=== Why core files stay `.md`, not `.mdc`
+
+**`.mdc`** (in Cursor) means Markdown plus YAML frontmatter (`description`, `alwaysApply`, `globs`) — Cursor **project/local rule** format, not a universal standard.
+
+* **Keep `user.md`, `machine.example.md`, `harness.example.md` as `.md`** — pasteable into any harness; no Cursor-only frontmatter in forkable templates.
+* **Use `.mdc` only in harness adapters** — e.g. `.cursor/rules/*.mdc` in this repo for thin always-on reminders; bodies stay in `general/*` or skills.
+* Optional future: rules-manager emits a Cursor `.mdc` **from** `user.md` for local use — still not committed as the canonical portable file.
+
+Other harnesses may adopt similar formats; the portable layer remains plain Markdown until a cross-harness standard exists.
 
 == harness.md variables
 
