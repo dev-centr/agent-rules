@@ -31,6 +31,11 @@ Observed transitions in forkable + machine-local names:
 * Portable rule `general/self-host-fonts.md` + skill `self-host-fonts`: prefer Fontsource / local `woff2` + preload; do not `@import` Google Fonts or wait on a CDN for first paint.
 * Catalog row + `user.md` one-liner.
 
+== 2026-08-25 — Docs audience / POV gate
+
+* Published docs must address naive readers and visitors — not the chat commissioner. Gate lives in `general/documentation.md`; skills that ship visitor copy re-check it.
+* See xref:changelog-details/2026-08-25 - docs-audience-pov-gate.adoc[Detailed changelog].
+
 == 2026-08-25 — Library registry vs local path
 
 * New skill `library-registry-choice`: before wiring path deps or scaffolding publishable libraries, check the registry, ask publish vs local disk, encourage publish, suggest which registry.
