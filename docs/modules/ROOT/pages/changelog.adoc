@@ -1,0 +1,55 @@
+= Changelog
+
+Timeline of notable functional changes in this repository.
+Detail pages live under `changelog-details/`.
+
+== 2026-08-19 — Layer rename: `user.md`, `harness.md`, `machine.md`
+
+* Renamed forkable paste preamble `RULES.md` → `user.md`.
+* Renamed machine-local examples `HARNESS.example.md` → `harness.example.md` and `MEMORIES.example.md` → `machine.example.md`.
+* Canonical workstation files are now `$CODE_ROOT/harness.md` and `$CODE_ROOT/machine.md` (not `HARNESS.md` / `MEMORIES.md`).
+* Added layer-names vs harness-vocabulary translation table (User Rules ≠ `user.md` file name alone).
+* See xref:changelog-details/2026-08-19 - layer-rename-user-harness-machine.adoc[Detailed changelog].
+
+== 2026-08-19 — Harness-neutral architecture
+
+* Templates no longer assume Cursor; harness discovery and always-on injection live in `$CODE_ROOT/harness.md`.
+* Added skill `harness-setup`, `general/harness.md`, `general/harness-boundary.md`, and docs page `harness-neutral`.
+* Intermediate name `$CODE_ROOT/HARNESS.md` was introduced then immediately lowercased in the layer rename above.
+* See xref:changelog-details/2026-08-19 - harness-neutral-architecture.adoc[Detailed changelog].
+
+== 2026-08-19 — Skills: push, issues record, speech, inventory
+
+* Added skills `push-code`, `issues-repo-record`, `plain-speech` (tone), `tool-inventory`, and clarified owned-changelog vs issue filing.
+* See xref:changelog-details/2026-08-19 - skills-push-issues-speech-inventory.adoc[Detailed changelog].
+
+== 2026-08-18 — Org agent-rules pointer wrappers
+
+* House org init: `{org}/agent-rules` is a pointer overlay (README + thin `AGENTS.md`), **not** a git submodule SHA pin.
+* Setup script `scripts/setup-org-agent-rules-wrapper.ps1`; ASCII punctuation for Windows PowerShell.
+* Skills/docs: `github-profile-assets`, `publish-to-dub` registry categories, `polyglot-ci`.
+* See xref:changelog-details/2026-08-18 - org-pointer-wrappers.adoc[Detailed changelog].
+
+== 2026-08-17 — Thin always-on rules; on-demand skills
+
+* Moved optional curricula out of always-on paste into Cursor skills (`write-a-skill`, `tag-release`, file-link rule).
+* Renamed skill slug `write-skill` → `write-a-skill`.
+* See xref:changelog-details/2026-08-17 - thin-always-on-skills.adoc[Detailed changelog].
+
+== 2026-08-15 — bootstrap-org skill and SDL profiles
+
+* Skill `bootstrap-org` with compiled SDL profile catalog (library, CLI, desktop, docs hub, nonprofit, …).
+* Public bootstrap catalog points at `/skills`.
+* See xref:changelog-details/2026-08-15 - bootstrap-org.adoc[Detailed changelog].
+
+== 2026-08-12 — Org layer, writing skills, shell default
+
+* Org `AGENTS.md` layer + skills catalog; `writing-news` / `writing-blog` skills.
+* Recommend Nushell as default shell; PR title/summary voice; `fix-docs-encoding`; Cloudflare Access note for private sister sites.
+* See xref:changelog-details/2026-08-12 - org-layer-writing-nushell.adoc[Detailed changelog].
+
+== 2026-08-07 — Antora docs component
+
+* Added Antora docs under `docs/`; removed personal-repo references from upstream text.
+* Later: math-on-every-docs-site requirement; README/Antora/changelog agent rules expanded.
+* See xref:changelog-details/2026-08-07 - antora-docs.adoc[Detailed changelog].

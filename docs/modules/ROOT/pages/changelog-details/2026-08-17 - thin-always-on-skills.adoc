@@ -1,0 +1,6 @@
+= 2026-08-17 — Thin always-on rules; on-demand skills
+
+* Moved optional curricula out of the always-on paste preamble into on-demand skills so User Rules / `user.md` stay short.
+* Added `write-a-skill` (YAML `description` = invocation triggers); renamed from `write-skill`.
+* Added `tag-release` for SemVer + GitHub rolling aliases.
+* Always-on file-link rule so mentioned files open in the editor from chat.

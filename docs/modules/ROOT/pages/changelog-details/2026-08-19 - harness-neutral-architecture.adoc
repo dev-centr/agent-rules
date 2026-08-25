@@ -1,0 +1,20 @@
+= 2026-08-19 — Harness-neutral architecture
+
+Templates no longer assume Cursor (or any single AI toolkit).
+
+== What changed
+
+* Introduced machine-local harness config at `$CODE_ROOT` (initially `HARNESS.md`, then `harness.md` — see the layer-rename detail page).
+* Added skill `harness-setup` to probe the active harness and populate `harness.md`.
+* Added `general/harness.md`, `general/harness-boundary.md`, and always-on Cursor adapter `.cursor/rules/harness-boundary.mdc`.
+* Documented the split: forkable policy in `user.md` / `AGENTS.md` / `general/*`; paths and harness wiring only in machine-local files.
+* Satellite orgs pick up shared changes by `git pull` on the canonical `dev-centr/agent-rules` clone (pointer wrappers, not submodule pins).
+
+== See also
+
+* xref:harness-neutral.adoc[Harness-neutral architecture]
+* Skill `harness-setup` under `skills/harness-setup/`
+
+== Commit
+
+* `55ec8f4` — Make agent-rules harness-neutral with HARNESS.md machine layer

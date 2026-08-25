@@ -1,0 +1,5 @@
+= 2026-08-15 — bootstrap-org skill and SDL profiles
+
+* Skill `bootstrap-org` stands up forge identity from named SDL profiles.
+* Profiles: library, CLI, desktop, docs hub, forks org, nonprofit, OSS collective, product org, web app; compiled catalog for the public site.
+* Public bootstrap catalog points at `/skills` instead of `/templates`.

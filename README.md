@@ -30,6 +30,7 @@
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#agent-skills">Agent skills</a></li>
+    <li><a href="#changelog">Changelog</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -166,9 +167,18 @@ Optional, on-demand curricula live under `skills/` and are **not** part of `user
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Changelog
+
+Functional history (including the `RULES.md` → `user.md` / `MEMORIES` → `machine.md` / harness layer rename) lives in the Antora docs:
+
+- Hub: https://docs.devcentr.org/agent-rules/changelog.html
+- Source: [`docs/modules/ROOT/pages/changelog.adoc`](docs/modules/ROOT/pages/changelog.adoc)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Contributing
 
-Portable rule improvements welcome as pull requests. Do not embed machine paths or harness-specific install steps in forkable templates — use placeholders and `$harness.md`.
+Portable rule improvements welcome as pull requests. Do not embed machine paths or harness-specific install steps in forkable templates — use placeholders and `$harness.md`. Record functional changes with skill `owned-changelog`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

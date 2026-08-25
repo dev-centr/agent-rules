@@ -5,3 +5,4 @@
 * xref:bootstrap.adoc[Bootstrap agent skills]
 * xref:skills-catalog.adoc[Skills catalog]
 * xref:architecture.adoc[Architecture]
+* xref:changelog.adoc[Changelog]

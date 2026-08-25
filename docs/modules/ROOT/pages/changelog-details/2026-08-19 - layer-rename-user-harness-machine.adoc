@@ -1,0 +1,34 @@
+= 2026-08-19 — Layer rename: `user.md`, `harness.md`, `machine.md`
+
+Breaking schema rename for harness-neutral layer files. Migrate copies on every workstation.
+
+== Old → new
+
+|====
+| Role | Previous | Current
+
+| Portable always-on paste (forkable)
+| `RULES.md`
+| `user.md`
+
+| Harness discovery / injection (machine-local)
+| `$CODE_ROOT/HARNESS.md` (briefly); example `HARNESS.example.md`
+| `$CODE_ROOT/harness.md`; example `harness.example.md`
+
+| Workstation facts (machine-local)
+| `$CODE_ROOT/MEMORIES.md`; example `MEMORIES.example.md`
+| `$CODE_ROOT/machine.md`; example `machine.example.md`
+|====
+
+`MEMORIES.md` remains gitignored for backwards compatibility; prefer `machine.md`.
+
+== Vocabulary
+
+Layer **file names** are not the same as product UI labels. Example: Cursor **User Rules** is an injection slot; our portable *content* layer file is `user.md`. Full table: xref:harness-neutral.adoc#layer-names-vs-harness-vocabulary[Harness-neutral — layer names vs harness vocabulary].
+
+Core templates stay `.md`. Cursor `.mdc` under `%USERPROFILE%\.cursor\rules\` (or repo `.cursor/rules/`) is adapter-only and must not hold hive drive letters in synced User Rules.
+
+== Commits
+
+* `aea1a78` — Rename layers to user.md, harness.md, machine.md
+* `5e72b86` — Docs: layer names vs harness vocabulary translation table

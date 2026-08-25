@@ -19,6 +19,7 @@ https://docs.devcentr.org/agent-rules/
 == Start here
 
 * xref:harness-neutral.adoc[Harness-neutral architecture] — illustrated guide for any AI harness
+* xref:changelog.adoc[Changelog] — functional history (including layer renames)
 
 == What this is not
 

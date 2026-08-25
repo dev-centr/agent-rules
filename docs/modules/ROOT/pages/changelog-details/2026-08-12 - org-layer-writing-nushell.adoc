@@ -1,0 +1,6 @@
+= 2026-08-12 — Org layer, writing skills, shell default
+
+* Org `AGENTS.md` layer + in-repo skills catalog; `writing-news` and `writing-blog` skills (news = outward, blog = inward).
+* Recommend Nushell as the default shell on Windows, macOS, and Linux (agent terminals may still use PowerShell when the IDE provides `pwsh`).
+* Plain-English inviting PR title and summary guidance; `fix-docs-encoding` for Antora SVG/adoc transcode repair.
+* Require Cloudflare Access on private sister Antora sites; AsciiDoc image alts with commas need quoting.

@@ -1,0 +1,7 @@
+= 2026-08-19 — Skills: push, issues record, speech, inventory
+
+* `push-code` — logical commits before push.
+* `issues-repo-record` — when `ISSUES_REPO` is set, filings always commit and push.
+* Clarified when to file issues vs owned changelogs (`owned-changelog` for routine owned functional changes).
+* Plain-speech default tone rule + `record-rule` skill.
+* `tool-inventory` rule + skill (prefer recording in `$CODE_ROOT/machine.md`).
