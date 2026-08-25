@@ -11,7 +11,7 @@ description: >-
 
 Repo **face** layout for owned / org repositories. Not product docs (those stay in `docs/`). Blanks: [dev-centr/readme-template](https://github.com/dev-centr/readme-template). Hand-edit per repo — do not batch-script rewrites.
 
-**Audience:** the forge visitor / downstream user — never the chat commissioner. Apply **Audience / point of view** in `general/documentation.md` before drafting. Wrong voice = maintainer notes, session TODOs, or agent briefing paste.
+**Audience:** the forge visitor / downstream user — never the chat commissioner. Apply **Audience / point of view** in `general/documentation.md` before drafting. Lead with who the README is for. Wrong voice = maintainer notes, session TODOs, or agent briefing paste.
 
 **GitHub is the default adapter** (known to work). Other forges: same sections and chrome; swap metric URLs; do not copy GitHub-only AsciiDoc `ifdef::env-github[]` unless that host needs it.
 

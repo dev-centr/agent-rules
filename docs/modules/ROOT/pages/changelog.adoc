@@ -1,4 +1,9 @@
 = Changelog
+:page-audience: Maintainers and readers tracking functional history of this component
+:page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 Timeline of notable **functional** changes, reconstructed from git history and observed file content (not only commit subjects).
 Detail pages live under `changelog-details/`.
@@ -30,6 +35,11 @@ Observed transitions in forkable + machine-local names:
 
 * Portable rule `general/self-host-fonts.md` + skill `self-host-fonts`: prefer Fontsource / local `woff2` + preload; do not `@import` Google Fonts or wait on a CDN for first paint.
 * Catalog row + `user.md` one-liner.
+
+== 2026-08-25 — Page-context metadata extension
+
+* Docs encode audience/authors as `page-*` attributes; `@antora-supplemental/page-context` formats lead + footer (agent-assisted: `<agent> on behalf of <human>`).
+* See xref:changelog-details/2026-08-25 - page-context-metadata.adoc[Detailed changelog].
 
 == 2026-08-25 — Docs audience / POV gate
 

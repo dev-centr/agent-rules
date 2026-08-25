@@ -1,6 +1,11 @@
 = Skills catalog
 :navtitle: Skills catalog
 :description: Team agent skills in agent-rules — one skill per job, harness-neutral install, CATALOG.md governance.
+:page-audience: Maintainers and adopters choosing or reviewing which skills exist
+:page-usage-context: Docs-hub reference / inventory (may be used as a lookup page). Living source of truth remains `skills/CATALOG.md` in the repo
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 Living source::
 https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md

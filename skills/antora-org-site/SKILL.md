@@ -15,7 +15,7 @@ Minimum bar for a published Antora site in an owned org. Detail and hub table: [
 
 ## Audience / POV
 
-Before drafting or revising any page under `docs/`, read **Audience / point of view** in `general/documentation.md`. Published pages teach **naive readers and visitors** — not the chat commissioner. Name the published reader; keep agent playbooks in skills / `AGENTS.md`.
+Before drafting or revising any page under `docs/`, read **Audience / point of view** and **Author credits** in `general/documentation.md`. Encode **`page-audience`**, **`page-usage-context`**, **`page-orig-author`**, **`page-last-author`** (agent-assisted: `<agent> on behalf of <human>`). Register **`@antora-supplemental/page-context`** under `asciidoc.extensions` so the hub formats lead + footer — do not hand-duplicate labeled lists. Different pages may target different contexts (onboarding vs sidebar reference).
 
 ## Required
 

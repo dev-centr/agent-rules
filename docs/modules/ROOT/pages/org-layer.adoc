@@ -1,6 +1,11 @@
 = Org layer (AGENTS.md)
 :navtitle: Org layer
 :description: Dev-Centr org instructions in agent-rules — AGENTS.md, agents modules, precedence over personal rules.
+:page-audience: Dev-Centr contributors and new org members who need org policy stacked after portable `user.md`
+:page-usage-context: Docs-hub explanation of the org overlay. Agent playbooks stay in `AGENTS.md` / `agents/*`
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 The **`dev-centr/agent-rules`** repository holds both portable rules and the **org layer** for Dev-Centr team work.
 

@@ -55,7 +55,7 @@
 ## Docs
 - Structure: Diátaxis (tutorials, how-to, explanation, reference).
 - Format: AsciiDoc by default; retain Markdown on upstream forks; keep/add Markdown when a package registry only parses Markdown.
-- **Audience / POV:** published docs address naive readers and visitors — never the chat commissioner. Name the published reader before drafting; detail + anti-patterns in `general/documentation.md`.
+- **Audience / POV:** encode `page-audience` / `page-usage-context` / author attrs; register `@antora-supplemental/page-context` on the playbook. Agent-assisted: `<agent> on behalf of <human>`. Detail: `general/documentation.md`.
 - Titles: follow site `STYLE.adoc` / `AGENTS.md` (not `machine.md`). **News = outward**; **blog = inward**. First-party news omits org; action essays pass implied [On]; prefer `X as Y` / *when* / disproof / questions; attach floating modifiers to an object; docs topics = concept names. Philosophy: `Titles as orientation`. In-repo IDE rules per `IDE_PROJECT_RULES` in `$HARNESS`; this file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `machine.md`.
 - On demand (do not inline): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `writing-news`, `writing-blog`, `issue-reports`, `issues-repo-record` — `skills/CATALOG.md`.

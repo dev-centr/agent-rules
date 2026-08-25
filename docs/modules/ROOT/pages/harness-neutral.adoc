@@ -1,8 +1,13 @@
 = Harness-neutral architecture
 :navtitle: Harness-neutral
 :description: How agent-rules separates forkable templates from machine-local harness config — layered geography, personal deltas, rules-manager compose, skills, and layer precedence.
+:page-audience: New Dev-Centr members and anyone adopting `agent-rules` on a fresh machine or a new AI harness
+:page-usage-context: Full teaching page on the docs hub (illustrated guide). Not a sidebar snippet and not an agent playbook — agent obligations live in skills / `AGENTS.md`
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
-This page is the illustrated guide for teams copying `dev-centr/agent-rules` into **any** local AI harness (Cursor, Claude Code, Hermes, T3code, Windsurf, and others).
+This page explains the **layered geography** of forkable templates vs machine-local config so you can copy `dev-centr/agent-rules` into **any** local AI harness (Cursor, Claude Code, Hermes, T3code, Windsurf, and others).
 
 Repository::
 https://github.com/dev-centr/agent-rules

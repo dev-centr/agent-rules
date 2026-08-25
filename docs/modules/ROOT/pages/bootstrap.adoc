@@ -1,6 +1,11 @@
 = Bootstrap agent skills
 :navtitle: Bootstrap skills
 :description: In-repo shop entry for agent skills under skills/ — harness-neutral install via harness.md; no always-on dump.
+:page-audience: Adopters installing team skills into a local harness (or reading skills directly from the clone)
+:page-usage-context: Docs-hub pointer to the in-repo shop file; pair with xref:harness-neutral.adoc[Harness-neutral architecture]
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 This component’s **shop file** is the Markdown recipe in the repository:
 

@@ -1,4 +1,9 @@
 = Usage
+:page-audience: First-time adopters cloning agent-rules into a code hive
+:page-usage-context: Short how-to checklist on the docs hub
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 . Clone into your code hive, for example `$CODE_ROOT/github.com/<your-org-or-user>/agent-rules`.
 . Point your assistant at `user.md`, or compose with https://github.com/dev-centr/rules-manager[`rules-manager`].

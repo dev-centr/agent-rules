@@ -1,5 +1,10 @@
 = Agent Rules
 :description: Forkable modular agent rules with 1-step assembly for local AI coding assistants.
+:page-audience: People evaluating or adopting Dev-Centr agent-rules (new members, harness adopters, docs visitors)
+:page-usage-context: Component landing page on the docs hub — orientation, not a deep how-to
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 Canonical **forkable** rules and profiles for coding assistants under Dev-Centr. Content is meant to be read by agents from disk or pasted into an app rules field.
 

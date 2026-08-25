@@ -1,4 +1,9 @@
 = Architecture
+:page-audience: Readers who want a short map of how agent-rules relates to personal overlays and Dev-Centr product rules
+:page-usage-context: Compact overview on the docs hub; prefer xref:harness-neutral.adoc[Harness-neutral architecture] for the full illustrated guide
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-25
 
 image::rules-geography.svg[alt="Rules geography: shared reference clone, personal overlay fork, harness always-on slot, skill discovery junctions, machine files, and project AGENTS.md",width=720,height=480]
 
