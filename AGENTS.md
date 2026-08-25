@@ -52,6 +52,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 ## Org obligations (always on dev-centr work)
 
 - **Sync before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`; pull/rebase before coding on a stale HEAD.
+- **End of agent run:** after file changes, logical commits + push before the final reply (`general/end-of-run.md`; skill `push-code`).
 - **One Antora site per org:** skill `antora-org-site` (hub at [docs.devcentr.org](https://docs.devcentr.org); Valentus lean + **Facto** compose pack — confirm; `agents/engineering/antora.md`).
 - **Internet Architecture / Reliability:** systems content in `general-knowledge`; portal peer nav in `dev-centr/docs`. HCI *Labels versus wires* is the symptom ↔ diagnosis face, not this umbrella; connectome-fs is substrate.
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
