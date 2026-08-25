@@ -15,7 +15,7 @@ If docs are not published yet locally: `$CODE_ROOT/github.com/dev-centr/general-
 | `skills/<name>/SKILL.md` (+ siblings) | Canonical curriculum — **not** part of `MAIN.md` / `user.md` assembly |
 | `$SKILLS_DISCOVERY_ROOT/<name>/` | Harness discovery path when installed (from `$CODE_ROOT/harness.md`) |
 | `user.md` / always-on slot | At most a **one-line** pointer |
-| `general/documentation.md` | Titles + thin always-on News/blog tips (Nieman scene checklist) |
+| `general/documentation.md` | Audience/POV gate + titles + thin News/blog tips (Nieman scene checklist) |
 | `$CODE_ROOT/harness.md` | Machine-local: harness name, discovery root, install method |
 
 Skills are for **heavy curricula** split **one skill per job** (e.g. `writing-news`, `writing-blog` — not a router skill). Keep short always-on tips in `general/documentation.md`. Inventory: `skills/CATALOG.md`.
@@ -45,7 +45,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 
 ## House writing split
 
-- **Titles / stance / Nieman anti-terse** → `general/documentation.md` (loaded when drafting docs).
+- **Audience/POV + titles / stance / Nieman anti-terse** → `general/documentation.md` (loaded when drafting docs).
 - **News body** → skill `writing-news` (`skills/writing-news/`).
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - **Docs mojibake / SVG XML** → skill `fix-docs-encoding` (`skills/fix-docs-encoding/`).

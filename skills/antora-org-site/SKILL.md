@@ -5,12 +5,17 @@ description: >-
   docs hub; antora theme; antora-playbook.yml; playbook; GitHub Pages for
   docs; one Antora site per org; Lunr; antora-search-chat; docs.devcentr.org;
   Valentus; Valentus theme; Facto; antora-facto; compose pack; KaTeX;
-  stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML.
+  stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML;
+  docs audience; visitor POV; naive reader docs.
 ---
 
 # Antora org site
 
 Minimum bar for a published Antora site in an owned org. Detail and hub table: [reference.md](reference.md). Encoding/mojibake: skill `fix-docs-encoding` (transcode, not a refactor).
+
+## Audience / POV
+
+Before drafting or revising any page under `docs/`, read **Audience / point of view** in `general/documentation.md`. Published pages teach **naive readers and visitors** — not the chat commissioner. Name the published reader; keep agent playbooks in skills / `AGENTS.md`.
 
 ## Required
 

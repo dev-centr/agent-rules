@@ -38,7 +38,7 @@ These apply universally unless a profile says otherwise.
   - `linux` → `general/linux.md`
   - If `ENVIRONMENT` is missing, ask the user which file applies before assuming an OS.
 - You **must** read `general/creator.md` before acting.
-- Read `general/documentation.md` when you are authoring, structuring, or publishing project documentation (optional layer for doc-heavy work).
+- Read `general/documentation.md` when you are authoring, structuring, or publishing project documentation (optional layer for doc-heavy work). That file’s **Audience / point of view** gate is required: write for published readers, not the chat commissioner.
 - Heavy curricula are agent skills (not always-on reads): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `harness-setup`, `sync-agent-rules`, `env-names-registry`, `library-registry-choice` — see `skills/CATALOG.md`.
 
 ## Memory management

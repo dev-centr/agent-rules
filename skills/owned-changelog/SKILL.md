@@ -19,6 +19,7 @@ If the repo already has a changelog, **match that style** (layout, tense, headin
 - Index page named **changelog** (timeline of dates + short summaries + links).
 - Detail pages under `changelog-details/` named `date - title`.
 - Wire into the active docs system (Antora nav, etc.) when docs exist. If the project has no docs, put the changelog at the repo base.
+- Reader-facing summaries assume a stranger scanning the timeline — not chat context (`general/documentation.md` Audience / POV).
 
 ## Create or backfill
 

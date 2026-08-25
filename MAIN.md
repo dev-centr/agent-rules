@@ -26,7 +26,7 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/<windows|mac|linux>.md` (infer OS from host or profile)
 - `general/creator.md`
 - `general/folder-schema.md`
-- `general/documentation.md` (only if the task involves authoring or publishing project documentation)
+- `general/documentation.md` (only if the task involves authoring or publishing project documentation — includes Audience / POV gate)
 
 Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `harness-setup`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
 

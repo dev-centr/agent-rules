@@ -1,0 +1,8 @@
+= Docs audience / POV gate
+
+* Added **Audience / point of view** gate to `general/documentation.md`: published docs address naive readers and visitors — not the chat commissioner who ordered the page.
+* Agents must name the published reader before drafting; “you” maps by surface (docs vs agent rules); anti-patterns and pass checks listed.
+* Thin pointers: `user.md` Docs, `general/global.md`, `skills/BOOTSTRAP.md`, `AGENTS.md`, `agents/editorial/titles.md`.
+* Skills re-check the gate when shipping visitor copy: `antora-org-site`, `public-readme`, `bootstrap-org`, `owned-changelog`, `writing-news`, `writing-blog`.
+
+Motivating failure mode: architecture pages that read like an agent briefing for the session partner instead of an onboarding guide for a new org member (e.g. early harness-neutral drafts).

@@ -23,3 +23,4 @@ When writing or editing **news** or **blog** titles in Dev-Centr sites, follow e
 - **News body** → skill `writing-news` (`skills/writing-news/`).
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - Nieman anti-terse checklist stays in `general/documentation.md` (thin always-on layer).
+- **Docs / README / profile pages** → Audience / POV gate in `general/documentation.md` before drafting (published reader ≠ chat commissioner).

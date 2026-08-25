@@ -3,12 +3,15 @@ name: public-readme
 description: >-
   Use when creating or revising a public README, README.md, or README.adoc;
   GitHub-facing repo face; GitLab README; Best-README; Explore the docs;
-  shields.io badges; Built With; contrib.rocks; for-the-badge chrome.
+  shields.io badges; Built With; contrib.rocks; for-the-badge chrome;
+  visitor-facing README; naive reader repo face.
 ---
 
 # Public README
 
 Repo **face** layout for owned / org repositories. Not product docs (those stay in `docs/`). Blanks: [dev-centr/readme-template](https://github.com/dev-centr/readme-template). Hand-edit per repo — do not batch-script rewrites.
+
+**Audience:** the forge visitor / downstream user — never the chat commissioner. Apply **Audience / point of view** in `general/documentation.md` before drafting. Wrong voice = maintainer notes, session TODOs, or agent briefing paste.
 
 **GitHub is the default adapter** (known to work). Other forges: same sections and chrome; swap metric URLs; do not copy GitHub-only AsciiDoc `ifdef::env-github[]` unless that host needs it.
 

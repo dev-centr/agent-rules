@@ -14,7 +14,7 @@ Read `body.md` in this folder for the full checklist. Titles: org `agents/editor
 
 ## Quick stance
 
-- Inverted pyramid; lead with why it matters to readers
+- Inverted pyramid; lead with why it matters to readers (published audience — not the chat commissioner; see `general/documentation.md` Audience / POV)
 - Neutral attribution; no editorializing or first-person (`I`, `we` unless quoting)
 - One framing beat per item; shipping minutiae → changelog, not news body
 - Scene + summary (Nieman); not telegraphic bullet-essays

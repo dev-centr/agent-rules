@@ -27,6 +27,7 @@
 - Task lists in files: mark done with checkmark emojis.
 - Changelogs: match the repo’s existing style; owned-project layout is skill `owned-changelog`.
 - Never write secret values into git, docs, `machine.md`, `harness.md`, or `.env.example` (name-only registry: skill `env-names-registry`).
+- **Web fonts:** prefer self-hosting (Fontsource / local `woff2` + preload); do not `@import` Google Fonts or wait on a CDN for first paint. Detail: `general/self-host-fonts.md` (skill `self-host-fonts`).
 
 ## Environment
 - OS/Shell: default Windows 10/11 unless profile says otherwise; recommend Nushell as user default; agent terminals may still be PowerShell 7 when the IDE provides `pwsh`.
@@ -54,6 +55,7 @@
 ## Docs
 - Structure: Diátaxis (tutorials, how-to, explanation, reference).
 - Format: AsciiDoc by default; retain Markdown on upstream forks; keep/add Markdown when a package registry only parses Markdown.
+- **Audience / POV:** published docs address naive readers and visitors — never the chat commissioner. Name the published reader before drafting; detail + anti-patterns in `general/documentation.md`.
 - Titles: follow site `STYLE.adoc` / `AGENTS.md` (not `machine.md`). **News = outward**; **blog = inward**. First-party news omits org; action essays pass implied [On]; prefer `X as Y` / *when* / disproof / questions; attach floating modifiers to an object; docs topics = concept names. Philosophy: `Titles as orientation`. In-repo IDE rules per `IDE_PROJECT_RULES` in `$HARNESS`; this file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `machine.md`.
 - On demand (do not inline): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `writing-news`, `writing-blog`, `issue-reports`, `issues-repo-record` — `skills/CATALOG.md`.

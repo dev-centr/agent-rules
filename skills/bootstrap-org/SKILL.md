@@ -68,7 +68,7 @@ If the gate fails, stop after saying so. If it passes, proceed. For `kind` **pro
 ## Stance
 
 - User often **creates the empty org in the GitHub UI**. Populate; do not block on automating org creation (`gh` cannot fully replace that UI).
-- Copy is for **visitors**, not the maintainer or the agent. Philosophy and “division of labor” live on the **site/docs**, not as agent notes on the profile.
+- Copy is for **visitors**, not the maintainer or the agent. Philosophy and “division of labor” live on the **site/docs**, not as agent notes on the profile. Full gate: **Audience / point of view** in `general/documentation.md` (chat commissioner ≠ published reader).
 - **Minimal profile.** Settings + website already hold name, URL, and notable repos. Do not restack those on `profile/README.md`.
 - **Allow-list gitignore** (`*` then `!path`). Update it when adding files. Never allow-list `machine.md`.
 - Changelogs, About descriptions, and README hub links belong on new repos.

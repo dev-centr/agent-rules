@@ -14,7 +14,7 @@ Read `body.md` in this folder for the full checklist. Titles: org `agents/editor
 
 ## Quick stance
 
-- Thesis early; conversational authority allowed (`you`, first person when appropriate)
+- Thesis early; conversational authority allowed (`you`, first person when appropriate) — **`you` = the essay’s published reader**, not the chat partner who commissioned the draft (`general/documentation.md` Audience / POV)
 - Thinking in public — not a press release
 - Scene + summary (Nieman); not telegraphic bullet-essays or generic AI slop
 - One big idea per post; shipping minutiae → changelog
