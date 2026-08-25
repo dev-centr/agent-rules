@@ -33,7 +33,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x` | active | `github.md` + `registries.md` siblings |
 | `write-a-skill` | author/edit agent skill, `SKILL.md`, skill frontmatter, YAML `description`; trigger words | active | Harness-neutral authoring; layout may use harness-specific scaffolds |
 | `ship-app` | scaffolding/shipping GUI, CLI, TUI, library, game, service | active | Software Product Essentials |
-| `antora-org-site` | Antora site, docs hub, antora-playbook, GitHub Pages for docs | active | Valentus is a suggestion — confirm |
+| `antora-org-site` | Antora site, docs hub, antora-playbook, GitHub Pages for docs; Valentus; Facto; antora-facto | active | Valentus lean; Facto compose pack — confirm |
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary | active | Voice in `skills/draft-pr/voice.md` |
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User must ask to commit |
@@ -44,7 +44,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create` | active | When filing warranted — not after every owned-repo change |
 | `issues-repo-record` | record issue/PR to `.issues`, `submissions/`, push ISSUES_REPO | active | Always commit+push; pairs with `issue-reports` |
 | `polyglot-ci` | GitHub Actions, release.yml, win/mac/lin/BSD, polyglot pack | active | macOS arm64 only |
-| `record-rule` | make that a rule, save this rule, record a rule, persist preference, agent-rules layer | active | Routes to portable/org/project/harness-local per `harness-boundary` |
+| `record-rule` | make that a rule, save this rule, record a rule, persist preference, agent-rules layer; update AI rules/skills; sync harness + template | active | Routes to portable/org/project/harness-local per `harness-boundary` |
 | `tool-inventory` | tools changed, record tool inventory, update local tool list snapshot | active | Harness-agnostic; writes via `machine.md` or `TOOL-INVENTORY.md` |
 
 ## Adding a skill (checklist)

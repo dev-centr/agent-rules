@@ -26,6 +26,12 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-25 — Facto compose pack + Internet Architecture nesting
+
+* Valentus stays lean; **Facto** (`antora-supplemental/antora-facto`) is the named compose pack for Lunr/math/Kroki.
+* Org engineering notes + `antora-org-site` skill/CATALOG updated; Internet Reliability nesting vs HCI Labels versus wires documented.
+* See xref:changelog-details/2026-08-25 - facto-compose-pack.adoc[Detailed changelog].
+
 == 2026-08-24 — Changelog introduced
 
 * Added Antora changelog index + detail pages; linked from README, nav, and overview.

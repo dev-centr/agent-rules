@@ -3,8 +3,8 @@ name: antora-org-site
 description: >-
   Use when creating, wiring, or publishing an Antora site or docs hub;
   antora-playbook.yml; GitHub Pages for docs; one Antora site per org;
-  Lunr; antora-search-chat; docs.devcentr.org; Valentus theme; KaTeX;
-  stem latexmath; alias-component-to-latest.
+  Lunr; antora-search-chat; docs.devcentr.org; Valentus theme; Facto;
+  antora-facto; KaTeX; stem latexmath; alias-component-to-latest; Kroki.
 ---
 
 # Antora org site
@@ -24,9 +24,11 @@ Minimum bar for a published Antora site in an owned org. Detail and hub table: [
 
 Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 
-## Valentus (suggestion — confirm)
+## Valentus + Facto (suggestion — confirm)
 
-**Suggest** Valentus (`antora-supplemental/valentus-theme`) as the house default. **Ask before applying it.** Keep an existing theme unless they confirm a switch. After they choose Valentus, customize colors/logo from org brand assets — do not re-poll the UI on every later pass.
+**Suggest** Valentus (`antora-supplemental/valentus-theme`) as the house **theme**. **Ask before applying it.** Keep an existing theme unless they confirm a switch. After they choose Valentus, customize colors/logo from org brand assets — do not re-poll the UI on every later pass.
+
+**Valentus stays lean.** Do not fold Lunr, STEM/math, or Kroki into Valentus core / default `v2`. For the usual stack, use the **Facto** compose pack (`antora-supplemental/antora-facto`) — Valentus + Lunr + math + Kroki (Mermaid + PlantUML → SVG) — like a VS Code extension pack. Org notes: `agents/engineering/antora.md`.
 
 ## AsciiDoc figures
 

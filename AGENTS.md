@@ -40,6 +40,7 @@ After portable `agent-rules` assembly (see `MAIN.md`), read **in one parallel ba
 - `agents/_MAIN.md` (orchestrator)
 - `agents/editorial/titles.md` (when authoring or reviewing news, blog, or doc titles)
 - `agents/engineering/dub.md` (when working on DUB / D packages in org repos)
+- `agents/engineering/antora.md` (when wiring Antora/Valentus/Facto or Internet Architecture vs HCI faces)
 - Skill `draft-pr` when opening a pull request
 - Skill `issues-repo-record` when recording to `ISSUES_REPO`
 - `skills/CATALOG.md` (when installing, authoring, or auditing agent skills)
@@ -51,7 +52,8 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 ## Org obligations (always on dev-centr work)
 
 - **Sync before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`; pull/rebase before coding on a stale HEAD.
-- **One Antora site per org:** skill `antora-org-site` (hub at [docs.devcentr.org](https://docs.devcentr.org); Valentus is a suggestion — confirm).
+- **One Antora site per org:** skill `antora-org-site` (hub at [docs.devcentr.org](https://docs.devcentr.org); Valentus lean + **Facto** compose pack — confirm; `agents/engineering/antora.md`).
+- **Internet Architecture / Reliability:** systems content in `general-knowledge`; portal peer nav in `dev-centr/docs`. HCI *Labels versus wires* is the symptom ↔ diagnosis face, not this umbrella; connectome-fs is substrate.
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
 - **Changelogs:** every owned project, functional changes — skill `owned-changelog`.
 - **Config:** SDL (`.sdl`) on DevCentr-owned / `sdlang-d` surfaces; KDL (`.kdl`) greenfield outside that stack; JSON5 in the JSON family. No Extended SDL/XDL.

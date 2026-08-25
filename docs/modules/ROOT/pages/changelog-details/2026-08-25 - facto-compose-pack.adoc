@@ -1,0 +1,12 @@
+= 2026-08-25 — Facto compose pack + Internet Architecture nesting
+
+== Before
+
+* Antora skill suggested Valentus without a named pack for Lunr/math/Kroki.
+* Internet Reliability / Labels-versus-wires layering lived only in project `AGENTS.md` notes.
+
+== After
+
+* Org notes `agents/engineering/antora.md`: Valentus stays lean; **Facto** (`antora-supplemental/antora-facto`) is the compose pack; Internet Architecture / Reliability under DevCentr; HCI Labels versus wires as symptom ↔ diagnosis face; connectome-fs as substrate.
+* Skill `antora-org-site` + `reference.md` + `CATALOG` mention Facto; `record-rule` triggers expanded for “update AI rules/skills”.
+* Thin pointers in `AGENTS.md`, `agents/_MAIN.md`, `general/antora-docs-sites.md`, `general/documentation.md`.

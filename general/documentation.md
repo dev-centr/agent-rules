@@ -6,7 +6,7 @@ Read this file when you **author, structure, or publish** project documentation 
 
 - **Diátaxis** (tutorials, how-to, explanation, reference).
 - Public README face: skill **`public-readme`**. Blanks: `dev-centr/readme-template`. Hand-edit per repo.
-- Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm). Encoding: skill **`fix-docs-encoding`**.
+- Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm; lean theme + **Facto** compose pack — `agents/engineering/antora.md`). Encoding: skill **`fix-docs-encoding`**.
 - Changelogs: skill **`owned-changelog`**. Shippable apps: skill **`ship-app`**. PRs: skill **`draft-pr`**.
 
 ## Titles for news, blogs, and essays

@@ -21,7 +21,8 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.
 | Opening or drafting a pull request | `draft-pr` |
 | News body copy (ship note, org announcement) | `writing-news` |
 | Blog body copy (essay, philosophy, tutorial narrative) | `writing-blog` |
-| Antora site / docs hub | `antora-org-site` |
+| Antora site / docs hub / Valentus / Facto | `antora-org-site` |
+| Persist a preference / update agent-rules layers | `record-rule` |
 | Public README | `public-readme` |
 | Shipping an app | `ship-app` |
 | Changelog (owned project) | `owned-changelog` |
@@ -33,6 +34,7 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.
 ## Engineering
 
 - DUB / D packages → [`engineering/dub.md`](engineering/dub.md)
+- Antora / Valentus / Facto / Internet Architecture nesting → [`engineering/antora.md`](engineering/antora.md)
 
 ## Machine-local (never in templates)
 

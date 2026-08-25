@@ -4,6 +4,7 @@ description: >-
   Use when the user says make that a rule, save this rule, record a rule,
   add a rule, create a rule, write a rule, persist this preference,
   remember this, add to agent-rules, AGENTS.md rule, user.md update,
+  update AI rules, update agent skills, sync harness and template,
   harness boundary, harness.md, or wants to persist an instruction across sessions.
 ---
 
