@@ -12,11 +12,11 @@ The chat user commissioned the page. They already know the session context, hous
 
 Put audience, usage context, and authors in the **document header** as `page-*` attributes. Do **not** hand-write visible `Audience::` / author labeled lists when `@antora-supplemental/page-context` is registered — that extension formats the lead + footer from metadata.
 
-AsciiDoc house schema:
+AsciiDoc house schema (minimal required):
 
 ```asciidoc
 = Page title
-:description: Short SEO blurb (optional; not rendered by page-context).
+:description: Short SEO blurb (optional; Antora — not owned by page-context).
 :page-audience: New Dev-Centr members and anyone adopting agent-rules on a fresh machine
 :page-usage-context: Full teaching page on the docs hub (not a sidebar snippet or agent playbook)
 :page-orig-author: Ryan Johnson
@@ -24,15 +24,17 @@ AsciiDoc house schema:
 :page-last-edited: 2026-08-25
 ```
 
+Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-status`, `page-keywords`, `page-license`, `page-lang`, `page-prerequisites`, dates (`page-created` / `page-published`), identifiers (`page-doi`, `page-url`), reviewers, etc. Full catalog + aliases: https://github.com/antora-supplemental/page-context#full-attribute-catalog
+
 | Attribute | Required | Rendered by extension as |
 | --- | --- | --- |
 | `page-audience` | yes (for teaching pages) | Audience (lead) |
 | `page-usage-context` | when not obvious | Usage context (lead) |
 | `page-orig-author` | yes | Original author (footer; set once) |
-| `page-last-author` | yes | Latest contributor (footer) |
-| `page-last-edited` | no | Date on latest line |
+| `page-last-author` | yes | Latest contributor (footer); agent-assisted → `<agent> on behalf of <human>` |
+| `page-last-edited` | no | Folded into latest contributor line |
 
-Extension: **`@antora-supplemental/page-context`** — register under `asciidoc.extensions` in the Antora playbook. Repo: https://github.com/antora-supplemental/page-context
+Extension: **`@antora-supplemental/page-context`** — register under `asciidoc.extensions`. Repo: https://github.com/antora-supplemental/page-context
 
 Markdown / README (no Antora): a short lead that names **who** and **when**; credit authors in a footer line. Prefer AsciiDoc + the extension on hub docs.
 
