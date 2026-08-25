@@ -64,36 +64,17 @@ Docs: https://docs.devcentr.org/agent-rules/ — start with **[Harness-neutral a
 
 ### Architecture
 
-```mermaid
-flowchart TB
-  subgraph forkable [agent-rules forkable]
-    G[general/]
-    P[profiles/]
-    R[user.md]
-    M[README.md]
-  end
-  subgraph machine [Machine-local]
-    H["$CODE_ROOT/harness.md"]
-    MEM["$CODE_ROOT/machine.md"]
-  end
-  subgraph product [devcentr-agent-rules]
-    X[Dev-Centr product rules]
-  end
-  R --> G
-  R --> P
-  H -.-> forkable
-  MEM -.-> forkable
-  product -.->|used by Dev-Centr app| forkable
-```
+**Layered geography** (not personal-fork HEAD parity with the template): live team clone `$AGENT_RULES_PATH` holds skills + shared portable/org policy; an optional personal fork holds **deltas** only (`profiles/`, personal tweaks, personal-only skills); machine files stay at `$CODE_ROOT`. Illustrated map: **[Harness-neutral architecture](https://docs.devcentr.org/agent-rules/harness-neutral.html)** (`rules-geography.svg`).
 
 - **agent-rules** (this repository): portable rules (`user.md`, `general/`, `profiles/`) **and** org layer (`AGENTS.md`, `agents/`, org `skills/`). Satellite orgs clone/fetch `dev-centr/agent-rules` as `AGENT_RULES_PATH` — wrapper repos hold only org overlay text.
+- **Personal overlay:** do not chase rebase parity with this repo’s `main`; pull **this** tree for skills/shared policy.
 - **devcentr-agent-rules**: rules for when the Dev-Centr app acts on behalf of the user (separate repository).
 - **harness.md** + **machine.md**: this user's machine; never commit. See `harness.example.md` and `machine.example.md`.
 
 ### Built With
 
 * **Rules format** — Markdown modules under `general/` and `profiles/`
-* **Assembly** — paste `user.md`, or compose via [rules-manager](https://github.com/dev-centr/rules-manager)
+* **Assembly** — stack layers natively when the harness allows; otherwise compose via [rules-manager](https://github.com/dev-centr/rules-manager) (needed for a single undifferentiated always-on field)
 * **Harness setup** — skill `harness-setup` populates `$CODE_ROOT/harness.md`
 * **Optional template blanks** — [readme-template](https://github.com/dev-centr/readme-template)
 

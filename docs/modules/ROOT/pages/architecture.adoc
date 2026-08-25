@@ -1,38 +1,15 @@
 = Architecture
 
-```mermaid
-flowchart TB
-  subgraph agentrules [agent-rules forkable]
-    R[user.md portable]
-    A[AGENTS.md org]
-    G[general/]
-    AM[agents/]
-    P[profiles/]
-    SK[skills/*]
-  end
-  subgraph product [devcentr-agent-rules]
-    X[Dev-Centr product rules]
-  end
-  subgraph local [Machine-local]
-    H["$CODE_ROOT/harness.md"]
-    M["$CODE_ROOT/machine.md"]
-  end
-  R --> G
-  R --> P
-  A --> AM
-  H -.-> agentrules
-  M -.-> agentrules
-  SK -.->|load on demand| agentrules
-  product -.->|used by Dev-Centr app| agentrules
-```
+image::rules-geography.svg[alt="Rules geography: shared reference clone, personal overlay fork, harness always-on slot, skill discovery junctions, machine files, and project AGENTS.md",width=720,height=480]
 
-* **agent-rules** — portable rules + org layer (`AGENTS.md`, `agents/`, team skills)
+Illustrated walkthrough: xref:harness-neutral.adoc[Harness-neutral architecture] (layered deltas, rules-manager when the harness cannot stack).
+
+* **agent-rules** — portable rules + org layer (`AGENTS.md`, `agents/`, team skills) in the live team clone `$AGENT_RULES_PATH`
+* **Personal overlay fork** (optional) — profiles, personal tweaks, personal-only skills; **not** a HEAD-parity mirror of the template
 * **devcentr-agent-rules** — rules for when the Dev-Centr app acts on behalf of the user
 * **harness.md** — harness config on this user's machine (discovery paths, chat behaviors)
 * **machine.md** — workstation facts; gitignored; never committed
 
 On `dev-centr/*` work, org layer **overrides** personal portable rules where they conflict. See xref:org-layer.adoc[Org layer].
-
-**Harness-neutral detail:** xref:harness-neutral.adoc[Harness-neutral architecture].
 
 House org init (skill `bootstrap-org`, not a universal GitHub practice): satellite `{org}/agent-rules` repos are **pointer overlays** (`AGENTS.md` only). They must not git-submodule this tree. Shared updates: `git pull` in `$AGENT_RULES_PATH` clone — no wrapper repo changes required unless org policy differs.

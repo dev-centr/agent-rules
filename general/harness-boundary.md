@@ -7,9 +7,11 @@ Load before any edit under $AGENT_RULES_PATH when the change might embed worksta
 
 ## The division
 
+**Layered geography:** `$AGENT_RULES_PATH` is the **shared reference** (team clone — skills + portable/org templates). A **personal fork** is an optional **overlay** (`profiles/<machine>.md`, personal tweaks, personal-only skills) — not a full mirror that must stay at HEAD parity with the template. Machine facts stay outside both. Illustrated: docs `harness-neutral.adoc` (`rules-geography.svg`).
+
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
-│  FORKABLE TEMPLATES (PR upstream; placeholders only)            │
+│  SHARED REFERENCE ($AGENT_RULES_PATH — PR upstream)             │
 │  user.md · AGENTS.md · general/* · agents/* · skills/* bodies  │
 │  profiles/*-template.md · profiles/team-default.md · *.example  │
 └─────────────────────────────────────────────────────────────────┘
@@ -17,9 +19,14 @@ Load before any edit under $AGENT_RULES_PATH when the change might embed worksta
                               │ never write machine values here
                               │
 ┌─────────────────────────────────────────────────────────────────┐
+│  PERSONAL OVERLAY (optional fork — deltas only)                 │
+│  profiles/<machine>.md · personal user.md tweaks · solo skills │
+└─────────────────────────────────────────────────────────────────┘
+                              ▲
+┌─────────────────────────────────────────────────────────────────┐
 │  MACHINE-LOCAL (this user's machine; gitignored at CODE_ROOT)   │
 │  $CODE_ROOT/harness.md · $CODE_ROOT/machine.md                 │
-│  profiles/<machine>.md in YOUR fork · LOCAL_RULES_DIR overlay   │
+│  LOCAL_RULES_DIR overlay                                        │
 └─────────────────────────────────────────────────────────────────┘
                               ▲
                               │ project facts go to repo AGENTS.md + docs

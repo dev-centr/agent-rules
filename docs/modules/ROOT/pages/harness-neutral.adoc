@@ -1,11 +1,67 @@
 = Harness-neutral architecture
 :navtitle: Harness-neutral
-:description: How agent-rules separates forkable templates from machine-local harness config — polyglot AI assistants, harness.md, machine.md, skills, and layer precedence.
+:description: How agent-rules separates forkable templates from machine-local harness config — layered geography, personal deltas, rules-manager compose, skills, and layer precedence.
 
 This page is the illustrated guide for teams copying `dev-centr/agent-rules` into **any** local AI harness (Cursor, Claude Code, Hermes, T3code, Windsurf, and others).
 
 Repository::
 https://github.com/dev-centr/agent-rules
+
+== Rules geography
+
+The system is **layered**, not a personal fork that must stay at HEAD parity with the team template.
+
+image::rules-geography.svg[alt="Rules geography: shared reference clone, personal overlay fork, harness always-on slot, skill discovery junctions, machine files, and project AGENTS.md",width=960,height=640]
+
+.Callouts (match the numbered disks on the map)
+[cols="1,3",options="header"]
+|===
+| # | What it is
+
+| *1* Shared reference
+| Live clone `$AGENT_RULES_PATH` (usually `dev-centr/agent-rules`). Canonical `skills/*`, shared portable `user.md` / `general/*`, and org `AGENTS.md` / `agents/*`. **Pull this tree** on drift (`sync-agent-rules`).
+
+| *2* Personal overlay
+| Optional personal fork: `profiles/<machine>.md`, personal `user.md` tweaks, personal-only skills. **Deltas only** — not a mirror that must track template HEAD.
+
+| *3* Harness always-on
+| Where thin preambles are injected (`ALWAYS_ON_RULES` in `$CODE_ROOT/harness.md`). Prefer native stacking (user, then org) when the harness allows it.
+
+| *4* Skill discovery
+| `$SKILLS_DISCOVERY_ROOT/<name>/` junctions or copies that point at skills in *(1)*. Bodies stay canonical in the team clone.
+
+| *5* This machine
+| `$CODE_ROOT/harness.md`, `$CODE_ROOT/machine.md`, and `$LOCAL_RULES_DIR` — never committed into forkable templates.
+
+| *6* Repo under edit
+| `<repo>/AGENTS.md` + docs for **that** project only (additive).
+|===
+
+=== Layered deltas — not HEAD parity
+
+* **Do** keep a live team clone as `$AGENT_RULES_PATH` and sync skills / shared policy from it.
+* **Do** keep personal customizations in a thin overlay fork (or local compose inputs).
+* **Do not** treat the personal fork as a full copy of the template and chase rebase parity with upstream `main`. That is the expensive anti-pattern on the map.
+
+Shared policy changes land as PRs to `dev-centr/agent-rules`. Personal experiments stay in the overlay until upstreamed.
+
+=== When to use rules-manager
+
+https://github.com/dev-centr/rules-manager[`rules-manager`] composes personal + org (and related sections) into **one** watched paste file.
+
+[cols="1,2",options="header"]
+|===
+| Situation | Approach
+
+| Harness can stack layers
+| Paste or point at portable `user.md`, then org `AGENTS.md`, then project rules — no compose tool required.
+
+| Harness has one undifferentiated always-on field
+| **Use rules-manager** (or an equivalent compose step) so layers stay separate on disk but inject as one payload.
+
+| Account-synced always-on (e.g. Cursor User Rules)
+| Keep portable text only; hive paths stay in `$LOCAL_RULES_DIR` / `harness.md` / `machine.md`.
+|===
 
 == The problem
 
@@ -20,35 +76,7 @@ Those facts belong on **this user's machine**, not in a pull request to upstream
 
 == Layer model
 
-[mermaid]
-....
-flowchart TB
-  subgraph forkable ["Forkable templates (PR upstream)"]
-    R[user.md]
-    A[AGENTS.md org]
-    G[general/*]
-    AM[agents/*]
-    SK[skills/* bodies]
-    EX[*.example.md]
-  end
-  subgraph machine ["Machine-local (never commit)"]
-    H["$CODE_ROOT/harness.md"]
-    M["$CODE_ROOT/machine.md"]
-    PF["profiles/<machine>.md in your fork"]
-    LO["LOCAL_RULES_DIR overlay"]
-  end
-  subgraph project ["Project (in repo being edited)"]
-    PA["<repo>/AGENTS.md"]
-    DOC[README / docs]
-  end
-  R --> G
-  A --> AM
-  SK -.->|"load on demand"| forkable
-  H -->|"SKILLS_DISCOVERY_ROOT"| SK
-  M --> R
-  H --> R
-  PA --> DOC
-....
+Same geography as the map above, in words:
 
 === Forkable templates
 
@@ -138,7 +166,7 @@ Our filenames describe **layers** (who owns the file, what lifecycle it has). Ha
 
 * **Keep `user.md`, `machine.example.md`, `harness.example.md` as `.md`** — pasteable into any harness; no Cursor-only frontmatter in forkable templates.
 * **Use `.mdc` only in harness adapters** — e.g. `.cursor/rules/*.mdc` in this repo for thin always-on reminders; bodies stay in `general/*` or skills.
-* Optional future: rules-manager emits a Cursor `.mdc` **from** `user.md` for local use — still not committed as the canonical portable file.
+* Optional: rules-manager emits a Cursor `.mdc` **from** composed Markdown for local use — still not committed as the canonical portable file.
 
 Other harnesses may adopt similar formats; the portable layer remains plain Markdown until a cross-harness standard exists.
 
@@ -161,18 +189,7 @@ MCP_CONTEXT7 = available | unavailable
 
 == Skill loading (two paths)
 
-[mermaid]
-....
-flowchart LR
-  CAN["$AGENT_RULES_PATH/skills/<name>/"]
-  DISC["$SKILLS_DISCOVERY_ROOT/<name>/"]
-  AGENT[Agent]
-  CAN -->|"always canonical"| AGENT
-  DISC -->|"when installed per HARNESS"| AGENT
-  CAN -.->|"SKILLS_INSTALL"| DISC
-....
-
-. **Discovery path** — when `SKILLS_DISCOVERY_ROOT` is set and skills are linked per `SKILLS_INSTALL` in `$harness.md`.
+. **Discovery path** — when `SKILLS_DISCOVERY_ROOT` is set and skills are linked per `SKILLS_INSTALL` in `$harness.md` (map callout *4*).
 . **Direct read** — agent reads `$AGENT_RULES_PATH/skills/<name>/SKILL.md` with native file tools (works in every harness with filesystem access).
 
 Never paste full skill bodies into always-on rules — one-line pointers only. Shop: xref:bootstrap.adoc[Bootstrap agent skills].
@@ -189,19 +206,6 @@ When `user.md` or `MAIN.md` is active, the agent reads **simultaneously**:
 . `general/global.md`, `general/environment.md`, OS layer, `general/creator.md`, …
 . Org pass (on `dev-centr/*`): `AGENTS.md`, `agents/_MAIN.md`, …
 
-[mermaid]
-....
-sequenceDiagram
-  participant U as User / harness
-  participant A as Agent
-  participant T as Forkable templates
-  participant M as Machine files
-  U->>A: Paste user.md preamble
-  A->>M: Read harness.md + machine.md
-  A->>T: Parallel read general/* agents/*
-  A->>A: Apply layer precedence explicitly
-....
-
 == Layer precedence (not automatic)
 
 Harnesses do **not** rank layers for you. On `dev-centr/*` work, stack always-on rules:
@@ -210,22 +214,15 @@ Harnesses do **not** rank layers for you. On `dev-centr/*` work, stack always-on
 . Org `AGENTS.md` (**wins on conflict**)
 . Project `<repo>/AGENTS.md` (additive)
 
-See xref:org-layer.adoc[Org layer].
+If the harness cannot stack, compose with rules-manager so org still lands after personal on disk. See xref:org-layer.adoc[Org layer].
 
 == Template boundary (agent obligation)
 
 Before editing anything under `$AGENT_RULES_PATH`:
 
-[mermaid]
-....
-flowchart TD
-  Q{Machine-specific fact?}
-  Q -->|Yes| W[Write harness.md or machine.md or fork profile]
-  Q -->|No| P{Portable or org policy?}
-  P -->|Yes| T[Edit template with placeholders]
-  P -->|Project-only| R[Edit repo AGENTS.md]
-  W --> X[Do not PR machine paths upstream]
-....
+* Machine-specific fact? → write `harness.md` / `machine.md` / fork profile — **do not** PR machine paths upstream.
+* Portable or org policy? → edit the template with placeholders.
+* Project-only? → edit `<repo>/AGENTS.md`.
 
 Full text: `general/harness-boundary.md` in the repo. Skill: **`harness-setup`**.
 
@@ -250,13 +247,14 @@ Other harnesses: run **`harness-setup`** — do not copy Cursor paths into forka
 
 == Setup checklist (new machine)
 
-. Clone `agent-rules` into your hive (`$AGENT_RULES_PATH`).
+. Clone `agent-rules` into your hive (`$AGENT_RULES_PATH`) — the **shared reference** (map *1*).
+. Optional personal overlay fork for profiles and deltas (map *2*) — do not require HEAD parity with *(1)*.
 . Copy `profiles/my-desktop.md` → your fork profile; fill `CODE_ROOT`, `ENVIRONMENT`, …
 . Run skill **`harness-setup`** → creates `$CODE_ROOT/harness.md`.
 . Copy `machine.example.md` → `$CODE_ROOT/machine.md` as needed.
 . Paste `user.md` (or rules-manager composed file) into always-on slot per `$HARNESS`.
 . Install skills per xref:bootstrap.adoc[Bootstrap agent skills].
-. Optional org: stack `AGENTS.md` after portable rules.
+. Optional org: stack `AGENTS.md` after portable rules (or compose).
 
 == Polyglot harness use
 
@@ -265,6 +263,23 @@ One workstation, multiple harnesses:
 * Update `$CODE_ROOT/harness.md` when switching (or maintain a short `## Harness: cursor` / `## Harness: claude-code` section).
 * **`machine.md` is shared** across harnesses on the same machine (same tool paths).
 * Skill **bodies stay canonical** in `$AGENT_RULES_PATH` — only discovery/install differs.
+
+== Optional flowcharts
+
+For readers who want a sequence view of context assembly (the map above is the primary teaching figure):
+
+[mermaid]
+....
+sequenceDiagram
+  participant U as User / harness
+  participant A as Agent
+  participant T as Forkable templates
+  participant M as Machine files
+  U->>A: Paste user.md or composed preamble
+  A->>M: Read harness.md + machine.md
+  A->>T: Parallel read general/* agents/*
+  A->>A: Apply layer precedence explicitly
+....
 
 == See also
 

@@ -22,6 +22,8 @@ agent-rules/
 
 On any `dev-centr/*` repository, **org rules win** over personal portable rules where they conflict. Harnesses do **not** enforce this automatically — stack `AGENTS.md` after personal `user.md` in the always-on slot and instruct the agent explicitly.
 
+If the harness has **one undifferentiated** always-on field and cannot stack layers, compose personal + org with https://github.com/dev-centr/rules-manager[`rules-manager`] (org still after personal in the composed payload). Geography: xref:harness-neutral.adoc[Harness-neutral architecture].
+
 Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent-rules-setup.html[Org agent rules setup] (member-only).
 
 == Other orgs: wrapper repo, do not copy

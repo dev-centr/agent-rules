@@ -26,6 +26,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-25 — Rules geography illustration (layered)
+
+* Annotated-map SVG teaches layered deltas (personal fork is not template HEAD parity); rules-manager when the harness cannot stack.
+* See xref:changelog-details/2026-08-25 - rules-geography-layered.adoc[Detailed changelog].
+
 == 2026-08-25 — skills-set human labels
 
 * Annotated tags `skills-set/YYYY.MM.DD` as the human label on top of the agent-rules SHA stamp (`AGENT_RULES_SYNCED_LABEL`).

@@ -32,11 +32,12 @@ Cut `skills-set/*` annotated tags on meaningful set milestones (skill `sync-agen
 - Active catalog skill missing from `$SKILLS_DISCOVERY_ROOT` (when discovery is used)
 - Broken or wrong-target skill link/copy
 - Deprecated skill still installed under discovery
-- `$AGENT_RULES_PATH` (or personal paste fork) **behind** upstream
-- `HEAD` ≠ `AGENT_RULES_SYNCED_SHA` (or stamp missing)
+- `$AGENT_RULES_PATH` **behind** its upstream (skills + shared policy live here)
+- `HEAD` of `$AGENT_RULES_PATH` ≠ `AGENT_RULES_SYNCED_SHA` (or stamp missing)
 - Always-on / local IDE rules missing the sync-on-drift obligation or pointing at removed skills
+- Personal **overlay** fork used as a compose/paste source is behind *its* origin (refresh overlays only — **not** a requirement that personal HEAD equal template HEAD)
 
-Label mismatch with a matching SHA is informational only.
+Label mismatch with a matching SHA is informational only. Layered model: personal fork is deltas; do not treat rebase parity with the team template as sync success.
 
 ## What stays machine-local
 

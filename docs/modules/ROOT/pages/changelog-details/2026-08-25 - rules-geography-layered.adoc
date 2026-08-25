@@ -1,0 +1,8 @@
+= 2026-08-25 — Rules geography illustration (layered)
+
+* Added annotated-map figure `docs/modules/ROOT/images/rules-geography.svg` as the primary teaching image for harness-neutral architecture.
+* Documented **layered deltas**: personal fork is an overlay (profiles / tweaks / personal-only skills), not a HEAD-parity mirror of the team template; skills and shared policy sync from `$AGENT_RULES_PATH`.
+* Clarified **rules-manager**: required when the harness cannot stack layers (one undifferentiated always-on field); optional when native stacking works.
+* Demoted Mermaid on `harness-neutral.adoc` / `architecture.adoc` / README in favor of the map; kept one optional context-assembly sequence.
+* Aligned `general/harness-boundary.md`, `general/rules-skills-sync.md`, and skill `sync-agent-rules` with overlay-vs-parity wording.
+* Hub: redeploy the docs aggregator playbook so `_images/rules-geography.svg` goes live on docs.devcentr.org.

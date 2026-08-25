@@ -42,7 +42,7 @@ Do not move existing `skills-set/*` tags. SHA remains source of truth if a machi
 | Role | Path |
 | --- | --- |
 | Canonical skills + portable/org templates | `$AGENT_RULES_PATH` (usually `$CODE_ROOT/github.com/dev-centr/agent-rules`) |
-| Personal portable paste (if used) | fork under `$CODE_ROOT/.../<you>/.forks/agent-rules` or equivalent |
+| Personal overlay (optional) | fork under `$CODE_ROOT/.../<you>/.forks/agent-rules` — profiles / personal tweaks / personal-only skills; **not** a HEAD-parity mirror of the template |
 | Discovery install | `$SKILLS_DISCOVERY_ROOT` from `$CODE_ROOT/harness.md` |
 | Machine-local IDE overlay | `$LOCAL_RULES_DIR` from `$harness.md` |
 | Always-on paste slot | `$ALWAYS_ON_RULES` from `$harness.md` |
@@ -56,24 +56,27 @@ Run this skill **before** relying on installed skills, and whenever any of these
 
 - Catalog skill missing from `$SKILLS_DISCOVERY_ROOT`
 - Discovery entry points at the wrong path, a dead target, or a deprecated skill
-- `$AGENT_RULES_PATH` (or personal fork used for paste) is **behind** its upstream
+- `$AGENT_RULES_PATH` is **behind** its upstream (authoritative for skills + shared policy)
 - `HEAD` of `$AGENT_RULES_PATH` ≠ `AGENT_RULES_SYNCED_SHA` in `$harness.md` (missing stamp counts as drift)
 - Always-on paste / `$LOCAL_RULES_DIR` still describes an old skill set or omits this sync obligation
+- Personal overlay fork used as a compose/paste source is behind *its* origin (refresh deltas only)
 - User says skills/rules feel out of date on this machine
 
 Autoupdate. Do not only report drift. Label mismatch alone is informational if SHA already matches.
+
+**Not drift:** personal fork HEAD ≠ template HEAD. Layered geography keeps the personal repo as an overlay; do not rebase the overlay onto the template just to “catch up” unless the user asks.
 
 ## Sequence
 
 ### 1. Fetch shared trees
 
-In `$AGENT_RULES_PATH` (and the personal fork if that is the always-on paste source):
+In `$AGENT_RULES_PATH` first (skills + shared templates). Also fetch the personal overlay fork when it supplies compose/paste inputs (`profiles/`, personal tweaks) — that refresh is **overlay currency**, not template parity:
 
 1. `git fetch` (include tags: `git fetch --tags` or `git fetch origin tag skills-set/*` as needed)
 2. If tracking branch is **behind** and the working tree is clean enough to fast-forward/rebase: pull or rebase onto upstream.
 3. If local **owned** commits would be overwritten or the tree is dirty with unrelated WIP: stop, report, and ask — do not destroy work.
 
-Do **not** force-push. Do **not** reset away uncommitted user edits.
+Do **not** force-push. Do **not** reset away uncommitted user edits. Do **not** merge the team template into the personal overlay unless the user requests that.
 
 Record after fetch/pull:
 
