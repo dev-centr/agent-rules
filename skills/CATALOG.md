@@ -33,7 +33,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x` | active | `github.md` + `registries.md` siblings |
 | `write-a-skill` | author/edit agent skill, `SKILL.md`, skill frontmatter, YAML `description`; trigger words | active | Harness-neutral authoring; layout may use harness-specific scaffolds |
 | `ship-app` | scaffolding/shipping GUI, CLI, TUI, library, game, service | active | Software Product Essentials |
-| `antora-org-site` | Antora site, docs hub, antora-playbook, GitHub Pages for docs; Valentus; Facto; antora-facto | active | Valentus lean; Facto compose pack — confirm |
+| `antora-org-site` | Antora site, docs site, docs hub, antora theme, playbook, antora-playbook, GitHub Pages for docs; Valentus; Facto; antora-facto; compose pack; Kroki; Mermaid | active | Valentus lean; Facto compose pack — confirm |
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary | active | Voice in `skills/draft-pr/voice.md` |
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User ask **or** end-of-run (`general/end-of-run.md`) |

@@ -1,10 +1,11 @@
 ---
 name: antora-org-site
 description: >-
-  Use when creating, wiring, or publishing an Antora site or docs hub;
-  antora-playbook.yml; GitHub Pages for docs; one Antora site per org;
-  Lunr; antora-search-chat; docs.devcentr.org; Valentus theme; Facto;
-  antora-facto; KaTeX; stem latexmath; alias-component-to-latest; Kroki.
+  Use when creating, wiring, or publishing an Antora site, docs site, or
+  docs hub; antora theme; antora-playbook.yml; playbook; GitHub Pages for
+  docs; one Antora site per org; Lunr; antora-search-chat; docs.devcentr.org;
+  Valentus; Valentus theme; Facto; antora-facto; compose pack; KaTeX;
+  stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML.
 ---
 
 # Antora org site

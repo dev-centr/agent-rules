@@ -34,6 +34,7 @@ Observed transitions in forkable + machine-local names:
 
 * Valentus stays lean; **Facto** (`antora-supplemental/antora-facto`) is the named compose pack for Lunr/math/Kroki.
 * Org engineering notes + `antora-org-site` skill/CATALOG updated; Internet Reliability nesting vs HCI Labels versus wires documented.
+* Broadened `antora-org-site` skill `description` / CATALOG triggers (`docs site`, `antora theme`, `playbook`, `compose pack`, Mermaid/PlantUML) so Facto is discoverable without naming it.
 * See xref:changelog-details/2026-08-25 - facto-compose-pack.adoc[Detailed changelog].
 
 == 2026-08-24 — Changelog introduced

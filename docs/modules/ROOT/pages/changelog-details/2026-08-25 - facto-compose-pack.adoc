@@ -9,4 +9,5 @@
 
 * Org notes `agents/engineering/antora.md`: Valentus stays lean; **Facto** (`antora-supplemental/antora-facto`) is the compose pack; Internet Architecture / Reliability under DevCentr; HCI Labels versus wires as symptom ↔ diagnosis face; connectome-fs as substrate.
 * Skill `antora-org-site` + `reference.md` + `CATALOG` mention Facto; `record-rule` triggers expanded for “update AI rules/skills”.
+* `antora-org-site` skill `description` / CATALOG triggers broadened (`docs site`, `antora theme`, `playbook`, `compose pack`, Mermaid/PlantUML) so agents match without the user saying “Facto”.
 * Thin pointers in `AGENTS.md`, `agents/_MAIN.md`, `general/antora-docs-sites.md`, `general/documentation.md`.
