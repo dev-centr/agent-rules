@@ -23,4 +23,4 @@ When writing or editing **news** or **blog** titles in Dev-Centr sites, follow e
 - **News body** → skill `writing-news` (`skills/writing-news/`).
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - Nieman anti-terse checklist stays in `general/documentation.md` (thin always-on layer).
-- **Docs / README / profile pages** → Audience / POV + author credits in `general/documentation.md` (on-page **Audience** / **Usage context**; **Original** + **Latest** authors; agent-assisted = `<agent> on behalf of <human>`).
+- **Docs / README / profile pages** → `general/documentation.md`: `page-*` attrs + `ifndef::page-context-active[]` fallback (audience / authors / last updated); Facto includes page-context.

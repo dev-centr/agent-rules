@@ -10,9 +10,9 @@ The chat user commissioned the page. They already know the session context, hous
 
 ### Encode as page attributes (required)
 
-Put audience, usage context, and authors in the **document header** as `page-*` attributes. Do **not** hand-write visible `Audience::` / author labeled lists when `@antora-supplemental/page-context` is registered — that extension formats the lead + footer from metadata.
+**Primary:** put metadata in the **document header** as `page-*` attributes. **Facto** registers `@antora-supplemental/page-context`, which formats lead + footer (and HTML meta) from those attrs. Do **not** hard-code the full catalog into the body when the extension is active.
 
-AsciiDoc house schema (minimal required):
+AsciiDoc house schema (minimal required attrs):
 
 ```asciidoc
 = Page title
@@ -32,11 +32,39 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 | `page-usage-context` | when not obvious | Usage context (lead) |
 | `page-orig-author` | yes | Original author (footer; set once) |
 | `page-last-author` | yes | Latest contributor (footer); agent-assisted → `<agent> on behalf of <human>` |
-| `page-last-edited` | no | Folded into latest contributor line |
+| `page-last-edited` | yes (when you know it) | Last edited / folded into latest contributor |
 
-Extension: **`@antora-supplemental/page-context`** — register under `asciidoc.extensions`. Repo: https://github.com/antora-supplemental/page-context
+Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: https://github.com/antora-supplemental/page-context
 
-Markdown / README (no Antora): a short lead that names **who** and **when**; credit authors in a footer line. Prefer AsciiDoc + the extension on hub docs.
+### Fallback when page-context is missing
+
+Always keep a **body fallback** for the three fields readers most need — audience, authorship, last updated — wrapped so Facto / playbooks that set `page-context-active` hide it:
+
+```asciidoc
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+```
+
+| Situation | What to emit |
+| --- | --- |
+| Facto / playbook has `page-context` + `page-context-active` | Header `page-*` attrs **and** the `ifndef` fallback block (hidden at build) |
+| Playbook has extension but forgot `page-context-active` | Prefer fix the playbook; avoid unwrapped hard-coded lists (extension would duplicate) |
+| No Antora / no extension (plain AsciiDoc, Markdown) | Attrs if the format supports them; otherwise hard-code the three fields in the lead/footer |
+
+Do **not** hard-code the extended catalog (keywords, DOI, license, …) into the body — attrs only for those. Markdown / README: short lead naming who/when + author footer line.
+
+Markdown / README (no Antora): a short lead that names **who** and **when**; credit authors in a footer line. Prefer AsciiDoc + Facto on hub docs.
 
 | Doc kind | Typical `page-audience` | Typical `page-usage-context` |
 | --- | --- | --- |
@@ -65,7 +93,9 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 
 ### Anti-patterns (fail the gate)
 
-- Omitting `page-audience` / author attrs, or hand-duplicating what `page-context` already renders
+- Omitting `page-audience` / author attrs
+- Hard-coding extended metadata into the body when Facto/`page-context` is available (attrs + `ifndef` fallback only for audience / authors / last updated)
+- Unwrapped hard-coded lists **and** the extension (duplicate chrome) — use `ifndef::page-context-active[]` or attrs-only
 - Crediting only an agent without `on behalf of <human>`
 - Writing as a **chat continuation** (“as we discussed”, “per your setup”, assuming filled constants the stranger never set)
 - **Insider deixis** without teaching (“this user’s machine”, “your agent probes…”) when the stranger has no “this user” yet
@@ -78,13 +108,14 @@ Motivating failure mode: architecture pages that read like an agent briefing for
 
 ### Pass checks (before commit)
 
-1. Are `page-audience` (and `page-usage-context` when needed) set in the header?
-2. Are `page-orig-author` and `page-last-author` set, with agent-assisted work as `<agent> on behalf of <human>`?
-3. Is `@antora-supplemental/page-context` registered on the site playbook (or a documented fallback for non-Antora)?
-4. Could a smart stranger who never opened this chat follow the page?
-5. Does every `$PLACEHOLDER` / jargon term get a plain gloss on first use, or a link to a prior onboarding page?
-6. Would removing chat context still leave a coherent document?
-7. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
+1. Are `page-audience`, `page-orig-author`, `page-last-author` (and `page-last-edited` when known) set in the header?
+2. Is the `ifndef::page-context-active[]` fallback present for audience / authors / last updated (or the playbook is Markdown-only with an equivalent hard-coded lead)?
+3. Agent-assisted credits use `<agent> on behalf of <human>`?
+4. Facto / hub playbook registers `page-context` and sets `page-context-active` when using Antora?
+5. Could a smart stranger who never opened this chat follow the page?
+6. Does every `$PLACEHOLDER` / jargon term get a plain gloss on first use, or a link to a prior onboarding page?
+7. Would removing chat context still leave a coherent document?
+8. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
 
 Skills that ship visitor copy must re-check this gate: `antora-org-site`, `public-readme`, `bootstrap-org` (profile/site), `owned-changelog` (reader-facing summaries), `writing-news`, `writing-blog`.
 
@@ -119,7 +150,7 @@ Changelog **detail** pages may inherit from the index when thin stubs; otherwise
 
 - **Diátaxis** (tutorials, how-to, explanation, reference).
 - Public README face: skill **`public-readme`**. Blanks: `dev-centr/readme-template`. Hand-edit per repo.
-- Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm; lean theme + **Facto** compose pack — `agents/engineering/antora.md`). Encoding: skill **`fix-docs-encoding`**. Register **`@antora-supplemental/page-context`** under `asciidoc.extensions` so `page-*` audience/author attrs render.
+- Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm; lean theme + **Facto** compose pack — Valentus + Lunr + STEM + Kroki + **page-context** — `agents/engineering/antora.md`). Encoding: skill **`fix-docs-encoding`**. Page metadata: `page-*` attrs + `ifndef::page-context-active[]` fallback (`general/documentation.md`).
 - Changelogs: skill **`owned-changelog`**. Shippable apps: skill **`ship-app`**. PRs: skill **`draft-pr`**.
 
 ## Titles for news, blogs, and essays

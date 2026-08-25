@@ -15,7 +15,12 @@ Minimum bar for a published Antora site in an owned org. Detail and hub table: [
 
 ## Audience / POV
 
-Before drafting or revising any page under `docs/`, read **Audience / point of view** and **Author credits** in `general/documentation.md`. Encode **`page-audience`**, **`page-usage-context`**, **`page-orig-author`**, **`page-last-author`** (agent-assisted: `<agent> on behalf of <human>`). Register **`@antora-supplemental/page-context`** under `asciidoc.extensions` so the hub formats lead + footer — do not hand-duplicate labeled lists. Different pages may target different contexts (onboarding vs sidebar reference).
+Before drafting or revising any page under `docs/`, read **Audience / point of view** in `general/documentation.md`.
+
+1. Set **`page-*` header attrs** (`page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, `page-last-edited`, plus optional catalog fields). Agent-assisted: `<agent> on behalf of <human>`.
+2. Include the **`ifndef::page-context-active[]`** body fallback for audience / authors / last updated only (attrs via `{page-…}` refs).
+3. **Facto** already registers `@antora-supplemental/page-context` and sets `page-context-active` — do not hard-code the extended catalog into the body.
+4. When wiring a playbook without Facto, either adopt Facto’s fragment or register `page-context` + `page-context-active` yourself.
 
 ## Required
 
@@ -34,7 +39,7 @@ Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 
 **Suggest** Valentus (`antora-supplemental/valentus-theme`) as the house **theme**. **Ask before applying it.** Keep an existing theme unless they confirm a switch. After they choose Valentus, customize colors/logo from org brand assets — do not re-poll the UI on every later pass.
 
-**Valentus stays lean.** Do not fold Lunr, STEM/math, or Kroki into Valentus core / default `v2`. For the usual stack, use the **Facto** compose pack (`antora-supplemental/antora-facto`) — Valentus + Lunr + math + Kroki (Mermaid + PlantUML → SVG) — like a VS Code extension pack. Org notes: `agents/engineering/antora.md`.
+**Valentus stays lean.** Do not fold Lunr, STEM/math, Kroki, or page-context into Valentus core / default `v2`. For the usual stack, use the **Facto** compose pack (`antora-supplemental/antora-facto`) — Valentus + Lunr + math + Kroki (Mermaid + PlantUML → SVG) + **page-context** — like a VS Code extension pack. Org notes: `agents/engineering/antora.md`.
 
 ## AsciiDoc figures
 

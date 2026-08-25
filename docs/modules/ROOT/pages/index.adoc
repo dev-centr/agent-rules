@@ -6,6 +6,20 @@
 :page-last-author: Cursor agent on behalf of Ryan Johnson
 :page-last-edited: 2026-08-25
 
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
 Canonical **forkable** rules and profiles for coding assistants under Dev-Centr. Content is meant to be read by agents from disk or pasted into an app rules field.
 
 Repository::

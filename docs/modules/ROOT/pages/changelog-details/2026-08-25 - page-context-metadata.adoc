@@ -1,6 +1,6 @@
 = Page-context metadata extension
 
-* House docs schema is now **attributes only**: `page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, optional `page-last-edited`.
-* New Asciidoctor/Antora extension `@antora-supplemental/page-context` auto-formats lead (audience/usage) and footer (authors). Agent-assisted credit: `{product} on behalf of {human}`.
-* Policy: `general/documentation.md`. Agent-rules component pages converted to the schema.
-* Hub playbooks register the extension under `asciidoc.extensions`.
+* House docs schema is **attributes first**: `page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, optional `page-last-edited`, plus the expanded catalog in `@antora-supplemental/page-context`.
+* **Facto** registers the extension and sets `page-context-active`.
+* Agents keep an `ifndef::page-context-active[]` body fallback for audience / authors / last updated only (attr refs); do not hard-code the extended catalog into the body.
+* Hub playbooks set `page-context-active` alongside the extension.
