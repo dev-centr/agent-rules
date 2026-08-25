@@ -26,6 +26,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-25 — skills-set human labels
+
+* Annotated tags `skills-set/YYYY.MM.DD` as the human label on top of the agent-rules SHA stamp (`AGENT_RULES_SYNCED_LABEL`).
+* See xref:changelog-details/2026-08-25 - skills-set-human-labels.adoc[Detailed changelog].
+
 == 2026-08-25 — Sync skills and rules on drift
 
 * Skill `sync-agent-rules` autoupdates local installs against the shared reference; stamps `AGENT_RULES_SYNCED_SHA` (set version = agent-rules SHA).

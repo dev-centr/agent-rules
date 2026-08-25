@@ -24,7 +24,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | Skill | Triggers on | Status | Notes |
 | --- | --- | --- | --- |
 | `harness-setup` | harness setup, harness.md, new machine, polyglot harness, template boundary, probe harness capabilities | active | Populates `$CODE_ROOT/harness.md`; read `general/harness-boundary.md` |
-| `sync-agent-rules` | skills/rules drift, catalog vs discovery mismatch, broken junction, agent-rules behind origin, `AGENT_RULES_SYNCED_SHA`, sync skills, autoupdate across machines | active | Set version = agent-rules SHA stamped in `$harness.md` |
+| `sync-agent-rules` | skills/rules drift, catalog vs discovery mismatch, broken junction, agent-rules behind origin, `AGENT_RULES_SYNCED_SHA`, `skills-set/` label, sync skills, autoupdate across machines | active | SHA authoritative; human tag `skills-set/YYYY.MM.DD` |
 | `writing-news` | News item, ship note, org announcement, news channel body | active | `skills/writing-news/` |
 | `writing-blog` | Blog post, essay, philosophy, thinking-in-public body | active | `skills/writing-blog/` |
 | `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` |

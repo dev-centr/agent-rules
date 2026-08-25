@@ -7,18 +7,25 @@ the shared agent-rules reference so every machine stays current.
 
 ## Rule
 
-When **local** skills or rule overlays **drift** from the shared reference (`$AGENT_RULES_PATH`), the agent **must** run skill **`sync-agent-rules`** and **apply** updates (fetch/pull reference, repair discovery installs, refresh `$LOCAL_RULES_DIR` / always-on pointers, stamp SHA). Do not only diagnose.
+When **local** skills or rule overlays **drift** from the shared reference (`$AGENT_RULES_PATH`), the agent **must** run skill **`sync-agent-rules`** and **apply** updates (fetch/pull reference, repair discovery installs, refresh `$LOCAL_RULES_DIR` / always-on pointers, stamp SHA + label). Do not only diagnose.
 
 ## Version model
 
-The skills/rules set is versioned by the **git SHA** of `$AGENT_RULES_PATH`. After a successful sync, record in machine-local `$CODE_ROOT/harness.md`:
+| Layer | What |
+| --- | --- |
+| **Authoritative** | git **SHA** of `$AGENT_RULES_PATH` |
+| **Human label** | git tag `skills-set/YYYY.MM.DD` (optional `.N` same day) |
+| **Avoid** | Per-skill SemVer |
+
+After a successful sync, record in machine-local `$CODE_ROOT/harness.md`:
 
 ```text
 AGENT_RULES_SYNCED_SHA = <sha>
+AGENT_RULES_SYNCED_LABEL = <skills-set/YYYY.MM.DD or empty>
 AGENT_RULES_SYNCED_AT = <ISO-8601 date>
 ```
 
-Do **not** SemVer each `skills/<name>/` folder.
+Cut `skills-set/*` annotated tags on meaningful set milestones (skill `sync-agent-rules`).
 
 ## What counts as drift
 
@@ -28,6 +35,8 @@ Do **not** SemVer each `skills/<name>/` folder.
 - `$AGENT_RULES_PATH` (or personal paste fork) **behind** upstream
 - `HEAD` ≠ `AGENT_RULES_SYNCED_SHA` (or stamp missing)
 - Always-on / local IDE rules missing the sync-on-drift obligation or pointing at removed skills
+
+Label mismatch with a matching SHA is informational only.
 
 ## What stays machine-local
 

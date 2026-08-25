@@ -3,16 +3,39 @@ name: sync-agent-rules
 description: >-
   Use when skills or rules drift from the shared reference, installed skills
   are missing or stale, catalog vs discovery mismatch, broken skill junction,
-  agent-rules behind origin, AGENT_RULES_SYNCED_SHA mismatch, sync skills,
-  update local skills, refresh harness install, new machine skills catch-up,
-  autoupdate agent-rules, or keeping skills/rules current across machines.
+  agent-rules behind origin, AGENT_RULES_SYNCED_SHA mismatch,
+  skills-set label, AGENT_RULES_SYNCED_LABEL, sync skills, update local skills,
+  refresh harness install, new machine skills catch-up, autoupdate agent-rules,
+  or keeping skills/rules current across machines.
 ---
 
 # Sync agent rules and skills
 
 Keep **this machine’s** install aligned with the **shared reference** clone. Do not wait for the user to ask once drift is visible.
 
-**Version model:** the skills/rules set is versioned by the **git SHA** of `$AGENT_RULES_PATH` (not per-skill SemVer). After a successful sync, stamp that SHA in machine-local `$CODE_ROOT/harness.md`.
+## Version model
+
+| Layer | What | Role |
+| --- | --- | --- |
+| **Authoritative** | git **SHA** of `$AGENT_RULES_PATH` | Drift detection and stamp |
+| **Human label** | annotated git tag `skills-set/YYYY.MM.DD` (optional `.N` same day) | Readable set version on top of SHA |
+| **Not used** | Per-skill SemVer | Skip |
+
+After a successful sync, stamp SHA, label (nearest `skills-set/*` on `HEAD`, if any), and date in machine-local `$CODE_ROOT/harness.md`.
+
+### Cutting a `skills-set/*` tag
+
+On `$AGENT_RULES_PATH` after a meaningful skills/rules-set change lands on the default branch:
+
+1. Choose label: `skills-set/YYYY.MM.DD` (UTC or local ship date). If that tag exists, use `skills-set/YYYY.MM.DD.1`, `.2`, …
+2. Annotated tag on the release commit, then push tags:
+
+```powershell
+git tag -a skills-set/YYYY.MM.DD -m "Skills/rules set YYYY.MM.DD"
+git push origin skills-set/YYYY.MM.DD
+```
+
+Do not move existing `skills-set/*` tags. SHA remains source of truth if a machine has not fetched tags yet.
 
 ## Shared reference
 
@@ -23,7 +46,7 @@ Keep **this machine’s** install aligned with the **shared reference** clone. D
 | Discovery install | `$SKILLS_DISCOVERY_ROOT` from `$CODE_ROOT/harness.md` |
 | Machine-local IDE overlay | `$LOCAL_RULES_DIR` from `$harness.md` |
 | Always-on paste slot | `$ALWAYS_ON_RULES` from `$harness.md` |
-| Last successful sync | `AGENT_RULES_SYNCED_SHA` (+ optional `AGENT_RULES_SYNCED_AT`) in `$harness.md` |
+| Last successful sync | `AGENT_RULES_SYNCED_SHA`, `AGENT_RULES_SYNCED_LABEL`, `AGENT_RULES_SYNCED_AT` in `$harness.md` |
 
 If `$CODE_ROOT/harness.md` is missing, run skill **`harness-setup`** first, then continue here.
 
@@ -38,7 +61,7 @@ Run this skill **before** relying on installed skills, and whenever any of these
 - Always-on paste / `$LOCAL_RULES_DIR` still describes an old skill set or omits this sync obligation
 - User says skills/rules feel out of date on this machine
 
-Autoupdate. Do not only report drift.
+Autoupdate. Do not only report drift. Label mismatch alone is informational if SHA already matches.
 
 ## Sequence
 
@@ -46,13 +69,16 @@ Autoupdate. Do not only report drift.
 
 In `$AGENT_RULES_PATH` (and the personal fork if that is the always-on paste source):
 
-1. `git fetch`
+1. `git fetch` (include tags: `git fetch --tags` or `git fetch origin tag skills-set/*` as needed)
 2. If tracking branch is **behind** and the working tree is clean enough to fast-forward/rebase: pull or rebase onto upstream.
 3. If local **owned** commits would be overwritten or the tree is dirty with unrelated WIP: stop, report, and ask — do not destroy work.
 
 Do **not** force-push. Do **not** reset away uncommitted user edits.
 
-Record `REF_SHA=$(git -C $AGENT_RULES_PATH rev-parse HEAD)` after fetch/pull.
+Record after fetch/pull:
+
+- `REF_SHA=$(git -C $AGENT_RULES_PATH rev-parse HEAD)`
+- `REF_LABEL` = newest `skills-set/*` tag that points at `HEAD`, else newest `skills-set/*` reachable from `HEAD` (`git describe --tags --match "skills-set/*" --exact-match` then fall back to `git describe --tags --match "skills-set/*" --abbrev=0`), else empty
 
 ### 2. Reconcile skill discovery
 
@@ -77,17 +103,19 @@ When discovery is `none`: confirm agents can read `$AGENT_RULES_PATH/skills/<nam
 
 ```text
 AGENT_RULES_SYNCED_SHA = <REF_SHA>
+AGENT_RULES_SYNCED_LABEL = <REF_LABEL or empty>
 AGENT_RULES_SYNCED_AT = <ISO-8601 date>
 ```
 
 2. Spot-check: a newly required catalog skill is discoverable or directly readable.
-3. Briefly report what was updated (fetch/pull, links fixed, rules refreshed, new stamp).
+3. Briefly report what was updated (fetch/pull, links fixed, rules refreshed, SHA + label stamp).
 
 ## Do not
 
 - Paste skill bodies into always-on rules
 - Commit `$CODE_ROOT/harness.md` or `$CODE_ROOT/machine.md`
-- SemVer individual skill folders (set version = agent-rules SHA)
+- SemVer individual skill folders
+- Move or rewrite existing `skills-set/*` tags
 - Treat a dirty personal experiment under discovery as “drift” to wipe without asking
 - Skip this skill after noticing drift “to save time”
 
@@ -95,4 +123,5 @@ AGENT_RULES_SYNCED_AT = <ISO-8601 date>
 
 - First-time probe → skill `harness-setup`
 - Persist a new preference → skill `record-rule`
+- Product app version tags → skill `tag-release` (different axis from `skills-set/*`)
 - Detail / always-on pointer → `general/rules-skills-sync.md`

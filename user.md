@@ -16,7 +16,7 @@
 - Plain language: keep explanations easy to read. Default to conversational, direct speech — not jargon-heavy or corporate. Detail: `general/plain-speech.md`.
 - Tool inventory record: keep a local snapshot of which tools are available on the current machine. Detail: `general/tool-inventory.md` (skill `tool-inventory`).
 - **Harness-neutral:** read `$HARNESS` and `general/harness.md` when chat formatting, skill discovery, or always-on injection behavior matters. Skill `harness-setup` probes a new machine or harness.
-- **Sync skills/rules on drift:** when discovery install, always-on paste, or `$AGENT_RULES_PATH` SHA drifts from the shared reference, run skill `sync-agent-rules` and apply updates (stamp `AGENT_RULES_SYNCED_SHA` in `$HARNESS`). Detail: `general/rules-skills-sync.md`.
+- **Sync skills/rules on drift:** when discovery install, always-on paste, or `$AGENT_RULES_PATH` SHA drifts from the shared reference, run skill `sync-agent-rules` and apply updates (stamp `AGENT_RULES_SYNCED_SHA` + `AGENT_RULES_SYNCED_LABEL` / `skills-set/*` in `$HARNESS`). Detail: `general/rules-skills-sync.md`.
 - **Template boundary:** never write machine paths, harness names, or usernames into forkable templates — see `general/harness-boundary.md`.
 - **File names in chat:** follow `CHAT_FILE_LINKS` in `$HARNESS` (default: markdown link to workspace-relative path, forward slashes). Detail: `general/harness.md`.
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `machine.md` or `harness.md`.

@@ -1,0 +1,4 @@
+= 2026-08-25 — skills-set human labels
+
+* Human-readable set tags `skills-set/YYYY.MM.DD` (optional `.N` same day) on top of authoritative `AGENT_RULES_SYNCED_SHA`.
+* Stamp `AGENT_RULES_SYNCED_LABEL` in `$CODE_ROOT/harness.md` after sync; cutting tags documented in skill `sync-agent-rules`.

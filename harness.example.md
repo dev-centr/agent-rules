@@ -35,6 +35,7 @@ MCP_OTHER = <optional list>
 
 # Last successful sync-agent-rules run (machine-local stamp; skill sync-agent-rules)
 AGENT_RULES_SYNCED_SHA = <git SHA of $AGENT_RULES_PATH HEAD after sync, or empty>
+AGENT_RULES_SYNCED_LABEL = <skills-set/YYYY.MM.DD from nearest tag, or empty>
 AGENT_RULES_SYNCED_AT = <ISO-8601 date, or empty>
 ```
 
@@ -51,6 +52,7 @@ CODE_CITATION = line-range-fence
 IDE_PROJECT_RULES = mdc-in-repo
 MCP_CONTEXT7 = available
 AGENT_RULES_SYNCED_SHA =
+AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =
 ```
 
@@ -67,6 +69,7 @@ CODE_CITATION = none
 IDE_PROJECT_RULES = none
 MCP_CONTEXT7 = unavailable
 AGENT_RULES_SYNCED_SHA =
+AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =
 ```
 
