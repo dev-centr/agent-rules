@@ -36,8 +36,8 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `antora-org-site` | Antora site, docs hub, antora-playbook, GitHub Pages for docs; Valentus; Facto; antora-facto | active | Valentus lean; Facto compose pack — confirm |
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary | active | Voice in `skills/draft-pr/voice.md` |
-| `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User must ask to commit |
-| `push-code` | pushing code, git push, push changes, push to remote | active | Split dirty tree into logical commits, then push |
+| `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User ask **or** end-of-run (`general/end-of-run.md`) |
+| `push-code` | pushing code, git push, push changes, push to remote; end of agent run | active | Logical commits then push; standing end-of-run auth |
 | `owned-changelog` | changelog, changelog-details, backfill from git, functional change in owned project | active | Match existing repo style |
 | `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`; names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, local library-docs fallback | active | Fallback when Context7 missing |

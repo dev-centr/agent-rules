@@ -1,0 +1,5 @@
+= 2026-08-25 — End-of-run commit and push
+
+* Agents that change files must close the run with logical commits and a push (`general/end-of-run.md`).
+* Skills `git-commit` and `push-code` treat that as standing authorization (unless the user said not to commit/push).
+* Portable one-liners in `user.md` and `general/global.md`; CATALOG notes updated.

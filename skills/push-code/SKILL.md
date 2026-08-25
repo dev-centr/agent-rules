@@ -2,12 +2,13 @@
 name: push-code
 description: >-
   Use when pushing code, git push, push changes, push to remote, push my
-  commits, on pushing code, or when the user asks to push.
+  commits, on pushing code, when the user asks to push, or at the end of an
+  agent run that changed files (standing end-of-run authorization).
 ---
 
 # Push code
 
-Only push when the user asked. If they only asked to commit, use skill `git-commit` and stop before push.
+Push when the user asked **or** when closing an agent run that changed files (`general/end-of-run.md`). If they only asked to commit (and not to push, and it is not end-of-run), use skill `git-commit` and stop before push.
 
 **Exception:** skill `issues-repo-record` — every `ISSUES_REPO` record ends with push (including image-only pushes before embed).
 

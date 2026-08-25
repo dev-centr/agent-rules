@@ -2,12 +2,13 @@
 name: git-commit
 description: >-
   Use when creating a git commit, writing a commit message, git commit,
-  committing staged or unstaged changes, or when the user asks to commit.
+  committing staged or unstaged changes, when the user asks to commit, or when
+  end-of-run / push-code needs a dirty tree committed.
 ---
 
 # Git commit
 
-Only create a commit when the user asked. If unclear, ask first.
+Create a commit when the user asked, **or** when skill `push-code` / `general/end-of-run.md` requires closing out a dirty tree at the end of an agent run. If unclear whether a mid-run snapshot should be committed, ask first.
 
 **Exception:** skill `issues-repo-record` — recording in `ISSUES_REPO` is part of filing; commit there without a separate ask.
 

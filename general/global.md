@@ -15,6 +15,7 @@ These apply universally unless a profile says otherwise.
 - When working from a to-do list in a file, use checkmark emojis to mark off completed items in the file.
 - Update changelogs according to the style already detected in the repository.
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
+- **End of agent run:** after file changes, logical commits + push before the final reply — `general/end-of-run.md` (skill `push-code`).
 
 ## AI operations and formatting
 
