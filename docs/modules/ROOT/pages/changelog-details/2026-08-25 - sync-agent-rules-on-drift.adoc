@@ -1,0 +1,5 @@
+= 2026-08-25 — Sync skills and rules on drift
+
+* Added skill `sync-agent-rules`: on drift, fetch/pull `$AGENT_RULES_PATH`, repair discovery installs, refresh local overlays, stamp `AGENT_RULES_SYNCED_SHA` in `$CODE_ROOT/harness.md`.
+* Version model: skills/rules set = agent-rules **git SHA** (not per-skill SemVer).
+* Always-on pointers in `user.md`, org `AGENTS.md`, `general/global.md`, `general/rules-skills-sync.md`; catalog/BOOTSTRAP/`agents/_MAIN.md`/`harness-setup`/`harness.example.md` wired.

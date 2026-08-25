@@ -18,6 +18,7 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.
 | Bootstrap / initialize an org, `{org}/agent-rules` overlay | `bootstrap-org` |
 | Authoring a skill / `SKILL.md` / skill `description` | `write-a-skill` |
 | New machine or harness setup / populate harness.md | `harness-setup` |
+| Skills/rules drift / sync discovery / `AGENT_RULES_SYNCED_SHA` | `sync-agent-rules` |
 | Opening or drafting a pull request | `draft-pr` |
 | News body copy (ship note, org announcement) | `writing-news` |
 | Blog body copy (essay, philosophy, tutorial narrative) | `writing-blog` |

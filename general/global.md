@@ -16,6 +16,7 @@ These apply universally unless a profile says otherwise.
 - Update changelogs according to the style already detected in the repository.
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
 - **End of agent run:** after file changes, logical commits + push before the final reply — `general/end-of-run.md` (skill `push-code`).
+- **Sync skills/rules on drift:** skill `sync-agent-rules` — detail `general/rules-skills-sync.md`. Set version = `$AGENT_RULES_PATH` git SHA stamped in `$CODE_ROOT/harness.md`.
 
 ## AI operations and formatting
 
@@ -38,7 +39,7 @@ These apply universally unless a profile says otherwise.
   - If `ENVIRONMENT` is missing, ask the user which file applies before assuming an OS.
 - You **must** read `general/creator.md` before acting.
 - Read `general/documentation.md` when you are authoring, structuring, or publishing project documentation (optional layer for doc-heavy work).
-- Heavy curricula are agent skills (not always-on reads): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `harness-setup`, `env-names-registry` — see `skills/CATALOG.md`.
+- Heavy curricula are agent skills (not always-on reads): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `harness-setup`, `sync-agent-rules`, `env-names-registry` — see `skills/CATALOG.md`.
 
 ## Memory management
 

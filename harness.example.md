@@ -32,6 +32,10 @@ IDE_PROJECT_RULES = mdc-in-repo | claude-rules | none
 # Integrations probed on this machine
 MCP_CONTEXT7 = available | unavailable
 MCP_OTHER = <optional list>
+
+# Last successful sync-agent-rules run (machine-local stamp; skill sync-agent-rules)
+AGENT_RULES_SYNCED_SHA = <git SHA of $AGENT_RULES_PATH HEAD after sync, or empty>
+AGENT_RULES_SYNCED_AT = <ISO-8601 date, or empty>
 ```
 
 ## Example: Cursor on Windows
@@ -46,6 +50,8 @@ CHAT_FILE_LINKS = markdown-workspace-links
 CODE_CITATION = line-range-fence
 IDE_PROJECT_RULES = mdc-in-repo
 MCP_CONTEXT7 = available
+AGENT_RULES_SYNCED_SHA =
+AGENT_RULES_SYNCED_AT =
 ```
 
 ## Example: direct filesystem load (no skill discovery dir)
@@ -60,6 +66,8 @@ CHAT_FILE_LINKS = plain-paths
 CODE_CITATION = none
 IDE_PROJECT_RULES = none
 MCP_CONTEXT7 = unavailable
+AGENT_RULES_SYNCED_SHA =
+AGENT_RULES_SYNCED_AT =
 ```
 
 ## Relationship to other layers
@@ -68,7 +76,7 @@ See **Layer names vs harness vocabulary** in https://docs.devcentr.org/agent-rul
 
 | File | Role |
 | --- | --- |
-| `$CODE_ROOT/harness.md` | **Harness rules** — discovery paths, chat behaviors, always-on slot |
+| `$CODE_ROOT/harness.md` | **Harness rules** — discovery paths, chat behaviors, always-on slot, sync stamp |
 | `$CODE_ROOT/machine.md` | **Machine rules** — tool paths, PATH gaps, hardware (see `machine.example.md`) |
 | `user.md` in **agent-rules** | **User rules** — portable preamble (forkable) |
 | `profiles/<machine>.md` in **your fork** | Machine constants: `CODE_ROOT`, `GITHUB_USER`, `ENVIRONMENT`, `ISSUES_REPO` |
@@ -76,4 +84,4 @@ See **Layer names vs harness vocabulary** in https://docs.devcentr.org/agent-rul
 
 ## Agent obligation
 
-Before editing anything under `$AGENT_RULES_PATH`, read **`general/harness-boundary.md`**. When setup is missing or stale, run skill **`harness-setup`**.
+Before editing anything under `$AGENT_RULES_PATH`, read **`general/harness-boundary.md`**. When setup is missing or stale, run skill **`harness-setup`**. When skills/discovery/`AGENT_RULES_SYNCED_SHA` drift, run skill **`sync-agent-rules`**.

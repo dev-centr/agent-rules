@@ -26,6 +26,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-25 — Sync skills and rules on drift
+
+* Skill `sync-agent-rules` autoupdates local installs against the shared reference; stamps `AGENT_RULES_SYNCED_SHA` (set version = agent-rules SHA).
+* See xref:changelog-details/2026-08-25 - sync-agent-rules-on-drift.adoc[Detailed changelog].
+
 == 2026-08-25 — End-of-run commit and push
 
 * See xref:changelog-details/2026-08-25 - end-of-run-commit-push.adoc[Detailed changelog].

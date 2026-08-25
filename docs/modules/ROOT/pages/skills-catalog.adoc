@@ -24,6 +24,9 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 | `harness-setup`
 | New machine/harness setup, populate harness.md, template boundary
 
+| `sync-agent-rules`
+| Skills/rules drift; catalog vs discovery; `AGENT_RULES_SYNCED_SHA`; sync across machines
+
 | `writing-news`
 | News item, ship note, org announcement, news-channel body
 

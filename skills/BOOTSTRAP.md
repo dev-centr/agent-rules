@@ -66,6 +66,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **`.issues` record + push** → skill `issues-repo-record` (`skills/issues-repo-record/`).
 - **Polyglot CI / release matrix** → skill `polyglot-ci` (`skills/polyglot-ci/`).
 - **Harness setup / harness.md** → skill `harness-setup` (`skills/harness-setup/`).
+- **Sync skills/rules on drift** → skill `sync-agent-rules` (`skills/sync-agent-rules/`).
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.

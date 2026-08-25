@@ -16,6 +16,7 @@
 - Plain language: keep explanations easy to read. Default to conversational, direct speech — not jargon-heavy or corporate. Detail: `general/plain-speech.md`.
 - Tool inventory record: keep a local snapshot of which tools are available on the current machine. Detail: `general/tool-inventory.md` (skill `tool-inventory`).
 - **Harness-neutral:** read `$HARNESS` and `general/harness.md` when chat formatting, skill discovery, or always-on injection behavior matters. Skill `harness-setup` probes a new machine or harness.
+- **Sync skills/rules on drift:** when discovery install, always-on paste, or `$AGENT_RULES_PATH` SHA drifts from the shared reference, run skill `sync-agent-rules` and apply updates (stamp `AGENT_RULES_SYNCED_SHA` in `$HARNESS`). Detail: `general/rules-skills-sync.md`.
 - **Template boundary:** never write machine paths, harness names, or usernames into forkable templates — see `general/harness-boundary.md`.
 - **File names in chat:** follow `CHAT_FILE_LINKS` in `$HARNESS` (default: markdown link to workspace-relative path, forward slashes). Detail: `general/harness.md`.
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `machine.md` or `harness.md`.
@@ -61,5 +62,5 @@
 - **Machine rules:** **only** `$CODE_ROOT/machine.md`. Create if missing; counter from 1. Never commit. Format: `machine.example.md`.
 - **Harness rules:** **only** `$CODE_ROOT/harness.md`. Create via skill `harness-setup` if missing. Never commit. Format: `harness.example.md`.
 - Stale APIs: Context7 MCP when `MCP_CONTEXT7 = available` in `$HARNESS`; else skill `outdated-code-protocol`.
-- Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — load bodies on demand; do **not** paste into always-on rules. Dev-Centr org members: also load org `AGENTS.md`; org layer overrides personal on `dev-centr/*` work.
+- Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — load bodies on demand; do **not** paste into always-on rules. On drift vs shared reference: skill `sync-agent-rules`. Dev-Centr org members: also load org `AGENTS.md`; org layer overrides personal on `dev-centr/*` work.
 - Commits / push / PRs: skills `git-commit`, `push-code`, and `draft-pr`. Load `push-code` at end of any run that changed files (standing auth — `general/end-of-run.md`); load `draft-pr` when opening a PR.
