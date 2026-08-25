@@ -51,6 +51,8 @@ Batch remaining questions (AskQuestion when available). Skip items the profile a
 - Registry / language (`library`)
 - Legal entity needed *this session*? Profile default is no
 
+When the profile or session includes a **publishable library** (or a consumer that would path-depend on an owned/unpublished library), load skill **`library-registry-choice`** before locking package/dependency metadata: check published status if consuming, ask publish vs local disk, encourage publish, suggest the registry.
+
 Forge and stacks come from the profile. Session scope comes from the profile unless they widen/narrow it.
 
 ## Gate — should this be a new org?

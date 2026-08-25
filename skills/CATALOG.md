@@ -29,6 +29,8 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `writing-blog` | Blog post, essay, philosophy, thinking-in-public body | active | `skills/writing-blog/` |
 | `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` |
 | `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", DUB/code.dlang.org categories | active | `dubx` + `dub-publish`; official `dub` has no publish command |
+| `library-registry-choice` | create library, path/`file:` dependency, publish vs local disk, registry for new package, unpublished owned dep | active | Ask publish vs path; encourage registry; suggest which |
+| `library-registry-choice` | create library, path/`file:` dependency, publish vs local disk, registry for new package, unpublished owned dep | active | Ask publish vs path; encourage registry; suggest which |
 | `bootstrap-org` | bootstrap an org, initialize an org, create a GitHub organization, SDL profile, org agent-rules overlay | active | Fast identity/project path; house org init uses pointer overlay |
 | `github-profile-assets` | GitHub org profile assets, `profile/assets/`, org avatar PNG 256 | active | Pairs with `bootstrap-org` |
 | `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x` | active | `github.md` + `registries.md` siblings |

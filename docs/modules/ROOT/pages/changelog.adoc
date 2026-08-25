@@ -26,6 +26,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-25 — Library registry vs local path
+
+* New skill `library-registry-choice`: before wiring path deps or scaffolding publishable libraries, check the registry, ask publish vs local disk, encourage publish, suggest which registry.
+* See xref:changelog-details/2026-08-25 - library-registry-choice.adoc[Detailed changelog].
+
 == 2026-08-25 — Rules geography illustration (layered)
 
 * Annotated-map SVG teaches layered deltas (personal fork is not template HEAD parity); rules-manager when the harness cannot stack.

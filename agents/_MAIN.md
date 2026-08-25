@@ -15,6 +15,8 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.
 | Trigger / task | Skill |
 | --- | --- |
 | "publish to dub" / "publish to dlang" / "publish dlang" / DUB categories | `publish-to-dub` |
+| New library / path dep / publish vs local disk / unpublished owned dep | `library-registry-choice` |
+| New library / path dep / publish vs local disk / unpublished owned dep | `library-registry-choice` |
 | Bootstrap / initialize an org, `{org}/agent-rules` overlay | `bootstrap-org` |
 | Authoring a skill / `SKILL.md` / skill `description` | `write-a-skill` |
 | New machine or harness setup / populate harness.md | `harness-setup` |

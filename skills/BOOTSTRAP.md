@@ -50,6 +50,8 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Blog body** → skill `writing-blog` (`skills/writing-blog/`).
 - **Docs mojibake / SVG XML** → skill `fix-docs-encoding` (`skills/fix-docs-encoding/`).
 - **DUB registry publish** → skill `publish-to-dub` (`skills/publish-to-dub/`).
+- **Library publish vs local path** → skill `library-registry-choice` (`skills/library-registry-choice/`).
+- **Library publish vs local path** → skill `library-registry-choice` (`skills/library-registry-choice/`).
 - **GitHub org / project bootstrap** → skill `bootstrap-org` (`skills/bootstrap-org/`).
 - **Tag / ship a version** → skill `tag-release` (`skills/tag-release/`).
 - **Authoring a skill / `SKILL.md` / skill `description`** → skill `write-a-skill` (`skills/write-a-skill/`).

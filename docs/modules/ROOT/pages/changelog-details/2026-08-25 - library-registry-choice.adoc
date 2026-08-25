@@ -1,0 +1,4 @@
+= 2026-08-25 — Library registry vs local path
+
+* Skill `library-registry-choice` (+ `registries.md`): when creating a publishable library or depending on an owned/unpublished package, check registry presence, ask publish vs local disk, encourage publishing, and name the registry.
+* Thin always-on pointer in `user.md` / `general/library-registry-choice.md`; catalog, BOOTSTRAP, AGENTS, `_MAIN`, and `bootstrap-org` intake cross-links.

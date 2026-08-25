@@ -47,6 +47,8 @@
 - Transfers: `gh api`.
 - **Agent rules:** canonical template is this repo. Each owned org this hive initializes gets `{org}/agent-rules` (pointer README + thin org `AGENTS.md` — **no submodule**; clone/fetch this repo). House workflow, not a requirement for every GitHub org. `{org}/.github/AGENT-RULES.md` is a pointer only — do not submodule rules into `.github`. Shared changes: PR here; org-only: commit wrapper `AGENTS.md`. Script: `scripts/setup-org-agent-rules-wrapper.ps1`.
 - Config: SDL (`.sdl`) for DevCentr-owned / `sdlang-d` surfaces; **KDL** (`.kdl`) for greenfield outside that stack; JSON5 when stuck in the JSON family. Do **not** adopt Extended SDL/XDL.
+- **Publishable libraries:** when creating a library (or depending on an owned/unpublished one that belongs on a registry), load skill `library-registry-choice` — check published status, ask publish vs local disk, encourage publish, suggest the registry. Detail: `general/library-registry-choice.md`.
+- **Publishable libraries:** when creating a library (or depending on an owned/unpublished one that belongs on a registry), load skill `library-registry-choice` — check published status, ask publish vs local disk, encourage publish, suggest the registry. Detail: `general/library-registry-choice.md`.
 - Changelog: every owned project, functional changes — skill `owned-changelog`.
 - Issues: file for bugs, blockers, and external coordination — not routine owned-repo work (skill `owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push); never chat-only.
 

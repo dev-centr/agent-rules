@@ -13,6 +13,8 @@ Read [reference.md](reference.md), then adhere to local Software Product Essenti
 
 If `$CODE_ROOT/github.com/dev-centr/general-knowledge` is missing, clone `https://github.com/dev-centr/general-knowledge` there before improvising a checklist.
 
+When the product is a **publishable library** (or depends on an owned/unpublished library), also load skill `library-registry-choice` before locking dependency metadata.
+
 ## Local source of truth
 
 - Hub: `$CODE_ROOT/github.com/dev-centr/general-knowledge/docs/modules/ROOT/pages/explanation/architecture/software-product-essentials.adoc`
