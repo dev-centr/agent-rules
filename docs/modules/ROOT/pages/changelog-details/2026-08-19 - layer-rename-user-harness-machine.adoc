@@ -1,32 +1,29 @@
 = 2026-08-19 — Layer rename: `user.md`, `harness.md`, `machine.md`
 
-Breaking schema rename for harness-neutral layer files. Migrate copies on every workstation.
+Breaking schema rename. Reconstructed from tree diffs at `55ec8f4` → `aea1a78` → `5e72b86`.
 
-== Old → new
+== Observed renames (`git log --diff-filter=R`)
 
-|====
-| Role | Previous | Current
+* `RULES.md` → `user.md` (~76% similarity)
+* `HARNESS.example.md` → `harness.example.md` (~79%)
+* `MEMORIES.example.md` → `machine.example.md` (~50%)
 
-| Portable always-on paste (forkable)
-| `RULES.md`
-| `user.md`
+== Constants block (content)
 
-| Harness discovery / injection (machine-local)
-| `$CODE_ROOT/HARNESS.md` (briefly); example `HARNESS.example.md`
-| `$CODE_ROOT/harness.md`; example `harness.example.md`
+Before (`RULES.md` at `55ec8f4`)::
+`MEMORIES: $CODE_ROOT/MEMORIES.md` and `HARNESS: $CODE_ROOT/HARNESS.md`; gitignore must not allow-list those files.
 
-| Workstation facts (machine-local)
-| `$CODE_ROOT/MEMORIES.md`; example `MEMORIES.example.md`
-| `$CODE_ROOT/machine.md`; example `machine.example.md`
-|====
+After (`user.md` at `aea1a78`)::
+`MACHINE: $CODE_ROOT/machine.md` and `HARNESS: $CODE_ROOT/harness.md`; heading "User rules"; do not allow-list `machine.md` / `harness.md`.
 
-`MEMORIES.md` remains gitignored for backwards compatibility; prefer `machine.md`.
+== Examples
+
+* `machine.example.md` adds an explicit table directing harness discovery facts to `harness.md`.
+* `.gitignore` lists `MEMORIES.md`, `machine.md`, `harness.md` (legacy `MEMORIES.md` kept ignored).
 
 == Vocabulary
 
-Layer **file names** are not the same as product UI labels. Example: Cursor **User Rules** is an injection slot; our portable *content* layer file is `user.md`. Full table: xref:harness-neutral.adoc#layer-names-vs-harness-vocabulary[Harness-neutral — layer names vs harness vocabulary].
-
-Core templates stay `.md`. Cursor `.mdc` under `%USERPROFILE%\.cursor\rules\` (or repo `.cursor/rules/`) is adapter-only and must not hold hive drive letters in synced User Rules.
+Layer **file names** ≠ product UI labels. Cursor **User Rules** is an injection slot; portable *content* is `user.md`. See xref:harness-neutral.adoc#layer-names-vs-harness-vocabulary[translation table] (`5e72b86`).
 
 == Commits
 

@@ -1,19 +1,24 @@
 = 2026-08-19 — Harness-neutral architecture
 
-Templates no longer assume Cursor (or any single AI toolkit).
+Reconstructed from `RULES.md` / tree at `a25bcd3` (pre) vs `55ec8f4` (post).
 
-== What changed
+== Before
 
-* Introduced machine-local harness config at `$CODE_ROOT` (initially `HARNESS.md`, then `harness.md` — see the layer-rename detail page).
-* Added skill `harness-setup` to probe the active harness and populate `harness.md`.
-* Added `general/harness.md`, `general/harness-boundary.md`, and always-on Cursor adapter `.cursor/rules/harness-boundary.mdc`.
-* Documented the split: forkable policy in `user.md` / `AGENTS.md` / `general/*`; paths and harness wiring only in machine-local files.
-* Satellite orgs pick up shared changes by `git pull` on the canonical `dev-centr/agent-rules` clone (pointer wrappers, not submodule pins).
+* Forkable paste assumed Cursor-oriented paths in prose and skills.
+* Workstation facts: only `$CODE_ROOT/MEMORIES.md` + `MEMORIES.example.md`.
+* No `HARNESS*`, no `general/harness*.md`, no `harness-setup` skill.
 
-== See also
+== After (`55ec8f4`)
 
-* xref:harness-neutral.adoc[Harness-neutral architecture]
-* Skill `harness-setup` under `skills/harness-setup/`
+* New constant `HARNESS: $CODE_ROOT/HARNESS.md`.
+* New committed template `HARNESS.example.md` (variables: `HARNESS_NAME`, `ALWAYS_ON_RULES`, `SKILLS_DISCOVERY_ROOT`, `LOCAL_RULES_DIR`, …).
+* New `general/harness.md`, `general/harness-boundary.md`, `.cursor/rules/harness-boundary.mdc`.
+* New skill `harness-setup`; docs page `harness-neutral.adoc`.
+* Core rules: harness-neutral read of `$HARNESS`; template boundary (no machine paths in forkable files); chat file links via `$HARNESS`.
+
+== Naming note
+
+Uppercase `$CODE_ROOT/HARNESS.md` was the first harness-neutral path; same-day rename moved to lowercase `harness.md` (see layer-rename detail).
 
 == Commit
 

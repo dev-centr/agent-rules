@@ -1,0 +1,18 @@
+= 2026-08-06 — History root: one Antora site per org
+
+Reachable git root on this remote (`cd9463d`).
+
+== Tree at root (observed)
+
+* Present: `RULES.md`, `MAIN.md`, `README.md`, `MEMORIES.example.md`, `general/` (≈11 files), profiles templates.
+* Absent: `skills/`, Antora `docs/modules/ROOT/pages/*`, `AGENTS.md`, `HARNESS*`, `user.md` / `machine.md`.
+
+== `RULES.md` shape (observed)
+
+* Placeholder constants: `CODE_ROOT: REQUIRED_PATH`, `GITHUB_USER: REQUIRED_NAME`, `ENVIRONMENT: windows | linux | mac`.
+* `MEMORIES: $CODE_ROOT/MEMORIES.md` (sys-wide workstation file — not per repo).
+* Already includes sync-before-multi-file-work, Nushell recommendation, one-Antora-site policy pointer.
+
+== Functional change in this commit
+
+* Docs/policy: **one Antora site per org** with a hub; dedupe secondary project GitHub Pages Antora sites (`general/antora-docs-sites.md`).

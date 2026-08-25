@@ -1,6 +1,12 @@
 = 2026-08-17 — Thin always-on rules; on-demand skills
 
-* Moved optional curricula out of the always-on paste preamble into on-demand skills so User Rules / `user.md` stay short.
-* Added `write-a-skill` (YAML `description` = invocation triggers); renamed from `write-skill`.
-* Added `tag-release` for SemVer + GitHub rolling aliases.
-* Always-on file-link rule so mentioned files open in the editor from chat.
+== Observed content shift
+
+* Always-on paste (`RULES.md` / later `user.md`) told not to paste skill bodies; long curricula move under `skills/<name>/`.
+* Skill directory count jumps as packages land (`tag-release`, `write-skill`, shop skills from prior days stay).
+
+== Skill authoring / naming
+
+* Added `write-skill` (YAML `description` = invocation triggers).
+* Renamed package `write-skill` → `write-a-skill` (`065162a`, rename detected in git).
+* Always-on file-link Cursor rule so mentioned files open from chat.

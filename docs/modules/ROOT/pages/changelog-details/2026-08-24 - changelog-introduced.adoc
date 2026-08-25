@@ -1,0 +1,5 @@
+= 2026-08-24 — Changelog introduced
+
+* Created Antora `changelog.adoc` index and `changelog-details/` pages (skill `owned-changelog`).
+* Wired xref into `nav.adoc`, overview `index.adoc`, and README Changelog section.
+* Later expanded by backfilling from observed file transitions (this entry marks introduction of the changelog itself).

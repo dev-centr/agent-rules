@@ -1,0 +1,6 @@
+= 2026-08-11 — Math on every docs site
+
+* Observed addition to always-on docs rules: enable math rendering **even when unused**.
+* Antora: `stem: latexmath` + KaTeX / `site-math.js`; Markdown: `remark-math` + `rehype-katex`.
+* Prefer `stem:[...]` / `$...$` over raw formula prose.
+* Files: `RULES.md`, `general/documentation.md` (`3c22c27`).

@@ -1,6 +1,13 @@
 = 2026-08-18 — Org agent-rules pointer wrappers
 
-* Documented house org init: `{org}/agent-rules` holds a pointer README + thin org `AGENTS.md` — **no git submodule** (SHA pins go stale).
-* Script `scripts/setup-org-agent-rules-wrapper.ps1`; wrapper README templates use ASCII punctuation so Windows PowerShell does not mojibake em dashes.
-* Not a requirement for every GitHub org; `{org}/.github/AGENT-RULES.md` is a pointer only.
-* Related: `github-profile-assets` skill; `publish-to-dub` must set registry categories; `polyglot-ci` skill.
+== Observed policy flip
+
+* Earlier wording / scripts treated org `agent-rules` as a **submodule** (SHA pin).
+* `5c50086` + docs: stop pinning; wrappers are **pointer overlays** (README + thin org `AGENTS.md`); canonical clone is `git pull`'d.
+* `scripts/setup-org-agent-rules-wrapper.ps1` expanded; ASCII punctuation in templates (PowerShell mojibake of em dashes).
+
+== Related
+
+* `publish-to-dub`: always set registry categories (do not leave empty for web UI).
+* `github-profile-assets` skill; `polyglot-ci` skill + workflow matrix notes.
+* Marked house org init — not a requirement for every GitHub org.

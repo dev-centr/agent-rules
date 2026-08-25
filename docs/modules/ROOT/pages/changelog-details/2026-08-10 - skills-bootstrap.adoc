@@ -1,0 +1,5 @@
+= 2026-08-10 — Skills shop entry
+
+* Added `skills/BOOTSTRAP.md` as the in-repo entry for discovering Cursor skills.
+* At this commit the `skills/` tree is still a shop stub; later August commits add skill packages and move curricula out of always-on paste.
+* Commit: `9c821b1`.

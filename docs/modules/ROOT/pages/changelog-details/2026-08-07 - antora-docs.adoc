@@ -1,5 +1,5 @@
 = 2026-08-07 — Antora docs component
 
-* Added Antora component under `docs/` (overview, usage, architecture, bootstrap).
-* Removed personal-repo references from upstream public text.
-* Follow-ons: math rendering required on every docs site; README / Antora / changelog agent rules expanded from org docs automation notes.
+* Added Antora component under `docs/` (overview / usage / architecture pages appear; page count grows from 0 → 3).
+* Removed personal-repo references from upstream public text (`feature/docs-no-personal-refs` merge).
+* Follow-on same week: math requirement (2026-08-11); README/changelog agent-rule expansion (2026-08-08).

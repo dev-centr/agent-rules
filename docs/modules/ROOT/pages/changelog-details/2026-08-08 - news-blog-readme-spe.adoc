@@ -1,0 +1,16 @@
+= 2026-08-08 — News/blog stance; README chrome; SPE pointers
+
+Observed always-on / docs transitions on 2026-08-08:
+
+== News vs blog
+
+* Titles block gains **News = outward** (shared record) and **blog = inward** (ideas, philosophy, tutorials, thinking in public) before title-shape rules (`8e994de`).
+
+== README chrome
+
+* Drop Docs/CI shield mandates from public README agent rules; keep centered **Explore the docs »** hub CTA style (`71d503a`).
+
+== Architecture / changelog rules
+
+* Expand README, Antora, and changelog agent rules from org docs automation notes (`575e36f`).
+* Point `general/app-architecture.md` at Software Product Essentials delivery-class auxiliaries and CentrMark checklist sidecars (`2893bf5`).

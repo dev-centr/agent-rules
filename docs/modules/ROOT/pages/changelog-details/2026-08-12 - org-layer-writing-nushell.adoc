@@ -1,6 +1,13 @@
 = 2026-08-12 — Org layer, writing skills, shell default
 
-* Org `AGENTS.md` layer + in-repo skills catalog; `writing-news` and `writing-blog` skills (news = outward, blog = inward).
-* Recommend Nushell as the default shell on Windows, macOS, and Linux (agent terminals may still use PowerShell when the IDE provides `pwsh`).
-* Plain-English inviting PR title and summary guidance; `fix-docs-encoding` for Antora SVG/adoc transcode repair.
-* Require Cloudflare Access on private sister Antora sites; AsciiDoc image alts with commas need quoting.
+== New org layer (observed)
+
+* **Created** `AGENTS.md` with layering table: Portable (`RULES.md` + `general/*`) / **Org** (`AGENTS.md` + `agents/*`) / Product (`devcentr-agent-rules`) / Project (`<repo>/AGENTS.md`).
+* Precedence: org wins on conflict for `dev-centr/*` work; `MEMORIES` is machine-only.
+* `agents/_MAIN.md` orchestrator + editorial title guidance.
+
+== Other same-day functional changes
+
+* Skills `writing-news` / `writing-blog` (body copy; titles stance already in always-on).
+* Recommend Nushell as default shell across Windows/macOS/Linux.
+* Plain-English inviting PR title/summary guidance; `fix-docs-encoding`; Cloudflare Access on private sister Antora sites; AsciiDoc image-alt comma quoting.
