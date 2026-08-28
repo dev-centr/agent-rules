@@ -63,6 +63,8 @@ Emit JSON span annotations alongside streamed assistant text when `emit-spans`. 
 
 DevCentr's lightweight harness (see docs **Agent harness**) treats this as the first cross-org UX contract in harness metadata.
 
+## Loading agent skills
+
 1. **Prefer discovery** when `SKILLS_DISCOVERY_ROOT` is set and skills are installed per `SKILLS_INSTALL`.
 2. **Else read directly:** `$AGENT_RULES_PATH/skills/<name>/SKILL.md` using native file tools.
 3. **Never paste** full skill bodies into always-on rules — one-line pointers only.

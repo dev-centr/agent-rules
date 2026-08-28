@@ -43,6 +43,7 @@ Best-effort probe (use whatever the harness exposes):
 | Line-range code citations? | `CODE_CITATION` |
 | In-repo IDE rules format? | `IDE_PROJECT_RULES` |
 | Context7 MCP available? | `MCP_CONTEXT7` |
+| Token provenance emit/consume? | `TOKEN_PROVENANCE` (`emit-spans`, `consume-spans`, `off`) |
 
 **Cursor-like harnesses** often expose: User Rules, `~/.cursor/skills`, `~/.cursor/rules`, `.mdc` project rules, markdown workspace links, line-range citation fences.
 

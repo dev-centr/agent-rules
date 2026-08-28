@@ -264,6 +264,12 @@ MCP_CONTEXT7 = available
 
 Other harnesses: run **`harness-setup`** — do not copy Cursor paths into forkable files.
 
+== DevCentr lightweight harness
+
+DevCentr is building its own **lightweight agent runtime** — T3code-shaped weight, not Cursor-class IDE bulk — wired to link:https://github.com/dlang-supplemental[dlang-supplemental] for native D infrastructure.
+
+See xref:agent-harness.adoc[Agent harness] for design direction, OSS integration policy, and the first UX contract (token provenance from HCI Nerdz).
+
 == Setup checklist (new machine)
 
 . Clone `agent-rules` into your hive (`$AGENT_RULES_PATH`) — the **shared reference** (map *1*).
