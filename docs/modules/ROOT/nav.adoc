@@ -1,6 +1,7 @@
 * xref:index.adoc[Overview]
 * xref:harness-neutral.adoc[Harness-neutral architecture]
 * xref:agent-harness.adoc[Agent harness]
+* xref:project-inbox.adoc[Project inbox]
 * xref:usage.adoc[Usage]
 * xref:org-layer.adoc[Org layer]
 * xref:bootstrap.adoc[Bootstrap agent skills]

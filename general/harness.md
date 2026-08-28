@@ -49,7 +49,10 @@ When `$CODE_ROOT` is known, read in parallel:
 | `CODE_CITATION` | Line-range citation format, if any |
 | `IDE_PROJECT_RULES` | In-repo IDE rule format (`.mdc`, etc.) |
 | `MCP_CONTEXT7` | Whether Context7 MCP is available on this machine |
-| `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[HCI Nerdz grounded tokens / token provenance]) |
+| `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html) |
+| `PROJECT_INBOX` | Parallel task grid — `grid-forks`, `serialized`, or `off` (see https://docs.devcentr.org/agent-rules/project-inbox.html and https://hci-nerdz.github.io/docs/hci-nerdz/project-inbox.html) |
+| `PROJECT_INBOX_CHAPTERS` | Chapter snapshots for inbox layout — `on` or `off` |
+| `PROJECT_INBOX_WAIT_GRAPH` | Dependency gating between task contexts — `enforce`, `warn`, or `off` |
 
 ## Token provenance
 
@@ -62,6 +65,19 @@ When `TOKEN_PROVENANCE` is not `off`, follow the HCI Nerdz contract:
 Emit JSON span annotations alongside streamed assistant text when `emit-spans`. Consume and render when `consume-spans`. Full spec: https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html
 
 DevCentr's lightweight harness (see docs **Agent harness**) treats this as the first cross-org UX contract in harness metadata.
+
+## Project inbox
+
+When `PROJECT_INBOX = grid-forks`, route parallel subagent output to a task grid instead of serializing everything into the main scroll:
+
+* **Grid region** — glanceable cards with status (`running`, `blocked`, `done`, `failed`) and one-line summaries
+* **Fork views** — cosmetic filtered transcripts per task; canonical log stays in one append-only thread
+* **Mailbox summaries** — each task publishes latest state under `$CHAT_ROOT/summaries/` for sibling tasks at init
+* **Chapters** — when `PROJECT_INBOX_CHAPTERS = on`, freeze each grid layout; user starts a new chapter when coherence breaks
+
+Wait-graph behavior (`PROJECT_INBOX_WAIT_GRAPH`): block or warn when a task reads another's summary before it reaches a terminal status.
+
+Full spec: docs **Project inbox**; UX surface: https://hci-nerdz.github.io/docs/hci-nerdz/project-inbox.html
 
 ## Loading agent skills
 

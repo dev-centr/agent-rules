@@ -62,6 +62,32 @@ TOKEN_PROVENANCE = emit-spans | consume-spans | off
 
 When `emit-spans`, the runtime attaches provenance metadata the chat renderer can style without rereading tool logs.
 
+== Project inbox (second UX contract)
+
+The second cross-org UX contract is the **project inbox** from HCI Nerdz — a task grid for parallel subagent work.
+
+Multi-repo runs today serialize into one scroll: repeated aggregate headers, Done cards, and blocked-repo prose stacked in historical order even though the jobs are concurrent. The inbox puts **cards in a dedicated grid** with status lights and one-line summaries; detail chat opens on click as a cosmetic fork of the same canonical thread.
+
+Harness variables (proposed):
+
+[source,text]
+----
+PROJECT_INBOX = grid-forks | serialized | off
+PROJECT_INBOX_CHAPTERS = on | off
+PROJECT_INBOX_WAIT_GRAPH = enforce | warn | off
+----
+
+When `grid-forks`:
+
+* Coordinator summaries stay in the main thread; subagent lines route to per-task fork views
+* Each task publishes a mailbox summary siblings may read without loading the full fork
+* Chapters freeze grid layout — new work starts in a new chapter snapshot when coherence breaks
+
+Implementation sketch, storage layout, and actor routing: xref:project-inbox.adoc[Project inbox].
+
+* Essay: link:https://hci-nerdz.github.io/blog/when-parallel-agents-fill-one-chat/[When parallel agents fill one chat]
+* Demo: link:https://hci-nerdz.github.io/demos/project-inbox/[Project inbox desk]
+
 == What this is not
 
 * Not a Cursor replacement — Cursor remains a valid `HARNESS_NAME`
@@ -73,5 +99,7 @@ When `emit-spans`, the runtime attaches provenance metadata the chat renderer ca
 * link:https://docs.devcentr.org/agent-rules/harness-neutral.html[Harness-neutral architecture]
 * link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
 * link:https://hci-nerdz.github.io/demos/grounded-tokens/[Grounded tokens demo]
+* xref:project-inbox.adoc[Project inbox]
+* link:https://hci-nerdz.github.io/demos/project-inbox/[Project inbox demo]
 * link:https://github.com/dlang-supplemental[dlang-supplemental org]
 * xref:tools/agent-rules.adoc[Agent rules portal]

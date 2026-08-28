@@ -43,6 +43,12 @@ AGENT_RULES_SYNCED_AT = <ISO-8601 date, or empty>
 # consume-spans: renderer styles incoming provenance from another harness
 # off: plain text only
 TOKEN_PROVENANCE = emit-spans | consume-spans | off
+
+# Project inbox — parallel task grid (HCI Nerdz contract; DevCentr harness routing)
+# grid-forks: card grid + cosmetic fork views; serialized: all lines in main scroll; off: single-task
+PROJECT_INBOX = grid-forks | serialized | off
+PROJECT_INBOX_CHAPTERS = on | off
+PROJECT_INBOX_WAIT_GRAPH = enforce | warn | off
 ```
 
 ## Example: Cursor on Windows
@@ -58,6 +64,9 @@ CODE_CITATION = line-range-fence
 IDE_PROJECT_RULES = mdc-in-repo
 MCP_CONTEXT7 = available
 TOKEN_PROVENANCE = off
+PROJECT_INBOX = serialized
+PROJECT_INBOX_CHAPTERS = off
+PROJECT_INBOX_WAIT_GRAPH = off
 AGENT_RULES_SYNCED_SHA =
 AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =
@@ -76,6 +85,9 @@ CODE_CITATION = none
 IDE_PROJECT_RULES = none
 MCP_CONTEXT7 = unavailable
 TOKEN_PROVENANCE = off
+PROJECT_INBOX = serialized
+PROJECT_INBOX_CHAPTERS = off
+PROJECT_INBOX_WAIT_GRAPH = off
 AGENT_RULES_SYNCED_SHA =
 AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =

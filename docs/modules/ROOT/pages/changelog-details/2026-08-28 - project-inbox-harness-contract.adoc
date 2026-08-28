@@ -1,0 +1,11 @@
+= 2026-08-28 — Project inbox harness contract
+:page-audience: Maintainers tracking agent-rules functional history
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+Documented the **project inbox** as DevCentr's second cross-org harness UX contract.
+
+* New docs page: xref:project-inbox.adoc[Project inbox] — actor routing, storage layout, wait graph, chapter snapshots
+* xref:agent-harness.adoc[Agent harness] — inbox section and harness variables
+* `general/harness.md` and `harness.example.md` — `PROJECT_INBOX`, `PROJECT_INBOX_CHAPTERS`, `PROJECT_INBOX_WAIT_GRAPH`
+* Cross-links to HCI Nerdz essay, docs, and demo
