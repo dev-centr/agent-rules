@@ -45,6 +45,12 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-28 — Docs illustrations default
+
+* `general/documentation.md`: teaching pages need an orientation figure by default (diagram / screenshot / mockup / source still); AsciiDoc comma-safe alts; pass checks.
+* `user.md` Docs one-liner.
+* See xref:changelog-details/2026-08-28 - docs-illustrations.adoc[Detailed changelog].
+
 == 2026-08-28 — Hornet v0–v2 reference runtime
 
 * `dev-centr/hornet` — disk store, Mixr, wait graph, desk UI, temporal engine.

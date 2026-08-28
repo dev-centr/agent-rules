@@ -1,0 +1,24 @@
+= 2026-08-28 — Docs illustrations default
+:page-audience: Maintainers and agents authoring owned docs
+:page-usage-context: Changelog detail for the portable documentation layer
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+* `general/documentation.md`: **Illustrations and figures** — new/updated visitor-facing teaching pages need at least one orientation visual unless pure tabular reference or a thin changelog stub.
+* Prefer local Mermaid/PlantUML/SVG, then screenshots/mockups, then source stills; quote AsciiDoc alts that contain commas.
+* `user.md` Docs one-liner points at that section.

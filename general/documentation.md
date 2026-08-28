@@ -146,6 +146,30 @@ Changelog **detail** pages may inherit from the index when thin stubs; otherwise
 2. Agent-assisted edits use `<agent> on behalf of <human>`.
 3. Original was not overwritten by a later edit.
 
+## Illustrations and figures (default)
+
+When you **add or substantially update** visitor-facing docs (explanations, how-tos, curated lists, architecture, onboarding), ship **at least one orientation visual** unless the page is pure tabular reference or a thin changelog stub.
+
+Prefer, in order:
+
+1. **Local diagram** — Mermaid / PlantUML (Kroki) and/or a hand SVG under `modules/.../images/` (Antora `_images/`)
+2. **Screenshot or mockup** — real UI, not decorative noise; crop to the one idea
+3. **Source thumbnail / still** — e.g. YouTube `hqdefault` / `maxresdefault` saved locally when hotlinking is brittle
+
+Rules of thumb:
+
+* Wall-of-text concept pages without a figure are incomplete — add the figure before calling the doc done.
+* Quote AsciiDoc alts that contain commas: `image::file.svg[alt="A, B, C",width=720]` (unquoted commas break attribute lists).
+* Prefer **committed** images over remote-only CDN links for Antora hubs; Markdown profile pages may hotlink thumbnails.
+* One job per figure; caption or nearby sentence must say what to notice.
+* PRs that change UI: skill **`draft-pr`** still wants screenshots in the PR body.
+
+### Pass checks (figures)
+
+1. Does a stranger get a spatial or visual orientation within one screen of the lead?
+2. Is the figure local (or an intentional durable hotlink)?
+3. Are alts descriptive and comma-safe in AsciiDoc?
+
 ## Structure
 
 - **Diátaxis** (tutorials, how-to, explanation, reference).
