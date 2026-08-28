@@ -23,6 +23,10 @@ Prototyping often wants local iteration before or beside commit + PR. That tensi
 - Iterate by subsequent commits and PR updates - do **not** hold the first push "until the demo feels done."
 - Goal: avoid cross-machine friction; push so work is visible elsewhere.
 
+## Suite intro anchoring image
+
+Demo introductions (suite/hub lede) should include **exactly one** anchoring screenshot or contextual mockup — a single memory-hook before the interactive web demo. Not a gallery; not multiple competing hero images. Complements the identity strip / VCS logo / lay description / variant switcher order in skill `demo-site-wiring`. Grandfather: do not retrofit every old demo unless substantively editing; apply on create / substantive intro edit.
+
 ## Trust and conflict handling
 
 - Trust the team to make changes; trust AI to **intercept conflicts**.

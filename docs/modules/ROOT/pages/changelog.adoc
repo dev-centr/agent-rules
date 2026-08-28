@@ -24,6 +24,12 @@ Detail pages live under `changelog-details/`.
 
 This repository's reachable git history on `main` begins **2026-08-06** (`cd9463d`). Earlier design of `RULES.md` / profiles lived in personal forks (see `AMDphreak/agent-rules`).
 
+== 2026-08-28 -- Demo intro anchoring image
+
+* Suite/hub lede: exactly one anchoring screenshot or contextual mockup before the interactive demo (not a gallery).
+* Skill `demo-site-wiring` + `agents/demos-and-push.md`; thin `AGENTS.md` pointer.
+* See xref:changelog-details/2026-08-28 - demo-intro-anchor.adoc[Detailed changelog].
+
 == 2026-08-28 — Demos + push workflow (owned orgs)
 
 * `agents/demos-and-push.md`: new UI concepts auto-apply `demo-site-wiring`; do not suppress push/PR for demo prototyping; surface philosophy clashes when unresolved.

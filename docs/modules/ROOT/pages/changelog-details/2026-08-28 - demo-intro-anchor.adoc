@@ -1,0 +1,8 @@
+= Demo intro anchoring image
+
+:description: Owned-org demos: suite lede gets exactly one anchoring screenshot/mockup before the interactive UI.
+
+* Extended skill `demo-site-wiring`: mandatory page order now includes **exactly one** anchoring screenshot or contextual mockup in the suite/hub lede (with/after lay description, before variant switcher). Not a gallery; not competing heroes.
+* Complements identity strip / VCS logo / lay description / variant switcher; does not replace them.
+* Grandfather unchanged: apply on create / substantive intro edit; do not mass-retrofit old demos.
+* Pointer in `agents/demos-and-push.md` and thin line in `AGENTS.md`.

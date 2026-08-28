@@ -7,7 +7,8 @@ description: >-
   a demo, wiring a demo into the parent org site, demo-site-wiring, publishing
   a demo to hci-nerdz.github.io/demos (or another org demos index), inventing or
   shipping a new UI concept, layout mode, chrome idea, spatial or windowing
-  concept, product-idea desk, or interactive explainer for an owned org.
+  concept, product-idea desk, or interactive explainer for an owned org;
+  demo intro screenshot, anchoring mockup, suite lede image, memory-hook.
 ---
 
 # Demo site wiring
@@ -35,8 +36,9 @@ Apply this order on create / substantive chrome edit:
    - **Repo name** → canonical GitHub/GitLab repository URL
 2. **New line after that strip: VCS logo** → same repository URL (GitHub mark, GitLab mark, etc.). Default: its **own line under** the identity strip. Do **not** place the logo after the variant switcher. Do **not** treat the variant switcher as "the nav" the logo follows.
 3. **Demo-level description** — lay text: how the idea works / fits a workflow. **Before** the variant switcher.
-4. **Variant switcher** (tabs / hash routes / sections). This is only "nav" in a loose sense — it is **not** the identity nav from step 1.
-5. **Active variant:** title + variant-specific description + interactive UI (mock / desk / controls).
+4. **Exactly one anchoring screenshot or contextual mockup** in the suite/hub lede area (with or immediately after the demo-level description, still **before** the variant switcher). Purpose: capture attention and give a single memory-hook before the interactive web demo. **Not** a gallery; **not** multiple competing hero images. Complements (does not replace) the identity strip / VCS logo / lay description / variant switcher order.
+5. **Variant switcher** (tabs / hash routes / sections). This is only "nav" in a loose sense — it is **not** the identity nav from step 1.
+6. **Active variant:** title + variant-specific description + interactive UI (mock / desk / controls).
 
 Do not put the demo-level lede below the variant UI. Do not skip variant blurbs when the page has more than one variant. Do not split org and repo into separate bands above the VCS logo.
 
@@ -69,6 +71,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] One `org / repo` identity strip (not two bands)
 - [ ] VCS logo on the line **after** that strip, linking to the repo
 - [ ] Demo-level lay workflow copy above the variant switcher
+- [ ] Exactly one intro anchoring screenshot/mockup in the suite lede (not a gallery)
 - [ ] Variant switcher, then active variant: title + blurb + interactive UI
 - [ ] Skipped retrofit of unrelated historical demos
 - [ ] Did not suppress push/PR for prototyping; pushed so work is visible elsewhere
@@ -78,6 +81,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Leave a new demo only on repo Pages with no org index entry
 - Skip demos when inventing/shipping a new UI concept for an owned org
 - Use engineer-only jargon as the sole page description
+- Ship a suite intro with zero anchoring visuals, or with a multi-image gallery / competing heroes in the lede
 - Treat nav and breadcrumb as two separate bands
 - Put the VCS logo after the variant switcher, or treat the variant switcher as the identity nav
 - Mass-migrate every old demo "for consistency" without an explicit ask
