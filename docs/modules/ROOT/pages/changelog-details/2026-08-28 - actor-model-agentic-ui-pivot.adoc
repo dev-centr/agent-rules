@@ -1,0 +1,10 @@
+= 2026-08-28 — Pivot to actor-model agentic UI
+:page-audience: Maintainers tracking agent-rules functional history
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+Renamed **project inbox** to **Actor-model agentic UI** — node graph is the model; task grid is one view.
+
+* xref:actor-model-agentic-ui.adoc[Actor-model agentic UI] — node types, spawn-on-drift, disk layout, `ACTOR_AGENTIC_UI` variables
+* xref:project-inbox.adoc[Project inbox (renamed)] — redirect stub
+* Deprecated harness aliases: `PROJECT_INBOX*` → `ACTOR_AGENTIC_UI`, `ACTOR_GRAPH_EPOCHS`, etc.

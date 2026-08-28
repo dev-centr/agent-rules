@@ -1,0 +1,186 @@
+= Actor-model agentic UI
+:navtitle: Actor-model agentic UI
+:description: Node graph for agent harnesses — typed actors, spawn-on-drift, bidirectional addresses, disk-persisted graph, and grid views for parallel work.
+:page-audience: Dev-Centr maintainers and harness authors building agent runtimes
+:page-usage-context: Reference page on the agent-rules docs hub; pairs with HCI Nerdz UX spec and live demo
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+Usage context:: {page-usage-context}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+*Actor-model agentic UI* is DevCentr's second cross-org harness UX contract (after link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[grounded tokens]).
+
+In plain language: *agent chat is a graph of communicating nodes on disk — not one drifting scroll that pretends to be one topic forever*.
+
+A **node** is an **actor**: a bounded conversation context with a type, an address, parent/child spawn links, and a mailbox summary coworkers read without loading its full transcript.
+
+== Why linear chat is wrong
+
+Today's chat models assume one thread drifts until the user starts over. Agent harnesses violate that assumption constantly:
+
+* A coordinator **discussion** spawns twelve **task** nodes across repos
+* A task node's chat tangents into a CLA permissions digression — that should become a **discussion** child, not noise in the merge transcript
+* Parallel jobs need a **grid view**; tangents need a **graph view** — same node store, different projections
+
+Serializing all of that into one scroll repeats aggregate headers and buries blockers. The fix is not "better summaries" alone — it is a **persisted node graph** the UI renders in parallel.
+
+== Node model
+
+[cols="1,2"]
+|===
+| Field | Meaning
+
+| `id`
+| Stable node identifier (also actor address suffix)
+
+| `type`
+| `discussion`, `task`, `coordinator`, … — determines UI chrome and spawn rules
+
+| `address`
+| Disk path root for this node (`$CHAT_ROOT/nodes/{id}/`)
+
+| `spawnedBy`
+| Parent node id — child always knows where it came from
+
+| `spawned`
+| Child node ids — parent records every node it forked
+
+| `related`
+| Edges that are not spawn (waits-on, references, soft dependency)
+
+| `status` + `summary`
+| Mailbox — latest state for subscribers
+
+| `viewEpoch`
+| Which layout snapshot (chapter) last included this node in the grid
+|===
+
+=== Spawn on drift
+
+When a node's chat drifts from its declared topic, the harness (or user) **spawns** a child node:
+
+. Parent appends child id to `spawned[]`; child sets `spawnedBy` to parent id
+. Parent and child addresses are written to disk before either accepts new messages
+. Parent chat gets a one-line routing marker; new lines belong to the child
+
+Drift detection may be heuristic (model proposes spawn), user gesture ("branch this tangent"), or policy (task node receives non-task utterance).
+
+=== Node types (initial set)
+
+[cols="1,2"]
+|===
+| Type | Role
+
+| `coordinator`
+| Top-level orchestrator; grid owner; thin main thread
+
+| `discussion`
+| Exploratory context; may spawn task or discussion children
+
+| `task`
+| Bounded job (repo PR, merge, docs sync); publishes status to grid
+|===
+
+More types can extend the same struct — the harness treats type as routing hints, not a separate storage silo.
+
+== Disk layout (required)
+
+All graph state is persisted — not RAM-only. I/O cost is acceptable; losing spawn lineage is not.
+
+[source,text]
+----
+$CHAT_ROOT/
+  graph.json                 # index: node ids, types, spawn edges, related edges
+  nodes/
+    {nodeId}/
+      meta.json              # full node struct (addresses, spawnedBy, spawned, status, …)
+      chat.jsonl             # this node's messages only
+      summaries/
+        latest.json          # mailbox
+        v{n}.json            # compaction chain
+  views/
+    epoch-1.json             # immutable grid snapshot (which task nodes, positions)
+    epoch-2.json
+  thread.jsonl               # optional unified append log for audit/replay
+----
+
+Every spawn is two writes minimum (`parent meta.json`, `child meta.json` + `graph.json` edge update) before the child accepts traffic. Harness batches where the filesystem allows; correctness beats micro-latency.
+
+== UI projections
+
+One graph; multiple views:
+
+* **Grid** — filter `type=task`, show status dot + summary (replaces the old "inbox" layout)
+* **Fork panel** — click any node; load `nodes/{id}/chat.jsonl` filtered view
+* **Graph strip** — spawn lineage: parent → children; optional for discussion tangents
+* **Coordinator thread** — messages tagged `coordinator` or untagged root; not every subagent line
+
+== Harness variables
+
+[source,text]
+----
+ACTOR_AGENTIC_UI = graph-grid | serialized | off
+ACTOR_GRAPH_EPOCHS = on | off
+ACTOR_WAIT_GRAPH = enforce | warn | off
+ACTOR_NODE_STORE = jsonl-per-node | off
+----
+
+[cols="1,3"]
+|===
+| Variable | Behavior
+
+| `ACTOR_AGENTIC_UI=graph-grid`
+| Persist node graph; emit grid updates for task nodes; route detail chat to node forks; coordinator summaries in main thread
+
+| `ACTOR_AGENTIC_UI=serialized`
+| Legacy — all lines in one scroll
+
+| `ACTOR_AGENTIC_UI=off`
+| Single-node mode
+
+| `ACTOR_GRAPH_EPOCHS=on`
+| Freeze grid layout per epoch; new epoch when coherence breaks (formerly "chapters")
+
+| `ACTOR_WAIT_GRAPH`
+| Gate model calls that read sibling mailboxes before terminal status
+|===
+
+**Migration:** `PROJECT_INBOX*` names are deprecated aliases for one release cycle; map `grid-forks` → `graph-grid`, `PROJECT_INBOX_CHAPTERS` → `ACTOR_GRAPH_EPOCHS`.
+
+== Relationship to HCI Nerdz
+
+HCI Nerdz owns the attention surface — grid, graph strip, spawn UX, demo, essay.
+
+DevCentr owns harness routing, disk schema, and `$CODE_ROOT/harness.md` variables.
+
+* Essay: link:https://hci-nerdz.github.io/blog/when-chat-should-spawn-a-node/[When chat should spawn a node]
+* Docs: link:https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui.html[HCI Nerdz — Actor-model agentic UI]
+* Demo: link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Actor-model agentic UI desk]
+
+== What this is not
+
+* Not a replacement for grounded tokens — provenance on *words*, actor UI on *nodes*
+* Not ephemeral subagent RAM — every spawn is recorded on disk
+* Not Cursor Task tool UI — harness-neutral node events any renderer can place
+
+== Related
+
+* xref:agent-harness.adoc[Agent harness]
+* xref:harness-neutral.adoc[Harness-neutral architecture]
+* link:https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui.html[HCI Nerdz spec]
+* link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Live demo]
+* link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[Grounded tokens]

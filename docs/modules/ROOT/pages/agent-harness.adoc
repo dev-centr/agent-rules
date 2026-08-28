@@ -62,31 +62,34 @@ TOKEN_PROVENANCE = emit-spans | consume-spans | off
 
 When `emit-spans`, the runtime attaches provenance metadata the chat renderer can style without rereading tool logs.
 
-== Project inbox (second UX contract)
+== Actor-model agentic UI (second UX contract)
 
-The second cross-org UX contract is the **project inbox** from HCI Nerdz — a task grid for parallel subagent work.
+The second cross-org UX contract is **actor-model agentic UI** from HCI Nerdz — a persisted **node graph** where each node is an actor (bounded chat context with a type, disk address, spawn lineage, and mailbox summary).
 
-Multi-repo runs today serialize into one scroll: repeated aggregate headers, Done cards, and blocked-repo prose stacked in historical order even though the jobs are concurrent. The inbox puts **cards in a dedicated grid** with status lights and one-line summaries; detail chat opens on click as a cosmetic fork of the same canonical thread.
+Linear chat drifts; agent work spawns tangents and parallel jobs. The harness records **nodes on disk** (`graph.json`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`). Parent nodes record child addresses in `spawned[]`; children record `spawnedBy`. When chat drifts off-topic, spawn a child node instead of polluting the parent transcript.
 
-Harness variables (proposed):
+The **task grid** is one projection — filter `type=task` for parallel repo work. Discussion nodes spawn task nodes; task tangents spawn discussion children.
+
+Harness variables:
 
 [source,text]
 ----
-PROJECT_INBOX = grid-forks | serialized | off
-PROJECT_INBOX_CHAPTERS = on | off
-PROJECT_INBOX_WAIT_GRAPH = enforce | warn | off
+ACTOR_AGENTIC_UI = graph-grid | serialized | off
+ACTOR_GRAPH_EPOCHS = on | off
+ACTOR_WAIT_GRAPH = enforce | warn | off
+ACTOR_NODE_STORE = jsonl-per-node | off
 ----
 
-When `grid-forks`:
+When `graph-grid`:
 
-* Coordinator summaries stay in the main thread; subagent lines route to per-task fork views
-* Each task publishes a mailbox summary siblings may read without loading the full fork
-* Chapters freeze grid layout — new work starts in a new chapter snapshot when coherence breaks
+* Node graph persisted under `$CHAT_ROOT/`; spawn writes parent + child meta before accepting traffic
+* Grid shows task nodes; fork panel loads `nodes/{id}/chat.jsonl`
+* Coordinator thread stays thin; epochs freeze grid layout when coherence breaks
 
-Implementation sketch, storage layout, and actor routing: xref:project-inbox.adoc[Project inbox].
+Full spec: xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]. Deprecated alias: xref:project-inbox.adoc[Project inbox (renamed)].
 
-* Essay: link:https://hci-nerdz.github.io/blog/when-parallel-agents-still-read-as-one-thread/[When parallel agents still read as one thread]
-* Demo: link:https://hci-nerdz.github.io/demos/project-inbox/[Project inbox desk]
+* Essay: link:https://hci-nerdz.github.io/blog/when-chat-should-spawn-a-node/[When chat should spawn a node]
+* Demo: link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Actor-model agentic UI desk]
 
 == What this is not
 
@@ -99,7 +102,7 @@ Implementation sketch, storage layout, and actor routing: xref:project-inbox.ado
 * link:https://docs.devcentr.org/agent-rules/harness-neutral.html[Harness-neutral architecture]
 * link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
 * link:https://hci-nerdz.github.io/demos/grounded-tokens/[Grounded tokens demo]
-* xref:project-inbox.adoc[Project inbox]
-* link:https://hci-nerdz.github.io/demos/project-inbox/[Project inbox demo]
+* xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]
+* link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Actor-model agentic UI demo]
 * link:https://github.com/dlang-supplemental[dlang-supplemental org]
 * xref:tools/agent-rules.adoc[Agent rules portal]

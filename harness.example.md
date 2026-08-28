@@ -44,11 +44,15 @@ AGENT_RULES_SYNCED_AT = <ISO-8601 date, or empty>
 # off: plain text only
 TOKEN_PROVENANCE = emit-spans | consume-spans | off
 
-# Project inbox — parallel task grid (HCI Nerdz contract; DevCentr harness routing)
-# grid-forks: card grid + cosmetic fork views; serialized: all lines in main scroll; off: single-task
-PROJECT_INBOX = grid-forks | serialized | off
-PROJECT_INBOX_CHAPTERS = on | off
-PROJECT_INBOX_WAIT_GRAPH = enforce | warn | off
+# Actor-model agentic UI — persisted node graph (HCI Nerdz contract; DevCentr harness routing)
+# graph-grid: node graph on disk + task grid view; serialized: one scroll; off: single node
+ACTOR_AGENTIC_UI = graph-grid | serialized | off
+ACTOR_GRAPH_EPOCHS = on | off
+ACTOR_WAIT_GRAPH = enforce | warn | off
+ACTOR_NODE_STORE = jsonl-per-node | off
+
+# Deprecated aliases (one release cycle):
+# PROJECT_INBOX = grid-forks | serialized | off  →  ACTOR_AGENTIC_UI = graph-grid | …
 ```
 
 ## Example: Cursor on Windows
@@ -64,9 +68,10 @@ CODE_CITATION = line-range-fence
 IDE_PROJECT_RULES = mdc-in-repo
 MCP_CONTEXT7 = available
 TOKEN_PROVENANCE = off
-PROJECT_INBOX = serialized
-PROJECT_INBOX_CHAPTERS = off
-PROJECT_INBOX_WAIT_GRAPH = off
+ACTOR_AGENTIC_UI = serialized
+ACTOR_GRAPH_EPOCHS = off
+ACTOR_WAIT_GRAPH = off
+ACTOR_NODE_STORE = off
 AGENT_RULES_SYNCED_SHA =
 AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =
@@ -85,9 +90,10 @@ CODE_CITATION = none
 IDE_PROJECT_RULES = none
 MCP_CONTEXT7 = unavailable
 TOKEN_PROVENANCE = off
-PROJECT_INBOX = serialized
-PROJECT_INBOX_CHAPTERS = off
-PROJECT_INBOX_WAIT_GRAPH = off
+ACTOR_AGENTIC_UI = serialized
+ACTOR_GRAPH_EPOCHS = off
+ACTOR_WAIT_GRAPH = off
+ACTOR_NODE_STORE = off
 AGENT_RULES_SYNCED_SHA =
 AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =

@@ -45,6 +45,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-28 — Actor-model agentic UI pivot
+
+* Renamed project inbox to actor-model agentic UI; node graph + disk persistence; `ACTOR_AGENTIC_UI` harness variables.
+* See xref:changelog-details/2026-08-28 - actor-model-agentic-ui-pivot.adoc[Detailed changelog].
+
 == 2026-08-28 — Project inbox harness contract
 
 * Second cross-org UX contract: parallel task grid, cosmetic fork views, chapter snapshots, actor mailboxes.

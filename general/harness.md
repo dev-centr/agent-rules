@@ -50,9 +50,11 @@ When `$CODE_ROOT` is known, read in parallel:
 | `IDE_PROJECT_RULES` | In-repo IDE rule format (`.mdc`, etc.) |
 | `MCP_CONTEXT7` | Whether Context7 MCP is available on this machine |
 | `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html) |
-| `PROJECT_INBOX` | Parallel task grid — `grid-forks`, `serialized`, or `off` (see https://docs.devcentr.org/agent-rules/project-inbox.html and https://hci-nerdz.github.io/docs/hci-nerdz/project-inbox.html) |
-| `PROJECT_INBOX_CHAPTERS` | Chapter snapshots for inbox layout — `on` or `off` |
-| `PROJECT_INBOX_WAIT_GRAPH` | Dependency gating between task contexts — `enforce`, `warn`, or `off` |
+| `ACTOR_AGENTIC_UI` | Node graph UI — `graph-grid`, `serialized`, or `off` (see https://docs.devcentr.org/agent-rules/actor-model-agentic-ui.html) |
+| `ACTOR_GRAPH_EPOCHS` | Immutable grid epochs when coherence breaks — `on` or `off` |
+| `ACTOR_WAIT_GRAPH` | Dependency gating between node mailboxes — `enforce`, `warn`, or `off` |
+| `ACTOR_NODE_STORE` | Per-node disk layout — `jsonl-per-node` or `off` |
+| `PROJECT_INBOX` | *Deprecated alias* for `ACTOR_AGENTIC_UI` (`grid-forks` → `graph-grid`) |
 
 ## Token provenance
 
@@ -66,18 +68,23 @@ Emit JSON span annotations alongside streamed assistant text when `emit-spans`. 
 
 DevCentr's lightweight harness (see docs **Agent harness**) treats this as the first cross-org UX contract in harness metadata.
 
-## Project inbox
+## Actor-model agentic UI
 
-When `PROJECT_INBOX = grid-forks`, route parallel subagent output to a task grid instead of serializing everything into the main scroll:
+When `ACTOR_AGENTIC_UI = graph-grid`, persist a **node graph on disk** and project UI views from it:
 
-* **Grid region** — glanceable cards with status (`running`, `blocked`, `done`, `failed`) and one-line summaries
-* **Fork views** — cosmetic filtered transcripts per task; canonical log stays in one append-only thread
-* **Mailbox summaries** — each task publishes latest state under `$CHAT_ROOT/summaries/` for sibling tasks at init
-* **Chapters** — when `PROJECT_INBOX_CHAPTERS = on`, freeze each grid layout; user starts a new chapter when coherence breaks
+* **Node** = **actor** — typed context (`discussion`, `task`, `coordinator`, …) with `address`, `spawnedBy`, `spawned[]`, mailbox summary
+* **Spawn on drift** — parent records child address; child records parent; both `meta.json` written before traffic
+* **Grid view** — task nodes with status dots; own scroll region
+* **Fork panel** — `nodes/{id}/chat.jsonl` for the selected node
+* **Epochs** — when `ACTOR_GRAPH_EPOCHS = on`, freeze grid layout per epoch
 
-Wait-graph behavior (`PROJECT_INBOX_WAIT_GRAPH`): block or warn when a task reads another's summary before it reaches a terminal status.
+Storage under `$CHAT_ROOT/`: `graph.json`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`, `views/epoch-N.json`.
 
-Full spec: docs **Project inbox**; UX surface: https://hci-nerdz.github.io/docs/hci-nerdz/project-inbox.html
+Wait-graph (`ACTOR_WAIT_GRAPH`): block or warn when a node reads a sibling mailbox before terminal status.
+
+Full spec: docs **Actor-model agentic UI**; UX: https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui.html
+
+Deprecated: `PROJECT_INBOX*` variable names (see docs redirect page).
 
 ## Loading agent skills
 
