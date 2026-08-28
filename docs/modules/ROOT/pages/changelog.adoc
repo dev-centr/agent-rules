@@ -70,6 +70,12 @@ Observed transitions in forkable + machine-local names:
 * Second cross-org UX contract: parallel task grid, per-node disk store, chapter snapshots, actor mailboxes.
 * See xref:changelog-details/2026-08-28 - project-inbox-harness-contract.adoc[Detailed changelog].
 
+== 2026-08-28 — hive-watch remote fetch
+
+* Org tool https://github.com/dev-centr/hive-watch[`hive-watch`]: scheduled `git fetch` for `CODE_ROOT`; writes `hive-watch.status.json` and stamps `machine.md`.
+* Skill `hive-watch`, `general/hive-watch.md`; bootstrap step; `user.md` 24h read-status rule vs per-chat fetch.
+* See xref:changelog-details/2026-08-28 - hive-watch-remote-fetch.adoc[Detailed changelog].
+
 == 2026-08-25 — Self-host web fonts
 
 * Portable rule `general/self-host-fonts.md` + skill `self-host-fonts`: prefer Fontsource / local `woff2` + preload; do not `@import` Google Fonts or wait on a CDN for first paint.

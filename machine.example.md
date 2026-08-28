@@ -22,6 +22,7 @@ Examples of what belongs here:
 - Tool install locations / PATH gaps (`ffmpeg` missing, Flutter SDK path)
 - Screenshot folders, hardware quirks on this PC
 - “This machine’s CODE_ROOT is …”
+- **Hive remotes stamp** — maintained by [`hive-watch`](https://github.com/dev-centr/hive-watch) between `<!-- hive-watch:begin -->` / `<!-- hive-watch:end -->` (do not hand-edit the timestamp unless hive-watch is unavailable)
 
 Examples of what does **not** belong here (put elsewhere):
 

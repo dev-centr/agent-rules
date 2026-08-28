@@ -62,6 +62,8 @@ Run this skill **before** relying on installed skills, and whenever any of these
 - Personal overlay fork used as a compose/paste source is behind *its* origin (refresh deltas only)
 - User says skills/rules feel out of date on this machine
 
+**Hive git remotes:** skill **`hive-watch`** + `$CODE_ROOT/hive-watch.status.json` handle routine remote fetch. Do not conflate “repo behind origin” with skills install drift — run this skill for the latter; run hive-watch (or read its status file) for the former.
+
 Autoupdate. Do not only report drift. Label mismatch alone is informational if SHA already matches.
 
 **Not drift:** personal fork HEAD ≠ template HEAD. Layered geography keeps the personal repo as an overlay; do not rebase the overlay onto the template just to “catch up” unless the user asks.

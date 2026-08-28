@@ -63,9 +63,9 @@ When `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking:
 
 1. Read `skills/CATALOG.md` for team skills needed.
 2. Link `$AGENT_RULES_PATH/skills/<name>/` → discovery root per `harness.md`.
-3. Follow `skills/BOOTSTRAP.md` for house conventions.
+3. Follow `skills/BOOTSTRAP.md` for house conventions (includes **hive-watch** install for scheduled remote fetch).
 
-Ongoing drift (missing links, behind origin, stale `AGENT_RULES_SYNCED_SHA`): skill **`sync-agent-rules`**.
+Ongoing drift (missing links, behind origin, stale `AGENT_RULES_SYNCED_SHA`): skill **`sync-agent-rules`**. Routine git remote awareness: **`hive-watch`** + `machine.md` stamp — not per-chat fetch.
 
 ## Step 5 — Verify boundary awareness
 

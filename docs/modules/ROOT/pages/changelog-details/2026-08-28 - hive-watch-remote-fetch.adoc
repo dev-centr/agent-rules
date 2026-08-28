@@ -1,0 +1,10 @@
+= 2026-08-28 — hive-watch remote fetch
+:page-audience: Maintainers
+:page-usage-context: Changelog detail
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+
+* New org tool https://github.com/dev-centr/hive-watch[`hive-watch`] — scheduled `git fetch` for `CODE_ROOT`; writes `hive-watch.status.json` and stamps `machine.md`.
+* Skill `hive-watch`, `general/hive-watch.md`; bootstrap step after `harness-setup`.
+* `user.md`: replace per-chat hive fetch with read-status / 24h rule.
+* `sync-agent-rules` clarifies separation from hive remotes.

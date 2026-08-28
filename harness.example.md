@@ -38,6 +38,10 @@ AGENT_RULES_SYNCED_SHA = <git SHA of $AGENT_RULES_PATH HEAD after sync, or empty
 AGENT_RULES_SYNCED_LABEL = <skills-set/YYYY.MM.DD from nearest tag, or empty>
 AGENT_RULES_SYNCED_AT = <ISO-8601 date, or empty>
 
+# Hive remote fetch (machine-local; skill hive-watch — prefer scheduler over per-chat fetch)
+HIVE_WATCH_STATUS = $CODE_ROOT/hive-watch.status.json
+HIVE_WATCH_REPO = $CODE_ROOT/github.com/dev-centr/hive-watch
+
 # Token provenance — inline heuristic vs grounded marks (HCI Nerdz contract)
 # emit-spans: runtime attaches span metadata alongside streamed text
 # consume-spans: renderer styles incoming provenance from another harness

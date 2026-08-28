@@ -20,7 +20,7 @@
 - **Template boundary:** never write machine paths, harness names, or usernames into forkable templates — see `general/harness-boundary.md`.
 - **File names in chat:** follow `CHAT_FILE_LINKS` in `$HARNESS` (default: markdown link to workspace-relative path, forward slashes). Detail: `general/harness.md`.
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `machine.md` or `harness.md`.
-- **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
+- **Hive remotes (prefer hive-watch):** do not `git fetch` the whole hive at chat start. Read **Last checked** in `$MACHINE` (hive-watch block) and `$CODE_ROOT/hive-watch.status.json`. If checked within **24h**, trust the status file; pull/rebase only repos you will edit that show behind. If stale, prefer the **hive-watch** tray/daemon (skill `hive-watch`) — not a blanket fetch every chat. Detail: `general/hive-watch.md`.
 - **End of agent run:** if the run changed files, compose logical commits and push before the final reply (skill `push-code`). Detail: `general/end-of-run.md`.
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
