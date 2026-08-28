@@ -39,6 +39,7 @@ After portable `agent-rules` assembly (see `MAIN.md`), read **in one parallel ba
 - `AGENTS.md` (this file — org obligations + precedence)
 - `agents/_MAIN.md` (orchestrator)
 - `agents/editorial/titles.md` (when authoring or reviewing news, blog, or doc titles)
+- `agents/demos-and-push.md` (when inventing/shipping UI concepts or interactive demos for owned orgs)
 - `agents/engineering/dub.md` (when working on DUB / D packages in org repos)
 - `agents/engineering/antora.md` (when wiring Antora/Valentus/Facto or Internet Architecture vs HCI faces)
 - Skill `draft-pr` when opening a pull request
@@ -80,6 +81,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **DUB publish:** official `dub` has no publish command. Use skill `publish-to-dub` (`skills/publish-to-dub/`) — `dubx` / `dub-publish` — when the user says publish to dub / dlang. Always set registry categories (do not leave them empty). Always-on pins: `agents/engineering/dub.md`.
 - **Library registry vs local:** skill `library-registry-choice` when scaffolding a publishable library or depending on an owned/unpublished package — check the registry, ask publish vs path, encourage publish, suggest which registry.
 - **Web fonts:** skill `self-host-fonts` — prefer Fontsource / local `woff2` + preload; do not `@import` Google Fonts or wait on a CDN for first paint. Detail: `general/self-host-fonts.md`.
+- **UI concepts → demos (owned orgs):** inventing/shipping a new UI concept auto-loads skill `demo-site-wiring` (demos + org index are part of the work, not optional). Do **not** suppress end-of-run push/PR for demo prototyping — iterate via later commits/PR updates; local preview does not block push. On demo/docs philosophy clashes: resolve if clear, else surface the inconsistency. Detail: `agents/demos-and-push.md`.
 - **Interactive demos / explainers:** skill `demo-site-wiring` — wire into the parent org site + demos browser (create if missing), lay workflow copy, mandatory page order (org/repo identity strip → VCS logo line → demo lede → variant switcher → variant title/blurb/UI). Grandfather existing demos; apply on create / substantive edit.
 - **Docs encoding:** hand-authored Antora SVG/adoc breakage is usually **transcode corruption** (Windows mojibake / invalid SVG XML), not Antora plugins and not a refactor. Use skill `fix-docs-encoding` (`skills/fix-docs-encoding/`) — run its script `--check` / `--fix` after figure edits. Always-on tips: `general/documentation.md`.
 - **Polyglot / multi-OS CI:** skill `polyglot-ci` (`skills/polyglot-ci/`) when generating GitHub Actions matrices for win/mac/lin/BSD, APE, or Binary Tailor packs. macOS is arm64 only.

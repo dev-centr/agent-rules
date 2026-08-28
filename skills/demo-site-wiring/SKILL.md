@@ -4,13 +4,17 @@ description: >-
   Use when making demos, interactive explainers, product-idea demos, demo pages,
   demos browser, demos index, org-site demo catalog, demo breadcrumb, VCS logo
   on a demo, GitHub mark on demo chrome, lay-person demo copy, variant tabs on
-  a demo, wiring a demo into the parent org site, demo-site-wiring, or publishing
-  a demo to hci-nerdz.github.io/demos (or another org demos index).
+  a demo, wiring a demo into the parent org site, demo-site-wiring, publishing
+  a demo to hci-nerdz.github.io/demos (or another org demos index), inventing or
+  shipping a new UI concept, layout mode, chrome idea, spatial or windowing
+  concept, product-idea desk, or interactive explainer for an owned org.
 ---
 
 # Demo site wiring
 
-Standing UX for **interactive explainers / product-idea demos** on owned org sites.
+Standing UX for **interactive explainers / product-idea demos** on owned org sites (DevCentr, HCI-Nerdz, OpenShellOrg, and related owned orgs). Org policy companion: `agents/demos-and-push.md`.
+
+**Auto-apply on new UI concepts.** When inventing or shipping a new UI concept / idea (interactive explainer, layout mode, chrome idea, spatial or windowing concept, product-idea desk, and similar), load this skill and stand up or update demos + org demos indexes as **part of that work** — not an optional afterthought the human must remember to request.
 
 **Grandfather existing demos.** Do **not** mass-audit or retrofit every historical demo. Apply this skill on **create** and on **substantive edit** of a demo's page chrome / catalog wiring (and to in-flight work already under edit). Leaving older pages as-is is OK until someone touches them.
 
@@ -46,6 +50,18 @@ Do not put the demo-level lede below the variant UI. Do not skip variant blurbs 
 
 Reference implementation (in-flight / updated when touched): `HCI-Nerdz/shell-context-demo` hub chrome in `src/demos/nav.ts` (+ hub CSS). Org catalog example: `HCI-Nerdz/HCI-Nerdz.github.io` `src/lib/demos.ts`.
 
+## Push / PR while prototyping (anti-suppression)
+
+Do **not** disable standing end-of-run commit/push (`push-code`) or normal PR norms because demo work is “still prototyping.”
+
+- Local preview is encouraged; it does **not** block push.
+- Iterate via subsequent commits and PR updates.
+- Cross-machine visibility beats holding the first push until the demo feels finished.
+
+## Conflicts
+
+When concurrent edits or competing design philosophies collide on demos/docs: prefer **resolve** when the fix is clear; otherwise **report the inconsistency** to the user — do not silently pick one side and hide the tension.
+
 ## Checklist (create or substantive edit)
 
 - [ ] Live under / linked from the parent org site
@@ -55,12 +71,16 @@ Reference implementation (in-flight / updated when touched): `HCI-Nerdz/shell-co
 - [ ] Demo-level lay workflow copy above the variant switcher
 - [ ] Variant switcher, then active variant: title + blurb + interactive UI
 - [ ] Skipped retrofit of unrelated historical demos
+- [ ] Did not suppress push/PR for prototyping; pushed so work is visible elsewhere
 
 ## Do not
 
 - Leave a new demo only on repo Pages with no org index entry
+- Skip demos when inventing/shipping a new UI concept for an owned org
 - Use engineer-only jargon as the sole page description
 - Treat nav and breadcrumb as two separate bands
 - Put the VCS logo after the variant switcher, or treat the variant switcher as the identity nav
 - Mass-migrate every old demo "for consistency" without an explicit ask
+- Suppress automatic push/PR “until the demo is done”
+- Silently paper over competing demo/docs philosophies
 - Put machine paths or harness names in this skill body

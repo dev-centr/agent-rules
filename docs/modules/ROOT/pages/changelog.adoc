@@ -24,6 +24,12 @@ Detail pages live under `changelog-details/`.
 
 This repository's reachable git history on `main` begins **2026-08-06** (`cd9463d`). Earlier design of `RULES.md` / profiles lived in personal forks (see `AMDphreak/agent-rules`).
 
+== 2026-08-28 — Demos + push workflow (owned orgs)
+
+* `agents/demos-and-push.md`: new UI concepts auto-apply `demo-site-wiring`; do not suppress push/PR for demo prototyping; surface philosophy clashes when unresolved.
+* Skill `demo-site-wiring` extended with invent/ship UI triggers, anti-suppression, and conflict notes.
+* See xref:changelog-details/2026-08-28 - demos-and-push-workflow.adoc[Detailed changelog].
+
 == 2026-08-28 — Demo site wiring skill
 
 * Skill `demo-site-wiring`: org-site + demos browser wiring, lay workflow copy, mandatory page order (org/repo identity strip → VCS logo line → demo lede → variant switcher → variant title/blurb/UI); grandfather existing demos.

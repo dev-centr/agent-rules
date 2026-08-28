@@ -1,0 +1,14 @@
+= 2026-08-28 - Demos + push workflow (owned orgs)
+:description: Org rule: new UI concepts auto-apply demo-site-wiring; do not suppress push/PR while prototyping; surface philosophy clashes.
+
+== Summary
+
+* Added `agents/demos-and-push.md` (owned orgs only: DevCentr, HCI-Nerdz, OpenShellOrg, related) - inventing/shipping a UI concept auto-applies skill `demo-site-wiring`.
+* Explicit anti-suppression: do not disable end-of-run push/PR for demo prototyping; iterate via later commits/PR updates; local preview does not block push.
+* Conflict handling: resolve clear demo/docs clashes; otherwise surface inconsistent philosophies to the user.
+* Extended `demo-site-wiring` triggers + body; thin pointers in `AGENTS.md`, `user.md`, `agents/_MAIN.md`, `skills/CATALOG.md`.
+
+== Why
+
+Interactive demos were easy to forget when inventing UI concepts. Suppressing auto push/PR for local prototyping was considered and rejected to avoid cross-machine friction.
+

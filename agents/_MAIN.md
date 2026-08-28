@@ -24,6 +24,7 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.
 | News body copy (ship note, org announcement) | `writing-news` |
 | Blog body copy (essay, philosophy, tutorial narrative) | `writing-blog` |
 | Antora site / docs hub / Valentus / Facto | `antora-org-site` |
+| New UI concept / interactive explainer / layout or chrome idea → demos | `demo-site-wiring` (+ `agents/demos-and-push.md`) |
 | Persist a preference / update agent-rules layers | `record-rule` |
 | Public README | `public-readme` |
 | Shipping an app | `ship-app` |
