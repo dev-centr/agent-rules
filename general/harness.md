@@ -49,7 +49,7 @@ When `$CODE_ROOT` is known, read in parallel:
 | `CODE_CITATION` | Line-range citation format, if any |
 | `IDE_PROJECT_RULES` | In-repo IDE rule format (`.mdc`, etc.) |
 | `MCP_CONTEXT7` | Whether Context7 MCP is available on this machine |
-| `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see link:https://hci-nerdz.github.io/docs/hci-nerdz/token-provenance.html[HCI Nerdz token provenance]) |
+| `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[HCI Nerdz grounded tokens / token provenance]) |
 
 ## Token provenance
 
@@ -59,7 +59,7 @@ When `TOKEN_PROVENANCE` is not `off`, follow the HCI Nerdz contract:
 * **Grounded** spans — confirmed by tool output, file read, or API
 * **User-stated** spans — from prompt or pinned context
 
-Emit JSON span annotations alongside streamed assistant text when `emit-spans`. Consume and render when `consume-spans`. Full spec: https://hci-nerdz.github.io/docs/hci-nerdz/token-provenance.html
+Emit JSON span annotations alongside streamed assistant text when `emit-spans`. Consume and render when `consume-spans`. Full spec: https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html
 
 DevCentr's lightweight harness (see docs **Agent harness**) treats this as the first cross-org UX contract in harness metadata.
 
