@@ -37,6 +37,12 @@ MCP_OTHER = <optional list>
 AGENT_RULES_SYNCED_SHA = <git SHA of $AGENT_RULES_PATH HEAD after sync, or empty>
 AGENT_RULES_SYNCED_LABEL = <skills-set/YYYY.MM.DD from nearest tag, or empty>
 AGENT_RULES_SYNCED_AT = <ISO-8601 date, or empty>
+
+# Token provenance — inline heuristic vs grounded marks (HCI Nerdz contract)
+# emit-spans: runtime attaches span metadata alongside streamed text
+# consume-spans: renderer styles incoming provenance from another harness
+# off: plain text only
+TOKEN_PROVENANCE = emit-spans | consume-spans | off
 ```
 
 ## Example: Cursor on Windows

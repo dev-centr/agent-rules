@@ -1,0 +1,77 @@
+= DevCentr agent harness
+:navtitle: Agent harness
+:description: Lightweight local agent runtime for DevCentr — harness-neutral rules, dlang-supplemental infrastructure, and ecosystem specialization instead of monolithic IDE weight.
+:page-layout: docs
+
+DevCentr is building a **lightweight agent harness** — not a Cursor-class IDE, but a focused local runtime that consumes the same harness-neutral stack as Cursor, Claude Code, Hermes, and T3code.
+
+In plain language: *specialized agent shell + shared rules layer + D tooling from dlang-supplemental*.
+
+== Why a harness at all
+
+`dev-centr/agent-rules` already separates forkable policy from machine-local wiring (`harness.md`, `machine.md`).
+
+That stack answers *how rules travel*.
+
+It does not answer *which runtime executes them* on a machine that wants something lighter than a full IDE agent.
+
+== Design direction
+
+[cols="1,2"]
+|===
+| Principle | Meaning
+
+| Light, not monolithic
+| T3code-shaped footprint — chat, tools, project context — without duplicating DevCentr's existing specialized tools
+
+| Harness-neutral consumption
+| Same `user.md`, org `AGENTS.md`, skills, and `$CODE_ROOT/harness.md` variables as other harnesses
+
+| Ecosystem, not kitchen sink
+| Strip duplicate features that already live in sibling orgs (HCI Nerdz surfaces, Desktop-Tooling OS utilities, dlang-supplemental native libs)
+
+| Steer upstream, integrate locally
+| Open-source harnesses may receive submissions; DevCentr integration still strips overlap and wires org-specific infrastructure
+
+| dlang-supplemental native core
+| Prefer D libraries and tooling from link:https://github.com/dlang-supplemental[dlang-supplemental] over reimplementing helpers in TypeScript or Rust
+|===
+
+== Relationship to T3code
+
+T3code is listed in link:https://docs.devcentr.org/agent-rules/harness-neutral.html[harness-neutral architecture] as a harness enum value.
+
+There is **no DevCentr-owned T3code fork** today.
+
+The DevCentr harness targets a **similar weight class** — local, fast, tool-loop oriented — while routing file/process/GUI primitives through **dlang-supplemental** instead of whatever stack an upstream OSS harness chose.
+
+== Token provenance (first UX contract)
+
+The first cross-org UX contract wired into harness metadata is **token provenance** from HCI Nerdz:
+
+* Heuristic tokens — dashed underline; assumed, not verified
+* Grounded tokens — solid underline; confirmed by tool output
+* Span annotations emitted alongside streamed text (see link:https://hci-nerdz.github.io/docs/hci-nerdz/token-provenance.html[HCI Nerdz — Token provenance])
+
+Harness variable (proposed):
+
+[source,text]
+----
+TOKEN_PROVENANCE = emit-spans | consume-spans | off
+----
+
+When `emit-spans`, the runtime attaches provenance metadata the chat renderer can style without rereading tool logs.
+
+== What this is not
+
+* Not a Cursor replacement — Cursor remains a valid `HARNESS_NAME`
+* Not a rules fork — policy stays in `dev-centr/agent-rules`
+* Not a grab-bag of every OSS agent feature — duplicates are stripped at integration time
+
+== Related
+
+* link:https://docs.devcentr.org/agent-rules/harness-neutral.html[Harness-neutral architecture]
+* link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
+* link:https://hci-nerdz.github.io/demos/token-provenance/[Token provenance demo]
+* link:https://github.com/dlang-supplemental[dlang-supplemental org]
+* xref:tools/agent-rules.adoc[Agent rules portal]
