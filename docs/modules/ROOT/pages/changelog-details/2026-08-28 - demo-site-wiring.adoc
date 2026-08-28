@@ -1,0 +1,12 @@
+= 2026-08-28 — Demo site wiring skill
+:description: Standing skill for org-site demo publishing UX (catalog, identity strip, VCS logo, lay copy, variant layout).
+
+== Summary
+
+* Added skill `demo-site-wiring` for interactive explainers / product-idea demos: wire into the parent org site, index in a demos browser (create if missing), and ship lay-person workflow copy.
+* Mandatory page order: `org / repo` identity strip → VCS logo on the next line → demo-level description → variant switcher → active variant (title + blurb + UI). Nav and breadcrumb are one band.
+* Forward-looking only — grandfather existing demos; apply on create or substantive chrome edit. Catalog + thin pointers in `user.md` / `AGENTS.md`.
+
+== Why
+
+Demo publishing was tribal knowledge across HCI-Nerdz (and other orgs). Agents need a single triggerable skill so new demos land in the org catalog with discoverable chrome instead of orphan Pages deploys.

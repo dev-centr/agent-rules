@@ -50,6 +50,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `polyglot-ci` | GitHub Actions, release.yml, win/mac/lin/BSD, polyglot pack | active | macOS arm64 only |
 | `record-rule` | make that a rule, save this rule, record a rule, persist preference, agent-rules layer; update AI rules/skills; sync harness + template | active | Routes to portable/org/project/harness-local per `harness-boundary` |
 | `self-host-fonts` | Google Fonts, Fontsource, `@fontsource`, FOUC, preload woff2, self-host fonts, CDN webfonts | active | Prefer bundled fonts; never wait on CDN for paint |
+| `demo-site-wiring` | interactive demos, demos browser/index, demo breadcrumb, VCS logo on demo chrome, lay demo copy, org-site demo catalog | active | Forward-looking; grandfather existing demos |
 | `tool-inventory` | tools changed, record tool inventory, update local tool list snapshot | active | Harness-agnostic; writes via `machine.md` or `TOOL-INVENTORY.md` |
 
 ## Adding a skill (checklist)
