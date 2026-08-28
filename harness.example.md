@@ -66,6 +66,14 @@ ACTOR_NODE_STORE = jsonl-per-node | off
 # MIXR_ROUTING = on | off
 # MIXR_ROUTER_MODEL = <small model id for routing calls>
 # MIXR_DEFAULT_POLICY = balanced | cheap | quality | byok-only
+
+# Optional — Bitwarden CLI session persist for agents (not default; see docs bitwarden-cli-agents)
+# BITWARDEN_SESSION_PERSIST = enabled
+# BITWARDEN_AGENT_ENTRY = ensure_bw_unlocked.ps1
+
+# Optional — gcloud for agents (user login persists in Cloud SDK config; SA only for headless)
+# GCLOUD_AGENT_ENTRY = ensure_gcloud_auth.ps1
+# See docs/modules/ROOT/pages/gcloud-cli-agents.adoc
 ```
 
 ## Example: Cursor on Windows

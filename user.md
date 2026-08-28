@@ -73,4 +73,5 @@
 
 ## Optional workstation patterns (not default)
 
-- **Bitwarden CLI session reuse:** local `BW_SESSION` persistence for agents — `general/bitwarden-session-persist-optional.md`. Reference skill: personal `bitwarden-unlock`; enable only via `$HARNESS` + machine-local overlays.
+- **Bitwarden CLI session reuse:** local `BW_SESSION` persistence for agents — `general/bitwarden-session-persist-optional.md`; hub how-to `docs/modules/ROOT/pages/bitwarden-cli-agents.adoc`. Reference skill: personal `bitwarden-unlock`; enable only via `$HARNESS` + machine-local overlays.
+- **gcloud for agents:** user login persists under Cloud SDK config until revoke — hub how-to `docs/modules/ROOT/pages/gcloud-cli-agents.adoc`. Prefer individual login on desks; org SA key only for true headless hosts.

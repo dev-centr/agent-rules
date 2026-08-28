@@ -1,0 +1,122 @@
+= gcloud CLI for agentic workflows
+:navtitle: gcloud CLI (agents)
+:description: Keep Google Cloud SDK usable by agents on a workstation — user login persistence, optional org service accounts, and what not to expect from Composio.
+:page-audience: Operators setting up Google Cloud SDK for AI agents on a personal or org workstation
+:page-usage-context: How-to on the docs hub; pairs with Google Cloud OAuth mental model in General Knowledge
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Give agents a working `gcloud` without a browser login every chat — and decide whether that identity should be **your user** or an **org service account**.
+
+image::agent-cli-auth-flow.svg[alt="Operator logs in once, machine stores gcloud credentials, agent uses CLI without printing secrets",width=880]
+
+Sibling:: xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows].
+OAuth / Project boundaries (Console):: xref:general-knowledge::explanation/infrastructure/google-cloud-project-mental-model.adoc[Google Cloud projects as OAuth boundaries].
+
+== Default: individual user login (recommended for workstations)
+
+`gcloud auth login` stores refresh tokens under the Cloud SDK config directory (on Windows, under `%APPDATA%\gcloud\`). They remain until `gcloud auth revoke` / `gcloud logout` or Google revokes the grant.
+
+. One-time (interactive terminal — not a non-interactive agent shell waiting on EOF):
++
+[source,powershell]
+----
+# Prefer the full path if `gcloud` is not on PATH
+& "$env:LOCALAPPDATA\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd" auth login
+----
+. Prefer the **org operator account** for org-owned projects (example: Workspace user on the company domain).
+. Verify:
++
+[source,powershell]
+----
+gcloud auth list
+gcloud projects list --format="table(projectId,name,lifecycleState)"
+----
+. Agents thereafter reuse the same credentials — **no re-login** until revoke.
+
+TIP: Agent shells that cannot type a verification code will fail `gcloud auth login --no-launch-browser`. Complete login in a normal terminal (or browser-launched flow), then let agents use the stored account.
+
+=== Why prefer individual login on a desk
+
+* Audit trail matches a real person (IAM + Cloud Audit Logs).
+* No long-lived JSON key on disk for day-to-day Console/API admin.
+* Matches how you already treat Bitwarden: **you** unlock once; agents reuse.
+
+== Optional: org service account (headless / shared agents)
+
+Use when a machine must run GCP admin **without** a human login (CI-like agent host, overnight automation). Not required for a normal encrypted laptop where you can log in once.
+
+. Create a service account in the **platform** GCP project (least privilege — Project Viewer / Service Usage / Resource Manager as needed).
+. Store the JSON key **machine-local only** (Bitwarden item + ignored path such as `%USERPROFILE%\gcloud-sa.<org>.local.json`). Never commit; never paste into chat.
+. Activate when no user account is present:
++
+[source,powershell]
+----
+gcloud auth activate-service-account --key-file="$env:USERPROFILE\gcloud-sa.<org>.local.json"
+----
+. Document the key **path** (not the key) in `$CODE_ROOT/machine.md`. Optional harness stamp: `GCLOUD_AGENT_ENTRY = ensure_gcloud_auth.ps1` once you ship that helper (mirror Bitwarden’s entry script pattern).
+
+WARNING: JSON keys are powerful and easy to leak. Prefer user login on personal workstations; reserve SA keys for true headless hosts and rotate on a schedule.
+
+== What agents should do
+
+. Resolve `gcloud` (PATH or Cloud SDK install path).
+. Run `gcloud auth list`. If empty → stop and ask the operator to complete `gcloud auth login` (or activate the documented SA).
+. Prefer `--format=json` / tables; never dump credentials or ADC files into chat.
+. For project create / undelete / credentials admin, use `gcloud` (or Console) — do not assume Composio covers Resource Manager admin.
+
+== Composio is not a substitute
+
+Connected Google Workspace toolkits (Gmail, Drive, Calendar) do **not** give agents Cloud Resource Manager, API key minting, or project undelete. A Vision/list-projects connector (if connected) may enumerate projects but still cannot replace SDK login for admin work.
+
+Composio setup:: xref:general-knowledge::how-to/composio-mcp-setup.adoc[Composio MCP Setup].
+
+== Project naming (agents + humans)
+
+GCP **project IDs are immutable**. Pick a beginner-friendly ID at create time (example: `food-truck-nerdz`). Display names can change later (example: “FoodTruckNerdz Platform”).
+
+Do not overload a GitHub repo slug (example: `ftn-app`) as the only human name for the Cloud project — it confuses “mobile client repo” with “org GCP project”. Prefer a product/org-shaped **ID** when creating; rename display name freely.
+
+Mental model:: xref:general-knowledge::explanation/infrastructure/google-cloud-project-mental-model.adoc[Google Cloud projects as OAuth boundaries].
+
+== Related source (file links, not line anchors)
+
+| Resource | Link |
+|===
+| Harness boundary (what stays machine-local)
+| link:https://github.com/dev-centr/agent-rules/blob/main/general/harness-boundary.md[`general/harness-boundary.md`]
+
+| Harness example stamps
+| link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
+
+| Bitwarden optional pattern (same persistence idea)
+| link:https://github.com/dev-centr/agent-rules/blob/main/general/bitwarden-session-persist-optional.md[`general/bitwarden-session-persist-optional.md`]
+
+| Console OAuth how-to (Client ID / consent — not gcloud)
+| xref:general-knowledge::how-to/google-cloud-oauth-for-personal-tools.adoc[Google Cloud OAuth for personal tools]
+|===
+
+Prefer `blob/main/<path>` (or Antora `xref:`) over `#L…` GitHub line links — paths stay stable; line numbers do not.
+
+== Checklist
+
+* [ ] `gcloud auth list` shows the intended account
+* [ ] Default project set only when safe (`gcloud config set project …`)
+* [ ] Org billing / parent folder attached for new projects
+* [ ] SA key path (if any) only in `$MACHINE` / Bitwarden — not User Rules
+* [ ] Agents report account email / project id — never credential files

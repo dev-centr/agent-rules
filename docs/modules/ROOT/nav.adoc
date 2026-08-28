@@ -6,5 +6,7 @@
 * xref:org-layer.adoc[Org layer]
 * xref:bootstrap.adoc[Bootstrap agent skills]
 * xref:skills-catalog.adoc[Skills catalog]
+* xref:bitwarden-cli-agents.adoc[Bitwarden CLI (agents)]
+* xref:gcloud-cli-agents.adoc[gcloud CLI (agents)]
 * xref:architecture.adoc[Architecture]
 * xref:changelog.adoc[Changelog]

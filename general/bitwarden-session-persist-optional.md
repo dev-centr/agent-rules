@@ -57,6 +57,16 @@ Add an always-on IDE overlay (example: `bitwarden-unlock.mdc`) and a `$MACHINE` 
 - Capture `bw status` JSON only (`status`, `userEmail`).
 - Clear on demand: `bw lock` or `Clear-BwSessionLocal` (when using the reference scripts).
 
+## Docs hub
+
+Antora how-to (figures, nav, cross-links):
+
+* https://docs.devcentr.org/agent-rules/bitwarden-cli-agents.html (source: `docs/modules/ROOT/pages/bitwarden-cli-agents.adoc`)
+
+Sibling for Google Cloud SDK: `docs/modules/ROOT/pages/gcloud-cli-agents.adoc`.
+
 ## Reference implementation
 
-Personal skill **`bitwarden-unlock`** — scripts under `skills/bitwarden-unlock/scripts/`. Upstream org repos do **not** ship live credentials or enable this by default.
+Personal skill **`bitwarden-unlock`** — scripts under `skills/bitwarden-unlock/scripts/` (personal fork until catalogued). Upstream org repos do **not** ship live credentials or enable this by default.
+
+Link by **path** (`blob/main/skills/bitwarden-unlock/SKILL.md`), not `#L…` line anchors.

@@ -1,0 +1,13 @@
+= 2026-08-28 — Agent CLI auth how-tos (Bitwarden + gcloud)
+:description: Hub docs for optional Bitwarden session persist and gcloud user-login persistence for agentic workflows.
+
+== Summary
+
+* New Antora how-tos: xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows], xref:gcloud-cli-agents.adoc[gcloud CLI for agentic workflows].
+* Shared orientation figure: `images/agent-cli-auth-flow.svg`.
+* Portable pattern file `general/bitwarden-session-persist-optional.md` points at the hub page; `user.md` and `harness.example.md` stamp comments updated.
+* Cross-links from General Knowledge secrets + Google Cloud OAuth how-tos (prefer file/path links over `#L` line anchors).
+
+== Why
+
+Agents need reusable CLI auth without interactive browser EOF every chat. Document the workstation pattern next to harness-neutral geography; keep secrets machine-local.

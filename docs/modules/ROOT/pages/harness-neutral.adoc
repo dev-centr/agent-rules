@@ -314,5 +314,7 @@ sequenceDiagram
 * xref:org-layer.adoc[Org layer]
 * xref:bootstrap.adoc[Bootstrap agent skills]
 * xref:skills-catalog.adoc[Skills catalog]
+* xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows]
+* xref:gcloud-cli-agents.adoc[gcloud CLI for agentic workflows]
 * xref:usage.adoc[Usage]
 * link:https://github.com/dev-centr/agent-rules/blob/main/general/harness-boundary.md[`general/harness-boundary.md`] in the repo

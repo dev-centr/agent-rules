@@ -1,0 +1,105 @@
+= Bitwarden CLI for agentic workflows
+:navtitle: Bitwarden CLI (agents)
+:description: Optional machine-local Bitwarden session persistence so agents can use `bw` without re-entering the master password every shell.
+:page-audience: Operators enabling Bitwarden CLI on a personal workstation for AI agents
+:page-usage-context: How-to on the docs hub; pairs with harness-neutral architecture and the optional general pattern file
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Unlock the vault once on a workstation, persist the CLI session locally, and teach agents to restore it via an entry script — without printing secrets into chat or git.
+
+image::agent-cli-auth-flow.svg[alt="Operator unlocks once, machine stores BW_SESSION, agent entry script restores, CLI runs",width=880]
+
+Architecture context:: xref:harness-neutral.adoc[Harness-neutral architecture] (machine-local layer).
+Sibling:: xref:gcloud-cli-agents.adoc[gcloud CLI for agentic workflows].
+
+== When to enable
+
+Choose this when agents call `bw list` / `bw get` often on **one encrypted workstation** and you accept local storage of `BW_SESSION`.
+
+Do **not** enable by default for shared CI, org-wide laptops without disk encryption, or as a substitute for Bitwarden Secrets Manager in product code.
+
+== What persists
+
+| Material | Role |
+|===
+| `BW_CLIENTID` / `BW_CLIENTSECRET`
+| `bw login --apikey` — identity for the CLI account (not vault decrypt)
+
+| `BW_SESSION`
+| Vault **decrypt** key from `bw unlock` — valid until `bw lock` / `bw logout` (no built-in CLI timeout)
+
+| Optional DPAPI blob
+| CurrentUser-protected copy of the session for new shells (Windows)
+|===
+
+== Pattern (portable)
+
+The forkable write-up lives in the shared reference:
+
+* link:https://github.com/dev-centr/agent-rules/blob/main/general/bitwarden-session-persist-optional.md[`general/bitwarden-session-persist-optional.md`]
+
+One-liner in always-on rules:
+
+* link:https://github.com/dev-centr/agent-rules/blob/main/user.md[`user.md`] (Optional workstation patterns)
+
+Harness example keys:
+
+* link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
+
+Stamp on the machine (never in forkable templates):
+
+[source,text]
+----
+BITWARDEN_SESSION_PERSIST = enabled
+BITWARDEN_AGENT_ENTRY = ensure_bw_unlocked.ps1
+----
+
+Document script paths and overlay names in `$CODE_ROOT/machine.md` and `$LOCAL_RULES_DIR` (see xref:harness-neutral.adoc[harness-neutral]).
+
+== Agent procedure
+
+. Dot-source the entry script (path from `$MACHINE` / harness — typically under the user profile).
+. Run `bw status` and report **only** `status` + `userEmail` (JSON).
+. Then `bw list` / `bw get` / `bw sync` as needed.
+. Never print, log, or `Read` `BW_SESSION`, `BW_CLIENTSECRET`, `bw-apikey.local.ps1`, or DPAPI session files into chat or git.
+
+== Reference implementation
+
+Scripts and skill body live in a **personal** overlay until upstreamed into the org catalog:
+
+* Skill folder (personal fork): link:https://github.com/AMDphreak/agent-rules/tree/main/skills/bitwarden-unlock[`skills/bitwarden-unlock/`]
+* Skill playbook: link:https://github.com/AMDphreak/agent-rules/blob/main/skills/bitwarden-unlock/SKILL.md[`SKILL.md`]
+* Scripts README: link:https://github.com/AMDphreak/agent-rules/blob/main/skills/bitwarden-unlock/scripts/README.adoc[`scripts/README.adoc`]
+
+Install once by copying scripts from that skill’s `scripts/` directory into the user profile (exact list is in `SKILL.md`). Prefer **file links** (`blob/main/...` or `tree/main/...`) — not `#L…` line anchors, which break when files move.
+
+Org catalog note:: `dev-centr/agent-rules` does **not** list `bitwarden-unlock` in link:https://github.com/dev-centr/agent-rules/blob/main/skills/CATALOG.md[`skills/CATALOG.md`] until the skill is promoted; the optional pattern file above is the portable contract.
+
+== Related secrets distribution
+
+Pulling vault custom fields into local/hosting env (separate from session persist):
+
+* xref:general-knowledge::how-to/secrets-distribution-cli-mcp.adoc[Secrets distribution (CLI · MCP)] on General Knowledge
+
+== Safety checklist
+
+* [ ] Disk encryption on
+* [ ] Session persist documented only in `$HARNESS` / `$MACHINE` / local IDE overlays
+* [ ] Agents never dump item secrets or session strings
+* [ ] Clear path: `bw lock` (and clear local session store when using the reference scripts)

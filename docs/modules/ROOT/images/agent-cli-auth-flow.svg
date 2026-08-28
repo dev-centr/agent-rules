@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" role="img" aria-labelledby="title desc">
+  <title id="title">Agent CLI auth persistence flow</title>
+  <desc id="desc">Operator logs in once; machine-local store; agent entry script restores session; CLI commands run without printing secrets.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="880" height="320" fill="#f8fafc"/>
+  <rect x="24" y="48" width="180" height="88" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="114" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#0f172a">1. Operator</text>
+  <text x="114" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#334155">login / unlock once</text>
+  <line x1="204" y1="92" x2="248" y2="92" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="256" y="48" width="200" height="88" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="356" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#0f172a">2. Machine-local</text>
+  <text x="356" y="104" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#334155">gcloud credentials.db</text>
+  <text x="356" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#334155">or BW_SESSION / DPAPI</text>
+  <line x1="456" y1="92" x2="500" y2="92" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="508" y="48" width="200" height="88" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="608" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#0f172a">3. Agent entry</text>
+  <text x="608" y="104" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#334155">ensure_*.ps1</text>
+  <text x="608" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#334155">restore; never print secrets</text>
+  <line x1="708" y1="92" x2="752" y2="92" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="760" y="48" width="96" height="88" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="808" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#0f172a">4. CLI</text>
+  <text x="808" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#334155">bw / gcloud</text>
+  <rect x="24" y="180" width="832" height="100" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="40" y="214" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#0f172a">Harness stamps (machine-local)</text>
+  <text x="40" y="240" font-family="Consolas, monospace" font-size="13" fill="#334155">BITWARDEN_SESSION_PERSIST = enabled</text>
+  <text x="40" y="262" font-family="Consolas, monospace" font-size="13" fill="#334155">BITWARDEN_AGENT_ENTRY = ensure_bw_unlocked.ps1</text>
+  <text x="440" y="240" font-family="Consolas, monospace" font-size="13" fill="#334155">gcloud user login persists until logout</text>
+  <text x="440" y="262" font-family="Consolas, monospace" font-size="13" fill="#334155">optional: org SA key for headless only</text>
+</svg>

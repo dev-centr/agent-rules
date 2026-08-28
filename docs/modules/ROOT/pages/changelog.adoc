@@ -24,6 +24,11 @@ Detail pages live under `changelog-details/`.
 
 This repository's reachable git history on `main` begins **2026-08-06** (`cd9463d`). Earlier design of `RULES.md` / profiles lived in personal forks (see `AMDphreak/agent-rules`).
 
+== 2026-08-28 — Agent CLI auth how-tos (Bitwarden + gcloud)
+
+* Hub how-tos for optional Bitwarden session persist and gcloud user-login persistence for agents; orientation SVG; harness example stamps.
+* See xref:changelog-details/2026-08-28 - agent-cli-auth-how-tos.adoc[Detailed changelog].
+
 == Schema evolution (quick map)
 
 Observed transitions in forkable + machine-local names:
