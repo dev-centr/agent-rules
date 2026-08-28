@@ -69,3 +69,7 @@
 - Stale APIs: Context7 MCP when `MCP_CONTEXT7 = available` in `$HARNESS`; else skill `outdated-code-protocol`.
 - Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — load bodies on demand; do **not** paste into always-on rules. On drift vs shared reference: skill `sync-agent-rules`. Dev-Centr org members: also load org `AGENTS.md`; org layer overrides personal on `dev-centr/*` work.
 - Commits / push / PRs: skills `git-commit`, `push-code`, and `draft-pr`. Load `push-code` at end of any run that changed files (standing auth — `general/end-of-run.md`); load `draft-pr` when opening a PR.
+
+## Optional workstation patterns (not default)
+
+- **Bitwarden CLI session reuse:** local `BW_SESSION` persistence for agents — `general/bitwarden-session-persist-optional.md`. Reference skill: personal `bitwarden-unlock`; enable only via `$HARNESS` + machine-local overlays.
