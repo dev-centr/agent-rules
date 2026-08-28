@@ -52,7 +52,7 @@ When `MIXR_ROUTING=off`, Hornet falls back to a single pinned model per node typ
 
 == Implementation
 
-Reference runtime: link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] (Python).
+Reference runtime: link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] (D + link:https://github.com/dlang-supplemental/tgc[tgc]).
 
 [cols="1,2"]
 |===
@@ -69,9 +69,10 @@ Reference runtime: link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] 
 |===
 
 ```powershell
-pip install -e $env:code\github.com\dev-centr\hornet
-hornet init ./my-chat
-hornet serve ./my-chat --port 8765
+cd $env:code\github.com\dev-centr\hornet
+dub build
+.\hornet.exe init .\my-chat
+.\hornet.exe serve .\my-chat --port 8765
 ```
 
 == Why a harness at all
