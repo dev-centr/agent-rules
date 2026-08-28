@@ -195,7 +195,7 @@ Copy from link:https://github.com/dev-centr/agent-rules/blob/main/harness.exampl
 
 [source,text]
 ----
-HARNESS_NAME = cursor | claude-code | hermes | t3code | windsurf | other
+HARNESS_NAME = cursor | claude-code | hermes | t3code | windsurf | hornet | other
 ALWAYS_ON_RULES = <where thin preamble is injected>
 SKILLS_DISCOVERY_ROOT = <path or none — direct read from $AGENT_RULES_PATH/skills/>
 LOCAL_RULES_DIR = <machine-local overlay or none>
@@ -264,11 +264,13 @@ MCP_CONTEXT7 = available
 
 Other harnesses: run **`harness-setup`** — do not copy Cursor paths into forkable files.
 
-== DevCentr lightweight harness
+== DevCentr lightweight harness (Hornet)
 
-DevCentr is building its own **lightweight agent runtime** — T3code-shaped weight, not Cursor-class IDE bulk — wired to link:https://github.com/dlang-supplemental[dlang-supplemental] for native D infrastructure.
+DevCentr is building **Hornet** — its own lightweight agent runtime (T3code-shaped weight, not Cursor-class IDE bulk) — wired to link:https://github.com/dlang-supplemental[dlang-supplemental] for native D infrastructure.
 
-See xref:agent-harness.adoc[Agent harness] for design direction, OSS integration policy, and the first UX contract (token provenance from HCI Nerdz).
+**Mixr** is Hornet's model router meta-agent (Cursor *Auto*-shaped): it assigns models per node/job instead of pinning one default for the whole swarm.
+
+See xref:agent-harness.adoc[Agent harness (Hornet)] for design direction, Mixr routing, OSS integration policy, and cross-org UX contracts (token provenance, actor-model UI from HCI Nerdz).
 
 == Setup checklist (new machine)
 

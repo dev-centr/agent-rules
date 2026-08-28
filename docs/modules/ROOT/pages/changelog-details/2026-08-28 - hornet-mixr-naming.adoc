@@ -1,0 +1,20 @@
+= Hornet harness and Mixr router
+:navtitle: Hornet and Mixr
+:page-audience: Dev-Centr maintainers
+:page-usage-context: Changelog detail for product naming and model routing
+:page-orig-author: Ryan Johnson
+:page-last-edited: 2026-08-28
+
+== Summary
+
+Named DevCentr's lightweight agent harness **Hornet** and its model-routing meta-agent **Mixr** (Cursor *Auto*-shaped).
+
+* No single default model — Mixr assigns `{ model, provider, budget }` per node/job
+* `HARNESS_NAME = hornet` added to harness-neutral enum
+* Proposed variables: `MIXR_ROUTING`, `MIXR_ROUTER_MODEL`, `MIXR_DEFAULT_POLICY`
+
+== Files
+
+* xref:agent-harness.adoc[Agent harness (Hornet)]
+* xref:harness-neutral.adoc[Harness-neutral architecture]
+* `harness.example.md`

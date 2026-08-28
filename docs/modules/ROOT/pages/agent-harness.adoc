@@ -1,11 +1,54 @@
-= DevCentr agent harness
-:navtitle: Agent harness
-:description: Lightweight local agent runtime for DevCentr — harness-neutral rules, dlang-supplemental infrastructure, and ecosystem specialization instead of monolithic IDE weight.
+= DevCentr agent harness (Hornet)
+:navtitle: Agent harness (Hornet)
+:description: Hornet — DevCentr's lightweight local agent runtime. Mixr routes jobs to models; harness-neutral rules, dlang-supplemental infrastructure, actor-model swarms.
 :page-layout: docs
 
-DevCentr is building a **lightweight agent harness** — not a Cursor-class IDE, but a focused local runtime that consumes the same harness-neutral stack as Cursor, Claude Code, Hermes, and T3code.
+DevCentr is building **Hornet** — a lightweight agent harness (working name aligned with *harness*; hornets **swarm**, which matches parallel actor nodes).
 
-In plain language: *specialized agent shell + shared rules layer + D tooling from dlang-supplemental*.
+Hornet is not a Cursor-class IDE. It is a focused local runtime that consumes the same harness-neutral stack as Cursor, Claude Code, Hermes, and T3code.
+
+In plain language: *Hornet shell + Mixr model routing + shared rules layer + D tooling from dlang-supplemental*.
+
+When `HARNESS_NAME = hornet` on a workstation, `$CODE_ROOT/harness.md` records Hornet-specific discovery paths and UX contracts (token provenance, actor-model UI, Mixr routing).
+
+== Hornet and Mixr
+
+[cols="1,2"]
+|===
+| Name | Role
+
+| **Hornet**
+| The harness — chat, tools, project context, node graph on disk, grid/fork/timeline views
+
+| **Mixr**
+| Meta-agent / model router (Cursor *Auto*-shaped) — picks which model runs each node or job
+
+| **Coordinator**
+| Top-level actor in the node graph; may delegate routing decisions to Mixr before spawning task nodes
+|===
+
+A single default model (for example GLM on OpenRouter) does **not** scale across the swarm. Different nodes need different tradeoffs:
+
+* **Coordinator / metathread** — long context, strong summarization, user-facing voice
+* **Task nodes** — coding-capable, tool-use reliable, cost-bounded for parallel grid work
+* **Disambiguation** — small, fast, cheap — boundary resolution only
+* **Mixr itself** — tiny router call; classifies intent and emits a *route plan* before the heavy model runs
+
+Mixr reads node type, declared job, token budget, user BYOK keys, and org policy, then assigns `{ model, provider, maxTokens, reason }` per invocation. The route plan is logged in `orchestrator/meta.jsonl` for audit — same spine as spawn refs.
+
+Users may override a route on a node; Mixr learns from overrides only in explicit feedback paths (not silent drift).
+
+Proposed harness variables (Hornet + Mixr):
+
+[source,text]
+----
+HARNESS_NAME = hornet
+MIXR_ROUTING = on | off
+MIXR_ROUTER_MODEL = <small fast model for routing only>
+MIXR_DEFAULT_POLICY = balanced | cheap | quality | byok-only
+----
+
+When `MIXR_ROUTING=off`, Hornet falls back to a single pinned model per node type in harness config — useful for debugging, not the production default.
 
 == Why a harness at all
 
@@ -35,6 +78,9 @@ It does not answer *which runtime executes them* on a machine that wants somethi
 
 | dlang-supplemental native core
 | Prefer D libraries and tooling from link:https://github.com/dlang-supplemental[dlang-supplemental] over reimplementing helpers in TypeScript or Rust
+
+| Swarm by default
+| Actor-model node graph + Mixr routing — parallel agents are first-class, not an IDE afterthought
 |===
 
 == Relationship to T3code

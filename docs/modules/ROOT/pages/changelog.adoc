@@ -45,6 +45,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-28 — Hornet harness and Mixr router
+
+* Product names: **Hornet** (harness), **Mixr** (model-routing meta-agent); `HARNESS_NAME=hornet`.
+* See xref:changelog-details/2026-08-28 - hornet-mixr-naming.adoc[Detailed changelog].
+
 == 2026-08-28 — Actor-model design lock-in
 
 * Model-proposed spawn; `disambiguation` node; metathread refs; `ACTOR_WAIT_GRAPH=warn` default; temporal layout as planned view engine.

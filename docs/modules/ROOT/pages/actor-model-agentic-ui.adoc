@@ -103,7 +103,7 @@ When the model cannot tell whether new lines continue the parent topic or fork i
 | Type | Role
 
 | `coordinator`
-| Root orchestrator; grid owner; continuous top-level voice with summarization
+| Root orchestrator; grid owner; continuous top-level voice with summarization; may invoke **Mixr** before spawning routed task nodes
 
 | `discussion`
 | Exploratory context; may spawn task, discussion, or disambiguation children
