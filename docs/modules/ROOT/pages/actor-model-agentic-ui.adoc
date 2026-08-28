@@ -252,6 +252,26 @@ Defaults when `ACTOR_AGENTIC_UI=graph-grid`: `ACTOR_NODE_STORE=jsonl-per-node`, 
 
 **Migration:** `PROJECT_INBOX*` names are deprecated aliases for one release cycle; map `grid-forks` → `graph-grid`, `PROJECT_INBOX_CHAPTERS` → `ACTOR_GRAPH_EPOCHS`.
 
+== Reference implementation (Hornet)
+
+DevCentr ships a reference runtime at link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] (see xref:agent-harness.adoc[Agent harness (Hornet)]).
+
+[cols="1,2"]
+|===
+| Phase | Ships
+
+| v0
+| Disk layout, spawn API, metathread refs, CLI
+
+| v1
+| Mixr model router, wait-graph (`warn` default), HTTP desk (grid + fork)
+
+| v2
+| Temporal layout engine — scrubber, fade, heatmap, scoped bookmarks
+|===
+
+HCI Nerdz demo remains a static teaching surface; Hornet is the live `$CHAT_ROOT` backend.
+
 == Relationship to HCI Nerdz
 
 HCI Nerdz owns the attention surface — grid, graph strip, spawn UX, demo, essay.
