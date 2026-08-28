@@ -1,0 +1,23 @@
+= Actor-model agentic UI — design lock-in
+:navtitle: Actor-model design lock-in
+:page-audience: Dev-Centr maintainers
+:page-usage-context: Changelog detail for harness UX contract refinements
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-28
+
+== Summary
+
+Refined xref:actor-model-agentic-ui.adoc[Actor-model agentic UI] after design review:
+
+* Model-proposed spawn on drift (primary); `disambiguation` node for boundary ambiguity
+* Per-node disk authoritative; `orchestrator/meta.jsonl` metathread with line refs (not cosmetic mega-log routing)
+* Struct 1:1 with disk; `ACTOR_WAIT_GRAPH` default **`warn`**
+* Temporal layout documented as planned view engine (global + sub-timeline scopes; agent-generated bookmarks)
+* Hierarchical coordinator vs global personal-context = different views, same graph store
+
+== Files
+
+* xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]
+* xref:agent-harness.adoc[Agent harness]
+* `general/harness.md`, `harness.example.md`

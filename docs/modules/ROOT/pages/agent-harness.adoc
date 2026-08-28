@@ -76,15 +76,17 @@ Harness variables:
 ----
 ACTOR_AGENTIC_UI = graph-grid | serialized | off
 ACTOR_GRAPH_EPOCHS = on | off
-ACTOR_WAIT_GRAPH = enforce | warn | off
+ACTOR_WAIT_GRAPH = warn | enforce | off
 ACTOR_NODE_STORE = jsonl-per-node | off
 ----
 
-When `graph-grid`:
+When `graph-grid` (defaults: `ACTOR_NODE_STORE=jsonl-per-node`, `ACTOR_WAIT_GRAPH=warn`):
 
-* Node graph persisted under `$CHAT_ROOT/`; spawn writes parent + child meta before accepting traffic
+* Node graph persisted under `$CHAT_ROOT/`; per-node `chat.jsonl` authoritative; orchestrator metathread with line refs
+* Model-proposed spawn on drift; `disambiguation` node when topic boundary is unclear
 * Grid shows task nodes; fork panel loads `nodes/{id}/chat.jsonl`
-* Coordinator thread stays thin; epochs freeze grid layout when coherence breaks
+* Coordinator thread is continuous with summarization; hierarchical and global-context modes are views over the same store
+* Temporal layout (planned) — reusable timeline widget with global and per-node scopes
 
 Full spec: xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]. Deprecated alias: xref:project-inbox.adoc[Project inbox (renamed)].
 

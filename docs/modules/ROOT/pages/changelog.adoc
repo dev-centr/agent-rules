@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-08-25
+:page-last-edited: 2026-08-28
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -45,6 +45,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-28 — Actor-model design lock-in
+
+* Model-proposed spawn; `disambiguation` node; metathread refs; `ACTOR_WAIT_GRAPH=warn` default; temporal layout as planned view engine.
+* See xref:changelog-details/2026-08-28 - actor-model-design-lock-in.adoc[Detailed changelog].
+
 == 2026-08-28 — Actor-model agentic UI pivot
 
 * Renamed project inbox to actor-model agentic UI; node graph + disk persistence; `ACTOR_AGENTIC_UI` harness variables.
@@ -52,7 +57,7 @@ Observed transitions in forkable + machine-local names:
 
 == 2026-08-28 — Project inbox harness contract
 
-* Second cross-org UX contract: parallel task grid, cosmetic fork views, chapter snapshots, actor mailboxes.
+* Second cross-org UX contract: parallel task grid, per-node disk store, chapter snapshots, actor mailboxes.
 * See xref:changelog-details/2026-08-28 - project-inbox-harness-contract.adoc[Detailed changelog].
 
 == 2026-08-25 — Self-host web fonts

@@ -5,7 +5,7 @@
 :page-usage-context: Reference page on the agent-rules docs hub; pairs with HCI Nerdz UX spec and live demo
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-08-28
+:page-last-edited: 2026-08-28T05:48-0500
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -66,18 +66,35 @@ Serializing all of that into one scroll repeats aggregate headers and buries blo
 | Mailbox — latest state for subscribers
 
 | `viewEpoch`
-| Which layout snapshot (chapter) last included this node in the grid
+| Which layout snapshot last included this node in the grid (optional; see temporal layout)
+
+| `awaitingUser`
+| When true, temporal fade must not treat the node as idle garbage
 |===
+
+=== Structs mirror disk (1:1)
+
+In-memory node records are not a shadow cache. `meta.json` and `chat.jsonl` are authoritative; runtime structs deserialize from them and serialize back on every mutation. Model invocations receive a *slice* of that struct (mailbox + recent lines + declared wait subscriptions), not a separate RAM-only transcript.
 
 === Spawn on drift
 
-When a node's chat drifts from its declared topic, the harness (or user) **spawns** a child node:
+When a node's chat drifts from its declared topic, the harness **spawns** a child node:
 
 . Parent appends child id to `spawned[]`; child sets `spawnedBy` to parent id
 . Parent and child addresses are written to disk before either accepts new messages
 . Parent chat gets a one-line routing marker; new lines belong to the child
 
-Drift detection may be heuristic (model proposes spawn), user gesture ("branch this tangent"), or policy (task node receives non-task utterance).
+**Primary trigger: model-proposed spawn.** The model running in the parent should propose a spawn when the user mixes a continuation of the current subject with new ideas that deserve their own bounded context — a common pattern in long agent sessions.
+
+Secondary triggers: user gesture (*Spawn tangent*), or policy (non-task utterance in a task node).
+
+=== Boundary ambiguity
+
+When the model cannot tell whether new lines continue the parent topic or fork it, spawn a **`disambiguation`** child instead of guessing:
+
+* Parent pauses routing until the disambiguation node resolves the boundary
+* Disambiguation links parent to one or more candidate children (`discussion`, `task`, …)
+* Resolution is recorded in the orchestrator metathread (refs below) and parent `spawned[]`
 
 === Node types (initial set)
 
@@ -86,13 +103,16 @@ Drift detection may be heuristic (model proposes spawn), user gesture ("branch t
 | Type | Role
 
 | `coordinator`
-| Top-level orchestrator; grid owner; thin main thread
+| Root orchestrator; grid owner; continuous top-level voice with summarization
 
 | `discussion`
-| Exploratory context; may spawn task or discussion children
+| Exploratory context; may spawn task, discussion, or disambiguation children
 
 | `task`
 | Bounded job (repo PR, merge, docs sync); publishes status to grid
+
+| `disambiguation`
+| Short-lived fork resolver when parent/child boundary is unclear
 |===
 
 More types can extend the same struct — the harness treats type as routing hints, not a separate storage silo.
@@ -105,29 +125,92 @@ All graph state is persisted — not RAM-only. I/O cost is acceptable; losing sp
 ----
 $CHAT_ROOT/
   graph.json                 # index: node ids, types, spawn edges, related edges
+  orchestrator/
+    meta.jsonl               # metathread: coordinator voice + refs into node logs
+    index.json               # optional aggregate: nodeId → line ranges, summaries
   nodes/
     {nodeId}/
       meta.json              # full node struct (addresses, spawnedBy, spawned, status, …)
-      chat.jsonl             # this node's messages only
+      chat.jsonl             # authoritative messages for this node only
       summaries/
         latest.json          # mailbox
         v{n}.json            # compaction chain
   views/
-    epoch-1.json             # immutable grid snapshot (which task nodes, positions)
+    epoch-1.json             # optional layout snapshot (which task nodes, positions)
     epoch-2.json
-  thread.jsonl               # optional unified append log for audit/replay
+  thread.jsonl               # optional export/replay merge — not source of truth
 ----
 
 Every spawn is two writes minimum (`parent meta.json`, `child meta.json` + `graph.json` edge update) before the child accepts traffic. Harness batches where the filesystem allows; correctness beats micro-latency.
 
+=== Metathread and audit
+
+Each session has two conversational surfaces:
+
+* **Interactive thread** — whichever node the user is typing in (`nodes/{id}/chat.jsonl`)
+* **Orchestrator metathread** — cross-node narrative plus **line refs** into child logs
+
+Ref example (one line in `orchestrator/meta.jsonl`):
+
+[source,json]
+----
+{"kind":"ref","node":"task-bitwarden","line":42,"summary":"CLA blocker cleared"}
+----
+
+Audit = walk metathread refs; do not replay one serialized scroll. Subscribers read mailboxes and peek at referenced lines — not a filtered projection of a mega-log.
+
+== Wait graph
+
+`ACTOR_WAIT_GRAPH` default is **`warn`**.
+
+Subagents declare subscriptions ahead of time:
+
+[cols="1,2"]
+|===
+| Mode | Meaning
+
+| `warn` (maybe)
+| Mailbox may be stale or partial; subagent may continue independent work
+
+| `enforce` (definite)
+| Block until terminal status — merges, releases, irreversible actions
+|===
+
+Example subscription on a node struct: `waitOn: [{ node: "task-cla", mode: "warn" }]`.
+
 == UI projections
 
-One graph; multiple views:
+One graph; multiple views over the same disk store:
 
 * **Grid** — filter `type=task`, show status dot + summary (replaces the old "inbox" layout)
-* **Fork panel** — click any node; load `nodes/{id}/chat.jsonl` filtered view
-* **Graph strip** — spawn lineage: parent → children; optional for discussion tangents
-* **Coordinator thread** — messages tagged `coordinator` or untagged root; not every subagent line
+* **Fork panel** — selected node; load `nodes/{id}/chat.jsonl`
+* **Graph strip** — spawn lineage: parent → children
+* **Coordinator / global thread** — continuous top-level chat with summarization; not every subagent line
+* **Temporal layout** — planned view engine (below); embeddable widget, not a second storage model
+
+Hierarchical coordinator mode and global personal-context mode are **different views of the same graph**, not different stores.
+Reset in global mode is a **scope filter** (archive nodes, trim personal context to a bookmark) — not delete disk.
+
+== Temporal layout (planned view engine)
+
+Parallel nodes do not naturally "chapter" together. Automatic epoch breaks by clock alone lie to the model when the user left a question unanswered.
+
+**Temporal layout** is a reusable widget that accepts:
+
+* node activity timestamps (`lastEventAt`, `lastTouched`)
+* optional token-volume series
+* agent-generated **timeline bookmarks** (keywords, images) as chat progresses
+
+Behaviors (phased):
+
+* **Fade, not delete** — idle nodes dim after inactivity unless `awaitingUser: true` or terminal status
+* **Horizontal scrubber** — seek a time window; replay which nodes were visible then
+* **Heatmap / token strip** — faint overlay on the scrubber; resizable height
+* **Bookmark panel** — sidebar index; map-style detail as user zooms in
+
+**Scopes:** a global timeline (all nodes under `$CHAT_ROOT`) and **sub-timelines** scoped to one node subtree. The widget mounts in the global shell and inside a node detail panel — same engine, different `scope` input.
+
+Epoch layout snapshots (`views/epoch-N.json`) become optional **bookmark-freeze** artifacts when the coordinator explicitly reframes a batch — not the primary navigation model.
 
 == Harness variables
 
@@ -135,9 +218,11 @@ One graph; multiple views:
 ----
 ACTOR_AGENTIC_UI = graph-grid | serialized | off
 ACTOR_GRAPH_EPOCHS = on | off
-ACTOR_WAIT_GRAPH = enforce | warn | off
+ACTOR_WAIT_GRAPH = warn | enforce | off
 ACTOR_NODE_STORE = jsonl-per-node | off
 ----
+
+Defaults when `ACTOR_AGENTIC_UI=graph-grid`: `ACTOR_NODE_STORE=jsonl-per-node`, `ACTOR_WAIT_GRAPH=warn`.
 
 [cols="1,3"]
 |===
@@ -153,10 +238,16 @@ ACTOR_NODE_STORE = jsonl-per-node | off
 | Single-node mode
 
 | `ACTOR_GRAPH_EPOCHS=on`
-| Freeze grid layout per epoch; new epoch when coherence breaks (formerly "chapters")
+| Optional layout snapshots when coordinator explicitly reframes a batch (supplements temporal bookmarks)
 
-| `ACTOR_WAIT_GRAPH`
-| Gate model calls that read sibling mailboxes before terminal status
+| `ACTOR_WAIT_GRAPH=warn` *(default)*
+| Emit maybe-stale warnings on sibling mailbox reads; subagent may continue parallel work
+
+| `ACTOR_WAIT_GRAPH=enforce`
+| Block model calls that depend on non-terminal sibling mailboxes
+
+| `ACTOR_NODE_STORE=jsonl-per-node`
+| Per-node `chat.jsonl` authoritative; orchestrator metathread holds refs
 |===
 
 **Migration:** `PROJECT_INBOX*` names are deprecated aliases for one release cycle; map `grid-forks` → `graph-grid`, `PROJECT_INBOX_CHAPTERS` → `ACTOR_GRAPH_EPOCHS`.

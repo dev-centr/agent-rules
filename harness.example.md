@@ -48,8 +48,12 @@ TOKEN_PROVENANCE = emit-spans | consume-spans | off
 # graph-grid: node graph on disk + task grid view; serialized: one scroll; off: single node
 ACTOR_AGENTIC_UI = graph-grid | serialized | off
 ACTOR_GRAPH_EPOCHS = on | off
-ACTOR_WAIT_GRAPH = enforce | warn | off
+ACTOR_WAIT_GRAPH = warn | enforce | off
 ACTOR_NODE_STORE = jsonl-per-node | off
+
+# Defaults when ACTOR_AGENTIC_UI = graph-grid:
+# ACTOR_NODE_STORE = jsonl-per-node
+# ACTOR_WAIT_GRAPH = warn
 
 # Deprecated aliases (one release cycle):
 # PROJECT_INBOX = grid-forks | serialized | off  →  ACTOR_AGENTIC_UI = graph-grid | …

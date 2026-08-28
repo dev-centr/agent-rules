@@ -52,7 +52,7 @@ When `$CODE_ROOT` is known, read in parallel:
 | `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html) |
 | `ACTOR_AGENTIC_UI` | Node graph UI — `graph-grid`, `serialized`, or `off` (see https://docs.devcentr.org/agent-rules/actor-model-agentic-ui.html) |
 | `ACTOR_GRAPH_EPOCHS` | Immutable grid epochs when coherence breaks — `on` or `off` |
-| `ACTOR_WAIT_GRAPH` | Dependency gating between node mailboxes — `enforce`, `warn`, or `off` |
+| `ACTOR_WAIT_GRAPH` | Dependency gating between node mailboxes — default **`warn`**; `enforce` for irreversible gates |
 | `ACTOR_NODE_STORE` | Per-node disk layout — `jsonl-per-node` or `off` |
 | `PROJECT_INBOX` | *Deprecated alias* for `ACTOR_AGENTIC_UI` (`grid-forks` → `graph-grid`) |
 
@@ -72,15 +72,17 @@ DevCentr's lightweight harness (see docs **Agent harness**) treats this as the f
 
 When `ACTOR_AGENTIC_UI = graph-grid`, persist a **node graph on disk** and project UI views from it:
 
-* **Node** = **actor** — typed context (`discussion`, `task`, `coordinator`, …) with `address`, `spawnedBy`, `spawned[]`, mailbox summary
-* **Spawn on drift** — parent records child address; child records parent; both `meta.json` written before traffic
+* **Node** = **actor** — typed context (`discussion`, `task`, `coordinator`, `disambiguation`, …) with `address`, `spawnedBy`, `spawned[]`, mailbox summary; struct 1:1 with disk
+* **Spawn on drift** — model-proposed spawn is primary; disambiguation node when boundary is unclear
+* **Metathread** — `orchestrator/meta.jsonl` holds coordinator voice + line refs into `nodes/{id}/chat.jsonl`
 * **Grid view** — task nodes with status dots; own scroll region
 * **Fork panel** — `nodes/{id}/chat.jsonl` for the selected node
-* **Epochs** — when `ACTOR_GRAPH_EPOCHS = on`, freeze grid layout per epoch
+* **Wait graph** — default `warn`; subagents subscribe to maybes vs enforced blocks
+* **Temporal layout** — planned view engine (global + sub-timeline scopes); not v1 harness
 
-Storage under `$CHAT_ROOT/`: `graph.json`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`, `views/epoch-N.json`.
+Storage under `$CHAT_ROOT/`: `graph.json`, `orchestrator/meta.jsonl`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`, optional `views/epoch-N.json`.
 
-Wait-graph (`ACTOR_WAIT_GRAPH`): block or warn when a node reads a sibling mailbox before terminal status.
+Wait-graph (`ACTOR_WAIT_GRAPH`): default **`warn`** when graph-grid is on; `enforce` blocks until terminal sibling status.
 
 Full spec: docs **Actor-model agentic UI**; UX: https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui.html
 
