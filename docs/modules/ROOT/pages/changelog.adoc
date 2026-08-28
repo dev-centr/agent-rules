@@ -45,6 +45,11 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
+== 2026-08-28 — Hornet v0–v2 reference runtime
+
+* `dev-centr/hornet` — disk store, Mixr, wait graph, desk UI, temporal engine.
+* See xref:changelog-details/2026-08-28 - hornet-v0-v2-implementation.adoc[Detailed changelog].
+
 == 2026-08-28 — Hornet harness and Mixr router
 
 * Product names: **Hornet** (harness), **Mixr** (model-routing meta-agent); `HARNESS_NAME=hornet`.
