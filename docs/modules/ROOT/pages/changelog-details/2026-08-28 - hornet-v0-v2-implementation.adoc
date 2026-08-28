@@ -1,0 +1,15 @@
+= Hornet harness v0–v2 implementation
+:navtitle: Hornet implementation
+:page-audience: Dev-Centr maintainers
+:page-usage-context: Changelog detail for hornet reference runtime
+:page-last-edited: 2026-08-28
+
+== Summary
+
+Shipped reference implementation in link:https://github.com/dev-centr/hornet[`dev-centr/hornet`]:
+
+* **v0** — disk node graph, spawn, metathread, CLI
+* **v1** — Mixr, wait graph, HTTP desk UI
+* **v2** — temporal layout engine
+
+See xref:agent-harness.adoc[Agent harness (Hornet)] implementation section.

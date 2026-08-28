@@ -50,6 +50,30 @@ MIXR_DEFAULT_POLICY = balanced | cheap | quality | byok-only
 
 When `MIXR_ROUTING=off`, Hornet falls back to a single pinned model per node type in harness config — useful for debugging, not the production default.
 
+== Implementation
+
+Reference runtime: link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] (Python).
+
+[cols="1,2"]
+|===
+| Phase | Ships in Hornet
+
+| v0
+| `$CHAT_ROOT` disk layout, spawn API, metathread refs, CLI (`hornet init`, `spawn`, `message`)
+
+| v1
+| Mixr routing, wait-graph, HTTP desk (`hornet serve`), grid + fork web UI
+
+| v2
+| Temporal layout engine — scrubber, fade, heatmap, scoped bookmarks (`/api/temporal`)
+|===
+
+```powershell
+pip install -e $env:code\github.com\dev-centr\hornet
+hornet init ./my-chat
+hornet serve ./my-chat --port 8765
+```
+
 == Why a harness at all
 
 `dev-centr/agent-rules` already separates forkable policy from machine-local wiring (`harness.md`, `machine.md`).
