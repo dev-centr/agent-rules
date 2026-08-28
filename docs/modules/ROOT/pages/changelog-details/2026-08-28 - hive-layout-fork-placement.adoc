@@ -1,0 +1,9 @@
+= 2026-08-28 — hive-layout fork placement
+:page-audience: Maintainers
+:page-usage-context: Changelog detail
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+
+* Skill `hive-layout` — clone paths, duplicate reconciliation; fork vs owned via `gh api … .fork`.
+* `general/folder-schema.md` — decision order (fork first), dedupe table, explicit anti-pattern: org root is not canonical for forks.
+* `user.md`, `AGENTS.md`, `general/environment.md` — always-on pointers; forks in `.forks/` for personal **and** org accounts.

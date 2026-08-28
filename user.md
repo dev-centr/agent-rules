@@ -39,9 +39,11 @@
 - Git hosts: prefer MCP; else `gh` / `glab`.
 
 ## Repos
-- Owned: `$CODE_ROOT/<host>/<owner>/<repo>`
-- Forks: `$CODE_ROOT/<host>/<owner>/.forks/<repo>`
-- Clones: `$CODE_ROOT/<host>/.clones/<owner>/<repo>`
+- **Fork first:** `gh api repos/<owner>/<repo> --jq .fork` — if `true`, path is `.forks/` even for org repos (`dev-centr/.forks/dprint`, not `dev-centr/dprint`).
+- Owned (not a fork): `$CODE_ROOT/<host>/<owner>/<repo>`
+- Forks (personal **or** org): `$CODE_ROOT/<host>/<owner>/.forks/<repo>`
+- Clones (upstream only): `$CODE_ROOT/<host>/.clones/<owner>/<repo>`
+- Dedupe / bulk sync / misplaced forks: skill `hive-layout`; detail `general/folder-schema.md`.
 - Hosts: usually `github.com` or `gitlab.com`.
 
 ## Creator (owned orgs)

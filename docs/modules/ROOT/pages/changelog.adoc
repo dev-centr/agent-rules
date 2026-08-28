@@ -76,6 +76,11 @@ Observed transitions in forkable + machine-local names:
 * Skill `hive-watch`, `general/hive-watch.md`; bootstrap step; `user.md` 24h read-status rule vs per-chat fetch.
 * See xref:changelog-details/2026-08-28 - hive-watch-remote-fetch.adoc[Detailed changelog].
 
+== 2026-08-28 — hive-layout fork placement
+
+* Skill `hive-layout`; strengthened `general/folder-schema.md` — org forks belong in `.forks/`, not org root.
+* See xref:changelog-details/2026-08-28 - hive-layout-fork-placement.adoc[Detailed changelog].
+
 == 2026-08-25 — Self-host web fonts
 
 * Portable rule `general/self-host-fonts.md` + skill `self-host-fonts`: prefer Fontsource / local `woff2` + preload; do not `@import` Google Fonts or wait on a CDN for first paint.

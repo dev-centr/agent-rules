@@ -14,5 +14,6 @@ Read one of `general/windows.md`, `general/mac.md`, or `general/linux.md` after 
 ## Local Git strategies
 
 - Clone git repositories using `general/folder-schema.md` with root set to the `CODE_ROOT` constant from your active `profiles/*.md` file.
+- Before bulk clone or dedupe: verify GitHub `fork` flag; skill `hive-layout`.
 - Prefer **AsciiDoc** for README and project docs unless Markdown is explicitly requested for a host (for example npm).
 - Do not rename `README.md` files that are made for package hosts like npm.
