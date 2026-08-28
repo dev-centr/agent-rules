@@ -64,7 +64,7 @@ HCI Nerdz owns the *attention surface* — grid UX, chapter semantics, demo, ess
 
 DevCentr owns *harness routing* — how the lightweight runtime stores contexts, emits card updates, and exposes variables in `$CODE_ROOT/harness.md`.
 
-* Essay: link:https://hci-nerdz.github.io/blog/when-parallel-agents-fill-one-chat/[When parallel agents fill one chat]
+* Essay: link:https://hci-nerdz.github.io/blog/when-parallel-agents-still-read-as-one-thread/[When parallel agents still read as one thread]
 * Docs: link:https://hci-nerdz.github.io/docs/hci-nerdz/project-inbox.html[HCI Nerdz — Project inbox]
 * Demo: link:https://hci-nerdz.github.io/demos/project-inbox/[Project inbox desk]
 

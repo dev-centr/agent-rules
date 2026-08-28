@@ -85,7 +85,7 @@ When `grid-forks`:
 
 Implementation sketch, storage layout, and actor routing: xref:project-inbox.adoc[Project inbox].
 
-* Essay: link:https://hci-nerdz.github.io/blog/when-parallel-agents-fill-one-chat/[When parallel agents fill one chat]
+* Essay: link:https://hci-nerdz.github.io/blog/when-parallel-agents-still-read-as-one-thread/[When parallel agents still read as one thread]
 * Demo: link:https://hci-nerdz.github.io/demos/project-inbox/[Project inbox desk]
 
 == What this is not
