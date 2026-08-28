@@ -51,7 +51,7 @@ The first cross-org UX contract wired into harness metadata is **token provenanc
 
 * Heuristic tokens — dashed underline; assumed, not verified
 * Grounded tokens — solid underline; confirmed by tool output
-* Span annotations emitted alongside streamed text (see link:https://hci-nerdz.github.io/docs/hci-nerdz/token-provenance.html[HCI Nerdz — Token provenance])
+* Span annotations emitted alongside streamed text (see link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[HCI Nerdz — Grounded tokens / token provenance])
 
 Harness variable (proposed):
 
@@ -72,6 +72,6 @@ When `emit-spans`, the runtime attaches provenance metadata the chat renderer ca
 
 * link:https://docs.devcentr.org/agent-rules/harness-neutral.html[Harness-neutral architecture]
 * link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
-* link:https://hci-nerdz.github.io/demos/token-provenance/[Token provenance demo]
+* link:https://hci-nerdz.github.io/demos/grounded-tokens/[Grounded tokens demo]
 * link:https://github.com/dlang-supplemental[dlang-supplemental org]
 * xref:tools/agent-rules.adoc[Agent rules portal]
