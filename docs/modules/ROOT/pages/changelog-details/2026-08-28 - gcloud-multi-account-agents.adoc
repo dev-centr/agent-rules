@@ -1,0 +1,11 @@
+= 2026-08-28 — gcloud multi-account workflow for agents
+:description: Clarify that gcloud auth login accumulates accounts and how agents should switch active identity per org.
+
+== Summary
+
+* Expanded xref:gcloud-cli-agents.adoc[gcloud CLI for agentic workflows] with a multi-account section: accumulate vs replace, `gcloud auth list` / `gcloud config set account`, named configurations for org pairs (FTN vs DevCentr), agent check-before-admin, and what `auth revoke` / `logout` remove.
+* Updated orientation figure alt/caption and agent checklist for active-account switching.
+
+== Why
+
+Workstation operators keep several Google identities logged in. Agents that assume each login swaps the only session will re-auth unnecessarily or administer the wrong org. Document the real SDK behavior next to the auth how-to.

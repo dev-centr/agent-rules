@@ -1,6 +1,6 @@
 = gcloud CLI for agentic workflows
 :navtitle: gcloud CLI (agents)
-:description: Keep Google Cloud SDK usable by agents on a workstation — user login persistence, optional org service accounts, and what not to expect from Composio.
+:description: Keep Google Cloud SDK usable by agents on a workstation — multi-account user login, optional org service accounts, and what not to expect from Composio.
 :page-audience: Operators setting up Google Cloud SDK for AI agents on a personal or org workstation
 :page-usage-context: How-to on the docs hub; pairs with Google Cloud OAuth mental model in General Knowledge
 :page-orig-author: Ryan Johnson
@@ -21,9 +21,10 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-Give agents a working `gcloud` without a browser login every chat — and decide whether that identity should be **your user** or an **org service account**.
+Give agents a working `gcloud` without a browser login every chat — and decide whether that identity should be **your user** or an **org service account**. Multiple user logins can sit on one machine; only one is active at a time.
 
-image::agent-cli-auth-flow.svg[alt="Operator logs in once, machine stores gcloud credentials, agent uses CLI without printing secrets",width=880]
+.Operator authenticates in a normal terminal; the SDK keeps credentials per account on disk. Agents reuse the active account — switch with `gcloud config set account`, do not re-login for every org.
+image::agent-cli-auth-flow.svg[alt="Operator logs in once per account, machine stores gcloud credentials for each, agent uses the active account without printing secrets",width=880]
 
 Sibling:: xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows].
 OAuth / Project boundaries (Console):: xref:general-knowledge::explanation/infrastructure/google-cloud-project-mental-model.adoc[Google Cloud projects as OAuth boundaries].
@@ -32,14 +33,14 @@ OAuth / Project boundaries (Console):: xref:general-knowledge::explanation/infra
 
 `gcloud auth login` stores refresh tokens under the Cloud SDK config directory (on Windows, under `%APPDATA%\gcloud\`). They remain until `gcloud auth revoke` / `gcloud logout` or Google revokes the grant.
 
-. One-time (interactive terminal — not a non-interactive agent shell waiting on EOF):
+. One-time **per Google account** (interactive terminal — not a non-interactive agent shell waiting on EOF):
 +
 [source,powershell]
 ----
 # Prefer the full path if `gcloud` is not on PATH
 & "$env:LOCALAPPDATA\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd" auth login
 ----
-. Prefer the **org operator account** for org-owned projects (example: Workspace user on the company domain).
+. Prefer the **org operator account** for org-owned projects (example: Workspace user on the company domain). Extra personal or other-org accounts may also be logged in — see <<multi-account>>.
 . Verify:
 +
 [source,powershell]
@@ -47,15 +48,64 @@ OAuth / Project boundaries (Console):: xref:general-knowledge::explanation/infra
 gcloud auth list
 gcloud projects list --format="table(projectId,name,lifecycleState)"
 ----
-. Agents thereafter reuse the same credentials — **no re-login** until revoke.
+. Agents thereafter reuse stored credentials — **no re-login** until revoke. Confirm the active account matches the org before project admin work.
 
 TIP: Agent shells that cannot type a verification code will fail `gcloud auth login --no-launch-browser`. Complete login in a normal terminal (or browser-launched flow), then let agents use the stored account.
+
+[[multi-account]]
+=== Multiple credentialed accounts (one active)
+
+Repeated `gcloud auth login` calls **accumulate** accounts. They do **not** replace or drop prior sessions. Only one account is **active** at a time (marked `*` in `gcloud auth list`).
+
+Typical workstation example (illustrative emails):
+
+* `you@example.com` — personal
+* `you@foodtrucknerdz.com` — FoodTruckNerdz org
+* `you@devcentr.org` — DevCentr org (active)
+
+.List accounts and see which is active:
++
+[source,powershell]
+----
+gcloud auth list
+----
+.Switch the active user **without** re-login (must already appear in `auth list`):
++
+[source,powershell]
+----
+gcloud config set account you@devcentr.org
+gcloud auth list
+----
+
+==== When to flip account vs named configurations
+
+* **Flip default account** (`gcloud config set account EMAIL`) — enough when you mostly share one property set (project, region) and only the identity changes, or you always pass `--project` explicitly.
+* **Named configurations** (`gcloud config configurations`) — prefer when org pairs differ on more than email (default project, billing account, region, or quota project). Keep one config per org (example: `ftn`, `devcentr`) and activate with `gcloud config configurations activate NAME`.
+
+Agents should `gcloud auth list` (and activate the right configuration if used) **before** Resource Manager / billing / credentials admin for an org. Wrong active account → wrong project visibility or permission errors that look like “missing IAM”.
+
+==== What removes credentials
+
+| Action | Effect |
+|===
+| `gcloud auth revoke` / `gcloud auth revoke ACCOUNT`
+| Drops that account’s stored refresh token from this machine
+
+| `gcloud logout`
+| Revokes / clears the active (or specified) login session
+
+| Google account / admin revoke of the grant
+| Tokens stop working even if files remain until cleaned up
+|===
+
+Switching with `gcloud config set account` does **not** revoke anything. Re-login is only needed after revoke/logout or a dead grant.
 
 === Why prefer individual login on a desk
 
 * Audit trail matches a real person (IAM + Cloud Audit Logs).
 * No long-lived JSON key on disk for day-to-day Console/API admin.
 * Matches how you already treat Bitwarden: **you** unlock once; agents reuse.
+* Multi-org desks stay simple: login each operator identity once, switch active account (or named config) per task.
 
 == Optional: org service account (headless / shared agents)
 
@@ -77,6 +127,7 @@ WARNING: JSON keys are powerful and easy to leak. Prefer user login on personal 
 
 . Resolve `gcloud` (PATH or Cloud SDK install path).
 . Run `gcloud auth list`. If empty → stop and ask the operator to complete `gcloud auth login` (or activate the documented SA).
+. If multiple accounts are present, ensure the **active** account (and named configuration, if used) matches the org for the task — `gcloud config set account EMAIL` or `gcloud config configurations activate NAME`. Do not run a fresh `auth login` just to switch.
 . Prefer `--format=json` / tables; never dump credentials or ADC files into chat.
 . For project create / undelete / credentials admin, use `gcloud` (or Console) — do not assume Composio covers Resource Manager admin.
 
@@ -115,7 +166,8 @@ Prefer `blob/main/<path>` (or Antora `xref:`) over `#L…` GitHub line links —
 
 == Checklist
 
-* [ ] `gcloud auth list` shows the intended account
+* [ ] `gcloud auth list` shows the intended account as active (`*`)
+* [ ] Multi-org: switch with `config set account` / named config — not re-login
 * [ ] Default project set only when safe (`gcloud config set project …`)
 * [ ] Org billing / parent folder attached for new projects
 * [ ] SA key path (if any) only in `$MACHINE` / Bitwarden — not User Rules
