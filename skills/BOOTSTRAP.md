@@ -67,7 +67,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`).
 - **Issue reports** → skill `issue-reports` (`skills/issue-reports/`).
 - **`.issues` record + push** → skill `issues-repo-record` (`skills/issues-repo-record/`).
-- **Polyglot CI / release matrix** → skill `polyglot-ci` (`skills/polyglot-ci/`).
+- **Polyglot CI / release matrix** → skill `polyglot-ci`; named sets → skill `release-targets` (`common` / `desktop` / `lab`).
 - **Harness setup / harness.md** → skill `harness-setup` (`skills/harness-setup/`).
 - **Sync skills/rules on drift** → skill `sync-agent-rules` (`skills/sync-agent-rules/`).
 - **Hive remotes / daily fetch** → skill `hive-watch` (`skills/hive-watch/`); tool [`dev-centr/hive-watch`](https://github.com/dev-centr/hive-watch).

@@ -1,0 +1,11 @@
+= 2026-08-29 - release target patterns
+
+== Summary
+
+House defaults for which OS×CPU slices to ship, with Gentoo-like year freezes.
+
+== Details
+
+* `skills/release-targets/` — skill + `patterns.sdl` catalog.
+* Portable rule `general/release-target-patterns.md`; thin pointers in `user.md` / `AGENTS.md`.
+* `polyglot-ci` workflow enables Windows ARM; documents pattern expansion.

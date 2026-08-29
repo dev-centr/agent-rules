@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-08-28
+:page-last-edited: 2026-08-29
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -23,6 +23,12 @@ Timeline of notable **functional** changes, reconstructed from git history and o
 Detail pages live under `changelog-details/`.
 
 This repository's reachable git history on `main` begins **2026-08-06** (`cd9463d`). Earlier design of `RULES.md` / profiles lived in personal forks (see `AMDphreak/agent-rules`).
+
+== 2026-08-29 -- Release target patterns
+
+* Skill `release-targets` + `patterns.sdl` + `general/release-target-patterns.md` — year-dated `common` / `desktop` / `lab` / `omnibus`.
+* `polyglot-ci` defaults enable `windows-arm64`; expands named patterns.
+* See xref:changelog-details/2026-08-29 - release-target-patterns.adoc[Detailed changelog].
 
 == 2026-08-28 -- Demo intro anchoring image
 

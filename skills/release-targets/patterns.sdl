@@ -1,0 +1,126 @@
+// Release target patterns — machine-readable.
+// Bare pattern names resolve under `current_year`. Dated form: common/2026
+// Docs: general/release-target-patterns.md · skill release-targets
+
+release_targets {
+	current_year 2026
+
+	// Living ISA catalog (triplet id → notes). Patterns reference these ids.
+	catalog {
+		triplet "windows-x64" {
+			os "windows"
+			cpu "x86_64"
+			github_runs_on "windows-latest"
+		}
+		triplet "windows-arm64" {
+			os "windows"
+			cpu "aarch64"
+			github_runs_on "windows-11-arm"
+			note "Skip job if org cannot use GitHub-hosted Windows ARM; still name the triplet in docs."
+		}
+		triplet "linux-x64" {
+			os "linux"
+			cpu "x86_64"
+			github_runs_on "ubuntu-latest"
+		}
+		triplet "linux-arm64" {
+			os "linux"
+			cpu "aarch64"
+			github_runs_on "ubuntu-24.04-arm"
+		}
+		triplet "macos-arm64" {
+			os "macos"
+			cpu "aarch64"
+			github_runs_on "macos-14"
+		}
+		triplet "freebsd-x64" {
+			os "freebsd"
+			cpu "x86_64"
+			github_runs_on ""
+			note "Cirrus or self-hosted; no GitHub-hosted image."
+		}
+		triplet "linux-ppc64le" {
+			os "linux"
+			cpu "ppc64le"
+			github_runs_on ""
+			note "Cross or self-hosted; IBM POWER little-endian."
+		}
+		triplet "linux-riscv64" {
+			os "linux"
+			cpu "riscv64"
+			github_runs_on ""
+			note "Cross or self-hosted; RV64GC class."
+		}
+		triplet "linux-s390x" {
+			os "linux"
+			cpu "s390x"
+			github_runs_on ""
+			note "Cross or self-hosted; IBM Z."
+		}
+		triplet "linux-armv7" {
+			os "linux"
+			cpu "armv7"
+			github_runs_on ""
+			note "32-bit ARM; edge/heritage only."
+		}
+		triplet "linux-x86" {
+			os "linux"
+			cpu "x86"
+			github_runs_on ""
+			note "32-bit x86; heritage only."
+		}
+		triplet "windows-x86" {
+			os "windows"
+			cpu "x86"
+			github_runs_on ""
+			note "32-bit Windows; heritage only."
+		}
+	}
+
+	year 2026 {
+		pattern "common" {
+			alias "default"
+			summary "Mass-market floor: Windows + Linux, x64 and arm64."
+			triplets "windows-x64" "windows-arm64" "linux-x64" "linux-arm64"
+		}
+		pattern "desktop" {
+			summary "GUI ship set: common plus macOS Apple Silicon."
+			triplets "windows-x64" "windows-arm64" "linux-x64" "linux-arm64" "macos-arm64"
+		}
+		pattern "cloud" {
+			summary "Linux dual-ISA for containers and cloud VMs."
+			triplets "linux-x64" "linux-arm64"
+		}
+		pattern "lab" {
+			alias "hpc"
+			summary "Research / HPC: cloud Linux plus POWER, RISC-V, and IBM Z."
+			triplets "linux-x64" "linux-arm64" "linux-ppc64le" "linux-riscv64" "linux-s390x"
+		}
+		pattern "edge" {
+			summary "SBC / edge Linux: arm64 and RISC-V."
+			triplets "linux-arm64" "linux-riscv64"
+		}
+		pattern "heritage" {
+			summary "Long-tail / museum ISAs — document, do not build unless asked."
+			triplets "linux-x86" "windows-x86" "linux-armv7"
+		}
+		pattern "omnibus" {
+			alias "all"
+			summary "Every triplet in the 2026 catalog (unusual)."
+			triplets "windows-x64" "windows-arm64" "linux-x64" "linux-arm64" "macos-arm64" "freebsd-x64" "linux-ppc64le" "linux-riscv64" "linux-s390x" "linux-armv7" "linux-x86" "windows-x86"
+		}
+	}
+
+	// Frozen snapshot — do not edit; cite as common/2025 when reconstructing pre-2026 pubs.
+	year 2025 {
+		pattern "common" {
+			alias "default"
+			summary "2025 floor before Windows ARM was required in house defaults."
+			triplets "windows-x64" "linux-x64" "linux-arm64" "macos-arm64"
+		}
+		pattern "desktop" {
+			summary "Same as common/2025 (Mac already included that year)."
+			triplets "windows-x64" "linux-x64" "linux-arm64" "macos-arm64"
+		}
+	}
+}
