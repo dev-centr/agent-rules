@@ -98,7 +98,10 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 | Draft/file when warranted (bug, blocker, external coordination)
 
 | `polyglot-ci`
-| GitHub Actions matrix; win/mac/lin/BSD; x64/arm64
+| GitHub Actions matrix; win/mac/lin/BSD; x64/arm64; expands release-target patterns
+
+| `release-targets`
+| Named release sets (`common` / `desktop` / `lab` / `omnibus`); `patterns.sdl`; dated `common/2026`
 |===
 
 == Install
