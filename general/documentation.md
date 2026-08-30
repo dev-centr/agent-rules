@@ -187,16 +187,11 @@ Rules of thumb:
 
 If announcing that a thing exists → news. If thinking through a claim or how to see → blog.
 
-When authoring or reviewing titles:
+When authoring or reviewing titles: load **`agents/editorial/titles.md`** (canonical).
 
-1. **First-party news** — omit the org; notification line unless another actor did it.
-2. **Action essays** — invisible **[On]**; drop surplus *the*; no bare imperatives.
-3. **Framing** — prefer `X as Y` / process / `A X` / *when* / disproof / questions over rigid `X is Y`.
-4. **Modifiers** — attach to an object.
-5. **Docs topics** — concept names.
-6. One idea per news item; big idea first.
+Hard gate: title **and** first paragraph must orient a **cold reader** out of thin air — name the topic before the case study. `When …` is allowed only when the class of failure is recognizable from the title alone; do not force situation titles.
 
-See each site’s `STYLE.adoc`. Philosophy: **Titles as orientation**. In-repo IDE rules per `IDE_PROJECT_RULES` in `$CODE_ROOT/harness.md`. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/machine.md`. Harness config → `$CODE_ROOT/harness.md`.
+Thin pointers only in site `STYLE.adoc` if present — do not maintain a second rulebook per website. Philosophy: **Titles as orientation**. In-repo IDE rules per `IDE_PROJECT_RULES` in `$CODE_ROOT/harness.md`. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/machine.md`. Harness config → `$CODE_ROOT/harness.md`.
 
 ## News and blog body copy (anti-terse)
 

@@ -19,6 +19,7 @@ Essay stance: https://ryanjohnson.dev/blog/posts/blog-as-inner-thought/
 
 - **Inward:** ideas, philosophy, craft, tutorials as thinking-in-public
 - **Thesis early:** claim or orientation up front — not buried lede
+- **Cold reader:** title + first paragraph name the topic before the case-study scene
 - **Conversational authority:** `you` and first person OK when they serve clarity
 - **Anti-slop:** no hollow intensifiers, vague abstractions, or listicle filler
 - **One framing beat** per post; do not stack unrelated theses
@@ -28,9 +29,10 @@ Essay stance: https://ryanjohnson.dev/blog/posts/blog-as-inner-thought/
 
 - Press-release tone on an essay
 - Neutral news voice without a thesis
-- Imperative blog titles without implied [On] test (see title module)
+- Imperative blog titles without implied [On] test (see `agents/editorial/titles.md`)
+- Forced `When …` titles or ledes that only make sense after the body scene
 - Telegraphic bullets without scenes
 
 ## Optional upstream references
 
-Published suites (claude-blog, marketingskills, Kimi anti-slop, etc.) are optional — **local STYLE and this file win** unless the user asks otherwise.
+Published suites (claude-blog, marketingskills, Kimi anti-slop, etc.) are optional — **`agents/editorial/titles.md` + this file win** over per-site STYLE copies unless the user asks otherwise.

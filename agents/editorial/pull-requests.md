@@ -9,4 +9,4 @@ Short form:
 - **UI changes:** before/after screenshots at minimum.
 - Tone: gift to maintainers, not a lecture.
 
-Site news/blog titles remain in `editorial/titles.md` + each site’s `STYLE.adoc`.
+Site news/blog titles remain in `editorial/titles.md` (canonical). Site `STYLE.adoc` is a thin pointer only if present.

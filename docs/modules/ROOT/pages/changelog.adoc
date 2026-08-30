@@ -19,6 +19,13 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Editorial titles canonical + cold-reader gate
+
+* `agents/editorial/titles.md` is the house title doctrine (cold-reader gate; no forced `When …`).
+* Site `STYLE.adoc` treated as thin pointer only; skills `writing-news` / `writing-blog` point here.
+* `user.md`, `general/documentation.md`, harness-boundary, PR editorial pointer updated.
+* link:changelog-details/2026-08-30%20-%20editorial-titles-cold-reader.adoc[Details]
+
 Timeline of notable **functional** changes, reconstructed from git history and observed file content (not only commit subjects).
 Detail pages live under `changelog-details/`.
 

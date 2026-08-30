@@ -33,7 +33,7 @@ Load before any edit under $AGENT_RULES_PATH when the change might embed worksta
                               │
 ┌─────────────────────────────────────────────────────────────────┐
 │  PROJECT (committed in the repo being edited)                   │
-│  <repo>/AGENTS.md · README · docs · STYLE.adoc                  │
+│  <repo>/AGENTS.md · README · docs · STYLE.adoc (thin pointer)   │
 └─────────────────────────────────────────────────────────────────┘
 ```
 

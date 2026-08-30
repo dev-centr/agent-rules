@@ -45,7 +45,7 @@ These apply universally unless a profile says otherwise.
 
 - **Harness config:** read and update **`$CODE_ROOT/harness.md`** when discovery paths or chat behaviors change (see `harness.example.md`; skill `harness-setup`).
 - **Workstation facts:** if the user teaches you something about **this machine/environment**, or you probe the local environment and will need it again, read and update **`$CODE_ROOT/machine.md`** (create if missing; see `machine.example.md`). Never commit. Every memory needs a counter starting at 1; increment on reuse.
-- Project knowledge belongs in the repo (`AGENTS.md`, README, docs, `STYLE.adoc`) — not in `machine.md` at `$CODE_ROOT` and not in a per-repo `machine.md`.
+- Project knowledge belongs in the repo (`AGENTS.md`, README, docs; optional thin `STYLE.adoc` pointer) — not in `machine.md` at `$CODE_ROOT` and not in a per-repo `machine.md`.
 
 ## Outdated code protocol
 

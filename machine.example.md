@@ -31,5 +31,5 @@ Examples of what does **not** belong here (put elsewhere):
 | Harness name, skill discovery paths | `$CODE_ROOT/harness.md` |
 | How to build/deploy the project | README / docs |
 | Product architecture gotchas | docs explanation or `AGENTS.md` |
-| Editorial voice | `STYLE.adoc` |
+| Editorial voice | `agents/editorial/titles.md` (site `STYLE.adoc` = thin pointer only) |
 | Forkable agent policy | `user.md`, `AGENTS.md`, `general/*` |

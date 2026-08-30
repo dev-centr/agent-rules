@@ -19,7 +19,7 @@
 | Product | `devcentr-agent-rules` (separate repo) | Dev-Centr app acting **for** the user |
 | Project | `<repo>/AGENTS.md` | That repository only |
 
-Machine rules → `MACHINE`. Harness rules → `HARNESS`. Project facts → repo `AGENTS.md` + docs. Editorial policy → `agents/editorial/` + site `STYLE.adoc`.
+Machine rules → `MACHINE`. Harness rules → `HARNESS`. Project facts → repo `AGENTS.md` + docs. Editorial policy → `agents/editorial/` (site `STYLE.adoc` = thin pointer only, if present).
 
 ## Precedence (org work — explicit)
 
