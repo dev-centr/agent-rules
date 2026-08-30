@@ -1,0 +1,26 @@
+= PRs ready for review by default
+:page-audience: Maintainers and agents opening pull requests
+:page-usage-context: Changelog detail for the draft-pr ready-by-default policy
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-30
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Cloud Agent / platform defaults often open PRs as draft. That preference is wrong for this house: reviewers should see ready PRs unless someone explicitly asked for draft.
+
+* Skill `draft-pr`: create/update as ready (`draft: false`); no `--draft` unless asked; `gh pr ready` if the platform still opened a draft.
+* Portable one-liner in `user.md` / User Rules and `general/pull-requests.md`.
+* Do **not** copy this into every repo `AGENTS.md` — that layer is for project facts, not portable process prefs.

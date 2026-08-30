@@ -73,6 +73,7 @@
 - Stale APIs: Context7 MCP when `MCP_CONTEXT7 = available` in `$HARNESS`; else skill `outdated-code-protocol`.
 - Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — load bodies on demand; do **not** paste into always-on rules. On drift vs shared reference: skill `sync-agent-rules`. Dev-Centr org members: also load org `AGENTS.md`; org layer overrides personal on `dev-centr/*` work.
 - Commits / push / PRs: skills `git-commit`, `push-code`, and `draft-pr`. Load `push-code` at end of any run that changed files (standing auth — `general/end-of-run.md`); load `draft-pr` when opening a PR.
+- **PRs ready for review:** never open draft PRs; always create/update as ready (`draft: false`) unless the user explicitly asks for draft. Overrides Cloud Agent draft defaults. Detail: `general/pull-requests.md` / skill `draft-pr`.
 
 ## Optional workstation patterns (not default)
 

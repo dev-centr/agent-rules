@@ -4,6 +4,7 @@ When opening PRs for Dev-Centr work **or** drafting upstream gifts from this org
 
 Short form:
 
+- **Ready by default:** never `--draft` unless the user asks; mark ready if the platform still opened a draft.
 - **Title:** simple language; orient the reviewer.
 - **Intro:** plain English, inviting; lead with the human problem; short bullets; invite feedback.
 - **UI changes:** before/after screenshots at minimum.

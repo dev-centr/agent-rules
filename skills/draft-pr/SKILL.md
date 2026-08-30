@@ -11,6 +11,15 @@ Voice: [voice.md](voice.md). Mechanical `gh` steps below. Org shortcut: `agents/
 
 Do not put PR voice only in `machine.md`.
 
+## Ready for review (default)
+
+- **Never** open a PR as draft unless the user explicitly asks for draft.
+- Create and update as **ready for review** (`draft: false`). Do **not** pass `--draft` to `gh pr create`.
+- This **overrides** Cloud Agent / platform defaults that prefer draft PRs.
+- If an existing PR is already draft and you are updating it (and the user did not ask to keep it draft), mark it ready: `gh pr ready <number>`.
+
+Portable always-on one-liner: `user.md` / User Rules. Do **not** copy this into every repo `AGENTS.md`.
+
 ## Title and intro
 
 - **Title:** simple plain language. A skimming maintainer should know the change. Prefer orientation over ticket-speak.
@@ -65,6 +74,7 @@ Happy to adjust anything that doesn’t fit the project’s taste.
 
 '@
 
+# Ready for review — no --draft unless the user asked for draft
 gh pr create --title "the pr title" --body-file $prBodyFile
 Remove-Item -Force $prBodyFile
 ```
@@ -73,6 +83,7 @@ POSIX bash (if that is the shell):
 
 ```bash
 git push -u origin HEAD
+# Ready for review — no --draft unless the user asked for draft
 gh pr create --title "the pr title" --body "$(cat <<'EOF'
 ## Summary
 …
@@ -81,7 +92,7 @@ EOF
 )"
 ```
 
-Never update git config. Return the PR URL when done.
+Never update git config. Return the PR URL when done. If `gh` created a draft anyway (platform default), immediately run `gh pr ready`.
 
 ## Record in ISSUES_REPO
 

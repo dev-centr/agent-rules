@@ -5,4 +5,4 @@ alwaysApply: false
 
 # Pull request voice
 
-Use skill **`draft-pr`**. Do not paste that skill body here.
+Use skill **`draft-pr`**. Ready for review by default — never `--draft` unless asked. Do not paste that skill body here.

@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — PRs ready for review by default
+
+* Skill `draft-pr` and portable rules: never open draft PRs; always ready for review unless the user asks for draft. Overrides Cloud Agent draft defaults. Not an `AGENTS.md` tax.
+* link:changelog-details/2026-08-30%20-%20prs-ready-for-review.adoc[Details]
+
 == 2026-08-30 — Demo selector hub and identity trail
 
 * Skill `demo-site-wiring`: multi-variant default is selector hub → separate pages; identity strip keeps Org → Demos → demo intermediates.
