@@ -54,14 +54,15 @@ Do not put the demo-level lede below the variant UI. Do not skip variant blurbs 
 
 Variant titles must read as a **tab bar** (tabbiness: connected track, selected tab surface, `role="tablist"` / `role="tab"` when interactive on one page). Do **not** style them as a generic button row or pill cluster.
 
-The **demo zone below is the tab content**.
+The **tabpanel is the first region whose content actually changes** with the selection (variant title / blurb / interactive desk). Do **not** put static chooser chrome inside the tabpanel.
 
 ### Mockup-as-nav (compatible with tabs)
 
 Per-variant mockups are **clickable navigation**, not decoration only:
 
-- **Desktop:** tabs **and** clickable mockups. Clicking a mockup selects that variant and loads the interactive demo in the tab content / demo zone.
-- **Mobile:** clicking a mockup to load the demo is the preferred path (same click-to-populate; layout reflows). Tabs may remain for accessibility / parity.
+- When mockups are **not** replaced on select (they only highlight), put them **inside** the tab controls — label + mockup (+ optional caption) are one tab face. Do **not** leave a separate mockup row that looks like a second content band above the real tabpanel.
+- **Desktop:** tabs (with in-tab mockups when used) select the variant and load the interactive demo in the tabpanel.
+- **Mobile:** clicking a mockup/tab face to load the demo is the preferred path (same click-to-populate; layout reflows).
 
 Reference feel: HCI-Nerdz **Edge Bar** (`context-rails`) hub — visual variant tiles + clear variant organization. Apply that pattern cleanly on SPA/hash desks too (e.g. `virtual-pages`).
 
@@ -101,8 +102,9 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] VCS logo on the line **after** that strip is the **only** link to the VCS repo
 - [ ] Demo-level lay workflow copy above the variant chooser
 - [ ] Anchoring visuals: one suite hero **or** one compact mockup per variant (multi-variant)
-- [ ] Variant titles look like a real tab bar (not generic buttons)
+- [ ] Variant titles look like a real tab bar (not generic buttons); static mockups live **inside** tab faces when used
 - [ ] Mockups clickable to select / load the demo (desktop + mobile)
+- [ ] Tabpanel starts where content changes (title / blurb / desk) — not above static chooser chrome
 - [ ] Demo zone placeholder until chosen (unless URL already selects a variant)
 - [ ] Active variant: title + blurb **outside** the facsimile + interactive UI inside
 - [ ] Skipped retrofit of unrelated historical demos
@@ -116,6 +118,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Ship a multi-variant suite with only a single suite hero and no per-variant mockups
 - Ship a suite intro with zero anchoring visuals, or with competing suite-level heroes in the lede
 - Style the variant switcher as generic buttons / pills when tabs are the pattern
+- Leave static per-variant mockups as a separate band above the tabpanel (they belong in the tab faces when they do not swap on select)
 - Auto-mount a heavy interactive stack on first paint before the user chooses (multi-variant)
 - Put tour-guide / narrator captions **inside** the interactive facsimile (teaching stays in hub / variant blurbs)
 - Treat nav and breadcrumb as two separate bands

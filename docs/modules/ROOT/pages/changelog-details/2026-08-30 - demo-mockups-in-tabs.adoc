@@ -1,0 +1,16 @@
+= 2026-08-30 — Demo mockups inside tab faces
+:description: When per-variant mockups do not swap on select, they belong in the tab controls; the tabpanel starts at changing content.
+:page-audience: Maintainers and readers tracking functional history of this component
+:page-usage-context: Changelog detail for skill demo-site-wiring mockup-as-nav vs tabpanel boundary
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+
+== Summary
+
+* Skill `demo-site-wiring`: when per-variant mockups are not replaced on select, put them **inside** the tab faces (label + mockup).
+* The tabpanel is the first region whose content actually changes (variant title / blurb / desk).
+* Do not leave a separate static mockup band that reads as content above the real tabpanel.
+
+== Why
+
+A label tab row plus a second mockup row that never swaps looks like two content bands. Mockups that only select a variant are chooser chrome, not tab content.
