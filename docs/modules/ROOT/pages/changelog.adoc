@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Antora page title = nav label
+
+* House rule: document H1, `nav.adoc` link text, and `:navtitle:` must be the same string (prefer no `:navtitle:`). Only exception: `Overview` under a nav section that already names the area.
+* Detail: `general/documentation.md`. Pointers in `user.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
+
 == 2026-08-30 — PRs ready for review by default
 
 * Skill `draft-pr` and portable rules: never open draft PRs; always ready for review unless the user asks for draft. Overrides Cloud Agent draft defaults. Not an `AGENTS.md` tax.

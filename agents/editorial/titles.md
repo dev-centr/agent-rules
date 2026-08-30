@@ -19,5 +19,5 @@ Philosophy (optional depth): [Titles as orientation](https://hci-nerdz.github.io
 - **News** — outward shared record · skill `writing-news`
 - **Blog** — inward thesis · skill `writing-blog` (thesis early; scene after orientation)
 - **Changelog** — shipping minutiae, not news/blog
-- **Antora topics** — concept names
+- **Antora topics** — concept names; **H1 = nav label** (no divergent `:navtitle:`; Overview under a named section OK) — detail `general/documentation.md`
 - **PRs** — skill `draft-pr` / `general/pull-requests.md`

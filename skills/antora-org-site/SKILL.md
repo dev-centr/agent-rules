@@ -15,12 +15,13 @@ Minimum bar for a published Antora site in an owned org. Detail and hub table: [
 
 ## Audience / POV
 
-Before drafting or revising any page under `docs/`, read **Audience / point of view** in `general/documentation.md`.
+Before drafting or revising any page under `docs/`, read **Audience / point of view** and **Antora page title = nav label** in `general/documentation.md`.
 
 1. Set **`page-*` header attrs** (`page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, `page-last-edited`, plus optional catalog fields). Agent-assisted: `<agent> on behalf of <human>`.
 2. Include the **`ifndef::page-context-active[]`** body fallback for audience / authors / last updated only (attrs via `{page-…}` refs).
 3. **Facto** already registers `@antora-supplemental/page-context` and sets `page-context-active` — do not hard-code the extended catalog into the body.
 4. When wiring a playbook without Facto, either adopt Facto’s fragment or register `page-context` + `page-context-active` yourself.
+5. **One title:** H1 = `nav.adoc` link text; prefer no `:navtitle:`. Only exception: `Overview` under a nav section that already names the area (landing H1 = area name).
 
 ## Required
 

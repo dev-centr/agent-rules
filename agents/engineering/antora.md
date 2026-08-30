@@ -14,6 +14,12 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - Prefer pointing playbooks at Facto / its `playbook.fragment.yml` over inventing a parallel “full Valentus” product line.
 - Page metadata: `page-*` attrs; Facto sets `page-context-active`. Body fallback pattern in `general/documentation.md`.
 
+## Page title = nav label
+
+- One canonical title: document H1, `:navtitle:` (prefer omit), and `nav.adoc` link text must match.
+- Exception: area landing under a named nav section may use `Overview` while the H1 is the area name (`= Email`, `= Org infra`).
+- Detail and pass checks: `general/documentation.md` (Antora page title = nav label).
+
 ## Related content architecture
 
 - **Internet Architecture / Internet Reliability** nests under DevCentr (`general-knowledge` body; portal `dev-centr/docs`). Peer of product SPE Architecture — not a new digital-/sys-architecture org for now.

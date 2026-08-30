@@ -177,6 +177,36 @@ Rules of thumb:
 - Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm; lean theme + **Facto** compose pack — Valentus + Lunr + STEM + Kroki + **page-context** — `agents/engineering/antora.md`). Encoding: skill **`fix-docs-encoding`**. Page metadata: `page-*` attrs + `ifndef::page-context-active[]` fallback (`general/documentation.md`).
 - Changelogs: skill **`owned-changelog`**. Shippable apps: skill **`ship-app`**. PRs: skill **`draft-pr`**.
 
+## Antora page title = nav label (one name)
+
+**One canonical title per page.** The document H1 (`= Title`), any `:navtitle:`, and the link text in `nav.adoc` must be the **same string**. Do not invent a shorter “nav name” that means something different from the article title.
+
+Why: mismatched names break search memory, changelogs, xrefs, and agent/human recall (“I swear the page was called X”).
+
+### How to author
+
+1. Write a **short H1** that also fits the sidebar (cold-reader gate still applies — see `agents/editorial/titles.md`).
+2. Prefer **no** `:navtitle:` — Antora falls back to the document title when `nav.adoc` omits link text (`xref:page.adoc[]`) or when link text matches the H1.
+3. If `nav.adoc` uses explicit link text, it **must equal** the H1 exactly.
+4. Do not keep a divergent `:navtitle:` “just in case.”
+
+### Allowed exception — section Overview landings
+
+When a **nav section** already names the area (e.g. `.Email`, `.Org infra`) and the landing page’s H1 is that same area name (`= Email`, `= Org infra`), the nav entry under that section **may** be `Overview`:
+
+```asciidoc
+.Email
+* xref:email/index.adoc[Overview]
+```
+
+That is the only intentional H1 ≠ nav-label case. Do not use it for ordinary how-tos or explanations.
+
+### Pass checks (titles / nav)
+
+1. H1 equals `nav.adoc` link text (or nav uses empty `xref:…[]` / omits text so the title wins).
+2. No `:navtitle:` unless it is identical to the H1 (prefer deleting it).
+3. Overview exception only on capability/area index pages under a section that already carries the area name.
+
 ## Titles for news, blogs, and essays
 
 **Cold reader:** title and first paragraph must orient a stranger out of thin air — load **`agents/editorial/titles.md`**. No shape checklists.
