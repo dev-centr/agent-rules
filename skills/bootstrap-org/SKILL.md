@@ -45,7 +45,7 @@ Batch remaining questions (AskQuestion when available). Skip items the profile a
 **Ask when missing and not skipped by the profile**
 
 - Custom domain bought / verified? (else github.io)
-- Sibling / partner orgs to cross-link (do not absorb)
+- Sibling / partner orgs to cross-link (do not absorb; footers: one homepage entry point per org — `general/partner-org-entrypoints.md`)
 - Repos to transfer vs leave (org)
 - Auth/login this session? (`web-app` then Netlify overlay)
 - Registry / language (`library`)
@@ -189,6 +189,8 @@ When drafting those bodies, use skills `writing-news` / `writing-blog` if instal
 ### 7. Partners and transfers
 
 Transfer with `gh api` (see [reference.md](reference.md)). Hive paths: `$CODE_ROOT/<host>/<owner>/<repo>`; forks → `.forks/`; clones → `.clones/`. Update remotes, About homepages, personal hub, sibling docs. Delete leftover **personal-account stubs** (`user/{org}`, `user/{org}-private`) that belonged on the org.
+
+Partner / related footers and homepage partner rows: **one entry point per org** (homepage preferred; not homepage + docs + GitHub). Detail: `general/partner-org-entrypoints.md`.
 
 ### 8. Domain, email, infra (hand off)
 

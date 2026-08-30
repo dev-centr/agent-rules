@@ -47,6 +47,10 @@ Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 - UTF-8 without BOM; ASCII punctuation in SVG labels; skill `fix-docs-encoding` on touched `docs/` before commit.
 - Hub deploy: pushing a component repo alone may not refresh the aggregator — redeploy the docs hub playbook so `_images/` goes live.
 
+## Partner footers (related / partner strips)
+
+**One entry point per org** in `footer-content.hbs` and mirrored site footers: prefer the public org homepage; GitHub only when there is no homepage. Do **not** stack homepage + docs hub + GitHub for the same org (no “OSO Docs” beside OpenShellOrg, no “DevCentr Docs” beside DevCentr). Detail: `general/partner-org-entrypoints.md`.
+
 ## Deduplicate
 
 When you find a second public Antora site in an Antora org: confirm the component is (or will be) in the hub, then disable the errant Pages/workflow and point README “Explore the docs” (and About homepage, unless main-site or product-domain exception) at the hub component URL. New-repo About homepage policy: skill `bootstrap-org`.

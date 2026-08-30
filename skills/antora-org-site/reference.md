@@ -61,3 +61,7 @@ Rules:
 - **Suggest** **Valentus** (`antora-supplemental/valentus-theme`) — confirm before applying (`SKILL.md`). With org brand colors/logo from the org’s central assets. Keep Valentus **lean** (theme only).
 - **Facto** compose pack (`antora-supplemental/antora-facto`): Valentus + Lunr + STEM/math + Kroki diagrams + **page-context** (`page-*` metadata). Prefer Facto / its playbook fragment over stuffing defaults into Valentus `v2`.
 - Every published site: `@antora/lunr-extension` plus the AI search/help extension from `antora-supplemental` (`antora-search-chat`; see also `antora-ai-help-extension`). Details in skill `antora-org-site`.
+
+## Partner / related footers
+
+One entry point per listed org — homepage preferred. Do not also link that org’s docs hub or GitHub in the same strip. Shared rule: `general/partner-org-entrypoints.md`.

@@ -1,0 +1,25 @@
+= Partner org single entry points — changelog detail
+:page-audience: Maintainers applying partner-footer policy
+:page-usage-context: Detail for the 2026-08-30 partner-org-entrypoints changelog entry
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-30
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+== What changed
+
+* New portable detail: `general/partner-org-entrypoints.md` — one homepage (or GitHub-only) link per org in footers and related strips; no homepage + docs + GitHub stacks.
+* Pointers from `user.md`, `general/creator.md`, `general/antora-docs-sites.md`, and skills `antora-org-site` / `bootstrap-org`.
