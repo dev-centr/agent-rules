@@ -2,4 +2,4 @@
 
 * Expanded `agents/editorial/titles.md` with cold-reader gate and explicit ban on forced `When …` titles.
 * Writing skills + `user.md` / documentation layer point at that module; fat per-site STYLE rulebooks deprecated.
-* Clarified workstation facts are `machine.md` + `harness.md` in machine.example / global notes.
+* Clarified workstation facts are `machine.md` + `harness.md` (not `MEMORIES.md`) in machine.example / global notes.
