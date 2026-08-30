@@ -23,9 +23,14 @@ Prototyping often wants local iteration before or beside commit + PR. That tensi
 - Iterate by subsequent commits and PR updates - do **not** hold the first push "until the demo feels done."
 - Goal: avoid cross-machine friction; push so work is visible elsewhere.
 
-## Suite intro anchoring image
+## Suite / variant anchoring visuals
 
-Demo introductions (suite/hub lede) should include **exactly one** anchoring screenshot or contextual mockup — a single memory-hook before the interactive web demo. Not a gallery; not multiple competing hero images. Complements the identity strip / VCS logo / lay description / variant switcher order in skill `demo-site-wiring`. Grandfather: do not retrofit every old demo unless substantively editing; apply on create / substantive intro edit.
+Skill `demo-site-wiring` owns the full order. Short rule:
+
+- **Single-variant** desks: **exactly one** suite-level hero screenshot / contextual mockup (memory-hook). Not a gallery; not competing heroes.
+- **Multi-variant** desks: **one compact mockup per variant** in a ~3-column grid with a real **tab bar**; mockups are clickable nav (desktop + mobile). Demo zone may stay a **placeholder until chosen**. Do not rely on a single suite hero alone.
+
+Grandfather: do not retrofit every old demo unless substantively editing; apply on create / substantive intro edit. Reference feel: Edge Bar (`context-rails`) variant tiles.
 
 ## Trust and conflict handling
 

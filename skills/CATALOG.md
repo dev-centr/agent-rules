@@ -51,7 +51,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `release-targets` | release architectures, common/desktop/lab/omnibus, common/2026, patterns.sdl, win/lin x64 arm64 defaults | active | Year-dated sets; detail `general/release-target-patterns.md` |
 | `record-rule` | make that a rule, save this rule, record a rule, persist preference, agent-rules layer; update AI rules/skills; sync harness + template | active | Routes to portable/org/project/harness-local per `harness-boundary` |
 | `self-host-fonts` | Google Fonts, Fontsource, `@fontsource`, FOUC, preload woff2, self-host fonts, CDN webfonts | active | Prefer bundled fonts; never wait on CDN for paint |
-| `demo-site-wiring` | interactive demos, new UI concept / layout / chrome / windowing idea, demos browser/index, demo breadcrumb, VCS logo on demo chrome, lay demo copy, intro anchoring screenshot/mockup, org-site demo catalog | active | Auto on UI invent/ship (owned orgs); one suite lede image; grandfather old demos; no push/PR suppress |
+| `demo-site-wiring` | interactive demos, new UI concept / layout / chrome / windowing idea, demos browser/index, demo breadcrumb, VCS logo on demo chrome, lay demo copy, variant tabs, mockup-as-nav, placeholder until chosen, multi-variant desk, intro anchoring screenshot/mockup, org-site demo catalog, Edge Bar, context edges | active | Auto on UI invent/ship (owned orgs); single hero **or** one compact mockup per variant; grandfather old demos; no push/PR suppress |
 | `tool-inventory` | tools changed, record tool inventory, update local tool list snapshot | active | Harness-agnostic; writes via `machine.md` or `TOOL-INVENTORY.md` |
 
 ## Adding a skill (checklist)

@@ -4,11 +4,13 @@ description: >-
   Use when making demos, interactive explainers, product-idea demos, demo pages,
   demos browser, demos index, org-site demo catalog, demo breadcrumb, VCS logo
   on a demo, GitHub mark on demo chrome, lay-person demo copy, variant tabs on
-  a demo, wiring a demo into the parent org site, demo-site-wiring, publishing
-  a demo to hci-nerdz.github.io/demos (or another org demos index), inventing or
-  shipping a new UI concept, layout mode, chrome idea, spatial or windowing
-  concept, product-idea desk, or interactive explainer for an owned org;
-  demo intro screenshot, anchoring mockup, suite lede image, memory-hook.
+  a demo, variant mockup grid, mockup-as-nav, placeholder until chosen, multi-
+  variant desk, wiring a demo into the parent org site, demo-site-wiring,
+  publishing a demo to hci-nerdz.github.io/demos (or another org demos index),
+  inventing or shipping a new UI concept, layout mode, chrome idea, spatial or
+  windowing concept, product-idea desk, or interactive explainer for an owned
+  org; demo intro screenshot, anchoring mockup, suite lede image, memory-hook,
+  context edges, Edge Bar.
 ---
 
 # Demo site wiring
@@ -35,12 +37,37 @@ Apply this order on create / substantive chrome edit:
    - **Org** → org calling page (usually the **demos index**)
    - **Repo name** → canonical GitHub/GitLab repository URL
 2. **New line after that strip: VCS logo** → same repository URL (GitHub mark, GitLab mark, etc.). Default: its **own line under** the identity strip. Do **not** place the logo after the variant switcher. Do **not** treat the variant switcher as "the nav" the logo follows.
-3. **Demo-level description** — lay text: how the idea works / fits a workflow. **Before** the variant switcher.
-4. **Exactly one anchoring screenshot or contextual mockup** in the suite/hub lede area (with or immediately after the demo-level description, still **before** the variant switcher). Purpose: capture attention and give a single memory-hook before the interactive web demo. **Not** a gallery; **not** multiple competing hero images. Complements (does not replace) the identity strip / VCS logo / lay description / variant switcher order.
-5. **Variant switcher** (tabs / hash routes / sections). This is only "nav" in a loose sense — it is **not** the identity nav from step 1.
-6. **Active variant:** title + variant-specific description + interactive UI (mock / desk / controls).
+3. **Demo-level description** — lay text: how the idea works / fits a workflow. **Before** the variant chooser.
+4. **Variant chooser + anchoring visuals** — see [Suite vs multi-variant anchoring](#suite-vs-multi-variant-anchoring) below. Teaching blurbs for each variant sit **outside** the interactive facsimile (hub lede / variant blurb), not as narrator captions inside the mock.
+5. **Demo zone** — interactive UI (mock / desk / controls) for the active variant, **or** a clear placeholder until the user chooses a variant (see [Placeholder until chosen](#placeholder-until-chosen)).
 
-Do not put the demo-level lede below the variant UI. Do not skip variant blurbs when the page has more than one variant. Do not split org and repo into separate bands above the VCS logo.
+Do not put the demo-level lede below the variant UI. Do not skip variant blurbs when the page has more than one variant. Do not split org and repo into separate bands above the VCS logo. Do not invent a second identity band.
+
+## Suite vs multi-variant anchoring
+
+| Desk type | Anchoring visual |
+| --- | --- |
+| **Single-variant** (or one primary interactive surface) | **Exactly one** suite-level hero screenshot / contextual mockup with or right after the demo-level description — a single memory-hook. **Not** a gallery; **not** competing heroes. |
+| **Multi-variant** (tabs / hash routes / named modes) | **One compact mockup per variant**, enumerated in a grid/flex sized to fit about **three columns on desktop**. Group mockups with the chooser. Do **not** ship only a single suite hero and omit per-variant imagery. Compact CSS/SVG thumbs beat oversized “impressive” frames that break the grid. |
+
+### Variant titles as a real tab bar
+
+Variant titles must read as a **tab bar** (tabbiness: connected track, selected tab surface, `role="tablist"` / `role="tab"` when interactive on one page). Do **not** style them as a generic button row or pill cluster.
+
+The **demo zone below is the tab content**.
+
+### Mockup-as-nav (compatible with tabs)
+
+Per-variant mockups are **clickable navigation**, not decoration only:
+
+- **Desktop:** tabs **and** clickable mockups. Clicking a mockup selects that variant and loads the interactive demo in the tab content / demo zone.
+- **Mobile:** clicking a mockup to load the demo is the preferred path (same click-to-populate; layout reflows). Tabs may remain for accessibility / parity.
+
+Reference feel: HCI-Nerdz **Edge Bar** (`context-rails`) hub — visual variant tiles + clear variant organization. Apply that pattern cleanly on SPA/hash desks too (e.g. `virtual-pages`).
+
+### Placeholder until chosen
+
+On multi-variant desks where mounting the interactive stack is non-trivial, the **demo zone starts as a placeholder** until the user chooses (tab or mockup). Do **not** auto-mount the deep interactive stack on first paint. Deep-linking a variant hash/route still mounts that variant (choice already expressed by the URL).
 
 ## Identity strip + VCS logo (detail)
 
@@ -50,7 +77,7 @@ Do not put the demo-level lede below the variant UI. Do not skip variant blurbs 
 | Repo name (same strip) | Canonical VCS repository URL |
 | VCS logo (next line) | Same repository URL |
 
-Reference implementation (in-flight / updated when touched): `HCI-Nerdz/shell-context-demo` hub chrome in `src/demos/nav.ts` (+ hub CSS). Org catalog example: `HCI-Nerdz/HCI-Nerdz.github.io` `src/lib/demos.ts`.
+Reference implementations: `HCI-Nerdz/shell-context-demo` hub chrome; `HCI-Nerdz/virtual-pages` (multi-variant tabs + compact mockups + placeholder); Edge Bar hub tiles in `HCI-Nerdz/context-rails`. Org catalog example: `HCI-Nerdz/HCI-Nerdz.github.io` `src/lib/demos.ts`.
 
 ## Push / PR while prototyping (anti-suppression)
 
@@ -70,9 +97,12 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] Card / entry in the org demos browser (create browser if absent)
 - [ ] One `org / repo` identity strip (not two bands)
 - [ ] VCS logo on the line **after** that strip, linking to the repo
-- [ ] Demo-level lay workflow copy above the variant switcher
-- [ ] Exactly one intro anchoring screenshot/mockup in the suite lede (not a gallery)
-- [ ] Variant switcher, then active variant: title + blurb + interactive UI
+- [ ] Demo-level lay workflow copy above the variant chooser
+- [ ] Anchoring visuals: one suite hero **or** one compact mockup per variant (multi-variant)
+- [ ] Variant titles look like a real tab bar (not generic buttons)
+- [ ] Mockups clickable to select / load the demo (desktop + mobile)
+- [ ] Demo zone placeholder until chosen (unless URL already selects a variant)
+- [ ] Active variant: title + blurb **outside** the facsimile + interactive UI inside
 - [ ] Skipped retrofit of unrelated historical demos
 - [ ] Did not suppress push/PR for prototyping; pushed so work is visible elsewhere
 
@@ -81,9 +111,14 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Leave a new demo only on repo Pages with no org index entry
 - Skip demos when inventing/shipping a new UI concept for an owned org
 - Use engineer-only jargon as the sole page description
-- Ship a suite intro with zero anchoring visuals, or with a multi-image gallery / competing heroes in the lede
+- Ship a multi-variant suite with only a single suite hero and no per-variant mockups
+- Ship a suite intro with zero anchoring visuals, or with competing suite-level heroes in the lede
+- Style the variant switcher as generic buttons / pills when tabs are the pattern
+- Auto-mount a heavy interactive stack on first paint before the user chooses (multi-variant)
+- Put tour-guide / narrator captions **inside** the interactive facsimile (teaching stays in hub / variant blurbs)
 - Treat nav and breadcrumb as two separate bands
 - Put the VCS logo after the variant switcher, or treat the variant switcher as the identity nav
+- Invent a second org/repo identity band
 - Mass-migrate every old demo "for consistency" without an explicit ask
 - Suppress automatic push/PR “until the demo is done”
 - Silently paper over competing demo/docs philosophies
