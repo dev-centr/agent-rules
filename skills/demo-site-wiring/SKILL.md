@@ -33,10 +33,10 @@ Pair with skill `antora-org-site` when the org's teaching surface is Antora; pai
 
 Apply this order on create / substantive chrome edit:
 
-1. **`org / repo` identity strip** (nav and breadcrumb are the **same** band — do **not** render two separate chrome rows for them).
+1. **`org / repo` identity strip** (nav and breadcrumb are the **same** band — do **not** render two separate chrome rows for them). This strip is **site navigation only** — neither crumb links to the VCS repository.
    - **Org** → org calling page (usually the **demos index**)
-   - **Repo name** → canonical GitHub/GitLab repository URL
-2. **New line after that strip: VCS logo** → same repository URL (GitHub mark, GitLab mark, etc.). Default: its **own line under** the identity strip. Do **not** place the logo after the variant switcher. Do **not** treat the variant switcher as "the nav" the logo follows.
+   - **Repo name** → this demo's **site home** (Pages / demo root for this project; clear variant hash to suite home when applicable). **Not** the GitHub/GitLab URL.
+2. **New line after that strip: VCS logo** → canonical repository URL (GitHub mark, GitLab mark, etc.). **Only** this control (and its optional text label) links out to the VCS repo. Default: its **own line under** the identity strip. Do **not** place the logo after the variant switcher. Do **not** treat the variant switcher as "the nav" the logo follows.
 3. **Demo-level description** — lay text: how the idea works / fits a workflow. **Before** the variant chooser.
 4. **Variant chooser + anchoring visuals** — see [Suite vs multi-variant anchoring](#suite-vs-multi-variant-anchoring) below. Teaching blurbs for each variant sit **outside** the interactive facsimile (hub lede / variant blurb), not as narrator captions inside the mock.
 5. **Demo zone** — interactive UI (mock / desk / controls) for the active variant, **or** a clear placeholder until the user chooses a variant (see [Placeholder until chosen](#placeholder-until-chosen)).
@@ -74,8 +74,10 @@ On multi-variant desks where mounting the interactive stack is non-trivial, the 
 | Control | Links to |
 | --- | --- |
 | Org name (in the identity strip) | Org demos index (or the org's designated calling page for demos) |
-| Repo name (same strip) | Canonical VCS repository URL |
-| VCS logo (next line) | Same repository URL |
+| Repo name (same strip) | This demo's site home (Pages root / suite home) — **site nav**, not VCS |
+| VCS logo (next line) | Canonical VCS repository URL — **only** repo link in the chrome |
+
+Do **not** make the repo crumb and the VCS logo both open GitHub/GitLab. That duplicates the destination and makes the breadcrumb read as a second repo button.
 
 Reference implementations: `HCI-Nerdz/shell-context-demo` hub chrome; `HCI-Nerdz/virtual-pages` (multi-variant tabs + compact mockups + placeholder); Edge Bar hub tiles in `HCI-Nerdz/context-rails`. Org catalog example: `HCI-Nerdz/HCI-Nerdz.github.io` `src/lib/demos.ts`.
 
@@ -95,8 +97,8 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 
 - [ ] Live under / linked from the parent org site
 - [ ] Card / entry in the org demos browser (create browser if absent)
-- [ ] One `org / repo` identity strip (not two bands)
-- [ ] VCS logo on the line **after** that strip, linking to the repo
+- [ ] One `org / repo` identity strip (not two bands); site nav only (org → demos index; repo → demo site home)
+- [ ] VCS logo on the line **after** that strip is the **only** link to the VCS repo
 - [ ] Demo-level lay workflow copy above the variant chooser
 - [ ] Anchoring visuals: one suite hero **or** one compact mockup per variant (multi-variant)
 - [ ] Variant titles look like a real tab bar (not generic buttons)
@@ -117,6 +119,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Auto-mount a heavy interactive stack on first paint before the user chooses (multi-variant)
 - Put tour-guide / narrator captions **inside** the interactive facsimile (teaching stays in hub / variant blurbs)
 - Treat nav and breadcrumb as two separate bands
+- Point the identity-strip repo crumb at the VCS URL (duplicates the logo; strip must stay site nav)
 - Put the VCS logo after the variant switcher, or treat the variant switcher as the identity nav
 - Invent a second org/repo identity band
 - Mass-migrate every old demo "for consistency" without an explicit ask

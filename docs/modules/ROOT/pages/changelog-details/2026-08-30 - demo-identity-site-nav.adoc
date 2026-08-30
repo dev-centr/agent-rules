@@ -1,0 +1,17 @@
+= 2026-08-30 — Demo identity strip is site nav only
+:description: Identity crumb links stay on the org/demo site; only the VCS logo opens the repository.
+:page-audience: Maintainers and readers tracking functional history of this component
+:page-usage-context: Changelog detail for skill demo-site-wiring identity strip vs VCS logo
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+
+== Summary
+
+* Skill `demo-site-wiring`: the `org / repo` identity strip is **site navigation only**.
+* Org crumb → demos index; repo crumb → this demo's Pages / suite home.
+* The VCS logo line is the **only** chrome control that links to the GitHub/GitLab repository.
+* Explicit do-not: do not make the repo crumb and the logo both open the VCS URL.
+
+== Why
+
+Linking the repo name in the breadcrumb to GitHub while also showing a GitHub mark below duplicated the destination and made the breadcrumb read as a second repo button instead of site nav.

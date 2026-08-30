@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Demo identity strip is site nav only
+
+* Skill `demo-site-wiring`: org/repo crumbs stay on the site (demos index + demo home); only the VCS logo links to the repository.
+* link:changelog-details/2026-08-30%20-%20demo-identity-site-nav.adoc[Details]
+
 == 2026-08-30 — Mixr cost routing and shadow/LSP design
 
 * On-device Mixr docs, Anthropic suppress defaults, Hornet as t3code provider seam, shadow/LSP lag contract.
