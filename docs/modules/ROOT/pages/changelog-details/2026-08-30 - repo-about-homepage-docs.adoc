@@ -1,0 +1,5 @@
+= Repo About homepage → docs
+
+* Skill `bootstrap-org`: when creating a project repo, set GitHub About `--homepage` to the org docs hub **component** URL by default.
+* Exceptions: org main/marketing / `{org}.github.io` site → org public site URL; product with its own domain or dedicated subdomain → that product URL; no URL yet → leave empty.
+* Cross-links in `antora-org-site` and `public-readme`; thin always-on line in `AGENTS.md`.

@@ -22,6 +22,7 @@ Full templates and trapped-badge notes: [reference.md](reference.md).
 - Centered header: badges + title + one-liner + quick links in **one** block
 - Linked metric badges (destination = the thing represented, never the shield image URL)
 - Org repos with a docs hub: **Explore the docs »** text link → hub component URL, not a second per-repo Antora Pages site. No extra Docs/CI shield that fights the established chrome
+- Align GitHub **About homepage** with that same hub component URL for ordinary project repos (exceptions: org main/marketing site, or a product with its own domain/subdomain — skill `bootstrap-org`)
 - TOC when more than three sections
 - **Built With** grouped by role (runtime / UI / docs / packaging), not a sticker row
 - Section back-to-top; Contact from real profile fields; omit empty Roadmap/Acknowledgments

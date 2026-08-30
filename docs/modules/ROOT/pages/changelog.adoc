@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-08-29
+:page-last-edited: 2026-08-30
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -23,6 +23,13 @@ Timeline of notable **functional** changes, reconstructed from git history and o
 Detail pages live under `changelog-details/`.
 
 This repository's reachable git history on `main` begins **2026-08-06** (`cd9463d`). Earlier design of `RULES.md` / profiles lived in personal forks (see `AMDphreak/agent-rules`).
+
+== 2026-08-30 -- Repo About homepage → docs
+
+* New project repos: GitHub About URL defaults to the org docs hub component page.
+* Exceptions: org main/marketing site, or a product with its own domain/subdomain.
+* Skills `bootstrap-org`, `antora-org-site`, `public-readme`; thin `AGENTS.md` pointer.
+* See xref:changelog-details/2026-08-30 - repo-about-homepage-docs.adoc[Detailed changelog].
 
 == 2026-08-29 -- Release target patterns
 

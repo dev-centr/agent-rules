@@ -5,9 +5,9 @@ description: >-
   create a GitHub organization, start a company or nonprofit, scaffold a
   CLI/library/Tauri/desktop/web app, populate org data, set up .github,
   github.io, an Antora docs hub, pick a bootstrap profile, paste a profile { }
-  block, or create an org agent-rules overlay. Named SDL profiles:
-  oss-collective, product-org, nonprofit, web-app, library, cli, desktop,
-  docs-hub, forks-org.
+  block, or create an org agent-rules overlay. Repo About homepage, GitHub
+  About URL, docs hub component URL. Named SDL profiles: oss-collective,
+  product-org, nonprofit, web-app, library, cli, desktop, docs-hub, forks-org.
 ---
 
 # Bootstrap a new organization
@@ -105,7 +105,18 @@ Project bootstrap (kind project):
 
 `gh api user` then `gh api orgs/{org}`. PATCH name, description, `blog` (public **site** URL — not docs, not github.com), company, location.
 
-After repos exist: per-repo About + homepage (`gh repo edit`). Website field on the **org** is the public site.
+After repos exist: per-repo About description + homepage (`gh repo edit`). Website field on the **org** is the public site.
+
+**Repo About homepage** (`--homepage`) when creating or bootstrapping a project — pick in this order:
+
+| Repo kind | Homepage |
+| --- | --- |
+| **Product** with its own public domain or dedicated subdomain (e.g. `https://app.example.com`, `https://myproduct.dev`) | That product/site URL |
+| **Main** / marketing site repo (`{org}.github.io`, Pages site root, or the designated org landing repo) | Org public site URL (same as org `blog`) — not the docs hub |
+| **Everything else** that has (or will have) docs on the org hub — libraries, CLIs, tools, satellites | Org docs hub **component** URL (e.g. `https://docs.devcentr.org/<component>/`) |
+| No docs yet and no product/site URL | Leave empty until docs or a product URL exists; do not invent a dead link |
+
+Do **not** point satellite repos at a per-repo Antora Pages URL. Detail: [reference.md](reference.md); hub wiring: skill `antora-org-site`.
 
 ### 2. Brand
 

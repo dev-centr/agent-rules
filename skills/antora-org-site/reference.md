@@ -21,8 +21,9 @@ If an organization already publishes a **central public Antora site**, do **not*
 
 1. Keep component content in the product repo under `docs/` + `docs/antora.yml` (docs close to code).
 2. **Wire** that source into the org hub playbook (`dev-centr/docs` → `antora-playbook.yml`, `antora-playbook-local.yml`, `antora-playbook.testing.yml`).
-3. Point the repo **About homepage** and README “Explore the docs” links at the hub URL (e.g. `https://docs.devcentr.org/<component>/`), never at `https://<org>.github.io/<repo>/` for Antora.
-4. Do **not** add/enable GitHub Pages (or Netlify/etc.) solely to host another Antora build of the same component.
+3. Point README “Explore the docs” links at the hub component URL (e.g. `https://docs.devcentr.org/<component>/`), never at `https://<org>.github.io/<repo>/` for Antora.
+4. **Repo About homepage** (`gh repo edit --homepage`): use the hub component URL for ordinary project repos. **Exceptions** — keep the product or org site URL instead when the repo is (a) the org **main** / marketing / `{org}.github.io` site, or (b) a **product** that already has its own domain or dedicated subdomain. Skill `bootstrap-org` owns the full table.
+5. Do **not** add/enable GitHub Pages (or Netlify/etc.) solely to host another Antora build of the same component.
 
 ## Actively deduplicate
 
@@ -31,7 +32,7 @@ When you find a secondary Antora site in an Antora org:
 1. Confirm the component is (or will be) in the hub playbook.
 2. **Erase** the errant site: disable/delete GitHub Pages, delete `gh-pages` (or equivalent publish branch), and remove/disable workflows that deploy a standalone Antora site.
 3. Leave a build-only docs CI job only if useful for PR validation — **no publish** of a second **public** site.
-4. Update homepage + README links to the hub.
+4. Update README “Explore the docs” links to the hub; set About homepage to the hub component URL unless the repo is the org main site or a product with its own domain/subdomain.
 5. Update hub portal pages (`where-docs-live`, home nav/tools) if the component is newly wired.
 
 ## Local / CI Antora builds

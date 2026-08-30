@@ -49,4 +49,4 @@ Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 
 ## Deduplicate
 
-When you find a second public Antora site in an Antora org: confirm the component is (or will be) in the hub, then disable the errant Pages/workflow and point README/About at the hub URL.
+When you find a second public Antora site in an Antora org: confirm the component is (or will be) in the hub, then disable the errant Pages/workflow and point README “Explore the docs” (and About homepage, unless main-site or product-domain exception) at the hub component URL. New-repo About homepage policy: skill `bootstrap-org`.

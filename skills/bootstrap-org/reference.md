@@ -68,10 +68,24 @@ Visibility if they created `.github` private by mistake:
 gh repo edit {org}/.github --visibility public
 ```
 
-Repo About:
+Repo About (description + homepage). Homepage selection:
+
+| Repo kind | `--homepage` |
+| --- | --- |
+| Product with its own domain / dedicated subdomain | That product URL |
+| Main / marketing site repo (`{org}.github.io` or designated landing) | Org public site (org `blog`) |
+| Other projects with org-hub docs | `https://docs.<org-or-custom>/<component>/` (hub component page, not a second Antora site) |
+| Neither yet | Omit `--homepage` until one exists |
 
 ```powershell
-gh repo edit {org}/{repo} --description '...' --homepage 'https://...'
+# Library / CLI / tool → docs component (typical default)
+gh repo edit {org}/{repo} --description '...' --homepage 'https://docs.devcentr.org/{component}/'
+
+# Product with its own host
+gh repo edit {org}/{product} --description '...' --homepage 'https://{product-domain}/'
+
+# Org main / github.io site repo
+gh repo edit {org}/{org}.github.io --description '...' --homepage 'https://{org}.github.io'
 ```
 
 Transfer (REST, not `gh repo` alone):
