@@ -1,0 +1,78 @@
+= Mixr routing and cost
+:navtitle: Mixr routing and cost
+:description: On-device Mixr router, provider suppress lists, model tiers, and cost lanes for Hornet — without Python RouteLLM glue.
+:page-layout: docs
+:page-audience: Engineers configuring Hornet Mixr or comparing Auto-mode economics
+:page-usage-context: Explanation on the agent-rules docs hub
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-30
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+endif::[]
+
+Hornet's **Mixr** meta-agent picks `{ model, provider, maxTokens, reason }` per node or job.
+It is Cursor *Auto*-shaped in role, not in implementation: policy and catalog live in D inside Hornet; classify calls hit a **local OpenAI-compatible router** when possible.
+
+== On-device router (default)
+
+[source,text]
+----
+MIXR_ROUTER = on-device | api | auto
+MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1
+MIXR_ROUTER_MODEL = <local router model id>
+MIXR_ROUTER_RAM_MIN_MB = 2048
+----
+
+* **on-device (default):** Mixr POSTs a short classify prompt to `$MIXR_ROUTER_BASE_URL/chat/completions`.
+* **api:** skip local classify; use catalog/`router-self` for the Mixr self-call only.
+* **auto:** same as on-device when available RAM ≥ `MIXR_ROUTER_RAM_MIN_MB` and the local server answers; otherwise api/heuristic catalog.
+
+Override available RAM for tests with `HORNET_AVAIL_RAM_MB`.
+
+Weights may come from anywhere (including models once published via Hugging Face) as long as they run under a **non-Python** local runner (GGUF/ONNX/llama.cpp, etc.). What Hornet refuses is **in-process RouteLLM / PyTorch / Transformers glue**.
+
+== Suppress lists
+
+[source,text]
+----
+MIXR_SUPPRESS_PROVIDERS = anthropic,...
+MIXR_SUPPRESS_MODELS = ...
+MIXR_ALLOW_SUPPRESSED = off | explicit-only
+----
+
+Defaults suppress **`anthropic`**. Automatic routes never select a suppressed provider or model.
+Only an **explicit** per-invoke override (`allowSuppressed`) may use them when `MIXR_ALLOW_SUPPRESSED=explicit-only`.
+
+== Catalog tiers (heuristic)
+
+| Tier | Role | Default examples |
+| --- | --- | --- |
+| 1 | Flash / diffs / explore | GLM-5.3-Flash, DeepSeek chat |
+| 2 | Agentic multi-file | MiniMax M3, Kimi K3, GLM-5.3 |
+| 3 | Architecture / scaffolding | GLM-5.3 at high reasoning budget |
+
+Anthropic is **not** in the default catalog.
+
+== Offline cost lanes (not interactive Mixr)
+
+Batch APIs, prompt-cache reads, and surplus open-weight endpoints help background indexing and bulk jobs.
+They are **not** the interactive Mixr path — latency and dropouts make them wrong for turn loops.
+
+== OpenAI-compat seam
+
+`hornet serve` exposes:
+
+* `GET /api/health` — readiness + Mixr status
+* `GET /v1/models` — catalog ids
+* `POST /v1/chat/completions` — returns a Mixr `RoutePlan` as assistant content (stub until live completions wire)
+* `POST /api/provider/session` / `POST /api/provider/turn` — t3code HornetDriver seam
+
+== Related
+
+* xref:agent-harness.adoc[Agent harness (Hornet)]
+* xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]

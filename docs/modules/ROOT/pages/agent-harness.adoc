@@ -44,11 +44,21 @@ Proposed harness variables (Hornet + Mixr):
 ----
 HARNESS_NAME = hornet
 MIXR_ROUTING = on | off
-MIXR_ROUTER_MODEL = <small fast model for routing only>
+MIXR_ROUTER = on-device | api | auto
+MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1
+MIXR_ROUTER_MODEL = <local OpenAI-compat router model>
+MIXR_ROUTER_RAM_MIN_MB = 2048
 MIXR_DEFAULT_POLICY = balanced | cheap | quality | byok-only
+MIXR_SUPPRESS_PROVIDERS = anthropic,...
+MIXR_SUPPRESS_MODELS = ...
+MIXR_ALLOW_SUPPRESSED = off | explicit-only
 ----
 
 When `MIXR_ROUTING=off`, Hornet falls back to a single pinned model per node type in harness config — useful for debugging, not the production default.
+
+Default Mixr placement is **on-device**: classify via a local OpenAI-compatible server. API failover happens when RAM is below `MIXR_ROUTER_RAM_MIN_MB` or the local server is unreachable. **Anthropic is suppressed by default** — automatic routes never select it unless the user explicitly overrides.
+
+Detail: xref:mixr-routing-and-cost.adoc[Mixr routing and cost]. Speculative validation: xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP].
 
 == Implementation
 
@@ -63,6 +73,9 @@ Reference runtime: link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] 
 
 | v1
 | Mixr routing, wait-graph, HTTP desk (`hornet serve`), grid + fork web UI
+
+| v0.5+
+| On-device Mixr + suppress lists; OpenAI-compat + `/api/provider/*` seams for t3code HornetDriver
 
 | v2
 | Temporal layout engine — scrubber, fade, heatmap, scoped bookmarks (`/api/temporal`)
@@ -110,11 +123,17 @@ It does not answer *which runtime executes them* on a machine that wants somethi
 
 == Relationship to T3code
 
-T3code is listed in link:https://docs.devcentr.org/agent-rules/harness-neutral.html[harness-neutral architecture] as a harness enum value.
+T3code is listed in link:https://docs.devcentr.org/agent-rules/harness-neutral.html[harness-neutral architecture] as a harness enum value (`HARNESS_NAME = t3code`).
 
-There is **no DevCentr-owned T3code fork** today.
+**Division of labor:**
 
-The DevCentr harness targets a **similar weight class** — local, fast, tool-loop oriented — while routing file/process/GUI primitives through **dlang-supplemental** instead of whatever stack an upstream OSS harness chose.
+* **t3code** owns multi-machine registration/sync (laptop client ↔ desktop server) and the mature control surface.
+* **Hornet** owns Mixr, the disk node graph, tools, and (planned) shadow/LSP validation.
+* **HornetDriver** (in a t3code fork / eventual upstream PR) is the provider adapter that lets t3code drive Hornet the way it drives Cursor, Claude, Codex, or OpenCode.
+
+While Hornet's own remote desk is thin, expose Hornet via `hornet serve` and select the **Hornet** provider in t3code settings (`serverUrl`, default `http://127.0.0.1:8765`). Machine sync stays t3code's; Hornet does not reinvent pairing.
+
+There is no DevCentr-owned t3code org fork — personal fork work is fine for the driver; steer upstream when the protocol stabilizes.
 
 == Token provenance (first UX contract)
 
@@ -177,5 +196,7 @@ Full spec: xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]. Deprecated 
 * link:https://hci-nerdz.github.io/demos/grounded-tokens/[Grounded tokens demo]
 * xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]
 * link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Actor-model agentic UI demo]
+* xref:mixr-routing-and-cost.adoc[Mixr routing and cost]
+* xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]
 * link:https://github.com/dlang-supplemental[dlang-supplemental org]
 * xref:tools/agent-rules.adoc[Agent rules portal]

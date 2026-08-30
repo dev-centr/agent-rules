@@ -1,6 +1,8 @@
 * xref:index.adoc[Overview]
 * xref:harness-neutral.adoc[Harness-neutral architecture]
 * xref:agent-harness.adoc[Agent harness]
+* xref:mixr-routing-and-cost.adoc[Mixr routing and cost]
+* xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]
 * xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]
 * xref:usage.adoc[Usage]
 * xref:org-layer.adoc[Org layer]

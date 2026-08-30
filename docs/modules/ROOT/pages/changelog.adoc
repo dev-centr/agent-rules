@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Mixr cost routing and shadow/LSP design
+
+* On-device Mixr docs, Anthropic suppress defaults, Hornet as t3code provider seam, shadow/LSP lag contract.
+* link:changelog-details/2026-08-30%20-%20mixr-cost-routing-shadow-lsp.adoc[Details]
+
 == 2026-08-30 — Partner org single entry points
 
 * Footers and related strips: one entry point per org (homepage preferred); do not stack docs hub or GitHub beside it.

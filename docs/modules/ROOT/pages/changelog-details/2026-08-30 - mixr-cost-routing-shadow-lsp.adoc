@@ -1,0 +1,6 @@
+= 2026-08-30 — Mixr cost routing and shadow/LSP design
+:description: On-device Mixr docs, suppress lists, Hornet as t3code provider, shadow workspace contract.
+
+* Extended xref:../agent-harness.adoc[Agent harness] with Mixr on-device defaults, suppress lists, and HornetDriver / t3code division of labor.
+* Added xref:../mixr-routing-and-cost.adoc[Mixr routing and cost] and xref:../shadow-workspace-and-lsp.adoc[Shadow workspace and LSP].
+* Updated `harness.example.md` Mixr variables (`MIXR_ROUTER*`, `MIXR_SUPPRESS_*`).

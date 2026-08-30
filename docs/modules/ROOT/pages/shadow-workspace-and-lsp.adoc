@@ -1,0 +1,57 @@
+= Shadow workspace and LSP
+:navtitle: Shadow workspace and LSP
+:description: Hornet CoW speculative edits, single-process LSP multiplexing, tgc vs @nogc — lag-resistant design without Tree-sitter live DOM or duplicate extension hosts.
+:page-layout: docs
+:page-audience: Engineers designing Hornet speculative validation
+:page-usage-context: Explanation on the agent-rules docs hub
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-08-30
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+endif::[]
+
+Cursor-class IDEs often validate AI edits in a **shadow** editor: a second extension host, duplicate language servers, and heavy incremental parsers.
+That pattern correlates with UI lag. Hornet refuses it.
+
+== Target loop
+
+1. Model proposes a patch (byte/character offsets).
+2. Hornet applies it to an in-memory **copy-on-write** layer over the real workspace.
+3. An **LSP multiplexer** sends `textDocument/didOpen` / `didChange` with synthetic URIs to the **one** language server already serving the project.
+4. Diagnostics feed a self-correction prompt when needed.
+5. Disk commit happens only on user confirmation.
+
+No second `rust-analyzer` / `tsserver` process per speculative edit.
+
+== Forbidden live engines
+
+* **Tree-sitter** (and similar) as the live editor/DOM incremental engine — reflow and update tax.
+* Duplicate extension hosts or full IDE clones for validation.
+* Python/JIT stacks on the speculative hot path.
+
+AST awareness comes from **LSP diagnostics** and offset patches, not a second parser driving the UI tree.
+
+== LSP policy
+
+Prefer language servers that stay cheap under virtual documents.
+When a language's LSP is chronically expensive under muxed virtual docs, plan a **D reimplementation** (serve-d quality bar for D first; others as measured).
+
+== GC
+
+Hornet defaults to **tgc** (thread-local GC) for actor swarms — collections do not stop sibling threads.
+Use **`@nogc`** on hot paths: patch apply, IPC framing, LSP JSON-RPC framing, Mixr feature extract.
+Do not chase whole-program `@nogc`.
+
+== Status
+
+This page is the design contract. Hornet v0.5 ships Mixr + provider HTTP seams; CoW buffers and the LSP mux are roadmap (see project-plans seeds).
+
+== Related
+
+* xref:agent-harness.adoc[Agent harness (Hornet)]
+* xref:mixr-routing-and-cost.adoc[Mixr routing and cost]

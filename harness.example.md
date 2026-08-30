@@ -62,10 +62,16 @@ ACTOR_NODE_STORE = jsonl-per-node | off
 # Deprecated aliases (one release cycle):
 # PROJECT_INBOX = grid-forks | serialized | off  →  ACTOR_AGENTIC_UI = graph-grid | …
 
-# Hornet-only — Mixr model router (see docs Agent harness / Hornet)
+# Hornet-only — Mixr model router (see docs Agent harness / Hornet, Mixr routing and cost)
 # MIXR_ROUTING = on | off
-# MIXR_ROUTER_MODEL = <small model id for routing calls>
+# MIXR_ROUTER = on-device | api | auto
+# MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1
+# MIXR_ROUTER_MODEL = <local OpenAI-compat router model id>
+# MIXR_ROUTER_RAM_MIN_MB = 2048
 # MIXR_DEFAULT_POLICY = balanced | cheap | quality | byok-only
+# MIXR_SUPPRESS_PROVIDERS = anthropic
+# MIXR_SUPPRESS_MODELS =
+# MIXR_ALLOW_SUPPRESSED = explicit-only
 
 # Optional — Bitwarden CLI session persist for agents (not default; see docs bitwarden-cli-agents)
 # BITWARDEN_SESSION_PERSIST = enabled
