@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Demo selector hub and identity trail
+
+* Skill `demo-site-wiring`: multi-variant default is selector hub → separate pages; identity strip keeps Org → Demos → demo intermediates.
+* link:changelog-details/2026-08-30%20-%20demo-selector-hub-trail.adoc[Details]
+
 == 2026-08-30 — Demo mockups inside tab faces
 
 * Skill `demo-site-wiring`: static per-variant mockups live in the tab faces; the tabpanel starts where title / blurb / desk change.

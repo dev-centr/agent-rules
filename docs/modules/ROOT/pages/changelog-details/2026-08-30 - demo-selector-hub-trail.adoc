@@ -1,0 +1,15 @@
+= 2026-08-30 — Demo selector hub and identity trail
+:description: Multi-variant demos prefer separate pages; identity strip keeps intermediate site crumbs.
+:page-audience: Maintainers and readers tracking functional history of this component
+:page-usage-context: Changelog detail for skill demo-site-wiring selector pages and breadcrumb trail
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+
+== Summary
+
+* Skill `demo-site-wiring`: multi-variant default is a **selector hub** whose tiles open **separate variant pages** (Context Edge / virtual-pages). No interactive desk on the hub. In-page tabs are a narrow exception.
+* Identity strip must include **intermediate site crumbs** (typical: Org home → Demos → demo home → optional variant). Do not collapse Org + Demos into one crumb.
+
+== Why
+
+In-page tab systems for heavy desks work poorly on mobile. Separate pages match how Context Edge already ships. Breadcrumbs that skip Demos (or mislabel the org crumb as the demos index) hide the path that landed the reader on the demo.
