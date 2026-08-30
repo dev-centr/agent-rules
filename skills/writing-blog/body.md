@@ -29,10 +29,10 @@ Essay stance: https://ryanjohnson.dev/blog/posts/blog-as-inner-thought/
 
 - Press-release tone on an essay
 - Neutral news voice without a thesis
-- Imperative blog titles without implied [On] test (see `agents/editorial/titles.md`)
-- Forced `When …` titles or ledes that only make sense after the body scene
+- Imperative or cryptic titles that fail the cold-reader gate (`agents/editorial/titles.md`)
+- Forced situation titles or ledes that only make sense after the body scene
 - Telegraphic bullets without scenes
 
 ## Optional upstream references
 
-Published suites (claude-blog, marketingskills, Kimi anti-slop, etc.) are optional — **`agents/editorial/titles.md` + this file win** over per-site STYLE copies unless the user asks otherwise.
+Published suites (claude-blog, marketingskills, Kimi anti-slop, etc.) are optional — **`agents/editorial/titles.md` (cold-reader) + this file win** over per-site STYLE copies unless the user asks otherwise.

@@ -179,19 +179,17 @@ Rules of thumb:
 
 ## Titles for news, blogs, and essays
 
-**Stance before title shape:**
+**Cold reader:** title and first paragraph must orient a stranger out of thin air — load **`agents/editorial/titles.md`**. No shape checklists.
 
-- **News** faces **outward** — what entered the shared record (shipped, added, partnered).
-- **Blog / essay** faces **inward** — ideas, ideals, philosophy, craft tutorials, thinking in public.
-- **Changelog** is neither — shipping minutiae stay in Antora / `/changelog`.
+Channel stance (bodies, not title formulas):
+
+- **News** faces **outward** — what entered the shared record → skill `writing-news`
+- **Blog / essay** faces **inward** — ideas, craft, thinking in public → skill `writing-blog`
+- **Changelog** is neither — shipping minutiae stay in Antora / `/changelog`
 
 If announcing that a thing exists → news. If thinking through a claim or how to see → blog.
 
-When authoring or reviewing titles: load **`agents/editorial/titles.md`** (canonical).
-
-Hard gate: title **and** first paragraph must orient a **cold reader** out of thin air — name the topic before the case study. `When …` is allowed only when the class of failure is recognizable from the title alone; do not force situation titles.
-
-Thin pointers only in site `STYLE.adoc` if present — do not maintain a second rulebook per website. Philosophy: **Titles as orientation**. In-repo IDE rules per `IDE_PROJECT_RULES` in `$CODE_ROOT/harness.md`. Project agent facts → `AGENTS.md`. Workstation facts → `$CODE_ROOT/machine.md`. Harness config → `$CODE_ROOT/harness.md`.
+Site `STYLE.adoc` = thin pointer only if present. Project facts → `AGENTS.md`. Workstation → `$CODE_ROOT/machine.md`. Harness → `$CODE_ROOT/harness.md`.
 
 ## News and blog body copy (anti-terse)
 

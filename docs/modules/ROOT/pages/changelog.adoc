@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Titles slimmed to cold-reader gate
+
+* `agents/editorial/titles.md` drops shape checklists (`When…`, `[On]`, `as` vs `is`); cold-reader orientation is the only title rule.
+* link:changelog-details/2026-08-30%20-%20titles-cold-reader-only.adoc[Details]
+
 == 2026-08-30 — Editorial titles canonical + cold-reader gate
 
 * `agents/editorial/titles.md` is the house title doctrine (cold-reader gate; no forced `When …`).

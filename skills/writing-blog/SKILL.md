@@ -23,4 +23,4 @@ Read `body.md` in this folder for the full checklist. Titles: **`agents/editoria
 ## Verify
 
 Blog vs news on the same topic: thesis and voice present; not neutral outward report; may use `you` and inward framing.
-Cold-reader: a stranger can name the topic from title + lede alone (no forced `When …`).
+Cold-reader: a stranger can name the topic from title + lede alone.

@@ -1,0 +1,5 @@
+= 2026-08-30 - Titles cold-reader only
+
+* Slimmed `agents/editorial/titles.md` to the cold-reader gate plus one-line channel pointers.
+* Removed title-shape menus that over-steered agents into cryptic `When …` patterns.
+* `user.md`, `documentation.md`, writing-blog skill, and local editorial-titles overlays match.
