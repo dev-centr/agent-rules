@@ -17,8 +17,8 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 ## Page title = nav label
 
 - One canonical title: document H1, `:navtitle:` (prefer omit), and `nav.adoc` link text must match.
-- Exception: area landing under a named nav section may use `Overview` while the H1 is the area name (`= Email`, `= Org infra`).
-- Keep those landings as `…/index.adoc` (not `overview.adoc`). Public face is the folder path under `urls.html_extension_style: indexify` (`…/email/`). Do not advertise `index.html` / `overview.html` in prose.
+- Section / area landings: **linked parent** whose link text equals the H1 (`* xref:email/index.adoc[Email]` + `**` children). Do not use `.Email` / `.Org infra` + Overview child. Do not invent `overview.adoc`.
+- Keep landings as `…/index.adoc`. Public face is the folder path under `urls.html_extension_style: indexify` (`…/email/`). Do not advertise `index.html` / `overview.html` in prose.
 - Detail and pass checks: `general/documentation.md` (Antora page title = nav label).
 
 ## Folder URLs (indexify)

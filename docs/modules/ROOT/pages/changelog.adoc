@@ -19,9 +19,15 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-== 2026-08-30 — Folder URLs (indexify) for Overview landings
+== 2026-08-30 — Linked parent section landings (drop Overview)
 
-* Keep section Overview pages as `…/index.adoc` (H1 = area name, nav = Overview). Public face is the folder path via `urls.html_extension_style: indexify` — do not rename to `overview.adoc` or advertise `index.html`.
+* Replace the Overview exception: section landings use a **linked parent** whose link text equals the H1 (`* xref:email/index.adoc[Email]` + `**` children). Do not use `.Section` + Overview; do not invent `overview.adoc`.
+* Keep `index.adoc` + `urls.html_extension_style: indexify` for folder URLs; do not advertise `index.html`.
+* Detail: `general/documentation.md`. Pointers in `user.md`, `AGENTS.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
+
+== 2026-08-30 — Folder URLs (indexify) for section landings
+
+* Public face for area landings is the folder path via `urls.html_extension_style: indexify` — keep `index.adoc`; do not rename to `overview.adoc` or advertise `index.html`.
 * Detail: `general/documentation.md`. Pointers in `user.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
 
 == 2026-08-30 — Site-wide component nav tree
@@ -30,7 +36,7 @@ endif::[]
 
 == 2026-08-30 — Antora page title = nav label
 
-* House rule: document H1, `nav.adoc` link text, and `:navtitle:` must be the same string (prefer no `:navtitle:`). Only exception: `Overview` under a nav section that already names the area.
+* House rule: document H1, `nav.adoc` link text, and `:navtitle:` must be the same string (prefer no `:navtitle:`). Section landings: linked parent = H1 (no Overview exception).
 * Detail: `general/documentation.md`. Pointers in `user.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
 
 == 2026-08-30 — PRs ready for review by default

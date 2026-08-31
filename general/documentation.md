@@ -190,26 +190,33 @@ Why: mismatched names break search memory, changelogs, xrefs, and agent/human re
 3. If `nav.adoc` uses explicit link text, it **must equal** the H1 exactly.
 4. Do not keep a divergent `:navtitle:` “just in case.”
 
-### Allowed exception — section Overview landings
+### Section landings — linked parents (not Overview)
 
-When a **nav section** already names the area (e.g. `.Email`, `.Org infra`) and the landing page’s H1 is that same area name (`= Email`, `= Org infra`), the nav entry under that section **may** be `Overview`:
+Capability / Diátaxis area landings stay on disk as `…/index.adoc` with H1 = the area name (`= Email`, `= Org infra`, `= How-to Guides`). With playbook `urls.html_extension_style: indexify`, Antora publishes the folder path (`…/email/`, `…/how-to/`) — that is the public/canonical face.
+
+In `nav.adoc`, use a **linked parent** whose link text **equals the H1**. Nested pages hang under it with `**` (and deeper). Do **not** use a dotted section header plus an Overview child:
+
+```asciidoc
+* xref:email/index.adoc[Email]
+** xref:email/how-to/….adoc[…]
+```
+
+Not:
 
 ```asciidoc
 .Email
 * xref:email/index.adoc[Overview]
 ```
 
-That is the only intentional H1 ≠ nav-label case. Do not use it for ordinary how-tos or explanations.
+Do **not** invent `overview.adoc`. Do **not** advertise `index.html` (or `overview.html`) in prose, hard-coded hub links, or changelogs; prefer trailing-slash folder URLs or xrefs.
 
-**Keep the file as `index.adoc`** (not `overview.adoc`). With playbook `urls.html_extension_style: indexify`, Antora publishes the folder path (`…/email/`, `…/infra/`) — that is the public/canonical face. Do **not** rename landings to `overview.adoc` just to echo the nav word. Do **not** advertise `index.html` (or `overview.html`) in prose, hard-coded hub links, or changelogs; prefer trailing-slash folder URLs or xrefs.
-
-Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`.
+Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`. Plain `.Section` headers without a landing page are fine when there is no folder index to link.
 
 ### Pass checks (titles / nav)
 
 1. H1 equals `nav.adoc` link text (or nav uses empty `xref:…[]` / omits text so the title wins).
 2. No `:navtitle:` unless it is identical to the H1 (prefer deleting it).
-3. Overview exception only on capability/area **`index.adoc`** landings under a section that already carries the area name.
+3. Area landings: linked parent = H1; children under `**`; file remains `index.adoc`; no `.Section` + Overview pattern.
 4. Hub playbooks use `urls.html_extension_style: indexify` so public URLs are folders; outbound absolute links use trailing-slash paths, not `…/index.html`.
 
 ## Titles for news, blogs, and essays
