@@ -32,6 +32,7 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - **Content source ≠ forest root.** Registering a repo under `content.sources` publishes pages/xrefs; it does not mean the component belongs in the sidebar. Prefer an **`include` allowlist** so new product sources do not auto-join the forest.
 - Thin product stubs: hub portal page under `home` only, **or** keep the source for URL space but omit from `include`. Promote to `include` only when the component is worth browsing as a first-class tree.
 - Set `include` + `order` (and optional `exclude`) on every fat hub. Breadcrumb component picker must use the same curation (`site.keys.site_nav_tree_*` or a matching allowlist) — do not let the dropdown and sidebar tell different stories.
+- Under site-nav-tree, do **not** repeat the component start page as the first `nav.adoc` item (no Component > Component). Linked parents are for section landings inside the component. Load companion `site-nav-tree-current.js` after `site.js` so expand prefers the deepest `is-current-page` when URLs collide.
 - Valentus companion: package `ui/partials/nav-menu.hbs` in hub `supplemental-ui`.
 - Facto documents it as an optional neighbor; Valentus stays lean.
 

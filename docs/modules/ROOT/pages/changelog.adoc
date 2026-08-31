@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — site-nav-tree unwrap (no Component > Component)
+
+* Extension flattens Antora's anonymous nav-tree wrapper and unwraps a leading start-page link that duplicates the component root (fixes empty expanded carets + BB > BB).
+* Companion `site-nav-tree-current.js` prefers deepest `is-current-page` when URLs collide across the forest.
+* House rule: under site-nav-tree, do not list the component start page as the first nav item; linked parents are for section landings only.
+
 == 2026-08-30 — site-nav-tree include allowlist
 
 * Skill `antora-org-site` + `agents/engineering/antora.md`: content source ≠ forest root; prefer `include` allowlist; thin stubs = `home` portal or register+omit from include; breadcrumb picker shares curation.

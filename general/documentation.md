@@ -212,6 +212,8 @@ Do **not** invent `overview.adoc`. Do **not** advertise `index.html` (or `overvi
 
 Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`. Plain `.Section` headers without a landing page are fine when there is no folder index to link.
 
+**With `@antora-supplemental/site-nav-tree`:** the component root already links to the start page. Do **not** also put `* xref:index.adoc[Component Title]` as the first nav item — that creates Component > Component. Linked parents are for **section** landings inside the component (`Email`, `How-to Guides`), not for repeating the component title. The extension also unwraps that duplicate when present.
+
 ### Pass checks (titles / nav)
 
 1. H1 equals `nav.adoc` link text (or nav uses empty `xref:…[]` / omits text so the title wins).
