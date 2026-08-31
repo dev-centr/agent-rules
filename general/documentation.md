@@ -201,11 +201,16 @@ When a **nav section** already names the area (e.g. `.Email`, `.Org infra`) and 
 
 That is the only intentional H1 ≠ nav-label case. Do not use it for ordinary how-tos or explanations.
 
+**Keep the file as `index.adoc`** (not `overview.adoc`). With playbook `urls.html_extension_style: indexify`, Antora publishes the folder path (`…/email/`, `…/infra/`) — that is the public/canonical face. Do **not** rename landings to `overview.adoc` just to echo the nav word. Do **not** advertise `index.html` (or `overview.html`) in prose, hard-coded hub links, or changelogs; prefer trailing-slash folder URLs or xrefs.
+
+Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`.
+
 ### Pass checks (titles / nav)
 
 1. H1 equals `nav.adoc` link text (or nav uses empty `xref:…[]` / omits text so the title wins).
 2. No `:navtitle:` unless it is identical to the H1 (prefer deleting it).
-3. Overview exception only on capability/area index pages under a section that already carries the area name.
+3. Overview exception only on capability/area **`index.adoc`** landings under a section that already carries the area name.
+4. Hub playbooks use `urls.html_extension_style: indexify` so public URLs are folders; outbound absolute links use trailing-slash paths, not `…/index.html`.
 
 ## Titles for news, blogs, and essays
 

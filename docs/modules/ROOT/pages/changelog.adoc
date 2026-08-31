@@ -19,6 +19,15 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Folder URLs (indexify) for Overview landings
+
+* Keep section Overview pages as `…/index.adoc` (H1 = area name, nav = Overview). Public face is the folder path via `urls.html_extension_style: indexify` — do not rename to `overview.adoc` or advertise `index.html`.
+* Detail: `general/documentation.md`. Pointers in `user.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
+
+== 2026-08-30 — Site-wide component nav tree
+
+* Multi-component hubs: enable `@antora-supplemental/site-nav-tree` (wraps navigation data; keeps default `nav-tree`). Documented in skill `antora-org-site` and `agents/engineering/antora.md`.
+
 == 2026-08-30 — Antora page title = nav label
 
 * House rule: document H1, `nav.adoc` link text, and `:navtitle:` must be the same string (prefer no `:navtitle:`). Only exception: `Overview` under a nav section that already names the area.
