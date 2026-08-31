@@ -210,16 +210,55 @@ Not:
 
 Do **not** invent `overview.adoc`. Do **not** advertise `index.html` (or `overview.html`) in prose, hard-coded hub links, or changelogs; prefer trailing-slash folder URLs or xrefs.
 
-Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`. Plain `.Section` headers without a landing page are fine when there is no folder index to link.
+Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`.
 
 **With `@antora-supplemental/site-nav-tree`:** the component root already links to the start page. Do **not** also put `* xref:index.adoc[Component Title]` as the first nav item — that creates Component > Component. Linked parents are for **section** landings inside the component (`Email`, `How-to Guides`), not for repeating the component title. The extension also unwraps that duplicate when present.
+
+### Antora nav: never mix `.Title` with sibling linked parents
+
+In Antora `nav.adoc`, a dotted line (`.Tutorials`, `.How-to`) starts a **titled list**. That titled block **owns every following `*` item** until the next `.Title`. Mixing a dotted header with sibling `* xref:…` linked parents silently nests those siblings as children of the titled list — How-to / Reference / Explanation disappear from the top level even though the AsciiDoc still looks like peers.
+
+**Do not** mix `.Title` / dotted nav headers with sibling `* xref:…` linked parents in the same list.
+
+| Bucket | Pattern |
+| --- | --- |
+| Diátaxis (or other) bucket **without** a landing page | Unlinked parent `* Label` + `**` children — **not** `.Label` |
+| Bucket **with** `index.adoc` | Linked parent `* xref:…/index.adoc[Label]` + `**` children |
+
+Wrong (`.🎓 Tutorials` absorbs the next `* xref:` How-to as a nested child):
+
+```asciidoc
+.🎓 Tutorials
+* xref:tutorials/foo.adoc[…]
+* xref:how-to/index.adoc[How-to Guides]
+** xref:how-to/bar.adoc[…]
+```
+
+Right — no landing:
+
+```asciidoc
+* 🎓 Tutorials
+** xref:tutorials/foo.adoc[…]
+* xref:how-to/index.adoc[How-to Guides]
+** xref:how-to/bar.adoc[…]
+```
+
+Right — with landing:
+
+```asciidoc
+* xref:tutorials/index.adoc[Tutorials]
+** xref:tutorials/foo.adoc[…]
+* xref:how-to/index.adoc[How-to Guides]
+** xref:how-to/bar.adoc[…]
+```
 
 ### Pass checks (titles / nav)
 
 1. H1 equals `nav.adoc` link text (or nav uses empty `xref:…[]` / omits text so the title wins).
 2. No `:navtitle:` unless it is identical to the H1 (prefer deleting it).
 3. Area landings: linked parent = H1; children under `**`; file remains `index.adoc`; no `.Section` + Overview pattern.
-4. Hub playbooks use `urls.html_extension_style: indexify` so public URLs are folders; outbound absolute links use trailing-slash paths, not `…/index.html`.
+4. No `.Title` dotted headers mixed with sibling `* xref:…` linked parents in the same nav list; buckets without a landing use unlinked `* Label` + `**`, not `.Label`.
+5. Hub playbooks use `urls.html_extension_style: indexify` so public URLs are folders; outbound absolute links use trailing-slash paths, not `…/index.html`.
 
 ## Titles for news, blogs, and essays
 

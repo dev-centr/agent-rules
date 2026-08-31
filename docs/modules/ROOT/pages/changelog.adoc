@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — Antora nav titled-list absorption
+
+* House rule: do not mix `.Title` / dotted nav headers with sibling `* xref:…` linked parents — a titled list owns all following `*` items until the next `.Title`.
+* Buckets without a landing: unlinked `* Label` + `**` children (not `.Label`). Buckets with `index.adoc`: linked parent + `**`.
+* Detail: `general/documentation.md`. Pointers in `agents/engineering/antora.md`, skill `antora-org-site`.
+
 == 2026-08-30 — site-nav-tree unwrap (no Component > Component)
 
 * Extension flattens Antora's anonymous nav-tree wrapper and unwraps a leading start-page link that duplicates the component root (fixes empty expanded carets + BB > BB).

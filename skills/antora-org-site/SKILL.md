@@ -22,7 +22,8 @@ Before drafting or revising any page under `docs/`, read **Audience / point of v
 3. **Facto** already registers `@antora-supplemental/page-context` and sets `page-context-active` — do not hard-code the extended catalog into the body.
 4. When wiring a playbook without Facto, either adopt Facto’s fragment or register `page-context` + `page-context-active` yourself.
 5. **One title:** H1 = `nav.adoc` link text; prefer no `:navtitle:`. Section landings: **linked parent** (link text = H1) with nested `**` children — not `.Section` + Overview. **File stays `index.adoc`**; public URL is the folder via indexify.
-6. **Folder URLs:** set `urls.html_extension_style: indexify` on owned hub playbooks. Do not invent `overview.adoc`; do not advertise `index.html` in prose.
+6. **Nav titled lists:** never mix `.Title` / dotted headers with sibling `* xref:…` linked parents. A dotted line owns all following `*` items until the next `.Title` (siblings silently nest). No landing → unlinked `* Label` + `**`; with `index.adoc` → linked parent + `**`. Detail: `general/documentation.md`.
+7. **Folder URLs:** set `urls.html_extension_style: indexify` on owned hub playbooks. Do not invent `overview.adoc`; do not advertise `index.html` in prose.
 
 ## Required
 

@@ -19,6 +19,7 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - One canonical title: document H1, `:navtitle:` (prefer omit), and `nav.adoc` link text must match.
 - Section / area landings: **linked parent** whose link text equals the H1 (`* xref:email/index.adoc[Email]` + `**` children). Do not use `.Email` / `.Org infra` + Overview child. Do not invent `overview.adoc`.
 - Keep landings as `…/index.adoc`. Public face is the folder path under `urls.html_extension_style: indexify` (`…/email/`). Do not advertise `index.html` / `overview.html` in prose.
+- **Titled-list gotcha:** do **not** mix `.Title` / dotted nav headers with sibling `* xref:…` linked parents. A dotted line owns all following `*` items until the next `.Title`, so `.Tutorials` + later `* xref:how-to/…` silently nests How-to under Tutorials. Buckets without a landing: unlinked `* Label` + `**` children (not `.Label`). Buckets with `index.adoc`: linked parent + `**`.
 - Detail and pass checks: `general/documentation.md` (Antora page title = nav label).
 
 ## Folder URLs (indexify)
