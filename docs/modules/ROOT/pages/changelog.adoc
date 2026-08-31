@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-08-30 — site-nav-tree include allowlist
+
+* Skill `antora-org-site` + `agents/engineering/antora.md`: content source ≠ forest root; prefer `include` allowlist; thin stubs = `home` portal or register+omit from include; breadcrumb picker shares curation.
+* Extension `@antora-supplemental/site-nav-tree` 0.2.0 adds `include` and publishes `site.keys.site_nav_tree_*`.
+
 == 2026-08-30 — Linked parent section landings (drop Overview)
 
 * Replace the Overview exception: section landings use a **linked parent** whose link text equals the H1 (`* xref:email/index.adoc[Email]` + `**` children). Do not use `.Section` + Overview; do not invent `overview.adoc`.

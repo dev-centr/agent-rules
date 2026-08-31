@@ -26,12 +26,12 @@ Before drafting or revising any page under `docs/`, read **Audience / point of v
 
 ## Required
 
-1. **One public Antora site per org** that already has a hub. Keep `docs/` in the product repo; **wire** the component into the hub playbook. Do not publish a second public Antora site on project GitHub Pages (or Netlify/etc. solely for that).
+1. **One public Antora site per org** that already has a hub. Keep `docs/` in the product repo; **wire** into the hub when the component needs its own URL/xref space (or stay a `home` portal-only stub). Do not publish a second public Antora site on project GitHub Pages (or Netlify/etc. solely for that). Wiring a source does **not** auto-promote it into the site-nav-tree forest — update `include` only when it should be a browseable root.
 2. **Lunr** on every published site (`@antora/lunr-extension`). Register Lunr before wrappers.
 3. **AI search** from `antora-supplemental` — prefer [`antora-search-chat`](https://github.com/antora-supplemental/antora-search-chat). If those packages cannot be found after a reasonable search, **stop and alert the user**; wait before inventing a substitute.
 4. **Math on every docs surface**, even unused: Antora `stem: latexmath` + KaTeX/`site-math.js`; Markdown `remark-math` + `rehype-katex`. Real formulas as `stem:[…]` / `$…$`, not raw prose.
 5. Versioned components: `@antora-supplemental/alias-component-to-latest` (or equivalent) until core ships opt-in. Prefer comments on [antora/antora#291](https://gitlab.com/antora/antora/-/issues/291) over duplicate issues.
-6. **Multi-component hubs:** enable `@antora-supplemental/site-nav-tree` so every component appears in the sidebar forest. It **wraps navigation data** and keeps default `nav-tree` / expand-collapse — do **not** replace Valentus nav with OpenDevise Navigator unless the hub outgrows inlined nav HTML. Valentus: copy package `ui/partials/nav-menu.hbs` into hub `supplemental-ui/partials/`.
+6. **Multi-component hubs:** enable `@antora-supplemental/site-nav-tree` with an **`include` allowlist** (plus `order`) so the sidebar forest is curated. **Wiring a repo into `content.sources` ≠ adding a forest root** — thin product stubs prefer a `home` portal page only, or register the source but omit it from `include`. Align the breadcrumb component picker with the same curated set (`site.keys.site_nav_tree_*`). The extension **wraps navigation data** and keeps default `nav-tree` / expand-collapse — do **not** replace Valentus nav with OpenDevise Navigator unless the hub outgrows inlined nav HTML. Valentus: copy package `ui/partials/nav-menu.hbs` into hub `supplemental-ui/partials/`.
 7. Brand from the org’s existing assets. Do not invent a one-off palette per component.
 8. Repo-local `antora-playbook.yml` for **preview/validation CI** is fine if it does **not** publish a second public site.
 9. A **member-only** sister Antora site is allowed (private playbook + Access). See [reference.md](reference.md).
