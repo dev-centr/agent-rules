@@ -13,6 +13,7 @@ description: >-
   product-idea desk, or interactive explainer for an owned org; demo intro
   screenshot mockup, static PNG mockup, window chrome mockup, traffic light
   window, variant selector scoped, non-interactive mockup, fixed aspect mockup,
+  demo harness, product facsimile, facsimile bezel, demo controls strip,
   Edge Bar.
 ---
 
@@ -96,6 +97,28 @@ Per-variant mockups are **clickable navigation**, not decoration only — on the
 
 The selector landing shows suite lede + variant tiles only. Do **not** auto-mount a heavy interactive stack on the hub. Deep links go straight to the variant page URL (legacy hash deep-links may redirect).
 
+### Demo harness vs product facsimile
+
+Explainer controls (parameters that exist **only for the demo**, not the shipped product) must not blend into the product surface.
+
+**Prefer structure over site-contrast.** You do **not** need every demo to fight the org marketing palette. You **do** need a clear **harness ↔ facsimile** split **inside the demo page**:
+
+| Layer | Role | Styling |
+| --- | --- | --- |
+| **Demo harness** | Knobs that alter the explainer (spawn zone, restore windows, chrome simulation, theme for compare, Snippets/Screenshots toggle, etc.) | Outside the facsimile bezel; labeled **Demo controls** (or variant-specific harness label); **sans-serif**; dashed/neutral harness chrome; hub/site-adjacent tokens OK |
+| **Product facsimile** | What the idea would look like in the real app/OS | Inside `.facsimile-bezel` / faux window chrome; **product palette** (Open Shell blues, Northbazaar paper/forest, etc.); monospace or product typography |
+
+**Alternatives when color alone feels fragile:**
+
+1. **Bezel + label** (default) — harness strip above a bordered facsimile desk (reference: `virtual-pages` hub teal vs Northbazaar facsimile; `shell-context-demo` harness helpers).
+2. **Move harness to hub chrome** — mode toggles that are not part of the product stay in page chrome above `.demo-stage` (virtual-pages preview modes pattern).
+3. **Side rail** — harness as a narrow column beside the facsimile when many controls are needed.
+4. **Collapsible harness** — optional for power users; do not hide the only way to drive the demo.
+
+**Grandfather:** Do **not** retrofit untouched demos to split harness/facsimile unless substantively editing that desk. Demos that already use distinct hub vs facsimile palettes (virtual-pages, Context Edge) stay valid.
+
+**Do not** put explainer-only controls inside faux OS title bars or product toolbars unless the control is explicitly simulating a real product setting.
+
 ## Identity strip + VCS logo (detail)
 
 | Control | Links to |
@@ -135,6 +158,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] Multi-variant: selector hub tiles open **separate variant pages** (default); no interactive desk on the hub
 - [ ] In-page tabs only as a narrow exception; variant selector scoped separately from mockup; pick tabs+swapping mockup, aligned chooser grid, or mockups-in-tab-faces
 - [ ] New/substantive suites: anchoring mockups are static raster (PNG/WebP), window-chrome captures with padding, fixed aspect, non-interactive — unless grandfathered HTML/CSS tiles remain untouched
+- [ ] Demo harness (explainer controls) outside product facsimile bezel; labeled; not styled as in-product chrome
 - [ ] Tab label === section heading (human-readable); code names only in blurbs / in-product chrome
 - [ ] Active variant: title + blurb **outside** the facsimile + interactive UI inside
 - [ ] Skipped retrofit of unrelated historical demos
@@ -152,6 +176,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Style an in-page variant switcher as generic buttons / pills when tabs are the exception pattern
 - Show every variant mockup in a static row above an in-page tabpanel when those mockups do not swap on select (use aligned chooser grid, swapping mockup, or separate pages)
 - Visually fuse the variant selector tab bar with the anchoring mockup frame (selector alters preview **and** desk — scope them separately)
+- Put explainer-only controls inside the product facsimile without harness labeling/bezel separation (on new/substantive desks)
 - Mount live HTML/CSS facsimiles in the anchoring band on **new** multi-variant suites when static captures are practical (HTML belongs in `tools/` for capture)
 - Mass-convert grandfathered demos from CSS/SVG hub tiles to raster mockups without an explicit ask
 - Use engineer/code names as the visible section heading when a human-readable tab label exists
