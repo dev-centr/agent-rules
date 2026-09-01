@@ -1,0 +1,26 @@
+= 2026-09-01 — End-of-run rationale (docs + rules)
+:page-audience: Maintainers and contributors adopting agent-rules
+:page-usage-context: Changelog detail for the published why-we-commit-after-every-chat explanation
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-01
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Contributors asked why agents commit, push, and update PRs after every chat. The house answer is now explicit in rules, skills, and docs — not something you have to infer from behavior.
+
+* `general/end-of-run.md` — new **Why (when asked)** section: chat is not the system of record; two-machine sync; PR review; GitHub per-push audit trail.
+* Skills `push-code` and `draft-pr` — **When asked why** pointers to that section.
+* New hub page xref:../end-of-run-commit-push.adoc[End-of-run commit, push, and PR updates].

@@ -1,5 +1,6 @@
 * xref:index.adoc[Overview]
 * xref:harness-neutral.adoc[Harness-neutral architecture]
+* xref:end-of-run-commit-push.adoc[End-of-run commit and push]
 * xref:agent-harness.adoc[Agent harness]
 * xref:mixr-routing-and-cost.adoc[Mixr routing and cost]
 * xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]

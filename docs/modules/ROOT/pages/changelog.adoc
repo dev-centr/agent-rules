@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-01 — End-of-run rationale (docs + rules)
+
+* Published xref:end-of-run-commit-push.adoc[why agents commit/push/PR after every chat]: chat is not the system of record; two-machine sync; review in PRs; GitHub per-push audit trail.
+* `general/end-of-run.md` § Why; skills `push-code` / `draft-pr` **When asked why** pointers.
+* See xref:changelog-details/2026-09-01 - end-of-run-rationale.adoc[Detailed changelog].
+
 == 2026-08-30 — Antora nav titled-list absorption
 
 * House rule: do not mix `.Title` / dotted nav headers with sibling `* xref:…` linked parents — a titled list owns all following `*` items until the next `.Title`.

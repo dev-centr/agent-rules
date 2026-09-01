@@ -1,0 +1,76 @@
+= End-of-run commit, push, and PR updates
+:navtitle: End-of-run commit and push
+:description: Why DevCentr agents commit, push, and update PRs before finishing a chat — multi-machine sync, review in PRs, auditable push history.
+:page-audience: Contributors and maintainers who wonder why agents auto-commit after every chat
+:page-usage-context: Explanation on the docs hub; portable rule in `general/end-of-run.md`
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-01
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+If someone's agent keeps committing and pushing at the end of every chat — or updating an open pull request — that is intentional house policy, not a runaway loop.
+
+== The rule (short)
+
+When an agent run **changes files** in an owned repo, it closes the run with **logical commits**, a **push**, and (when a PR is in play) **PR updates** — unless you said not to commit or push.
+
+Portable source: link:https://github.com/dev-centr/agent-rules/blob/main/general/end-of-run.md[`general/end-of-run.md`] in the agent-rules repo.
+Skills: `push-code`, `git-commit`, `draft-pr`.
+
+== Why we do it
+
+=== Easier to reason about than chat memory
+
+Chat threads are a poor system of record. At the end of a day you should not have to reopen old conversations to remember what still needs committing, pushing, or opening as a PR.
+
+Standing end-of-run close-out makes **git and the remote** the source of truth. The last reply in a chat corresponds to a synced tree on GitHub (or your forge).
+
+=== Two machines at once
+
+Many of us develop on **laptop and desktop** in the same week — sometimes the same day. When every productive chat ends with push:
+
+* The other machine can `git pull` and continue without guessing which chat last touched the repo.
+* You are not carrying uncommitted work across sleep, travel, or a different IDE session.
+* Hive-watch and normal git workflows see the same HEAD on both boxes.
+
+=== Contributors and review in pull requests
+
+For org-owned work, changes should land in **pull requests** where review happens — not as a pile of local-only edits tied to one chat session.
+
+End-of-run push keeps the PR branch current. Iteration is **later commits and PR updates**, not “wait until the demo feels done” (see xref:changelog-details/2026-08-28 - demos-and-push-workflow.adoc[Demos + push workflow]).
+
+=== Auditing updates on GitHub
+
+GitHub records each push to a PR branch:
+
+* The **Commits** tab lists every commit on the branch.
+* The PR **timeline** shows when new commits arrived.
+* Reviewers can inspect individual commit diffs and compare how the PR changed between pushes.
+
+You do not lose history when an agent pushes several times across chats — each push adds reviewable commits (normal `git push`, not force-push to shared branches).
+
+== When it does *not* apply
+
+* You explicitly said not to commit or not to push.
+* Secrets are present — stop and warn; never commit them.
+* Push would require force to `main`/`master`, or there is no upstream — report instead of forcing.
+* Read-only / ask mode where the harness forbids writes.
+
+== Related
+
+* xref:harness-neutral.adoc[Harness-neutral architecture] — where portable rules vs machine-local config live
+* xref:skills-catalog.adoc[Skills catalog] — `push-code`, `git-commit`, `draft-pr`
+* link:https://github.com/dev-centr/agent-rules/blob/main/agents/demos-and-push.md[`agents/demos-and-push.md`] — do not suppress push/PR while prototyping demos

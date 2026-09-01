@@ -314,6 +314,7 @@ sequenceDiagram
 * xref:org-layer.adoc[Org layer]
 * xref:bootstrap.adoc[Bootstrap agent skills]
 * xref:skills-catalog.adoc[Skills catalog]
+* xref:end-of-run-commit-push.adoc[End-of-run commit, push, and PR updates]
 * xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows]
 * xref:gcloud-cli-agents.adoc[gcloud CLI for agentic workflows]
 * xref:usage.adoc[Usage]
