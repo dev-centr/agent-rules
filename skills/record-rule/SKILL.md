@@ -23,6 +23,7 @@ Read `general/harness-boundary.md` first.
 | **Project** (one repo) | `<repo>/AGENTS.md` | Markdown |
 | **Harness-local IDE** | `$LOCAL_RULES_DIR` or `<repo>/.cursor/rules/*.mdc` per `IDE_PROJECT_RULES` in `$HARNESS` | per harness |
 | **Workstation fact** | `$CODE_ROOT/machine.md` | Markdown |
+| **GitHub access cache** (identity, per-repo permission/route) | `$CODE_ROOT/machine.md` (`<!-- github-access:begin -->` block) | Markdown — skill `github-repo-access` |
 | **Harness config** | `$CODE_ROOT/harness.md` | Markdown |
 
 Pick the narrowest scope. If unclear, ask.

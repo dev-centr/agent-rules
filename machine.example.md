@@ -23,6 +23,7 @@ Examples of what belongs here:
 - Screenshot folders, hardware quirks on this PC
 - “This machine’s CODE_ROOT is …”
 - **Hive remotes stamp** — maintained by [`hive-watch`](https://github.com/dev-centr/hive-watch) between `<!-- hive-watch:begin -->` / `<!-- hive-watch:end -->` (do not hand-edit the timestamp unless hive-watch is unavailable)
+- **GitHub repo access cache** — maintained by skill `github-repo-access` between `<!-- github-access:begin -->` / `<!-- github-access:end -->` (identity + per-repo `viewerPermission`, protection, route; refresh on push/PR or when stale >24h)
 
 Examples of what does **not** belong here (put elsewhere):
 

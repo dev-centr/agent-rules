@@ -2,8 +2,9 @@
 name: push-code
 description: >-
   Use when pushing code, git push, push changes, push to remote, push my
-  commits, on pushing code, when the user asks to push, or at the end of an
-  agent run that changed files (standing end-of-run authorization).
+  commits, on pushing code, when the user asks to push, at the end of an
+  agent run that changed files (standing end-of-run authorization), or after
+  github-repo-access routes branch_pr or fork_pr.
 ---
 
 # Push code
@@ -30,6 +31,19 @@ Same as skill `git-commit`, plus:
 Before push, the working tree should be **zero dirty files**, split into **logical commits** — one coherent change per commit, easy to review and revert.
 
 ## Sequence
+
+### 0. GitHub access (before push)
+
+Load skill **`github-repo-access`**. Read cached route in `$CODE_ROOT/machine.md` if checked within **24h**; else probe with `gh repo view --json viewerPermission,isFork,defaultBranchRef` and record.
+
+| Route | Then |
+| --- | --- |
+| `direct_push` | Continue below (commit + push) |
+| `branch_pr` | Commit on feature branch, push branch, then **`draft-pr`** — do not push to protected default |
+| `fork_pr` | Push to fork remote, then **`draft-pr`** to parent |
+| `blocked` | Commit locally if end-of-run needs it; **do not push**; explain per `general/github-push-routing.md` |
+
+If the user said **“just push”** but route ≠ `direct_push`, refuse direct upstream push and explain (offer screenshot/text for whoever assigned the task).
 
 ### 1. Survey (parallel)
 
@@ -77,6 +91,8 @@ Do not push until all units are committed and the working tree is clean.
 
 ### 4. Push
 
+Re-check route from step 0 if the remote or branch changed.
+
 1. `git fetch` and `git status -sb` — if **behind** upstream, pull/rebase (or ask) before pushing.
 2. Push. Set upstream when missing:
 
@@ -96,3 +112,4 @@ If everything is already committed and only push was requested: run step 1 surve
 
 - Single commit, no push → `git-commit`
 - Push then open PR → this skill, then `draft-pr`
+- Permission probe before push → `github-repo-access`

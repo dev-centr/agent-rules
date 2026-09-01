@@ -33,6 +33,7 @@ Load from `$AGENT_RULES_PATH/skills/<name>/` (discovery per `$CODE_ROOT/harness.
 | Record issue/PR in `ISSUES_REPO` / `.issues` | `issues-repo-record` |
 | Git commit | `git-commit` |
 | Push code / git push | `push-code` |
+| GitHub repo permission / can't push / push vs PR | `github-repo-access` |
 
 ## Engineering
 
