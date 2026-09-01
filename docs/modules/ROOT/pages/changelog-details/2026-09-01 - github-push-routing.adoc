@@ -1,0 +1,27 @@
+= 2026-09-01 — GitHub push routing (permissions)
+:page-audience: Maintainers and contributors using agent-rules on shared org repos
+:page-usage-context: Changelog detail for permission-aware push vs PR routing
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-01
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Junior contributors are often told to "just push" while GitHub only grants **read** or **PR-only** access (org member role, branch protection, or fork workflow). Agents now probe access before push and explain the PR path instead of failing silently or overriding policy.
+
+* New skill `github-repo-access` — `gh repo view --json viewerPermission,isFork,defaultBranchRef`; optional branch protection check; cache in `$CODE_ROOT/machine.md` (`<!-- github-access:begin -->` block).
+* New `general/github-push-routing.md` — routes `direct_push`, `branch_pr`, `fork_pr`, `blocked`; when blocked, suggest sharing the agent explanation with whoever assigned direct push.
+* `push-code` step 0 calls the probe before push; `draft-pr` cites permission rationale when asked; `end-of-run` exception when upstream direct push is impossible.
+* `user.md` one-liner + `agents/_MAIN.md` routing row; `machine.example.md` documents the cache block.

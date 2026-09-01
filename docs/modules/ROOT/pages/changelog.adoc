@@ -19,6 +19,13 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-01 — GitHub push routing (permissions)
+
+* Skill `github-repo-access`: probe `viewerPermission`, branch protection, fork layout; cache in `$CODE_ROOT/machine.md`; route direct push vs branch+PR vs fork PR vs blocked.
+* `general/github-push-routing.md`: explain PR when someone said "just push" but access blocks upstream push; suggest sharing explanation with maintainer.
+* Hooks in `push-code`, `draft-pr`, `end-of-run`, `user.md`.
+* See xref:changelog-details/2026-09-01 - github-push-routing.adoc[Detailed changelog].
+
 == 2026-09-01 — End-of-run rationale (docs + rules)
 
 * Published xref:end-of-run-commit-push.adoc[why agents commit/push/PR after every chat]: chat is not the system of record; two-machine sync; review in PRs; GitHub per-push audit trail.
