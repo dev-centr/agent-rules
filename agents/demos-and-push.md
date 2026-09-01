@@ -28,7 +28,7 @@ Prototyping often wants local iteration before or beside commit + PR. That tensi
 Skill `demo-site-wiring` owns the full order. Short rule:
 
 - **Single-variant** desks: **exactly one** suite-level hero screenshot / contextual mockup (memory-hook). Not a gallery; not competing heroes.
-- **Multi-variant** desks: **one compact mockup per variant** in a ~3-column grid on a **selector hub** that links to **separate variant pages** (default; Context Edge / virtual-pages). Do not mount interactive desks on the hub. In-page tabs are a narrow exception — either **tabs + one swapping mockup** (shell-context-demo) or the richer **aligned chooser grid** (virtual-pages in-page history).
+- **Multi-variant** desks: **one mockup per variant**. Default: selector hub with tiles → separate pages. In-page exception: **variant selector** (scoped separately) + static PNG mock + desk (`shell-context-demo`). Grandfather: CSS/SVG hub tiles on untouched demos (virtual-pages, Context Edge) stay until substantively edited.
 
 Grandfather: do not retrofit every old demo unless substantively editing; apply on create / substantive intro edit.
 

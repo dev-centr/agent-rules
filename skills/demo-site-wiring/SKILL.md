@@ -11,7 +11,8 @@ description: >-
   hci-nerdz.github.io/demos (or another org demos index), inventing or shipping
   a new UI concept, layout mode, chrome idea, spatial or windowing concept,
   product-idea desk, or interactive explainer for an owned org; demo intro
-  screenshot, anchoring mockup, suite lede image, memory-hook, context edges,
+  screenshot mockup, static PNG mockup, window chrome mockup, traffic light
+  window, variant selector scoped, non-interactive mockup, fixed aspect mockup,
   Edge Bar.
 ---
 
@@ -51,7 +52,21 @@ Do not put the demo-level lede below the variant UI. Do not skip variant blurbs 
 | Desk type | Anchoring visual |
 | --- | --- |
 | **Single-variant** (or one primary interactive surface) | **Exactly one** suite-level hero screenshot / contextual mockup with or right after the demo-level description — a single memory-hook. **Not** a gallery; **not** competing heroes. |
-| **Multi-variant** | **One compact mockup per variant**, enumerated in a grid/flex sized to fit about **three columns on desktop**. Do **not** ship only a single suite hero and omit per-variant imagery. Compact CSS/SVG thumbs beat oversized “impressive” frames that break the grid. |
+| **Multi-variant** | **One mockup per variant** (see [Anchoring mockup medium](#anchoring-mockup-medium)). Default hub: compact tiles in a ~3-column grid linking to separate pages. In-page exception: one swapping mock per tab. |
+
+### Anchoring mockup medium
+
+**Going forward** (new demos and substantive chrome edits — **do not** mass-retrofit untouched suites):
+
+| Preference | Rule |
+| --- | --- |
+| **Static raster** | Anchoring band uses **PNG/WebP `<img>`** captures — not live HTML/CSS facsimiles users might click or confuse with the interactive desk. HTML in `tools/` is **capture source only**. |
+| **Window chrome** | Simulated product windows include **macOS traffic lights** or **Windows caption controls** when that matches the software being shown. |
+| **Breathing room** | Capture includes **padding around** the simulated window(s) — not edge-to-edge crops. |
+| **Fixed aspect** | All variants in a suite share one **capture aspect ratio** (e.g. 1122×585). |
+| **Non-interactive** | `pointer-events: none` on the anchoring figure; mockups are not a second demo surface. |
+
+**Grandfather:** Existing demos may keep **CSS/SVG hub tiles** or in-page HTML previews (e.g. virtual-pages selector tiles, Context Edge marks) until substantively edited — do **not** rewrite them for raster-only anchoring unless the user asks.
 
 ### Prefer selector hub → separate variant pages
 
@@ -67,7 +82,7 @@ Pick one in-page anchoring pattern:
 
 | Pattern | When | Layout |
 | --- | --- | --- |
-| **Tabs + swapping mockup** (simple) | Lightweight hash-route suites; one mock visible at a time | Tab bar → **one** mockup that updates on select → heading + blurb → interactive desk. Reference: HCI-Nerdz **shell-context-demo**. |
+| **Tabs + swapping mockup** (simple) | Lightweight hash-route suites; one mock visible at a time | **Variant selector** (standalone — not visually fused to mockup) → static PNG mock → heading + blurb → interactive desk. Selector drives **both** preview and desk. Reference: HCI-Nerdz **shell-context-demo**. |
 | **Aligned chooser grid** (rich) | Desktop-first chooser where every variant should peek at once | Tab bar shares a **three-column grid** with mockup tiles; each tab face bundles label + preview + caption (mockups live **inside** the tab faces). Reference: HCI-Nerdz **virtual-pages** in-page history (`CHANGELOG` 2026-08-30). Strong orientation; can feel heavy on mobile — prefer separate pages when that matters. |
 | **Mockups inside tab faces only** | Mockups do **not** swap on select | Put static previews in the tab faces; tabpanel starts below at heading / blurb / desk. |
 
@@ -118,7 +133,8 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] Demo-level lay workflow copy above the variant chooser (hub) or as variant blurb (variant page)
 - [ ] Anchoring visuals: one suite hero **or** one compact mockup per variant (multi-variant)
 - [ ] Multi-variant: selector hub tiles open **separate variant pages** (default); no interactive desk on the hub
-- [ ] In-page tabs only as a narrow exception; pick tabs+swapping mockup, aligned chooser grid, or mockups-in-tab-faces — not a static all-mockups band above the desk
+- [ ] In-page tabs only as a narrow exception; variant selector scoped separately from mockup; pick tabs+swapping mockup, aligned chooser grid, or mockups-in-tab-faces
+- [ ] New/substantive suites: anchoring mockups are static raster (PNG/WebP), window-chrome captures with padding, fixed aspect, non-interactive — unless grandfathered HTML/CSS tiles remain untouched
 - [ ] Tab label === section heading (human-readable); code names only in blurbs / in-product chrome
 - [ ] Active variant: title + blurb **outside** the facsimile + interactive UI inside
 - [ ] Skipped retrofit of unrelated historical demos
@@ -135,6 +151,9 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Force an in-page tab system for multi-variant desks that need to work on mobile when separate pages fit
 - Style an in-page variant switcher as generic buttons / pills when tabs are the exception pattern
 - Show every variant mockup in a static row above an in-page tabpanel when those mockups do not swap on select (use aligned chooser grid, swapping mockup, or separate pages)
+- Visually fuse the variant selector tab bar with the anchoring mockup frame (selector alters preview **and** desk — scope them separately)
+- Mount live HTML/CSS facsimiles in the anchoring band on **new** multi-variant suites when static captures are practical (HTML belongs in `tools/` for capture)
+- Mass-convert grandfathered demos from CSS/SVG hub tiles to raster mockups without an explicit ask
 - Use engineer/code names as the visible section heading when a human-readable tab label exists
 - Auto-mount a heavy interactive stack on the selector hub
 - Put tour-guide / narrator captions **inside** the interactive facsimile (teaching stays in hub / variant blurbs)
