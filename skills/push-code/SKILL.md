@@ -10,6 +10,8 @@ description: >-
 
 Push when the user asked **or** when closing an agent run that changed files (`general/end-of-run.md`). If they only asked to commit (and not to push, and it is not end-of-run), use skill `git-commit` and stop before push.
 
+**When asked why** commit/push runs after every chat: cite `general/end-of-run.md` § Why — work lives on the remote instead of in chat memory (especially across two machines); PRs carry reviewable commits; GitHub keeps per-push history on the PR branch.
+
 **Exception:** skill `issues-repo-record` — every `ISSUES_REPO` record ends with push (including image-only pushes before embed).
 
 ## Safety

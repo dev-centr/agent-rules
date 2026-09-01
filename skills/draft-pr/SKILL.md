@@ -11,6 +11,8 @@ Voice: [voice.md](voice.md). Mechanical `gh` steps below. Org shortcut: `agents/
 
 Do not put PR voice only in `machine.md`.
 
+**When asked why** PRs update after every chat (with end-of-run push): cite `general/end-of-run.md` § Why — contributors land changes in PRs for review; each push adds commits GitHub records on the PR timeline so reviewers can audit diffs between updates.
+
 ## Ready for review (default)
 
 - **Never** open a PR as draft unless the user explicitly asks for draft.
