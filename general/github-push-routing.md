@@ -7,7 +7,7 @@ Discovery + cache: skill `github-repo-access`; machine cache in `$CODE_ROOT/mach
 
 ## Rule
 
-Before **push** (including end-of-run), the agent probes **this user's effective access** on the target repo and follows the route — even when a teammate said **"just push"**.
+Before **push** (including end-of-run), the agent probes **this user's effective access** on the target repo and follows the route — even when the user or a teammate asked to push.
 
 Load skill **`github-repo-access`** when push or PR is in scope.
 
@@ -26,11 +26,11 @@ Cached facts live in **`$CODE_ROOT/machine.md`** (`<!-- github-access:begin -->`
 | `fork_pr` | Read/triage on upstream; local clone is a fork | Push fork; PR to parent |
 | `blocked` | No write on upstream; not a fork | Commit locally if asked; explain; no push |
 
-## "Just push" but blocked
+## Push requested but blocked
 
-When the user repeats **push** after a permission block:
+When the user asks to **push** (or repeats a teammate's push instruction) but route is not `direct_push`:
 
-1. Repeat the **access fact** (permission level, protection, fork).
+1. State the **access fact** (permission level, protection, fork).
 2. Say what you **will** do (open PR, push fork branch).
 3. Suggest they **share this text or a screenshot** with whoever told them to push — often missing **write** role, wrong remote, or branch protection — not something to override in the agent.
 

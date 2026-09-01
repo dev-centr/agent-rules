@@ -2,8 +2,8 @@
 name: github-repo-access
 description: >-
   Use when discovering GitHub repo permissions, viewerPermission, collaborator
-  role, org member vs write access, can't push, just push but no permission,
-  branch protection blocks push, push vs PR routing, github role discovery,
+  role, org member vs write access, can't push, user asks to push,
+  push but no permission, branch protection blocks push, push vs PR routing, github role discovery,
   record github access to machine.md, or explaining why the agent opens a PR
   instead of pushing to main.
 ---
@@ -18,7 +18,7 @@ Policy detail: `general/github-push-routing.md`.
 
 - Before **push** or **end-of-run push** in a repo (skill `push-code` calls this)
 - Before **PR** when upstream write is missing (skill `draft-pr` pairs with this)
-- User asks **"just push"** but access may not allow it
+- User asks to **push** but access may not allow it
 - First push/PR in a repo this session and cache is stale (>24h) or missing
 - Harness setup on a new machine (optional identity probe)
 
@@ -64,7 +64,7 @@ Use `viewerPermission` + fork + protection:
 | `WRITE` (or above), default branch **protected** | `branch_pr` | Push **feature branch** only; open/update PR (`draft-pr`) — never push to protected default |
 | `READ` / `TRIAGE` / missing perm, repo **is fork** | `fork_pr` | Push to **fork** remote; PR to parent |
 | `READ` / `TRIAGE` / missing perm, **not** fork | `blocked` | Commit locally if asked; **do not push**; explain + offer fork/PR path or maintainer grant |
-| User says **"just push"** but route ≠ `direct_push` | (same as row) | **Refuse direct push**; explain in plain language (see § Explain) |
+| User asks to **push** but route ≠ `direct_push` | (same as row) | **Refuse direct upstream push**; explain in plain language (see § Explain) |
 
 Org **Member** role alone does not imply write — trust `viewerPermission` on the repo.
 
@@ -100,16 +100,16 @@ route: branch_pr | direct_push | fork_pr | blocked
 repo: owner/name
 permission: WRITE
 reason: default branch protected
-user_message: <one sentence for the user if route blocks "just push">
+user_message: <one sentence for the user if route blocks their push request>
 ```
 
-## Explain (jr dev vs sr dev instruction)
+## Explain (when push is blocked)
 
-When someone told the user **"just push"** but route is not `direct_push`:
+When the user (or a teammate's instruction relayed through them) asked to **push** but route is not `direct_push`:
 
 1. State **what GitHub reports** for this account on this repo (`viewerPermission`, protection, fork).
-2. State **what the agent will do instead** (PR, push to fork, etc.) and **why** — not org politics, just access facts.
-3. If the user believes they should have access, ask them to **screenshot or paste** the agent's explanation (or `gh repo view --json viewerPermission`) and share with the person who said "just push" — often a **policy or role** fix, not an agent override.
+2. State **what the agent will do instead** (PR, push to fork, etc.) and **why** — access facts, not org politics.
+3. If the user believes they should have access, ask them to **screenshot or paste** the agent's explanation (or `gh repo view --json viewerPermission`) and share with whoever told them to push — often a **policy or role** fix, not an agent override.
 4. Do **not** force-push, bypass protection, or push to upstream without write.
 
 Standing end-of-run push (`general/end-of-run.md`) **defers** to this skill when route ≠ `direct_push` — use PR path instead of failing silently.

@@ -43,7 +43,7 @@ Load skill **`github-repo-access`**. Read cached route in `$CODE_ROOT/machine.md
 | `fork_pr` | Push to fork remote, then **`draft-pr`** to parent |
 | `blocked` | Commit locally if end-of-run needs it; **do not push**; explain per `general/github-push-routing.md` |
 
-If the user said **“just push”** but route ≠ `direct_push`, refuse direct upstream push and explain (offer screenshot/text for whoever assigned the task).
+If the user said **push** but route ≠ `direct_push`, refuse direct upstream push and explain (offer screenshot/text for whoever assigned the task).
 
 ### 1. Survey (parallel)
 

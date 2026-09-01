@@ -22,7 +22,7 @@
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `machine.md` or `harness.md`.
 - **Hive remotes (prefer hive-watch):** do not `git fetch` the whole hive at chat start. Read **Last checked** in `$MACHINE` (hive-watch block) and `$CODE_ROOT/hive-watch.status.json`. If checked within **24h**, trust the status file; pull/rebase only repos you will edit that show behind. If stale, prefer the **hive-watch** tray/daemon (skill `hive-watch`) — not a blanket fetch every chat. Detail: `general/hive-watch.md`.
 - **End of agent run:** if the run changed files, compose logical commits and push before the final reply (skill `push-code`). Detail: `general/end-of-run.md`.
-- **GitHub push routing:** before push, probe this account's repo access (skill `github-repo-access`); route to PR when write or branch protection requires it — explain when someone said "just push" but GitHub blocks direct push. Detail: `general/github-push-routing.md`.
+- **GitHub push routing:** before push, probe this account's repo access (skill `github-repo-access`); route to PR when write or branch protection requires it — explain when the user asked to push but GitHub blocks direct push. Detail: `general/github-push-routing.md`.
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
 - Task lists in files: mark done with checkmark emojis.

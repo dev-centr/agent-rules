@@ -14,7 +14,7 @@ Do not put PR voice only in `machine.md`.
 
 **When asked why** PRs update after every chat (with end-of-run push): cite `general/end-of-run.md` § Why — contributors land changes in PRs for review; each push adds commits GitHub records on the PR timeline so reviewers can audit diffs between updates.
 
-**When asked why a PR instead of push** (e.g. someone said “just push”): cite skill `github-repo-access` + `general/github-push-routing.md` — this account’s `viewerPermission`, branch protection, or fork layout requires PR; suggest sharing the agent’s explanation with whoever asked for a direct push if they believe access should differ.
+**When asked why a PR instead of push:** cite skill `github-repo-access` + `general/github-push-routing.md` — this account's `viewerPermission`, branch protection, or fork layout requires PR; suggest sharing the agent's explanation with whoever asked for a direct push if they believe access should differ.
 
 ## Ready for review (default)
 

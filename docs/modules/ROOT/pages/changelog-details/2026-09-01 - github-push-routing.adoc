@@ -19,7 +19,7 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-Junior contributors are often told to "just push" while GitHub only grants **read** or **PR-only** access (org member role, branch protection, or fork workflow). Agents now probe access before push and explain the PR path instead of failing silently or overriding policy.
+Contributors with limited GitHub access are often told to push while GitHub only grants **read** or **PR-only** access (org member role, branch protection, or fork workflow). Agents now probe access before push and explain the PR path instead of failing silently or overriding policy.
 
 * New skill `github-repo-access` — `gh repo view --json viewerPermission,isFork,defaultBranchRef`; optional branch protection check; cache in `$CODE_ROOT/machine.md` (`<!-- github-access:begin -->` block).
 * New `general/github-push-routing.md` — routes `direct_push`, `branch_pr`, `fork_pr`, `blocked`; when blocked, suggest sharing the agent explanation with whoever assigned direct push.

@@ -31,7 +31,7 @@ Published explanation: docs hub page *End-of-run commit, push, and PR updates* (
 - Secrets / credentials present — stop and warn; never commit them.
 - Detached HEAD, no upstream, or push would need force to `main`/`master` — stop and report; do not force-push.
 - Read-only / ask mode where the harness forbids writes — skip.
-- **No direct push on upstream** (read/triage, branch protection, or not a fork) — skill `github-repo-access` routes to **branch+PR** or **fork PR** instead of pushing to a protected/default upstream; explain when the user said “just push”. Detail: `general/github-push-routing.md`.
+- **No direct push on upstream** (read/triage, branch protection, or not a fork) — skill `github-repo-access` routes to **branch+PR** or **fork PR** instead of pushing to a protected/default upstream; explain when the user asked to push. Detail: `general/github-push-routing.md`.
 
 ## Scope
 
