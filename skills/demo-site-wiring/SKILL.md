@@ -4,8 +4,9 @@ description: >-
   Use when making demos, interactive explainers, product-idea demos, demo pages,
   demos browser, demos index, org-site demo catalog, demo breadcrumb, VCS logo
   on a demo, GitHub mark on demo chrome, lay-person demo copy, variant tabs on
-  a demo, variant mockup grid, mockup-as-nav, selector hub, separate variant
-  pages, placeholder until chosen, multi-variant desk, wiring a demo into the
+  a demo,   variant mockup grid, mockup-as-nav, selector hub, separate variant
+  pages, tabs above swapping mockup, aligned chooser grid, tab label matches
+  heading, placeholder until chosen, multi-variant desk, wiring a demo into the
   parent org site, demo-site-wiring, publishing a demo to
   hci-nerdz.github.io/demos (or another org demos index), inventing or shipping
   a new UI concept, layout mode, chrome idea, spatial or windowing concept,
@@ -60,7 +61,17 @@ In-page tabpanels / hash tabs are a **narrow exception** when the suite is light
 
 ### When using in-page tabs (exception)
 
-Variant titles must read as a **tab bar** (tabbiness: connected track, selected tab surface, `role="tablist"` / `role="tab"`). Do **not** style them as a generic button row or pill cluster. The **tabpanel is the first region whose content actually changes**. When mockups are not replaced on select, put them **inside** the tab faces.
+Variant titles must read as a **tab bar** (tabbiness: connected track, selected tab surface, `role="tablist"` / `role="tab"`). Do **not** style them as a generic button row or pill cluster. The **tabpanel is the first region whose content actually changes**. **Tab label and section heading must match** (human-readable); reserve code names (`projectGroupedManager`, etc.) for blurbs or in-product chrome.
+
+Pick one in-page anchoring pattern:
+
+| Pattern | When | Layout |
+| --- | --- | --- |
+| **Tabs + swapping mockup** (simple) | Lightweight hash-route suites; one mock visible at a time | Tab bar → **one** mockup that updates on select → heading + blurb → interactive desk. Reference: HCI-Nerdz **shell-context-demo**. |
+| **Aligned chooser grid** (rich) | Desktop-first chooser where every variant should peek at once | Tab bar shares a **three-column grid** with mockup tiles; each tab face bundles label + preview + caption (mockups live **inside** the tab faces). Reference: HCI-Nerdz **virtual-pages** in-page history (`CHANGELOG` 2026-08-30). Strong orientation; can feel heavy on mobile — prefer separate pages when that matters. |
+| **Mockups inside tab faces only** | Mockups do **not** swap on select | Put static previews in the tab faces; tabpanel starts below at heading / blurb / desk. |
+
+Do **not** show **all** variant mockups in a static band above the tabpanel when the mockups do not swap — use the aligned grid or separate pages instead.
 
 ### Mockup-as-nav
 
@@ -84,7 +95,7 @@ Do **not** make the repo crumb and the VCS logo both open GitHub/GitLab. That du
 
 Do **not** skip intermediates (e.g. labeling the org crumb “HCI Nerdz” while linking it straight to `/demos/` and omitting a Demos crumb).
 
-Reference implementations: `HCI-Nerdz/context-edge` (selector → separate pages); `HCI-Nerdz/virtual-pages` (hub → `/edge|preview|contrast/`); org catalog example: `HCI-Nerdz/HCI-Nerdz.github.io` `src/lib/demos.ts`.
+Reference implementations: `HCI-Nerdz/context-edge` (selector → separate pages); `HCI-Nerdz/virtual-pages` (hub → `/edge|preview|contrast/`); `HCI-Nerdz/shell-context-demo` (in-page tabs + swapping mockup); org catalog example: `HCI-Nerdz/HCI-Nerdz.github.io` `src/lib/demos.ts`.
 
 ## Push / PR while prototyping (anti-suppression)
 
@@ -107,7 +118,8 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] Demo-level lay workflow copy above the variant chooser (hub) or as variant blurb (variant page)
 - [ ] Anchoring visuals: one suite hero **or** one compact mockup per variant (multi-variant)
 - [ ] Multi-variant: selector hub tiles open **separate variant pages** (default); no interactive desk on the hub
-- [ ] In-page tabs only as a narrow exception; if used, static mockups live inside tab faces and tabpanel starts at changing content
+- [ ] In-page tabs only as a narrow exception; pick tabs+swapping mockup, aligned chooser grid, or mockups-in-tab-faces — not a static all-mockups band above the desk
+- [ ] Tab label === section heading (human-readable); code names only in blurbs / in-product chrome
 - [ ] Active variant: title + blurb **outside** the facsimile + interactive UI inside
 - [ ] Skipped retrofit of unrelated historical demos
 - [ ] Did not suppress push/PR for prototyping; pushed so work is visible elsewhere
@@ -122,7 +134,8 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - Mount interactive variant desks on the multi-variant **selector hub** (navigate to a real variant page instead)
 - Force an in-page tab system for multi-variant desks that need to work on mobile when separate pages fit
 - Style an in-page variant switcher as generic buttons / pills when tabs are the exception pattern
-- Leave static per-variant mockups as a separate band above an in-page tabpanel (they belong in the tab faces when they do not swap on select)
+- Show every variant mockup in a static row above an in-page tabpanel when those mockups do not swap on select (use aligned chooser grid, swapping mockup, or separate pages)
+- Use engineer/code names as the visible section heading when a human-readable tab label exists
 - Auto-mount a heavy interactive stack on the selector hub
 - Put tour-guide / narrator captions **inside** the interactive facsimile (teaching stays in hub / variant blurbs)
 - Treat nav and breadcrumb as two separate bands
