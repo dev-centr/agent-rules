@@ -45,7 +45,7 @@ ASCII_MAP = {
     "\u2026": "...",
     "\u2192": "->",
     "\u2190": "<-",
-    "\u00b7": " · ",
+    "\u00b7": " / ",
 }
 
 
@@ -81,7 +81,7 @@ def recover_mojibake(text: str) -> str:
     out = recovered
     for ch, repl in ASCII_MAP.items():
         out = out.replace(ch, repl)
-    out = re.sub(r"[ \t]+·[ \t]+", " · ", out)
+    out = re.sub(r"[ \t]+/[ \t]+", " / ", out)
     return out
 
 
@@ -127,22 +127,42 @@ def process(paths: list[Path], *, do_fix: bool, check_only: bool) -> int:
 
         try:
             text = raw.decode("utf-8")
+            latin1_rescue = False
         except UnicodeDecodeError as e:
+            # Common Windows authoring bug: SVG declares UTF-8 but labels use
+            # single-byte cp1252/latin-1 (e.g. MIDDLE DOT 0xB7). Browsers then
+            # show XML "Encoding error" and the <img> looks broken.
             print(f"FAIL {path}: not UTF-8 ({e})")
             problems += 1
-            continue
+            if not do_fix:
+                continue
+            text = raw.decode("latin-1")
+            latin1_rescue = True
 
-        if has_mojibake(text):
-            print(f"MOJIBAKE {path}")
-            problems += 1
+        if has_mojibake(text) or latin1_rescue:
+            if has_mojibake(text):
+                print(f"MOJIBAKE {path}")
+                if not latin1_rescue:
+                    problems += 1
             if do_fix:
                 new = recover_mojibake(text)
+                # ASCII separators for middot (map above keeps a middot glyph —
+                # force slash so SVG stays ASCII-safe on Windows tooling).
+                new = new.replace("\u00b7", " / ")
+                new = re.sub(r" +/ +", " / ", new)
+                if path.suffix.lower() == ".svg":
+                    new = re.sub(
+                        r"&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-fA-F]+;)",
+                        "&amp;",
+                        new,
+                    )
                 if has_mojibake(new):
                     print(f"  still has markers after recovery — manual edit needed")
                 else:
                     path.write_text(new, encoding="utf-8", newline="\n")
                     fixed += 1
                     print(f"  fixed")
+                    text = new
 
         if path.suffix.lower() == ".svg":
             err = check_svg_xml(path)

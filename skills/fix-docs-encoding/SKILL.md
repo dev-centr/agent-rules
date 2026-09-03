@@ -34,9 +34,10 @@ Exit non-zero on `--check` when problems remain.
 
 1. Run `--check` on touched `docs/` (or specific files).
 2. If mojibake: `--fix`, then re-`--check`.
-3. If SVG XML still fails: fix unescaped `&` / `<` in labels (`&amp;` / `&lt;`) by hand — that is markup, not encoding.
-4. Prefer **ASCII** punctuation in new SVG text (`"`, `--`, `...`, `->`).
-5. Do **not** “fix” by re-saving the garbled glyphs as UTF-8 again (double-encodes further).
+3. If `--check` reports **not UTF-8** (e.g. lone `0xB7` MIDDLE DOT): that is latin-1/cp1252 bytes in a file that declares UTF-8 — browsers show XML *Encoding error* and the Antora `<img>` looks empty. `--fix` latin-1-rescues, maps middots to ` / `, and escapes bare `&`.
+4. If SVG XML still fails after `--fix`: fix remaining unescaped `&` / `<` in labels (`&amp;` / `&lt;`) by hand — that is markup, not encoding.
+5. Prefer **ASCII** punctuation in new SVG text (`"`, `--`, `...`, `->`, ` / `).
+6. Do **not** “fix” by re-saving the garbled glyphs as UTF-8 again (double-encodes further).
 
 ## Mock SVG chrome (layout, not encoding)
 
