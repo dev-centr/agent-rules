@@ -162,6 +162,6 @@ Pass checks that grew out of this case (also in `general/documentation.md`):
 == See also
 
 * xref:editorial-titles.adoc[Editorial titles]
-* link:https://docs.devcentr.org/general-knowledge/explanation/writing-clear-docs-with-ai.html[Writing clear docs with AI]
+* link:https://docs.devcentr.org/general-knowledge/explanation/writing-clear-docs-with-ai/[Writing clear docs with AI]
 * link:https://hci-nerdz.github.io/blog/titles-as-orientation/[Titles as orientation]
-* link:https://docs.devcentr.org/general-knowledge/explanation/internet-architecture/reliability/index.html[Internet Reliability @ DevCentr]
+* link:https://docs.devcentr.org/general-knowledge/explanation/internet-architecture/reliability/[Internet Reliability @ DevCentr]
