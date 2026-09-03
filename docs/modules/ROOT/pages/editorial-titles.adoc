@@ -56,6 +56,34 @@ Do not "fix" implication-dense titles into fully scoped thesis titles (*URLs as 
 Agents default to over-explicit titles.
 Prefer implication density when the common concrete object is already in the reader's head (*URL*, not *wire*).
 
+== Title doctrine is not body doctrine
+
+A good H1 does not excuse a briefing-memo opening.
+Re-run the cold-reader gate on the **first paragraph** and SEO description after you draft.
+Symptom faces especially must stay in concrete register (*broken link*, *URL*, *rename*) in the lede — leave *wires* / *labels* / *identity* for later sections.
+
+== Slug equals public title
+
+Default: filename and published path match the H1 (kebab-case).
+Keep a Cool-URI absorb / redirect only when you can name who still hits the old URL.
+Record absorb decisions in `AGENTS.md` or the changelog — never in the reader's opening.
+
+== Channel split
+
+[cols="1,2"]
+|===
+| Channel | What belongs there
+
+| Published docs / blog / news
+| Concrete hooks, implication-dense titles when earned, casual explanation
+
+| `AGENTS.md`, skills, changelogs
+| Slug history, nicknames, “do not confuse with…”, Cool-URI decisions, session maps
+|===
+
+Run Audience / POV pass checks in `general/documentation.md` **after drafting**, not only before.
+Session context outcompetes the stranger unless you re-check.
+
 == Agent self-test
 
 Before shipping a title:
@@ -65,6 +93,7 @@ Before shipping a title:
 . *Accept/reject fork?* — stance forming before paragraph one
 . *Abstraction demoted?* — wires / labels / dependents / identity in the body, not stealing the public title
 . *New-idea check?* — reopen a rejected assumption, do not only name the in-group concept
+. *Lede check?* — paragraph one stays in the same concrete register as the title
 
 == Worked cluster (reference durability)
 

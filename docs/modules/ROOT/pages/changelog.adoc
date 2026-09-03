@@ -19,6 +19,14 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-03 — Voice/title fixes into rules and skills
+
+* `agents/editorial/titles.md`: lede check, slug = title, channel split, title≠body
+* `general/documentation.md`: post-draft Audience gate, channel split table, slug = H1 policy, pass checks 11–12
+* Skills `writing-blog` / `writing-news`: post-draft verify, chat residue anti-patterns, slug match
+* `user.md` one-liners + hub `editorial-titles.adoc` sections aligned
+* See xref:changelog-details/2026-09-03 - voice-title-rules-into-skills.adoc[Detailed changelog].
+
 == 2026-09-03 — Case study: agent voice vs reader voice
 
 * xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice] — URL-identity retitle/rewrite as worked example (titles, Cool URI, structural chat residue, channel split)

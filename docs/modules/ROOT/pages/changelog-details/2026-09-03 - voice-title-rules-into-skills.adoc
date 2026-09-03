@@ -1,0 +1,9 @@
+= 2026-09-03 — Voice/title fixes into rules and skills
+
+Implements the case-study diagnoses as durable doctrine:
+
+* Post-draft Audience / POV re-check (session context outcompetes the stranger)
+* Channel split: published page vs `AGENTS.md` / changelog
+* Slug = public title by default; Cool-URI absorb only with a named inbound dependency
+* Title doctrine ≠ body doctrine; lede self-test on symptom faces
+* Skills `writing-blog` / `writing-news` + `user.md` paste one-liners updated

@@ -8,6 +8,8 @@ Read this file when you **author, structure, or publish** project documentation 
 
 The chat user commissioned the page. They already know the session context, house jargon, and why the change exists. The published audience does **not**: new org members, naive adopters, forge visitors, and search arrivals. Write for *them*.
 
+**Run this gate twice:** once before drafting (name the reader), and **again after drafting** before commit. Session context (dialectic maps, Cool URI, nickname collisions, AGENTS maps) outcompetes the stranger unless you re-check. Worked example: docs hub `agent-rules` → `case-study-agent-voice-vs-reader-voice.adoc`.
+
 ### Encode as page attributes (required)
 
 **Primary:** put metadata in the **document header** as `page-*` attributes. **Facto** registers `@antora-supplemental/page-context`, which formats lead + footer (and HTML meta) from those attrs. Do **not** hard-code the full catalog into the body when the extension is active.
@@ -91,6 +93,15 @@ If you cannot name the reader **and** set `page-audience`, you are not ready to 
 
 Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in skills / `AGENTS.md` / `general/*`. Human setup guides may *describe* what an agent will do, but they teach the human first.
 
+### Channel split (published vs agent)
+
+| Channel | What belongs there |
+| --- | --- |
+| Published docs / blog / news | Concrete hooks, implication-dense titles when earned, casual explanation, umbrella placement for humans |
+| `AGENTS.md`, skills, changelogs | Slug history, nicknames, “do not confuse with…”, Cool-URI absorb decisions, session maps, dialectic face tables for agents |
+
+**Title doctrine ≠ body doctrine.** Fixing the H1 does not fix a briefing-memo opening. Re-run Audience / POV + `agents/editorial/titles.md` on the lede after you draft.
+
 ### Anti-patterns (fail the gate)
 
 - Omitting `page-audience` / author attrs
@@ -110,7 +121,7 @@ Motivating failure mode: architecture pages that read like an agent briefing for
 
 Worked example (titles + openings + Cool URI + chat residue): docs hub `agent-rules` → `case-study-agent-voice-vs-reader-voice.adoc`.
 
-### Pass checks (before commit)
+### Pass checks (before commit — after drafting)
 
 1. Are `page-audience`, `page-orig-author`, `page-last-author` (and `page-last-edited` when known) set in the header?
 2. Is the `ifndef::page-context-active[]` fallback present for audience / authors / last updated (or the playbook is Markdown-only with an equivalent hard-coded lead)?
@@ -122,6 +133,8 @@ Worked example (titles + openings + Cool URI + chat residue): docs hub `agent-ru
 8. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
 9. Does the opening hook with **their** words (URL, broken link, rename) rather than house metaphors (“chase the *thing*”)?
 10. Are slug / nickname / “do not confuse with…” / Cool-URI notes **absent** from the body (they live in `AGENTS.md` / changelog)?
+11. Does the **page slug / filename match the public H1** (unless you can name who still needs the old URL)?
+12. Did you re-check this list **after** drafting — not only before?
 
 Skills that ship visitor copy must re-check this gate: `antora-org-site`, `public-readme`, `bootstrap-org` (profile/site), `owned-changelog` (reader-facing summaries), `writing-news`, `writing-blog`.
 
@@ -189,12 +202,22 @@ Rules of thumb:
 
 Why: mismatched names break search memory, changelogs, xrefs, and agent/human recall (“I swear the page was called X”).
 
+### Slug = public title
+
+**Default:** the on-disk page id (filename without `.adoc`) and the published path segment **match** the public H1 (kebab-case). Same rule for blog/demo slugs on org sites.
+
+- Prefer: H1 *An alternative to URLs* → `an-alternative-to-urls.adoc`
+- Fail: leave an opaque Cool-URI absorb slug (`navigating-by-content`) when the title has moved and **nobody** depends on the old URL
+
+**Keep an absorb redirect** only when you can **name who still hits the old path** (external inbound, worth-preserving indexes). Record that decision in `AGENTS.md` / changelog — never as reader-facing opening copy. Titles module: `agents/editorial/titles.md`.
+
 ### How to author
 
 1. Write a **short H1** that also fits the sidebar (cold-reader gate still applies — see `agents/editorial/titles.md`).
 2. Prefer **no** `:navtitle:` — Antora falls back to the document title when `nav.adoc` omits link text (`xref:page.adoc[]`) or when link text matches the H1.
 3. If `nav.adoc` uses explicit link text, it **must equal** the H1 exactly.
 4. Do not keep a divergent `:navtitle:` “just in case.”
+5. Name the file / slug after the H1 unless an absorb exception (above) applies.
 
 ### Section landings — linked parents (not Overview)
 
