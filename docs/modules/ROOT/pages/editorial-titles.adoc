@@ -84,8 +84,8 @@ Symptom ↔ diagnosis for URL-as-wire pain (HCI Nerdz / Internet Reliability):
 | Labels versus wires
 |===
 
-Demo catalog should match the symptom title.
-Slug absorb (`navigating-by-content` on docs) may remain for Cool URI reasons; the **wired title** is what orients.
+Demo catalog and docs slug should match the public titles.
+Match the page slug to the public title (`an-alternative-to-urls`); do not keep opaque Cool-URI absorb names when nobody depends on the old path.
 
 == See also
 
