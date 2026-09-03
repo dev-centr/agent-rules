@@ -101,6 +101,8 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 - **Insider deixis** without teaching (“this user’s machine”, “your agent probes…”) when the stranger has no “this user” yet
 - Leading with **house variable soup** (`$AGENT_RULES_PATH`, `$CODE_ROOT`, …) before saying who the page is for
 - Dumping **maintainer / agent notes** onto a public page (first-person “I decided…”, “start here for me”, session TODOs)
+- Dumping **structural chat residue** onto a public page: slug absorb notes, “internal nickname”, “do not confuse with page X”, Cool-URI / xref migration asides, “this page remains the Y face.” Those belong in `AGENTS.md` / changelog — not the reader’s opening
+- Writing the lede as **in-group poetry** (“people already chase the *thing*”) when a concrete hook exists (*URL*, *broken link*)
 - Assuming the reader already joined the org, cloned the hive, or ran `harness-setup`
 - Using a generic “developers” audience when the real context is sidebar reference, first-time setup, or changelog scanning
 
@@ -116,6 +118,8 @@ Motivating failure mode: architecture pages that read like an agent briefing for
 6. Does every `$PLACEHOLDER` / jargon term get a plain gloss on first use, or a link to a prior onboarding page?
 7. Would removing chat context still leave a coherent document?
 8. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
+9. Does the opening hook with **their** words (URL, broken link, rename) rather than house metaphors (“chase the *thing*”)?
+10. Are slug / nickname / “do not confuse with…” / Cool-URI notes **absent** from the body (they live in `AGENTS.md` / changelog)?
 
 Skills that ship visitor copy must re-check this gate: `antora-org-site`, `public-readme`, `bootstrap-org` (profile/site), `owned-changelog` (reader-facing summaries), `writing-news`, `writing-blog`.
 
