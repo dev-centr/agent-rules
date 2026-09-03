@@ -76,3 +76,5 @@ They are **not** the interactive Mixr path — latency and dropouts make them wr
 
 * xref:agent-harness.adoc[Agent harness (Hornet)]
 * xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]
+* link:https://github.com/dev-centr/uniprovider[UniProvider] / link:https://github.com/dev-centr/uniprovider/blob/main/spec/opr.md[Open Provider Registry] — discovery of online/offline endpoints; Mixr consumes routes, OPR describes what exists
+* xref:general-knowledge::explanation/infrastructure/uniprovider.adoc[general-knowledge: UniProvider / OPR]

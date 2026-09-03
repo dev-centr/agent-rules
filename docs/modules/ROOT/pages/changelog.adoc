@@ -19,6 +19,10 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-02 — UniProvider / OPR cross-link from Mixr
+
+* xref:mixr-routing-and-cost.adoc[Mixr routing and cost] Related links Open Provider Registry / UniProvider as discovery (Mixr remains routing).
+
 == 2026-09-01 — GitHub push routing (permissions)
 
 * Skill `github-repo-access`: probe `viewerPermission`, branch protection, fork layout; cache in `$CODE_ROOT/machine.md`; route direct push vs branch+PR vs fork PR vs blocked.
