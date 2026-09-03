@@ -47,7 +47,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`; names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, local library-docs fallback | active | Fallback when Context7 missing |
 | `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create` | active | When filing warranted — not after every owned-repo change |
-| `issues-repo-record` | record issue/PR to `.issues`, `submissions/`, push ISSUES_REPO | active | Always commit+push; pairs with `issue-reports` |
+| `issues-repo-record` | record issue/PR to `.issues`, `submissions/`, `gh --attach`, push ISSUES_REPO | active | Always commit+push; prefer `--attach`; `images/` = backup; pairs with `issue-reports` |
 | `polyglot-ci` | GitHub Actions, release.yml, win/mac/lin/BSD, polyglot pack | active | Expands `release-targets` patterns; macOS arm64 only |
 | `release-targets` | release architectures, common/desktop/lab/omnibus, common/2026, patterns.sdl, win/lin x64 arm64 defaults | active | Year-dated sets; detail `general/release-target-patterns.md` |
 | `record-rule` | make that a rule, save this rule, record a rule, persist preference, agent-rules layer; update AI rules/skills; sync harness + template | active | Routes to portable/org/project/harness-local per `harness-boundary` |

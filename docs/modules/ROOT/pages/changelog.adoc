@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-02 — gh --attach filing + provider mirror vision
+
+* Skills `issues-repo-record` / `issue-reports` / `draft-pr`: prefer GitHub CLI `--attach` (gh ≥ 2.99); keep `.issues/images/` as durable backup; `raw.githubusercontent.com` is fallback only.
+* Always-on issue one-liners updated (`AGENTS.md`, `user.md`, `creator.md`, issue-reports rule).
+* See xref:changelog-details/2026-09-02 - gh-attach-and-mirror-backups.adoc[Detailed changelog].
+
 == 2026-09-02 — UniProvider / OPR cross-link from Mixr
 
 * xref:mixr-routing-and-cost.adoc[Mixr routing and cost] Related links Open Provider Registry / UniProvider as discovery (Mixr remains routing).

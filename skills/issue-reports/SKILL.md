@@ -2,8 +2,9 @@
 name: issue-reports
 description: >-
   Use when filing is warranted (bug, blocker, external coordination, user
-  asked) — not after every owned-repo change. gh issue create; ISSUES_REPO;
-  .issues submissions; issues-repo-record; do not leave the issue only in chat.
+  asked) — not after every owned-repo change. gh issue create; gh --attach;
+  ISSUES_REPO; .issues submissions; issues-repo-record; do not leave the issue
+  only in chat.
 ---
 
 # Issue reports
@@ -12,14 +13,14 @@ description: >-
 
 Draft the report as a durable artifact, then submit to the forge. Do **not** leave the body only in chat or in a one-shot `gh` argument that the shell can mangle.
 
-If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, images, front matter, commit, and **push** (recording is submitting; always push). Follow that repo’s README for paths.
+If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, media backup, front matter, commit, and **push** (recording is submitting; always push). Follow that repo’s README for paths.
 
 ## Draft and submit
 
 1. Write the body in `ISSUES_REPO/submissions/{short-name}/issue.md` — **no title in the body**.
    - The first lines of the body must be a **normal-talk introduction/summary** (plain English, 1–3 sentences).
    - Only after that intro/summary should you add structured sections (steps, expected/actual, screenshots, etc.).
-2. If screenshots are needed: skill `issues-repo-record` — push `images/` **before** embedding URLs.
+2. If screenshots/video are needed: skill `issues-repo-record` — copy into `images/`, prefer **`gh --attach`** (gh ≥ 2.99) for the forge copy; always keep the local `images/` tree as backup. Use `raw.githubusercontent.com` only as fallback.
 3. Follow `cli-body-file-first` for any CLI submission of multi-line formatted text (bodies, comments, edits); delete any temp file after the command succeeds.
 4. Skill `issues-repo-record` — record outcome (`submitted`, `pending`, or `blocked`), commit, push.
 
@@ -28,6 +29,7 @@ If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, images, fro
 - File issues for routine owned-repo work that changelog + PR already capture
 - Invent an issues store when `ISSUES_REPO` is unset — still write a file (repo `docs/` or a path they name) rather than chat-only
 - Leave `ISSUES_REPO` submission files uncommitted or unpushed (skill `issues-repo-record`)
+- Drop local media backup because the forge accepted `--attach`
 - Put secrets in issue bodies
 - Commit `archives/` / `*.sqlite` if that repo uses issues-browser backups
 

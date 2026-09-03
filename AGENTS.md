@@ -55,12 +55,12 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Sync before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`; pull/rebase before coding on a stale HEAD.
 - **End of agent run:** after file changes, logical commits + push before the final reply (`general/end-of-run.md`; skill `push-code`).
 - **One Antora site per org:** skill `antora-org-site` (hub at [docs.devcentr.org](https://docs.devcentr.org); Valentus lean + **Facto** compose pack — confirm; `agents/engineering/antora.md`).
-- **Internet Architecture / Reliability:** systems content in `general-knowledge`; portal peer nav in `dev-centr/docs`. HCI *Labels versus wires* is the symptom ↔ diagnosis face, not this umbrella; connectome-fs is substrate.
+- **Internet Architecture / Reliability:** systems content in `general-knowledge`; portal peer nav in `dev-centr/docs`. HCI *Labels versus wires* / *Host-held history* are symptom ↔ diagnosis faces; connectome-fs is substrate. Provider search + mirror backups: encyclopedia page under Internet Architecture.
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
 - **Repo About homepage:** on new project repos, set GitHub About URL to the org docs hub component page unless the repo is the org main/marketing site or a product with its own domain/subdomain (skill `bootstrap-org`).
 - **Changelogs:** every owned project, functional changes — skill `owned-changelog`.
 - **Config:** SDL (`.sdl`) on DevCentr-owned / `sdlang-d` surfaces; KDL (`.kdl`) greenfield outside that stack; JSON5 in the JSON family. No Extended SDL/XDL.
-- **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work (`owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push); never chat-only.
+- **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work (`owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push; prefer `gh --attach` for media, keep `images/` as backup); never chat-only.
 - **Skills:** canonical copies under `skills/` in this repo; install per `$HARNESS` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read on demand. Inventory in `skills/CATALOG.md`. Do **not** paste skill bodies into this always-on preamble.
 - **Sync skills/rules on drift:** skill `sync-agent-rules` — fetch/pull this repo, repair discovery installs, refresh local overlays, stamp `AGENT_RULES_SYNCED_SHA` + `AGENT_RULES_SYNCED_LABEL` (`skills-set/*`) in `$HARNESS`. Detail: `general/rules-skills-sync.md`.
 - **Hive layout:** forks (personal **and** org) → `$CODE_ROOT/<host>/<owner>/.forks/<repo>`; owned non-forks → `<owner>/<repo>`; upstream → `.clones/`. Verify `gh api … --jq .fork` before clone or dedupe. Skill `hive-layout`; detail: `general/folder-schema.md`.

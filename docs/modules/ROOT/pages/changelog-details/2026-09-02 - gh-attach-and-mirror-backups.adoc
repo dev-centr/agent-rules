@@ -1,0 +1,16 @@
+= gh --attach filing + provider mirror vision in skills
+:description: Skill and always-on updates for GitHub CLI media attach and .issues backup posture.
+:page-audience: Maintainers
+:page-usage-context: Changelog detail
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-02
+
+== Summary
+
+Prefer `gh --attach` (gh ≥ 2.99) for forge-visible media; keep `ISSUES_REPO/images/` as consumer backup. Point skills at the provider search / mirror-backups north star.
+
+== Changes
+
+* Skills: `issues-repo-record`, `issue-reports`, `draft-pr`, `push-code`, `BOOTSTRAP`, `CATALOG`
+* Always-on: `AGENTS.md`, `user.md`, `general/creator.md`, `.cursor/rules/issue-reports.mdc`

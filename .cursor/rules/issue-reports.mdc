@@ -22,4 +22,4 @@ File an issue when there is a **problem or coordination need** worth tracking ou
 
 **Changelog vs issue:** owned functional changes → skill `owned-changelog`. Issues → problems and external coordination.
 
-**How to file:** skill `issue-reports` (draft, `gh issue create`); skill `issues-repo-record` (`.issues` layout, images, commit, **always push**). Do not leave the report only in chat.
+**How to file:** skill `issue-reports` (draft, `gh issue create`); skill `issues-repo-record` (`.issues` layout, `gh --attach` + local media backup, commit, **always push**). Do not leave the report only in chat.

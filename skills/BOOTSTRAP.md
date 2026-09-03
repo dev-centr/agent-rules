@@ -66,7 +66,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Env names registry** → skill `env-names-registry` (`skills/env-names-registry/`).
 - **Outdated code protocol** → skill `outdated-code-protocol` (`skills/outdated-code-protocol/`).
 - **Issue reports** → skill `issue-reports` (`skills/issue-reports/`).
-- **`.issues` record + push** → skill `issues-repo-record` (`skills/issues-repo-record/`).
+- **`.issues` record + push** → skill `issues-repo-record` (`skills/issues-repo-record/`) — prefer `gh --attach`; keep `images/` as backup.
 - **Polyglot CI / release matrix** → skill `polyglot-ci`; named sets → skill `release-targets` (`common` / `desktop` / `lab`).
 - **Harness setup / harness.md** → skill `harness-setup` (`skills/harness-setup/`).
 - **Sync skills/rules on drift** → skill `sync-agent-rules` (`skills/sync-agent-rules/`).

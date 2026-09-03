@@ -56,7 +56,7 @@
 - Changelog: every owned project, functional changes — skill `owned-changelog`.
 - **UI concepts → demos:** for owned orgs, inventing/shipping a new UI concept auto-applies skill `demo-site-wiring` (demos + org index are part of invent/ship — not optional). Do **not** suppress push/PR for demo prototyping; iterate via later commits/PR updates. Detail: `agents/demos-and-push.md`.
 - **Partner org chrome:** footers and related strips — **one entry point per org** (homepage preferred; GitHub only if no homepage). Do not also list that org’s docs hub or GitHub beside the homepage. Detail: `general/partner-org-entrypoints.md`.
-- Issues: file for bugs, blockers, and external coordination — not routine owned-repo work (skill `owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push); never chat-only.
+- Issues: file for bugs, blockers, and external coordination — not routine owned-repo work (skill `owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push; prefer `gh --attach`, keep `images/` backup); never chat-only.
 
 ## Docs
 - Structure: Diátaxis (tutorials, how-to, explanation, reference).

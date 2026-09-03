@@ -2,9 +2,10 @@
 name: issues-repo-record
 description: >-
   Use when recording an issue or PR submission to ISSUES_REPO or .issues,
-  submissions/, images/ for gh bodies, push .issues, commit issue submission,
-  pr-body.md, unfiled issue, embed screenshot in issue body, raw.githubusercontent.com
-  image URL, or after gh issue create / gh pr create when ISSUES_REPO is set.
+  submissions/, images/ backup for forge filings, gh --attach media upload,
+  push .issues, commit issue submission, pr-body.md, unfiled issue, embed
+  screenshot in issue body, raw.githubusercontent.com fallback image URL, or
+  after gh issue create / gh pr create when ISSUES_REPO is set.
 ---
 
 # Record issue and PR submissions (.issues)
@@ -29,26 +30,57 @@ ISSUES_REPO/
     {org}-{repo}-{issue-number}.md  # per-forge copy after submit
     pr-body.md                      # optional PR body archive
     {org}-{repo}-{pr-number}.md     # optional per-forge PR copy
-  images/{issue-short-name}/        # embeddable assets (raw GitHub URLs)
+  images/{issue-short-name}/        # durable local/media backup (always keep)
 ```
 
 Never commit `archives/`, `*.sqlite`, or `monitor.sdl`.
 
-## Images before embed
+## Media: forge upload vs consumer backup
 
-GitHub CLI cannot upload images. Bodies use `raw.githubusercontent.com/.../images/...` URLs.
+**Two jobs, two homes:**
 
-When screenshots are needed:
+| Job | Where |
+| --- | --- |
+| What the forge shows | Native upload when available (`gh --attach` on GitHub; browser attach otherwise) |
+| What *you* keep | `ISSUES_REPO/images/` (+ submission markdown) — consumer-owned backup, always |
 
-1. Copy files to `images/{issue-short-name}/` with descriptive names.
-2. **Commit and push** that `images/` tree **before** referencing URLs in `issue.md`, forge bodies, or PR text.
+`.issues` is **not** the preferred CDN for GitHub bodies anymore. Prefer forge-native attach; still **copy every screenshot/video into `images/`**, commit, and push so filings survive host CDN churn and remain searchable offline (pair with `issues-browser` archives).
+
+### Prefer `gh --attach` (GitHub, gh ≥ 2.99.0)
+
+Requires write access to the target repo. Supported on `gh issue|pr` `create` / `edit` / `comment`.
+
+1. Copy media to `images/{issue-short-name}/` with descriptive names (backup first).
+2. In `issue.md` / `pr-body.md`, either:
+   - Reference the **same local path** you will pass to `--attach` (Markdown image syntax). `gh` rewrites those paths to the uploaded URL in place; or
+   - Omit embeds and let `--attach` append media at the end.
+3. Submit with `--body-file` **and** repeatable `--attach`:
+
+```powershell
+gh issue create --repo OWNER/REPO --title "…" `
+  --body-file "$env:ISSUES_REPO\submissions\{short-name}\issue.md" `
+  --attach "$env:ISSUES_REPO\images\{short-name}\error.png#The error dialog"
+```
+
+Alt text: `path#alt text` on the flag. When the body already has `![alt](path)`, body alt wins for rewritten refs.
+
+4. After forge success, record the per-forge file, then **commit and push** `submissions/` + `images/` together (backup of text + media).
+
+Check version when unsure: `gh --version` — need **2.99.0+**. If older, upgrade `gh` or use the fallback below.
+
+### Fallback: `raw.githubusercontent.com` (legacy / non-attach)
+
+Use only when `--attach` is unavailable: `gh` too old, Enterprise Server without support, no write access for attach, or a forge without an equivalent CLI upload (e.g. some `glab` paths).
+
+1. Copy files to `images/{issue-short-name}/`.
+2. **Commit and push** that `images/` tree **before** referencing URLs in forge bodies.
 3. Build URLs from the pushed path on `main`:
 
    `https://raw.githubusercontent.com/{owner}/{repo}/main/images/{issue-short-name}/{filename}`
 
-4. Only then run `gh issue create`, `gh pr create`, or post comments that embed those images.
+4. Only then run `gh issue create` / `gh pr create` / comments that embed those URLs.
 
-If you add or replace images later, push again before updating forge bodies that reference them.
+If you add or replace fallback images later, push again before updating forge bodies that reference them.
 
 ## Workflow
 
@@ -61,17 +93,21 @@ In `ISSUES_REPO`:
 
 For PRs, also write `pr-body.md` (or skip `issue.md` when the submission is PR-only).
 
-### 2. Images (if any)
+### 2. Media (if any)
 
-Push `images/{short-name}/` as above. Confirm URLs resolve before forge submit.
+Copy into `images/{short-name}/`. Prefer `--attach` (above). Fallback push-before-embed only when using raw GitHub URLs.
 
 ### 3. Forge submit
 
 Pass body files into `gh` / `glab` so the shell does not expand `$variables`:
 
 ```powershell
-gh issue create --repo OWNER/REPO --title "…" --body-file "Z:\path\to\ISSUES_REPO\submissions\{short-name}\issue.md"
+gh issue create --repo OWNER/REPO --title "…" `
+  --body-file "$env:ISSUES_REPO\submissions\{short-name}\issue.md" `
+  --attach "$env:ISSUES_REPO\images\{short-name}\shot.png"
 ```
+
+Omit `--attach` when there is no media or when using the raw-URL fallback body.
 
 PRs: skill `draft-pr` for voice and `gh pr create`; return here to record.
 
@@ -91,12 +127,13 @@ issue_number: 123
 url: https://github.com/OWNER/REPO/issues/123
 submitted: YYYY-MM-DD
 status: submitted
+media: attach   # or: raw_github | none
 ---
 ```
 
 (PRs: use `pull_number` / PR URL instead of `issue_number` when that reads clearer; keep the same shape.)
 
-Body matches what was filed (or `pr-body.md` content).
+Body matches what was filed (or `pr-body.md` content). Optional `media:` helps future audits know whether the forge copy used `--attach` or the CDN fallback.
 
 #### Pending retry
 
@@ -184,16 +221,21 @@ git push origin main
 | Skill | Role |
 | --- | --- |
 | `issue-reports` | Draft quality, `gh issue create`, when filing is warranted |
-| `draft-pr` | PR voice, push product branch, `gh pr create` |
-| **This skill** | Layout, images, front matter, **always push** `ISSUES_REPO` |
+| `draft-pr` | PR voice, push product branch, `gh pr create` (+ `--attach` when media) |
+| **This skill** | Layout, media backup, front matter, **always push** `ISSUES_REPO` |
 | `git-commit` / `push-code` | Default “ask first” — **except** `ISSUES_REPO` record steps |
+| `issues-browser` (tool) | Opt-in forge metadata/body archives under `archives/` — complementary offline search |
 
 Call this skill at the end of every issue or PR filing flow when `ISSUES_REPO` is set.
+
+Architectural north star (provider search APIs + API-compatible consumer mirrors): general-knowledge *Provider search and mirror backups*; near-term wedge is this repo + `issues-browser`.
 
 ## Do not
 
 - Leave `submissions/` or `images/` only on disk
-- Embed `raw.githubusercontent.com` URLs before those blobs exist on `main`
+- Skip copying media into `images/` because `--attach` uploaded to the forge — backup is still required
+- Embed `raw.githubusercontent.com` URLs before those blobs exist on `main` (fallback path only)
+- Prefer the raw-URL hack when `gh --attach` is available
 - Put secrets in bodies or screenshots
 - Use `status: pending` for permission or policy blocks — use `status: blocked`
 - Commit SQLite archives or issues-browser backups

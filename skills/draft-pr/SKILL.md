@@ -101,4 +101,4 @@ Never update git config. Return the PR URL when done. If `gh` created a draft an
 
 ## Record in ISSUES_REPO
 
-When `ISSUES_REPO` is set, archive the PR body under `submissions/{short-name}/` (skill **`issues-repo-record`**) — same push-always rules as issues. Push any `images/` URLs before they appear in the PR body. Record `{org}-{repo}-{pr-number}.md` after `gh pr create` succeeds, or `status: pending` / `status: blocked` when submit did not complete.
+When `ISSUES_REPO` is set, archive the PR body under `submissions/{short-name}/` (skill **`issues-repo-record`**) — same push-always rules as issues. Prefer **`gh pr create --attach`** (gh ≥ 2.99) for screenshots/video; still copy media into `images/` as consumer backup. Use push-before-embed `raw.githubusercontent.com` URLs only as fallback. Record `{org}-{repo}-{pr-number}.md` after `gh pr create` succeeds, or `status: pending` / `status: blocked` when submit did not complete.
