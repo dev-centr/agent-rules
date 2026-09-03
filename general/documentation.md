@@ -262,7 +262,7 @@ Right — with landing:
 
 ## Titles for news, blogs, and essays
 
-**Cold reader:** title and first paragraph must orient a stranger out of thin air — load **`agents/editorial/titles.md`**. No shape checklists.
+**Cold reader + enthymeme:** title and first paragraph must orient a stranger out of thin air — load **`agents/editorial/titles.md`** (implication-dense titles, agent self-test, new-idea rejected-assumption check). Teaching page: docs hub `agent-rules` → `editorial-titles.adoc`. No shape checklists.
 
 Channel stance (bodies, not title formulas):
 

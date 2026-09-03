@@ -10,7 +10,7 @@ description: >-
 
 **Channel:** outward — what entered the shared record (shipped, added, partnered).
 
-Read `body.md` in this folder for the full checklist. Titles: **`agents/editorial/titles.md`** (canonical). Ignore fat per-site `STYLE.adoc` rulebooks; pointers only.
+Read `body.md` in this folder for the full checklist. Titles: **`agents/editorial/titles.md`** (canonical — cold-reader + enthymeme self-test). Ignore fat per-site `STYLE.adoc` rulebooks; pointers only.
 
 ## Quick stance
 

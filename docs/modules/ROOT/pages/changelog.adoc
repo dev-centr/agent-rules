@@ -19,6 +19,10 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-03 — Editorial titles (enthymeme + self-test)
+
+* See xref:changelog-details/2026-09-03 - editorial-titles-enthymeme.adoc[Detailed changelog].
+
 == 2026-09-02 — gh --attach filing + provider mirror vision
 
 * Skills `issues-repo-record` / `issue-reports` / `draft-pr`: prefer GitHub CLI `--attach` (gh ≥ 2.99); keep `.issues/images/` as durable backup; `raw.githubusercontent.com` is fallback only.

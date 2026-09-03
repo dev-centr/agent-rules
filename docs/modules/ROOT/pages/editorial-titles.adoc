@@ -1,0 +1,94 @@
+= Editorial titles
+:description: Cold-reader orientation, enthymemic (implication-dense) titles, and agent self-tests — house doctrine for news, blog, and docs.
+:page-audience: Authors and agents writing Dev-Centr / partner-org titles
+:page-usage-context: Docs hub teaching page; pairs with agents/editorial/titles.md in this repo
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-03
+:page-doc-type: explanation
+
+People orient through **concrete** common knowledge and deliberate through **abstract** frames.
+Titles that open with in-group abstractions (*dependents*, *wires*, *labels*, *navigating by content*) fail before the idea starts.
+
+The machine-readable house rule is link:https://github.com/dev-centr/agent-rules/blob/main/agents/editorial/titles.md[`agents/editorial/titles.md`].
+This page is the same doctrine for humans on the docs hub.
+Philosophy depth: link:https://hci-nerdz.github.io/blog/titles-as-orientation/[Titles as orientation].
+
+== Cold-reader gate
+
+Title and first paragraph must orient a stranger out of thin air — no prior chat, no product lore, no case-study context.
+
+* Prefer: *Broken links after a URL rename*
+* Fail: *When the agent names a fork before it looks* (private scene)
+* Fail: *Path renames that break dependents* (*dependents* is abstract before the hook)
+
+== Enthymemic / implication-dense titles
+
+Some titles **pack a second title the reader invents** without writing it.
+
+One surface phrase + a charged relation to a known object → the reader supplies *why?* / *for what?* and arrives ready to **accept or reject**.
+
+[cols="1,2"]
+|===
+| Surface title | Second title the stranger invents (approx.)
+
+| *An alternative to URLs*
+| *Why would URLs need an alternative?* / *Alternative for what job?*
+
+| *Attention is not inventory*
+| *Why isn't attention inventory?*
+
+| *When 'non-technical' products lie*
+| *How do they lie?*
+|===
+
+=== New ideas meet rejected assumptions
+
+For a novel claim, assume the cold reader has **already rejected it** (by ignorance or habit).
+The title reopens the case against that implicit assumption.
+It is not there to summarize the architecture diagram.
+
+=== Calculated width
+
+*An alternative to URLs* is not an overclaim when the body scopes the use-case (URL-as-identity / URL-as-wire).
+Do not "fix" implication-dense titles into fully scoped thesis titles (*URLs as labels, not wires*) unless disambiguation was requested over charge.
+
+Agents default to over-explicit titles.
+Prefer implication density when the common concrete object is already in the reader's head (*URL*, not *wire*).
+
+== Agent self-test
+
+Before shipping a title:
+
+. *Concrete hook?* — shared words a stranger already has
+. *Second title?* — what question do they invent? Nothing → too flat; wrong job → too vague
+. *Accept/reject fork?* — stance forming before paragraph one
+. *Abstraction demoted?* — wires / labels / dependents / identity in the body, not stealing the public title
+. *New-idea check?* — reopen a rejected assumption, do not only name the in-group concept
+
+== Worked cluster (reference durability)
+
+Symptom ↔ diagnosis for URL-as-wire pain (HCI Nerdz / Internet Reliability):
+
+[cols="1,2"]
+|===
+| Face | Public title
+
+| Symptom
+| *Broken links after a URL rename*
+
+| Diagnosis (and docs H1)
+| *An alternative to URLs*
+
+| Internal nickname (after the hook)
+| Labels versus wires
+|===
+
+Demo catalog should match the symptom title.
+Slug absorb (`navigating-by-content` on docs) may remain for Cool URI reasons; the **wired title** is what orients.
+
+== See also
+
+* Skill `writing-blog` / `writing-news` — channel bodies; titles always load this doctrine
+* xref:skills-catalog.adoc[Skills catalog]
+* link:https://docs.devcentr.org/general-knowledge/explanation/internet-architecture/reliability/index.html[Internet Reliability @ DevCentr]

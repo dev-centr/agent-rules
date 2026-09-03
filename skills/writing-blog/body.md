@@ -19,7 +19,9 @@ Essay stance: https://ryanjohnson.dev/blog/posts/blog-as-inner-thought/
 
 - **Inward:** ideas, philosophy, craft, tutorials as thinking-in-public
 - **Thesis early:** claim or orientation up front — not buried lede
-- **Cold reader:** title + first paragraph name the topic before the case-study scene
+- **Cold reader:** title + first paragraph orient via **concrete shared knowledge** before the case-study scene (`agents/editorial/titles.md`)
+- **Enthymeme:** prefer implication-dense titles that pack a second title the reader invents; do not "fix" them into fully scoped thesis titles unless asked
+- **New ideas:** assume prior rejection by ignorance/habit; title reopens the case
 - **Conversational authority:** `you` and first person OK when they serve clarity
 - **Anti-slop:** no hollow intensifiers, vague abstractions, or listicle filler
 - **One framing beat** per post; do not stack unrelated theses
@@ -30,6 +32,7 @@ Essay stance: https://ryanjohnson.dev/blog/posts/blog-as-inner-thought/
 - Press-release tone on an essay
 - Neutral news voice without a thesis
 - Imperative or cryptic titles that fail the cold-reader gate (`agents/editorial/titles.md`)
+- Abstract-first titles (*dependents*, *wires*, *labels*) when a concrete hook exists (*URL*, *broken link*)
 - Forced situation titles or ledes that only make sense after the body scene
 - Telegraphic bullets without scenes
 

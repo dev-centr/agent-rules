@@ -19,6 +19,8 @@ Read `body.md` in this folder for the full checklist. Titles: **`agents/editoria
 - Scene + summary (Nieman); not telegraphic bullet-essays or generic AI slop
 - One big idea per post; shipping minutiae → changelog
 - Title + first paragraph orient a cold reader before any case-study scene (`agents/editorial/titles.md`)
+- Prefer **enthymemic / implication-dense** titles when a concrete shared object exists; run the self-test in `titles.md` before shipping
+- For new ideas: assume the reader has already rejected the claim — title reopens that assumption
 
 ## Verify
 

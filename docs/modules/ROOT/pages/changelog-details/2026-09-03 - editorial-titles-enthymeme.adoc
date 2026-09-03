@@ -1,0 +1,6 @@
+= 2026-09-03 — Editorial titles (enthymeme + self-test)
+
+* Doctrine: `agents/editorial/titles.md` — concrete-first cold-reader gate, enthymemic / implication-dense titles, new-idea rejected-assumption stance, agent self-test, examples bank
+* Teaching page: xref:editorial-titles.adoc[Editorial titles] on this component (hub already sources `agent-rules`)
+* Skills `writing-blog` / `writing-news` + `general/documentation.md` point at the expanded gate
+* Worked cluster: *Broken links after a URL rename* ↔ *An alternative to URLs* (internal nickname: Labels versus wires)
