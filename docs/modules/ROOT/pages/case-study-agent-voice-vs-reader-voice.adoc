@@ -1,0 +1,167 @@
+= Case study: agent voice vs reader voice
+:description: How a real URL-identity docs rewrite exposed title hooks, implication-dense naming, Cool-URI habit, and structural chat residue in published pages.
+:page-audience: Authors and agents shipping Dev-Centr / partner-org docs, essays, and titles
+:page-usage-context: Docs hub case study beside Editorial titles; not an agent playbook
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-03
+:page-doc-type: explanation
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+This is a worked example from retitling and rewriting the HCI / DevCentr material about broken links and URL identity.
+It shows where agent-friendly habits collide with reader-facing voice — even when the house rules already forbid the collision.
+
+Doctrine pages::
+xref:editorial-titles.adoc[Editorial titles] ·
+link:https://github.com/dev-centr/agent-rules/blob/main/agents/editorial/titles.md[`agents/editorial/titles.md`] ·
+link:https://github.com/dev-centr/agent-rules/blob/main/general/documentation.md[`general/documentation.md`] (Audience / POV)
+
+Live cluster (after the rewrite)::
+link:https://hci-nerdz.github.io/blog/broken-links-after-a-url-rename/[Broken links after a URL rename] ·
+link:https://hci-nerdz.github.io/blog/an-alternative-to-urls/[An alternative to URLs] ·
+link:https://hci-nerdz.github.io/docs/hci-nerdz/an-alternative-to-urls.html[docs topic]
+
+== What we were trying to do
+
+Ship a coherent public story for a hard idea: pretty URLs are for people; treating them as the only system identity is why renames leave broken links.
+
+That story needed:
+
+* titles strangers would search and feel
+* filenames and wiki slugs that match those titles
+* openings that talk like a teacher, not like a handoff memo between agents
+
+== Failure 1: abstract titles before the hook
+
+Early public titles leaned on in-group frames:
+
+* *Docs path renames as unpaid chores* (metaphor before the ache)
+* *Path renames that break dependents* (*dependents* is abstract)
+* *Labels versus wires* / *Navigating by content* (concept nicknames as the cold open)
+
+People do not walk around thinking in *dependents* or *wires*.
+They think *URL*, *broken link*, *rename*.
+
+=== What worked instead
+
+[cols="1,2"]
+|===
+| Face | Public title
+
+| Symptom
+| *Broken links after a URL rename*
+
+| Diagnosis / docs H1
+| *An alternative to URLs*
+|===
+
+*Labels versus wires* stayed useful — as a nickname **after** the hook, not as the billboard.
+
+== Failure 2: “fixing” an implication-dense title
+
+An agent read *An alternative to URLs* as an overclaim (“URLs are not obsolete”) and tried to narrow it to fully scoped thesis titles (*URLs as labels, not wires*).
+
+That is the wrong repair.
+
+*An alternative to URLs* packs a second title the reader invents: *Why would URLs need an alternative?* / *Alternative for what job?*
+The body scopes the use-case.
+The title’s job is to reopen a habit the reader has already accepted (URL = the string I typed).
+
+House name for that move: **enthymemic / implication-dense** titles.
+See xref:editorial-titles.adoc[Editorial titles].
+
+== Failure 3: Cool-URI absorb when nobody depends on the old path
+
+The wiki page kept the slug `navigating-by-content` “for Cool URI absorb” while the public title was already *An alternative to URLs*.
+
+That habit protects real inbound links.
+It also freezes opaque names when the audience is still only you and the agents.
+
+Here nobody was relying on the old wiki path.
+The slug moved to `an-alternative-to-urls` so title, filename, and URL matched.
+
+Rule of thumb::
+Match slug to public title by default.
+Keep an absorb redirect only when you can name who still hits the old URL.
+
+== Failure 4: structural chat residue in the reader’s opening
+
+The docs topic briefly opened like an agent briefing:
+
+* “People already chase the *thing*.” (in-group poetry; not a hook)
+* “Slug stays… internal nickname… do not confuse with…”
+* “Umbrella (systems altitude): … This page remains the HCI symptom ↔ diagnosis/treatment face.”
+
+None of that helps a stranger.
+Slug notes, nickname maps, and collision warnings belong in `AGENTS.md` or a changelog.
+The published opening owes the reader a conversation.
+
+=== What the opening became
+
+[quote]
+____
+URLs are a problem.
+But why are they a problem, you ask?
+
+Because we ask one string to do two jobs…
+____
+
+And the umbrella, in human voice:
+
+[quote]
+____
+This article sits under the umbrella of Internet Reliability @ DevCentr…
+Here we stay on the HCI / DevX face…
+____
+
+== Why this keeps happening (even with good rules)
+
+The Audience / POV gate already said: published pages are for the reader on the page, not for the chat commissioner.
+
+Three pressures still win unless you check the gate **after** drafting:
+
+. **Session context outcompetes the stranger.** The chat is full of dialectic maps, Cool URI, nickname collisions, AGENTS maps. Models try to “persist” that on the page so the next agent does not get lost — in the wrong channel.
+. **Structure tools become voice.** Symptom ↔ diagnosis tables, umbrella cross-links, and Diátaxis faces are good. Applied badly, they produce handoff prose (“this page remains the Y face”) instead of teaching.
+. **Title doctrine ≠ body doctrine.** Fixing titles does not automatically fix ledes. Cold-reader titles can sit above a briefing-memo introduction.
+
+You are not mainly fighting a hidden Cursor system prompt.
+You are fighting channel mix: agent-recall constraints leaking into visitor copy.
+
+== Channel split (the durable fix)
+
+[cols="1,2"]
+|===
+| Channel | What belongs there
+
+| Published docs / blog / news
+| Concrete hooks, implication-dense titles when earned, casual explanation, umbrella placement for humans
+
+| `AGENTS.md`, skills, changelogs
+| Slug history, nicknames, “do not confuse with…”, Cool-URI absorb decisions, session maps
+|===
+
+Pass checks that grew out of this case (also in `general/documentation.md`):
+
+* Does the opening use **their** words (URL, broken link, rename)?
+* Are slug / nickname / “do not confuse” notes **absent** from the body?
+* Could a smart stranger follow the page with this chat closed?
+
+== See also
+
+* xref:editorial-titles.adoc[Editorial titles]
+* link:https://docs.devcentr.org/general-knowledge/explanation/writing-clear-docs-with-ai.html[Writing clear docs with AI]
+* link:https://hci-nerdz.github.io/blog/titles-as-orientation/[Titles as orientation]
+* link:https://docs.devcentr.org/general-knowledge/explanation/internet-architecture/reliability/index.html[Internet Reliability @ DevCentr]

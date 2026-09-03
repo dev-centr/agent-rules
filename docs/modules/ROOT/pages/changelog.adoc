@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-03 — Case study: agent voice vs reader voice
+
+* xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice] — URL-identity retitle/rewrite as worked example (titles, Cool URI, structural chat residue, channel split)
+* See xref:changelog-details/2026-09-03 - case-study-agent-voice-vs-reader-voice.adoc[Detailed changelog].
+
 == 2026-09-03 — Editorial titles (enthymeme + self-test)
 
 * See xref:changelog-details/2026-09-03 - editorial-titles-enthymeme.adoc[Detailed changelog].

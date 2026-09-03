@@ -89,6 +89,7 @@ Match the page slug to the public title (`an-alternative-to-urls`); do not keep 
 
 == See also
 
+* xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice] — worked URL-identity rewrite
 * Skill `writing-blog` / `writing-news` — channel bodies; titles always load this doctrine
 * xref:skills-catalog.adoc[Skills catalog]
 * link:https://docs.devcentr.org/general-knowledge/explanation/internet-architecture/reliability/index.html[Internet Reliability @ DevCentr]

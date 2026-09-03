@@ -38,6 +38,7 @@ https://docs.devcentr.org/agent-rules/
 == Start here
 
 * xref:editorial-titles.adoc[Editorial titles] — cold-reader gate, enthymemic titles, agent self-test
+* xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice] — URL-identity rewrite as a cautionary tale
 * xref:harness-neutral.adoc[Harness-neutral architecture] — **rules geography** map (layered deltas; personal fork is not HEAD parity)
 * xref:changelog.adoc[Changelog] — functional history (including layer renames)
 

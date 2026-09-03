@@ -1,5 +1,6 @@
 * xref:index.adoc[Overview]
 * xref:editorial-titles.adoc[Editorial titles]
+* xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice]
 * xref:harness-neutral.adoc[Harness-neutral architecture]
 * xref:end-of-run-commit-push.adoc[End-of-run commit and push]
 * xref:agent-harness.adoc[Agent harness]

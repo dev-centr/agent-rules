@@ -1,0 +1,5 @@
+= 2026-09-03 — Case study: agent voice vs reader voice
+
+* New teaching page: xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice]
+* Documents the URL-identity cluster rewrite: concrete/enthymemic titles, Cool-URI absorb mistake, structural chat residue in openings, channel split (`AGENTS.md` vs published page)
+* Linked from nav, component index, and xref:editorial-titles.adoc[Editorial titles]

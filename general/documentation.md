@@ -108,6 +108,8 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 
 Motivating failure mode: architecture pages that read like an agent briefing for the commissioner instead of an onboarding guide for a naive joiner (e.g. early drafts of harness-neutral architecture).
 
+Worked example (titles + openings + Cool URI + chat residue): docs hub `agent-rules` → `case-study-agent-voice-vs-reader-voice.adoc`.
+
 ### Pass checks (before commit)
 
 1. Are `page-audience`, `page-orig-author`, `page-last-author` (and `page-last-edited` when known) set in the header?
