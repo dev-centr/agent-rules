@@ -1,0 +1,19 @@
+= Naming notes: Jiminy Cricket / Cricket
+:navtitle: Jiminy Cricket naming notes
+:page-audience: Dev-Centr maintainers
+:page-usage-context: Changelog detail for product naming research
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-04
+
+== Summary
+
+Recorded open naming discussion on xref:../agent-harness.adoc[Agent harness (Hornet)]:
+
+* **Hornet** metaphor fits swarming agents more than the harness shell; plain `harness` remains a rename candidate for discovery.
+* **Jiminy Cricket** / **Cricket** — conscience-on-the-shoulder metaphor; open whether that brand fits the **runtime** or a **model / advisory voice** (human in first person as Pinocchio).
+* TrademarkElite U.S. knockout for `jiminy cricket`: three Disney serials (**85298074**, **77098391**, **77979338**), all **DEAD — continued use not filed within grace period, un-revivable** (status dates 2021). Research note only — not clearance; other jurisdictions and copyright still matter.
+
+== Files
+
+* xref:../agent-harness.adoc[Agent harness (Hornet)] — section *Naming notes (open)*

@@ -189,6 +189,53 @@ Full spec: xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]. Deprecated 
 * Not a rules fork — policy stays in `dev-centr/agent-rules`
 * Not a grab-bag of every OSS agent feature — duplicates are stripped at integration time
 
+== Naming notes (open)
+
+**Hornet** was chosen as a working name because it echoes *harness* and because hornets *swarm* — parallel actor nodes. That metaphor fits **agents** better than the shell that hosts them; renaming the repo/runtime (for example to a plain `harness`) remains on the table.
+
+=== Candidate: Jiminy Cricket / Cricket
+
+The Pinocchio conscience on the shoulder — agents have no conscience of their own; something in the stack steers “how to be good.” Two placement options under discussion:
+
+[cols="1,2"]
+|===
+| Slot | Fit
+
+| **Harness / runtime**
+| Conscience-as-shell: the product that sits with you and steers work. CLI/product length and Disney character association are drawbacks; plain `harness` stays stronger for discovery.
+
+| **Model / advisory voice**
+| Puts the **human in first person** (Pinocchio): you want to act; the model is the cricket on your shoulder. Stronger story for a chat/coordinator persona than for the binary that writes `graph.json`. Tension with Mixr: many models per swarm — brand one default advisory model, the coordinator voice, or a policy layer — not every routed worker.
+|===
+
+**Cricket** alone carries the metaphor with less character-name risk than the full *Jiminy Cricket* string.
+
+==== U.S. trademark serials (research note)
+
+Knockout search on TrademarkElite for `jiminy cricket` (https://www.trademarkelite.com/trademark/trademark-registration/search.aspx?sw=jiminy%20cricket&hline=2&light=1[search results], recorded 2026-09-04): **three** U.S. serials, all Disney Enterprises, Inc., all **DEAD — continued use not filed within grace period, un-revivable**:
+
+[cols="1,2,2,2"]
+|===
+| Serial | Filed | Goods (summary) | Status date
+
+| 85298074
+| 2011-04-18
+| Entertainment production / distribution (film, TV, recordings, live shows, …)
+| 2021-02-12
+
+| 77098391
+| 2007-02-02
+| Production of motion picture films; production of television programs
+| 2021-12-10
+
+| 77979338
+| 2007-02-02
+| Audio/visual recordings, films, TV; (partially cancelled) video game media for children
+| 2021-01-01
+|===
+
+This is a **research note for maintainers**, not a clearance opinion. Dead U.S. serials do not by themselves clear product use: other jurisdictions, common-law use, and copyright in the character/look remain separate questions. Prefer counsel before shipping a public brand.
+
 == Related
 
 * link:https://docs.devcentr.org/agent-rules/harness-neutral.html[Harness-neutral architecture]

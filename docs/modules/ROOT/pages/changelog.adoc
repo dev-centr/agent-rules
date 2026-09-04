@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-08-30
+:page-last-edited: 2026-09-04
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -18,6 +18,11 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-09-04 — Naming notes: Jiminy Cricket / Cricket
+
+* xref:agent-harness.adoc[Agent harness]: open naming notes — Hornet metaphor vs agents; Cricket as harness vs model/advisory voice; three dead U.S. `JIMINY CRICKET` USPTO serials (continued use not filed, un-revivable).
+* See xref:changelog-details/2026-09-04 - jiminy-cricket-naming-notes.adoc[Detailed changelog].
 
 == 2026-09-03 — Voice/title fixes into rules and skills
 
