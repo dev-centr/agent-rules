@@ -1,0 +1,21 @@
+= Themed SVG diagram contract
+:navtitle: Themed SVG diagram contract
+:page-audience: Agent-rules maintainers and teams producing diagrams
+:page-usage-context: Changelog detail for the portable diagram output policy
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-07
+
+== Summary
+
+Added the `diagram-svg-output` skill and portable always-on triggers so diagram creation, rendering, export, and substantive editing produce web-compatible output in every context.
+
+The contract requires:
+
+* generator-neutral semantic color roles
+* bundled light and dark presets with concrete fallbacks
+* standalone adaptive, fixed, paired-fixed, and inline-host output modes
+* accessible responsive SVG with preserved editable source
+* verification for contrast, clipping, overlap, and both color schemes
+
+The skill identifies https://github.com/dev-centr/themed-svg[`@dev-centr/themed-svg`] as the standard and transformer. Mermaid, PlantUML, Kroki, Graphviz, and hand-authored SVG workflows consume the contract through adapters or explicit bindings.

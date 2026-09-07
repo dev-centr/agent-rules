@@ -55,6 +55,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `demo-site-wiring` | interactive demos, new UI concept / layout / chrome / windowing idea, demos browser/index, demo breadcrumb, VCS logo on demo chrome, lay demo copy, selector hub, separate variant pages, variant tabs, mockup-as-nav, multi-variant desk, intro anchoring screenshot/mockup, org-site demo catalog, Edge Bar, context edges | active | Auto on UI invent/ship (owned orgs); selector→pages default; grandfather old demos; no push/PR suppress |
 | `tool-inventory` | tools changed, record tool inventory, update local tool list snapshot | active | Harness-agnostic; writes via `machine.md` or `TOOL-INVENTORY.md` |
 | `logo-svg-marks` | create product logo/icon/favicon SVG on first scaffold or brand pass; `assets/icons`; glyph/mark/mono; redo logo; hideous icon | active | **First try** via Opus design subagent — not only after rejection |
+| `diagram-svg-output` | create/render/export/edit diagram, flowchart, architecture map, sequence diagram, Mermaid, PlantUML, Kroki, Graphviz, diagram SVG, themed SVG, dark/light diagram, web-compatible SVG | active | Standalone adaptive SVG + fixed/paired modes; semantic token presets |
 
 ## Adding a skill (checklist)
 

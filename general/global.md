@@ -17,6 +17,7 @@ These apply universally unless a profile says otherwise.
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.
 - **End of agent run:** after file changes, logical commits + push before the final reply — `general/end-of-run.md` (skill `push-code`).
 - **Sync skills/rules on drift:** skill `sync-agent-rules` — detail `general/rules-skills-sync.md`. Set version = `$AGENT_RULES_PATH` git SHA stamped in `$CODE_ROOT/harness.md`.
+- **Diagram SVG output:** whenever creating, rendering, exporting, or substantially editing a diagram in any context, load skill `diagram-svg-output`; ship standalone SVG with bundled light/dark presets and fixed output when required.
 
 ## AI operations and formatting
 

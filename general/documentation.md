@@ -175,6 +175,8 @@ Prefer, in order:
 2. **Screenshot or mockup** — real UI, not decorative noise; crop to the one idea
 3. **Source thumbnail / still** — e.g. YouTube `hqdefault` / `maxresdefault` saved locally when hotlinking is brittle
 
+For every new, exported, or substantially edited diagram, load skill **`diagram-svg-output`**. Fixed renderer colors are not sufficient: preserve the editable source and ship a standalone SVG with semantic tokens, bundled light/dark presets, concrete fallbacks, accessibility metadata, and verified unclipped rendering. Use fixed or paired outputs for consumers that cannot resolve CSS.
+
 Rules of thumb:
 
 * Wall-of-text concept pages without a figure are incomplete — add the figure before calling the doc done.
