@@ -66,7 +66,7 @@
 - Titles: cold-reader + enthymeme — `$AGENT_RULES_PATH/agents/editorial/titles.md`. Title **and lede** orient a stranger; do not “fix” implication-dense titles into fully scoped theses unless asked; **slug = title**. News outward / blog inward via `writing-news` / `writing-blog`. **Antora:** H1 = `nav.adoc` label = no divergent `:navtitle:`; section landings = linked parent (link text = H1) + `index.adoc` + `html_extension_style: indexify` — never `.Section` + Overview, never mix `.Title` with sibling linked parents, never `overview.adoc` / advertise `index.html` — `general/documentation.md`. In-repo IDE rules per `IDE_PROJECT_RULES` in `$HARNESS`; this file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `machine.md`.
 - On demand (do not inline): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `writing-news`, `writing-blog`, `issue-reports`, `issues-repo-record`, `demo-site-wiring`, `logo-svg-marks` — `skills/CATALOG.md`.
-- **Product SVG logos:** do not invent premium marks in the coding agent after failed SVG attempts — skill `logo-svg-marks` (Opus design subagent; glyph + tile + mono).
+- **Product SVG logos (first pass):** when creating or shipping a product logo / app glyph / favicon SVG family, load skill `logo-svg-marks` **immediately** and run the Opus design subagent — do not invent the mark in the coding agent and wait for rejection. Detail: `skills/logo-svg-marks/SKILL.md`.
 
 ## AI ops
 - AsciiDoc: checklists `* [ ]`; blank line after **bold** headings; list continuations `+`; images `image::`.

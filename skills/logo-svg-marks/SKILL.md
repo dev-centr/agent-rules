@@ -1,43 +1,58 @@
 ---
 name: logo-svg-marks
 description: >-
-  Use when creating or redrawing a product logo, SVG mark, app icon glyph,
-  favicon SVG, brand mark, mono badge, currentColor icon, isolated SVG without
-  tile, app-tile SVG, thumbdrive icon, "redo the logo", "SVG looks bad",
-  "hideous icon", vector art for a product, logo family glyph/mark/mono, or
-  when the user asks to use the Opus / design-subagent logo strategy.
+  Use when creating a product logo, SVG mark, app icon, favicon, brand glyph,
+  or icon set on first scaffold or first brand pass — new app, new project,
+  ship-app icon, assets/icons, *-glyph.svg, *-mark.svg, *-glyph-mono.svg,
+  app tile SVG, mono badge, currentColor icon; also when redrawing, "redo the
+  logo", "SVG looks bad", or "hideous icon". Default path is first try, not
+  only after rejection.
 ---
 
-# Logo SVG marks (design-subagent strategy)
+# Logo SVG marks (first-pass design-subagent)
 
-Portable craft for **product SVG marks**. Born from Thumbelina: coding-session SVG hacks failed; a dedicated design model with a tight brief and render feedback succeeded.
+Portable craft for **product SVG marks**. **Default is the first logo pass** — do not wait for the user to reject a coding-agent doodle.
 
-## When to load
+Born from Thumbelina: main-session SVG hacks looked cheap; a dedicated design model with a tight brief and render feedback worked on the successful pass. That successful path is now the **initial** path.
 
-- New or replacement **SVG logo / app glyph / favicon mark**
-- User says the current SVG is bad, cheap, clipart, or unreadable small
-- Shipping a **glyph + tile + mono** family for a product repo
+## Standing rule
+
+When a product needs an SVG logo / app glyph / favicon mark family:
+
+1. **Load this skill immediately** (scaffold, rebrand, or “add an icon”).
+2. **Launch the design subagent on the first try** — do not invent the final mark in the parent coding agent “as a placeholder.”
+3. Parent wires paths, README, and commits; subagent owns the SVG craft.
+
+Redo / “hideous icon” cases use the same pipeline (add a rejection list to the brief).
+
+## When to load (auto)
+
+- New app / CLI / GUI / library **branding** or `assets/icons/`
+- `ship-app` / bootstrap / public README that needs a mark
+- Org or product **rebrand**
+- User asks for logo, icon, favicon, glyph, mark, or mono badge
+- User rejects an existing SVG (then include what failed)
 
 Pair with **`github-profile-assets`** when the mark also lands on an org `.github` profile.
 
 ## Model / routing
 
-1. **Do not** invent the final mark in the main coding agent when prior SVG attempts failed or the mark must look premium.
-2. Launch a **design subagent** with a strong craft model (house default: **Claude Opus thinking high** / `claude-opus-5-thinking-high`, or whatever the session lists as the current Opus thinking slug).
-3. Subagent deliverable = SVG files only (or SVG + short design notes). Parent commits/pushes.
+1. Launch a **design subagent** with a strong craft model (house default: **Claude Opus thinking high** / `claude-opus-5-thinking-high`, or the session’s current Opus thinking slug).
+2. Subagent deliverable = the three SVGs (+ short design notes). Parent does not hand-author competing marks in parallel.
+3. Parent spot-checks, syncs to demos/site/profile if needed, commits/pushes.
 
 ## Brief the subagent must receive
 
-Paste failures and constraints explicitly:
-
 | Include | Why |
 | --- | --- |
-| Product one-liner + motif | So the silhouette matches the product |
-| Palette (hex) | Rose/gold/etc. — avoid neon candy unless asked |
-| What was rejected | e.g. busy scene, vertical “perfume bottle”, cheap rounded-rect clipart |
-| Size rule | Must read at **32px** and look intentional at 128px |
-| File paths | Exact repo paths to overwrite |
-| Aesthetic target | Premium, iconic, SF-Symbols clarity — not Material blobs, not skeuomorphism chaos |
+| Product one-liner + motif | Silhouette matches the product |
+| Palette (hex) | Avoid accidental neon candy |
+| Size rule | Must read at **32px**; intentional at 128px |
+| File paths | Exact repo paths to write |
+| Aesthetic target | Premium, iconic — not Material blobs, not skeuomorphism chaos |
+| Rejection list | **Required on redo**; optional on first pass (known anti-patterns OK) |
+
+First-pass anti-patterns to name even without prior failure: busy scenes, characters, unreadably tiny detail, wrong-object silhouette (e.g. vertical “perfume bottle” when the product is a horizontal USB drive).
 
 ## Deliverable family (default)
 
@@ -61,15 +76,16 @@ Prefer product-repo paths like `assets/icons/` unless the org standard says `pro
 
 ## Parent agent checklist
 
-- [ ] Brief includes rejection list + palette + paths
-- [ ] Opus (or listed design model) subagent wrote the three SVGs
+- [ ] Design subagent ran **before** shipping a parent-authored “temporary” SVG as the product mark
+- [ ] Brief includes product, palette, paths (+ rejections if any)
+- [ ] Three SVGs written (glyph / mark / mono)
 - [ ] Spot-check render at 32px
-- [ ] Sync copies to site/demos/profile assets if those surfaces exist
+- [ ] Sync to site/demos/profile assets when those surfaces exist
 - [ ] Commit + push per end-of-run
 
 ## Anti-patterns
 
-- Coding agent “quickly” redrawing the logo after the user already rejected SVG attempts
-- Vertical USB / bottle / lipstick silhouettes when the product is a horizontal drive (or vice versa — match the object)
+- Parent coding agent drawing the “real” logo on first pass “to save a round-trip”
+- Waiting for the user to say “redo” before using this skill
 - Crowding the mark with characters, scenes, or unreadably tiny details
 - Shipping only a tiled mark with no isolated glyph

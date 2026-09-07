@@ -42,3 +42,5 @@ Windows GUI: plan MSI/MSIX or winget-friendly installers and auto-update (or Sto
 Stamp build metadata at CI/compile time. About, `--version`, crash headers, and updaters share one version truth. Prefer platform-native distribution first; add in-app updaters when the channel needs them. Follow type pages instead of forcing GUI patterns onto libraries or services.
 
 Functional shipping notes: skill `owned-changelog`. Version tags: skill `tag-release`. Docs hub: skill `antora-org-site`.
+
+**Product SVG logo / app glyph:** when the app needs an icon or mark family, load skill **`logo-svg-marks` on the first brand pass** (Opus design subagent; glyph + tile + mono) — do not ship a parent-authored placeholder SVG and wait for rejection.
