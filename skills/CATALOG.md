@@ -54,6 +54,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `self-host-fonts` | Google Fonts, Fontsource, `@fontsource`, FOUC, preload woff2, self-host fonts, CDN webfonts | active | Prefer bundled fonts; never wait on CDN for paint |
 | `demo-site-wiring` | interactive demos, new UI concept / layout / chrome / windowing idea, demos browser/index, demo breadcrumb, VCS logo on demo chrome, lay demo copy, selector hub, separate variant pages, variant tabs, mockup-as-nav, multi-variant desk, intro anchoring screenshot/mockup, org-site demo catalog, Edge Bar, context edges | active | Auto on UI invent/ship (owned orgs); selector→pages default; grandfather old demos; no push/PR suppress |
 | `tool-inventory` | tools changed, record tool inventory, update local tool list snapshot | active | Harness-agnostic; writes via `machine.md` or `TOOL-INVENTORY.md` |
+| `logo-svg-marks` | product logo, SVG mark, app icon glyph, favicon SVG, mono badge, isolated glyph, app-tile SVG, redo logo, hideous icon, Opus logo strategy | active | Design subagent (Opus); glyph + mark + mono family |
 
 ## Adding a skill (checklist)
 
