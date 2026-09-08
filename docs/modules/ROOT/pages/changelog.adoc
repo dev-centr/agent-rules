@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-08 — Public web crawlability
+
+* Added the `web-crawlability` skill and portable policy: meaningful raw HTML for content routes, generated sitemap and robots artifacts, editorial feeds, and CI maintenance checks.
+* Clarified that client hydration and transitions remain compatible with SSG/SSR, while a sitemap cannot substitute for page content.
+* See xref:changelog-details/2026-09-08 - public-web-crawlability.adoc[Detailed changelog].
+
 == 2026-09-08 — Themed SVG diagrams
 
 * Migrated the rules-geography and agent CLI authentication diagrams to reproducible Mermaid sources with explicit semantic palettes, adaptive SVGs, and host-runtime SVGs.

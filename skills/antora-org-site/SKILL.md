@@ -36,6 +36,7 @@ Before drafting or revising any page under `docs/`, read **Audience / point of v
 7. Brand from the org’s existing assets. Do not invent a one-off palette per component.
 8. Repo-local `antora-playbook.yml` for **preview/validation CI** is fine if it does **not** publish a second public site.
 9. A **member-only** sister Antora site is allowed (private playbook + Access). See [reference.md](reference.md).
+10. Apply skill **`web-crawlability`** to public hubs: sitemap + robots artifacts, canonical indexable URLs, and CI checks that representative pages contain meaningful raw HTML.
 
 Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 

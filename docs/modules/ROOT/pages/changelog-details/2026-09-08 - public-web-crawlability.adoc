@@ -1,0 +1,12 @@
+= Public web crawlability
+:page-audience: Maintainers and agents creating or maintaining public websites
+:page-usage-context: Changelog detail for the sitemap, robots, rendering, and feed maintenance contract
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-08
+
+Added a portable public-web crawlability rule and matching `web-crawlability` skill. Public content routes must return meaningful HTML without client JavaScript, while hydration, navigation, and visual transitions remain progressive enhancements.
+
+Public sites now require a generated sitemap and `robots.txt`, backed by canonical route data and deployment checks. The policy distinguishes URL discovery from content delivery: a sitemap cannot compensate for an empty client mount point. Editorial RSS/Atom feeds remain useful alternate content surfaces, but do not replace crawlable HTML or sitemap maintenance.
+
+The `ship-app` and `antora-org-site` skills now invoke this policy for public web surfaces and documentation hubs.

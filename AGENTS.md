@@ -55,6 +55,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Sync before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`; pull/rebase before coding on a stale HEAD.
 - **End of agent run:** after file changes, logical commits + push before the final reply (`general/end-of-run.md`; skill `push-code`).
 - **One Antora site per org:** skill `antora-org-site` (hub at [docs.devcentr.org](https://docs.devcentr.org); Valentus lean + **Facto** compose pack — confirm; `agents/engineering/antora.md`).
+- **Public web crawlability:** skill `web-crawlability` — content routes return meaningful no-JavaScript HTML; generate and maintain `/sitemap.xml` + `/robots.txt`; feeds supplement rather than replace HTML. Detail: `general/web-crawlability.md`.
 - **Internet Architecture / Reliability:** systems content in `general-knowledge`; portal peer nav in `dev-centr/docs`. HCI *Labels versus wires* / *Host-held history* are symptom ↔ diagnosis faces; connectome-fs is substrate. Provider search + mirror backups: encyclopedia page under Internet Architecture.
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
 - **Repo About homepage:** on new project repos, set GitHub About URL to the org docs hub component page unless the repo is the org main/marketing site or a product with its own domain/subdomain (skill `bootstrap-org`).
