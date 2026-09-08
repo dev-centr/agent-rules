@@ -54,7 +54,7 @@ color.status.danger
 ```
 
 Diagram-specific roles may extend this list. CSS names use
-`--svg-<namespace>-<kebab-case-role>`.
+`--themed-svg-<namespace>-<kebab-case-role>`.
 
 A site/build may inject its design-language light and dark palette into the SVG's bundled presets. This creates a self-contained themed asset; it does not make an external image inherit page CSS.
 
