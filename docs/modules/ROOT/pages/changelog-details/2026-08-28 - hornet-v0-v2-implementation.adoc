@@ -6,7 +6,7 @@
 
 == Summary
 
-Shipped reference implementation in link:https://github.com/dev-centr/harness[`dev-centr/hornet`]:
+Shipped the reference implementation, then named Hornet, in link:https://github.com/dev-centr/harness[`dev-centr/harness`]:
 
 * **v0** — disk node graph, spawn, metathread, CLI
 * **v1** — Mixr, wait graph, HTTP desk UI
