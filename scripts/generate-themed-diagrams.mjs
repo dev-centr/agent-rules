@@ -1,9 +1,19 @@
 import { execFileSync } from 'node:child_process'
-import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { basename, join, resolve } from 'node:path'
 
-const diagrams = ['rules-geography', 'agent-cli-auth-flow']
+const diagrams = [
+  {
+    name: 'rules-geography',
+    fixedSha256: 'c676799c5af8066c23df7a68a776d70484da7a4d17b938131d5e4eef094bc90d',
+  },
+  {
+    name: 'agent-cli-auth-flow',
+    fixedSha256: '142f5492ca056ba52c0b5d576920068370eceb24867616025f2848550bfc3322',
+  },
+]
 const imageDir = resolve('docs/modules/ROOT/images')
 const config = resolve('docs/mermaid-config.json')
 const check = process.argv.includes('--check')
@@ -59,7 +69,7 @@ try {
     throw new Error('docs/mermaid-config.json must set flowchart.htmlLabels to false')
   }
 
-  for (const name of diagrams) {
+  for (const { name, fixedSha256 } of diagrams) {
     const raw = join(temporary, `${name}.raw.svg`)
     const secondRaw = join(temporary, `${name}.second.raw.svg`)
     const source = join(imageDir, `${name}.mmd`)
@@ -78,7 +88,10 @@ try {
     const host = join(imageDir, `${name}.host.svg`)
     const fixed = join(imageDir, `${name}.fixed.svg`)
 
-    if (!check && !existsSync(fixed)) copyFileSync(adaptive, fixed)
+    const actualFixedSha256 = createHash('sha256').update(readFileSync(fixed)).digest('hex')
+    if (actualFixedSha256 !== fixedSha256) {
+      throw new Error(`${basename(fixed)} no longer matches the preserved original`)
+    }
 
     execFileSync(process.execPath, [
       tools.adapter,
