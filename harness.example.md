@@ -9,7 +9,7 @@ Polyglot harness use is normal: one machine may run Cursor, Claude Code, Hermes,
 ## Variables (fill on this machine)
 
 ```text
-HARNESS_NAME = <cursor | claude-code | hermes | t3code | windsurf | hornet | other>
+HARNESS_NAME = <cursor | claude-code | hermes | t3code | windsurf | harness | other>
 HARNESS_VERSION = <optional; if the harness exposes a version string>
 
 # Where always-on rules are injected (Settings field, CLAUDE.md, system prompt file, etc.)
@@ -62,7 +62,7 @@ ACTOR_NODE_STORE = jsonl-per-node | off
 # Deprecated aliases (one release cycle):
 # PROJECT_INBOX = grid-forks | serialized | off  →  ACTOR_AGENTIC_UI = graph-grid | …
 
-# Hornet-only — Mixr model router (see docs Agent harness / Hornet, Mixr routing and cost)
+# Harness-only — Mixr model router (see docs Agent harness / Harness, Mixr routing and cost)
 # MIXR_ROUTING = on | off
 # MIXR_ROUTER = on-device | api | auto
 # MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1

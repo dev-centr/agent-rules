@@ -6,10 +6,10 @@
 
 == Summary
 
-Shipped reference implementation in link:https://github.com/dev-centr/hornet[`dev-centr/hornet`]:
+Shipped reference implementation in link:https://github.com/dev-centr/harness[`dev-centr/hornet`]:
 
 * **v0** — disk node graph, spawn, metathread, CLI
 * **v1** — Mixr, wait graph, HTTP desk UI
 * **v2** — temporal layout engine
 
-See xref:agent-harness.adoc[Agent harness (Hornet)] implementation section.
+See xref:agent-harness.adoc[Agent harness] implementation section.

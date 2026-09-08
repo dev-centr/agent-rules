@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-08 — Agent runtime renamed to harness
+
+* Renamed the DevCentr agent runtime from the Hornet working name to the generic **harness** name across active architecture, integration, and configuration guidance.
+* Reserved Cricket as a possible advisor/conscience-layer name rather than the runtime name.
+* See xref:changelog-details/2026-09-08 - agent-runtime-harness-rename.adoc[Detailed changelog].
+
 == 2026-09-08 — Public web crawlability
 
 * Added the `web-crawlability` skill and portable policy: meaningful raw HTML for content routes, generated sitemap and robots artifacts, editorial feeds, and CI maintenance checks.
@@ -141,7 +147,7 @@ endif::[]
 
 == 2026-08-30 — Mixr cost routing and shadow/LSP design
 
-* On-device Mixr docs, Anthropic suppress defaults, Hornet as t3code provider seam, shadow/LSP lag contract.
+* On-device Mixr docs, Anthropic suppress defaults, Harness as t3code provider seam, shadow/LSP lag contract.
 * link:changelog-details/2026-08-30%20-%20mixr-cost-routing-shadow-lsp.adoc[Details]
 
 == 2026-08-30 — Partner org single entry points
@@ -235,7 +241,7 @@ Observed transitions in forkable + machine-local names:
 
 == 2026-08-28 — Hornet v0–v2 reference runtime
 
-* `dev-centr/hornet` — disk store, Mixr, wait graph, desk UI, temporal engine.
+* `dev-centr/harness` (then Hornet) — disk store, Mixr, wait graph, desk UI, temporal engine.
 * See xref:changelog-details/2026-08-28 - hornet-v0-v2-implementation.adoc[Detailed changelog].
 
 == 2026-08-28 — Hornet harness and Mixr router

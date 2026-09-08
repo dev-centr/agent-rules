@@ -1,0 +1,22 @@
+= Agent runtime renamed to harness
+:page-audience: Dev-Centr maintainers and integrators
+:page-usage-context: Changelog detail for the agent runtime rename
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-08
+
+== Summary
+
+The DevCentr agent runtime's former **Hornet** working name is retired.
+Its repository, package, CLI, and provider identity now use the generic name **harness**.
+
+Active architecture pages now use `HARNESS_NAME = harness`, `harness serve`, and the `HarnessDriver` integration name.
+Historical changelog entries retain Hornet where it identifies the name used by an earlier release.
+
+**Cricket** remains reserved as a possible name for a model, coordinator voice, or advisory policy layer.
+It is not the runtime name.
+
+== Related
+
+* xref:../agent-harness.adoc[DevCentr agent harness]
+* link:https://github.com/dev-centr/harness[`dev-centr/harness`]

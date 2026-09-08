@@ -1,23 +1,24 @@
-= DevCentr agent harness (Hornet)
-:navtitle: Agent harness (Hornet)
-:description: Hornet — DevCentr's lightweight local agent runtime. Mixr routes jobs to models; harness-neutral rules, dlang-supplemental infrastructure, actor-model swarms.
+= DevCentr agent harness
+:navtitle: Agent harness
+:description: DevCentr's lightweight local agent runtime. Mixr routes jobs to models; harness-neutral rules, dlang-supplemental infrastructure, actor-model swarms.
 :page-layout: docs
 
-DevCentr is building **Hornet** — a lightweight agent harness (working name aligned with *harness*; hornets **swarm**, which matches parallel actor nodes).
+DevCentr is building a lightweight local agent harness.
+The repository, D package, and CLI intentionally use the generic name **harness**.
 
-Hornet is not a Cursor-class IDE. It is a focused local runtime that consumes the same harness-neutral stack as Cursor, Claude Code, Hermes, and T3code.
+The harness is not a Cursor-class IDE. It is a focused local runtime that consumes the same harness-neutral stack as Cursor, Claude Code, Hermes, and T3code.
 
-In plain language: *Hornet shell + Mixr model routing + shared rules layer + D tooling from dlang-supplemental*.
+In plain language: *harness runtime + Mixr model routing + shared rules layer + D tooling from dlang-supplemental*.
 
-When `HARNESS_NAME = hornet` on a workstation, `$CODE_ROOT/harness.md` records Hornet-specific discovery paths and UX contracts (token provenance, actor-model UI, Mixr routing).
+When `HARNESS_NAME = harness` on a workstation, `$CODE_ROOT/harness.md` records runtime-specific discovery paths and UX contracts (token provenance, actor-model UI, Mixr routing).
 
-== Hornet and Mixr
+== The harness and Mixr
 
 [cols="1,2"]
 |===
 | Name | Role
 
-| **Hornet**
+| **harness**
 | The harness — chat, tools, project context, node graph on disk, grid/fork/timeline views
 
 | **Mixr**
@@ -38,11 +39,11 @@ Mixr reads node type, declared job, token budget, user BYOK keys, and org policy
 
 Users may override a route on a node; Mixr learns from overrides only in explicit feedback paths (not silent drift).
 
-Proposed harness variables (Hornet + Mixr):
+Proposed harness variables (harness + Mixr):
 
 [source,text]
 ----
-HARNESS_NAME = hornet
+HARNESS_NAME = harness
 MIXR_ROUTING = on | off
 MIXR_ROUTER = on-device | api | auto
 MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1
@@ -54,7 +55,7 @@ MIXR_SUPPRESS_MODELS = ...
 MIXR_ALLOW_SUPPRESSED = off | explicit-only
 ----
 
-When `MIXR_ROUTING=off`, Hornet falls back to a single pinned model per node type in harness config — useful for debugging, not the production default.
+When `MIXR_ROUTING=off`, the harness falls back to a single pinned model per node type in harness config — useful for debugging, not the production default.
 
 Default Mixr placement is **on-device**: classify via a local OpenAI-compatible server. API failover happens when RAM is below `MIXR_ROUTER_RAM_MIN_MB` or the local server is unreachable. **Anthropic is suppressed by default** — automatic routes never select it unless the user explicitly overrides.
 
@@ -62,30 +63,30 @@ Detail: xref:mixr-routing-and-cost.adoc[Mixr routing and cost]. Speculative vali
 
 == Implementation
 
-Reference runtime: link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] (D + link:https://github.com/dlang-supplemental/tgc[tgc]).
+Reference runtime: link:https://github.com/dev-centr/harness[`dev-centr/harness`] (D + link:https://github.com/dlang-supplemental/tgc[tgc]).
 
 [cols="1,2"]
 |===
-| Phase | Ships in Hornet
+| Phase | Ships
 
 | v0
-| `$CHAT_ROOT` disk layout, spawn API, metathread refs, CLI (`hornet init`, `spawn`, `message`)
+| `$CHAT_ROOT` disk layout, spawn API, metathread refs, CLI (`harness init`, `spawn`, `message`)
 
 | v1
-| Mixr routing, wait-graph, HTTP desk (`hornet serve`), grid + fork web UI
+| Mixr routing, wait-graph, HTTP desk (`harness serve`), grid + fork web UI
 
 | v0.5+
-| On-device Mixr + suppress lists; OpenAI-compat + `/api/provider/*` seams for t3code HornetDriver
+| On-device Mixr + suppress lists; OpenAI-compat + `/api/provider/*` seams for t3code HarnessDriver
 
 | v2
 | Temporal layout engine — scrubber, fade, heatmap, scoped bookmarks (`/api/temporal`)
 |===
 
 ```powershell
-cd $env:code\github.com\dev-centr\hornet
+cd $env:code\github.com\dev-centr\harness
 dub build
-.\hornet.exe init .\my-chat
-.\hornet.exe serve .\my-chat --port 8765
+.\harness.exe init .\my-chat
+.\harness.exe serve .\my-chat --port 8765
 ```
 
 == Why a harness at all
@@ -128,10 +129,10 @@ T3code is listed in link:https://docs.devcentr.org/agent-rules/harness-neutral.h
 **Division of labor:**
 
 * **t3code** owns multi-machine registration/sync (laptop client ↔ desktop server) and the mature control surface.
-* **Hornet** owns Mixr, the disk node graph, tools, and (planned) shadow/LSP validation.
-* **HornetDriver** (in a t3code fork / eventual upstream PR) is the provider adapter that lets t3code drive Hornet the way it drives Cursor, Claude, Codex, or OpenCode.
+* The **harness** owns Mixr, the disk node graph, tools, and (planned) shadow/LSP validation.
+* **HarnessDriver** (in a t3code fork / eventual upstream PR) is the provider adapter that lets t3code drive the harness the way it drives Cursor, Claude, Codex, or OpenCode.
 
-While Hornet's own remote desk is thin, expose Hornet via `hornet serve` and select the **Hornet** provider in t3code settings (`serverUrl`, default `http://127.0.0.1:8765`). Machine sync stays t3code's; Hornet does not reinvent pairing.
+While the harness's own remote desk is thin, expose it via `harness serve` and select the **Harness** provider in t3code settings (`serverUrl`, default `http://127.0.0.1:8765`). Machine sync stays t3code's; the harness does not reinvent pairing.
 
 There is no DevCentr-owned t3code org fork — personal fork work is fine for the driver; steer upstream when the protocol stabilizes.
 
@@ -189,26 +190,16 @@ Full spec: xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]. Deprecated 
 * Not a rules fork — policy stays in `dev-centr/agent-rules`
 * Not a grab-bag of every OSS agent feature — duplicates are stripped at integration time
 
-== Naming notes (open)
+== Naming decision
 
-**Hornet** was chosen as a working name because it echoes *harness* and because hornets *swarm* — parallel actor nodes. That metaphor fits **agents** better than the shell that hosts them; renaming the repo/runtime (for example to a plain `harness`) remains on the table.
+The repository, runtime, package, and CLI are named **harness**.
+The former **Hornet** working name was retired on 2026-09-08 because its swarm metaphor describes the agents better than the shell that hosts them.
 
-=== Candidate: Jiminy Cricket / Cricket
+=== Reserved candidate: Jiminy Cricket / Cricket
 
-The Pinocchio conscience on the shoulder — agents have no conscience of their own; something in the stack steers “how to be good.” Two placement options under discussion:
-
-[cols="1,2"]
-|===
-| Slot | Fit
-
-| **Harness / runtime**
-| Conscience-as-shell: the product that sits with you and steers work. CLI/product length and Disney character association are drawbacks; plain `harness` stays stronger for discovery.
-
-| **Model / advisory voice**
-| Puts the **human in first person** (Pinocchio): you want to act; the model is the cricket on your shoulder. Stronger story for a chat/coordinator persona than for the binary that writes `graph.json`. Tension with Mixr: many models per swarm — brand one default advisory model, the coordinator voice, or a policy layer — not every routed worker.
-|===
-
-**Cricket** alone carries the metaphor with less character-name risk than the full *Jiminy Cricket* string.
+**Cricket** remains a possible name for a model, coordinator voice, or advisory policy layer — not for the harness runtime.
+The conscience-on-the-shoulder metaphor puts the **human in first person** (Pinocchio): the person acts while the advisor steers.
+Cricket alone carries that metaphor with less character-name risk than the full *Jiminy Cricket* string.
 
 ==== U.S. trademark serials (research note)
 

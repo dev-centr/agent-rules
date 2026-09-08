@@ -141,7 +141,7 @@ $CHAT_ROOT/
   thread.jsonl               # optional export/replay merge — not source of truth
 ----
 
-Every spawn is two writes minimum (`parent meta.json`, `child meta.json` + `graph.json` edge update) before the child accepts traffic. Harness batches where the filesystem allows; correctness beats micro-latency.
+Every spawn is two writes minimum (`parent meta.json`, `child meta.json` + `graph.json` edge update) before the child accepts traffic. The harness batches where the filesystem allows; correctness beats micro-latency.
 
 === Metathread and audit
 
@@ -252,9 +252,9 @@ Defaults when `ACTOR_AGENTIC_UI=graph-grid`: `ACTOR_NODE_STORE=jsonl-per-node`, 
 
 **Migration:** `PROJECT_INBOX*` names are deprecated aliases for one release cycle; map `grid-forks` → `graph-grid`, `PROJECT_INBOX_CHAPTERS` → `ACTOR_GRAPH_EPOCHS`.
 
-== Reference implementation (Hornet)
+== Reference implementation
 
-DevCentr ships a reference runtime at link:https://github.com/dev-centr/hornet[`dev-centr/hornet`] (see xref:agent-harness.adoc[Agent harness (Hornet)]).
+DevCentr ships a reference runtime at link:https://github.com/dev-centr/harness[`dev-centr/harness`] (see xref:agent-harness.adoc[Agent harness]).
 
 [cols="1,2"]
 |===
@@ -270,7 +270,7 @@ DevCentr ships a reference runtime at link:https://github.com/dev-centr/hornet[`
 | Temporal layout engine — scrubber, fade, heatmap, scoped bookmarks
 |===
 
-HCI Nerdz demo remains a static teaching surface; Hornet is the live `$CHAT_ROOT` backend.
+HCI Nerdz demo remains a static teaching surface; the harness is the live `$CHAT_ROOT` backend.
 
 == Relationship to HCI Nerdz
 
