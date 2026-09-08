@@ -1,0 +1,37 @@
+flowchart TB
+  accTitle: Rules geography - layered agent rules
+  accDescr: The shared reference clone provides canonical skills and policy to personal overlays, machine-local harness configuration, skill discovery, harness always-on rules, and each repository's additive AGENTS.md.
+
+  subgraph TOP["Rules geography - layered"]
+    direction LR
+    SHARED["1. Shared reference<br/>$AGENT_RULES_PATH<br/>dev-centr/agent-rules<br/><br/>user.md | general/*<br/>AGENTS.md | agents/*<br/>skills/&lt;name&gt;/SKILL.md<br/><br/>Canonical skills and shared policy"]
+    PERSONAL["2. Personal overlay<br/>optional personal fork<br/><br/>profiles/&lt;machine&gt;.md<br/>personal user.md tweaks<br/>personal-only skills/<br/><br/>Deltas, not a HEAD-parity mirror"]
+    ANTI["Anti-pattern<br/><br/>Chasing parity between<br/>personal fork and<br/>template HEAD"]
+  end
+
+  subgraph BOTTOM["Machine and repository"]
+    direction LR
+    MACHINE["5. This machine<br/>$CODE_ROOT/harness.md<br/>discovery, always-on, sync stamp<br/><br/>$CODE_ROOT/machine.md<br/>workstation facts<br/><br/>$LOCAL_RULES_DIR<br/>device-local overlay"]
+    DISCOVERY["4. Skill discovery<br/>$SKILLS_DISCOVERY_ROOT/&lt;name&gt;/<br/><br/>Junction or copy from<br/>canonical skills"]
+    ALWAYS["3. Harness always-on<br/>user.md then AGENTS.md<br/><br/>Compose with rules-manager<br/>when the harness cannot stack"]
+    PROJECT["6. Repository under edit<br/>&lt;repo&gt;/AGENTS.md<br/><br/>Project facts only<br/>additive to portable and org<br/><br/>No machine paths<br/>no copied skill bodies"]
+  end
+
+  SHARED -. canonical source .-> PERSONAL
+  SHARED -. installs .-> DISCOVERY
+  SHARED -. sync stamp .-> MACHINE
+  DISCOVERY --> ALWAYS
+  ALWAYS --> PROJECT
+
+  classDef shared fill:#e8f0ea,stroke:#334155,color:#0f172a
+  classDef personal fill:#f3ebe3,stroke:#92400e,color:#0f172a
+  classDef warning fill:#fff7ed,stroke:#c2410c,color:#7c2d12
+  classDef machine fill:#e8eef4,stroke:#2563eb,color:#0f172a
+  classDef neutral fill:#ffffff,stroke:#475569,color:#0f172a
+  classDef project fill:#f1f5f9,stroke:#475569,color:#0f172a
+  class SHARED shared
+  class PERSONAL personal
+  class ANTI warning
+  class MACHINE machine
+  class DISCOVERY,ALWAYS neutral
+  class PROJECT project

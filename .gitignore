@@ -1,7 +1,26 @@
-# Machine-local only: stable facts about this workstation (paths, org quirks).
-# See README.md for an example entry.
-# Machine-local only. Prefer $CODE_ROOT/machine.md as canonical.
-# Legacy path MEMORIES.md stays ignored for backwards compatibility.
-MEMORIES.md
-machine.md
-harness.md
+# Allow-list repository content; machine-local and generated dependency trees stay ignored.
+*
+!/.gitignore
+!/.cursor/
+!/.cursor/**
+!/agents/
+!/agents/**
+!/docs/
+!/docs/**
+!/general/
+!/general/**
+!/profiles/
+!/profiles/**
+!/scripts/
+!/scripts/**
+!/skills/
+!/skills/**
+!/AGENTS.md
+!/CONTRIBUTING.md
+!/MAIN.md
+!/README.md
+!/harness.example.md
+!/machine.example.md
+!/package.json
+!/pnpm-lock.yaml
+!/user.md

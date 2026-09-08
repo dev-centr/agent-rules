@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-09-07
+:page-last-edited: 2026-09-08
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -18,6 +18,12 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-09-08 — Themed SVG diagrams
+
+* Migrated the rules-geography and agent CLI authentication diagrams to reproducible Mermaid sources with explicit semantic palettes, adaptive SVGs, and host-runtime SVGs.
+* Corrected the canonical CSS namespace guidance to `--themed-svg-*`.
+* See xref:changelog-details/2026-09-08 - themed-svg-diagrams.adoc[Detailed changelog].
 
 == 2026-09-07 — Themed SVG diagram contract
 

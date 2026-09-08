@@ -1,0 +1,61 @@
+{
+  "$schema": "https://docs.devcentr.org/themed-svg/schemas/themed-svg-manifest-v1.schema.json",
+  "schemaVersion": 1,
+  "namespace": "agent-cli-auth",
+  "source": {
+    "kind": "diagram-generator",
+    "uri": "agent-cli-auth-flow.mmd",
+    "generator": "mermaid"
+  },
+  "tokens": [
+    { "id": "color.canvas", "description": "Diagram canvas" },
+    { "id": "color.surface.operator", "description": "Operator step" },
+    { "id": "color.surface.store", "description": "Credential store step" },
+    { "id": "color.surface.entry", "description": "Agent entry step" },
+    { "id": "color.surface.cli", "description": "CLI step" },
+    { "id": "color.surface.stamps", "description": "Harness stamps panel" },
+    { "id": "color.text.primary", "description": "Primary text" },
+    { "id": "color.border.primary", "description": "Node borders" },
+    { "id": "color.edge", "description": "Flow arrows" }
+  ],
+  "defaultPreset": "light",
+  "presets": {
+    "light": {
+      "color.canvas": "#f8fafc",
+      "color.surface.operator": "#e2e8f0",
+      "color.surface.store": "#dbeafe",
+      "color.surface.entry": "#dcfce7",
+      "color.surface.cli": "#fef3c7",
+      "color.surface.stamps": "#ffffff",
+      "color.text.primary": "#0f172a",
+      "color.border.primary": "#475569",
+      "color.edge": "#334155"
+    },
+    "dark": {
+      "color.canvas": "#0f172a",
+      "color.surface.operator": "#334155",
+      "color.surface.store": "#17375e",
+      "color.surface.entry": "#17452d",
+      "color.surface.cli": "#4b3513",
+      "color.surface.stamps": "#1e293b",
+      "color.text.primary": "#f8fafc",
+      "color.border.primary": "#94a3b8",
+      "color.edge": "#cbd5e1"
+    }
+  },
+  "bindings": [
+    { "kind": "presentation", "selector": ".background", "attribute": "fill", "token": "color.canvas" },
+    { "kind": "presentation", "selector": ".operator > rect", "attribute": "fill", "token": "color.surface.operator" },
+    { "kind": "presentation", "selector": ".store > rect", "attribute": "fill", "token": "color.surface.store" },
+    { "kind": "presentation", "selector": ".entry > rect", "attribute": "fill", "token": "color.surface.entry" },
+    { "kind": "presentation", "selector": ".cli > rect", "attribute": "fill", "token": "color.surface.cli" },
+    { "kind": "presentation", "selector": ".stamps > rect", "attribute": "fill", "token": "color.surface.stamps" },
+    { "kind": "presentation", "selector": ".nodeLabel, .cluster-label, .edgeLabel", "attribute": "fill", "token": "color.text.primary" },
+    { "kind": "presentation", "selector": ".node > rect, .cluster > rect", "attribute": "stroke", "token": "color.border.primary" },
+    { "kind": "presentation", "selector": ".flowchart-link", "attribute": "stroke", "token": "color.edge" }
+  ],
+  "fallback": {
+    "unresolvedToken": "error",
+    "missingTarget": "warn"
+  }
+}

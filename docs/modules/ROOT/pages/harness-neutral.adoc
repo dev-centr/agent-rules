@@ -30,6 +30,7 @@ https://github.com/dev-centr/agent-rules
 
 The system is **layered**, not a personal fork that must stay at HEAD parity with the team template.
 
+[.themed-svg]
 image::rules-geography.svg[alt="Rules geography: shared reference clone, personal overlay fork, harness always-on slot, skill discovery junctions, machine files, and project AGENTS.md",width=960,height=640]
 
 .Callouts (match the numbered disks on the map)

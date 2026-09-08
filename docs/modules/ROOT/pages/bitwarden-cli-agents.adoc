@@ -23,6 +23,7 @@ endif::[]
 
 Unlock the vault once on a workstation, persist the CLI session locally, and teach agents to restore it via an entry script — without printing secrets into chat or git.
 
+[.themed-svg]
 image::agent-cli-auth-flow.svg[alt="Operator unlocks once, machine stores BW_SESSION, agent entry script restores, CLI runs",width=880]
 
 Architecture context:: xref:harness-neutral.adoc[Harness-neutral architecture] (machine-local layer).

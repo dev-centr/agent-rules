@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Rules geography - layered agent rules</title>
+  <desc id="desc">Annotated map of shared reference clone, personal overlay fork, machine-local files, harness always-on slot, skill discovery junctions, and project AGENTS.md. Personal fork is deltas, not a HEAD-parity mirror of the team template.</desc>
+
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill: #f7f5f0; }
+      .panel { fill: #ffffff; stroke: #2c2a26; stroke-width: 1.5; }
+      .panel-shared { fill: #e8f0ea; }
+      .panel-personal { fill: #f3ebe3; }
+      .panel-machine { fill: #e8eef4; }
+      .panel-always { fill: #f5f0e4; }
+      .panel-project { fill: #ececec; }
+      .label { font-family: Georgia, "Times New Roman", serif; fill: #1a1917; }
+      .title { font-size: 22px; font-weight: 700; }
+      .region { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; fill: #3d3a35; }
+      .body { font-family: "Segoe UI", system-ui, sans-serif; font-size: 12.5px; fill: #2a2824; }
+      .muted { fill: #5c574e; font-size: 11.5px; }
+      .file { font-family: Consolas, "Courier New", monospace; font-size: 11.5px; fill: #1a1917; }
+      .callout-disk { fill: #1a1917; }
+      .callout-num { font-family: "Segoe UI", system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #f7f5f0; }
+      .link { stroke: #5c574e; stroke-width: 1.25; fill: none; stroke-dasharray: 4 3; }
+      .arrow { fill: #5c574e; }
+      .badge { fill: #2c2a26; }
+      .badge-text { font-family: "Segoe UI", system-ui, sans-serif; font-size: 10.5px; fill: #f7f5f0; }
+      .warn { fill: #6b3a1f; font-size: 11px; font-family: "Segoe UI", system-ui, sans-serif; }
+    ]]></style>
+    <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" class="arrow"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="960" height="640"/>
+  <text class="label title" x="32" y="36">Rules geography (layered)</text>
+  <text class="body muted" x="32" y="56">Shared reference stays live. Personal fork holds deltas only. Machine files never enter a PR.</text>
+
+  <!-- 1 Shared reference -->
+  <rect class="panel panel-shared" x="28" y="80" width="360" height="250" rx="6"/>
+  <text class="region" x="44" y="104">Shared reference</text>
+  <circle class="callout-disk" cx="330" cy="98" r="12"/>
+  <text class="callout-num" x="330" y="102" text-anchor="middle">1</text>
+  <text class="file" x="44" y="128">$AGENT_RULES_PATH</text>
+  <text class="body" x="44" y="148">dev-centr/agent-rules (team clone)</text>
+  <text class="file" x="52" y="176">user.md | general/*</text>
+  <text class="file" x="52" y="196">AGENTS.md | agents/*</text>
+  <text class="file" x="52" y="216">skills/&lt;name&gt;/SKILL.md</text>
+  <text class="muted" x="52" y="244">Canonical skills + shared portable / org policy</text>
+  <text class="muted" x="52" y="264">Pull this tree on drift (sync-agent-rules)</text>
+  <rect class="badge" x="44" y="286" width="168" height="22" rx="3"/>
+  <text class="badge-text" x="128" y="301" text-anchor="middle">source of truth for skills</text>
+
+  <!-- 2 Personal overlay -->
+  <rect class="panel panel-personal" x="416" y="80" width="300" height="180" rx="6"/>
+  <text class="region" x="432" y="104">Personal overlay</text>
+  <circle class="callout-disk" cx="680" cy="98" r="12"/>
+  <text class="callout-num" x="680" y="102" text-anchor="middle">2</text>
+  <text class="file" x="432" y="128">your fork (optional)</text>
+  <text class="file" x="440" y="156">profiles/&lt;machine&gt;.md</text>
+  <text class="file" x="440" y="176">personal user.md tweaks</text>
+  <text class="file" x="440" y="196">personal-only skills/</text>
+  <text class="warn" x="432" y="228">Not a HEAD-parity mirror of (1)</text>
+  <text class="muted" x="432" y="246">Deltas you will not upstream</text>
+
+  <!-- Anti-pattern note -->
+  <rect class="panel" x="740" y="80" width="192" height="180" rx="6"/>
+  <text class="region" x="756" y="104">Anti-pattern</text>
+  <text class="body" x="756" y="132">Chasing rebase</text>
+  <text class="body" x="756" y="150">parity between</text>
+  <text class="body" x="756" y="168">personal fork and</text>
+  <text class="body" x="756" y="186">template HEAD.</text>
+  <text class="muted" x="756" y="214">Keep overlays thin;</text>
+  <text class="muted" x="756" y="232">pull the team clone.</text>
+
+  <!-- 5 Machine-local -->
+  <rect class="panel panel-machine" x="28" y="356" width="360" height="160" rx="6"/>
+  <text class="region" x="44" y="380">This machine</text>
+  <circle class="callout-disk" cx="330" cy="374" r="12"/>
+  <text class="callout-num" x="330" y="378" text-anchor="middle">5</text>
+  <text class="file" x="44" y="406">$CODE_ROOT/harness.md</text>
+  <text class="muted" x="52" y="424">discovery, ALWAYS_ON_RULES, sync stamp</text>
+  <text class="file" x="44" y="450">$CODE_ROOT/machine.md</text>
+  <text class="muted" x="52" y="468">workstation facts (shared across harnesses)</text>
+  <text class="file" x="44" y="494">$LOCAL_RULES_DIR</text>
+  <text class="muted" x="52" y="512">device-local IDE overlay (paths stay here)</text>
+
+  <!-- 4 Discovery -->
+  <rect class="panel" x="416" y="280" width="300" height="100" rx="6"/>
+  <text class="region" x="432" y="304">Skill discovery</text>
+  <circle class="callout-disk" cx="680" cy="298" r="12"/>
+  <text class="callout-num" x="680" y="302" text-anchor="middle">4</text>
+  <text class="file" x="432" y="330">$SKILLS_DISCOVERY_ROOT/&lt;name&gt;/</text>
+  <text class="muted" x="432" y="352">Junction / copy from skills in (1)</text>
+
+  <!-- 3 Always-on -->
+  <rect class="panel panel-always" x="416" y="400" width="300" height="116" rx="6"/>
+  <text class="region" x="432" y="424">Harness always-on</text>
+  <circle class="callout-disk" cx="680" cy="418" r="12"/>
+  <text class="callout-num" x="680" y="422" text-anchor="middle">3</text>
+  <text class="body" x="432" y="448">Native stack when possible:</text>
+  <text class="file" x="440" y="468">user.md then AGENTS.md</text>
+  <text class="muted" x="432" y="494">Else compose one paste (rules-manager)</text>
+
+  <!-- 6 Project -->
+  <rect class="panel panel-project" x="740" y="280" width="192" height="236" rx="6"/>
+  <text class="region" x="756" y="304">Repo under edit</text>
+  <circle class="callout-disk" cx="896" cy="298" r="12"/>
+  <text class="callout-num" x="896" y="302" text-anchor="middle">6</text>
+  <text class="file" x="756" y="336">&lt;repo&gt;/AGENTS.md</text>
+  <text class="muted" x="756" y="360">Project facts only</text>
+  <text class="muted" x="756" y="378">README / docs</text>
+  <text class="muted" x="756" y="410">Additive on top of</text>
+  <text class="muted" x="756" y="428">portable + org</text>
+  <text class="muted" x="756" y="460">Not machine paths</text>
+  <text class="muted" x="756" y="478">Not skill bodies</text>
+
+  <!-- Soft links (geography, not flowchart) -->
+  <path class="link" d="M388,205 H416" marker-end="url(#arrowHead)"/>
+  <path class="link" d="M208,330 V356" marker-end="url(#arrowHead)"/>
+  <path class="link" d="M388,220 C400,220 400,330 416,330" marker-end="url(#arrowHead)"/>
+  <path class="link" d="M566,380 V400" marker-end="url(#arrowHead)"/>
+  <path class="link" d="M716,450 H740" marker-end="url(#arrowHead)"/>
+
+  <text class="muted" x="32" y="556">1 Shared reference | 2 Personal overlay | 3 Always-on slot | 4 Discovery junctions | 5 Machine files | 6 Project AGENTS.md</text>
+  <text class="muted" x="32" y="580">Layered model: personal HEAD need not equal template HEAD. Sync skills from (1); keep (2) thin.</text>
+  <text class="muted" x="32" y="604">rules-manager: use when the harness has one undifferentiated always-on field and cannot stack layers.</text>
+  <text class="muted" x="32" y="628">docs.devcentr.org/agent-rules -- harness-neutral architecture</text>
+</svg>

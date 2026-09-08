@@ -1,0 +1,71 @@
+{
+  "$schema": "https://docs.devcentr.org/themed-svg/schemas/themed-svg-manifest-v1.schema.json",
+  "schemaVersion": 1,
+  "namespace": "rules-geography",
+  "source": {
+    "kind": "diagram-generator",
+    "uri": "rules-geography.mmd",
+    "generator": "mermaid"
+  },
+  "tokens": [
+    { "id": "color.canvas", "description": "Diagram canvas" },
+    { "id": "color.surface.primary", "description": "Neutral panel surface" },
+    { "id": "color.surface.shared", "description": "Canonical shared-reference surface" },
+    { "id": "color.surface.personal", "description": "Personal-overlay surface" },
+    { "id": "color.surface.machine", "description": "Machine-local surface" },
+    { "id": "color.surface.warning", "description": "Anti-pattern surface" },
+    { "id": "color.text.primary", "description": "Primary text" },
+    { "id": "color.text.warning", "description": "Warning text" },
+    { "id": "color.border.primary", "description": "Panel borders" },
+    { "id": "color.edge", "description": "Relationship edges" },
+    { "id": "color.edge.label", "description": "Relationship labels" }
+  ],
+  "defaultPreset": "light",
+  "presets": {
+    "light": {
+      "color.canvas": "#f8fafc",
+      "color.surface.primary": "#ffffff",
+      "color.surface.shared": "#e8f0ea",
+      "color.surface.personal": "#f3ebe3",
+      "color.surface.machine": "#e8eef4",
+      "color.surface.warning": "#fff7ed",
+      "color.text.primary": "#0f172a",
+      "color.text.warning": "#7c2d12",
+      "color.border.primary": "#475569",
+      "color.edge": "#475569",
+      "color.edge.label": "#334155"
+    },
+    "dark": {
+      "color.canvas": "#111827",
+      "color.surface.primary": "#1f2937",
+      "color.surface.shared": "#17352b",
+      "color.surface.personal": "#422c24",
+      "color.surface.machine": "#172f4d",
+      "color.surface.warning": "#431f14",
+      "color.text.primary": "#f8fafc",
+      "color.text.warning": "#fdba74",
+      "color.border.primary": "#94a3b8",
+      "color.edge": "#cbd5e1",
+      "color.edge.label": "#e2e8f0"
+    }
+  },
+  "bindings": [
+    { "kind": "presentation", "selector": "svg", "attribute": "color", "token": "color.text.primary" },
+    { "kind": "presentation", "selector": ".background", "attribute": "fill", "token": "color.canvas" },
+    { "kind": "presentation", "selector": ".neutral > rect, .project > rect", "attribute": "fill", "token": "color.surface.primary" },
+    { "kind": "presentation", "selector": ".shared > rect", "attribute": "fill", "token": "color.surface.shared" },
+    { "kind": "presentation", "selector": ".personal > rect", "attribute": "fill", "token": "color.surface.personal" },
+    { "kind": "presentation", "selector": ".machine > rect", "attribute": "fill", "token": "color.surface.machine" },
+    { "kind": "presentation", "selector": ".warning > rect", "attribute": "fill", "token": "color.surface.warning" },
+    { "kind": "presentation", "selector": ".nodeLabel, .cluster-label, .edgeLabel", "attribute": "fill", "token": "color.text.primary" },
+    { "kind": "presentation", "selector": ".warning .nodeLabel", "attribute": "fill", "token": "color.text.warning" },
+    { "kind": "presentation", "selector": ".node > rect, .cluster > rect", "attribute": "stroke", "token": "color.border.primary" },
+    { "kind": "presentation", "selector": ".flowchart-link", "attribute": "stroke", "token": "color.edge" },
+    { "kind": "presentation", "selector": ".edgeLabel rect", "attribute": "fill", "token": "color.canvas" },
+    { "kind": "presentation", "selector": ".edgeLabel .label", "attribute": "fill", "token": "color.edge.label" }
+  ],
+  "fallback": {
+    "unresolvedToken": "error",
+    "missingTarget": "warn"
+  }
+}

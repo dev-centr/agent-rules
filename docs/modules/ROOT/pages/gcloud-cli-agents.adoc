@@ -24,6 +24,7 @@ endif::[]
 Give agents a working `gcloud` without a browser login every chat — and decide whether that identity should be **your user** or an **org service account**. Multiple user logins can sit on one machine; only one is active at a time.
 
 .Operator authenticates in a normal terminal; the SDK keeps credentials per account on disk. Agents reuse the active account — switch with `gcloud config set account`, do not re-login for every org.
+[.themed-svg]
 image::agent-cli-auth-flow.svg[alt="Operator logs in once per account, machine stores gcloud credentials for each, agent uses the active account without printing secrets",width=880]
 
 Sibling:: xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows].

@@ -1,0 +1,26 @@
+flowchart TB
+  accTitle: Agent CLI auth persistence flow
+  accDescr: The operator logs in once, the machine stores credentials, the agent entry script restores the session without printing secrets, and CLI commands use the active account.
+
+  subgraph FLOW["Agent CLI authentication persistence"]
+    direction LR
+    OPERATOR["1. Operator<br/>login / unlock once"]
+    STORE["2. Machine-local store<br/>gcloud credentials.db<br/>or BW_SESSION / DPAPI"]
+    ENTRY["3. Agent entry<br/>ensure_*.ps1<br/>restore; never print secrets"]
+    CLI["4. CLI<br/>bw / gcloud"]
+    OPERATOR --> STORE --> ENTRY --> CLI
+  end
+
+  STAMPS["Harness stamps (machine-local)<br/><br/>BITWARDEN_SESSION_PERSIST = enabled<br/>BITWARDEN_AGENT_ENTRY = ensure_bw_unlocked.ps1<br/><br/>gcloud user login persists until logout<br/>optional: org service-account key for headless only"]
+  FLOW --> STAMPS
+
+  classDef operator fill:#e2e8f0,stroke:#64748b,color:#0f172a
+  classDef store fill:#dbeafe,stroke:#2563eb,color:#0f172a
+  classDef entry fill:#dcfce7,stroke:#16a34a,color:#0f172a
+  classDef cli fill:#fef3c7,stroke:#d97706,color:#0f172a
+  classDef stamps fill:#ffffff,stroke:#94a3b8,color:#0f172a
+  class OPERATOR operator
+  class STORE store
+  class ENTRY entry
+  class CLI cli
+  class STAMPS stamps
