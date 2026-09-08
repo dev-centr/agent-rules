@@ -14,11 +14,11 @@ flowchart TB
   STAMPS["Harness stamps (machine-local)<br/><br/>BITWARDEN_SESSION_PERSIST = enabled<br/>BITWARDEN_AGENT_ENTRY = ensure_bw_unlocked.ps1<br/><br/>gcloud user login persists until logout<br/>optional: org service-account key for headless only"]
   FLOW --> STAMPS
 
-  classDef operator fill:#e2e8f0,stroke:#64748b,color:#0f172a
-  classDef store fill:#dbeafe,stroke:#2563eb,color:#0f172a
-  classDef entry fill:#dcfce7,stroke:#16a34a,color:#0f172a
-  classDef cli fill:#fef3c7,stroke:#d97706,color:#0f172a
-  classDef stamps fill:#ffffff,stroke:#94a3b8,color:#0f172a
+  classDef operator fill:#e2e8f0,stroke:#64748b
+  classDef store fill:#dbeafe,stroke:#2563eb
+  classDef entry fill:#dcfce7,stroke:#16a34a
+  classDef cli fill:#fef3c7,stroke:#d97706
+  classDef stamps fill:#ffffff,stroke:#94a3b8
   class OPERATOR operator
   class STORE store
   class ENTRY entry

@@ -15,7 +15,6 @@
     { "id": "color.surface.machine", "description": "Machine-local surface" },
     { "id": "color.surface.warning", "description": "Anti-pattern surface" },
     { "id": "color.text.primary", "description": "Primary text" },
-    { "id": "color.text.warning", "description": "Warning text" },
     { "id": "color.border.primary", "description": "Panel borders" },
     { "id": "color.edge", "description": "Relationship edges" },
     { "id": "color.edge.label", "description": "Relationship labels" }
@@ -30,7 +29,6 @@
       "color.surface.machine": "#e8eef4",
       "color.surface.warning": "#fff7ed",
       "color.text.primary": "#0f172a",
-      "color.text.warning": "#7c2d12",
       "color.border.primary": "#475569",
       "color.edge": "#475569",
       "color.edge.label": "#334155"
@@ -43,7 +41,6 @@
       "color.surface.machine": "#172f4d",
       "color.surface.warning": "#431f14",
       "color.text.primary": "#f8fafc",
-      "color.text.warning": "#fdba74",
       "color.border.primary": "#94a3b8",
       "color.edge": "#cbd5e1",
       "color.edge.label": "#e2e8f0"
@@ -57,9 +54,16 @@
     { "kind": "presentation", "selector": ".personal > rect", "attribute": "fill", "token": "color.surface.personal" },
     { "kind": "presentation", "selector": ".machine > rect", "attribute": "fill", "token": "color.surface.machine" },
     { "kind": "presentation", "selector": ".warning > rect", "attribute": "fill", "token": "color.surface.warning" },
-    { "kind": "presentation", "selector": ".nodeLabel, .cluster-label, .edgeLabel", "attribute": "fill", "token": "color.text.primary" },
-    { "kind": "presentation", "selector": ".warning .nodeLabel", "attribute": "fill", "token": "color.text.warning" },
+    { "kind": "inline-style", "selector": ".neutral > rect, .project > rect", "property": "fill", "token": "color.surface.primary" },
+    { "kind": "inline-style", "selector": ".shared > rect", "property": "fill", "token": "color.surface.shared" },
+    { "kind": "inline-style", "selector": ".personal > rect", "property": "fill", "token": "color.surface.personal" },
+    { "kind": "inline-style", "selector": ".machine > rect", "property": "fill", "token": "color.surface.machine" },
+    { "kind": "inline-style", "selector": ".warning > rect", "property": "fill", "token": "color.surface.warning" },
+    { "kind": "stylesheet", "selector": "#my-svg .label text,#my-svg span", "property": "fill", "token": "color.text.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .cluster-label text", "property": "fill", "token": "color.text.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .cluster-label span", "property": "color", "token": "color.text.primary" },
     { "kind": "presentation", "selector": ".node > rect, .cluster > rect", "attribute": "stroke", "token": "color.border.primary" },
+    { "kind": "inline-style", "selector": ".node > rect", "property": "stroke", "token": "color.border.primary" },
     { "kind": "presentation", "selector": ".flowchart-link", "attribute": "stroke", "token": "color.edge" },
     { "kind": "presentation", "selector": ".edgeLabel rect", "attribute": "fill", "token": "color.canvas" },
     { "kind": "presentation", "selector": ".edgeLabel .label", "attribute": "fill", "token": "color.edge.label" }
