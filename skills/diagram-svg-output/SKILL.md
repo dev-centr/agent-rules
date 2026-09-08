@@ -90,7 +90,7 @@ If an existing SVG already has the required variables and only needs runtime DOM
 
 ## Standard tooling
 
-Use `@dev-centr/themed-svg` (https://github.com/dev-centr/themed-svg) for versioned manifests, structural bindings, palette injection, diagnostics, serialization, and the sanitized browser runtime. Generator-specific packages such as `@openshellorg/mermaid-svg-css-vars` are consumers/adapters; they do not define the cross-generator contract.
+Use `@dev-centr/themed-svg` (https://github.com/dev-centr/themed-svg) for versioned manifests, structural bindings, palette injection, diagnostics, serialization, and the sanitized browser runtime. Generator-specific packages such as `@dev-centr/mermaid-svg-css-vars` are consumers/adapters; they do not define the cross-generator contract.
 
 ## Verification
 
