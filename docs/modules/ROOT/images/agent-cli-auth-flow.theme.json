@@ -50,20 +50,27 @@
     { "kind": "presentation", "selector": ".entry > rect", "attribute": "fill", "token": "color.surface.entry" },
     { "kind": "presentation", "selector": ".cli > rect", "attribute": "fill", "token": "color.surface.cli" },
     { "kind": "presentation", "selector": ".stamps > rect", "attribute": "fill", "token": "color.surface.stamps" },
-    { "kind": "inline-style", "selector": ".operator > rect", "property": "fill", "token": "color.surface.operator" },
-    { "kind": "inline-style", "selector": ".store > rect", "property": "fill", "token": "color.surface.store" },
-    { "kind": "inline-style", "selector": ".entry > rect", "property": "fill", "token": "color.surface.entry" },
-    { "kind": "inline-style", "selector": ".cli > rect", "property": "fill", "token": "color.surface.cli" },
-    { "kind": "inline-style", "selector": ".stamps > rect", "property": "fill", "token": "color.surface.stamps" },
-    { "kind": "stylesheet", "selector": "#my-svg .label text,#my-svg span", "property": "fill", "token": "color.text.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .operator rect", "property": "fill", "token": "color.surface.operator" },
+    { "kind": "stylesheet", "selector": "#my-svg .store rect", "property": "fill", "token": "color.surface.store" },
+    { "kind": "stylesheet", "selector": "#my-svg .entry rect", "property": "fill", "token": "color.surface.entry" },
+    { "kind": "stylesheet", "selector": "#my-svg .cli rect", "property": "fill", "token": "color.surface.cli" },
+    { "kind": "stylesheet", "selector": "#my-svg .stamps rect", "property": "fill", "token": "color.surface.stamps" },
+    { "kind": "stylesheet", "selector": "#my-svg .label text", "property": "fill", "token": "color.text.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg span", "property": "fill", "token": "color.text.primary" },
     { "kind": "stylesheet", "selector": "#my-svg .cluster-label text", "property": "fill", "token": "color.text.primary" },
     { "kind": "stylesheet", "selector": "#my-svg .cluster-label span", "property": "color", "token": "color.text.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .cluster rect", "property": "fill", "token": "color.surface.stamps" },
+    { "kind": "stylesheet", "selector": "#my-svg .operator rect", "property": "stroke", "token": "color.border.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .store rect", "property": "stroke", "token": "color.border.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .entry rect", "property": "stroke", "token": "color.border.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .cli rect", "property": "stroke", "token": "color.border.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .stamps rect", "property": "stroke", "token": "color.border.primary" },
+    { "kind": "stylesheet", "selector": "#my-svg .cluster rect", "property": "stroke", "token": "color.border.primary" },
     { "kind": "presentation", "selector": ".node > rect, .cluster > rect", "attribute": "stroke", "token": "color.border.primary" },
-    { "kind": "inline-style", "selector": ".node > rect", "property": "stroke", "token": "color.border.primary" },
     { "kind": "presentation", "selector": ".flowchart-link", "attribute": "stroke", "token": "color.edge" }
   ],
   "fallback": {
     "unresolvedToken": "error",
-    "missingTarget": "warn"
+    "missingTarget": "error"
   }
 }
