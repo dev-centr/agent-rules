@@ -5,7 +5,7 @@
 :page-usage-context: Explanation on the docs hub; portable rule in `general/end-of-run.md`
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-09-01
+:page-last-edited: 2026-09-10
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -68,9 +68,22 @@ You do not lose history when an agent pushes several times across chats — each
 * Secrets are present — stop and warn; never commit them.
 * Push would require force to `main`/`master`, or there is no upstream — report instead of forcing.
 * Read-only / ask mode where the harness forbids writes.
+* **Parallel worker leaves** in a multitask / multi-subagent / harness swarm wave — those nodes **commit locally** and defer push to the coordinator after the wave (cuts remote CI rebuild storms). Detail: link:https://github.com/dev-centr/agent-rules/blob/main/general/parallel-git-closeout.md[`general/parallel-git-closeout.md`].
+
+== Parallel waves (deferred push)
+
+Standing end-of-run push still applies to the **session**, not to every concurrent Task leaf.
+
+* **Workers** — `GIT_CLOSEOUT=commit-only` / `coordinator-batch`: commit only unless that worker needs the remote *now* to validate.
+* **Parent / coordinator** — after workers finish, one batched `push-code` per affected repo.
+* **Briefing** — parents must put the close-out line in the worker prompt and **omit** standing “push before final reply” text. Cursor often copies always-on rules into subagents; without an explicit omit, every leaf pushes and CI queues pile up.
+
+DevCentr harness stores `gitCloseout` on each node and injects a system addendum on spawn so inherited push authorization cannot silently win. Variable: `GIT_CLOSEOUT` in `$CODE_ROOT/harness.md`.
 
 == Related
 
 * xref:harness-neutral.adoc[Harness-neutral architecture] — where portable rules vs machine-local config live
 * xref:skills-catalog.adoc[Skills catalog] — `push-code`, `git-commit`, `draft-pr`
-* link:https://github.com/dev-centr/agent-rules/blob/main/agents/demos-and-push.md[`agents/demos-and-push.md`] — do not suppress push/PR while prototyping demos
+* xref:actor-model-agentic-ui.adoc[Actor-model agentic UI] — task nodes + wait graph
+* xref:agent-harness.adoc[Agent harness] — runtime that injects close-out briefs
+* link:https://github.com/dev-centr/agent-rules/blob/main/agents/demos-and-push.md[`agents/demos-and-push.md`] — do not suppress push/PR while prototyping demos (wave-end push still happens)

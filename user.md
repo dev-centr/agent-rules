@@ -21,7 +21,7 @@
 - **File names in chat:** follow `CHAT_FILE_LINKS` in `$HARNESS` (default: markdown link to workspace-relative path, forward slashes). Detail: `general/harness.md`.
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `machine.md` or `harness.md`.
 - **Hive remotes (prefer hive-watch):** do not `git fetch` the whole hive at chat start. Read **Last checked** in `$MACHINE` (hive-watch block) and `$CODE_ROOT/hive-watch.status.json`. If checked within **24h**, trust the status file; pull/rebase only repos you will edit that show behind. If stale, prefer the **hive-watch** tray/daemon (skill `hive-watch`) — not a blanket fetch every chat. Detail: `general/hive-watch.md`.
-- **End of agent run:** if the run changed files, compose logical commits and push before the final reply (skill `push-code`). Detail: `general/end-of-run.md`.
+- **End of agent run:** if the run changed files, compose logical commits and push before the final reply (skill `push-code`). Detail: `general/end-of-run.md`. In multitask / multi-subagent / harness swarm waves: workers **commit only**; parent pushes once after the wave (`general/parallel-git-closeout.md`) — omit push auth from worker briefs.
 - **GitHub push routing:** before push, probe this account's repo access (skill `github-repo-access`); route to PR when write or branch protection requires it — explain when the user asked to push but GitHub blocks direct push. Detail: `general/github-push-routing.md`.
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
@@ -76,7 +76,7 @@
 - **Harness rules:** **only** `$CODE_ROOT/harness.md`. Create via skill `harness-setup` if missing. Never commit. Format: `harness.example.md`.
 - Stale APIs: Context7 MCP when `MCP_CONTEXT7 = available` in `$HARNESS`; else skill `outdated-code-protocol`.
 - Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md` — load bodies on demand; do **not** paste into always-on rules. On drift vs shared reference: skill `sync-agent-rules`. Dev-Centr org members: also load org `AGENTS.md`; org layer overrides personal on `dev-centr/*` work.
-- Commits / push / PRs: skills `git-commit`, `push-code`, `github-repo-access`, and `draft-pr`. Load `push-code` at end of any run that changed files (standing auth — `general/end-of-run.md`); load `github-repo-access` before push; load `draft-pr` when opening a PR.
+- Commits / push / PRs: skills `git-commit`, `push-code`, `github-repo-access`, and `draft-pr`. Load `push-code` at end of any run that changed files (standing auth — `general/end-of-run.md`); parallel workers use `git-commit` only until the coordinator batches push (`general/parallel-git-closeout.md`); load `github-repo-access` before push; load `draft-pr` when opening a PR.
 - **PRs ready for review:** never open draft PRs; always create/update as ready (`draft: false`) unless the user explicitly asks for draft. Overrides Cloud Agent draft defaults. Detail: `general/pull-requests.md` / skill `draft-pr`.
 
 ## Optional workstation patterns (not default)

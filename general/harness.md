@@ -54,6 +54,7 @@ When `$CODE_ROOT` is known, read in parallel:
 | `ACTOR_GRAPH_EPOCHS` | Immutable grid epochs when coherence breaks — `on` or `off` |
 | `ACTOR_WAIT_GRAPH` | Dependency gating between node mailboxes — default **`warn`**; `enforce` for irreversible gates |
 | `ACTOR_NODE_STORE` | Per-node disk layout — `jsonl-per-node` or `off` |
+| `GIT_CLOSEOUT` | Who pushes after parallel work — `coordinator-batch` (default for swarms), `per-node`, or `off` (see `general/parallel-git-closeout.md`) |
 | `PROJECT_INBOX` | *Deprecated alias* for `ACTOR_AGENTIC_UI` (`grid-forks` → `graph-grid`) |
 
 ## Token provenance
@@ -78,6 +79,7 @@ When `ACTOR_AGENTIC_UI = graph-grid`, persist a **node graph on disk** and proje
 * **Grid view** — task nodes with status dots; own scroll region
 * **Fork panel** — `nodes/{id}/chat.jsonl` for the selected node
 * **Wait graph** — default `warn`; subagents subscribe to maybes vs enforced blocks
+* **Git close-out** — parallel `task` nodes default to `GIT_CLOSEOUT=coordinator-batch` (commit locally; coordinator pushes after the wave). Inject a system addendum on spawn so inherited always-on “push at end of run” does not fire on every leaf. Detail: `general/parallel-git-closeout.md`
 * **Temporal layout** — planned view engine (global + sub-timeline scopes); not v1 harness
 
 Storage under `$CHAT_ROOT/`: `graph.json`, `orchestrator/meta.jsonl`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`, optional `views/epoch-N.json`.

@@ -178,6 +178,28 @@ Subagents declare subscriptions ahead of time:
 
 Example subscription on a node struct: `waitOn: [{ node: "task-cla", mode: "warn" }]`.
 
+== Git close-out (deferred push)
+
+Parallel `task` nodes must not each inherit standing end-of-run **push**. High-volatility waves (2+ concurrent non-terminal tasks) default leaves to **`coordinator-batch` / `commit-only`**: commit locally; the coordinator pushes once after the wave.
+
+The harness records `gitCloseout` on the node and injects a **system addendum** on spawn / provider session so copied always-on push rules cannot silently win (the Cursor Task failure mode).
+
+[cols="1,2"]
+|===
+| Value | Leaf behavior
+
+| `commit-only` / `coordinator-batch`
+| Commit OK; no push unless validation needs the remote now
+
+| `per-node`
+| Single-agent / low volatility — commit + push on that node’s close-out
+
+| `off`
+| No automatic close-out for this node
+|===
+
+Harness variable: `GIT_CLOSEOUT` (default `coordinator-batch` when `ACTOR_AGENTIC_UI=graph-grid`). Portable policy: link:https://github.com/dev-centr/agent-rules/blob/main/general/parallel-git-closeout.md[`general/parallel-git-closeout.md`].
+
 == UI projections
 
 One graph; multiple views over the same disk store:
@@ -220,9 +242,10 @@ ACTOR_AGENTIC_UI = graph-grid | serialized | off
 ACTOR_GRAPH_EPOCHS = on | off
 ACTOR_WAIT_GRAPH = warn | enforce | off
 ACTOR_NODE_STORE = jsonl-per-node | off
+GIT_CLOSEOUT = coordinator-batch | per-node | off
 ----
 
-Defaults when `ACTOR_AGENTIC_UI=graph-grid`: `ACTOR_NODE_STORE=jsonl-per-node`, `ACTOR_WAIT_GRAPH=warn`.
+Defaults when `ACTOR_AGENTIC_UI=graph-grid`: `ACTOR_NODE_STORE=jsonl-per-node`, `ACTOR_WAIT_GRAPH=warn`, `GIT_CLOSEOUT=coordinator-batch`.
 
 [cols="1,3"]
 |===
@@ -248,6 +271,15 @@ Defaults when `ACTOR_AGENTIC_UI=graph-grid`: `ACTOR_NODE_STORE=jsonl-per-node`, 
 
 | `ACTOR_NODE_STORE=jsonl-per-node`
 | Per-node `chat.jsonl` authoritative; orchestrator metathread holds refs
+
+| `GIT_CLOSEOUT=coordinator-batch` *(default for graph-grid / high volatility)*
+| Task leaves commit locally; coordinator batches push after the wave; spawn injects system addendum
+
+| `GIT_CLOSEOUT=per-node`
+| Each node may commit+push on its own close-out (serialized / single-agent)
+
+| `GIT_CLOSEOUT=off`
+| No automatic close-out policy on nodes
 |===
 
 **Migration:** `PROJECT_INBOX*` names are deprecated aliases for one release cycle; map `grid-forks` → `graph-grid`, `PROJECT_INBOX_CHAPTERS` → `ACTOR_GRAPH_EPOCHS`.

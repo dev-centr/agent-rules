@@ -55,9 +55,16 @@ ACTOR_GRAPH_EPOCHS = on | off
 ACTOR_WAIT_GRAPH = warn | enforce | off
 ACTOR_NODE_STORE = jsonl-per-node | off
 
+# Git close-out for parallel / swarm work (see general/parallel-git-closeout.md)
+# coordinator-batch: task leaves commit locally; coordinator pushes after the wave (cuts CI thrash)
+# per-node: each node may commit+push on its own close-out (single-agent / low volatility)
+# off: no automatic close-out policy on nodes
+GIT_CLOSEOUT = coordinator-batch | per-node | off
+
 # Defaults when ACTOR_AGENTIC_UI = graph-grid:
 # ACTOR_NODE_STORE = jsonl-per-node
 # ACTOR_WAIT_GRAPH = warn
+# GIT_CLOSEOUT = coordinator-batch
 
 # Deprecated aliases (one release cycle):
 # PROJECT_INBOX = grid-forks | serialized | off  →  ACTOR_AGENTIC_UI = graph-grid | …
@@ -99,6 +106,7 @@ ACTOR_AGENTIC_UI = serialized
 ACTOR_GRAPH_EPOCHS = off
 ACTOR_WAIT_GRAPH = off
 ACTOR_NODE_STORE = off
+GIT_CLOSEOUT = coordinator-batch
 AGENT_RULES_SYNCED_SHA =
 AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =
@@ -121,6 +129,7 @@ ACTOR_AGENTIC_UI = serialized
 ACTOR_GRAPH_EPOCHS = off
 ACTOR_WAIT_GRAPH = off
 ACTOR_NODE_STORE = off
+GIT_CLOSEOUT = per-node
 AGENT_RULES_SYNCED_SHA =
 AGENT_RULES_SYNCED_LABEL =
 AGENT_RULES_SYNCED_AT =

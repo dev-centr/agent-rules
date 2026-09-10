@@ -15,6 +15,17 @@ When an agent run **changes files** in one or more git repos, **before ending th
 
 This is **standing user authorization** to commit and push. Do not wait for a separate “commit” or “push” message at the end of a productive run.
 
+## Parallel / multi-subagent waves (deferred push)
+
+When the session is **multitask**, **multi-subagent**, or a harness swarm with concurrent workers:
+
+1. **Workers** commit locally only (`git-commit`). **Do not push** unless that worker needs the remote *now* to validate something.
+2. **Coordinator / parent** pushes once after the wave finishes (`push-code`).
+
+Cursor often copies always-on push rules into Task briefs — parents must **omit push authorization** from worker prompts and set `GIT_CLOSEOUT=commit-only` (or harness `coordinator-batch`). Detail: `general/parallel-git-closeout.md`.
+
+Goal: avoid remote CI rebuild storms while siblings are still committing.
+
 ## Why (when asked)
 
 Standing end-of-run commit, push, and PR updates (when applicable) keep work out of chat memory. You do not have to reopen old threads at the end of a day to remember what still needs committing or pushing — git and the remote are the source of truth.
@@ -32,6 +43,7 @@ Published explanation: docs hub page *End-of-run commit, push, and PR updates* (
 - Detached HEAD, no upstream, or push would need force to `main`/`master` — stop and report; do not force-push.
 - Read-only / ask mode where the harness forbids writes — skip.
 - **No direct push on upstream** (read/triage, branch protection, or not a fork) — skill `github-repo-access` routes to **branch+PR** or **fork PR** instead of pushing to a protected/default upstream; explain when the user asked to push. Detail: `general/github-push-routing.md`.
+- **Parallel worker leaf** with `GIT_CLOSEOUT=commit-only` / `coordinator-batch` — commit locally; defer push to the parent wave close-out (`general/parallel-git-closeout.md`).
 
 ## Scope
 
@@ -44,5 +56,6 @@ Published explanation: docs hub page *End-of-run commit, push, and PR updates* (
 - Skill `git-commit` — single-commit path when the tree is one unit
 - Skill `draft-pr` — after push when opening a PR
 - Skill `github-repo-access` — permission probe + cache before push
+- `general/parallel-git-closeout.md` — deferred push for multitask / harness swarms
 - `general/github-push-routing.md` — direct push vs PR policy
 - `general/global.md` — sync with remote **before** multi-file work

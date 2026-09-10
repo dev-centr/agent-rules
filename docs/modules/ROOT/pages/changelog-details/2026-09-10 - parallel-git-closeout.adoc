@@ -1,0 +1,32 @@
+= 2026-09-10 — Parallel git close-out (deferred push)
+:description: Workers commit locally in multitask/swarm waves; coordinator batches push to cut CI rebuild thrash.
+:page-audience: Maintainers and agents configuring end-of-run push behavior
+:page-usage-context: Changelog detail for agent-rules
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-10
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+== Summary
+
+Multitask / multi-subagent / harness swarm workers **commit locally** and defer `git push` to the coordinator after the wave, unless a worker needs the remote *now* to validate. Parents must put `GIT_CLOSEOUT=commit-only` in worker briefs and omit standing push authorization — Cursor often copies always-on rules into Task prompts.
+
+== Changes
+
+* Added `general/parallel-git-closeout.md` (portable policy).
+* Updated `general/end-of-run.md`, skill `push-code`, `user.md`, `harness.example.md` / `general/harness.md` (`GIT_CLOSEOUT` variable).
+* Docs: end-of-run, actor-model, agent-harness pages; clarified demos-and-push (wave deferral ≠ suppress push for prototyping).
+* DevCentr harness runtime stores `gitCloseout` on nodes and injects a system addendum on spawn.

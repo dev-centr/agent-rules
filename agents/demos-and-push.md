@@ -23,6 +23,8 @@ Prototyping often wants local iteration before or beside commit + PR. That tensi
 - Iterate by subsequent commits and PR updates - do **not** hold the first push "until the demo feels done."
 - Goal: avoid cross-machine friction; push so work is visible elsewhere.
 
+**Parallel waves are different:** deferring push until concurrent workers finish (`general/parallel-git-closeout.md`) is **not** “suppress push for prototyping.” Still push once at wave/session close — just do not let every Task leaf hit the remote mid-swarm.
+
 ## Suite / variant anchoring visuals
 
 Skill `demo-site-wiring` owns the full order. Short rule:

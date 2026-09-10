@@ -3,8 +3,10 @@ name: push-code
 description: >-
   Use when pushing code, git push, push changes, push to remote, push my
   commits, on pushing code, when the user asks to push, at the end of an
-  agent run that changed files (standing end-of-run authorization), or after
-  github-repo-access routes branch_pr or fork_pr.
+  agent run that changed files (standing end-of-run authorization), after
+  github-repo-access routes branch_pr or fork_pr, or when a multitask /
+  multi-subagent / harness wave finishes and deferred worker commits need
+  one batched push (GIT_CLOSEOUT, parallel-git-closeout, commit-only workers).
 ---
 
 # Push code
@@ -14,6 +16,17 @@ Push when the user asked **or** when closing an agent run that changed files (`g
 **When asked why** commit/push runs after every chat: cite `general/end-of-run.md` § Why — work lives on the remote instead of in chat memory (especially across two machines); PRs carry reviewable commits; GitHub keeps per-push history on the PR branch.
 
 **Exception:** skill `issues-repo-record` — every `ISSUES_REPO` record ends with push (including media backup under `images/`, and image-only pushes before embed on the raw-URL fallback).
+
+## Parallel workers (deferred push)
+
+In **multitask / multi-subagent / harness swarm** waves (`general/parallel-git-closeout.md`):
+
+| Who | Action |
+| --- | --- |
+| **Worker** (`GIT_CLOSEOUT=commit-only` or `coordinator-batch`) | Skill `git-commit` only — **do not** run this skill’s push step unless push is required *now* to validate (CI the worker owns, preview URL, forge attach needing remote). |
+| **Coordinator / parent** (after workers finish) | Run this skill once per affected repo — batched push to cut remote CI rebuild wait. |
+
+Parents launching Cursor Task (or peers): put `GIT_CLOSEOUT=commit-only` in the worker prompt and **omit** standing “push before final reply” text from that brief. Do not assume copied always-on rules will self-suppress.
 
 ## Safety
 
