@@ -48,7 +48,8 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `owned-changelog` | changelog, changelog-details, backfill from git, functional change in owned project | active | Match existing repo style |
 | `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`; names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, local library-docs fallback | active | Fallback when Context7 missing |
-| `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create` | active | When filing warranted — not after every owned-repo change |
+| `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create` | active | When filing warranted — not after every owned-repo change; Community discussions → `github-community-discussions` first |
+| `github-community-discussions` | GitHub Community discussions, `orgs/community`, `community/community`, `DISCUSSION_TEMPLATE`, `source:ui`, Product Feedback, `gh discussion create` community, paste pack | active | UI+template only; never API/CLI create; standalone (`.issues` optional) |
 | `issues-repo-record` | record issue/PR to `.issues`, `submissions/`, `gh --attach`, push ISSUES_REPO | active | Always commit+push; prefer `--attach`; `images/` = backup; pairs with `issue-reports` |
 | `polyglot-ci` | GitHub Actions, release.yml, win/mac/lin/BSD, polyglot pack | active | Expands `release-targets` patterns; macOS arm64 only |
 | `release-targets` | release architectures, common/desktop/lab/omnibus, common/2026, patterns.sdl, win/lin x64 arm64 defaults | active | Year-dated sets; detail `general/release-target-patterns.md` |

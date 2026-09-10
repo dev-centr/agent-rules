@@ -1,0 +1,32 @@
+= 2026-09-10 — GitHub Community discussions skill
+:description: Standalone skill so Community filings use UI templates and are not bot-closed; optional .issues only.
+:page-audience: Maintainers and agents filing GitHub Community discussions
+:page-usage-context: Changelog detail for agent-rules
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-10
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+== Summary
+
+GitHub Community (`community/community`) auto-closes discussions created outside the GitHub UI category templates (`source:other`). This skill teaches paste-pack / UI submission, live template fetch, and post-create verification so filings stay open. It must not depend on `.issues`.
+
+== Changes
+
+* Added `skills/github-community-discussions/` (`SKILL.md`, `template-inventory.md`, `examples/repositories-paste-pack.md`).
+* Updated `issue-reports` with a first-load pointer for Community targets.
+* Registered the skill in `skills/CATALOG.md`.
+* Teaching pair: closed CLI filing #207398 vs open UI filing #207400.

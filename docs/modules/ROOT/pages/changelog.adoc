@@ -19,6 +19,13 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-10 — GitHub Community discussions skill
+
+* Added skill `github-community-discussions`: UI + `DISCUSSION_TEMPLATE` compliance for `community/community` (hard ban on CLI/API create).
+* Standalone success criteria — `.issues` / `ISSUES_REPO` is optional bookkeeping only.
+* Pointer from `issue-reports`; catalog row; portable paste-pack example under the skill folder.
+* See xref:changelog-details/2026-09-10 - github-community-discussions.adoc[Detailed changelog].
+
 == 2026-09-10 — Parallel git close-out (deferred push)
 
 * Multitask / swarm workers commit locally; coordinator batches push after the wave (cuts remote CI rebuild storms).

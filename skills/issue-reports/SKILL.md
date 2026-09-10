@@ -11,9 +11,11 @@ description: >-
 
 **How** to draft and submit an issue. **When** to file is always-on policy in `AGENTS.md` or `.cursor/rules/issue-reports.mdc` — do not open issues for normal owned-repo functional changes (use skill `owned-changelog` instead).
 
+**GitHub Community discussions** (`orgs/community` / `community/community`): load skill **`github-community-discussions` first**. Community only accepts UI + category `DISCUSSION_TEMPLATE` posts (`source:ui`); `gh discussion create` / API creates are auto-closed. That skill is **standalone** — `.issues` / `ISSUES_REPO` is optional bookkeeping, not required for a successful Community filing.
+
 Draft the report as a durable artifact, then submit to the forge. Do **not** leave the body only in chat or in a one-shot `gh` argument that the shell can mangle.
 
-If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, media backup, front matter, commit, and **push** (recording is submitting; always push). Follow that repo’s README for paths.
+If `ISSUES_REPO` is set, skill **`issues-repo-record`** owns layout, media backup, front matter, commit, and **push** (recording is submitting; always push). Follow that repo’s README for paths. Skip this when the user only needs a Community paste pack / UI submit with no local archive.
 
 ## Draft and submit
 
