@@ -8,7 +8,7 @@
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
 ****
-Audience:: {page-audience}
+Audience role:: {page-audience}
 ****
 
 [.page-context.page-context-footer]
