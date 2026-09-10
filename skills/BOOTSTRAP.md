@@ -58,6 +58,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Authoring a skill / `SKILL.md` / skill `description`** → skill `write-a-skill` (`skills/write-a-skill/`).
 - **Ship an app** → skill `ship-app` (`skills/ship-app/`).
 - **Antora / org docs hub** → skill `antora-org-site` (`skills/antora-org-site/`).
+- **Antora extension consumers / topics / recursive bumps** → skill `antora-extension-consumers` (`skills/antora-extension-consumers/`).
 - **Public README** → skill `public-readme` (`skills/public-readme/`).
 - **Draft a PR** → skill `draft-pr` (`skills/draft-pr/`).
 - **Git commit** → skill `git-commit` (`skills/git-commit/`).

@@ -37,6 +37,10 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - Valentus companion: package `ui/partials/nav-menu.hbs` in hub `supplemental-ui`.
 - Facto documents it as an optional neighbor; Valentus stays lean.
 
+## Extension consumers (discovery + recursive updates)
+
+Skill **`antora-extension-consumers`**: GitHub topic = upstream **repo name** (`antora-search-chat`, `valentus-theme`, … — not `uses-*`); SemVer git pins; BFS fan-out so intermediates (theme/compose) enqueue *their* consumers when a published artifact moved.
+
 ## Related content architecture
 
 - **Internet Architecture / Internet Reliability** nests under DevCentr (`general-knowledge` body; portal `dev-centr/docs`). Peer of product SPE Architecture — not a new digital-/sys-architecture org for now.
