@@ -13,6 +13,9 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - **Facto** (`antora-supplemental/antora-facto`) is the named **compose pack** (VS Code extension-pack pattern): Valentus + Lunr + STEM/math + Kroki diagrams + **page-context** (+ optional neighbors documented there).
 - Prefer pointing playbooks at Facto / its `playbook.fragment.yml` over inventing a parallel “full Valentus” product line.
 - Page metadata: `page-*` attrs; Facto sets `page-context-active`. Body fallback pattern in `general/documentation.md`.
+- **page-context 0.6+:** teaching byline `Last updated … by …`; authorship/classification in footer; agent credit **displays** as `Name (via Agent)` (source attr may still say `Agent on behalf of Name`).
+- **Keywords:** footer values link to `/home/keywords/{slug}/` (override `page-context-keyword-base`); register `@antora-supplemental/page-context/antora` for generated filtered listings.
+- **page-edit 0.2+:** lead-table **Source** row with `View | Edit` (blob URL derived from edit URL when possible).
 - **Component homes:** never render Audience / Usage context chrome (attrs may still exist); authorship / dates at document end (`page-context` 0.5+).
 
 ## Page title = nav label

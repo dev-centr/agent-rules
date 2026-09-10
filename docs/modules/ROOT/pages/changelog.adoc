@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-10 — page-context 0.6 credits + keyword links
+
+* Documented slim byline / footer map, `Name (via Agent)` display for agent-assisted credits, and keyword → `/home/keywords/{slug}/` listing convention.
+* Updated `general/documentation.md`, `agents/engineering/antora.md`, `user.md`, and skill `antora-org-site`.
+* See xref:changelog-details/2026-09-10 - page-context-0.6-credits-keywords.adoc[Detailed changelog].
+
 == 2026-09-10 — GitHub Community discussions skill
 
 * Added skill `github-community-discussions`: UI + `DISCUSSION_TEMPLATE` compliance for `community/community` (hard ban on CLI/API create).

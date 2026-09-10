@@ -1,0 +1,28 @@
+= page-context 0.6 credits and keyword links
+:description: Agent-rules aligned with page-context 0.6 byline/footer layout, Name (via Agent) display, and keyword listing URLs.
+:page-audience: Maintainers tracking agent-rules documentation policy
+:page-usage-context: Changelog detail for the docs hub
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-10
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Aligned house docs with `@antora-supplemental/page-context` **0.6**:
+
+* Teaching pages: byline `Last updated … by …`; authorship and classification in the footer.
+* Agent-assisted **source** attrs stay `{agent} on behalf of {human}`; **display** is `{human} (via {agent})`.
+* Keywords/Tags link to `{page-context-keyword-base}/{slug}/` (default `/home/keywords/{slug}/`); hubs register `@antora-supplemental/page-context/antora` for filtered article trees.
+* page-edit **0.2** adds a lead-table Source row (`View | Edit`).

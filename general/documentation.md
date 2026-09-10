@@ -30,14 +30,33 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 
 | Attribute | Required | Rendered by extension as |
 | --- | --- | --- |
-| `page-audience` | yes (for teaching pages) | Audience (lead) — **not shown** on component home surfaces |
-| `page-usage-context` | when not obvious | Usage context (lead) — **not shown** on component home surfaces |
-| `page-orig-author` | yes | Original author (lead on teaching pages; **footer** on component homes; set once) |
-| `page-last-author` | yes | Latest contributor (lead on teaching pages; **footer** on component homes); agent-assisted → `<agent> on behalf of <human>` |
-| `page-last-edited` | yes (when you know it) | Last edited / folded into latest contributor |
+| `page-audience` | yes (for teaching pages) | Audience (**lead** table) — **not shown** on component home surfaces |
+| `page-usage-context` | when not obvious | Usage context (**lead**) — **not shown** on component home surfaces |
+| `page-orig-author` | yes | Original author (**footer**; set once) |
+| `page-last-author` | yes | Latest contributor — teaching **byline** (`Last updated … by …`); also footer on component homes. Source form `<agent> on behalf of <human>` **displays** as `{human} (via {agent})` |
+| `page-last-edited` | yes (when you know it) | Teaching **byline** date; omitted from footer when shown in byline |
+| `page-keywords` / `page-tags` | encouraged | Footer **Keywords** / **Tags** — each value links to `{page-context-keyword-base}/{slug}/` (default `/home/keywords/{slug}/`); register `@antora-supplemental/page-context/antora` so listings exist |
 | `page-context-surface` | optional | `component-home` (or `home`) forces home chrome when Antora attrs are missing |
 
+**Display vs source for agent-assisted credits:** keep writing `:page-last-author: Cursor agent on behalf of Ryan Johnson` in AsciiDoc. page-context **0.6+** shows `Ryan Johnson (via Cursor)` with optional GitHub avatar.
+
 Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: https://github.com/antora-supplemental/page-context
+
+### Lead / footer map (0.6+)
+
+| Zone | Typical fields |
+| --- | --- |
+| Byline (teaching) | Last updated {date} by {avatar}{name} |
+| Lead table | Audience, Usage context, status / level / prerequisites, …; optional **Source** row from page-edit (`View \| Edit`) |
+| Footer | Original author, classification (doc-type, Diátaxis, keywords), dates not in byline, license / DOI / locale |
+
+### Keyword link convention
+
+- Slug: lowercased; non-alnum → `-`
+- URL: `{page-context-keyword-base}/{slug}/` (no trailing slash on the base attribute)
+- Default base: `/home/keywords` (match Facto / hub `home` component)
+- Listings: Antora helper `@antora-supplemental/page-context/antora` generates filtered article trees grouped by component
+- Styling stays in page-context (muted underline links — not accent blue)
 
 ### Component home / portal start pages
 
