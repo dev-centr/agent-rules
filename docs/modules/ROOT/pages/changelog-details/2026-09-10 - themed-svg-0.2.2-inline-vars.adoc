@@ -12,9 +12,9 @@ Audience:: {page-audience}
 ****
 endif::[]
 
-Mermaid host SVGs for `rules-geography` and `agent-cli-auth-flow` are regenerated through local `@dev-centr/themed-svg` 0.2.2 so inline `fill` / `stroke` `!important` values become `var(--themed-svg-…)` custom properties.
+Mermaid host SVGs for `rules-geography` and `agent-cli-auth-flow` are regenerated through `@dev-centr/themed-svg` 0.2.2 so inline `fill` / `stroke` `!important` values become `var(--themed-svg-…)` custom properties.
 
-The diagram package pins `file:../themed-svg` (with a pnpm override for `@dev-centr/mermaid-svg-css-vars`) until the registry publishes 0.2.2.
+The diagram package pins `@dev-centr/themed-svg` 0.2.2 and `@dev-centr/mermaid-svg-css-vars` 0.1.3 from the registry.
 Manifest `missingTarget` is `warn` so emptied Mermaid stylesheet rules after the inline rewrite do not fail the build.
 The generate script's preserved-fixed SHA-256 pins match the committed `.fixed.svg` bytes.
 
