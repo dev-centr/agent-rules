@@ -32,9 +32,9 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 | --- | --- | --- |
 | `page-audience` | yes (for teaching pages) | Audience (lead) |
 | `page-usage-context` | when not obvious | Usage context (lead) |
-| `page-orig-author` | yes | Original author (footer; set once) |
-| `page-last-author` | yes | Latest contributor (footer); agent-assisted → `<agent> on behalf of <human>` |
-| `page-last-edited` | yes (when you know it) | Last edited / folded into latest contributor |
+| `page-orig-author` | yes | Original author (lead; set once) |
+| `page-last-author` | yes | Latest contributor (lead); agent-assisted → `<agent> on behalf of <human>` |
+| `page-last-edited` | yes (when you know it) | Last edited / folded into latest contributor (lead) |
 
 Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: https://github.com/antora-supplemental/page-context
 
@@ -47,10 +47,6 @@ ifndef::page-context-active[]
 [.page-context.page-context-lead]
 ****
 Audience:: {page-audience}
-****
-
-[.page-context.page-context-footer]
-****
 Original author:: {page-orig-author}
 Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
