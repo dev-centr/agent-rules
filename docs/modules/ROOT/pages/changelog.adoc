@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-10 — Component home page-context chrome
+
+* Component start pages never show Audience / Usage context chrome (attrs stay for agents / meta); authorship renders at document end.
+* Aligned with `@antora-supplemental/page-context` 0.5 (`page-context-surface: component-home` or Antora ROOT `index.adoc`).
+* See xref:changelog-details/2026-09-10 - component-home-page-context.adoc[Detailed changelog].
+
 == 2026-09-09 — Consumer fan-out skill split
 
 * Added skill `update-consumers` for generic recursive dependent bumps with a frontmatter specialization scan (`update-consumers.when`).

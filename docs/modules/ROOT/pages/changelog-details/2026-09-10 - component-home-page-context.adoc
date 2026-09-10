@@ -1,0 +1,26 @@
+= Component home page-context chrome
+:page-audience: Maintainers and readers tracking functional history of this component
+:page-usage-context: Changelog detail under agent-rules; subordinate to the changelog index
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-10
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Org Antora **component home** pages (ROOT start / hub portal) must keep `page-audience` and `page-usage-context` in the header for agents and HTML meta, but **must not show** that chrome to readers. Author and contributor metadata belong at the **end** of the page.
+
+`@antora-supplemental/page-context` 0.5 implements this when `:page-context-surface: component-home` is set, or when Antora supplies `page-module=ROOT` with `page-relative-src-path=index.adoc`. Section landings keep normal lead orientation.
+
+House policy: `general/documentation.md`. Skill: `antora-org-site`.

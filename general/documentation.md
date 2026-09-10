@@ -30,17 +30,39 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 
 | Attribute | Required | Rendered by extension as |
 | --- | --- | --- |
-| `page-audience` | yes (for teaching pages) | Audience (lead) |
-| `page-usage-context` | when not obvious | Usage context (lead) |
-| `page-orig-author` | yes | Original author (lead; set once) |
-| `page-last-author` | yes | Latest contributor (lead); agent-assisted → `<agent> on behalf of <human>` |
-| `page-last-edited` | yes (when you know it) | Last edited / folded into latest contributor (lead) |
+| `page-audience` | yes (for teaching pages) | Audience (lead) — **not shown** on component home surfaces |
+| `page-usage-context` | when not obvious | Usage context (lead) — **not shown** on component home surfaces |
+| `page-orig-author` | yes | Original author (lead on teaching pages; **footer** on component homes; set once) |
+| `page-last-author` | yes | Latest contributor (lead on teaching pages; **footer** on component homes); agent-assisted → `<agent> on behalf of <human>` |
+| `page-last-edited` | yes (when you know it) | Last edited / folded into latest contributor |
+| `page-context-surface` | optional | `component-home` (or `home`) forces home chrome when Antora attrs are missing |
 
 Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: https://github.com/antora-supplemental/page-context
 
+### Component home / portal start pages
+
+**Never show** Audience or Usage context on an org Antora **component home** (ROOT start page / hub portal), even when the attrs are set for agents and HTML meta. **Author / contributor metadata must be at the end** of that document (footer aside), not in the lead.
+
+Detection (extension `0.5+`): `:page-context-surface: component-home`, or Antora `page-module=ROOT` + `page-relative-src-path=index.adoc`. Section landings (`tutorials/index.adoc`, …) keep normal lead chrome.
+
+Fallback when page-context is missing (component home only — **footer authors, no audience lead**):
+
+```asciidoc
+ifndef::page-context-active[]
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+```
+
 ### Fallback when page-context is missing
 
-Always keep a **body fallback** for the three fields readers most need — audience, authorship, last updated — wrapped so Facto / playbooks that set `page-context-active` hide it:
+Always keep a **body fallback** for the fields readers most need — wrapped so Facto / playbooks that set `page-context-active` hide it. Teaching pages use lead orientation + authorship; **component homes** use the footer-only pattern above.
+
+Teaching-page fallback:
 
 ```asciidoc
 ifndef::page-context-active[]
@@ -66,6 +88,7 @@ Markdown / README (no Antora): a short lead that names **who** and **when**; cre
 
 | Doc kind | Typical `page-audience` | Typical `page-usage-context` |
 | --- | --- | --- |
+| Component home / hub portal | Still set (agents / meta) — **do not render** | Still set — **do not render**; authors in footer |
 | Tutorial / how-to / onboarding | New member, adopter, first-time setup | Full-page guide; start-here path |
 | Explanation | Reader who wants the model / why | Hub article; may link out from README |
 | Reference | Practitioner looking up a fact | May be **sidebar**, in-app help, or deep link — say so |
@@ -101,6 +124,8 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 ### Anti-patterns (fail the gate)
 
 - Omitting `page-audience` / author attrs
+- Showing Audience / Usage context chrome on a **component home** (attrs stay; chrome does not)
+- Putting author/contributor chrome in the **lead** of a component home (footer only)
 - Hard-coding extended metadata into the body when Facto/`page-context` is available (attrs + `ifndef` fallback only for audience / authors / last updated)
 - Unwrapped hard-coded lists **and** the extension (duplicate chrome) — use `ifndef::page-context-active[]` or attrs-only
 - Crediting only an agent without `on behalf of <human>`
@@ -120,17 +145,18 @@ Worked example (titles + openings + Cool URI + chat residue): docs hub `agent-ru
 ### Pass checks (before commit — after drafting)
 
 1. Are `page-audience`, `page-orig-author`, `page-last-author` (and `page-last-edited` when known) set in the header?
-2. Is the `ifndef::page-context-active[]` fallback present for audience / authors / last updated (or the playbook is Markdown-only with an equivalent hard-coded lead)?
+2. Is the `ifndef::page-context-active[]` fallback present (teaching: audience / authors / last updated; **component home: footer authors only, no audience lead**)?
 3. Agent-assisted credits use `<agent> on behalf of <human>`?
 4. Facto / hub playbook registers `page-context` and sets `page-context-active` when using Antora?
-5. Could a smart stranger who never opened this chat follow the page?
-6. Does every `$PLACEHOLDER` / jargon term get a plain gloss on first use, or a link to a prior onboarding page?
-7. Would removing chat context still leave a coherent document?
-8. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
-9. Does the opening hook with **their** words (URL, broken link, rename) rather than house metaphors (“chase the *thing*”)?
-10. Are slug / nickname / “do not confuse with…” / Cool-URI notes **absent** from the body (they live in `AGENTS.md` / changelog)?
-11. Does the **page slug / filename match the public H1** (unless you can name who still needs the old URL)?
-12. Did you re-check this list **after** drafting — not only before?
+5. Component home: no visible Audience / Usage context; authorship at document end?
+6. Could a smart stranger who never opened this chat follow the page?
+7. Does every `$PLACEHOLDER` / jargon term get a plain gloss on first use, or a link to a prior onboarding page?
+8. Would removing chat context still leave a coherent document?
+9. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
+10. Does the opening hook with **their** words (URL, broken link, rename) rather than house metaphors (“chase the *thing*”)?
+11. Are slug / nickname / “do not confuse with…” / Cool-URI notes **absent** from the body (they live in `AGENTS.md` / changelog)?
+12. Does the **page slug / filename match the public H1** (unless you can name who still needs the old URL)?
+13. Did you re-check this list **after** drafting — not only before?
 
 Skills that ship visitor copy must re-check this gate: `antora-org-site`, `public-readme`, `bootstrap-org` (profile/site), `owned-changelog` (reader-facing summaries), `writing-news`, `writing-blog`.
 
