@@ -1,0 +1,33 @@
+= 2026-09-10 — Desk UX cadence and view modes
+:description: Lock cadence separation (discussion vs workers), Linear/Grid/Tree primary modes, and temporal-as-widget into the actor-model UX contract.
+:page-audience: Maintainers and harness authors building agent desk UIs
+:page-usage-context: Changelog detail for agent-rules
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-10
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+== Summary
+
+Locked the desk UX contract in xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]: hard cadence separation between discussion and worker surfaces, three primary view modes (Linear, Grid, Tree) over one graph, temporal scrubber as a cross-cutting widget (not a fourth mode), and mixed-project guidance (new `$CHAT_ROOT` per workspace analog).
+
+== Changes
+
+* **Cadence separation** — coordinator/`discussion` chat is exploratory Q&A only; `task` nodes publish mailbox status; worker transcripts stay in fork panel; no cross-append of tool noise into discussion `chat.jsonl`.
+* **Primary view modes** — Linear (Cursor-like transcript), Grid (2D task tiles + separate discussion), Tree (L→R spawn tree with `+` spawn on branch).
+* **Temporal** — clarified as embeddable widget in any primary mode; existing temporal section retained and tightened.
+* **Mixed project contexts** — prefer new session root over forcing unrelated topics into one coordinator tree; soft `related` / wait edges may cross-reference.
+* Brief pointer in xref:agent-harness.adoc[Agent harness] Design direction / actor-model section.

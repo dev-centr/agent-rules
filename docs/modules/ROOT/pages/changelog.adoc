@@ -19,6 +19,13 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-10 — Desk UX cadence and view modes
+
+* Locked cadence separation (discussion vs workers; no cross-append into coordinator chat) and three primary desk modes: Linear, Grid, Tree — same graph, different projections.
+* Temporal scrubber is a cross-cutting widget embeddable in any mode, not a fourth primary mode.
+* Mixed workspaces prefer a new `$CHAT_ROOT` / session root rather than one forced coordinator tree.
+* See xref:changelog-details/2026-09-10 - desk-ux-cadence-and-view-modes.adoc[Detailed changelog].
+
 == 2026-09-10 — Themed SVG 0.2.2 inline style variables
 
 * Regenerated `rules-geography` and `agent-cli-auth-flow` host/adaptive SVGs with `@dev-centr/themed-svg` 0.2.2 so Mermaid inline `!important` colors become `var(--themed-svg-…)`.
