@@ -159,7 +159,7 @@ The second cross-org UX contract is **actor-model agentic UI** from HCI Nerdz �
 
 Linear chat drifts; agent work spawns tangents and parallel jobs. The harness records **nodes on disk** (`graph.json`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`). Parent nodes record child addresses in `spawned[]`; children record `spawnedBy`. When chat drifts off-topic, spawn a child node instead of polluting the parent transcript.
 
-The **task grid** is one projection — filter `type=task` for parallel repo work. Discussion nodes spawn task nodes; task tangents spawn discussion children.
+Desk UX: three primary projections over the same graph — **Linear** (discussion transcript), **Grid** (task tiles), **Tree** (spawn/dependency L→R) — plus **temporal scrubber** as an embeddable cross-cutting widget, not a fourth mode. Discussion and worker cadences stay separated (no worker noise in coordinator chat). Discussion nodes spawn task nodes; task tangents spawn discussion children.
 
 Harness variables:
 
