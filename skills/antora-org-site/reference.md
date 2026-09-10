@@ -80,7 +80,7 @@ Rules:
 - **Suggest** **Valentus** (`antora-supplemental/valentus-theme`) — confirm before applying (`SKILL.md`). With org brand colors/logo from the org’s central assets. Keep Valentus **lean** (theme only). Theme override contracts (`head-meta` CSS chain, do not double-load `site.js`) live in **Valentus docs**, not duplicated here.
 - **Facto** compose pack (`antora-supplemental/antora-facto`): Valentus + Lunr + STEM/math + Kroki diagrams + **page-context** (`page-*` metadata). Prefer Facto / its playbook fragment over stuffing defaults into Valentus `v2`. Multi-component hubs: see Facto / site-nav-tree for the recommended **site-nav-tree + nav-typology** (+ diataxis) pairing.
 - Every published site: `@antora/lunr-extension` plus the AI search/help extension from `antora-supplemental` (`antora-search-chat`; see also `antora-ai-help-extension`). Details in skill `antora-org-site`.
-- **Extension consumers:** skill **`antora-extension-consumers`** — topic = upstream repo name (`antora-search-chat`, not `uses-*`); SemVer pins; recursive fan-out after releases.
+- **Extension consumers:** skill **`antora-extension-consumers`** (topic = upstream repo name, SemVer pins) + skill **`update-consumers`** (recursive fan-out; specialization scan).
 - **Soft:** Prefer transparent **`logo-mark`** for docs chrome/hero; plate-backed for favicon/avatar (skill `github-profile-assets`).
 - **Soft:** Style `page-*` chrome in `@antora-supplemental/page-context`, not per-hub CSS forks of the same presentation.
 

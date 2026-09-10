@@ -39,7 +39,7 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 
 ## Extension consumers (discovery + recursive updates)
 
-Skill **`antora-extension-consumers`**: GitHub topic = upstream **repo name** (`antora-search-chat`, `valentus-theme`, … — not `uses-*`); SemVer git pins; BFS fan-out so intermediates (theme/compose) enqueue *their* consumers when a published artifact moved.
+Antora topic/pin rules: skill **`antora-extension-consumers`** (topic = upstream **repo name**, not `uses-*`). Recursive fan-out for any lib: skill **`update-consumers`** (scans for specializations such as `antora-extension-consumers`).
 
 ## Related content architecture
 
