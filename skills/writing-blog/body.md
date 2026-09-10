@@ -47,8 +47,8 @@ Titles + ledes: `agents/editorial/titles.md`. Audience / channel split: `general
 
 Before commit, re-run:
 
-1. Title self-test in `agents/editorial/titles.md` (include **lede check**)
-2. Audience / POV pass checks in `general/documentation.md` (especially items on concrete opening, no chat residue, slug match)
+1. Title self-test in `agents/editorial/titles.md` (include **lede check** + chrome-independent opening)
+2. Audience role / POV pass checks in `general/documentation.md` (necessary role = permissions/access/expectations; concrete opening without relying on Audience role chrome; no chat residue; slug match)
 
 ## Optional upstream references
 

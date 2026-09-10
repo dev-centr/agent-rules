@@ -10,7 +10,7 @@ description: >-
 
 **Channel:** inward — ideas, ideals, philosophy, craft, working theories.
 
-Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/editorial/titles.md`**. Audience gate (post-draft): **`general/documentation.md`**. Case study: docs hub `case-study-agent-voice-vs-reader-voice.adoc`. Ignore fat per-site `STYLE.adoc` rulebooks; pointers only.
+Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/editorial/titles.md`**. Audience role gate (post-draft): **`general/documentation.md`**. Case study: docs hub `case-study-agent-voice-vs-reader-voice.adoc`. Ignore fat per-site `STYLE.adoc` rulebooks; pointers only.
 
 ## Quick stance
 
@@ -29,5 +29,5 @@ Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/
 - Blog vs news on the same topic: thesis and voice present; not neutral outward report
 - Cold-reader: stranger can name the topic from title + lede alone
 - Lede stays in the same concrete register as the title (especially symptom faces)
-- Audience / POV pass checks in `general/documentation.md` re-run **after** draft, not only before
+- Audience role / POV pass checks in `general/documentation.md` re-run **after** draft, not only before
 - Filename / URL slug matches the public title

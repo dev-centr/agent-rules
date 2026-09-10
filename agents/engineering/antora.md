@@ -16,7 +16,7 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - **page-context 0.6+:** teaching byline `Last updated … by …`; authorship/classification in footer; agent credit **displays** as `Name (via Agent)` (source attr may still say `Agent on behalf of Name`).
 - **Keywords:** footer values link to `/home/keywords/{slug}/` (override `page-context-keyword-base`); register `@antora-supplemental/page-context/antora` for generated filtered listings.
 - **page-edit 0.2+:** lead-table **Source** row with `View | Edit` (blob URL derived from edit URL when possible).
-- **Component homes:** never render Audience / Usage context chrome (attrs may still exist); authorship / dates at document end (`page-context` 0.5+).
+- **Component homes:** never render Audience role / Usage context chrome (attrs may still exist); authorship / dates at document end (`page-context` 0.5+).
 
 ## Page title = nav label
 

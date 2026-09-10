@@ -1,0 +1,29 @@
+= Audience role label and lede orientation
+:description: page-audience displays as Audience role; values are necessary roles; ledes must orient without chrome.
+:page-audience: Maintainers tracking agent-rules documentation policy
+:page-usage-context: Changelog detail for the docs hub
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-10
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience role:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Clarified the Audience / POV writing gate:
+
+* Lead-table label is **Audience role** (`page-audience` attr unchanged; needs `@antora-supplemental/page-context` **0.6.2+**).
+* Value = the **necessary role** (permissions / access / usage expectations) — Developer ≠ User, Admin ≠ Member — not task padding.
+* Surface/channel stays in `page-usage-context`; task orientation belongs in the **lede**.
+* Lede must orient **without** the Audience role table (humans skip chrome).
+* Updated `general/documentation.md`, `user.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, `general/global.md`, and skills `antora-org-site`, `writing-blog`, `writing-news`.

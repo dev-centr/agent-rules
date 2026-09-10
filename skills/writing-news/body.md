@@ -36,7 +36,7 @@ Titles + ledes: `agents/editorial/titles.md`. Audience / channel split: `general
 
 ## Post-draft gate (required)
 
-Before commit: title self-test (`agents/editorial/titles.md`) + Audience / POV pass checks (`general/documentation.md`), including slug match and no chat residue.
+Before commit: title self-test (`agents/editorial/titles.md`, including chrome-independent lede) + Audience role / POV pass checks (`general/documentation.md`: necessary role = permissions/access/expectations; slug match; no chat residue).
 
 ## Optional upstream references
 

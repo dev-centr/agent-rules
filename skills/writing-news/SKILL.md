@@ -10,7 +10,7 @@ description: >-
 
 **Channel:** outward — what entered the shared record (shipped, added, partnered).
 
-Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/editorial/titles.md`**. Audience gate (post-draft): **`general/documentation.md`**. Ignore fat per-site `STYLE.adoc` rulebooks; pointers only.
+Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/editorial/titles.md`**. Audience role gate (post-draft): **`general/documentation.md`**. Ignore fat per-site `STYLE.adoc` rulebooks; pointers only.
 
 ## Quick stance
 
@@ -24,5 +24,5 @@ Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/
 ## Verify (after drafting)
 
 News vs blog on the same topic: no `you` / first person; no thesis-as-conversation; reads as shared record not inward essay.
-Re-run Audience / POV pass checks in `general/documentation.md` **after** draft.
+Re-run Audience role / POV pass checks in `general/documentation.md` **after** draft.
 Filename / URL slug matches the public title.

@@ -10,6 +10,7 @@ Teaching pages: component `agent-rules` → `editorial-titles.adoc`, case study 
 
 - Orient through **concrete, shared knowledge** first (URL, broken link, rename, file, settings). Deliberate through abstract frames later in the body (*labels*, *wires*, *dependents*, *identity*).
 - **Title doctrine ≠ body doctrine.** A good title does not excuse a briefing-memo lede. Re-run this gate on the opening paragraph and SEO `description` after drafting.
+- **Audience role chrome ≠ lede.** `page-audience` / lead-table metadata do not count as orientation — humans skip them. Paragraph one must still adopt the role and/or name the situation (see `general/documentation.md`).
 - If removing the body would leave the title opaque *or* locked in private jargon, rewrite.
 - Prefer: `Broken links after a URL rename`
 - Fail: `When the agent names a fork before it looks` (only makes sense after you already know the story)
@@ -44,6 +45,7 @@ Surface phrase + charged relation to a known object → the reader supplies *why
 4. **Abstraction demoted?** Are *wires / labels / dependents / identity / CAS* in the body (or after the hook), not stealing the public title when a concrete rival exists?
 5. **New-idea check?** If this challenges habit, does the title reopen a rejected assumption rather than only naming the in-group concept?
 6. **Lede check?** Does paragraph one / `description` stay in the same concrete register as the title (especially on a *symptom* face)?
+7. **Chrome-independent?** If you hide the Audience role / Usage context table, does the opening still put the reader in the right role (permissions / expectations) and situation?
 
 ## Slug = public title
 

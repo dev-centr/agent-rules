@@ -25,6 +25,13 @@ endif::[]
 * Local `file:../themed-svg` pin + pnpm override; manifest `missingTarget` warn; fixed-SVG SHA pins refreshed to match committed originals.
 * See xref:changelog-details/2026-09-10 - themed-svg-0.2.2-inline-vars.adoc[Detailed changelog].
 
+== 2026-09-10 — Audience role + lede orientation
+
+* Lead chrome label for `page-audience` is **Audience role** (page-context 0.6.2+); value = necessary role (permissions / access / expectations), not task filler.
+* Ledes must orient without relying on the Audience role table; Usage context keeps surface/channel.
+* Updated `general/documentation.md`, `user.md`, titles module, and writing / Antora skills.
+* See xref:changelog-details/2026-09-10 - audience-role-lede-orientation.adoc[Detailed changelog].
+
 == 2026-09-10 — page-context 0.6 credits + keyword links
 
 * Documented slim byline / footer map, `Name (via Agent)` display for agent-assisted credits, and keyword → `/home/keywords/{slug}/` listing convention.

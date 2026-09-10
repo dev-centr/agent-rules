@@ -13,17 +13,18 @@ description: >-
 
 Minimum bar for a published Antora site in an owned org. Detail and hub table: [reference.md](reference.md). Encoding/mojibake: skill `fix-docs-encoding` (transcode, not a refactor).
 
-## Audience / POV
+## Audience role / POV
 
-Before drafting or revising any page under `docs/`, read **Audience / point of view** and **Antora page title = nav label** in `general/documentation.md`.
+Before drafting or revising any page under `docs/`, read **Audience role / point of view** and **Antora page title = nav label** in `general/documentation.md`.
 
-1. Set **`page-*` header attrs** (`page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, `page-last-edited`, plus optional catalog fields). Agent-assisted **source**: `<agent> on behalf of <human>` — **display** (page-context 0.6+): `{human} (via {agent})`.
-2. Include the **`ifndef::page-context-active[]`** body fallback (teaching pages: audience / authors / last updated; **component homes: footer authors only — never render audience/usage chrome**). Attrs via `{page-…}` refs.
+1. Set **`page-*` header attrs** (`page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, `page-last-edited`, plus optional catalog fields). Lead label **Audience role** (`page-audience`) = **necessary role** (permissions / access / usage expectations — Developer ≠ User, Admin ≠ Member; not “developers performing a specific task”); put surface/channel in `page-usage-context`. Agent-assisted **source**: `<agent> on behalf of <human>` — **display** (page-context 0.6+): `{human} (via {agent})`. Requires **page-context 0.6.2+** for the Audience role label.
+2. Include the **`ifndef::page-context-active[]`** body fallback (teaching pages: `Audience role::` / authors / last updated; **component homes: footer authors only — never render audience-role/usage chrome**). Attrs via `{page-…}` refs.
 3. **Facto** already registers `@antora-supplemental/page-context` and sets `page-context-active` — do not hard-code the extended catalog into the body. Component homes: extension `0.5+` hides audience/usage and puts authorship in the footer (auto ROOT/`index.adoc`, or `:page-context-surface: component-home`). Teaching pages (0.6+): byline + slim lead; authorship/classification in footer. Keywords link to `{page-context-keyword-base}/{slug}/` (default `/home/keywords/{slug}/`); Facto registers `@antora-supplemental/page-context/antora` for listing pages.
-4. When wiring a playbook without Facto, either adopt Facto’s fragment or register `page-context` + `page-context-active` yourself (and the optional `/antora` keyword generator + `page-context-keyword-base`).
-5. **One title:** H1 = `nav.adoc` link text; prefer no `:navtitle:`. Section landings: **linked parent** (link text = H1) with nested `**` children — not `.Section` + Overview. **File stays `index.adoc`**; public URL is the folder via indexify.
-6. **Nav titled lists:** never mix `.Title` / dotted headers with sibling `* xref:…` linked parents. A dotted line owns all following `*` items until the next `.Title` (siblings silently nest). No landing → unlinked `* Label` + `**`; with `index.adoc` → linked parent + `**`. Detail: `general/documentation.md`.
-7. **Folder URLs:** set `urls.html_extension_style: indexify` on owned hub playbooks. Do not invent `overview.adoc`; do not advertise `index.html` in prose.
+4. **Lede orients without the Audience role table** — humans skip chrome; paragraph one still adopts the role and/or names the situation (`general/documentation.md`). Title doctrine ≠ body doctrine (`agents/editorial/titles.md`).
+5. When wiring a playbook without Facto, either adopt Facto’s fragment or register `page-context` + `page-context-active` yourself (and the optional `/antora` keyword generator + `page-context-keyword-base`).
+6. **One title:** H1 = `nav.adoc` link text; prefer no `:navtitle:`. Section landings: **linked parent** (link text = H1) with nested `**` children — not `.Section` + Overview. **File stays `index.adoc`**; public URL is the folder via indexify.
+7. **Nav titled lists:** never mix `.Title` / dotted headers with sibling `* xref:…` linked parents. A dotted line owns all following `*` items until the next `.Title` (siblings silently nest). No landing → unlinked `* Label` + `**`; with `index.adoc` → linked parent + `**`. Detail: `general/documentation.md`.
+8. **Folder URLs:** set `urls.html_extension_style: indexify` on owned hub playbooks. Do not invent `overview.adoc`; do not advertise `index.html` in prose.
 
 ## Required
 

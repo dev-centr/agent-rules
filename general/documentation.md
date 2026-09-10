@@ -2,13 +2,13 @@
 
 Read this file when you **author, structure, or publish** project documentation for repositories the user owns. Skip it for pure code tasks with no doc impact.
 
-## Audience / point of view (required gate)
+## Audience role / point of view (required gate)
 
 **Published docs are for the reader on the page — not for the person in this chat.**
 
 The chat user commissioned the page. They already know the session context, house jargon, and why the change exists. The published audience does **not**: new org members, naive adopters, forge visitors, and search arrivals. Write for *them*.
 
-**Run this gate twice:** once before drafting (name the reader), and **again after drafting** before commit. Session context (dialectic maps, Cool URI, nickname collisions, AGENTS maps) outcompetes the stranger unless you re-check. Worked example: docs hub `agent-rules` → `case-study-agent-voice-vs-reader-voice.adoc`.
+**Run this gate twice:** once before drafting (name the reader role), and **again after drafting** before commit. Session context (dialectic maps, Cool URI, nickname collisions, AGENTS maps) outcompetes the stranger unless you re-check. Worked example: docs hub `agent-rules` → `case-study-agent-voice-vs-reader-voice.adoc`.
 
 ### Encode as page attributes (required)
 
@@ -30,7 +30,7 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 
 | Attribute | Required | Rendered by extension as |
 | --- | --- | --- |
-| `page-audience` | yes (for teaching pages) | Audience (**lead** table) — **not shown** on component home surfaces |
+| `page-audience` | yes (for teaching pages) | **Audience role** (**lead** table) — **not shown** on component home surfaces |
 | `page-usage-context` | when not obvious | Usage context (**lead**) — **not shown** on component home surfaces |
 | `page-orig-author` | yes | Original author (**footer**; set once) |
 | `page-last-author` | yes | Latest contributor — teaching **byline** (`Last updated … by …`); also footer on component homes. Source form `<agent> on behalf of <human>` **displays** as `{human} (via {agent})` |
@@ -40,6 +40,32 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 
 **Display vs source for agent-assisted credits:** keep writing `:page-last-author: Cursor agent on behalf of Ryan Johnson` in AsciiDoc. page-context **0.6+** shows `Ryan Johnson (via Cursor)` with optional GitHub avatar.
 
+### Audience role (`page-audience`) — permissions, access, expectations
+
+Lead-table label: **Audience role** (attr remains `page-audience` for Dublin Core / compatibility). Value = the **necessary role** whose **permissions, access, and usage expectations** the page assumes. Developer ≠ User; Administrator ≠ User; GitHub Admin ≠ Member. Select the capability set — do not describe the task.
+
+| Field | Job | Shape |
+| --- | --- | --- |
+| `page-audience` → **Audience role** | Role whose **permissions / access / usage expectations** match the page | Short selectable role label |
+| `page-usage-context` | Surface / channel / when you are reading | Hub how-to vs sidebar reference vs start-here path |
+| Opening lede | Task / situation orientation | Prose — not stuffed into Audience role |
+
+**Prefer:** `Developers` · `End users` · `Administrators` · `GitHub org admins` · `GitHub members` · `Maintainers` · `New Dev-Centr members`
+
+When a product has several roles, pick the one whose access model the steps assume. Do not blur Admin and Member into “people using the product.”
+
+**Fail:** `Developers performing a specific connectome-fs task` (task padding — the role was enough; the filler is not) · “readers of this page” · stuffing the how-to *job* into Audience role · stuffing surface/channel into Audience role (`How-to on the docs hub` → Usage context)
+
+Audience role selects **which role’s permissions and expectations apply**; the lede orients **what you are doing in that role**.
+
+### Lede orientation (chrome is not enough)
+
+Humans often **skip** the Audience role / Usage context lead table. Setting `page-audience` does **not** finish orientation for the body.
+
+**Title + first paragraph must orient without the metadata table.** Echo the role in the prose when it helps (“Developers pass…”, “Administrators configure…”) *or* name the situation (“When you list files under a context bar selection…”). Pure imperative step-zero (“Pass context dimensions when listing…”) fails when the table is the only place the role appears — readers who skip chrome never adopt the permissions/expectations the page assumes.
+
+Metadata and lede are **both** required: attrs for agents / Facto chrome / skimmers who read the table; lede for everyone else. Re-run `agents/editorial/titles.md` on the opening after draft — title doctrine ≠ body doctrine.
+
 Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: https://github.com/antora-supplemental/page-context
 
 ### Lead / footer map (0.6+)
@@ -47,7 +73,7 @@ Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: ht
 | Zone | Typical fields |
 | --- | --- |
 | Byline (teaching) | Last updated {date} by {avatar}{name} |
-| Lead table | Audience, Usage context, status / level / prerequisites, …; optional **Source** row from page-edit (`View \| Edit`) |
+| Lead table | Audience role, Usage context, status / level / prerequisites, …; optional **Source** row from page-edit (`View \| Edit`) |
 | Footer | Original author, classification (doc-type, Diátaxis, keywords), dates not in byline, license / DOI / locale |
 
 ### Keyword link convention
@@ -60,7 +86,7 @@ Extension: **`@antora-supplemental/page-context`** (part of **Facto**). Repo: ht
 
 ### Component home / portal start pages
 
-**Never show** Audience or Usage context on an org Antora **component home** (ROOT start page / hub portal), even when the attrs are set for agents and HTML meta. **Author / contributor metadata must be at the end** of that document (footer aside), not in the lead.
+**Never show** Audience role or Usage context on an org Antora **component home** (ROOT start page / hub portal), even when the attrs are set for agents and HTML meta. **Author / contributor metadata must be at the end** of that document (footer aside), not in the lead.
 
 Detection (extension `0.5+`): `:page-context-surface: component-home`, or Antora `page-module=ROOT` + `page-relative-src-path=index.adoc`. Section landings (`tutorials/index.adoc`, …) keep normal lead chrome.
 
@@ -87,7 +113,7 @@ Teaching-page fallback:
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
 ****
-Audience:: {page-audience}
+Audience role:: {page-audience}
 Original author:: {page-orig-author}
 Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
@@ -105,20 +131,20 @@ Do **not** hard-code the extended catalog (keywords, DOI, license, …) into the
 
 Markdown / README (no Antora): a short lead that names **who** and **when**; credit authors in a footer line. Prefer AsciiDoc + Facto on hub docs.
 
-| Doc kind | Typical `page-audience` | Typical `page-usage-context` |
+| Doc kind | Typical `page-audience` (role / access) | Typical `page-usage-context` (surface) |
 | --- | --- | --- |
 | Component home / hub portal | Still set (agents / meta) — **do not render** | Still set — **do not render**; authors in footer |
-| Tutorial / how-to / onboarding | New member, adopter, first-time setup | Full-page guide; start-here path |
-| Explanation | Reader who wants the model / why | Hub article; may link out from README |
-| Reference | Practitioner looking up a fact | May be **sidebar**, in-app help, or deep link — say so |
-| Changelog index | Maintainers and readers tracking ships | Timeline; detail pages may inherit |
+| Tutorial / how-to / onboarding | Role whose permissions the steps need (Developer, Admin, Member, …) — not task padding | Full-page guide; start-here path; after Tutorial |
+| Explanation | Role expected to hold the model (e.g. Developers, Maintainers) | Hub article; may link out from README |
+| Reference | Practitioner role looking up a fact | May be **sidebar**, in-app help, or deep link — say so |
+| Changelog index | Maintainers (and readers tracking ships) | Timeline; detail pages may inherit |
 | Changelog detail | Same as index unless scoped narrower | Subordinate to the index |
 | Public README / profile | Forge visitor / downstream user | Repo face — not agent briefing |
 | News / blog | Channel readers (see skills) | Outward record vs inward essay |
 
-Different pages **may** target different audiences. That is expected (e.g. a dense reference meant for a docs sidebar vs an onboarding explainer). The statement must match the page you are writing — do not default every page to “new org member.”
+Different pages **may** target different audiences. That is expected (e.g. admin setup vs member usage). The role must match the **permissions and expectations** the page assumes — do not default every page to “new org member.”
 
-If you cannot name the reader **and** set `page-audience`, you are not ready to draft.
+If you cannot name the **necessary role** (permissions / access / usage expectations) **and** set `page-audience`, you are not ready to draft. If the lede still needs the lead table to make sense, you are not done drafting.
 
 ### Who “you” is
 
@@ -138,12 +164,12 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 | Published docs / blog / news | Concrete hooks, implication-dense titles when earned, casual explanation, umbrella placement for humans |
 | `AGENTS.md`, skills, changelogs | Slug history, nicknames, “do not confuse with…”, Cool-URI absorb decisions, session maps, dialectic face tables for agents |
 
-**Title doctrine ≠ body doctrine.** Fixing the H1 does not fix a briefing-memo opening. Re-run Audience / POV + `agents/editorial/titles.md` on the lede after you draft.
+**Title doctrine ≠ body doctrine.** Fixing the H1 does not fix a briefing-memo opening. Re-run Audience role / POV + `agents/editorial/titles.md` on the lede after you draft.
 
 ### Anti-patterns (fail the gate)
 
 - Omitting `page-audience` / author attrs
-- Showing Audience / Usage context chrome on a **component home** (attrs stay; chrome does not)
+- Showing Audience role / Usage context chrome on a **component home** (attrs stay; chrome does not)
 - Putting author/contributor chrome in the **lead** of a component home (footer only)
 - Hard-coding extended metadata into the body when Facto/`page-context` is available (attrs + `ifndef` fallback only for audience / authors / last updated)
 - Unwrapped hard-coded lists **and** the extension (duplicate chrome) — use `ifndef::page-context-active[]` or attrs-only
@@ -155,27 +181,33 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 - Dumping **structural chat residue** onto a public page: slug absorb notes, “internal nickname”, “do not confuse with page X”, Cool-URI / xref migration asides, “this page remains the Y face.” Those belong in `AGENTS.md` / changelog — not the reader’s opening
 - Writing the lede as **in-group poetry** (“people already chase the *thing*”) when a concrete hook exists (*URL*, *broken link*)
 - Assuming the reader already joined the org, cloned the hive, or ran `harness-setup`
-- Using a generic “developers” audience when the real context is sidebar reference, first-time setup, or changelog scanning
+- Using a generic “developers” audience when the real required role is admin, member, end user, or changelog scanner
+- Treating `page-audience` as done when the body lede never adopts that role (imperative step-zero that only works if the reader read the table)
+- Tautological Audience role filler (“…performing a specific … task”, “readers of this page”) instead of the role that carries permissions / access / expectations
+- Blurring contrastive roles (Developer vs User, Admin vs Member) into one vague audience
+- Putting surface/channel or task description in Audience role instead of Usage context / lede
 
-Motivating failure mode: architecture pages that read like an agent briefing for the commissioner instead of an onboarding guide for a naive joiner (e.g. early drafts of harness-neutral architecture).
+Motivating failure mode: architecture pages that read like an agent briefing for the commissioner instead of an onboarding guide for a naive joiner (e.g. early drafts of harness-neutral architecture). Second failure mode: how-tos with a filled Audience role row and an opening that still assumes the role (“Pass X when listing…”) because the agent treated chrome as orientation.
 
 Worked example (titles + openings + Cool URI + chat residue): docs hub `agent-rules` → `case-study-agent-voice-vs-reader-voice.adoc`.
 
 ### Pass checks (before commit — after drafting)
 
 1. Are `page-audience`, `page-orig-author`, `page-last-author` (and `page-last-edited` when known) set in the header?
-2. Is the `ifndef::page-context-active[]` fallback present (teaching: audience / authors / last updated; **component home: footer authors only, no audience lead**)?
+2. Is the `ifndef::page-context-active[]` fallback present (teaching: audience role / authors / last updated; **component home: footer authors only, no audience lead**)?
 3. Agent-assisted credits use `<agent> on behalf of <human>`?
 4. Facto / hub playbook registers `page-context` and sets `page-context-active` when using Antora?
-5. Component home: no visible Audience / Usage context; authorship at document end?
+5. Component home: no visible Audience role / Usage context; authorship at document end?
 6. Could a smart stranger who never opened this chat follow the page?
 7. Does every `$PLACEHOLDER` / jargon term get a plain gloss on first use, or a link to a prior onboarding page?
 8. Would removing chat context still leave a coherent document?
 9. Is agent-facing procedure elsewhere (skill / `AGENTS.md`), with the docs page teaching the human outcome?
 10. Does the opening hook with **their** words (URL, broken link, rename) rather than house metaphors (“chase the *thing*”)?
-11. Are slug / nickname / “do not confuse with…” / Cool-URI notes **absent** from the body (they live in `AGENTS.md` / changelog)?
-12. Does the **page slug / filename match the public H1** (unless you can name who still needs the old URL)?
-13. Did you re-check this list **after** drafting — not only before?
+11. Does paragraph one **orient without the Audience role table** (role and/or situation in the prose — not chrome-only)?
+12. Is `page-audience` the **necessary role** (permissions / access / usage expectations), not task filler? Is surface/channel in `page-usage-context`?
+13. Are slug / nickname / “do not confuse with…” / Cool-URI notes **absent** from the body (they live in `AGENTS.md` / changelog)?
+14. Does the **page slug / filename match the public H1** (unless you can name who still needs the old URL)?
+15. Did you re-check this list **after** drafting — not only before?
 
 Skills that ship visitor copy must re-check this gate: `antora-org-site`, `public-readme`, `bootstrap-org` (profile/site), `owned-changelog` (reader-facing summaries), `writing-news`, `writing-blog`.
 
