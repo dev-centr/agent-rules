@@ -22,7 +22,7 @@ endif::[]
 == 2026-09-10 — Themed SVG 0.2.2 inline style variables
 
 * Regenerated `rules-geography` and `agent-cli-auth-flow` host/adaptive SVGs with `@dev-centr/themed-svg` 0.2.2 so Mermaid inline `!important` colors become `var(--themed-svg-…)`.
-* Local `file:../themed-svg` pin + pnpm override; manifest `missingTarget` warn; fixed-SVG SHA pins refreshed to match committed originals.
+* Pins `@dev-centr/themed-svg` 0.2.2 and `@dev-centr/mermaid-svg-css-vars` 0.1.3 from the registry; manifest `missingTarget` warn; fixed-SVG SHA pins refreshed to match committed originals.
 * See xref:changelog-details/2026-09-10 - themed-svg-0.2.2-inline-vars.adoc[Detailed changelog].
 
 == 2026-09-10 — Audience role + lede orientation
