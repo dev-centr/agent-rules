@@ -79,6 +79,6 @@
   ],
   "fallback": {
     "unresolvedToken": "error",
-    "missingTarget": "error"
+    "missingTarget": "warn"
   }
 }

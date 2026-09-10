@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-10 — Themed SVG 0.2.2 inline style variables
+
+* Regenerated `rules-geography` and `agent-cli-auth-flow` host/adaptive SVGs with `@dev-centr/themed-svg` 0.2.2 so Mermaid inline `!important` colors become `var(--themed-svg-…)`.
+* Local `file:../themed-svg` pin + pnpm override; manifest `missingTarget` warn; fixed-SVG SHA pins refreshed to match committed originals.
+* See xref:changelog-details/2026-09-10 - themed-svg-0.2.2-inline-vars.adoc[Detailed changelog].
+
 == 2026-09-10 — page-context 0.6 credits + keyword links
 
 * Documented slim byline / footer map, `Name (via Agent)` display for agent-assisted credits, and keyword → `/home/keywords/{slug}/` listing convention.

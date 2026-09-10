@@ -7,11 +7,11 @@ import { basename, join, resolve } from 'node:path'
 const diagrams = [
   {
     name: 'rules-geography',
-    fixedSha256: 'c676799c5af8066c23df7a68a776d70484da7a4d17b938131d5e4eef094bc90d',
+    fixedSha256: '4280358a572ce253955bd45870cd38849945e9d50e306493faf5062b5b4db56c',
   },
   {
     name: 'agent-cli-auth-flow',
-    fixedSha256: '142f5492ca056ba52c0b5d576920068370eceb24867616025f2848550bfc3322',
+    fixedSha256: 'ba3d4937ef6e312530e520a52d0356eea789578601de3bf33ec9cdf6b77eda12',
   },
 ]
 const imageDir = resolve('docs/modules/ROOT/images')
