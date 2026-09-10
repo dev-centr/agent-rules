@@ -37,6 +37,7 @@ GitHub renders the **public org profile** from `{org}/.github` → `profile/READ
 - Export **500 PNG**, **256 PNG**, and **multi-size ICO** for each SVG revision (ImageMagick or Inkscape on maintainer machine).
 - Upload **`…-256.png`** (or dedicated avatar export) to GitHub **Settings → Organization profile → Avatar** manually — GitHub does not read it from the repo.
 - Copy canonical revision into product repos (site `public/images/`, `app/favicon.ico`) via script or explicit sync — do not fork diverging masters.
+- **Soft default (mark vs plate):** prefer a transparent **`logo-mark`** (no plate/background) for site/docs chrome and heroes; use a plate-backed / square tile for **favicon**, **org avatar**, and **profile** images. Orgs may keep a single asset if they insist — do not fight a deliberate brand choice.
 
 Org bootstrap context: skill **`bootstrap-org`** (`.github` creation, minimal profile copy). This skill is **assets + discovery + export** only.
 

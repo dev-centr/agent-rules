@@ -105,7 +105,8 @@ Wrong audience = first-person maintainer notes, “start here”, duplicating Di
 ## Site vs docs
 
 - **Site** (`{org}.github.io` or custom domain): landing, news/blog routes, partner links, CTA to docs.
-- **Docs hub**: teaching + reference; one public Antora (or peer) site per org.
+- **Docs hub**: teaching + reference; one public Antora (or peer) site per org — playbook + Pages live in **`{org}/docs`**, not nested under the marketing repo.
+- Do **not** embed the public Antora hub in `{org}.github.io` (no `docs:build` into `public/docs/`). Website **links**; docs repo **publishes**. Skill `antora-org-site` owns hub wiring, cutover order, and refresh triggers.
 - Do not stand up `{org}.github.io` if a canonical marketing host already exists.
 
 Private member docs (Access in front of static) are **not** the public hub. See Business Bootstrap org infra + general-knowledge Cloudflare Access how-to.
