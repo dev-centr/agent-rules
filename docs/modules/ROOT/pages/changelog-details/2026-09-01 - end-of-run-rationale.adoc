@@ -23,4 +23,4 @@ Contributors asked why agents commit, push, and update PRs after every chat. The
 
 * `general/end-of-run.md` — new **Why (when asked)** section: chat is not the system of record; two-machine sync; PR review; GitHub per-push audit trail.
 * Skills `push-code` and `draft-pr` — **When asked why** pointers to that section.
-* New hub page xref:../end-of-run-commit-push.adoc[End-of-run commit, push, and PR updates].
+* New hub page xref:end-of-run-commit-push.adoc[End-of-run commit, push, and PR updates].

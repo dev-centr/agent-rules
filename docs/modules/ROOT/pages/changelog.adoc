@@ -41,7 +41,7 @@ endif::[]
 
 == 2026-09-10 — page-context 0.6 credits + keyword links
 
-* Documented slim byline / footer map, `Name (via Agent)` display for agent-assisted credits, and keyword → `/home/keywords/{slug}/` listing convention.
+* Documented slim byline / footer map, `Name (via Agent)` display for agent-assisted credits, and keyword → `/home/keywords/\{slug}/` listing convention.
 * Updated `general/documentation.md`, `agents/engineering/antora.md`, `user.md`, and skill `antora-org-site`.
 * See xref:changelog-details/2026-09-10 - page-context-0.6-credits-keywords.adoc[Detailed changelog].
 
@@ -158,7 +158,7 @@ endif::[]
 
 == 2026-08-30 — Linked parent section landings (drop Overview)
 
-* Replace the Overview exception: section landings use a **linked parent** whose link text equals the H1 (`* xref:email/index.adoc[Email]` + `**` children). Do not use `.Section` + Overview; do not invent `overview.adoc`.
+* Replace the Overview exception: section landings use a **linked parent** whose link text equals the H1 (`* xref:index.adoc[Email]` + `**` children). Do not use `.Section` + Overview; do not invent `overview.adoc`.
 * Keep `index.adoc` + `urls.html_extension_style: indexify` for folder URLs; do not advertise `index.html`.
 * Detail: `general/documentation.md`. Pointers in `user.md`, `AGENTS.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
 

@@ -59,7 +59,7 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 | "publish to dub", "publish to dlang", "publish dlang"; DUB categories
 
 | `bootstrap-org`
-| Bootstrap or initialize an org or project; house `{org}/agent-rules` overlay
+| Bootstrap or initialize an org or project; house `\{org}/agent-rules` overlay
 
 | `tag-release`
 | Tag a release; ship `vX.Y.Z`; rolling GitHub `v2`/`v2.x`

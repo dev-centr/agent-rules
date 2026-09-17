@@ -1,7 +1,6 @@
 = Mixr routing and cost
 :navtitle: Mixr routing and cost
 :description: On-device Mixr router, provider suppress lists, model tiers, and cost lanes for the DevCentr harness — without Python RouteLLM glue.
-:page-layout: docs
 :page-audience: Engineers configuring harness Mixr or comparing Auto-mode economics
 :page-usage-context: Explanation on the agent-rules docs hub
 :page-orig-author: Ryan Johnson

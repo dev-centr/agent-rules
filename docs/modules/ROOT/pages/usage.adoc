@@ -27,4 +27,4 @@ endif::[]
 
 Fork the repository when you need private constants. Upstream portable improvements with pull requests to `dev-centr/agent-rules`.
 
-Satellite orgs with `{org}/agent-rules` pointer overlays: **`git pull` in the canonical clone** — no wrapper changes unless org policy differs.
+Satellite orgs with `\{org}/agent-rules` pointer overlays: **`git pull` in the canonical clone** — no wrapper changes unless org policy differs.

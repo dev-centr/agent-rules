@@ -1,7 +1,6 @@
 = Shadow workspace and LSP
 :navtitle: Shadow workspace and LSP
 :description: Harness copy-on-write speculative edits, single-process LSP multiplexing, tgc vs @nogc — lag-resistant design without Tree-sitter live DOM or duplicate extension hosts.
-:page-layout: docs
 :page-audience: Engineers designing harness speculative validation
 :page-usage-context: Explanation on the agent-rules docs hub
 :page-orig-author: Ryan Johnson

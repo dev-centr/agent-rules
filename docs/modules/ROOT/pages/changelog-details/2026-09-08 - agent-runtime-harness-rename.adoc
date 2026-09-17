@@ -18,5 +18,5 @@ It is not the runtime name.
 
 == Related
 
-* xref:../agent-harness.adoc[DevCentr agent harness]
+* xref:agent-harness.adoc[DevCentr agent harness]
 * link:https://github.com/dev-centr/harness[`dev-centr/harness`]

@@ -49,20 +49,20 @@ Team setup SOP: link:https://team.docs.devcentr.org/home/latest/how-to/org-agent
 
 This overlay pattern is **house org init** for banners this hive owns. It is not a requirement for every GitHub organization or for third-party orgs you only contribute to.
 
-**Why not inside `.github`?** Profile repos are for GitHub's org landing page, not where developers look for engineering policy. A dedicated `{org}/agent-rules` repo is discoverable; `.github` only gets a pointer.
+**Why not inside `.github`?** Profile repos are for GitHub's org landing page, not where developers look for engineering policy. A dedicated `\{org}/agent-rules` repo is discoverable; `.github` only gets a pointer.
 
-Do **not** fork, copy, or **git-submodule** this tree into the wrapper (a submodule pins a SHA and goes stale). Create **`{org}/agent-rules`** as an org-owned **pointer overlay**:
+Do **not** fork, copy, or **git-submodule** this tree into the wrapper (a submodule pins a SHA and goes stale). Create **`\{org}/agent-rules`** as an org-owned **pointer overlay**:
 
 [source,text]
 ----
-{org}/agent-rules/
+\{org}/agent-rules/
   README.md              # pointer to github.com/dev-centr/agent-rules
   AGENTS.md              # thin org overlay only
-{org}/.github/
+\{org}/.github/
   AGENT-RULES.md         # pointer to the wrapper (not a submodule here)
 ----
 
-* **Org-specific** guidance → commit in `{org}/agent-rules/AGENTS.md`
+* **Org-specific** guidance → commit in `\{org}/agent-rules/AGENTS.md`
 * **Shared** portable rules/skills → PR this repo (`dev-centr/agent-rules`); clone/fetch it as `AGENT_RULES_PATH`
 * **Dev-Centr** keeps canonical `AGENTS.md` + `agents/` here; satellite orgs only overlay what differs (`ORG`, docs host, forge quirks)
 
@@ -76,7 +76,7 @@ Satellite wrapper repos **do not vendor** shared rules. After this repo merges:
 . Re-compose always-on rules if using rules-manager
 . Run skill `harness-setup` only if harness paths changed on this machine
 
-No wrapper-repo PR is required unless `{org}/agent-rules/AGENTS.md` itself changes.
+No wrapper-repo PR is required unless `\{org}/agent-rules/AGENTS.md` itself changes.
 
 Rationale: one obvious place per org, one live canonical tree (`git pull`), no duplicate skill bodies. Skill `bootstrap-org` phase 3a.
 

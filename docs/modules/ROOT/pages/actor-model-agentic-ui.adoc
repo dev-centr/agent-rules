@@ -51,7 +51,7 @@ Serializing all of that into one scroll repeats aggregate headers and buries blo
 | `discussion`, `task`, `coordinator`, … — determines UI chrome and spawn rules
 
 | `address`
-| Disk path root for this node (`$CHAT_ROOT/nodes/{id}/`)
+| Disk path root for this node (`$CHAT_ROOT/nodes/\{id}/`)
 
 | `spawnedBy`
 | Parent node id — child always knows where it came from
@@ -147,7 +147,7 @@ Every spawn is two writes minimum (`parent meta.json`, `child meta.json` + `grap
 
 Each session has two conversational surfaces:
 
-* **Interactive thread** — whichever node the user is typing in (`nodes/{id}/chat.jsonl`)
+* **Interactive thread** — whichever node the user is typing in (`nodes/\{id}/chat.jsonl`)
 * **Orchestrator metathread** — cross-node narrative plus **line refs** into child logs
 
 Ref example (one line in `orchestrator/meta.jsonl`):
@@ -234,7 +234,7 @@ Same graph, different projections:
 
 Shared chrome across modes:
 
-* **Fork panel** — selected node; load `nodes/{id}/chat.jsonl` (full worker or discussion transcript)
+* **Fork panel** — selected node; load `nodes/\{id}/chat.jsonl` (full worker or discussion transcript)
 * **Graph strip** — spawn lineage: parent → children (compact; complements Tree mode)
 * **Coordinator / global thread** — continuous top-level discussion surface with summarization; not every subagent line
 * **Temporal layout** (below) — cross-cutting timeline widget embeddable in any primary mode; *not* a fourth competing primary mode or storage model

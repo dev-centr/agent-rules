@@ -1,7 +1,6 @@
 = DevCentr agent harness
 :navtitle: Agent harness
 :description: DevCentr's lightweight local agent runtime. Mixr routes jobs to models; harness-neutral rules, dlang-supplemental infrastructure, actor-model swarms.
-:page-layout: docs
 
 DevCentr is building a lightweight local agent harness.
 The repository, D package, and CLI intentionally use the generic name **harness**.
@@ -157,7 +156,7 @@ When `emit-spans`, the runtime attaches provenance metadata the chat renderer ca
 
 The second cross-org UX contract is **actor-model agentic UI** from HCI Nerdz — a persisted **node graph** where each node is an actor (bounded chat context with a type, disk address, spawn lineage, and mailbox summary).
 
-Linear chat drifts; agent work spawns tangents and parallel jobs. The harness records **nodes on disk** (`graph.json`, `nodes/{id}/meta.json`, `nodes/{id}/chat.jsonl`). Parent nodes record child addresses in `spawned[]`; children record `spawnedBy`. When chat drifts off-topic, spawn a child node instead of polluting the parent transcript.
+Linear chat drifts; agent work spawns tangents and parallel jobs. The harness records **nodes on disk** (`graph.json`, `nodes/\{id}/meta.json`, `nodes/\{id}/chat.jsonl`). Parent nodes record child addresses in `spawned[]`; children record `spawnedBy`. When chat drifts off-topic, spawn a child node instead of polluting the parent transcript.
 
 Desk UX: three primary projections over the same graph — **Linear** (discussion transcript), **Grid** (task tiles), **Tree** (spawn/dependency L→R) — plus **temporal scrubber** as an embeddable cross-cutting widget, not a fourth mode. Discussion and worker cadences stay separated (no worker noise in coordinator chat). Discussion nodes spawn task nodes; task tangents spawn discussion children.
 
@@ -176,7 +175,7 @@ When `graph-grid` (defaults: `ACTOR_NODE_STORE=jsonl-per-node`, `ACTOR_WAIT_GRAP
 
 * Node graph persisted under `$CHAT_ROOT/`; per-node `chat.jsonl` authoritative; orchestrator metathread with line refs
 * Model-proposed spawn on drift; `disambiguation` node when topic boundary is unclear
-* Grid shows task nodes; fork panel loads `nodes/{id}/chat.jsonl`
+* Grid shows task nodes; fork panel loads `nodes/\{id}/chat.jsonl`
 * Coordinator thread is continuous with summarization; hierarchical and global-context modes are views over the same store
 * **Git close-out** — parallel task leaves get `gitCloseout` + system addendum (`commit-only` / `coordinator-batch`) so inherited end-of-run push does not fire on every worker; coordinator pushes after the wave (see xref:end-of-run-commit-push.adoc[End-of-run commit and push])
 * Temporal layout (planned) — reusable timeline widget with global and per-node scopes
@@ -239,4 +238,4 @@ This is a **research note for maintainers**, not a clearance opinion. Dead U.S. 
 * xref:mixr-routing-and-cost.adoc[Mixr routing and cost]
 * xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]
 * link:https://github.com/dlang-supplemental[dlang-supplemental org]
-* xref:tools/agent-rules.adoc[Agent rules portal]
+* xref:home::tools/agent-rules.adoc[Agent rules portal]

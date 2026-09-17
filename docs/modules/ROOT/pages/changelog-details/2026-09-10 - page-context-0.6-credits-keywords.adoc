@@ -23,6 +23,6 @@ endif::[]
 Aligned house docs with `@antora-supplemental/page-context` **0.6**:
 
 * Teaching pages: byline `Last updated … by …`; authorship and classification in the footer.
-* Agent-assisted **source** attrs stay `{agent} on behalf of {human}`; **display** is `{human} (via {agent})`.
-* Keywords/Tags link to `{page-context-keyword-base}/{slug}/` (default `/home/keywords/{slug}/`); hubs register `@antora-supplemental/page-context/antora` for filtered article trees.
+* Agent-assisted **source** attrs stay `\{agent} on behalf of \{human}`; **display** is `\{human} (via \{agent})`.
+* Keywords/Tags link to `{page-context-keyword-base}/\{slug}/` (default `/home/keywords/\{slug}/`); hubs register `@antora-supplemental/page-context/antora` for filtered article trees.
 * page-edit **0.2** adds a lead-table Source row (`View | Edit`).
