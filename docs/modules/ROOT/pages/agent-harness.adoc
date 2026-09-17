@@ -238,4 +238,4 @@ This is a **research note for maintainers**, not a clearance opinion. Dead U.S. 
 * xref:mixr-routing-and-cost.adoc[Mixr routing and cost]
 * xref:shadow-workspace-and-lsp.adoc[Shadow workspace and LSP]
 * link:https://github.com/dlang-supplemental[dlang-supplemental org]
-* xref:home::tools/agent-rules.adoc[Agent rules portal]
+* link:https://docs.devcentr.org/home/tools/agent-rules/[Agent rules portal]

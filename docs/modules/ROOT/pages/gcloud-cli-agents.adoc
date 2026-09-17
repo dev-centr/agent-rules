@@ -28,7 +28,7 @@ Give agents a working `gcloud` without a browser login every chat — and decide
 image::agent-cli-auth-flow.svg[alt="Operator logs in once per account, machine stores gcloud credentials for each, agent uses the active account without printing secrets",width=880]
 
 Sibling:: xref:bitwarden-cli-agents.adoc[Bitwarden CLI for agentic workflows].
-OAuth / Project boundaries (Console):: xref:general-knowledge::explanation/infrastructure/google-cloud-project-mental-model.adoc[Google Cloud projects as OAuth boundaries].
+OAuth / Project boundaries (Console):: link:https://docs.devcentr.org/general-knowledge/explanation/infrastructure/google-cloud-project-mental-model/[Google Cloud projects as OAuth boundaries].
 
 == Default: individual user login (recommended for workstations)
 
@@ -136,7 +136,7 @@ WARNING: JSON keys are powerful and easy to leak. Prefer user login on personal 
 
 Connected Google Workspace toolkits (Gmail, Drive, Calendar) do **not** give agents Cloud Resource Manager, API key minting, or project undelete. A Vision/list-projects connector (if connected) may enumerate projects but still cannot replace SDK login for admin work.
 
-Composio setup:: xref:general-knowledge::how-to/composio-mcp-setup.adoc[Composio MCP Setup].
+Composio setup:: link:https://docs.devcentr.org/general-knowledge/how-to/composio-mcp-setup/[Composio MCP Setup].
 
 == Project naming (agents + humans)
 
@@ -144,7 +144,7 @@ GCP **project IDs are immutable**. Pick a beginner-friendly ID at create time (e
 
 Do not overload a GitHub repo slug (example: `ftn-app`) as the only human name for the Cloud project — it confuses “mobile client repo” with “org GCP project”. Prefer a product/org-shaped **ID** when creating; rename display name freely.
 
-Mental model:: xref:general-knowledge::explanation/infrastructure/google-cloud-project-mental-model.adoc[Google Cloud projects as OAuth boundaries].
+Mental model:: link:https://docs.devcentr.org/general-knowledge/explanation/infrastructure/google-cloud-project-mental-model/[Google Cloud projects as OAuth boundaries].
 
 == Related source (file links, not line anchors)
 
@@ -160,7 +160,7 @@ Mental model:: xref:general-knowledge::explanation/infrastructure/google-cloud-p
 | link:https://github.com/dev-centr/agent-rules/blob/main/general/bitwarden-session-persist-optional.md[`general/bitwarden-session-persist-optional.md`]
 
 | Console OAuth how-to (Client ID / consent — not gcloud)
-| xref:general-knowledge::how-to/google-cloud-oauth-for-personal-tools.adoc[Google Cloud OAuth for personal tools]
+| link:https://docs.devcentr.org/general-knowledge/how-to/google-cloud-oauth-for-personal-tools/[Google Cloud OAuth for personal tools]
 |===
 
 Prefer `blob/main/<path>` (or Antora `xref:`) over `#L…` GitHub line links — paths stay stable; line numbers do not.

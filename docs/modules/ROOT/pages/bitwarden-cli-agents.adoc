@@ -96,7 +96,7 @@ Org catalog note:: `dev-centr/agent-rules` does **not** list `bitwarden-unlock` 
 
 Pulling vault custom fields into local/hosting env (separate from session persist):
 
-* xref:general-knowledge::how-to/secrets-distribution-cli-mcp.adoc[Secrets distribution (CLI · MCP)] on General Knowledge
+* link:https://docs.devcentr.org/general-knowledge/how-to/secrets-distribution-cli-mcp/[Secrets distribution (CLI · MCP)] on General Knowledge
 
 == Safety checklist
 
