@@ -14,7 +14,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ## Node and Python tooling
 
-- Use **`pnpm`** for Node. For one-off tools: `pnpm dlx`; for project binaries: `pnpm exec`.
+- Use **`pnpm`** for Node. For one-off tools: `pnpm dlx`; for project binaries: `pnpm exec`. Global CLIs: `pnpm add -g`. Never bare `pnpm add` / `npm install` from the user profile home — detail: `general/node-cli-install.md`.
 - Use **`uv`** instead of `pip` for Python. Scripts may install `uv` if it is missing.
 
 ## Git hosting CLIs

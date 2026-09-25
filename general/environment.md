@@ -9,6 +9,7 @@ Read one of `general/windows.md`, `general/mac.md`, or `general/linux.md` after 
 
 - Prefer **one** OS-specific file (`general/windows.md`, `general/mac.md`, or `general/linux.md`) chosen by the `ENVIRONMENT` constant in your profile. Do not mix OS assumptions without reading the matching file.
 - Prefer **package-manager defaults** for the stack you use (Node, Python, and so on); the OS files spell out common choices.
+- **Node install location:** never bare `pnpm add` / `npm install` from the user home directory (creates accidental `package.json` + `node_modules`). CLIs → `pnpm add -g`; one-offs → `pnpm dlx`; project deps → install inside that project. Detail: `general/node-cli-install.md`.
 - Use **MCPs** to interact with repositories when available. If no MCP or the operation is unsupported, use **`gh`** and **`glab`** when appropriate. If those are unavailable, try to install them or tell the user.
 
 ## Local Git strategies

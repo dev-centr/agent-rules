@@ -38,7 +38,7 @@
   ```powershell
   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
   ```
-- Node: `pnpm` (create/install); `pnpm dlx` one-offs; `pnpm exec` project bins.
+- Node: `pnpm` (create/install); `pnpm dlx` one-offs; `pnpm exec` project bins. **Never** bare `pnpm add` / `npm install` from the home directory — use `pnpm add -g` for CLIs or install inside a real project. Detail: `general/node-cli-install.md`.
 - Git hosts: prefer MCP; else `gh` / `glab`.
 
 ## Repos
