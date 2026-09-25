@@ -74,3 +74,5 @@ git -C "$CODE_ROOT/github.com/dev-centr/agent-rules" worktree add \
 
 - `general/folder-schema.md` (schema)
 - Skill `hive-layout` (main clone / fork / `.clones` paths)
+- Dev-Centr docs: [Org-scoped Git worktrees](https://docs.devcentr.org/general-knowledge/how-to/org-scoped-git-worktrees.html) (today)
+- Dev-Centr docs: [Git worktrees long-range](https://docs.devcentr.org/general-knowledge/explanation/infrastructure/git-worktrees-long-range.html) (ideal)

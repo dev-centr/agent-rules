@@ -76,6 +76,9 @@ Examples:
 
 Skill **`git-worktrees`** — add, move, or migrate linked worktrees. Placement schema lives here; how-to lives in the skill.
 
+Practitioner docs (Dev-Centr general-knowledge): org-scoped how-to and long-range redesign — https://docs.devcentr.org/general-knowledge/how-to/org-scoped-git-worktrees.html and https://docs.devcentr.org/general-knowledge/explanation/infrastructure/git-worktrees-long-range.html
+
+
 ## Where
 
 - **`CODE_ROOT`** — base code directory (define per machine in `profiles/`)
