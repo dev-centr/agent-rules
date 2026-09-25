@@ -43,7 +43,38 @@ When the same remote URL appears in more than one path:
 
 **Never** treat “org root wins” as a shortcut. **Forks belong in `.forks/`** for personal and org accounts alike.
 
-Skill **`hive-layout`** — clone missing repos, audit misplaced forks, reconcile duplicates. Distinct from **`hive-watch`** (fetch/status only) and **`sync-agent-rules`** (skills/rules install).
+Skill **`hive-layout`** — clone missing repos, audit misplaced forks, reconcile duplicates. Distinct from **`hive-watch`** (fetch/status only), **`sync-agent-rules`** (skills/rules install), and **`git-worktrees`** (linked worktree paths under `.worktrees/`).
+
+## Git worktrees (linked checkouts)
+
+Parallel checkouts for agent or branch work live under the **owner**, next to that owner's repos — not at `$CODE_ROOT` root:
+
+`$CODE_ROOT/<host>/<owner>/.worktrees/<repo>-<purpose-slug>`
+
+Examples:
+
+- `$CODE_ROOT/github.com/dev-centr/.worktrees/agent-rules-docs-pass`
+- `$CODE_ROOT/github.com/dev-centr/.worktrees/hive-watch-tray-fix`
+
+### Rules
+
+1. **Linked worktrees only** — create from the main clone:
+   `git -C <main-clone> worktree add <path> [-b <branch>] <start-point>`
+2. **Never** full-clone into `.worktrees` (no `git clone` that creates a second independent `.git` there).
+3. Prefer the **hidden** directory name **`.worktrees`** (not `worktrees`).
+4. **Forbid** for new worktrees:
+   - `$CODE_ROOT/.worktrees/...`
+   - `$CODE_ROOT/worktrees/...`
+5. **Naming:** `<repo>-<purpose-slug>` — kebab-case purpose slug after the repo name.
+6. Branches often `agent/<purpose>`; **path policy is the main thing** (branch naming is secondary).
+
+| Kind | Path |
+| --- | --- |
+| Linked worktree (preferred) | `$CODE_ROOT/<host>/<owner>/.worktrees/<repo>-<purpose-slug>` |
+| Main clone (owned / fork / upstream) | unchanged — see decision order above |
+| Global hive root `.worktrees` / `worktrees` | **forbidden** for new worktrees |
+
+Skill **`git-worktrees`** — add, move, or migrate linked worktrees. Placement schema lives here; how-to lives in the skill.
 
 ## Where
 
@@ -51,6 +82,7 @@ Skill **`hive-layout`** — clone missing repos, audit misplaced forks, reconcil
 - **`<host>`** — Git host (e.g. `github.com`, `gitlab.com`)
 - **`<owner>`** — organization or user that owns the repository on the host
 - **`<repo>`** — repository name
+- **`.worktrees/<repo>-<purpose-slug>`** — linked worktrees for that owner (see Git worktrees above)
 
 ### Org membership checks
 

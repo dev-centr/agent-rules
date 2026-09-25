@@ -65,6 +65,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Skills:** canonical copies under `skills/` in this repo; install per `$HARNESS` (`SKILLS_DISCOVERY_ROOT`, `SKILLS_INSTALL`) or read on demand. Inventory in `skills/CATALOG.md`. Do **not** paste skill bodies into this always-on preamble.
 - **Sync skills/rules on drift:** skill `sync-agent-rules` — fetch/pull this repo, repair discovery installs, refresh local overlays, stamp `AGENT_RULES_SYNCED_SHA` + `AGENT_RULES_SYNCED_LABEL` (`skills-set/*`) in `$HARNESS`. Detail: `general/rules-skills-sync.md`.
 - **Hive layout:** forks (personal **and** org) → `$CODE_ROOT/<host>/<owner>/.forks/<repo>`; owned non-forks → `<owner>/<repo>`; upstream → `.clones/`. Verify `gh api … --jq .fork` before clone or dedupe. Skill `hive-layout`; detail: `general/folder-schema.md`.
+- **Git worktrees:** `$CODE_ROOT/<host>/<owner>/.worktrees/<repo>-<purpose-slug>` — linked `git worktree add` only; never full-clone into `.worktrees`; forbid `$CODE_ROOT/.worktrees` and `$CODE_ROOT/worktrees` for new ones. Skill `git-worktrees`; detail: `general/folder-schema.md`.
 - **Hive remotes:** skill `hive-watch` + tool [`dev-centr/hive-watch`](https://github.com/dev-centr/hive-watch) — scheduled fetch; agents read `machine.md` stamp + `hive-watch.status.json` instead of per-chat hive fetch. Detail: `general/hive-watch.md`.
 - **Template boundary:** read `general/harness-boundary.md` before editing forkable files; skill `harness-setup` for machine config.
 
@@ -76,6 +77,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Harness setup:** skill `harness-setup` when probing a new machine or harness.
 - **Skills/rules drift:** skill `sync-agent-rules` when catalog/discovery mismatch, behind origin, or `AGENT_RULES_SYNCED_SHA` stale.
 - **Hive layout:** skill `hive-layout` when cloning org repos, reconciling duplicate paths, or auditing fork placement.
+- **Git worktrees:** skill `git-worktrees` when creating, placing, moving, or migrating linked worktrees (`.worktrees/` path policy).
 - **Hive remotes:** skill `hive-watch` when installing or reading daily remote status (`hive-watch.status.json`, `machine.md` stamp).
 - **Release tags:** skill `tag-release` (`skills/tag-release/`) when the user asks to tag/ship a version, cut `vX.Y.Z`, or maintain rolling GitHub `v2`. `+` dual-axis labels where a peer/engine exists; GitHub moving aliases in `github.md` (the platform does not compute 2.x).
 - **Org / company / project bootstrap:** skill `bootstrap-org` (`skills/bootstrap-org/`). Name a profile in the first prompt (see `skills/bootstrap-org/profiles/catalog.sdl` or https://devcentr.org/skills/?cat=bootstrap), attach/paste an SDL `profile "…" { }` block, or let the agent infer (`new CLI` → `cli`) and poll only leftovers. House org init: `{org}/agent-rules` is a pointer overlay (no submodule of this repo). Deep email/vault/chat/infra stays in Business Bootstrap.

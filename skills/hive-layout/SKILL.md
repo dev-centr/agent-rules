@@ -18,6 +18,7 @@ Enforce `general/folder-schema.md` on `$CODE_ROOT`. **Forks live in `.forks/`** 
 | Scheduled fetch, ahead/behind stamp | `hive-watch` |
 | Skills/rules install drift | `sync-agent-rules` |
 | Bootstrap new org identity | `bootstrap-org` |
+| Linked worktree add / move / `.worktrees` placement | `git-worktrees` |
 
 ## Path rules (short)
 
@@ -28,6 +29,8 @@ Enforce `general/folder-schema.md` on `$CODE_ROOT`. **Forks live in `.forks/`** 
 | Upstream, not owned/forked | `$CODE_ROOT/<host>/.clones/<owner>/<repo>` |
 
 Verify with `gh api repos/<owner>/<repo> --jq '{fork:.fork,parent:.parent.full_name}'`.
+
+**Linked worktrees** (not full clones): `$CODE_ROOT/<host>/<owner>/.worktrees/<repo>-<purpose-slug>` — skill **`git-worktrees`**; schema in `general/folder-schema.md`.
 
 ## Clone missing repos
 
@@ -57,3 +60,4 @@ Verify with `gh api repos/<owner>/<repo> --jq '{fork:.fork,parent:.parent.full_n
 - `general/folder-schema.md`
 - `general/environment.md`
 - Skill `hive-watch`
+- Skill `git-worktrees` (org-scoped `.worktrees/` paths — not clone/fork dedupe)

@@ -73,6 +73,7 @@ Attach source notes or an export. Same end state as on-ramp A.
 - **Harness setup / harness.md** → skill `harness-setup` (`skills/harness-setup/`).
 - **Sync skills/rules on drift** → skill `sync-agent-rules` (`skills/sync-agent-rules/`).
 - **Hive remotes / daily fetch** → skill `hive-watch` (`skills/hive-watch/`); tool [`dev-centr/hive-watch`](https://github.com/dev-centr/hive-watch).
+- **Git worktrees / `.worktrees` placement** → skill `git-worktrees` (`skills/git-worktrees/`).
 - One skill per job; descriptions must trigger on the matching task.
 
 Portable skills upstream here; personal-only packs stay in your fork until PR.
