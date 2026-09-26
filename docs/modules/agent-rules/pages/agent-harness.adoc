@@ -123,7 +123,7 @@ It does not answer *which runtime executes them* on a machine that wants somethi
 
 == Relationship to T3code
 
-T3code is listed in link:https://docs.devcentr.org/tools/agent-rules/harness-neutral.html[harness-neutral architecture] as a harness enum value (`HARNESS_NAME = t3code`).
+T3code is listed in link:https://docs.devcentr.org/tools/agent-rules/harness-neutral/[harness-neutral architecture] as a harness enum value (`HARNESS_NAME = t3code`).
 
 **Division of labor:**
 
@@ -230,7 +230,7 @@ This is a **research note for maintainers**, not a clearance opinion. Dead U.S. 
 
 == Related
 
-* link:https://docs.devcentr.org/tools/agent-rules/harness-neutral.html[Harness-neutral architecture]
+* link:https://docs.devcentr.org/tools/agent-rules/harness-neutral/[Harness-neutral architecture]
 * link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`]
 * link:https://hci-nerdz.github.io/demos/grounded-tokens/[Grounded tokens demo]
 * xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]

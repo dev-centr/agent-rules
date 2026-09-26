@@ -1,6 +1,6 @@
 # Bootstrap agent skills (this repo)
 
-**One-stop for this repository.** Illustrated architecture: https://docs.devcentr.org/tools/agent-rules/harness-neutral.html
+**One-stop for this repository.** Illustrated architecture: https://docs.devcentr.org/tools/agent-rules/harness-neutral/
 
 Deep narrative (taxonomy, dual on-ramps, worked examples) may also live in general-knowledge — do not copy long bodies here:
 
@@ -40,7 +40,7 @@ Install hive-watch (dev-centr/hive-watch); run once; schedule daily fetch.
 Install agent skills under skills/<name>/ per harness.md.
 YAML description = trigger words (skill write-a-skill), not a lay blurb.
 Do not paste skill bodies into always-on rules — thin pointer only.
-Read docs.devcentr.org/tools/agent-rules/harness-neutral.html for architecture.
+Read docs.devcentr.org/tools/agent-rules/harness-neutral/ for architecture.
 ```
 
 Attach source notes or an export. Same end state as on-ramp A.

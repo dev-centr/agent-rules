@@ -137,7 +137,7 @@ AGENT_RULES_SYNCED_AT =
 
 ## Relationship to other layers
 
-See **Layer names vs harness vocabulary** in https://docs.devcentr.org/tools/agent-rules/harness-neutral.html — how `user.md`, `harness.md`, and `machine.md` map to Cursor User Rules, `CLAUDE.md`, etc.
+See **Layer names vs harness vocabulary** in https://docs.devcentr.org/tools/agent-rules/harness-neutral/ — how `user.md`, `harness.md`, and `machine.md` map to Cursor User Rules, `CLAUDE.md`, etc.
 
 | File | Role |
 | --- | --- |

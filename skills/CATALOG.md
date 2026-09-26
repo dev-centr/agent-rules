@@ -9,7 +9,7 @@ Living inventory for team skills in **`dev-centr/agent-rules/skills/`**. Persona
 | `$AGENT_RULES_PATH/skills/<name>/` | Canonical (this repo) |
 | `$SKILLS_DISCOVERY_ROOT/<name>/` | Harness discovery when installed (from `$CODE_ROOT/harness.md`) |
 
-Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.org/tools/agent-rules/harness-neutral.html
+Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.org/tools/agent-rules/harness-neutral/
 
 ## Rules
 
@@ -38,7 +38,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x` | active | `github.md` + `registries.md` siblings |
 | `write-a-skill` | author/edit agent skill, `SKILL.md`, skill frontmatter, YAML `description`; trigger words | active | Harness-neutral authoring; layout may use harness-specific scaffolds |
 | `ship-app` | scaffolding/shipping GUI, CLI, TUI, library, game, service | active | Software Product Essentials |
-| `antora-org-site` | Antora site, docs site, docs hub, antora theme, playbook, antora-playbook, GitHub Pages for docs; Valentus; Facto; antora-facto; compose pack; Kroki; Mermaid | active | Valentus lean; Facto compose pack — confirm |
+| `antora-org-site` | Antora site, docs site, docs hub, antora theme, playbook, antora-playbook, GitHub Pages for docs; Valentus; facto-stack; Facto; antora-facto; compose pack; Kroki; Mermaid | active | Valentus lean; facto-stack compose pack — confirm |
 | `update-consumers` | update consumers, bump dependents, recursive fan-out, consumers of consumers, discover dependents after ship, specialization scan | active | Generic BFS; loads `update-consumers.when` specializations |
 | `antora-extension-consumers` | Antora extension consumers, antora-supplemental topics, `topic:antora-search-chat`, SemVer git pins, uses-* rename | active | specializes: update-consumers; topic = repo name |
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |

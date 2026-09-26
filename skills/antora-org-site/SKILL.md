@@ -4,7 +4,7 @@ description: >-
   Use when creating, wiring, or publishing an Antora site, docs site, or
   docs hub; antora theme; antora-playbook.yml; playbook; GitHub Pages for
   docs; one Antora site per org; Lunr; antora-search-chat; docs.devcentr.org;
-  Valentus; Valentus theme; Facto; antora-facto; compose pack; KaTeX;
+  Valentus; Valentus theme; facto-stack; Facto; antora-facto; compose pack; KaTeX;
   stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML;
   docs audience; visitor POV; naive reader docs; antora-extension-consumers.
 ---
@@ -48,7 +48,7 @@ Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 
 **Suggest** Valentus (`antora-supplemental/valentus-theme`) as the house **theme**. **Ask before applying it.** Keep an existing theme unless they confirm a switch. After they choose Valentus, customize colors/logo from org brand assets — do not re-poll the UI on every later pass.
 
-**Valentus stays lean.** Do not fold Lunr, STEM/math, Kroki, or page-context into Valentus core / default `v2`. For the usual stack, use the **Facto** compose pack (`antora-supplemental/antora-facto`) — Valentus + Lunr + math + Kroki (Mermaid + PlantUML → SVG) + **page-context** — like a VS Code extension pack. Org notes: `agents/engineering/antora.md`.
+**Valentus stays lean.** Do not fold Lunr, STEM/math, Kroki, or page-context into Valentus core / default `v2`. For the usual stack, use the **facto-stack** compose pack (`antora-supplemental/facto-stack`) — Valentus + Lunr + math + Kroki (Mermaid + PlantUML → SVG) + **page-context** — like a VS Code extension pack. Org notes: `agents/engineering/antora.md`.
 
 ## AsciiDoc figures
 

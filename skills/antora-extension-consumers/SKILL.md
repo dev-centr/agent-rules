@@ -17,7 +17,7 @@ update-consumers:
     - nav-typology
     - nav-typology-diataxis
     - build-stack
-    - antora-facto
+    - facto-stack
     - antora-dark-mode
     - antora-ai-help-extension
     - antora-unversioned-component-urls

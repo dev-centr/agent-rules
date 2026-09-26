@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-09-25
+:page-last-edited: 2026-09-26
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -18,6 +18,10 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-09-26 - Retarget facto-stack references
+
+* Retargeted org notes, skills, and compose-pack cites from `antora-supplemental/antora-facto` to `antora-supplemental/facto-stack` (matches hub publishing docs).
 
 == 2026-09-25 - Fold into Tools forest
 
@@ -387,7 +391,7 @@ Observed transitions in forkable + machine-local names:
 
 == 2026-08-25 — Facto compose pack + Internet Architecture nesting
 
-* Valentus stays lean; **Facto** (`antora-supplemental/antora-facto`) is the named compose pack for Lunr/math/Kroki.
+* Valentus stays lean; **facto-stack** (`antora-supplemental/facto-stack`) is the named compose pack for Lunr/math/Kroki.
 * Org engineering notes + `antora-org-site` skill/CATALOG updated; Internet Reliability nesting vs HCI Labels versus wires documented.
 * Broadened `antora-org-site` skill `description` / CATALOG triggers (`docs site`, `antora theme`, `playbook`, `compose pack`, Mermaid/PlantUML) so Facto is discoverable without naming it.
 * See xref:changelog-details/2026-08-25 - facto-compose-pack.adoc[Detailed changelog].
