@@ -92,6 +92,23 @@ If an existing SVG already has the required variables and only needs runtime DOM
 
 Use `@dev-centr/themed-svg` (https://github.com/dev-centr/themed-svg) for versioned manifests, structural bindings, palette injection, diagnostics, serialization, and the sanitized browser runtime. Generator-specific packages such as `@dev-centr/mermaid-svg-css-vars` are consumers/adapters; they do not define the cross-generator contract.
 
+
+## Borrow from light (stable light islands)
+
+Dark-mode presets may **borrow** selected light-mode colors when a region must stay light inside a dark page (callout cards, stamps, screenshots of light UI).
+
+Authoring (Themed SVG `theme.json`):
+
+1. Set the dark preset value to the **same concrete color** as light for that token (schema-valid; adapters keep working).
+2. Optionally list those token ids in `borrowFromLight` (authoring hint). Component `diagrams:generate` strips this key before calling `@dev-centr/themed-svg`.
+
+Parent -> child dependency:
+
+- If a **surface / canvas** token borrows light (does not change between themes), any **text (and nested content) inside that region** should also borrow light — do not force dark-mode text recoloring inside a light-stable island.
+- Prefer region tokens such as `color.surface.note` + `color.text.on-note` so global `color.text.primary` can still adapt for dark canvas areas.
+
+Verification must **not** WARN when dark intentionally borrows light for a stable island and its text. It **must** WARN when a surface/canvas **did** change (e.g. dark background) but text still borrows light-mode ink (dark-on-dark).
+
 ## Verification
 
 Before calling the diagram done:

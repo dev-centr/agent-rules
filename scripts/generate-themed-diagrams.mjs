@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { basename, join, resolve } from 'node:path'
-import { findDarkModeTextGaps } from './themed-svg-dark-text-check.mjs'
+import { findDarkModeTextGaps, manifestForTransformer } from './themed-svg-dark-text-check.mjs'
 
 const diagrams = [
   {
@@ -24,9 +24,9 @@ const tools = {
 }
 const temporary = mkdtempSync(join(tmpdir(), 'agent-rules-diagrams-'))
 
-function warnDarkModeText(path, namespaceHint) {
+function warnDarkModeText(path, namespaceHint, manifest) {
   const svg = readFileSync(path, 'utf8')
-  const gaps = findDarkModeTextGaps(svg, { fileLabel: basename(path), namespaceHint })
+  const gaps = findDarkModeTextGaps(svg, { fileLabel: basename(path), namespaceHint, manifest })
   for (const gap of gaps) {
     console.warn(`WARN themed-svg dark-mode text: ${gap}`)
   }
@@ -99,16 +99,19 @@ try {
     const adaptive = join(imageDir, `${name}.svg`)
     const host = join(imageDir, `${name}.host.svg`)
     const fixed = join(imageDir, `${name}.fixed.svg`)
-    const manifest = JSON.parse(readFileSync(join(imageDir, `${name}.theme.json`), 'utf8'))
-
     const actualFixedSha256 = createHash('sha256').update(readFileSync(fixed)).digest('hex')
     if (actualFixedSha256 !== fixedSha256) {
       throw new Error(`${basename(fixed)} no longer matches the preserved original`)
     }
 
+    const manifestPath = join(imageDir, `${name}.theme.json`)
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
+    const strippedManifestPath = join(temporary, `${name}.theme.stripped.json`)
+    writeFileSync(strippedManifestPath, JSON.stringify(manifestForTransformer(manifest), null, 2) + '\n')
+
     execFileSync(process.execPath, [
       tools.adapter,
-      '--manifest', join(imageDir, `${name}.theme.json`),
+      '--manifest', strippedManifestPath,
       '--dual-output',
       ...(check ? ['--check'] : []),
       raw,
@@ -118,7 +121,7 @@ try {
 
     assertSafeSvg(adaptive, 'standalone-adaptive')
     assertSafeSvg(host, 'host')
-    darkModeWarnCount += warnDarkModeText(adaptive, manifest.namespace)
+    darkModeWarnCount += warnDarkModeText(adaptive, manifest.namespace, manifest)
   }
 } finally {
   rmSync(temporary, { recursive: true, force: true })

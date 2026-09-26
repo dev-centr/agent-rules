@@ -40,6 +40,13 @@ Added stylesheet (and root `svg` presentation `color`) bindings for the real Mer
 
 when an adaptive SVG still has hardcoded root fill / label color under a dark media preset. The docs hub Antora extension `lib/verify-themed-svg-dark-mode.js` applies the same check across content images at `contentClassified`.
 
+
+== Borrow from light (WARN policy)
+
+Authors may keep dark-preset token values identical to light for intentional light islands, and may list ids in `borrowFromLight` (stripped before the Themed SVG transformer).
+
+The dark-text checker treats equal light/dark values (and `borrowFromLight`) as borrowed. Parent→child: a borrowed surface/canvas expects nested text tokens (`color.text.on-*`) to borrow too; a **changed** darker surface/canvas with text that still borrows light WARNs (dark-on-dark). Light-stable figures (canvas + `color.text.primary` both borrowed) do not WARN about Mermaid's hardcoded root fill.
+
 ifndef::page-context-active[]
 [.page-context.page-context-footer]
 ****

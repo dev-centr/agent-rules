@@ -23,7 +23,7 @@ endif::[]
 
 * Fixed the **What persists** AsciiDoc table on the Bitwarden CLI agents page (header was outside `|===`).
 * Bound Mermaid text colors (`#my-svg` fill, `.label` / cluster-label color) to `color.text.primary` for `agent-cli-auth-flow` (Bitwarden + gcloud pages) and `rules-geography`; regenerated adaptive/host SVGs.
-* `diagrams:generate` / `diagrams:check` now WARN when adaptive Themed SVGs keep hardcoded dark text (`scripts/themed-svg-dark-text-check.mjs`).
+* `diagrams:generate` / `diagrams:check` now WARN when adaptive Themed SVGs keep hardcoded dark text (`scripts/themed-svg-dark-text-check.mjs`; borrow-from-light / parent->child policy avoids false alarms on stable light islands).
 * See xref:changelog-details/2026-09-25 - bitwarden-cli-table-dark-diagram-text.adoc[Detailed changelog].
 
 
