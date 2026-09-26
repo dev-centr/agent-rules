@@ -21,7 +21,9 @@ endif::[]
 
 == 2026-09-25 - Fold into Tools forest
 
-include::changelog-details/2026-09-25 - fold-into-tools-forest.adoc[]
+* Antora component renamed from standalone `agent-rules` to `tools` module `agent-rules` (same pattern as Rules Manager, Switchyard, Ibex).
+* Docs URLs move to `/tools/agent-rules/`; hub drops `agent-rules` from the site-nav-tree forest allowlist.
+* See xref:changelog-details/2026-09-25 - fold-into-tools-forest.adoc[Detailed changelog].
 
 == 2026-09-25 - Agent CLI diagrams dark text + Bitwarden table
 

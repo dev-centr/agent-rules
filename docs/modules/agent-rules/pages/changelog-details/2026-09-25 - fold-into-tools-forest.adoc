@@ -1,4 +1,10 @@
 = Fold Agent Rules into the Tools forest
+:description: Agent Rules publishes as tools:agent-rules; docs URLs move under /tools/agent-rules/.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for Tools forest fold
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-25
 
 * Antora component renamed from standalone `agent-rules` to `tools` module `agent-rules` (same pattern as Rules Manager, Switchyard, Ibex).
 * Docs URLs move from `/agent-rules/` to `/tools/agent-rules/`. Hub playbooks drop `agent-rules` from the site-nav-tree forest allowlist; Tools remains the forest root.
