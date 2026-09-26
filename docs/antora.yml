@@ -1,6 +1,5 @@
-name: agent-rules
-title: Agent Rules
-version: master
-start_page: ROOT:index.adoc
+name: tools
+title: Tools
+version: ~
 nav:
-  - modules/ROOT/nav.adoc
+- modules/agent-rules/nav.adoc

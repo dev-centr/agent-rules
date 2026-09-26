@@ -9,7 +9,7 @@ Living inventory for team skills in **`dev-centr/agent-rules/skills/`**. Persona
 | `$AGENT_RULES_PATH/skills/<name>/` | Canonical (this repo) |
 | `$SKILLS_DISCOVERY_ROOT/<name>/` | Harness discovery when installed (from `$CODE_ROOT/harness.md`) |
 
-Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.org/agent-rules/harness-neutral.html
+Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.org/tools/agent-rules/harness-neutral.html
 
 ## Rules
 

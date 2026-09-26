@@ -1,0 +1,5 @@
+= Fold Agent Rules into the Tools forest
+
+* Antora component renamed from standalone `agent-rules` to `tools` module `agent-rules` (same pattern as Rules Manager, Switchyard, Ibex).
+* Docs URLs move from `/agent-rules/` to `/tools/agent-rules/`. Hub playbooks drop `agent-rules` from the site-nav-tree forest allowlist; Tools remains the forest root.
+* Nav start label is **Agent Rules** (was Overview) so the Tools sidebar names the product.

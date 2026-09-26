@@ -1,4 +1,4 @@
-﻿# Optional: Bitwarden CLI session persistence
+# Optional: Bitwarden CLI session persistence
 
 <!---
 OPTIONAL WORKSTATION PATTERN — not default. Enable only on machines where the
@@ -61,9 +61,9 @@ Add an always-on IDE overlay (example: `bitwarden-unlock.mdc`) and a `$MACHINE` 
 
 Antora how-to (figures, nav, cross-links):
 
-* https://docs.devcentr.org/agent-rules/bitwarden-cli-agents.html (source: `docs/modules/ROOT/pages/bitwarden-cli-agents.adoc`)
+* https://docs.devcentr.org/tools/agent-rules/bitwarden-cli-agents.html (source: `docs/modules/agent-rules/pages/bitwarden-cli-agents.adoc`)
 
-Sibling for Google Cloud SDK: `docs/modules/ROOT/pages/gcloud-cli-agents.adoc`.
+Sibling for Google Cloud SDK: `docs/modules/agent-rules/pages/gcloud-cli-agents.adoc`.
 
 ## Reference implementation
 

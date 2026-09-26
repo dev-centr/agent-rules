@@ -19,6 +19,10 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-09-25 - Fold into Tools forest
+
+include::changelog-details/2026-09-25 - fold-into-tools-forest.adoc[]
+
 == 2026-09-25 - Agent CLI diagrams dark text + Bitwarden table
 
 * Fixed the **What persists** AsciiDoc table on the Bitwarden CLI agents page (header was outside `|===`).

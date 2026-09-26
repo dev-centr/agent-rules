@@ -86,7 +86,7 @@ GIT_CLOSEOUT = coordinator-batch | per-node | off
 
 # Optional — gcloud for agents (user login persists in Cloud SDK config; SA only for headless)
 # GCLOUD_AGENT_ENTRY = ensure_gcloud_auth.ps1
-# See docs/modules/ROOT/pages/gcloud-cli-agents.adoc
+# See docs/modules/agent-rules/pages/gcloud-cli-agents.adoc
 ```
 
 ## Example: Cursor on Windows
@@ -137,7 +137,7 @@ AGENT_RULES_SYNCED_AT =
 
 ## Relationship to other layers
 
-See **Layer names vs harness vocabulary** in https://docs.devcentr.org/agent-rules/harness-neutral.html — how `user.md`, `harness.md`, and `machine.md` map to Cursor User Rules, `CLAUDE.md`, etc.
+See **Layer names vs harness vocabulary** in https://docs.devcentr.org/tools/agent-rules/harness-neutral.html — how `user.md`, `harness.md`, and `machine.md` map to Cursor User Rules, `CLAUDE.md`, etc.
 
 | File | Role |
 | --- | --- |

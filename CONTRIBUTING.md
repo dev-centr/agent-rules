@@ -10,7 +10,7 @@ Open pull requests against **this** repository ([`dev-centr/agent-rules`](https:
 
 ## Harness-neutral policy
 
-Do **not** embed harness names, discovery paths, or machine paths in forkable templates. Use placeholders and `$HARNESS` variables. See `general/harness-boundary.md` and https://docs.devcentr.org/agent-rules/harness-neutral.html.
+Do **not** embed harness names, discovery paths, or machine paths in forkable templates. Use placeholders and `$HARNESS` variables. See `general/harness-boundary.md` and https://docs.devcentr.org/tools/agent-rules/harness-neutral.html.
 
 ## Profiles
 

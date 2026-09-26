@@ -26,7 +26,7 @@ Harness UIs say *rules*; our filenames say *layer*. Teaching translation (full t
 
 **`user.md` is not "about the human"** — it is user-*layer* policy. **Payload** (`user.md`) vs **injection** (`harness.md` → `ALWAYS_ON_RULES`) stay separate.
 
-Core files stay **`.md`** for harness-neutral paste; **`.mdc`** (YAML frontmatter) is Cursor adapter format only — see `.cursor/rules/` and https://docs.devcentr.org/agent-rules/harness-neutral.html
+Core files stay **`.md`** for harness-neutral paste; **`.mdc`** (YAML frontmatter) is Cursor adapter format only — see `.cursor/rules/` and https://docs.devcentr.org/tools/agent-rules/harness-neutral.html
 
 ## First read on session start
 
@@ -50,7 +50,7 @@ When `$CODE_ROOT` is known, read in parallel:
 | `IDE_PROJECT_RULES` | In-repo IDE rule format (`.mdc`, etc.) |
 | `MCP_CONTEXT7` | Whether Context7 MCP is available on this machine |
 | `TOKEN_PROVENANCE` | Inline heuristic vs grounded token marks — `emit-spans`, `consume-spans`, or `off` (see https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html) |
-| `ACTOR_AGENTIC_UI` | Node graph UI — `graph-grid`, `serialized`, or `off` (see https://docs.devcentr.org/agent-rules/actor-model-agentic-ui.html) |
+| `ACTOR_AGENTIC_UI` | Node graph UI — `graph-grid`, `serialized`, or `off` (see https://docs.devcentr.org/tools/agent-rules/actor-model-agentic-ui.html) |
 | `ACTOR_GRAPH_EPOCHS` | Immutable grid epochs when coherence breaks — `on` or `off` |
 | `ACTOR_WAIT_GRAPH` | Dependency gating between node mailboxes — default **`warn`**; `enforce` for irreversible gates |
 | `ACTOR_NODE_STORE` | Per-node disk layout — `jsonl-per-node` or `off` |

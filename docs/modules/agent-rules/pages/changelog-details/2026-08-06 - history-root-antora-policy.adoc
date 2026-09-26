@@ -5,7 +5,7 @@ Reachable git root on this remote (`cd9463d`).
 == Tree at root (observed)
 
 * Present: `RULES.md`, `MAIN.md`, `README.md`, `MEMORIES.example.md`, `general/` (≈11 files), profiles templates.
-* Absent: `skills/`, Antora `docs/modules/ROOT/pages/*`, `AGENTS.md`, `HARNESS*`, `user.md` / `machine.md`.
+* Absent: `skills/`, Antora `docs/modules/agent-rules/pages/*`, `AGENTS.md`, `HARNESS*`, `user.md` / `machine.md`.
 
 == `RULES.md` shape (observed)
 

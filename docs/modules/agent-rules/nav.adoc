@@ -1,4 +1,4 @@
-* xref:index.adoc[Overview]
+* xref:index.adoc[Agent Rules]
 * xref:editorial-titles.adoc[Editorial titles]
 * xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice]
 * xref:harness-neutral.adoc[Harness-neutral architecture]

@@ -8,9 +8,9 @@
   <h1>Agent Rules</h1>
   <p>Forkable, harness-neutral agent rules — <code>user.md</code>, <code>harness.md</code>, <code>machine.md</code> layers; 1-step assembly for local AI coding assistants.</p>
   <p>
-    <a href="https://docs.devcentr.org/agent-rules/"><strong>Explore the docs »</strong></a>
+    <a href="https://docs.devcentr.org/tools/agent-rules/"><strong>Explore the docs »</strong></a>
     <br /><br />
-    <a href="https://docs.devcentr.org/agent-rules/harness-neutral.html"><strong>Harness-neutral architecture »</strong></a>
+    <a href="https://docs.devcentr.org/tools/agent-rules/harness-neutral.html"><strong>Harness-neutral architecture »</strong></a>
     <br /><br />
     <a href="https://github.com/dev-centr/agent-rules/issues">Report Bug</a>
     &middot;
@@ -38,7 +38,7 @@
 
 ## Layer names vs harness vocabulary
 
-Our files name **layers**; harness products say **rules** a lot. Full table: https://docs.devcentr.org/agent-rules/harness-neutral.html#layer-names-vs-harness-vocabulary
+Our files name **layers**; harness products say **rules** a lot. Full table: https://docs.devcentr.org/tools/agent-rules/harness-neutral.html#layer-names-vs-harness-vocabulary
 
 | Our layer | File | Typical harness equivalent |
 |-----------|------|----------------------------|
@@ -58,13 +58,13 @@ Canonical **forkable agent rules** and **profiles** for coding assistants under 
 
 **Org wrapper (house init):** each org this hive owns gets `{org}/agent-rules` with a pointer README and a thin org `AGENTS.md` — **no git submodule** (a SHA pin goes stale). Not a requirement for every GitHub org. `{org}/.github/AGENT-RULES.md` points at the wrapper. Shared rules stay in this repo; clone/fetch it. Script: `scripts/setup-org-agent-rules-wrapper.ps1`. Fork only when you need a *diverging* private tree.
 
-Docs: https://docs.devcentr.org/agent-rules/ — start with **[Harness-neutral architecture](https://docs.devcentr.org/agent-rules/harness-neutral.html)** (illustrated guide).
+Docs: https://docs.devcentr.org/tools/agent-rules/ — start with **[Harness-neutral architecture](https://docs.devcentr.org/tools/agent-rules/harness-neutral.html)** (illustrated guide).
 
 **Dev-Centr product behavior** (when the app acts on behalf of the user) does **not** live here. It belongs in [dev-centr/devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules).
 
 ### Architecture
 
-**Layered geography** (not personal-fork HEAD parity with the template): live team clone `$AGENT_RULES_PATH` holds skills + shared portable/org policy; an optional personal fork holds **deltas** only (`profiles/`, personal tweaks, personal-only skills); machine files stay at `$CODE_ROOT`. Illustrated map: **[Harness-neutral architecture](https://docs.devcentr.org/agent-rules/harness-neutral.html)** (`rules-geography.svg`).
+**Layered geography** (not personal-fork HEAD parity with the template): live team clone `$AGENT_RULES_PATH` holds skills + shared portable/org policy; an optional personal fork holds **deltas** only (`profiles/`, personal tweaks, personal-only skills); machine files stay at `$CODE_ROOT`. Illustrated map: **[Harness-neutral architecture](https://docs.devcentr.org/tools/agent-rules/harness-neutral.html)** (`rules-geography.svg`).
 
 - **agent-rules** (this repository): portable rules (`user.md`, `general/`, `profiles/`) **and** org layer (`AGENTS.md`, `agents/`, org `skills/`). Satellite orgs clone/fetch `dev-centr/agent-rules` as `AGENT_RULES_PATH` — wrapper repos hold only org overlay text.
 - **Personal overlay:** do not chase rebase parity with this repo’s `main`; pull **this** tree for skills/shared policy.
@@ -117,7 +117,7 @@ The agent will automatically pull:
 5. (when docs) `general/documentation.md`
 6. Heavy playbooks: agent skills — see `skills/CATALOG.md`
 
-**Illustrated guide:** https://docs.devcentr.org/agent-rules/harness-neutral.html
+**Illustrated guide:** https://docs.devcentr.org/tools/agent-rules/harness-neutral.html
 
 For **Dev-Centr automation** acting on behalf of the user, load [devcentr-agent-rules](https://github.com/dev-centr/devcentr-agent-rules), not this repository.
 
@@ -142,7 +142,7 @@ Optional, on-demand curricula live under `skills/` and are **not** part of `user
 
 - Shop file: [`skills/BOOTSTRAP.md`](./skills/BOOTSTRAP.md)
 - Harness setup: skill `harness-setup`
-- Hub docs: https://docs.devcentr.org/agent-rules/harness-neutral.html
+- Hub docs: https://docs.devcentr.org/tools/agent-rules/harness-neutral.html
 - Authoring skills: `write-a-skill` — YAML `description` is trigger words, not a lay blurb
 - Release tags: skill `tag-release`
 
@@ -152,8 +152,8 @@ Optional, on-demand curricula live under `skills/` and are **not** part of `user
 
 Functional history (including the `RULES.md` → `user.md` / `MEMORIES` → `machine.md` / harness layer rename) lives in the Antora docs:
 
-- Hub: https://docs.devcentr.org/agent-rules/changelog.html
-- Source: [`docs/modules/ROOT/pages/changelog.adoc`](docs/modules/ROOT/pages/changelog.adoc)
+- Hub: https://docs.devcentr.org/tools/agent-rules/changelog.html
+- Source: [`docs/modules/agent-rules/pages/changelog.adoc`](docs/modules/agent-rules/pages/changelog.adoc)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
