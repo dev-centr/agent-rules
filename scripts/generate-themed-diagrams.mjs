@@ -3,15 +3,16 @@ import { createHash } from 'node:crypto'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { basename, join, resolve } from 'node:path'
+import { findDarkModeTextGaps } from './themed-svg-dark-text-check.mjs'
 
 const diagrams = [
   {
     name: 'rules-geography',
-    fixedSha256: '4280358a572ce253955bd45870cd38849945e9d50e306493faf5062b5b4db56c',
+    fixedSha256: 'c676799c5af8066c23df7a68a776d70484da7a4d17b938131d5e4eef094bc90d',
   },
   {
     name: 'agent-cli-auth-flow',
-    fixedSha256: 'ba3d4937ef6e312530e520a52d0356eea789578601de3bf33ec9cdf6b77eda12',
+    fixedSha256: '142f5492ca056ba52c0b5d576920068370eceb24867616025f2848550bfc3322',
   },
 ]
 const imageDir = resolve('docs/modules/ROOT/images')
@@ -22,6 +23,15 @@ const tools = {
   adapter: resolve('node_modules/@dev-centr/mermaid-svg-css-vars/bin/mermaid-svg-css-vars.js'),
 }
 const temporary = mkdtempSync(join(tmpdir(), 'agent-rules-diagrams-'))
+
+function warnDarkModeText(path, namespaceHint) {
+  const svg = readFileSync(path, 'utf8')
+  const gaps = findDarkModeTextGaps(svg, { fileLabel: basename(path), namespaceHint })
+  for (const gap of gaps) {
+    console.warn(`WARN themed-svg dark-mode text: ${gap}`)
+  }
+  return gaps.length
+}
 
 function assertSafeSvg(path, expectedMode) {
   const svg = readFileSync(path, 'utf8')
@@ -63,6 +73,8 @@ function normalizeAccessibility(path) {
   writeFileSync(path, svg, 'utf8')
 }
 
+let darkModeWarnCount = 0
+
 try {
   const mermaidConfig = JSON.parse(readFileSync(config, 'utf8'))
   if (mermaidConfig.flowchart?.htmlLabels !== false) {
@@ -87,6 +99,7 @@ try {
     const adaptive = join(imageDir, `${name}.svg`)
     const host = join(imageDir, `${name}.host.svg`)
     const fixed = join(imageDir, `${name}.fixed.svg`)
+    const manifest = JSON.parse(readFileSync(join(imageDir, `${name}.theme.json`), 'utf8'))
 
     const actualFixedSha256 = createHash('sha256').update(readFileSync(fixed)).digest('hex')
     if (actualFixedSha256 !== fixedSha256) {
@@ -105,7 +118,12 @@ try {
 
     assertSafeSvg(adaptive, 'standalone-adaptive')
     assertSafeSvg(host, 'host')
+    darkModeWarnCount += warnDarkModeText(adaptive, manifest.namespace)
   }
 } finally {
   rmSync(temporary, { recursive: true, force: true })
+}
+
+if (darkModeWarnCount > 0) {
+  console.warn(`WARN themed-svg dark-mode text: ${darkModeWarnCount} issue(s) across diagrams (bind #my-svg fill / .label color to color.text.primary)`)
 }

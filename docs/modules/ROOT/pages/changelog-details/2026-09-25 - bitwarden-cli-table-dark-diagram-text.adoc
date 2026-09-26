@@ -1,0 +1,50 @@
+= Agent CLI dark diagram text and Bitwarden table
+:description: Fixed What persists table markup; themed Mermaid text for agent-cli-auth-flow and rules-geography; generate-time dark-text WARN.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for agent CLI how-tos and rules geography diagrams
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-09-25
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+endif::[]
+
+== What persists table (Bitwarden CLI)
+
+The AsciiDoc table under **What persists** put the header row *before* `|===` (Markdown-style), so Asciidoctor treated later cells as a broken single-column table on the docs hub.
+
+Moved the header inside the table block and set `[cols="1,2"]`.
+
+== Dark-mode text on agent CLI + rules geography diagrams
+
+`agent-cli-auth-flow.svg` is shared by xref:bitwarden-cli-agents.adoc[Bitwarden CLI (agents)] and xref:gcloud-cli-agents.adoc[gcloud CLI (agents)]. `rules-geography.svg` had the same Mermaid text inheritance bug.
+
+Surfaces and borders already followed `color.*` tokens, but Mermaid still emitted hardcoded dark text:
+
+* `#my-svg { fill: #0f172a }` (inherited by `<text>`)
+* `#my-svg .label` / `.label text` `color: #0f172a`
+
+Prior manifest bindings targeted `fill` on selectors that only declare `color`, so those rewrites never applied.
+
+Added stylesheet (and root `svg` presentation `color`) bindings for the real Mermaid properties on both manifests; regenerated adaptive/host SVGs with `@dev-centr/themed-svg` 0.2.2 + `@dev-centr/mermaid-svg-css-vars` 0.1.3. Refreshed `fixedSha256` pins to match committed `.fixed.svg` bytes.
+
+== Generate-time WARN
+
+`scripts/themed-svg-dark-text-check.mjs` (called from `scripts/generate-themed-diagrams.mjs`) prints:
+
+`WARN themed-svg dark-mode text: <file>: root #my-svg fill is a hardcoded color ...`
+
+when an adaptive SVG still has hardcoded root fill / label color under a dark media preset. The docs hub Antora extension `lib/verify-themed-svg-dark-mode.js` applies the same check across content images at `contentClassified`.
+
+ifndef::page-context-active[]
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]

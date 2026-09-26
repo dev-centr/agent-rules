@@ -8,16 +8,46 @@
     "generator": "mermaid"
   },
   "tokens": [
-    { "id": "color.canvas", "description": "Diagram canvas" },
-    { "id": "color.surface.primary", "description": "Neutral panel surface" },
-    { "id": "color.surface.shared", "description": "Canonical shared-reference surface" },
-    { "id": "color.surface.personal", "description": "Personal-overlay surface" },
-    { "id": "color.surface.machine", "description": "Machine-local surface" },
-    { "id": "color.surface.warning", "description": "Anti-pattern surface" },
-    { "id": "color.text.primary", "description": "Primary text" },
-    { "id": "color.border.primary", "description": "Panel borders" },
-    { "id": "color.edge", "description": "Relationship edges" },
-    { "id": "color.edge.label", "description": "Relationship labels" }
+    {
+      "id": "color.canvas",
+      "description": "Diagram canvas"
+    },
+    {
+      "id": "color.surface.primary",
+      "description": "Neutral panel surface"
+    },
+    {
+      "id": "color.surface.shared",
+      "description": "Canonical shared-reference surface"
+    },
+    {
+      "id": "color.surface.personal",
+      "description": "Personal-overlay surface"
+    },
+    {
+      "id": "color.surface.machine",
+      "description": "Machine-local surface"
+    },
+    {
+      "id": "color.surface.warning",
+      "description": "Anti-pattern surface"
+    },
+    {
+      "id": "color.text.primary",
+      "description": "Primary text"
+    },
+    {
+      "id": "color.border.primary",
+      "description": "Panel borders"
+    },
+    {
+      "id": "color.edge",
+      "description": "Relationship edges"
+    },
+    {
+      "id": "color.edge.label",
+      "description": "Relationship labels"
+    }
   ],
   "defaultPreset": "light",
   "presets": {
@@ -47,35 +77,198 @@
     }
   },
   "bindings": [
-    { "kind": "presentation", "selector": "svg", "attribute": "color", "token": "color.text.primary" },
-    { "kind": "presentation", "selector": ".background", "attribute": "fill", "token": "color.canvas" },
-    { "kind": "presentation", "selector": ".neutral > rect, .project > rect", "attribute": "fill", "token": "color.surface.primary" },
-    { "kind": "presentation", "selector": ".shared > rect", "attribute": "fill", "token": "color.surface.shared" },
-    { "kind": "presentation", "selector": ".personal > rect", "attribute": "fill", "token": "color.surface.personal" },
-    { "kind": "presentation", "selector": ".machine > rect", "attribute": "fill", "token": "color.surface.machine" },
-    { "kind": "presentation", "selector": ".warning > rect", "attribute": "fill", "token": "color.surface.warning" },
-    { "kind": "stylesheet", "selector": "#my-svg .neutral rect", "property": "fill", "token": "color.surface.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .project rect", "property": "fill", "token": "color.surface.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .shared rect", "property": "fill", "token": "color.surface.shared" },
-    { "kind": "stylesheet", "selector": "#my-svg .personal rect", "property": "fill", "token": "color.surface.personal" },
-    { "kind": "stylesheet", "selector": "#my-svg .machine rect", "property": "fill", "token": "color.surface.machine" },
-    { "kind": "stylesheet", "selector": "#my-svg .warning rect", "property": "fill", "token": "color.surface.warning" },
-    { "kind": "stylesheet", "selector": "#my-svg .label text", "property": "fill", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg span", "property": "fill", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster-label text", "property": "fill", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster-label span", "property": "color", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster rect", "property": "fill", "token": "color.surface.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .shared rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .personal rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .machine rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .warning rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .neutral rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .project rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "presentation", "selector": ".node > rect, .cluster > rect", "attribute": "stroke", "token": "color.border.primary" },
-    { "kind": "presentation", "selector": ".flowchart-link", "attribute": "stroke", "token": "color.edge" },
-    { "kind": "presentation", "selector": ".edgeLabel rect", "attribute": "fill", "token": "color.canvas" },
-    { "kind": "presentation", "selector": ".edgeLabel .label", "attribute": "fill", "token": "color.edge.label" }
+    {
+      "kind": "presentation",
+      "selector": "svg",
+      "attribute": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .label",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .label text",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster span",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster-label text",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster-label span",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .flowchartTitleText",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".background",
+      "attribute": "fill",
+      "token": "color.canvas"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".neutral > rect, .project > rect",
+      "attribute": "fill",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".shared > rect",
+      "attribute": "fill",
+      "token": "color.surface.shared"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".personal > rect",
+      "attribute": "fill",
+      "token": "color.surface.personal"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".machine > rect",
+      "attribute": "fill",
+      "token": "color.surface.machine"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".warning > rect",
+      "attribute": "fill",
+      "token": "color.surface.warning"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .neutral rect",
+      "property": "fill",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .project rect",
+      "property": "fill",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .shared rect",
+      "property": "fill",
+      "token": "color.surface.shared"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .personal rect",
+      "property": "fill",
+      "token": "color.surface.personal"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .machine rect",
+      "property": "fill",
+      "token": "color.surface.machine"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .warning rect",
+      "property": "fill",
+      "token": "color.surface.warning"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster rect",
+      "property": "fill",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .shared rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .personal rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .machine rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .warning rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .neutral rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .project rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".node > rect, .cluster > rect",
+      "attribute": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".flowchart-link",
+      "attribute": "stroke",
+      "token": "color.edge"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".edgeLabel rect",
+      "attribute": "fill",
+      "token": "color.canvas"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".edgeLabel .label",
+      "attribute": "fill",
+      "token": "color.edge.label"
+    }
   ],
   "fallback": {
     "unresolvedToken": "error",

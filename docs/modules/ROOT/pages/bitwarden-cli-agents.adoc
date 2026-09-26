@@ -5,7 +5,7 @@
 :page-usage-context: How-to on the docs hub; pairs with harness-neutral architecture and the optional general pattern file
 :page-orig-author: Ryan Johnson
 :page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-08-28
+:page-last-edited: 2026-09-25
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -37,8 +37,10 @@ Do **not** enable by default for shared CI, org-wide laptops without disk encryp
 
 == What persists
 
-| Material | Role |
+[cols="1,2"]
 |===
+| Material | Role
+
 | `BW_CLIENTID` / `BW_CLIENTSECRET`
 | `bw login --apikey` — identity for the CLI account (not vault decrypt)
 

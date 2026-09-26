@@ -8,15 +8,42 @@
     "generator": "mermaid"
   },
   "tokens": [
-    { "id": "color.canvas", "description": "Diagram canvas" },
-    { "id": "color.surface.operator", "description": "Operator step" },
-    { "id": "color.surface.store", "description": "Credential store step" },
-    { "id": "color.surface.entry", "description": "Agent entry step" },
-    { "id": "color.surface.cli", "description": "CLI step" },
-    { "id": "color.surface.stamps", "description": "Harness stamps panel" },
-    { "id": "color.text.primary", "description": "Primary text" },
-    { "id": "color.border.primary", "description": "Node borders" },
-    { "id": "color.edge", "description": "Flow arrows" }
+    {
+      "id": "color.canvas",
+      "description": "Diagram canvas"
+    },
+    {
+      "id": "color.surface.operator",
+      "description": "Operator step"
+    },
+    {
+      "id": "color.surface.store",
+      "description": "Credential store step"
+    },
+    {
+      "id": "color.surface.entry",
+      "description": "Agent entry step"
+    },
+    {
+      "id": "color.surface.cli",
+      "description": "CLI step"
+    },
+    {
+      "id": "color.surface.stamps",
+      "description": "Harness stamps panel"
+    },
+    {
+      "id": "color.text.primary",
+      "description": "Primary text"
+    },
+    {
+      "id": "color.border.primary",
+      "description": "Node borders"
+    },
+    {
+      "id": "color.edge",
+      "description": "Flow arrows"
+    }
   ],
   "defaultPreset": "light",
   "presets": {
@@ -44,30 +71,174 @@
     }
   },
   "bindings": [
-    { "kind": "presentation", "selector": ".background", "attribute": "fill", "token": "color.canvas" },
-    { "kind": "presentation", "selector": ".operator > rect", "attribute": "fill", "token": "color.surface.operator" },
-    { "kind": "presentation", "selector": ".store > rect", "attribute": "fill", "token": "color.surface.store" },
-    { "kind": "presentation", "selector": ".entry > rect", "attribute": "fill", "token": "color.surface.entry" },
-    { "kind": "presentation", "selector": ".cli > rect", "attribute": "fill", "token": "color.surface.cli" },
-    { "kind": "presentation", "selector": ".stamps > rect", "attribute": "fill", "token": "color.surface.stamps" },
-    { "kind": "stylesheet", "selector": "#my-svg .operator rect", "property": "fill", "token": "color.surface.operator" },
-    { "kind": "stylesheet", "selector": "#my-svg .store rect", "property": "fill", "token": "color.surface.store" },
-    { "kind": "stylesheet", "selector": "#my-svg .entry rect", "property": "fill", "token": "color.surface.entry" },
-    { "kind": "stylesheet", "selector": "#my-svg .cli rect", "property": "fill", "token": "color.surface.cli" },
-    { "kind": "stylesheet", "selector": "#my-svg .stamps rect", "property": "fill", "token": "color.surface.stamps" },
-    { "kind": "stylesheet", "selector": "#my-svg .label text", "property": "fill", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg span", "property": "fill", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster-label text", "property": "fill", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster-label span", "property": "color", "token": "color.text.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster rect", "property": "fill", "token": "color.surface.stamps" },
-    { "kind": "stylesheet", "selector": "#my-svg .operator rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .store rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .entry rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cli rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .stamps rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "stylesheet", "selector": "#my-svg .cluster rect", "property": "stroke", "token": "color.border.primary" },
-    { "kind": "presentation", "selector": ".node > rect, .cluster > rect", "attribute": "stroke", "token": "color.border.primary" },
-    { "kind": "presentation", "selector": ".flowchart-link", "attribute": "stroke", "token": "color.edge" }
+    {
+      "kind": "presentation",
+      "selector": "svg",
+      "attribute": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .label",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .label text",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster span",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster-label text",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster-label span",
+      "property": "color",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .flowchartTitleText",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".background",
+      "attribute": "fill",
+      "token": "color.canvas"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".operator > rect",
+      "attribute": "fill",
+      "token": "color.surface.operator"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".store > rect",
+      "attribute": "fill",
+      "token": "color.surface.store"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".entry > rect",
+      "attribute": "fill",
+      "token": "color.surface.entry"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".cli > rect",
+      "attribute": "fill",
+      "token": "color.surface.cli"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".stamps > rect",
+      "attribute": "fill",
+      "token": "color.surface.stamps"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .operator rect",
+      "property": "fill",
+      "token": "color.surface.operator"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .store rect",
+      "property": "fill",
+      "token": "color.surface.store"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .entry rect",
+      "property": "fill",
+      "token": "color.surface.entry"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cli rect",
+      "property": "fill",
+      "token": "color.surface.cli"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .stamps rect",
+      "property": "fill",
+      "token": "color.surface.stamps"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster rect",
+      "property": "fill",
+      "token": "color.surface.stamps"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .operator rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .store rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .entry rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cli rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .stamps rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".node > rect, .cluster > rect",
+      "attribute": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "presentation",
+      "selector": ".flowchart-link",
+      "attribute": "stroke",
+      "token": "color.edge"
+    }
   ],
   "fallback": {
     "unresolvedToken": "error",
