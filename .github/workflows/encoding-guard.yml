@@ -34,20 +34,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Fetch guard script
-        if: github.repository != 'dev-centr/agent-rules'
-        uses: actions/checkout@v4
-        with:
-          repository: dev-centr/agent-rules
-          ref: ${{ inputs.guard-ref || 'main' }}
-          path: .encoding-guard
-          sparse-checkout: tools/encoding-guard
-          persist-credentials: false
-      - name: Scan tracked files
+      # Plain git instead of actions/checkout: no submodule handling (a stray gitlink without a
+      # .gitmodules entry breaks checkout's cleanup) and no Node runtime deprecation churn.
+      - name: Check out caller (no submodules)
+        env:
+          TOKEN: ${{ github.token }}
         run: |
-          guard=.encoding-guard/tools/encoding-guard/check-mojibake.mjs
-          [ -f tools/encoding-guard/check-mojibake.mjs ] && [ "$GITHUB_REPOSITORY" = "dev-centr/agent-rules" ] && guard=tools/encoding-guard/check-mojibake.mjs
-          node "$guard" ${{ inputs.allow-non-utf8 && '--allow-non-utf8' || '' }}
+          git init -q .
+          git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)" fetch -q --depth 1 origin "$GITHUB_SHA"
+          git checkout -q FETCH_HEAD
+      - name: Fetch guard script
+        run: |
+          if [ "$GITHUB_REPOSITORY" = "dev-centr/agent-rules" ] && [ -f tools/encoding-guard/check-mojibake.mjs ]; then
+            cp tools/encoding-guard/check-mojibake.mjs "$RUNNER_TEMP/check-mojibake.mjs"
+          else
+            curl -fsSL "https://raw.githubusercontent.com/dev-centr/agent-rules/${GUARD_REF}/tools/encoding-guard/check-mojibake.mjs" -o "$RUNNER_TEMP/check-mojibake.mjs"
+          fi
+        env:
+          GUARD_REF: ${{ inputs.guard-ref || 'main' }}
+      - name: Scan tracked files
+        run: node "$RUNNER_TEMP/check-mojibake.mjs" ${{ inputs.allow-non-utf8 && '--allow-non-utf8' || '' }}
