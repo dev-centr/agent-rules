@@ -39,6 +39,8 @@ jobs:
       - name: Check out caller (no submodules)
         env:
           TOKEN: ${{ github.token }}
+          # Leave Git LFS pointers as-is: the fetch has no LFS credentials, and pointers are plain text anyway.
+          GIT_LFS_SKIP_SMUDGE: "1"
         run: |
           git init -q .
           git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"
