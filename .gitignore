@@ -24,3 +24,10 @@
 !/package.json
 !/pnpm-lock.yaml
 !/user.md
+!/.editorconfig
+!/.encoding-allow
+!/.gitattributes
+!/.github/
+!/.github/**
+!/tools/
+!/tools/**

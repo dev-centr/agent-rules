@@ -1,0 +1,2 @@
+# Paths that contain mojibake on purpose (examples of the bug). See general/text-encoding.md.
+skills/fix-docs-encoding/**

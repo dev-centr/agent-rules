@@ -51,6 +51,6 @@ The inverted-pyramid rules stay in the skill body. They are not match keys.
 ## Construction
 
 1. List 5–15 things the user (or a routing agent) might actually type.
-2. Add filenames and product names that imply the job (`SKILL.md`, `dub.json`, `â€œ` in AsciiDoc).
+2. Add filenames and product names that imply the job (`SKILL.md`, `dub.json`, `â€œ` in AsciiDoc). <!-- mojibake-guard: allow -->
 3. Add a short exclusion only when a neighbor skill would otherwise steal the match (`transcode corruption, not a refactor`).
 4. Delete any sentence that would belong on a README.

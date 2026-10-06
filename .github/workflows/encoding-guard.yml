@@ -1,0 +1,53 @@
+# Reusable encoding guard: fails when tracked text files contain double-encoded UTF-8 (mojibake).
+# Backstop for the machine-wide pre-commit hook (tools/encoding-guard). Call it from any repo:
+#
+#   name: Encoding guard
+#   on: { push: { branches: [main] }, pull_request: {} }
+#   jobs:
+#     encoding:
+#       uses: dev-centr/agent-rules/.github/workflows/encoding-guard.yml@main
+#
+# Intentional examples: "mojibake-guard: allow" on the line, or globs in .encoding-allow.
+name: Encoding guard
+
+on:
+  workflow_call:
+    inputs:
+      allow-non-utf8:
+        description: Only warn (instead of fail) on text files that are not valid UTF-8
+        type: boolean
+        default: false
+      guard-ref:
+        description: dev-centr/agent-rules ref that supplies check-mojibake.mjs
+        type: string
+        default: main
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  mojibake:
+    name: Check for mojibake
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch guard script
+        if: github.repository != 'dev-centr/agent-rules'
+        uses: actions/checkout@v4
+        with:
+          repository: dev-centr/agent-rules
+          ref: ${{ inputs.guard-ref || 'main' }}
+          path: .encoding-guard
+          sparse-checkout: tools/encoding-guard
+          persist-credentials: false
+      - name: Scan tracked files
+        run: |
+          guard=.encoding-guard/tools/encoding-guard/check-mojibake.mjs
+          [ -f tools/encoding-guard/check-mojibake.mjs ] && [ "$GITHUB_REPOSITORY" = "dev-centr/agent-rules" ] && guard=tools/encoding-guard/check-mojibake.mjs
+          node "$guard" ${{ inputs.allow-non-utf8 && '--allow-non-utf8' || '' }}

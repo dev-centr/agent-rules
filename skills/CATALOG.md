@@ -30,7 +30,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `git-worktrees` | git worktree add, .worktrees path, migrate/move worktree, forbid `$CODE_ROOT/.worktrees`, `<repo>-<purpose-slug>` naming, parallel checkout layout | active | Org-scoped linked worktrees; pairs with `general/folder-schema.md`; not clone/fork dedupe |
 | `writing-news` | News item, ship note, org announcement, news channel body | active | `skills/writing-news/` |
 | `writing-blog` | Blog post, essay, philosophy, thinking-in-public body | active | `skills/writing-blog/` |
-| `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` |
+| `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` | <!-- mojibake-guard: allow -->
 | `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", DUB/code.dlang.org categories | active | `dubx` + `dub-publish`; official `dub` has no publish command |
 | `library-registry-choice` | create library, path/`file:` dependency, publish vs local disk, registry for new package, unpublished owned dep | active | Ask publish vs path; encourage registry; suggest which |
 | `bootstrap-org` | bootstrap an org, initialize an org, create a GitHub organization, SDL profile, org agent-rules overlay | active | Fast identity/project path; house org init uses pointer overlay |
