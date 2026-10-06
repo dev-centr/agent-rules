@@ -85,6 +85,7 @@ No Node 24 release yet (keep, recheck, or replace): `ilammy/msvc-dev-cmd` (v1.13
 | `actions/download-artifact` v5, v8 | A single artifact downloaded by ID lands directly in `path/`. v8 fails on digest mismatch (`digest-mismatch: error`) and no longer unzips non-zip files. |
 | `actions/upload-pages-artifact` v4+ | Dotfiles are excluded; v5 adds `include-hidden-files: true` if you need them. |
 | `actions/github-script` v9 | `require('@actions/github')` inside the script fails; use the provided `github` / `getOctokit`. Do not redeclare `getOctokit` with `const` / `let`. |
+| `actions/create-github-app-token` v3 | `app-id` is deprecated; pass the app's `client-id` instead (store it as a variable, e.g. `vars.APP_CLIENT_ID`). |
 | `actions/setup-python` v7 | `pip-install` input removed; run `pip install` in a step. |
 | `actions/setup-java` v6 | `jdkFile` renamed `jdk-file` (old name still accepted with a warning). |
 | `dlang-community/setup-dlang` v2 | `$DC` is now an absolute path (`dc_format: absolute`); scripts that compare `$DC` to `dmd` / `ldc2` must compare `$(basename "$DC")` instead. |
