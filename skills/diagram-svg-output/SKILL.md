@@ -93,6 +93,26 @@ If an existing SVG already has the required variables and only needs runtime DOM
 Use `@dev-centr/themed-svg` (https://github.com/dev-centr/themed-svg) for versioned manifests, structural bindings, palette injection, diagnostics, serialization, and the sanitized browser runtime. Generator-specific packages such as `@dev-centr/mermaid-svg-css-vars` are consumers/adapters; they do not define the cross-generator contract.
 
 
+## Mermaid CLI 12 renderer settings
+
+`@mermaid-js/mermaid-cli` 12 (Mermaid 12; Node.js >= 22.13; `puppeteer` ^25 as a peer) changes the flowchart defaults: ELK layout, the `neo` look (drop shadows, orthogonal edges), and 120px label wrapping (labels split mid-word). Themed SVG manifests and existing diagrams were tuned on Mermaid 11, so pin the previous rendering in the Mermaid config passed with `-c`:
+
+```json
+{
+  "layout": "dagre",
+  "look": "classic",
+  "theme": "base",
+  "htmlLabels": false,
+  "flowchart": { "htmlLabels": false, "wrappingWidth": 200 }
+}
+```
+
+- Set `theme` explicitly (`base` plus `themeVariables`, or `default`); unset, Mermaid 12 flowcharts default to `redux-color`.
+- Declare `puppeteer` as a direct devDependency and list it in `pnpm.onlyBuiltDependencies`.
+- Make the generator script fail when the config lacks `layout`, `look`, or `flowchart.wrappingWidth` (as `dev-centr/agent-rules` `scripts/generate-themed-diagrams.mjs` does).
+- After any Mermaid major bump, render the previous and regenerated SVGs side by side in light and dark mode before committing; check for mid-word label breaks, size changes, and shadows on dark backgrounds.
+- Switch to ELK or `neo` only as a deliberate redesign: re-tune the manifests and recheck dark-mode contrast.
+
 ## Borrow from light (stable light islands)
 
 Dark-mode presets may **borrow** selected light-mode colors when a region must stay light inside a dark page (callout cards, stamps, screenshots of light UI).

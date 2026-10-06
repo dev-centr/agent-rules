@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-06 - Mermaid CLI 12 keeps the Mermaid 11 diagram layout
+
+* Skill `diagram-svg-output` gains Mermaid CLI 12 renderer settings: pin `layout: dagre`, `look: classic`, and `flowchart.wrappingWidth: 200`, set `theme` explicitly, declare `puppeteer`, and compare old and new renders in light and dark mode after a Mermaid major bump.
+* The rules-geography and agent CLI authentication diagrams are regenerated with those settings; the generator now rejects a Mermaid config without them.
+* See xref:changelog-details/2026-10-06 - mermaid-12-classic-layout.adoc[Detailed changelog].
+
 == 2026-10-06 - GitHub Actions Node 24 majors and monthly Dependabot
 
 * New rule `general/github-actions-versions.md`: latest action majors on the current Node runtime, verified against release + `action.yml` (table verified 2026-10-06), never from memory.

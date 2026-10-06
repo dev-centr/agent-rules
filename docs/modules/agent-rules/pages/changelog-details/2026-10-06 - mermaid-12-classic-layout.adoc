@@ -1,0 +1,13 @@
+= Mermaid CLI 12 keeps the Mermaid 11 diagram layout
+:description: Skill diagram-svg-output pins Mermaid 12 to the dagre layout, classic look, and 200px label wrapping; agent-rules diagrams regenerated with those settings.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the Mermaid CLI 12 renderer settings
+:page-orig-author: Grok Bot on behalf of Ryan Johnson
+:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-edited: 2026-10-06
+
+Mermaid 12 changed three flowchart defaults: the ELK layout engine replaced dagre, the `neo` look (drop shadows, orthogonal edges) replaced `classic`, and the label wrapping width fell from 200px to 120px. Repositories that moved to `@mermaid-js/mermaid-cli` 12 on 2026-10-06 regenerated their diagrams with those defaults, which split labels mid-word (for example `BITWARDEN_SES` / `SION_PERSIST`), made diagrams narrower and taller, and added light shadows on dark backgrounds.
+
+* Skill `diagram-svg-output`: new section *Mermaid CLI 12 renderer settings* with the config to pin (`layout: dagre`, `look: classic`, `theme` set explicitly, `htmlLabels: false`, `flowchart.wrappingWidth: 200`), `puppeteer` as a direct devDependency, a generator check for the pinned keys, and a light/dark old-versus-new render comparison after Mermaid major bumps.
+* `docs/mermaid-config.json` pins the three settings, and `scripts/generate-themed-diagrams.mjs` refuses a config without them.
+* `rules-geography` and `agent-cli-auth-flow` (adaptive and host SVGs) are regenerated and match their Mermaid 11 layout again.
