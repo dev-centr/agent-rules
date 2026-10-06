@@ -1,7 +1,8 @@
 ---
 name: fix-docs-encoding
 description: >-
-  Detect and repair double-encoded UTF-8 mojibake and invalid SVG XML in Antora
+  Detect and repair double-encoded UTF-8 mojibake (any repo text file, encoding
+  guard, check-mojibake, pre-commit hook rejection) and invalid SVG XML in Antora
   docs (transcode corruption, not a refactor). Use when AsciiDoc/SVG shows
   â€œ-style garbage, SVG opens with Encoding/EntityName errors, or after
   authoring hand-written SVGs or Windows-edited .adoc files.
@@ -9,6 +10,10 @@ description: >-
 # Fix docs encoding (transcode)
 
 **This is a transcode / corruption repair, not a code refactor.** Antora does not generate the hand-authored mock SVGs; bad bytes come from agent/editor writes on Windows.
+
+## Any repo: the encoding guard first
+
+For mojibake in any tracked text file (code, YAML, changelogs, not only docs), use the shared guard: `node $AGENT_RULES_PATH/tools/encoding-guard/check-mojibake.mjs --fix <paths>` (verified round-trip only; Windows-1252 and IBM437 layers; legacy ANSI bytes). The machine-wide pre-commit hook and the reusable CI workflow run the same script. Policy, opt-outs (`mojibake-guard: allow`, `.encoding-allow`) and root cause: `general/text-encoding.md`. The rest of this skill covers Antora SVG XML problems the guard does not.
 
 ## When to run
 

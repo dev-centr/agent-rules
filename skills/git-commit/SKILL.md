@@ -38,6 +38,7 @@ Then:
 
 1. Draft 1–2 sentences on **why**, not a file list. Match this repo’s tense/prefix style. `add` = new feature, `update` = enhancement, `fix` = bug fix.
 2. Stage relevant files (not secrets).
+   - Encoding check: the machine-wide pre-commit hook runs it (`tools/encoding-guard`). If hooks are not installed on this machine, run `node $AGENT_RULES_PATH/tools/encoding-guard/check-mojibake.mjs --staged`; on failure `--fix` the listed files and re-stage (rule: `general/text-encoding.md`). A hook rejection is not a reason for `--no-verify`.
 3. Commit with a here-string (correct formatting; no interactive editors).
 4. `git status` to verify.
 
