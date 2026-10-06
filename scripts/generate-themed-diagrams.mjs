@@ -80,6 +80,11 @@ try {
   if (mermaidConfig.flowchart?.htmlLabels !== false) {
     throw new Error('docs/mermaid-config.json must set flowchart.htmlLabels to false')
   }
+  // Mermaid 12 defaults flowcharts to ELK, the neo look (drop shadows), and 120px label
+  // wrapping (mid-word breaks). Keep the Mermaid 11 rendering the manifests were tuned on.
+  if (mermaidConfig.layout !== 'dagre' || mermaidConfig.look !== 'classic' || mermaidConfig.flowchart?.wrappingWidth !== 200) {
+    throw new Error('docs/mermaid-config.json must set layout "dagre", look "classic", and flowchart.wrappingWidth 200 (Mermaid 12 defaults)')
+  }
 
   for (const { name, fixedSha256 } of diagrams) {
     const raw = join(temporary, `${name}.raw.svg`)

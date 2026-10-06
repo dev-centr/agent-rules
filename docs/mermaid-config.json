@@ -1,4 +1,6 @@
 {
+  "layout": "dagre",
+  "look": "classic",
   "deterministicIds": true,
   "deterministicIDSeed": "dev-centr-agent-rules-diagrams",
   "fontFamily": "Segoe UI, system-ui, sans-serif",
@@ -7,7 +9,8 @@
     "curve": "linear",
     "htmlLabels": false,
     "nodeSpacing": 28,
-    "rankSpacing": 38
+    "rankSpacing": 38,
+    "wrappingWidth": 200
   },
   "securityLevel": "strict",
   "theme": "base",
