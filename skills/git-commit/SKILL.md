@@ -17,6 +17,7 @@ Create a commit when the user asked, **or** when skill `push-code` / `general/en
 - NEVER update git config
 - NEVER run destructive/irreversible commands (`push --force`, hard reset, etc.) unless the user explicitly asked
 - NEVER skip hooks (`--no-verify`, `--no-gpg-sign`, etc.) unless the user explicitly asked
+- If the encoding guard rejects the commit (mojibake), repair with `node $AGENT_RULES_PATH/tools/encoding-guard/check-mojibake.mjs --fix <paths>`, re-stage, and commit again. Never bypass it with `--no-verify` or `ENCODING_GUARD=0`.
 - NEVER force-push to main/master; warn if they request it
 - Avoid `git commit --amend`. Amend only when **all** of: they asked (or a hook auto-modified files from a commit you just created), HEAD was created by you this conversation (`git log -1 --format='%an %ae'`), and the commit has **not** been pushed
 - If commit **failed** or was **rejected** by a hook: fix and make a **new** commit — do not amend
@@ -50,6 +51,8 @@ Commit message here.
 
 "@
 ```
+
+Windows PowerShell 5.1: pass the message with `-m` as above, or with `-F <file>` written by .NET `UTF8Encoding($false)`. Never pipe it into `git commit -F -`: 5.1 encodes pipeline input to native commands with `$OutputEncoding` (US-ASCII by default), so every non-ASCII character becomes `?`. Write files only with `UTF8Encoding($false)`; 5.1 `Set-Content` / `Out-File` / `>` write ANSI or UTF-16, and `-Encoding UTF8` adds a BOM (`general/text-encoding.md`).
 
 POSIX bash:
 
