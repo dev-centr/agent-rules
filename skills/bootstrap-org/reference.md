@@ -96,6 +96,16 @@ gh api -X POST repos/{owner}/{repo}/transfer -f new_owner={org}
 
 Pages HTTPS / custom domain: follow general-knowledge **GitHub Pages custom domain** (grey-cloud). Poll Pages API; do not orange-cloud github.io.
 
+## Repo essentials (new repos)
+
+```bash
+mkdir -p .github/workflows
+cp "$AGENT_RULES_PATH/skills/polyglot-ci/dependabot.yml" .github/dependabot.yml   # github-actions, grouped, monthly
+# plus the encoding-guard caller from general/text-encoding.md
+```
+
+Dependabot version updates need nothing else on GitHub Free: no org setting enables or blocks them; the file is the switch. If Actions is disabled for the repo, CI will not run on the Dependabot PRs, so there is nothing to tell you a bump broke the build. Action versions: `general/github-actions-versions.md`.
+
 ## Profile vs Settings
 
 GitHub renders org profile from **`{org}/.github` / `profile/README.md`**. Views: `https://github.com/{org}?view_as=public` and `?view_as=member`.

@@ -1,0 +1,16 @@
+# Copy to .github/dependabot.yml in every repo that has GitHub Actions workflows.
+# Rule: general/github-actions-versions.md (monthly is the house default; one grouped PR).
+# Merging into an existing dependabot.yml: add this entry, keep the other ecosystems.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "ci"
+    open-pull-requests-limit: 5

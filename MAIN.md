@@ -27,6 +27,7 @@ Read these files **simultaneously in parallel tool calls** to assemble your full
 - `general/creator.md`
 - `general/folder-schema.md`
 - `general/documentation.md` (only if the task involves authoring or publishing project documentation — includes Audience / POV gate)
+- `general/github-actions-versions.md` (only if the task creates or edits GitHub Actions workflows, composite actions, or `dependabot.yml`)
 
 Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `owned-changelog`, `issue-reports`, `issues-repo-record`, `harness-setup`, and others in [`skills/CATALOG.md`](./skills/CATALOG.md).
 

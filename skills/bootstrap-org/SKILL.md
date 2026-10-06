@@ -96,6 +96,7 @@ Project bootstrap (kind project):
 - [ ] 0 Profile + intake
 - [ ] 1 Repo identity (About / homepage / license)
 - [ ] 2 Scaffold per profile (library / cli / desktop / web-app)
+- [ ] 2a Repo essentials: encoding-guard caller workflow + `.github/dependabot.yml` (github-actions, grouped, monthly)
 - [ ] 3 Optional SolidStart static + solid-ui marketing site
 - [ ] 4 Docs contribute to the org hub (no second public docs site)
 - [ ] 5 Product Essentials Band A for that artifact type
@@ -192,6 +193,13 @@ Transfer with `gh api` (see [reference.md](reference.md)). Hive paths: `$CODE_RO
 
 Partner / related footers and homepage partner rows: **one entry point per org** (homepage preferred; not homepage + docs + GitHub). Detail: `general/partner-org-entrypoints.md`.
 
+### Project 2a. Repo essentials (every new repo with workflows)
+
+- `.github/workflows/encoding-guard.yml` thin caller (`general/text-encoding.md`).
+- `.github/dependabot.yml` from `skills/polyglot-ci/dependabot.yml`: ecosystem `github-actions`, `directory: "/"`, `interval: "monthly"`, one group with `patterns: ["*"]`, `commit-message.prefix: "ci"`, `open-pull-requests-limit`. Monthly is the house default (weekly is noise).
+- Any other workflow uses current action majors verified per `general/github-actions-versions.md` (never from memory).
+- Org `.github` repo and org site / docs repos get the same essentials once they have workflows.
+
 ### 8. Domain, email, infra (hand off)
 
 Stop fast-path identity work here unless the user asked for mail/DNS/IaC **in this session**.
@@ -204,4 +212,4 @@ Do not restate those procedures here. Point at Business Bootstrap (email tutoria
 
 **Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; session-scoped site/docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
 
-**Project.** Repo About filled; scaffold matches the loaded profile; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.
+**Project.** Repo About filled; scaffold matches the loaded profile; repo essentials (encoding-guard caller, monthly grouped `dependabot.yml` for github-actions) committed; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.

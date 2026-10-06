@@ -3,12 +3,13 @@ name: polyglot-ci
 description: >-
   Use when generating GitHub Actions CI/CD, release.yml, workflow matrix,
   win/mac/lin/BSD, x64, arm64, macos-14, ubuntu-24.04-arm, windows-11-arm,
-  cosmocc, APE, binary-tailor, polyglot pack, or GitHub Intel Mac runners.
+  cosmocc, APE, binary-tailor, polyglot pack, GitHub Intel Mac runners,
+  action versions (@v4 / @v5 bumps), Node 20 deprecation warning, or dependabot.yml.
 ---
 
 # Polyglot CI matrix
 
-House release matrix for owned apps and CLIs. Expand **named patterns** from skill `release-targets` (`patterns.sdl`) — default **`common`** / GUI **`desktop`**. Detail: [workflow.yml](workflow.yml), [matrix.md](matrix.md). Docs: https://docs.devcentr.org/general-knowledge/latest/how-to/polyglot-ci.html · https://docs.devcentr.org/general-knowledge/latest/explanation/architecture/release-target-patterns.html
+House release matrix for owned apps and CLIs. Expand **named patterns** from skill `release-targets` (`patterns.sdl`) — default **`common`** / GUI **`desktop`**. Detail: [workflow.yml](workflow.yml), [matrix.md](matrix.md), [dependabot.yml](dependabot.yml). Docs: https://docs.devcentr.org/general-knowledge/latest/how-to/polyglot-ci.html · https://docs.devcentr.org/general-knowledge/latest/explanation/architecture/release-target-patterns.html
 
 ## Do this
 
@@ -18,6 +19,9 @@ House release matrix for owned apps and CLIs. Expand **named patterns** from ski
 4. Upload **per-triplet** artifacts named `app-${{ matrix.triplet }}`.
 5. On tags, a `pack` job runs `binary-tailor pack` and attaches **one** `app.bin` to the GitHub Release.
 6. Optional job: `cosmocc` APE **in addition to** native slices — never instead of native GUI/GPU builds.
+7. **Action versions:** every `uses:` is the latest major on the current runner Node runtime (`node24` in 2026), verified with `gh api` against the release and `action.yml` at that tag, never from memory. Reference table, verify commands and breaking changes: `general/github-actions-versions.md`.
+8. **Dependabot:** copy [dependabot.yml](dependabot.yml) to `.github/dependabot.yml` (ecosystem `github-actions`, one group `patterns: ["*"]`, `interval: "monthly"`, prefix `ci`). Merge into an existing file without dropping its ecosystems.
+9. After the first push, open the run and confirm there is no "Node.js 20 is deprecated" annotation.
 
 ## Matrix (hosted) — pattern `desktop` / `common` (2026)
 
@@ -43,3 +47,5 @@ Users download one pack. [Binary Tailor](https://github.com/dev-centr/binary-tai
 - Claim APE is AV-safe; Tailor exists because it is not
 - Replace `ship-app` Product Essentials (About, installer, signing) with a zip pack
 - Ship only x64 Windows/Linux when the project uses living `common` / `desktop` (2026+)
+- Write `actions/checkout@v4`-style versions from memory, or ship a workflow without `.github/dependabot.yml`
+- Use a weekly Dependabot schedule (house default is monthly; weekly is noise)

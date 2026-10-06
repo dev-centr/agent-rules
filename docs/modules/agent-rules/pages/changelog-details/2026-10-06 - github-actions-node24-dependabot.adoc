@@ -1,0 +1,12 @@
+= GitHub Actions Node 24 majors and monthly Dependabot
+:description: New rule general/github-actions-versions.md; polyglot-ci, bootstrap-org and ship-app require verified action majors and a grouped monthly dependabot.yml.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the GitHub Actions versions rule
+:page-orig-author: Grok Bot on behalf of Ryan Johnson
+:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-edited: 2026-10-06
+
+* New rule `general/github-actions-versions.md`: use the latest major of each action that runs on the current runner Node runtime (`node24`), verified against the latest release and `action.yml` at that tag, never from memory. Includes a reference table verified on 2026-10-06, the `gh api` commands to re-verify, a breaking-changes table, and a reminder to recheck when GitHub announces a runtime deprecation.
+* Every repo with workflows now carries `.github/dependabot.yml` for `github-actions`: one group (`patterns: ["*"]`), `interval: "monthly"` (house default; weekly is noise), `commit-message.prefix: "ci"`, `open-pull-requests-limit: 5`. Template: `skills/polyglot-ci/dependabot.yml`.
+* `polyglot-ci` workflow template bumped to `checkout@v7`, `upload-artifact@v7`, `download-artifact@v8`, `setup-dlang@v2`, `action-gh-release@v3`.
+* `bootstrap-org` project checklist gains phase 2a (repo essentials: encoding-guard caller + Dependabot). `ship-app` CI pipeline essential and `user.md` / `MAIN.md` point at the rule.

@@ -33,7 +33,7 @@ Treat these as required or adapted per the delivery-class matrix **before** call
 - Debug dump (redacted)
 - Update path
 - Installer / package
-- CI release pipeline
+- CI release pipeline (current action majors per `general/github-actions-versions.md`; `.github/dependabot.yml` for github-actions, grouped, monthly)
 
 Copy the matching **delivery-class** auxiliary matrix (desktop / web / mobile) into the project plan; ship Band A first.
 

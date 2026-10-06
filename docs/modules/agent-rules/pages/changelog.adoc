@@ -2,8 +2,8 @@
 :page-audience: Maintainers and readers tracking functional history of this component
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
-:page-last-author: Cursor agent on behalf of Ryan Johnson
-:page-last-edited: 2026-09-26
+:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-edited: 2026-10-06
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -18,6 +18,12 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-10-06 - GitHub Actions Node 24 majors and monthly Dependabot
+
+* New rule `general/github-actions-versions.md`: latest action majors on the current Node runtime, verified against release + `action.yml` (table verified 2026-10-06), never from memory.
+* Repos with workflows require a grouped, monthly `.github/dependabot.yml` for `github-actions`; `polyglot-ci`, `bootstrap-org` and `ship-app` updated.
+* See xref:changelog-details/2026-10-06 - github-actions-node24-dependabot.adoc[Detailed changelog].
 
 == 2026-09-26 - Retarget facto-stack references
 

@@ -1,4 +1,6 @@
 # Copy to .github/workflows/release.yml and replace the Build step.
+# Action majors verified 2026-10-06 (node24); recheck per general/github-actions-versions.md.
+# Also copy dependabot.yml (this folder) to .github/dependabot.yml.
 name: Release matrix
 
 on:
@@ -25,11 +27,11 @@ jobs:
             triplet: macos-arm64
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build
         run: echo "replace with dub/cargo/pnpm/cmake for ${{ matrix.triplet }}"
       - name: Upload slice
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: app-${{ matrix.triplet }}
           path: |
@@ -42,21 +44,21 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           repository: dev-centr/binary-tailor
           path: binary-tailor
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: dev-centr/macho-memload
           path: macho-memload
-      - uses: dlang-community/setup-dlang@v1
+      - uses: dlang-community/setup-dlang@v2
         with:
           compiler: ldc-latest
       - run: dub build --compiler=ldc2
         working-directory: binary-tailor
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: slices
       - name: Pack one download
@@ -70,7 +72,7 @@ jobs:
             args+=("${trip}=${f}")
           done
           binary-tailor/binary-tailor pack -o app.bin --name app --version "${GITHUB_REF_NAME#v}" "${args[@]}"
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: app.bin
         env:
