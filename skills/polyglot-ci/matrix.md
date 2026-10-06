@@ -5,3 +5,4 @@
 - FreeBSD: Cirrus `freebsd-14-2` (x64). ARM BSD is usually a self-hosted VM.
 - Cache compilers (`dlang-community/setup-dlang`, `dtolnay/rust-toolchain`, `actions/setup-node`) per job, not a mega-image.
 - Action versions: latest major on the current runner Node runtime, verified against the release and `action.yml` (never from memory). Table and commands: `general/github-actions-versions.md`. Pin by SHA only when the repo already pins (Dependabot updates SHA pins too).
+- `pnpm/action-setup`: omit `version` when `package.json` has `packageManager`; prefer reading that field only. A hard-coded `version` that disagrees fails the job.

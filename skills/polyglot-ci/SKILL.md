@@ -22,6 +22,7 @@ House release matrix for owned apps and CLIs. Expand **named patterns** from ski
 7. **Action versions:** every `uses:` is the latest major on the current runner Node runtime (`node24` in 2026), verified with `gh api` against the release and `action.yml` at that tag, never from memory. Reference table, verify commands and breaking changes: `general/github-actions-versions.md`.
 8. **Dependabot:** copy [dependabot.yml](dependabot.yml) to `.github/dependabot.yml` (ecosystem `github-actions`, one group `patterns: ["*"]`, `interval: "monthly"`, prefix `ci`). Merge into an existing file without dropping its ecosystems.
 9. After the first push, open the run and confirm there is no "Node.js 20 is deprecated" annotation.
+10. **pnpm:** put `pnpm/action-setup` before `actions/setup-node`. Omit `with.version` whenever `package.json` has `packageManager: "pnpm@…"`. Prefer reading `packageManager` only; a hard-coded `version` that disagrees fails the job. Pass `package_json_file` only when package.json is not at the repo root.
 
 ## Matrix (hosted) — pattern `desktop` / `common` (2026)
 
@@ -49,3 +50,4 @@ Users download one pack. [Binary Tailor](https://github.com/dev-centr/binary-tai
 - Ship only x64 Windows/Linux when the project uses living `common` / `desktop` (2026+)
 - Write `actions/checkout@v4`-style versions from memory, or ship a workflow without `.github/dependabot.yml`
 - Use a weekly Dependabot schedule (house default is monthly; weekly is noise)
+- Hard-code `pnpm/action-setup` `version:` when `package.json` already has `packageManager`

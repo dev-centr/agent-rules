@@ -91,7 +91,7 @@ No Node 24 release yet (keep, recheck, or replace): `ilammy/msvc-dev-cmd` (v1.13
 | `dlang-community/setup-dlang` v2 | `$DC` is now an absolute path (`dc_format: absolute`); scripts that compare `$DC` to `dmd` / `ldc2` must compare `$(basename "$DC")` instead. |
 | `docker/build-push-action` v7 | `DOCKER_BUILD_NO_SUMMARY` / `DOCKER_BUILD_EXPORT_RETENTION_DAYS` env vars removed (use the action inputs). |
 | `cloudflare/wrangler-action` v4 | Installs Wrangler v4 by default; pin `wranglerVersion` if the project is on v3. |
-| `pnpm/action-setup` v6 | Adds pnpm 11; the `packageManager` field (or `version`) still decides which pnpm runs. |
+| `pnpm/action-setup` v5-v6 | Adds pnpm 11 (v6). **Never** set `with.version` when the target `package.json` has a `packageManager` field (`pnpm@…`): the action errors if they disagree. Omit `version` and let the action read `packageManager` (optionally pass `package_json_file` for a non-root package.json). Only pass `version` when there is no `packageManager` field. |
 
 ## Dependabot: required in every repo with workflows
 
@@ -125,7 +125,8 @@ Syntax reference: <https://docs.github.com/en/code-security/dependabot/working-w
 1. Every `uses: owner/action@ref` is at the Pin above, or you verified a newer one with the commands above.
 2. Composite actions you own (`action.yml` with `runs.using: composite`) were checked the same way; publish a new major tag instead of force-moving an old one.
 3. Breaking-change table applied for each major you skipped.
-4. `.github/dependabot.yml` exists with the grouped, monthly `github-actions` entry.
-5. After pushing, open the run and confirm there is no "Node.js 20 is deprecated" (or newer runtime) annotation.
+4. `pnpm/action-setup` has no `version` input when `package.json` declares `packageManager` (prefer `packageManager` only).
+5. `.github/dependabot.yml` exists with the grouped, monthly `github-actions` entry.
+6. After pushing, open the run and confirm there is no "Node.js 20 is deprecated" (or newer runtime) annotation.
 
 Related: skill `polyglot-ci`, skill `bootstrap-org`, skill `tag-release` (major tags for actions you publish).
