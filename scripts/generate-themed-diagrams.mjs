@@ -15,7 +15,7 @@ const diagrams = [
     fixedSha256: '142f5492ca056ba52c0b5d576920068370eceb24867616025f2848550bfc3322',
   },
 ]
-const imageDir = resolve('docs/modules/ROOT/images')
+const imageDir = resolve('docs/modules/agent-rules/images')
 const config = resolve('docs/mermaid-config.json')
 const check = process.argv.includes('--check')
 const tools = {
