@@ -23,29 +23,16 @@ If the repo already has a changelog, **match that style** (layout, tense, headin
 
 ## Timeline headings (index + detail)
 
-Use a **Unicode em dash** (`—`, U+2014) between the date and a short scan line. Do **not** use `--`, ` - `, or en dash (`–`) in published headings.
+**Dates and descriptions are separate heading levels** so the page TOC stays regular (date lines do not wrap long em-dash summaries).
 
-**Detail** (Antora level-1):
+### Index (`changelog.adoc`)
 
-```asciidoc
-= 2026-10-16 — Linkinator hover bar and chrome exclusions
-```
-
-### Same calendar day — pick a layout
-
-**A. Peer sections (good for scrolling the page)** — repeat the date when each ship deserves its own one-line summary:
+Set `:toclevels: 3` when same-day entries use level-3 topics.
 
 ```asciidoc
-== 2026-10-16 — Linkinator hover bar and chrome exclusions
-== 2026-10-16 — Facto stack and site search
-```
+== 2026-10-16
 
-**B. Grouped under one date (good when several small same-day items share a day)** — one level-2 date line plus level-3 topics that appear in the **page TOC** (right sidebar):
-
-```asciidoc
-:toclevels: 3
-
-== 2026-10-16 — Portal hub updates
+Portal hub updates.
 
 === Linkinator hover bar and chrome exclusions
 * …
@@ -53,21 +40,35 @@ Use a **Unicode em dash** (`—`, U+2014) between the date and a short scan line
 * …
 ```
 
-Use **A** when each entry is a distinct story users should skim from level-2 headings. Use **B** when one date banner plus topical `===` lines keeps the timeline tidy and TOC still lists each topic. Do **not** merge unrelated ships into one bullet list without subheadings.
+- **`== YYYY-MM-DD`** — date only. No em dash, no description on the date line.
+- **`=== Short description`** — every ship gets a level-3 subheading with a **short** scan line (aim for one TOC line; roughly **≤8 words**, like “Portal hub updates”). Sentence case; no trailing period on heading lines.
+- **Optional day blurb** — plain text (not a heading) immediately under the date when several same-day items share a theme. Keep it **short**; do not repeat the full `===` titles.
+- Single-ship days: still use `== date` + one `=== description` + bullets (do not put the description only on the date line).
+- Do **not** use `(later)` or similar disambiguators — order sections chronologically (newest-first on the index is fine).
 
-Rules:
+### Detail (`changelog-details/*.adoc`)
 
-- Every level-2 or level-3 changelog heading gets a **mini description** after the em dash (not a bare date).
-- Do **not** use `(later)` or similar disambiguators on dates — order bullets or sections chronologically (newest-first on the index is fine).
-- Sentence case; no trailing period on heading lines.
+```asciidoc
+= 2026-10-16
+
+== Linkinator hover bar and chrome exclusions
+```
+
+Level-1 is the date only; level-2 is the same short description as the matching `===` on the index.
+
+### Same calendar day
+
+One **`== YYYY-MM-DD`** per calendar day on the index. Multiple ships that day get multiple **`===`** sections (and matching detail pages). Do not merge unrelated ships into one bullet list without subheadings.
 
 ### Conform older entries
 
 When you **touch** a repo changelog:
 
-1. Normalize headings to ` — ` (em dash) + description.
-2. Align detail titles to `YYYY-MM-DD — description`.
+1. Normalize index dates to bare `== YYYY-MM-DD` and move descriptions to `===` (or `==` on detail pages).
+2. Align detail titles to `= YYYY-MM-DD` + `== description`.
 3. Do not rename detail **files** unless the user asks (`YYYY-MM-DD - slug.adoc`).
+
+Do **not** use em dashes in published changelog **headings** for this layout (filenames still use ASCII ` - `).
 
 ## Create or backfill
 
