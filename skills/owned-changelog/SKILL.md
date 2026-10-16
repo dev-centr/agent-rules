@@ -25,33 +25,49 @@ If the repo already has a changelog, **match that style** (layout, tense, headin
 
 Use a **Unicode em dash** (`—`, U+2014) between the date and a short scan line. Do **not** use `--`, ` - `, or en dash (`–`) in published headings.
 
-**Index** (Antora level-2):
-
-```asciidoc
-== 2026-10-16 — Linkinator hover bar and chrome exclusions
-```
-
-**Detail** (Antora level-1): same date + em dash + description (may be slightly longer than the index line; keep the same voice).
+**Detail** (Antora level-1):
 
 ```asciidoc
 = 2026-10-16 — Linkinator hover bar and chrome exclusions
 ```
 
+### Same calendar day — pick a layout
+
+**A. Peer sections (good for scrolling the page)** — repeat the date when each ship deserves its own one-line summary:
+
+```asciidoc
+== 2026-10-16 — Linkinator hover bar and chrome exclusions
+== 2026-10-16 — Facto stack and site search
+```
+
+**B. Grouped under one date (good when several small same-day items share a day)** — one level-2 date line plus level-3 topics that appear in the **page TOC** (right sidebar):
+
+```asciidoc
+:toclevels: 3
+
+== 2026-10-16 — Portal hub updates
+
+=== Linkinator hover bar and chrome exclusions
+* …
+=== Facto stack and site search
+* …
+```
+
+Use **A** when each entry is a distinct story users should skim from level-2 headings. Use **B** when one date banner plus topical `===` lines keeps the timeline tidy and TOC still lists each topic. Do **not** merge unrelated ships into one bullet list without subheadings.
+
 Rules:
 
-- Every index entry gets a **mini description** after the em dash (not a bare `== 2026-09-08`).
-- **One `== YYYY-MM-DD —` section per calendar day** on the index. Additional work that lands the same day extends that section (new bullets, detail links)—do **not** add a second date heading or `(later)` disambiguators.
-- Same-day **sequence**: order bullets chronologically; say so in prose when it matters (`same day, after …`). Split detail pages are fine; the index stays one section.
-- Sentence case for the description; no trailing period on the heading line.
+- Every level-2 or level-3 changelog heading gets a **mini description** after the em dash (not a bare date).
+- Do **not** use `(later)` or similar disambiguators on dates — order bullets or sections chronologically (newest-first on the index is fine).
+- Sentence case; no trailing period on heading lines.
 
 ### Conform older entries
 
-When you **touch** a repo changelog for any reason, scan the index and detail pages:
+When you **touch** a repo changelog:
 
-1. Replace legacy ` -- `, bare dates, or wrong dash characters in headings with ` — ` + description.
-2. **Merge duplicate date headings** on the index into a single `==` section with ordered bullets and links to each detail page.
-3. Align detail page titles to `YYYY-MM-DD — description` (drop prefixes like `Changelog detail:` unless mid-migration).
-4. Do not rename detail **files** unless the user asks (paths stay `YYYY-MM-DD - slug.adoc`).
+1. Normalize headings to ` — ` (em dash) + description.
+2. Align detail titles to `YYYY-MM-DD — description`.
+3. Do not rename detail **files** unless the user asks (`YYYY-MM-DD - slug.adoc`).
 
 ## Create or backfill
 
