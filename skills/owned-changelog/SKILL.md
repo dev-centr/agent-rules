@@ -56,7 +56,7 @@ Portal hub updates.
 
 Level-1 is the date only; level-2 is the same short description as the matching `===` on the index.
 
-**Nav audit:** detail pages are intentionally omitted from `nav.adoc`. Put `:hide-from-navtree:` and `:navtree-parent: changelog.adoc` on each `changelog-details/*.adoc` file so `nav-drift --require-in-nav` and SoftNav breadcrumbs/nav injection treat them as deliberate xref-only pages.
+**Nav audit:** detail pages are intentionally omitted from `nav.adoc`. Put `:hide-page:` (or `:hide-from-navtree:`) and `:navtree-parent: changelog.adoc` on each `changelog-details/*.adoc` file so `nav-drift --require-in-nav` and SoftNav breadcrumbs/nav injection treat them as deliberate xref-only pages (`:hide-page:` = hidden from left nav tree only; page stays published).
 
 ### Same calendar day
 
