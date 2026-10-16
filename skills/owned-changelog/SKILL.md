@@ -40,8 +40,8 @@ Use a **Unicode em dash** (`—`, U+2014) between the date and a short scan line
 Rules:
 
 - Every index entry gets a **mini description** after the em dash (not a bare `== 2026-09-08`).
-- Same calendar day, multiple ships: separate `==` sections, each with its own em-dash description.
-- Optional disambiguator before the em dash: `== 2026-09-01 (later) — tgc demo and 0.2.0 design notes`.
+- **One `== YYYY-MM-DD —` section per calendar day** on the index. Additional work that lands the same day extends that section (new bullets, detail links)—do **not** add a second date heading or `(later)` disambiguators.
+- Same-day **sequence**: order bullets chronologically; say so in prose when it matters (`same day, after …`). Split detail pages are fine; the index stays one section.
 - Sentence case for the description; no trailing period on the heading line.
 
 ### Conform older entries
@@ -49,8 +49,9 @@ Rules:
 When you **touch** a repo changelog for any reason, scan the index and detail pages:
 
 1. Replace legacy ` -- `, bare dates, or wrong dash characters in headings with ` — ` + description.
-2. Align detail page titles to the same `YYYY-MM-DD — description` pattern (drop prefixes like `Changelog detail:` unless the repo already standardized on something else and you are mid-migration).
-3. Do not rename detail **files** unless the user asks (paths stay `YYYY-MM-DD - slug.adoc`).
+2. **Merge duplicate date headings** on the index into a single `==` section with ordered bullets and links to each detail page.
+3. Align detail page titles to `YYYY-MM-DD — description` (drop prefixes like `Changelog detail:` unless mid-migration).
+4. Do not rename detail **files** unless the user asks (paths stay `YYYY-MM-DD - slug.adoc`).
 
 ## Create or backfill
 
