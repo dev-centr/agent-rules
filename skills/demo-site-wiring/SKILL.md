@@ -15,7 +15,7 @@ description: >-
   window, variant selector scoped, non-interactive mockup, fixed aspect mockup,
   demo harness, product facsimile, facsimile bezel, demo controls strip,
   Edge Bar, Antora extension demo site, facto-stack demo, demo-data,
-  theme-demo content source, stack demo playbook.
+  demo-pages content source, stack demo playbook.
 ---
 
 # Demo site wiring
@@ -39,7 +39,7 @@ Pair with skill `antora-org-site` when the org's teaching surface is Antora; pai
 When the demo is an **Antora site** (Valentus + Facto / extension pack), not a standalone HTML desk:
 
 1. Compose **git `content.sources`** — do not bulk-copy baseline fixtures into the extension repo. Authority: skill `antora-org-site` → [demo-data.md](../antora-org-site/demo-data.md) and https://github.com/antora-supplemental/demo-data.
-2. **Baseline:** `demo-data` `docs/theme-demo` for body richness; **generic syntax:** `antora-demo` `samples` on the org hub only.
+2. **Baseline:** `demo-data` `docs/demo-pages` for body richness; **generic syntax:** `antora-demo` `samples` on the org hub only.
 3. **Stack-only pages** stay in `{repo}/demo/docs` or minimal `examples/docs` for CI.
 4. **Shared supplements** under `demo-data/docs/fixtures/{scope}/` when two demos reuse the same forest; wire `siteNavTree.include` when using site-nav-tree.
 5. Still wire the **published demo URL** into org marketing / README; org **demos browser** rules above apply when the org uses a non-Antora demos index — Antora stack demos often ship on `*.github.io` with README + hub cross-links instead.

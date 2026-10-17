@@ -13,9 +13,9 @@ Skill `demo-site-wiring` covers **interactive org demos** (HCI-Nerdz-style Pages
 
 | Layer | Where | Use when |
 | --- | --- | --- |
-| **Baseline** | `demo-data` → `docs/theme-demo` (`theme-demo` component) | Rich body fixtures: nav, xrefs, admonitions, tables, code, images, extension-oriented samples. Wire as a git `content.sources` entry — **not** copied into each extension repo. |
+| **Baseline** | `demo-data` → `docs/demo-pages` (`demo-pages` component) | Rich body fixtures: nav, xrefs, admonitions, tables, code, images, extension-oriented samples. Wire as a git `content.sources` entry — **not** copied into each extension repo. |
 | **Extension supplement** | `demo-data` → `docs/fixtures/{scope}/` | Shared smoke when **two or more** demos need the same pages (e.g. `site-nav-tree` → `catalog-alpha`, `catalog-beta`). One `start_path` per supplement folder; playbooks may add multiple sources from the same clone URL. |
-| **Extension-local** | `{extension}/examples/docs` or `{pack}/demo/docs` | Minimal CI / single-demo proof for **that** package only. Do **not** duplicate baseline pages; compose `theme-demo` in the playbook instead. |
+| **Extension-local** | `{extension}/examples/docs` or `{pack}/demo/docs` | Minimal CI / single-demo proof for **that** package only. Do **not** duplicate baseline pages; compose `demo-pages` in the playbook instead. |
 
 **Generic AsciiDoc syntax** (language tutorial samples): keep https://github.com/antora-supplemental/antora-demo (`samples` component) on the org docs hub. Do **not** merge `antora-demo` into `demo-data` unless the org wants one clone URL for everything.
 
@@ -30,7 +30,7 @@ Styles and design tokens stay in Valentus `ui.bundle` and extension supplemental
 
 Typical stack demo (reference: `facto-stack/demo/playbook.yml`):
 
-1. `demo-data` `docs/theme-demo` — baseline body catalog.
+1. `demo-data` `docs/demo-pages` — baseline body catalog.
 2. Consumer `demo/docs` (or `examples/docs`) — stack-only behavior proofs (Mermaid client, lightbox, SoftNav, …).
 3. Optional `demo-data` `docs/fixtures/{scope}` — shared multi-component forest or other supplement.
 4. `@antora-supplemental/facto-stack` `profile: demo` (or explicit extension list) for Lunr, page-context, Kroki, etc.

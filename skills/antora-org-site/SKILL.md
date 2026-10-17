@@ -7,7 +7,7 @@ description: >-
   Valentus; Valentus theme; facto-stack; Facto; antora-facto; compose pack; KaTeX;
   stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML;
   docs audience; visitor POV; naive reader docs; antora-extension-consumers;
-  demo-data, theme-demo, antora-demo samples, content.sources fixtures,
+  demo-data, demo-pages, antora-demo samples, content.sources fixtures,
   extension demo playbook, docs/fixtures, facto-stack demo, supplemental demo
   content, demo data catalog.
 ---
