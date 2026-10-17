@@ -14,7 +14,8 @@ description: >-
   screenshot mockup, static PNG mockup, window chrome mockup, traffic light
   window, variant selector scoped, non-interactive mockup, fixed aspect mockup,
   demo harness, product facsimile, facsimile bezel, demo controls strip,
-  Edge Bar.
+  Edge Bar, Antora extension demo site, facto-stack demo, demo-data,
+  theme-demo content source, stack demo playbook.
 ---
 
 # Demo site wiring
@@ -32,6 +33,16 @@ Standing UX for **interactive explainers / product-idea demos** on owned org sit
 3. Include **lay-person text** for how the idea works and how it fits a real workflow (not only engineer shorthand).
 
 Pair with skill `antora-org-site` when the org's teaching surface is Antora; pair with the org site's existing demos catalog (e.g. HCI-Nerdz `src/lib/demos.ts`) when that is the browser.
+
+## Antora stack demos (`antora-supplemental`)
+
+When the demo is an **Antora site** (Valentus + Facto / extension pack), not a standalone HTML desk:
+
+1. Compose **git `content.sources`** — do not bulk-copy baseline fixtures into the extension repo. Authority: skill `antora-org-site` → [demo-data.md](../antora-org-site/demo-data.md) and https://github.com/antora-supplemental/demo-data.
+2. **Baseline:** `demo-data` `docs/theme-demo` for body richness; **generic syntax:** `antora-demo` `samples` on the org hub only.
+3. **Stack-only pages** stay in `{repo}/demo/docs` or minimal `examples/docs` for CI.
+4. **Shared supplements** under `demo-data/docs/fixtures/{scope}/` when two demos reuse the same forest; wire `siteNavTree.include` when using site-nav-tree.
+5. Still wire the **published demo URL** into org marketing / README; org **demos browser** rules above apply when the org uses a non-Antora demos index — Antora stack demos often ship on `*.github.io` with README + hub cross-links instead.
 
 ## Mandatory page structure (top to bottom)
 

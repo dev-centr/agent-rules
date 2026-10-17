@@ -6,12 +6,15 @@ description: >-
   docs; one Antora site per org; Lunr; antora-search-chat; docs.devcentr.org;
   Valentus; Valentus theme; facto-stack; Facto; antora-facto; compose pack; KaTeX;
   stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML;
-  docs audience; visitor POV; naive reader docs; antora-extension-consumers.
+  docs audience; visitor POV; naive reader docs; antora-extension-consumers;
+  demo-data, theme-demo, antora-demo samples, content.sources fixtures,
+  extension demo playbook, docs/fixtures, facto-stack demo, supplemental demo
+  content, demo data catalog.
 ---
 
 # Antora org site
 
-Minimum bar for a published Antora site in an owned org. Detail and hub table: [reference.md](reference.md). Encoding/mojibake: skill `fix-docs-encoding` (transcode, not a refactor).
+Minimum bar for a published Antora site in an owned org. Detail and hub table: [reference.md](reference.md). **Mock content for stack/extension demos:** [demo-data.md](demo-data.md). Encoding/mojibake: skill `fix-docs-encoding` (transcode, not a refactor).
 
 ## Audience role / POV
 

@@ -268,7 +268,7 @@ Rules of thumb:
 
 - **Diátaxis** (tutorials, how-to, explanation, reference).
 - Public README face: skill **`public-readme`**. Blanks: `dev-centr/readme-template`. Hand-edit per repo.
-- Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm; lean theme + **Facto** compose pack — Valentus + Lunr + STEM + Kroki + **page-context** — `agents/engineering/antora.md`). Encoding: skill **`fix-docs-encoding`**. Page metadata: `page-*` attrs + `ifndef::page-context-active[]` fallback (`general/documentation.md`).
+- Antora sites / hubs: skill **`antora-org-site`** (Valentus is a suggestion — confirm; lean theme + **Facto** compose pack — Valentus + Lunr + STEM + Kroki + **page-context** — `agents/engineering/antora.md`). **Stack/extension mock content:** `demo-data` baseline + supplements via git `content.sources` — skill **`antora-org-site`** → `demo-data.md`; catalog https://docs.antora-supplemental.org/docs/ROOT/proposals/demo-data-catalog.html. Encoding: skill **`fix-docs-encoding`**. Page metadata: `page-*` attrs + `ifndef::page-context-active[]` fallback (`general/documentation.md`).
 - Changelogs: skill **`owned-changelog`**. Shippable apps: skill **`ship-app`**. PRs: skill **`draft-pr`**.
 
 ## Antora page title = nav label (one name)
