@@ -31,6 +31,10 @@ Anti-pattern: a website `docs:build` (or similar) that writes Antora HTML into m
 
 Cross-ref: skill `bootstrap-org` → Site vs docs.
 
+## Hub home component
+
+Org hub aggregators use component **`home`** / title **Home**, playbook `site.start_page: home::index.adoc`, sidebar first item **Overview**, portal-branded hub index H1 with `:navtitle: Overview`. Do not name the hub component `docs` when Pages base is already `/docs`. Skill `hub-home-overview`; Dev-Centr publishing page `publishing/hub-home-component.adoc`.
+
 ## What to do instead
 
 1. Keep component content in the product repo under `docs/` + `docs/antora.yml` (docs close to code).

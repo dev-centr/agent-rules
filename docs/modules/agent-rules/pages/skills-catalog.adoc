@@ -73,6 +73,9 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 | `antora-org-site`
 | Antora site or docs hub; Lunr; one public site per org
 
+| `hub-home-overview`
+| Hub component `home`; Overview nav; portal H1; avoid `/docs/docs/`
+
 | `public-readme`
 | Public README.md / README.adoc; Best-README chrome
 

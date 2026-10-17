@@ -316,6 +316,19 @@ Do **not** invent `overview.adoc`. Do **not** advertise `index.html` (or `overvi
 
 Component / module **start pages** stay `ROOT/pages/index.adoc` (Antora default `start_page`) unless `antora.yml` sets a different `start_page`.
 
+### Hub aggregator component (`home`)
+
+Org **hub** playbooks (`{org}/docs`) use a dedicated component:
+
+| Piece | Rule |
+| --- | --- |
+| `antora.yml` | `name: home`, `title: Home` |
+| Playbook | `site.start_page: home::index.adoc`; sources use `start_path: docs` (repo folder, not component id) |
+| Hub index | Portal-branded H1; `:navtitle: Overview`; first nav item `* xref:index.adoc[Overview]` |
+| Avoid | Component named `docs` when `site.url` already ends with `/docs` (`/docs/docs/` URLs) |
+
+Product components keep normal title rules below. Detail: skill `hub-home-overview`; Dev-Centr hub page `publishing/hub-home-component.adoc`.
+
 **With `@antora-supplemental/site-nav-tree`:** the component root already links to the start page. Do **not** also put `* xref:index.adoc[Component Title]` as the first nav item — that creates Component > Component. Linked parents are for **section** landings inside the component (`Email`, `How-to Guides`), not for repeating the component title. The extension also unwraps that duplicate when present.
 
 ### Antora nav: never mix `.Title` with sibling linked parents

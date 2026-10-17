@@ -39,6 +39,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `write-a-skill` | author/edit agent skill, `SKILL.md`, skill frontmatter, YAML `description`; trigger words | active | Harness-neutral authoring; layout may use harness-specific scaffolds |
 | `ship-app` | scaffolding/shipping GUI, CLI, TUI, library, game, service | active | Software Product Essentials |
 | `antora-org-site` | Antora site, docs site, docs hub, antora theme, playbook, antora-playbook, GitHub Pages for docs; Valentus; facto-stack; Facto; antora-facto; compose pack; Kroki; Mermaid | active | Valentus lean; facto-stack compose pack — confirm |
+| `hub-home-overview` | hub home component, `name: home`, `site.start_page: home::index.adoc`, Overview nav, portal H1, `/docs/docs/` avoid, Dev-Centr hub pattern | active | Pairs with `antora-org-site` |
 | `update-consumers` | update consumers, bump dependents, recursive fan-out, consumers of consumers, discover dependents after ship, specialization scan | active | Generic BFS; loads `update-consumers.when` specializations |
 | `antora-extension-consumers` | Antora extension consumers, antora-supplemental topics, `topic:antora-search-chat`, SemVer git pins, uses-* rename | active | specializes: update-consumers; topic = repo name |
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
