@@ -22,7 +22,7 @@ endif::[]
 == 2026-10-17 - Docs hub link-cache-invalidate dispatch
 
 * Reusable workflow `.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml` (`workflow_call`) and exemplar caller `notify-docs-hub-link-invalidate.yml` (push `docs/**`, `skills/**` on `main`). Org secret `DOCS_HUB_DISPATCH_TOKEN`.
-* Skill `docs-hub-link-invalidate` (multi-hub registry + per-org `DOCS_HUB_DISPATCH_TOKEN` checklist); hub how-to on `dev-centr/docs` (`docs-site/notify-docs-hub-link-changes.adoc`).
+* Skill `docs-hub-link-invalidate` (multi-hub registry + per-org `DOCS_HUB_DISPATCH_TOKEN` checklist); hub how-to in `general-knowledge` (`how-to/notify-docs-hub-link-changes.adoc`; `home::docs-site/…` aliases).
 
 == 2026-10-16 - Hub home component (Overview + portal H1)
 
