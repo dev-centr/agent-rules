@@ -1,0 +1,76 @@
+# Reusable: poke an org docs hub with link-cache-invalidate (star topology — sources → hub).
+# Call from content repos after docs/link edits:
+#
+#   jobs:
+#     notify:
+#       uses: dev-centr/agent-rules/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main
+#       secrets:
+#         DOCS_HUB_DISPATCH_TOKEN: ${{ secrets.DOCS_HUB_DISPATCH_TOKEN }}
+#       with:
+#         sources: 'home::index.adoc'
+#
+# Secret: org/repo DOCS_HUB_DISPATCH_TOKEN — token with permission to create repository_dispatch on the hub.
+name: Docs hub link-cache-invalidate dispatch
+
+on:
+  workflow_call:
+    inputs:
+      sources:
+        description: Comma-separated Antora source pages to force live recheck (optional)
+        type: string
+        required: false
+        default: ''
+      urls:
+        description: Comma-separated outbound URLs to force live recheck (optional)
+        type: string
+        required: false
+        default: ''
+      hub_repo:
+        description: Owner/repo of the aggregated docs hub
+        type: string
+        default: dev-centr/docs
+      ref:
+        description: Hub git ref hint in dispatch payload (checkout on hub defaults to main)
+        type: string
+        default: main
+    secrets:
+      DOCS_HUB_DISPATCH_TOKEN:
+        description: PAT or GitHub App installation token that can dispatch into the hub repo
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Dispatch link-cache-invalidate
+        env:
+          GH_TOKEN: ${{ secrets.DOCS_HUB_DISPATCH_TOKEN }}
+          HUB: ${{ inputs.hub_repo }}
+          SOURCES: ${{ inputs.sources }}
+          URLS: ${{ inputs.urls }}
+          REF: ${{ inputs.ref }}
+          SOURCE: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "DOCS_HUB_DISPATCH_TOKEN not set; skip hub notify (configure org secret or use gh api locally)."
+            exit 0
+          fi
+          args=(
+            -f event_type=link-cache-invalidate
+            -f "client_payload[source]=${SOURCE}"
+            -f "client_payload[ref]=${REF}"
+            -f "client_payload[sha]=${SHA}"
+          )
+          if [ -n "$SOURCES" ]; then
+            args+=(-f "client_payload[sources]=${SOURCES}")
+          fi
+          if [ -n "$URLS" ]; then
+            args+=(-f "client_payload[urls]=${URLS}")
+          fi
+          gh api "repos/${HUB}/dispatches" "${args[@]}"
+          echo "Dispatched link-cache-invalidate → ${HUB} (source=${SOURCE})"

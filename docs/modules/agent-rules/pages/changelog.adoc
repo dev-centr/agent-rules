@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-17 - Docs hub link-cache-invalidate dispatch
+
+* Reusable workflow `.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml` (`workflow_call`) and exemplar caller `notify-docs-hub-link-invalidate.yml` (push `docs/**`, `skills/**` on `main`). Org secret `DOCS_HUB_DISPATCH_TOKEN`.
+* Skill `docs-hub-link-invalidate`; hub how-to on `dev-centr/docs` (`docs-site/notify-docs-hub-link-changes.adoc`).
+
 == 2026-10-16 - Hub home component (Overview + portal H1)
 
 * New skill `hub-home-overview`: org hub `name: home`, `site.start_page: home::index.adoc`, sidebar **Overview**, portal-branded index H1 with `:navtitle: Overview`, avoid component `docs` when `site.url` ends with `/docs`.

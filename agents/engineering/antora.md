@@ -41,6 +41,10 @@ Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for
 - Valentus companion: package `ui/partials/nav-menu.hbs` in hub `supplemental-ui`.
 - Facto documents it as an optional neighbor; Valentus stays lean.
 
+## Hub dispatch (content → aggregator)
+
+Multi-repo hubs rebuild on **`repository_dispatch`** (star topology). Dev-Centr hub (`dev-centr/docs`) listens for `extension-updated` and **`link-cache-invalidate`** (surgical link-validator env from payload). Default caller: reusable workflow + secret **`DOCS_HUB_DISPATCH_TOKEN`** — skill **`docs-hub-link-invalidate`**.
+
 ## Extension consumers (discovery + recursive updates)
 
 Antora topic/pin rules: skill **`antora-extension-consumers`** (topic = upstream **repo name**, not `uses-*`). Recursive fan-out for any lib: skill **`update-consumers`** (scans for specializations such as `antora-extension-consumers`).
