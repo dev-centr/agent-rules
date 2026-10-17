@@ -47,7 +47,7 @@ Multi-repo hubs rebuild on **`repository_dispatch`** (star topology). Dev-Centr 
 
 ## Extension consumers (discovery + recursive updates)
 
-Antora topic/pin rules: skill **`antora-extension-consumers`** (topic = upstream **repo name**, not `uses-*`). Recursive fan-out for any lib: skill **`update-consumers`** (scans for specializations such as `antora-extension-consumers`).
+Antora topic/pin rules: skill **`antora-extension-consumers`** (topic = upstream **repo name**, not `uses-*`; **direct deps only** — do not tag transitive facto-stack members on hub playbooks). Recursive fan-out for any lib: skill **`update-consumers`** (scans for specializations such as `antora-extension-consumers`). Hub topic checklist: antora-supplemental/docs `hub-github-topics.adoc`.
 
 ## Related content architecture
 

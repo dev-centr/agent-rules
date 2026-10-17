@@ -19,6 +19,10 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-17 - Hub GitHub topics (direct deps only)
+
+* Skill `antora-extension-consumers`: **transitive exclusion** — hub playbooks tag direct `require:` / `package.json` / UI bundle pins only, not facto-stack member extensions. `agents/engineering/antora.md` and `antora-org-site` reference updated. Canonical doc: antora-supplemental/docs `hub-github-topics.adoc`.
+
 == 2026-10-17 - Docs hub link-cache-invalidate dispatch
 
 * Reusable workflow `.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml` (`workflow_call`) and exemplar caller `notify-docs-hub-link-invalidate.yml` (push `docs/**`, `skills/**` on `main`). Org secret `DOCS_HUB_DISPATCH_TOKEN`.

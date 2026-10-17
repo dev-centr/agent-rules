@@ -85,7 +85,7 @@ Rules:
 - **facto-stack** compose pack (`antora-supplemental/facto-stack`): Valentus + Lunr + STEM/math + Kroki diagrams + **page-context** (`page-*` metadata). Prefer facto-stack / its playbook fragment over stuffing defaults into Valentus `v2`. Multi-component hubs: see facto-stack / site-nav-tree for the recommended **site-nav-tree + nav-typology** (+ diataxis) pairing.
 - **Demo fixtures:** baseline `demo-pages` + optional `docs/fixtures/*` in `antora-supplemental/demo-data`; compose via git `content.sources`. Detail: [demo-data.md](demo-data.md).
 - Every published site: `@antora/lunr-extension` plus the AI search/help extension from `antora-supplemental` (`antora-search-chat`; see also `antora-ai-help-extension`). Details in skill `antora-org-site`.
-- **Extension consumers:** skill **`antora-extension-consumers`** (topic = upstream repo name, SemVer pins) + skill **`update-consumers`** (recursive fan-out; specialization scan).
+- **Extension consumers:** skill **`antora-extension-consumers`** (topic = upstream repo name, SemVer pins; **direct deps only** on hub playbooks — do not tag transitive facto-stack members) + skill **`update-consumers`** (recursive fan-out; specialization scan). Hub checklist: antora-supplemental/docs `hub-github-topics.adoc`.
 - **Soft:** Prefer transparent **`logo-mark`** for docs chrome/hero; plate-backed for favicon/avatar (skill `github-profile-assets`).
 - **Soft:** Style `page-*` chrome in `@antora-supplemental/page-context`, not per-hub CSS forks of the same presentation.
 
