@@ -9,7 +9,8 @@ description: >-
   docs audience; visitor POV; naive reader docs; antora-extension-consumers;
   demo-data, demo-pages, antora-demo samples, content.sources fixtures,
   extension demo playbook, docs/fixtures, facto-stack demo, supplemental demo
-  content, demo data catalog.
+  content, demo data catalog, all documentation in docs folder, docs/ layout,
+  start_path layout, modules at repo root, tools-docs, platforms-docs.
 ---
 
 # Antora org site
@@ -44,6 +45,7 @@ Before drafting or revising any page under `docs/`, read **Audience role / point
 11. A **member-only** sister Antora site is allowed (private playbook + Access). See [reference.md](reference.md).
 12. Apply skill **`web-crawlability`** to public hubs: sitemap + robots artifacts, canonical indexable URLs, and CI checks that representative pages contain meaningful raw HTML.
 13. **Soft:** Style `page-*` metadata presentation in **`@antora-supplemental/page-context`** (point of interpretation), not via one-off per-hub supplemental CSS for the same chrome.
+14. **All documentation lives under `docs/`.** A repo's Antora component sits at `docs/` (`docs/antora.yml` + `docs/modules/<MODULE>/{pages,partials,images,…}`), wired with `start_path: docs`. Never scatter a `modules/` tree at the repo root — no `start_path` points there, so it is dead weight that looks published but is not. Splitting or moving pages means moving them **inside** `docs/modules/…` (or rehoming them to another component's `docs/`), keeping the component's `nav.adoc` in step. **Sole exception:** a multi-component hub aggregator repo (`{org}/docs`) may add sibling `<component>-docs/` start paths (`tools-docs/`, `platforms-docs/`) — one `start_path` defines exactly one component, and a synthetic aggregate component needs its own descriptor whose `nav:` lists modules that live in other repos. Each sibling keeps the same internal `modules/…` layout, its source is listed **last** among that component's sources in every playbook, and the README's Project Structure explains why it is not under `docs/`. Document the layout in the repo README whenever you add, split, or move documentation.
 
 Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
 
