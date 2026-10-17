@@ -5,12 +5,23 @@ description: >-
   link validator cache invalidation, LINK_VALIDATOR_INVALIDATE_SOURCES,
   LINK_VALIDATOR_INVALIDATE_URLS, aggregator hub notify, multi-repo Antora
   star topology, DOCS_HUB_DISPATCH_TOKEN, extension-updated sibling pattern,
-  dev-centr/docs deploy, content source poke hub after docs/** push.
+  dev-centr/docs, dlang-supplemental/docs, antora-supplemental/docs deploy,
+  content source poke hub after docs/** push.
 ---
 
 # Docs hub link-cache invalidation
 
-Star topology: **content repos dispatch → org hub rebuilds** with optional surgical link-check bypass. Same family as `docs-source-updated` / `extension-updated`; hub is always `dev-centr/docs` unless `hub_repo` is overridden.
+Star topology: **content repos dispatch → org hub rebuilds** with optional surgical link-check bypass. Same family as `docs-source-updated` / `extension-updated`.
+
+## Multi-hub registry (Ryan production aggregators)
+
+| Org | Hub repo | Live site | Org secret | Reusable caller workflow | Hub how-to (source) | Exemplar content caller |
+| --- | --- | --- | --- | --- | --- | --- |
+| dev-centr | `dev-centr/docs` | https://docs.devcentr.org | `DOCS_HUB_DISPATCH_TOKEN` | `dev-centr/.github/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main` (also `dev-centr/agent-rules/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main`) | `docs-site/notify-docs-hub-link-changes.adoc` | `dev-centr/agent-rules` (`notify-docs-hub-link-invalidate.yml`) |
+| dlang-supplemental | `dlang-supplemental/docs` | https://dlang-supplemental.github.io/docs | `DOCS_HUB_DISPATCH_TOKEN` | `dlang-supplemental/.github/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main` | `notify-docs-hub-link-changes.adoc` | `dlang-supplemental/asciidoctor-d` |
+| antora-supplemental | `antora-supplemental/docs` | https://docs.antora-supplemental.org | `DOCS_HUB_DISPATCH_TOKEN` | `antora-supplemental/.github/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main` | `notify-docs-hub-link-changes.adoc` | `antora-supplemental/asciidoc-interactive` |
+
+Override `hub_repo` in the reusable workflow when testing a fork. Link-validator surgical env requires `@antora-supplemental/link-validator` **v0.2.2+** (direct pin or pnpm override through Facto stack).
 
 ## When to dispatch
 
@@ -21,7 +32,7 @@ Do **not** embed tokens in playbooks or static site output.
 
 ## Hub contract (subscriber)
 
-Repo: `dev-centr/docs` — workflow `.github/workflows/deploy.yml`.
+Each hub workflow `.github/workflows/deploy.yml` listens for **`link-cache-invalidate`**.
 
 | Payload field | Hub build env / behavior |
 | --- | --- |
@@ -30,36 +41,37 @@ Repo: `dev-centr/docs` — workflow `.github/workflows/deploy.yml`.
 | `ref` | Checkout ref (default `main`) |
 | `source`, `sha` | Caller identity (logging) |
 
-Event type: **`link-cache-invalidate`**.
-
-Hub doc (published): https://docs.devcentr.org/docs-site/notify-docs-hub-link-changes.html — source `dev-centr/docs` `docs-site/notify-docs-hub-link-changes.adoc`.
-
 Link-validator env reference: https://github.com/antora-supplemental/asciidoc-link-validator (v0.2.2+).
+
+Cross-hub narrative: https://docs.antora-supplemental.org/antora-deployment/#auto-rebuild-when-content-sources-or-extensions-update
 
 ## Org secret
 
-Store **`DOCS_HUB_DISPATCH_TOKEN`** at org (or repo) level: fine-grained PAT or GitHub App installation token with permission to create `repository_dispatch` on the hub repo (`actions: write` on `dev-centr/docs` or equivalent).
+Store **`DOCS_HUB_DISPATCH_TOKEN`** at org (or repo) level: fine-grained PAT or GitHub App installation token with permission to create `repository_dispatch` on the **target hub repo** (`actions: write` on that repo, or equivalent).
 
 ## Reusable workflow (caller)
 
-Path: `dev-centr/agent-rules/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml`
+Pick the row for the org (defaults match that org's hub):
 
 ```yaml
 jobs:
   notify:
-    uses: dev-centr/agent-rules/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main
+    uses: ORG/.github/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml@main
     secrets:
       DOCS_HUB_DISPATCH_TOKEN: ${{ secrets.DOCS_HUB_DISPATCH_TOKEN }}
     with:
       sources: '' # optional comma-separated paths or page ids
       urls: ''
-      hub_repo: dev-centr/docs
       ref: main
 ```
 
-Exemplar caller: `dev-centr/agent-rules/.github/workflows/notify-docs-hub-link-invalidate.yml` (push `docs/**`, `skills/**` on `main`).
+Dev-Centr agent-rules copy (same contract, default `dev-centr/docs`):
+
+`dev-centr/agent-rules/.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml`
 
 ## Agent one-liner (preferred when already pushing)
+
+Replace `OWNER/docs` with the hub repo from the table:
 
 ```shell
 gh api repos/dev-centr/docs/dispatches \
