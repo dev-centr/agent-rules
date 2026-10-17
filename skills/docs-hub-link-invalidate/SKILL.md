@@ -45,9 +45,17 @@ Link-validator env reference: https://github.com/antora-supplemental/asciidoc-li
 
 Cross-hub narrative: https://docs.antora-supplemental.org/antora-deployment/#auto-rebuild-when-content-sources-or-extensions-update
 
-## Org secret
+## Org secret (checklist)
 
-Store **`DOCS_HUB_DISPATCH_TOKEN`** at org (or repo) level: fine-grained PAT or GitHub App installation token with permission to create `repository_dispatch` on the **target hub repo** (`actions: write` on that repo, or equivalent).
+**One secret name, one token per org** — always **`DOCS_HUB_DISPATCH_TOKEN`**. Do not share one PAT across orgs; each org’s value must only dispatch into that org’s hub (see multi-hub table).
+
+| Org | Token must dispatch into |
+| --- | --- |
+| dev-centr | `dev-centr/docs` |
+| dlang-supplemental | `dlang-supplemental/docs` |
+| antora-supplemental | `antora-supplemental/docs` |
+
+Store at **organization** level (content repos inherit). Fine-grained PAT or GitHub App installation token with `repository_dispatch` on the hub repo. Reusable workflows use `secrets.DOCS_HUB_DISPATCH_TOKEN`; when unset, callers log and skip (exit 0) until admins configure the org secret.
 
 ## Reusable workflow (caller)
 
