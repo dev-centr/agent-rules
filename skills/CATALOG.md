@@ -23,7 +23,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 
 | Skill | Triggers on | Status | Notes |
 | --- | --- | --- | --- |
-| `agent-temp` | temp file, scratch file, curl -o, redirect output, probe script, CSV dump, AGENT_TEMP_ROOT, manual/ agent temp, profile litter | active | Agent-chosen paths only; platform `agent-tools` → `general/agent-temp.md` |
+| `agent-temp` | temp file, scratch file, curl -o, redirect output, probe script, CSV dump, AGENT_TEMP_ROOT, scratch/ agent temp, profile litter | active | Agent-chosen paths only; platform `agent-tools` → `general/agent-temp.md` |
 | `harness-setup` | harness setup, harness.md, new machine, polyglot harness, template boundary, probe harness capabilities | active | Populates `$CODE_ROOT/harness.md`; read `general/harness-boundary.md` |
 | `sync-agent-rules` | skills/rules drift, catalog vs discovery mismatch, broken junction, agent-rules behind origin, `AGENT_RULES_SYNCED_SHA`, `skills-set/` label, sync skills, autoupdate across machines | active | SHA authoritative; human tag `skills-set/YYYY.MM.DD` |
 | `hive-watch` | hive-watch, hive remotes, HIVE_REMOTES_LAST_CHECKED, hive-watch.status.json, daily git fetch, avoid fetch every chat, install hive-watch | active | Tool: `dev-centr/hive-watch`; stamp in `machine.md` |

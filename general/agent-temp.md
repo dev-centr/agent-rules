@@ -11,14 +11,14 @@ Skill agent-temp — no cleanup scripts in this repo; one-off machine tidying is
 | Word | Meaning | Location |
 | --- | --- | --- |
 | **Spill** | Harness overflow the agent **does not control** (hard-coded paths, oversized tool output the IDE writes) | `AGENT_TEMP_ROOT/cursor/…` — **do not move** |
-| **Scratch / temp** | Agent **working files** (redirects, probes, analysis dumps you author) | `AGENT_TEMP_ROOT/manual/YYYY-MM-DD/…` only |
+| **Scratch / temp** | Agent **working files** (redirects, probes, analysis dumps you author) | `AGENT_TEMP_ROOT/scratch/YYYY-MM-DD/…` only |
 
-Do not call agent scratch “spill.” Do not put platform spill under `manual/` or `archive/`.
+Do not call agent scratch “spill.” Do not put platform spill under `scratch/`.
 
 | Track | Agent obligation |
 | --- | --- |
 | Platform spill | Do not move, rename, or organize. Do not invent alternate platform paths. |
-| Scratch / temp | **Required:** `manual/…` or `harness/<name>/…` — not `$env:TEMP`, profile root, repos, or `%userprofile%`. |
+| Scratch / temp | **Required:** `scratch/…` — not `$env:TEMP`, profile root, repos, or `%userprofile%`. |
 
 ## Resolve the root
 
@@ -35,17 +35,17 @@ Record the concrete path in **`harness.md` only**.
 
 ```text
 AGENT_TEMP_ROOT/
-  cursor/                   # platform spill only (do not move)
-  manual/YYYY-MM-DD/          # agent scratch / temp only
-  harness/<harness-name>/     # optional non-Cursor harness temp
-  harness-registry.json5      # optional; platform paths only (JSON5 — comments OK)
+  README.md                   # machine-local index
+  harness-registry.json5      # platform spill paths (JSON5 — comments OK)
+  scratch/YYYY-MM-DD/           # agent scratch only
+  cursor/                     # platform spill only (do not move; optional junction target)
 ```
 
 ## Before writing non-platform temp
 
 Load skill **`agent-temp`**.
 
-1. **`manual/YYYY-MM-DD/`** + **`{purpose}-….{ext}`**
+1. **`scratch/YYYY-MM-DD/`** + **`{purpose}-….{ext}`**
 2. PowerShell: **`$env:USERPROFILE`**, **`$env:LOCALAPPDATA`** — never **`%userprofile%`**
 3. Cite the full path when the user should open the file
 
@@ -53,7 +53,7 @@ Load skill **`agent-temp`**.
 
 **File:** **`harness-registry.json5`** at `AGENT_TEMP_ROOT`. Use **JSON5** (or JSONC-style `//` comments) so the file explains itself — strict `.json` without comments is discouraged.
 
-**Purpose:** index **hard-coded harness temp paths** (platform spill) on this machine. It does not list `manual/` files. Paths only — never secrets or file bodies.
+**Purpose:** index **hard-coded harness temp paths** (platform spill) on this machine. It does not list `scratch/` files. Paths only — never secrets or file bodies.
 
 When tool output names a platform spill path, append or update an entry (once per path per session): `id`, `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`, optional `//` note on the entry.
 
