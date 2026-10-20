@@ -21,7 +21,8 @@ Required location for working files you author:
 ## Platform temp (hard-coded)
 
 - **Do not move** harness spill (`agent-tools`, etc.) and **do not mirror** it under `AGENT_TEMP_ROOT`.
-- If tool output cites a new platform path, optionally update **`AGENT_TEMP_ROOT/harness-registry.json5`** (JSON5 with `//` comments; native `platformPath` only).
+- Concrete spill paths usually appear **in tool output** when the harness writes them; trust that path for the session.
+- **`harness-registry.json5`** (optional): **one spill root per harness** — patterns only, not per-workspace lists. Update on harness change or probe, not every new project folder.
 
 ## One-off machine cleanup
 

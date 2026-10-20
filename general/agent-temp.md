@@ -52,23 +52,23 @@ Load skill **`agent-temp`**.
 
 **File:** **`harness-registry.json5`** at `AGENT_TEMP_ROOT`. Use **JSON5** (or JSONC-style `//` comments) so the file explains itself — strict `.json` without comments is discouraged.
 
-**Purpose:** index **native** hard-coded harness temp paths (platform spill) on this machine. It does not list `scratch/` files. Paths only — never secrets or file bodies.
+**Purpose:** machine-local cheat sheet of **where each harness spills** — **one spill root per harness**, not a catalog of every workspace or artifact. It does not list `scratch/` files. Patterns or paths only — never secrets or file bodies.
 
-When tool output names a platform spill path, append or update an entry (once per path per session): `id`, `harness`, `platformPath`, `lastSeen`, optional `lastArtifact`, optional `//` note on the entry.
+**How agents learn spill:** when the harness redirects oversized tool output, the **tool result usually cites the concrete file path**. Treat that as authoritative for the session. The registry orients you to the **root pattern** (`HARNESS_NAME` from `$CODE_ROOT/harness.md`); do not enumerate per-repo paths here.
+
+Update the registry when **`HARNESS_NAME` changes**, you add a **second harness**, or probe shows the **platform changed its spill root** — not on every new workspace slug.
 
 ```json5
 // harness-registry.json5 — see general/agent-temp.md
 {
-  schemaVersion: 1,
+  schemaVersion: 3,
   agentTempRoot: 'C:\\…\\AgentTemp',
   updated: '2026-10-20T00:00:00Z',
-  entries: [
+  spillRoots: [
     {
-      id: 'cursor:projects:empty-window',
-      harness: 'cursor', // HARNESS_NAME from harness.md
-      kind: 'platform-hard-coded',
-      platformPath: 'C:\\Users\\…\\.cursor\\projects\\empty-window\\agent-tools',
-      lastSeen: '2026-10-20T00:00:00Z',
+      harness: 'cursor', // matches HARNESS_NAME in harness.md
+      spillRoot: '%USERPROFILE%\\.cursor\\projects\\<workspace-slug>\\agent-tools',
+      // Windows: Cursor may also use %USERPROFILE%\\agent-tools for some sessions.
     },
   ],
 }
