@@ -1,17 +1,23 @@
 # Global agent temp location
 
 <!---
-Portable policy: one harness-neutral tree for agent and platform temporary files.
-Machine path lives in $CODE_ROOT/harness.md as AGENT_TEMP_ROOT.
+Portable policy: one harness-neutral tree for temporary files.
+Machine path: $CODE_ROOT/harness.md → AGENT_TEMP_ROOT.
+Skill agent-temp loads for agent-chosen paths (not platform-hard-coded spill).
 --->
 
-## Goal
+## Two tracks (do not confuse them)
 
-Keep **all agentic temp files** under one **global** root so you can compare sources (Cursor platform vs agent-written vs other harnesses) without littering the profile, `%userprofile%` mistakes, or git repos.
+| Track | Who picks the path | Agent obligation |
+| --- | --- | --- |
+| **Platform temp** | The harness/IDE (hard-coded) | Do **not** invent alternate platform paths. On Windows + Cursor, run/maintain `scripts/link-cursor-agent-temp.ps1` so hard-coded `agent-tools` lands under `AGENT_TEMP_ROOT/cursor/…`. |
+| **Agent temp** | **You** (every `Write`, redirect, `curl -o`, probe script, CSV dump, etc.) | **Always** place under `AGENT_TEMP_ROOT/manual/…` (or `harness/<name>/…`). This rule exists because agents otherwise panic and pick arbitrary locations. |
+
+Platform overflow you did not author belongs in **`cursor/`**. Anything **you** create because output is large, awkward in chat, or “just for this step” belongs in **`manual/`** — not `$env:TEMP`, not profile root, not repo root, not `%userprofile%` literals.
 
 ## Resolve the root
 
-On session start (when `$CODE_ROOT` is known), read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md`.
+When `$CODE_ROOT` is known, read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md`.
 
 | OS | Default when unset |
 | --- | --- |
@@ -20,56 +26,50 @@ On session start (when `$CODE_ROOT` is known), read **`AGENT_TEMP_ROOT`** from `
 
 Record the concrete path in **`harness.md` only** — never in forkable templates.
 
-**Legacy name:** `AGENT_SPILL_ROOT` / `AgentSpill` — same role; migrate to `AGENT_TEMP_ROOT` / `AgentTemp` when updating `harness.md`.
+**Legacy:** `AGENT_SPILL_ROOT` / `AgentSpill` → migrate to `AGENT_TEMP_ROOT` / `AgentTemp`.
 
 ## Layout
 
 ```text
 AGENT_TEMP_ROOT/
-  README.md                 # machine-local index (optional)
-  cursor/                   # Cursor platform temp (junction targets)
-    home/agent-tools/       # home / empty-window workspace
+  cursor/                   # platform-hard-coded (junction targets only)
+    home/agent-tools/
     projects/<slug>/agent-tools/
-  manual/                   # agent-authored temp (you control naming)
+  manual/                   # agent-chosen temp (organized)
     YYYY-MM-DD/
       <purpose>-<shortid>.<ext>
-  harness/<harness-name>/   # optional temp from non-Cursor harnesses
+  harness/<harness-name>/   # non-Cursor harness agent temp
 ```
 
-| Subtree | Who writes | Purpose |
-| --- | --- | --- |
-| `cursor/` | **Cursor** (via directory junctions) | Large shell/WebFetch output the IDE writes to `agent-tools` |
-| `manual/` | **Agents** | Intentional temp files, redirected downloads, one-off scripts, analysis CSVs |
-| `harness/` | **Other harnesses** | Same idea as `manual/` when a second harness is in use |
+## Before any agent-chosen temp file
 
-## Agent rules (mandatory)
+Load skill **`agent-temp`** when you are about to write scratch data outside a normal repo commit.
 
-1. **Read** `AGENT_TEMP_ROOT` from `$HARNESS` before creating temp files.
-2. **Agent-written** temp goes only under `manual/YYYY-MM-DD/` (or `harness/<name>/` for non-Cursor work). Use a short purpose prefix in the filename (`site-nav-tree-probe.txt`, not `output.txt`).
-3. **Never** create or use:
-   - `%USERPROFILE%\agent-tools` (except as a **junction** maintained by the link script — do not add new files there by hand)
-   - A literal `%userprofile%` directory (PowerShell does **not** expand `%userprofile%`; use `$env:USERPROFILE`)
-   - Temp files in `$CODE_ROOT`, the user profile root, or inside git repos (unless the task explicitly commits them)
-4. **Prefer a project workspace** over home for coding work so platform temp lands under `cursor/projects/<slug>/` (see home workspace guidance).
-5. When you need a path for the user to inspect, cite the path under `AGENT_TEMP_ROOT` and the category (`cursor/…` vs `manual/…`).
+1. Resolve **`AGENT_TEMP_ROOT`** from `$HARNESS` (defaults above if missing).
+2. Pick **`manual/YYYY-MM-DD/`** (today, UTC or local — be consistent within the run).
+3. Name **`{purpose}-{optional-id}.{ext}`** — purpose is required (`tsc-errors-career-journey.txt`, not `out.txt`).
+4. Use **absolute paths** built with `$env:USERPROFILE` / `$env:LOCALAPPDATA` in PowerShell — never `%userprofile%`.
+5. Tell the user the **full path under `manual/`** when they need to open it.
 
-## Cursor platform temp (junctions)
+## Anti-patterns (panic picks — do not use)
 
-Cursor automatically writes oversized tool output to **`agent-tools`** next to the workspace (or under `.cursor/projects/<slug>/agent-tools`). Agents **cannot** retarget that path via rules alone.
+- `$env:TEMP`, `/tmp`, or OS temp for **agent scratch** (OS and installers only)
+- `%USERPROFILE%\agent-tools` by hand (platform junction only)
+- New folders under profile root (`C:\Users\…\something-scratch\`)
+- Paths inside **`$CODE_ROOT`** or **git repos** unless the task is to **commit** that file
+- Cmd-style **`%userprofile%`** in PowerShell (creates a literal `%userprofile%` directory)
+- Copying repo source into temp “to edit safely” — use the repo or a git worktree instead
 
-**Workstation setup:** run `$AGENT_RULES_PATH/scripts/link-cursor-agent-temp.ps1` (Windows) after setting `AGENT_TEMP_ROOT` in `harness.md`. It:
+## Platform temp (Cursor on Windows)
 
-- Migrates legacy `%LOCALAPPDATA%\AgentSpill` → `AgentTemp` when present
-- Creates the `cursor/home` and `cursor/projects/<slug>` directories under `AGENT_TEMP_ROOT`
-- Moves existing `agent-tools` contents into those directories
-- Replaces the old folders with **directory junctions** so new platform temp still lands in the unified tree
+Cursor writes oversized tool output to fixed **`agent-tools`** paths. Agents cannot reconfigure that in rules.
 
-Re-run the script when new Cursor project slugs appear (or add a scheduled/task reminder on the machine).
+**Setup:** `$AGENT_RULES_PATH/scripts/link-cursor-agent-temp.ps1` after `AGENT_TEMP_ROOT` is set — junctions into `AGENT_TEMP_ROOT/cursor/…`, migrates legacy `AgentSpill`. Re-run when new `.cursor/projects/<slug>` workspaces appear.
 
 ## Harness obligation
 
-Each harness should document **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md` and point agents at this file. Skill **`harness-setup`** records the variable on probe.
+Document **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md`. Skill **`harness-setup`** records it on probe and mentions the link script for Cursor.
 
 ## Cleanup
 
-Temp content is **disposable**. Prune old `manual/` and `cursor/` UUID captures when disk space matters. Do not commit temp contents to git.
+Temp is disposable. Prune old `manual/` and `cursor/` captures when disk space matters. Never commit temp contents to git.

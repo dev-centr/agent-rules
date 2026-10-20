@@ -21,8 +21,9 @@ endif::[]
 
 == 2026-10-20 - Global agent temp location
 
-* New `general/agent-temp.md`: `$AGENT_TEMP_ROOT` (default `%LOCALAPPDATA%\AgentTemp` on Windows), `manual/` vs `cursor/` layout, PowerShell `$env:USERPROFILE` guard.
-* `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable; script `scripts/link-cursor-agent-temp.ps1` junctions Cursor `agent-tools` into the unified tree (migrates legacy `AgentSpill` / `AGENT_SPILL_ROOT`).
+* New `general/agent-temp.md`: `$AGENT_TEMP_ROOT` (default `%LOCALAPPDATA%\AgentTemp` on Windows), **platform `cursor/` vs agent `manual/`** tracks, anti-panic path list, PowerShell `$env:USERPROFILE` guard.
+* Skill `agent-temp` for agent-chosen temp files; `scripts/link-cursor-agent-temp.ps1` junctions hard-coded Cursor `agent-tools` (migrates legacy `AgentSpill` / `AGENT_SPILL_ROOT`).
+* `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable.
 
 == 2026-10-17 - Hub GitHub topics (direct deps only)
 
