@@ -23,6 +23,7 @@ endif::[]
 
 * `general/agent-workspace.md`: **`AGENT_WORKSPACE_ROOT`** (`utilities/` + `temp/`); rename from flat `AgentTemp` root. **`AGENT_TEMP_ROOT`** = workspace `temp/` (scratch + optional `harness-registry.json5`). **`AGENT_UTILITIES_ROOT`** for agent-invoked scripts (e.g. Bitwarden entry in `harness.md`).
 * **`general/agent-workspace-migrate.md`** + skill **`agent-workspace-migrate`**: cross-platform profile/legacy cleanup — explain policy, **`PLAN.md`** + **`manifest.csv`**, lock probes, optional `lsof`/`fuser`/`handle`, confirm no parallel agents before moves; no repo cleanup scripts. Cursor rule **`.cursor/rules/agent-workspace-migrate.mdc`** (on demand).
+* **`AGENT_WORKSPACE_LINK`**: junction (Windows) / symlink (Linux, macOS) from home **`AgentWorkspace`** to canonical AppData / XDG state root. Skill **`agent-workspace-global`** + always-on **`.cursor/rules/agent-workspace-global.mdc`** — route new machine-global agent tools to **`utilities/`** unless user explicitly opts out.
 
 == 2026-10-20 - Global agent temp location (scratch/spill)
 

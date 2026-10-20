@@ -19,11 +19,21 @@ Read from **`$CODE_ROOT/harness.md`**:
 | **`AGENT_WORKSPACE_ROOT`** | Root of the tree |
 | **`AGENT_TEMP_ROOT`** | Temp subfolder (`$AGENT_WORKSPACE_ROOT/temp`) — scratch + optional spill registry |
 | **`AGENT_UTILITIES_ROOT`** | Utilities subfolder (`$AGENT_WORKSPACE_ROOT/utilities`) — scripts/tools agents invoke |
+| **`AGENT_WORKSPACE_LINK`** (optional) | Discoverability path under home — junction (Windows) or symlink (Linux/macOS) to **`AGENT_WORKSPACE_ROOT`** |
 
-| OS | Default workspace root when unset |
+| OS | Default **canonical** root when unset |
 | --- | --- |
 | Windows | `%LOCALAPPDATA%\AgentWorkspace` |
 | Linux / macOS | `$XDG_STATE_HOME/AgentWorkspace` or `~/.local/state/AgentWorkspace` |
+
+**Discoverability:** keep canonical data under AppData / XDG state (clean profile). Add **`AGENT_WORKSPACE_LINK`** so users and docs can use **`%USERPROFILE%\AgentWorkspace`** or **`~/AgentWorkspace`** without duplicating the tree.
+
+| OS | Link path (typical) | Mechanism |
+| --- | --- | --- |
+| Windows | `%USERPROFILE%\AgentWorkspace` | Directory **junction** → canonical root |
+| Linux / macOS | `$HOME/AgentWorkspace` | **Symlink** → canonical root |
+
+Create the link only after the canonical tree exists; if home already has a **real** folder at the link path, run **`agent-workspace-migrate`** first. Skill **`agent-workspace-global`** covers new machine-global tools and link setup.
 
 Record concrete paths in **`harness.md` only**.
 
@@ -45,6 +55,8 @@ AGENT_WORKSPACE_ROOT/
 ## Moving profile utilities
 
 When scripts at **`$env:USERPROFILE`** exist only for agents (unlock helpers, probes, session stores), prefer **`AGENT_UTILITIES_ROOT/<topic>/`** and point **`harness.md`** entries (e.g. `BITWARDEN_AGENT_ENTRY`) at the new path. Update machine **`LOCAL_RULES_DIR`** overlays; keep user shortcuts (`.lnk`) in the profile if they are for you, not the agent.
+
+**New** machine-global agent tools: skill **`agent-workspace-global`** — intercept profile-root sprawl unless the user explicitly opts out.
 
 ## Migration and cleanup
 

@@ -83,7 +83,8 @@ Build rows: **`action`** (`keep` \| `move` \| `quarantine`), **`source`**, **`de
 4. Migrate **utilities** from profile/home into **`utilities/<topic>/`**; update **`harness.md`** entry paths (e.g. **`BITWARDEN_AGENT_ENTRY`**).
 5. Update **`LOCAL_RULES_DIR`** overlays (`agent-temp`, Bitwarden, …) to new paths.
 6. Remove **empty** legacy directories when lock probe passes.
-7. Re-run inventory; append **`PLAN.md`** “Done” section with counts.
+7. Create **`AGENT_WORKSPACE_LINK`** (junction or symlink) when canonical root is not already under home — see **`general/agent-workspace.md`** and skill **`agent-workspace-global`**.
+8. Re-run inventory; append **`PLAN.md`** “Done” section with counts.
 
 ## Cross-platform defaults
 

@@ -1,0 +1,15 @@
+---
+description: Machine-global agent tools → agent workspace utilities/; load skill agent-workspace-global unless user overrides
+alwaysApply: true
+---
+
+# Global agent tools (workspace policy)
+
+When the user asks to add **machine-global** or **profile-root** **agent** scripts, helpers, or utilities:
+
+1. Load skill **`agent-workspace-global`** and apply **`general/agent-workspace.md`**.
+2. Place tools under **`AGENT_UTILITIES_ROOT/<topic>/`**; record paths in **`harness.md`**.
+3. Use **`%USERPROFILE%\AgentWorkspace`** / **`~/AgentWorkspace`** (junction or symlink) for discoverability; canonical root stays in **`harness.md`**.
+4. **Opt-out:** if they explicitly want profile root or another location, follow them — do not argue.
+
+Spill stays in harness paths; scratch under **`AGENT_TEMP_ROOT/scratch/`**.

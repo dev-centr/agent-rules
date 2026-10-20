@@ -58,6 +58,7 @@ When `$CODE_ROOT` is known, read in parallel:
 | `AGENT_WORKSPACE_ROOT` | Agent utilities + temp on this machine (`general/agent-workspace.md`) |
 | `AGENT_TEMP_ROOT` | Workspace `temp/` subfolder — scratch + optional spill registry (`general/agent-temp.md`) |
 | `AGENT_UTILITIES_ROOT` | Workspace `utilities/` — scripts agents invoke (paths in `harness.md`, e.g. `BITWARDEN_AGENT_ENTRY`) |
+| `AGENT_WORKSPACE_LINK` | Optional home discoverability path (junction/symlink to `AGENT_WORKSPACE_ROOT`) |
 | `PROJECT_INBOX` | *Deprecated alias* for `ACTOR_AGENTIC_UI` (`grid-forks` → `graph-grid`) |
 
 ## Token provenance

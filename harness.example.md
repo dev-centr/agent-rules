@@ -31,6 +31,7 @@ IDE_PROJECT_RULES = mdc-in-repo | claude-rules | none
 
 # Agent workspace (see general/agent-workspace.md; temp/scratch in general/agent-temp.md)
 AGENT_WORKSPACE_ROOT = %LOCALAPPDATA%\AgentWorkspace
+AGENT_WORKSPACE_LINK = %USERPROFILE%\AgentWorkspace
 AGENT_TEMP_ROOT = %AGENT_WORKSPACE_ROOT%\temp
 AGENT_UTILITIES_ROOT = %AGENT_WORKSPACE_ROOT%\utilities
 
@@ -106,6 +107,7 @@ CHAT_FILE_LINKS = markdown-workspace-links
 CODE_CITATION = line-range-fence
 IDE_PROJECT_RULES = mdc-in-repo
 AGENT_WORKSPACE_ROOT = %LOCALAPPDATA%\AgentWorkspace
+AGENT_WORKSPACE_LINK = %USERPROFILE%\AgentWorkspace
 AGENT_TEMP_ROOT = %AGENT_WORKSPACE_ROOT%\temp
 AGENT_UTILITIES_ROOT = %AGENT_WORKSPACE_ROOT%\utilities
 MCP_CONTEXT7 = available
