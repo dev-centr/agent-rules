@@ -74,6 +74,40 @@ function Normalize-JunctionTarget($Target) {
   return $Target.ToString().TrimEnd('\')
 }
 
+function Get-HarnessName {
+  $candidates = @($env:CODE_ROOT, $env:code)
+  foreach ($root in $candidates) {
+    if (-not $root) { continue }
+    $harness = Join-Path $root 'harness.md'
+    if (-not (Test-Path -LiteralPath $harness)) { continue }
+    $text = Get-Content -LiteralPath $harness -Raw
+    if ($text -match '(?m)^HARNESS_NAME\s*=\s*(.+)$') {
+      return $Matches[1].Trim()
+    }
+  }
+  return 'cursor'
+}
+
+function Register-SpillLink(
+  [string] $RegistryScript,
+  [string] $HarnessName,
+  [string] $TempRoot,
+  [string] $Id,
+  [string] $LinkPath,
+  [string] $TargetPath,
+  [string] $WorkspaceSlug
+) {
+  if ($WhatIf) { return }
+  & $RegistryScript `
+    -Id $Id `
+    -Harness $HarnessName `
+    -PlatformPath $LinkPath `
+    -UnifiedPath $TargetPath `
+    -WorkspaceSlug $WorkspaceSlug `
+    -RecordedBy 'link-script' `
+    -TempRoot $TempRoot
+}
+
 function Link-AgentTools([string] $LinkPath, [string] $TargetPath) {
   $TargetPath = $TargetPath.TrimEnd('\')
   Ensure-Directory (Split-Path -Parent $TargetPath)
@@ -140,15 +174,21 @@ Machine-local temp files and Cursor platform tool output. Policy: ``general/agen
 | ``cursor/projects/<slug>/agent-tools/`` | Cursor (per project slug) |
 | ``manual/`` | Agent-authored temp files |
 | ``harness/`` | Other harness exports |
+| ``spill-registry.json`` | Harness platform spill paths (see agent-rules ``general/agent-temp.md``) |
 "@ | Set-Content -LiteralPath $readme -Encoding UTF8
 }
 
 Ensure-Directory (Join-Path $tempRoot 'manual')
 Ensure-Directory (Join-Path $tempRoot 'harness')
 
+$registryScript = Join-Path $PSScriptRoot 'update-spill-registry.ps1'
+$harnessName = Get-HarnessName
+
 $homeLink = Join-Path $env:USERPROFILE 'agent-tools'
 $homeTarget = Join-Path $tempRoot 'cursor\home\agent-tools'
 Link-AgentTools -LinkPath $homeLink -TargetPath $homeTarget
+Register-SpillLink -RegistryScript $registryScript -HarnessName $harnessName -TempRoot $tempRoot `
+  -Id 'cursor:home' -LinkPath $homeLink -TargetPath $homeTarget -WorkspaceSlug 'home'
 
 $projectsRoot = Join-Path $env:USERPROFILE '.cursor\projects'
 if (Test-Path -LiteralPath $projectsRoot) {
@@ -157,6 +197,8 @@ if (Test-Path -LiteralPath $projectsRoot) {
     $link = Join-Path $_.FullName 'agent-tools'
     $target = Join-Path $tempRoot "cursor\projects\$slug\agent-tools"
     Link-AgentTools -LinkPath $link -TargetPath $target
+    Register-SpillLink -RegistryScript $registryScript -HarnessName $harnessName -TempRoot $tempRoot `
+      -Id "cursor:projects:$slug" -LinkPath $link -TargetPath $target -WorkspaceSlug $slug
   }
 }
 
