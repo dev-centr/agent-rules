@@ -55,6 +55,7 @@ When `$CODE_ROOT` is known, read in parallel:
 | `ACTOR_WAIT_GRAPH` | Dependency gating between node mailboxes — default **`warn`**; `enforce` for irreversible gates |
 | `ACTOR_NODE_STORE` | Per-node disk layout — `jsonl-per-node` or `off` |
 | `GIT_CLOSEOUT` | Who pushes after parallel work — `coordinator-batch` (default for swarms), `per-node`, or `off` (see `general/parallel-git-closeout.md`) |
+| `AGENT_SPILL_ROOT` | Unified scratch + Cursor `agent-tools` spill tree (machine path; see `general/agent-spill.md`) |
 | `PROJECT_INBOX` | *Deprecated alias* for `ACTOR_AGENTIC_UI` (`grid-forks` → `graph-grid`) |
 
 ## Token provenance

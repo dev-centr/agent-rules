@@ -67,6 +67,8 @@ Use skill **`record-rule`**. Pick scope:
 | Workstation fact | `$CODE_ROOT/machine.md` |
 | Harness config | `$CODE_ROOT/harness.md` |
 
+Harness config includes **`AGENT_SPILL_ROOT`** (unified agent spill tree — `general/agent-spill.md`).
+
 ## Before editing agent-rules
 
 1. Read `$CODE_ROOT/harness.md` and `$CODE_ROOT/machine.md`.

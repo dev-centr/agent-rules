@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-20 - Unified agent spill root
+
+* New `general/agent-spill.md`: `$AGENT_SPILL_ROOT` (default `%LOCALAPPDATA%\AgentSpill` on Windows), `manual/` vs `cursor/` layout, PowerShell `$env:USERPROFILE` guard.
+* `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable; script `scripts/link-cursor-agent-spill.ps1` junctions Cursor `agent-tools` into the unified tree.
+
 == 2026-10-17 - Hub GitHub topics (direct deps only)
 
 * Skill `antora-extension-consumers`: **transitive exclusion** — hub playbooks tag direct `require:` / `package.json` / UI bundle pins only, not facto-stack member extensions. `agents/engineering/antora.md` and `antora-org-site` reference updated. Canonical doc: antora-supplemental/docs `hub-github-topics.adoc`.
