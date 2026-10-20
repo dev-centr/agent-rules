@@ -67,8 +67,6 @@ When `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking:
 2. Link `$AGENT_RULES_PATH/skills/<name>/` → discovery root per `harness.md`.
 3. Follow `skills/BOOTSTRAP.md` for house conventions (includes **hive-watch** install for scheduled remote fetch).
 
-**Cursor on Windows:** after recording `AGENT_TEMP_ROOT`, run `$AGENT_RULES_PATH/scripts/link-cursor-agent-temp.ps1` once (and again when new `.cursor/projects/<slug>` workspaces appear) to junction Cursor `agent-tools` temp into the unified tree.
-
 **Every machine, whether or not skills are linked:** install the encoding guard machine-wide: `node $AGENT_RULES_PATH/tools/encoding-guard/install-global-hooks.mjs`, then confirm with `--status`. Record it in `$CODE_ROOT/machine.md`. If `SHELL_ENCODING` is a legacy code page, agents must follow `general/text-encoding.md` (UTF-8 without BOM via `UTF8Encoding($false)` or `pwsh` 7).
 
 Ongoing drift (missing links, behind origin, stale `AGENT_RULES_SYNCED_SHA`): skill **`sync-agent-rules`**. Routine git remote awareness: **`hive-watch`** + `machine.md` stamp — not per-chat fetch.

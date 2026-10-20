@@ -1,46 +1,26 @@
 ---
 name: agent-temp
 description: >-
-  Use when writing a temp file, scratch file, curl -o, shell redirect, probe
-  script, CSV dump, large output capture, agent-tools spill path in tool output,
-  spill-registry.json, or any agent-chosen path outside a git commit;
-  AGENT_TEMP_ROOT, manual/, global agent temp, avoid profile litter.
+  Use when writing temp files, scratch files, curl -o, redirects, large output
+  captures, platform agent-tools paths in tool results, AGENT_TEMP_ROOT,
+  manual/, spill-registry.json, profile litter; global agent temp policy.
 ---
 
 # Agent temp
 
-See **`general/agent-temp.md`** for the full two-track model (platform vs agent-chosen).
+Read **`general/agent-temp.md`**.
 
-## Agent-chosen temp (`manual/`)
+## Non-platform temp (required location)
 
-When **you** pick the path:
+1. **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md` (default `%LOCALAPPDATA%\AgentTemp` on Windows).
+2. Write only under **`manual/YYYY-MM-DD/{purpose}-….{ext}`** (or **`harness/<name>/…`**).
+3. Never `$env:TEMP`, profile root, or repo scratch unless committing.
 
-1. Read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md`.
-2. Write under **`{AGENT_TEMP_ROOT}/manual/{YYYY-MM-DD}/{purpose}-….{ext}`**.
-3. PowerShell: **`$env:USERPROFILE`**, **`$env:LOCALAPPDATA`** — never `%userprofile%`.
+## Platform temp (hard-coded)
 
-## Platform spill (harness hard-coded)
+- **Do not move** harness spill (`agent-tools`, etc.).
+- If tool output cites a new platform path, optionally update **`AGENT_TEMP_ROOT/spill-registry.json`** (edit JSON; paths only).
 
-When a **tool result names a spill file** (e.g. Cursor Shell → `…/agent-tools/{uuid}.txt`):
+## One-off machine cleanup
 
-1. Read **`HARNESS_NAME`** from `$HARNESS`.
-2. Run **`$AGENT_RULES_PATH/scripts/update-spill-registry.ps1`** once per distinct platform directory (update on later spills with **`-LastArtifact`**):
-
-```powershell
-& "$env:code\github.com\dev-centr\agent-rules\scripts\update-spill-registry.ps1" `
-  -Id 'cursor:projects:<slug>' `
-  -Harness '<HARNESS_NAME>' `
-  -PlatformPath '<junction or platform dir>' `
-  -UnifiedPath '<AGENT_TEMP_ROOT>\cursor\projects\<slug>\agent-tools' `
-  -WorkspaceSlug '<slug>' `
-  -LastArtifact '<file-if-known>' `
-  -RecordedBy agent
-```
-
-Use **`cursor:home`** when the path is profile `agent-tools`. If slug is unknown, derive from the path or use a stable id from **`platformPath`**.
-
-3. Continue work using that path; cite **`unifiedPath`** under `AGENT_TEMP_ROOT` when helpful.
-
-Junction setup (Cursor Windows): **`scripts/link-cursor-agent-temp.ps1`** — also registers known paths as **`link-script`**.
-
-**Cleanup:** **`organize-agent-temp.ps1`** tidies **agent-chosen** files under `manual/` only. **Never move** `cursor/` platform spill. **`restore-platform-spill.ps1`** undoes a mistaken move using cleanup CSV manifests.
+Not covered by this skill. Inventory the user's machine explicitly; do not use generic heuristics from agent-rules scripts.

@@ -3,121 +3,61 @@
 <!---
 Portable policy: one harness-neutral tree for temporary files.
 Machine path: $CODE_ROOT/harness.md → AGENT_TEMP_ROOT.
-Skill agent-temp loads for agent-chosen paths (not platform-hard-coded spill).
+Skill agent-temp — no cleanup scripts in this repo; one-off machine tidying is ad hoc.
 --->
 
-## Two tracks (do not confuse them)
+## Two tracks
 
 | Track | Who picks the path | Agent obligation |
 | --- | --- | --- |
-| **Platform temp** | The harness/IDE (hard-coded) | Do **not** invent alternate platform paths. On Windows + Cursor, run/maintain `scripts/link-cursor-agent-temp.ps1` so hard-coded `agent-tools` lands under `AGENT_TEMP_ROOT/cursor/…`. |
-| **Unified temp** | **Any agent / any harness** (not platform-hard-coded) | **Required:** `AGENT_TEMP_ROOT/manual/YYYY-MM-DD/…` or `harness/<name>/…`. No other scratch locations. |
+| **Platform temp** | Harness/IDE (hard-coded) | Do **not** move, rename, or “organize” it. Do **not** invent alternate platform paths. |
+| **Unified temp** | **Any agent / any harness** (everything else) | **Required:** `AGENT_TEMP_ROOT/manual/YYYY-MM-DD/…` or `harness/<name>/…` only. |
 
-Platform-hard-coded → **`cursor/`** only (junctions). Everything else → **`manual/`** — not `$env:TEMP`, profile root, repos, or `%userprofile%`.
-
-## Does the agent know platform spill happened?
-
-**Often yes.** On Cursor, when Shell (or similar) output is too large for chat, the tool result usually **names the file path** (under `agent-tools`, often a UUID `.txt`). The same applies to some MCP/CDP responses saved to disk. Treat that path as a signal: the harness wrote platform temp.
-
-**Sometimes no.** The harness may write without surfacing a path in your turn. Known hard-coded locations should already appear in **`spill-registry.json`** after `link-cursor-agent-temp.ps1` (or equivalent for another harness).
-
-**When you see a platform spill path** (in tool output, or when reading/grepping a path the user pasted):
-
-1. Resolve **`HARNESS_NAME`** and **`AGENT_TEMP_ROOT`** from `$HARNESS`.
-2. Upsert the path in **`{AGENT_TEMP_ROOT}/spill-registry.json`** via `$AGENT_RULES_PATH/scripts/update-spill-registry.ps1`:
-   - **`-Id`**: stable key, e.g. `cursor:projects:<slug>` or `cursor:home`
-   - **`-Harness`**: `HARNESS_NAME`
-   - **`-PlatformPath`**: path the harness used (junction path is fine)
-   - **`-UnifiedPath`**: directory under `AGENT_TEMP_ROOT/cursor/…` if junctions are in use; else same as platform path
-   - **`-LastArtifact`**: filename when known (e.g. UUID `.txt` from Shell spill)
-   - **`-RecordedBy`**: `agent`
-3. Do this **once per path per session** when first observed (update **`lastSeen`** on repeats). Do not spam the registry on every grep of the same file.
-
-Registry is for **analysis across harnesses** — not for secrets; store paths only, not file contents.
-
-### Registry shape (`spill-registry.json`)
-
-```json
-{
-  "schemaVersion": 1,
-  "agentTempRoot": "…",
-  "updated": "ISO-8601",
-  "entries": [
-    {
-      "id": "cursor:projects:empty-window",
-      "harness": "cursor",
-      "kind": "platform-hard-coded",
-      "platformPath": "C:\\Users\\…\\.cursor\\projects\\empty-window\\agent-tools",
-      "unifiedPath": "C:\\Users\\…\\AppData\\Local\\AgentTemp\\cursor\\projects\\empty-window\\agent-tools",
-      "workspaceSlug": "empty-window",
-      "recordedBy": "link-script",
-      "firstRecorded": "…",
-      "lastSeen": "…",
-      "lastArtifact": "optional-filename.txt"
-    }
-  ]
-}
-```
+Platform-hard-coded → under **`AGENT_TEMP_ROOT/cursor/…`** when the workstation junctions harness spill there (machine setup — not forkable). Everything else → **`manual/`** — not `$env:TEMP`, profile root, repos, or `%userprofile%`.
 
 ## Resolve the root
 
-When `$CODE_ROOT` is known, read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md`.
+Read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md`.
 
 | OS | Default when unset |
 | --- | --- |
 | Windows | `%LOCALAPPDATA%\AgentTemp` |
 | Linux / macOS | `$XDG_STATE_HOME/AgentTemp` or `~/.local/state/AgentTemp` |
 
-Record the concrete path in **`harness.md` only** — never in forkable templates.
-
-**Legacy:** `AGENT_SPILL_ROOT` / `AgentSpill` → migrate to `AGENT_TEMP_ROOT` / `AgentTemp`.
+Record the concrete path in **`harness.md` only**.
 
 ## Layout
 
 ```text
 AGENT_TEMP_ROOT/
-  cursor/                   # platform-hard-coded (junction targets only)
-    home/agent-tools/
-    projects/<slug>/agent-tools/
-  manual/                   # agent-chosen temp (organized)
-    YYYY-MM-DD/
-      <purpose>-<shortid>.<ext>
-  harness/<harness-name>/   # non-Cursor harness agent temp
+  cursor/                   # platform-hard-coded (do not move contents)
+  manual/YYYY-MM-DD/          # all non-platform temp
+  harness/<harness-name>/     # optional non-Cursor harness temp
+  spill-registry.json         # optional; paths only (see below)
 ```
 
-## Before any agent-chosen temp file
+## Before writing non-platform temp
 
-Load skill **`agent-temp`** when you are about to write scratch data outside a normal repo commit.
+Load skill **`agent-temp`**.
 
-1. Resolve **`AGENT_TEMP_ROOT`** from `$HARNESS` (defaults above if missing).
-2. Pick **`manual/YYYY-MM-DD/`** (today, UTC or local — be consistent within the run).
-3. Name **`{purpose}-{optional-id}.{ext}`** — purpose is required (`tsc-errors-career-journey.txt`, not `out.txt`).
-4. Use **absolute paths** built with `$env:USERPROFILE` / `$env:LOCALAPPDATA` in PowerShell — never `%userprofile%`.
-5. Tell the user the **full path under `manual/`** when they need to open it.
+1. **`manual/YYYY-MM-DD/`** + **`{purpose}-….{ext}`**
+2. PowerShell: **`$env:USERPROFILE`**, **`$env:LOCALAPPDATA`** — never **`%userprofile%`**
+3. Cite the full path when the user should open the file
 
-## Anti-patterns (panic picks — do not use)
+## Platform spill paths (optional registry)
 
-- `$env:TEMP`, `/tmp`, or OS temp for **agent scratch** (OS and installers only)
-- `%USERPROFILE%\agent-tools` by hand (platform junction only)
-- New folders under profile root (`C:\Users\…\something-scratch\`)
-- Paths inside **`$CODE_ROOT`** or **git repos** unless the task is to **commit** that file
-- Cmd-style **`%userprofile%`** in PowerShell (creates a literal `%userprofile%` directory)
-- Copying repo source into temp “to edit safely” — use the repo or a git worktree instead
+When tool output names a platform spill file, you may append/update **`spill-registry.json`** at `AGENT_TEMP_ROOT` (paths only, no secrets): `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`. Edit JSON directly — once per path per session is enough.
 
-## Platform temp (Cursor on Windows)
+## Anti-patterns
 
-Cursor writes oversized tool output to fixed **`agent-tools`** paths. Agents cannot reconfigure that in rules.
-
-**Setup:** `$AGENT_RULES_PATH/scripts/link-cursor-agent-temp.ps1` after `AGENT_TEMP_ROOT` is set — junctions into `AGENT_TEMP_ROOT/cursor/…`, migrates legacy `AgentSpill`, **seeds/updates `spill-registry.json`**. Re-run when new `.cursor/projects/<slug>` workspaces appear.
+- Moving or archiving **`cursor/`** platform spill
+- `$env:TEMP`, profile root scratch, repo root scratch (unless committing)
+- Cmd-style **`%userprofile%`** in PowerShell
 
 ## Harness obligation
 
-Document **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md`. Skill **`harness-setup`** records it on probe and mentions the link script for Cursor.
+Document **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md`. Skill **`harness-setup`** records it on probe.
 
 ## Cleanup
 
-Temp is disposable. Prune old `manual/` and `cursor/` captures when disk space matters. Never commit temp contents to git.
-
-**Profile root cleanup:** inventory the user's profile root, build an explicit **`manual/profile-root-cleanup/manifest.csv`** (`keep` vs `move` per filename), then run **`scripts/apply-profile-root-cleanup.ps1`**. No content heuristics.
-
-**Manual tidying:** `organize-agent-temp.ps1` only rearranges loose files already under `manual/<date>/`. **Never move** `AGENT_TEMP_ROOT/cursor/`. Mistaken platform moves: `restore-platform-spill.ps1`.
+Temp is disposable. **Past clutter on a workstation** (profile root, old spill) is a **one-off** — use AI with an explicit per-file plan for that machine; do not rely on shared cleanup scripts in agent-rules.
