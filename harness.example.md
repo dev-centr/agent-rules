@@ -29,8 +29,8 @@ CHAT_FILE_LINKS = markdown-workspace-links | plain-paths | harness-default
 CODE_CITATION = line-range-fence | none | harness-default
 IDE_PROJECT_RULES = mdc-in-repo | claude-rules | none
 
-# Unified agent scratch + Cursor platform spill (see general/agent-spill.md)
-AGENT_SPILL_ROOT = %LOCALAPPDATA%\AgentSpill
+# Global agent temp location (see general/agent-temp.md)
+AGENT_TEMP_ROOT = %LOCALAPPDATA%\AgentTemp
 
 # Integrations probed on this machine
 MCP_CONTEXT7 = available | unavailable
@@ -103,7 +103,7 @@ SKILLS_INSTALL = junction from $AGENT_RULES_PATH/skills/<name>/ to SKILLS_DISCOV
 CHAT_FILE_LINKS = markdown-workspace-links
 CODE_CITATION = line-range-fence
 IDE_PROJECT_RULES = mdc-in-repo
-AGENT_SPILL_ROOT = %LOCALAPPDATA%\AgentSpill
+AGENT_TEMP_ROOT = %LOCALAPPDATA%\AgentTemp
 MCP_CONTEXT7 = available
 TOKEN_PROVENANCE = off
 ACTOR_AGENTIC_UI = serialized

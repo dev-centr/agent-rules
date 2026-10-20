@@ -19,10 +19,10 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-== 2026-10-20 - Unified agent spill root
+== 2026-10-20 - Global agent temp location
 
-* New `general/agent-spill.md`: `$AGENT_SPILL_ROOT` (default `%LOCALAPPDATA%\AgentSpill` on Windows), `manual/` vs `cursor/` layout, PowerShell `$env:USERPROFILE` guard.
-* `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable; script `scripts/link-cursor-agent-spill.ps1` junctions Cursor `agent-tools` into the unified tree.
+* New `general/agent-temp.md`: `$AGENT_TEMP_ROOT` (default `%LOCALAPPDATA%\AgentTemp` on Windows), `manual/` vs `cursor/` layout, PowerShell `$env:USERPROFILE` guard.
+* `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable; script `scripts/link-cursor-agent-temp.ps1` junctions Cursor `agent-tools` into the unified tree (migrates legacy `AgentSpill` / `AGENT_SPILL_ROOT`).
 
 == 2026-10-17 - Hub GitHub topics (direct deps only)
 
