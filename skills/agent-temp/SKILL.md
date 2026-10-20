@@ -42,3 +42,5 @@ Use **`cursor:home`** when the path is profile `agent-tools`. If slug is unknown
 3. Continue work using that path; cite **`unifiedPath`** under `AGENT_TEMP_ROOT` when helpful.
 
 Junction setup (Cursor Windows): **`scripts/link-cursor-agent-temp.ps1`** — also registers known paths as **`link-script`**.
+
+**Cleanup:** **`organize-agent-temp.ps1`** tidies **agent-chosen** files under `manual/` only. **Never move** `cursor/` platform spill. **`restore-platform-spill.ps1`** undoes a mistaken move using cleanup CSV manifests.

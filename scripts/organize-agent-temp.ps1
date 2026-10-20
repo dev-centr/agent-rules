@@ -1,9 +1,9 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-  Classify and archive AgentTemp cursor/home spill files; seed manual/archive.
+  Classify and tidy agent-chosen temp under manual/ only.
 
-  See general/agent-temp.md. Run after link-cursor-agent-temp.ps1.
+  Does NOT move harness hard-coded spill (AGENT_TEMP_ROOT/cursor/**). See general/agent-temp.md.
 #>
 param(
   [switch] $WhatIf
@@ -47,17 +47,17 @@ function Get-Topic([string] $Name, [string] $Snippet) {
   foreach ($r in $rules) {
     if ($s -match $r.Pattern) { return $r.Topic }
   }
-  if ($Name -match '^[0-9a-f]{8}-') { return 'platform-spill-unsorted' }
   return 'misc'
 }
 
 $tempRoot = Get-TempRoot
-$homeTools = Join-Path $tempRoot 'cursor\home\agent-tools'
-$manifestDir = Join-Path $tempRoot 'manual\2026-10-20-cleanup'
-$archiveRoot = Join-Path $tempRoot 'manual\archive'
+$manualRoot = Join-Path $tempRoot 'manual'
+$stamp = (Get-Date).ToString('yyyy-MM-dd')
+$manifestDir = Join-Path $manualRoot "$stamp-cleanup"
+$archiveRoot = Join-Path $manualRoot 'archive'
 
-if (-not (Test-Path -LiteralPath $homeTools)) {
-  Write-Host "No home agent-tools at $homeTools"
+if (-not (Test-Path -LiteralPath $manualRoot)) {
+  Write-Host "No manual/ tree at $manualRoot"
   exit 0
 }
 
@@ -66,59 +66,51 @@ if (-not $WhatIf) {
   New-Item -ItemType Directory -Path $archiveRoot -Force | Out-Null
 }
 
+# Only agent-chosen temp: loose files under manual/<date>/ (not archive, not *-cleanup manifests)
 $rows = @()
-Get-ChildItem -LiteralPath $homeTools -File | ForEach-Object {
-  $f = $_
-  $snippet = ''
-  try {
-    $snippet = (Get-Content -LiteralPath $f.FullName -TotalCount 15 -ErrorAction Stop) -join ' '
-    if ($snippet.Length -gt 2000) { $snippet = $snippet.Substring(0, 2000) }
-  } catch { $snippet = '' }
-
-  if ($snippet -match '(?i)password\s*:\s*\S') {
-    Write-Warning "Sensitive content in $($f.Name) - move to manual/archive/quarantine for your review."
-    $topic = 'quarantine-secrets'
-  } else {
-    $topic = Get-Topic -Name $f.Name -Snippet $snippet
-  }
-
-  $month = $f.LastWriteTime.ToString('yyyy-MM')
-  $destDir = Join-Path $archiveRoot "$topic\$month"
-  $dest = Join-Path $destDir $f.Name
-
-  if ($WhatIf) {
-    Write-Host "[WhatIf] $($f.Name) -> $dest ($topic)"
-  } else {
-    New-Item -ItemType Directory -Path $destDir -Force | Out-Null
-    Move-Item -LiteralPath $f.FullName -Destination $dest -Force
-  }
-
-  $rows += [pscustomobject]@{
-    file           = $f.Name
-    topic          = $topic
-    month          = $month
-    sizeKB         = [math]::Round($f.Length / 1KB, 1)
-    lastWrite      = $f.LastWriteTime.ToString('yyyy-MM-dd')
-    destination    = $dest
-    snippetPreview = if ($snippet.Length -gt 120) { $snippet.Substring(0, 120) + '…' } else { $snippet }
+Get-ChildItem -LiteralPath $manualRoot -Directory | Where-Object {
+  $_.Name -ne 'archive' -and $_.Name -notmatch '-cleanup$'
+} | ForEach-Object {
+  Get-ChildItem -LiteralPath $_.FullName -File -ErrorAction SilentlyContinue | ForEach-Object {
+    $f = $_
+    $snippet = try { (Get-Content -LiteralPath $f.FullName -TotalCount 15 -ErrorAction Stop) -join ' ' } catch { '' }
+    if ($snippet -match '(?i)password\s*:\s*\S') {
+      $topic = 'quarantine-secrets'
+    } else {
+      $topic = Get-Topic -Name $f.Name -Snippet $snippet
+    }
+    $month = $f.LastWriteTime.ToString('yyyy-MM')
+    $destDir = Join-Path $archiveRoot "$topic\$month"
+    $dest = Join-Path $destDir $f.Name
+    if ($WhatIf) {
+      Write-Host "[WhatIf] $($f.FullName) -> $dest ($topic)"
+    } else {
+      New-Item -ItemType Directory -Path $destDir -Force | Out-Null
+      Move-Item -LiteralPath $f.FullName -Destination $dest -Force
+    }
+    $rows += [pscustomobject]@{
+      file = $f.Name; sourceDir = $f.DirectoryName; topic = $topic; month = $month
+      sizeKB = [math]::Round($f.Length / 1KB, 1); destination = $dest
+    }
   }
 }
 
-$manifestPath = Join-Path $manifestDir 'home-spill-classification.csv'
+$manifestPath = Join-Path $manifestDir 'manual-classification.csv'
 if (-not $WhatIf) {
-  $rows | Export-Csv -LiteralPath $manifestPath -NoTypeInformation -Encoding UTF8
+  if ($rows.Count -gt 0) {
+    $rows | Export-Csv -LiteralPath $manifestPath -NoTypeInformation -Encoding UTF8
+  }
   @"
-# Home workspace spill cleanup
+# Agent-chosen temp cleanup ($stamp)
 
-Classified files moved from ``cursor/home/agent-tools/`` into ``manual/archive/<topic>/<yyyy-MM>/``.
+Organized loose files from ``manual/<date>/`` into ``manual/archive/<topic>/<yyyy-MM>/``.
 
-Manifest: ``manual/2026-10-20-cleanup/home-spill-classification.csv``
+**Does not touch** ``cursor/`` (harness hard-coded platform spill).
 
-Review ``manual/archive/quarantine-secrets/`` if present — delete after rotating any exposed credentials.
+Manifest: ``manual/$stamp-cleanup/manual-classification.csv``
 "@ | Set-Content -LiteralPath (Join-Path $manifestDir 'README.md') -Encoding UTF8
 }
 
-# Mistaken profile folder
 $badProfile = Join-Path $env:USERPROFILE '%userprofile%'
 if (Test-Path -LiteralPath $badProfile) {
   $childCount = (Get-ChildItem -LiteralPath $badProfile -Recurse -Force -EA SilentlyContinue | Measure-Object).Count
@@ -128,41 +120,7 @@ if (Test-Path -LiteralPath $badProfile) {
       Remove-Item -LiteralPath $badProfile -Recurse -Force
       Write-Host "Removed mistaken folder: $badProfile"
     }
-  } else {
-    Write-Warning "Not removing $badProfile - unexpected content ($childCount items)."
   }
 }
 
-$projRoot = Join-Path $tempRoot 'cursor\projects'
-$projRows = @()
-if (Test-Path -LiteralPath $projRoot) {
-  Get-ChildItem -LiteralPath $projRoot -Directory | ForEach-Object {
-    $slug = $_.Name
-    $tools = Join-Path $_.FullName 'agent-tools'
-    if (-not (Test-Path -LiteralPath $tools)) { return }
-    Get-ChildItem -LiteralPath $tools -File -EA SilentlyContinue | ForEach-Object {
-      $f = $_
-      $snippet = try { (Get-Content -LiteralPath $f.FullName -TotalCount 12 -ErrorAction Stop) -join ' ' } catch { '' }
-      $topic = Get-Topic -Name $f.Name -Snippet $snippet
-      $month = $f.LastWriteTime.ToString('yyyy-MM')
-      $destDir = Join-Path $archiveRoot "project-$slug\$topic\$month"
-      $dest = Join-Path $destDir $f.Name
-      if ($WhatIf) {
-        Write-Host "[WhatIf] [$slug] $($f.Name) -> $dest"
-      } else {
-        New-Item -ItemType Directory -Path $destDir -Force | Out-Null
-        Move-Item -LiteralPath $f.FullName -Destination $dest -Force
-      }
-      $projRows += [pscustomobject]@{
-        slug = $slug; file = $f.Name; topic = $topic; month = $month
-        sizeKB = [math]::Round($f.Length / 1KB, 1); destination = $dest
-      }
-    }
-  }
-}
-
-if (-not $WhatIf -and $projRows.Count -gt 0) {
-  $projRows | Export-Csv -LiteralPath (Join-Path $manifestDir 'project-spill-classification.csv') -NoTypeInformation -Encoding UTF8
-}
-
-Write-Host "Classified $($rows.Count) home + $($projRows.Count) project files. Manifest: $manifestPath"
+Write-Host "Organized $($rows.Count) manual temp file(s). Platform spill under cursor/ was left unchanged."
