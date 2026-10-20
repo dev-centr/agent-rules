@@ -33,7 +33,7 @@ AGENT_TEMP_ROOT/
   cursor/                   # platform-hard-coded (do not move contents)
   manual/YYYY-MM-DD/          # all non-platform temp
   harness/<harness-name>/     # optional non-Cursor harness temp
-  spill-registry.json         # optional; paths only (see below)
+  harness-registry.json       # optional; platform paths only (see below)
 ```
 
 ## Before writing non-platform temp
@@ -46,7 +46,7 @@ Load skill **`agent-temp`**.
 
 ## Platform spill paths (optional registry)
 
-When tool output names a platform spill file, you may append/update **`spill-registry.json`** at `AGENT_TEMP_ROOT` (paths only, no secrets): `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`. Edit JSON directly — once per path per session is enough.
+When tool output names a platform spill file, you may append/update **`harness-registry.json`** at `AGENT_TEMP_ROOT` (paths only, no secrets): `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`. Edit JSON directly — once per path per session is enough.
 
 ## Anti-patterns
 
