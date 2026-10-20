@@ -94,6 +94,37 @@ Build rows: **`action`** (`keep` \| `move` \| `quarantine`), **`source`**, **`de
 
 Resolve **`$HOME`** / **`$env:USERPROFILE`** in shell — never Windows **`%userprofile%`** as a literal path segment in commands.
 
+## Plan file template (`PLAN.md`)
+
+Write under **`scratch/YYYY-MM-DD/agent-workspace-migrate/PLAN.md`** before moves:
+
+```markdown
+# Agent workspace migration — <hostname>
+
+## Policy (short)
+Workspace / utilities / temp/scratch vs native spill — user read this section.
+
+## Preconditions
+- [ ] User confirmed no parallel agents on these paths
+- [ ] Lock probe passed on: …
+- [ ] Optional handle listing: …
+
+## Inventory
+- move: N · keep: N · quarantine: N
+- manifest: ./manifest.csv
+
+## Steps (ordered)
+1. …
+
+## Will not touch
+- agent-tools spill, .cursor/skills, …
+
+## Post-check
+- [ ] Manifest destinations exist
+- [ ] harness.md updated
+- [ ] LOCAL_RULES_DIR overlays updated
+```
+
 ## Anti-patterns
 
 - Shared PowerShell/bash **cleanup scripts** committed to agent-rules (machine plans stay in **`scratch/…/agent-workspace-migrate/`** only).
