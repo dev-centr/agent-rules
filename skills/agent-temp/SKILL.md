@@ -20,8 +20,8 @@ Required location for working files you author:
 
 ## Platform temp (hard-coded)
 
-- **Do not move** harness spill (`agent-tools`, etc.).
-- If tool output cites a new platform path, optionally update **`AGENT_TEMP_ROOT/harness-registry.json5`** (JSON5 with `//` comments; paths only). Keep the header comment block explaining purpose.
+- **Do not move** harness spill (`agent-tools`, etc.) and **do not mirror** it under `AGENT_TEMP_ROOT`.
+- If tool output cites a new platform path, optionally update **`AGENT_TEMP_ROOT/harness-registry.json5`** (JSON5 with `//` comments; native `platformPath` only).
 
 ## One-off machine cleanup
 

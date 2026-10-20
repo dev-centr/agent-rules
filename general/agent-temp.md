@@ -10,14 +10,14 @@ Skill agent-temp — no cleanup scripts in this repo; one-off machine tidying is
 
 | Word | Meaning | Location |
 | --- | --- | --- |
-| **Spill** | Harness overflow the agent **does not control** (hard-coded paths, oversized tool output the IDE writes) | `AGENT_TEMP_ROOT/cursor/…` — **do not move** |
+| **Spill** | Harness overflow the agent **does not control** (hard-coded paths, oversized tool output the IDE writes) | **Native platform paths** (e.g. Cursor `…/agent-tools`, `.cursor/projects/<slug>/agent-tools`) — **do not move or mirror** |
 | **Scratch / temp** | Agent **working files** (redirects, probes, analysis dumps you author) | `AGENT_TEMP_ROOT/scratch/YYYY-MM-DD/…` only |
 
-Do not call agent scratch “spill.” Do not put platform spill under `scratch/`.
+Do not call agent scratch “spill.” Do not put platform spill under `scratch/`. Do **not** relocate spill into `AGENT_TEMP_ROOT` — Cursor and other harnesses expect their own paths.
 
 | Track | Agent obligation |
 | --- | --- |
-| Platform spill | Do not move, rename, or organize. Do not invent alternate platform paths. |
+| Platform spill | Do not move, rename, organize, or copy into `AGENT_TEMP_ROOT`. Optional: record paths in `harness-registry.json5`. |
 | Scratch / temp | **Required:** `scratch/…` — not `$env:TEMP`, profile root, repos, or `%userprofile%`. |
 
 ## Resolve the root
@@ -36,9 +36,8 @@ Record the concrete path in **`harness.md` only**.
 ```text
 AGENT_TEMP_ROOT/
   README.md                   # machine-local index
-  harness-registry.json5      # platform spill paths (JSON5 — comments OK)
-  scratch/YYYY-MM-DD/           # agent scratch only
-  cursor/                     # platform spill only (do not move; optional junction target)
+  harness-registry.json5      # optional index of native platform spill paths
+  scratch/YYYY-MM-DD/         # agent scratch only
 ```
 
 ## Before writing non-platform temp
@@ -53,9 +52,9 @@ Load skill **`agent-temp`**.
 
 **File:** **`harness-registry.json5`** at `AGENT_TEMP_ROOT`. Use **JSON5** (or JSONC-style `//` comments) so the file explains itself — strict `.json` without comments is discouraged.
 
-**Purpose:** index **hard-coded harness temp paths** (platform spill) on this machine. It does not list `scratch/` files. Paths only — never secrets or file bodies.
+**Purpose:** index **native** hard-coded harness temp paths (platform spill) on this machine. It does not list `scratch/` files. Paths only — never secrets or file bodies.
 
-When tool output names a platform spill path, append or update an entry (once per path per session): `id`, `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`, optional `//` note on the entry.
+When tool output names a platform spill path, append or update an entry (once per path per session): `id`, `harness`, `platformPath`, `lastSeen`, optional `lastArtifact`, optional `//` note on the entry.
 
 ```json5
 // harness-registry.json5 — see general/agent-temp.md
@@ -69,7 +68,6 @@ When tool output names a platform spill path, append or update an entry (once pe
       harness: 'cursor', // HARNESS_NAME from harness.md
       kind: 'platform-hard-coded',
       platformPath: 'C:\\Users\\…\\.cursor\\projects\\empty-window\\agent-tools',
-      unifiedPath: 'C:\\…\\AgentTemp\\cursor\\projects\\empty-window\\agent-tools',
       lastSeen: '2026-10-20T00:00:00Z',
     },
   ],
@@ -78,7 +76,8 @@ When tool output names a platform spill path, append or update an entry (once pe
 
 ## Anti-patterns
 
-- Moving or archiving **`cursor/`** platform spill
+- Moving, archiving, or **mirroring** platform spill under `AGENT_TEMP_ROOT`
+- Junctions that redirect `.cursor/…/agent-tools` into `AgentTemp/` (breaks the “stay where the harness writes” rule)
 - `$env:TEMP`, profile root scratch, repo root scratch (unless committing)
 - Cmd-style **`%userprofile%`** in PowerShell
 
