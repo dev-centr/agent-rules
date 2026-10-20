@@ -33,7 +33,7 @@
 - **Release architectures:** default to pattern `common` (win/lin × x64+arm64); GUI apps prefer `desktop` (+ macOS arm64). Dated forms `common/2026`. Skill `release-targets`; detail `general/release-target-patterns.md`.
 - **Web fonts:** prefer self-hosting (Fontsource / local `woff2` + preload); do not `@import` Google Fonts or wait on a CDN for first paint. Detail: `general/self-host-fonts.md` (skill `self-host-fonts`).
 - **Public web crawlability:** content routes return meaningful no-JavaScript HTML; generate and maintain `/sitemap.xml` + `/robots.txt`; feeds supplement rather than replace HTML. Skill `web-crawlability`; detail `general/web-crawlability.md`.
-- **Global agent temp:** platform-hard-coded overflow (e.g. Cursor `agent-tools`) → junctions under `$AGENT_TEMP_ROOT/cursor/`; **every agent-chosen** temp file → `$AGENT_TEMP_ROOT/manual/` (skill `agent-temp`; detail `general/agent-temp.md`). In PowerShell use `$env:USERPROFILE`, never cmd-style `%userprofile%`.
+- **Global agent temp:** platform spill → `$AGENT_TEMP_ROOT/cursor/` (junctions); **all other temp** → `$AGENT_TEMP_ROOT/manual/` only (skill `agent-temp`; `general/agent-temp.md`). PowerShell: `$env:USERPROFILE`, never `%userprofile%`.
 
 ## Environment
 - OS/Shell: default Windows 10/11 unless profile says otherwise; recommend Nushell as user default; agent terminals may be PowerShell 7 (`pwsh`) or Windows PowerShell 5.1 - 5.1 mangles UTF-8 on read/write (`general/text-encoding.md`).

@@ -11,9 +11,9 @@ Skill agent-temp loads for agent-chosen paths (not platform-hard-coded spill).
 | Track | Who picks the path | Agent obligation |
 | --- | --- | --- |
 | **Platform temp** | The harness/IDE (hard-coded) | Do **not** invent alternate platform paths. On Windows + Cursor, run/maintain `scripts/link-cursor-agent-temp.ps1` so hard-coded `agent-tools` lands under `AGENT_TEMP_ROOT/cursor/…`. |
-| **Agent temp** | **You** (every `Write`, redirect, `curl -o`, probe script, CSV dump, etc.) | **Always** place under `AGENT_TEMP_ROOT/manual/…` (or `harness/<name>/…`). This rule exists because agents otherwise panic and pick arbitrary locations. |
+| **Unified temp** | **Any agent / any harness** (not platform-hard-coded) | **Required:** `AGENT_TEMP_ROOT/manual/YYYY-MM-DD/…` or `harness/<name>/…`. No other scratch locations. |
 
-Platform overflow you did not author belongs in **`cursor/`**. Anything **you** create because output is large, awkward in chat, or “just for this step” belongs in **`manual/`** — not `$env:TEMP`, not profile root, not repo root, not `%userprofile%` literals.
+Platform-hard-coded → **`cursor/`** only (junctions). Everything else → **`manual/`** — not `$env:TEMP`, profile root, repos, or `%userprofile%`.
 
 ## Does the agent know platform spill happened?
 
