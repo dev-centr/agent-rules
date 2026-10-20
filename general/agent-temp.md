@@ -117,3 +117,5 @@ Document **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md`. Skill **`harness-setu
 ## Cleanup
 
 Temp is disposable. Prune old `manual/` and `cursor/` captures when disk space matters. Never commit temp contents to git.
+
+**One-time / periodic sort:** `$AGENT_RULES_PATH/scripts/organize-agent-temp.ps1` classifies legacy `cursor/home/agent-tools` (and per-project spill files) into `manual/archive/<topic>/<yyyy-MM>/`, writes CSV manifests under `manual/YYYY-MM-DD-cleanup/`, and removes the mistaken `%userprofile%` folder when empty.
