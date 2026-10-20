@@ -33,7 +33,7 @@
 - **Release architectures:** default to pattern `common` (win/lin × x64+arm64); GUI apps prefer `desktop` (+ macOS arm64). Dated forms `common/2026`. Skill `release-targets`; detail `general/release-target-patterns.md`.
 - **Web fonts:** prefer self-hosting (Fontsource / local `woff2` + preload); do not `@import` Google Fonts or wait on a CDN for first paint. Detail: `general/self-host-fonts.md` (skill `self-host-fonts`).
 - **Public web crawlability:** content routes return meaningful no-JavaScript HTML; generate and maintain `/sitemap.xml` + `/robots.txt`; feeds supplement rather than replace HTML. Skill `web-crawlability`; detail `general/web-crawlability.md`.
-- **Global agent temp:** platform spill stays at native harness paths (e.g. `.cursor/…/agent-tools` — do not move); **agent scratch** → `$AGENT_TEMP_ROOT/scratch/` only (skill `agent-temp`; `general/agent-temp.md`). PowerShell: `$env:USERPROFILE`, never `%userprofile%`.
+- **Global agent temp:** platform spill stays at native harness paths (concrete path usually in tool output — do not move); **agent scratch** → `$AGENT_TEMP_ROOT/scratch/` only; optional **`harness-registry.json5`** = one spill root per harness (patterns, not workspace lists). Skill `agent-temp`; `general/agent-temp.md`. PowerShell: `$env:USERPROFILE`, never `%userprofile%`.
 
 ## Environment
 - OS/Shell: default Windows 10/11 unless profile says otherwise; recommend Nushell as user default; agent terminals may be PowerShell 7 (`pwsh`) or Windows PowerShell 5.1 - 5.1 mangles UTF-8 on read/write (`general/text-encoding.md`).

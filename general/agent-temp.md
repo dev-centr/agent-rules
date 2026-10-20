@@ -59,7 +59,14 @@ Load skill **`agent-temp`**.
 Update the registry when **`HARNESS_NAME` changes**, you add a **second harness**, or probe shows the **platform changed its spill root** — not on every new workspace slug.
 
 ```json5
-// harness-registry.json5 — see general/agent-temp.md
+// harness-registry.json5 (machine-local; lives under AGENT_TEMP_ROOT)
+//
+// Background: Agent harnesses often will dump temporary working content into files
+//          in order for long responses to be used by agents to perform temporary
+//          analysis. This is called "spill" or "spillage". The spillage should NOT
+//          show up inside this AgentTemp folder tree.
+//
+// Purpose: one spill root per harness (patterns only). See general/agent-temp.md.
 {
   schemaVersion: 3,
   agentTempRoot: 'C:\\…\\AgentTemp',

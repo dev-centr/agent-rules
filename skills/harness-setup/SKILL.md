@@ -45,7 +45,8 @@ Best-effort probe (use whatever the harness exposes):
 | Context7 MCP available? | `MCP_CONTEXT7` |
 | Token provenance emit/consume? | `TOKEN_PROVENANCE` (`emit-spans`, `consume-spans`, `off`) |
 | Shell that agent commands run in, and its file-write encoding (e.g. Windows PowerShell 5.1 = ANSI/OEM defaults) | `SHELL_ENCODING` |
-| Global agent temp location | `AGENT_TEMP_ROOT` (default `%LOCALAPPDATA%\AgentTemp` on Windows — `general/agent-temp.md`) |
+| Global agent temp location | `AGENT_TEMP_ROOT` (default `%LOCALAPPDATA%\AgentTemp` on Windows — `general/agent-temp.md`; scratch only; spill stays native) |
+| Optional spill-root cheat sheet | `$AGENT_TEMP_ROOT/harness-registry.json5` — one spill root per `HARNESS_NAME`, not per workspace (`general/agent-temp.md`) |
 
 **Cursor-like harnesses** often expose: User Rules, `~/.cursor/skills`, `~/.cursor/rules`, `.mdc` project rules, markdown workspace links, line-range citation fences.
 

@@ -18,11 +18,12 @@ Required location for working files you author:
 2. Write only under **`scratch/YYYY-MM-DD/{purpose}-….{ext}`**.
 3. Never `$env:TEMP`, profile root, or repo scratch unless committing.
 
-## Platform temp (hard-coded)
+## Platform temp (hard-coded / spill)
 
-- **Do not move** harness spill (`agent-tools`, etc.) and **do not mirror** it under `AGENT_TEMP_ROOT`.
+**Spill** = harness-written overflow files the agent did not choose (often under `agent-tools`). **Do not move** spill and **do not mirror** it under `AGENT_TEMP_ROOT`.
+
 - Concrete spill paths usually appear **in tool output** when the harness writes them; trust that path for the session.
-- **`harness-registry.json5`** (optional): **one spill root per harness** — patterns only, not per-workspace lists. Update on harness change or probe, not every new project folder.
+- **`harness-registry.json5`** (optional, at `AGENT_TEMP_ROOT`): machine-local cheat sheet — **one `spillRoot` per harness** (pattern), not a workspace catalog. Keep the file’s top `// Background` comment (what spill is). Update on harness change or probe, not every new project folder.
 
 ## One-off machine cleanup
 
