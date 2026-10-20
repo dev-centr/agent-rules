@@ -6,14 +6,19 @@ Machine path: $CODE_ROOT/harness.md → AGENT_TEMP_ROOT.
 Skill agent-temp — no cleanup scripts in this repo; one-off machine tidying is ad hoc.
 --->
 
-## Two tracks
+## Two tracks (vocabulary)
 
-| Track | Who picks the path | Agent obligation |
+| Word | Meaning | Location |
 | --- | --- | --- |
-| **Platform temp** | Harness/IDE (hard-coded) | Do **not** move, rename, or “organize” it. Do **not** invent alternate platform paths. |
-| **Unified temp** | **Any agent / any harness** (everything else) | **Required:** `AGENT_TEMP_ROOT/manual/YYYY-MM-DD/…` or `harness/<name>/…` only. |
+| **Spill** | Harness overflow the agent **does not control** (hard-coded paths, oversized tool output the IDE writes) | `AGENT_TEMP_ROOT/cursor/…` — **do not move** |
+| **Scratch / temp** | Agent **working files** (redirects, probes, analysis dumps you author) | `AGENT_TEMP_ROOT/manual/YYYY-MM-DD/…` only |
 
-Platform-hard-coded → under **`AGENT_TEMP_ROOT/cursor/…`** when the workstation junctions harness spill there (machine setup — not forkable). Everything else → **`manual/`** — not `$env:TEMP`, profile root, repos, or `%userprofile%`.
+Do not call agent scratch “spill.” Do not put platform spill under `manual/` or `archive/`.
+
+| Track | Agent obligation |
+| --- | --- |
+| Platform spill | Do not move, rename, or organize. Do not invent alternate platform paths. |
+| Scratch / temp | **Required:** `manual/…` or `harness/<name>/…` — not `$env:TEMP`, profile root, repos, or `%userprofile%`. |
 
 ## Resolve the root
 
@@ -30,8 +35,8 @@ Record the concrete path in **`harness.md` only**.
 
 ```text
 AGENT_TEMP_ROOT/
-  cursor/                   # platform-hard-coded (do not move contents)
-  manual/YYYY-MM-DD/          # all non-platform temp
+  cursor/                   # platform spill only (do not move)
+  manual/YYYY-MM-DD/          # agent scratch / temp only
   harness/<harness-name>/     # optional non-Cursor harness temp
   harness-registry.json5      # optional; platform paths only (JSON5 — comments OK)
 ```

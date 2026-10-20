@@ -10,7 +10,9 @@ description: >-
 
 Read **`general/agent-temp.md`**.
 
-## Non-platform temp (required location)
+## Agent scratch / temp (not spill)
+
+Required location for working files you author:
 
 1. **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md` (default `%LOCALAPPDATA%\AgentTemp` on Windows).
 2. Write only under **`manual/YYYY-MM-DD/{purpose}-….{ext}`** (or **`harness/<name>/…`**).
