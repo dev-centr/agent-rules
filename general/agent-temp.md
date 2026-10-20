@@ -1,9 +1,9 @@
 # Global agent temp location
 
 <!---
-Portable policy: one harness-neutral tree for temporary files.
-Machine path: $CODE_ROOT/harness.md → AGENT_TEMP_ROOT.
-Skill agent-temp — no cleanup scripts in this repo; one-off machine tidying is ad hoc.
+Portable policy: scratch/temp under the machine agent workspace temp subfolder.
+Machine paths: $CODE_ROOT/harness.md → AGENT_WORKSPACE_ROOT, AGENT_TEMP_ROOT (= workspace/temp).
+Parent layout: general/agent-workspace.md. Skill agent-temp — no cleanup scripts in this repo.
 --->
 
 ## Two tracks (vocabulary)
@@ -22,14 +22,14 @@ Do not call agent scratch “spill.” Do not put platform spill under `scratch/
 
 ## Resolve the root
 
-Read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md`.
+Read **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md` (the **`temp/`** subfolder under **`AGENT_WORKSPACE_ROOT`** — `general/agent-workspace.md`).
 
 | OS | Default when unset |
 | --- | --- |
-| Windows | `%LOCALAPPDATA%\AgentTemp` |
-| Linux / macOS | `$XDG_STATE_HOME/AgentTemp` or `~/.local/state/AgentTemp` |
+| Windows | `%LOCALAPPDATA%\AgentWorkspace\temp` |
+| Linux / macOS | `$XDG_STATE_HOME/AgentWorkspace/temp` or `~/.local/state/AgentWorkspace/temp` |
 
-Record the concrete path in **`harness.md` only**.
+Record workspace + temp paths in **`harness.md` only**.
 
 ## Layout
 
@@ -64,12 +64,13 @@ Update the registry when **`HARNESS_NAME` changes**, you add a **second harness*
 // Background: Agent harnesses often will dump temporary working content into files
 //          in order for long responses to be used by agents to perform temporary
 //          analysis. This is called "spill" or "spillage". The spillage should NOT
-//          show up inside this AgentTemp folder tree.
+//          show up inside this agent workspace temp tree.
 //
 // Purpose: one spill root per harness (patterns only). See general/agent-temp.md.
 {
   schemaVersion: 3,
-  agentTempRoot: 'C:\\…\\AgentTemp',
+  agentWorkspaceRoot: 'C:\\…\\AgentWorkspace',
+  agentTempRoot: 'C:\\…\\AgentWorkspace\\temp',
   updated: '2026-10-20T00:00:00Z',
   spillRoots: [
     {
@@ -84,13 +85,13 @@ Update the registry when **`HARNESS_NAME` changes**, you add a **second harness*
 ## Anti-patterns
 
 - Moving, archiving, or **mirroring** platform spill under `AGENT_TEMP_ROOT`
-- Junctions that redirect `.cursor/…/agent-tools` into `AgentTemp/` (breaks the “stay where the harness writes” rule)
+- Junctions that redirect `.cursor/…/agent-tools` into the agent workspace (breaks the “stay where the harness writes” rule)
 - `$env:TEMP`, profile root scratch, repo root scratch (unless committing)
 - Cmd-style **`%userprofile%`** in PowerShell
 
 ## Harness obligation
 
-Document **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md`. Skill **`harness-setup`** records it on probe.
+Document **`AGENT_WORKSPACE_ROOT`** and **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/harness.md`. Skill **`harness-setup`** records them on probe.
 
 ## Cleanup
 

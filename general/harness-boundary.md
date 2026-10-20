@@ -67,7 +67,7 @@ Use skill **`record-rule`**. Pick scope:
 | Workstation fact | `$CODE_ROOT/machine.md` |
 | Harness config | `$CODE_ROOT/harness.md` |
 
-Harness config includes **`AGENT_TEMP_ROOT`** (global agent temp tree — `general/agent-temp.md`).
+Harness config includes **`AGENT_WORKSPACE_ROOT`**, **`AGENT_TEMP_ROOT`**, and utility paths (`general/agent-workspace.md`, `general/agent-temp.md`).
 
 ## Before editing agent-rules
 

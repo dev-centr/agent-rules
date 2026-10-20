@@ -19,7 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-== 2026-10-20 - Global agent temp location
+== 2026-10-20 - Agent workspace + temp
+
+* `general/agent-workspace.md`: **`AGENT_WORKSPACE_ROOT`** (`utilities/` + `temp/`); rename from flat `AgentTemp` root. **`AGENT_TEMP_ROOT`** = workspace `temp/` (scratch + optional `harness-registry.json5`). **`AGENT_UTILITIES_ROOT`** for agent-invoked scripts (e.g. Bitwarden entry in `harness.md`).
+
+== 2026-10-20 - Global agent temp location (scratch/spill)
 
 * `general/agent-temp.md` + skill `agent-temp`: `$AGENT_TEMP_ROOT` for **`scratch/`** only; platform spill stays at native harness paths (no `AgentTemp/cursor` mirror); optional **`harness-registry.json5`** (one spill root per harness, spill Background comment, tool output for concrete paths); `user.md` + `harness-setup` aligned; PowerShell `$env:USERPROFILE` guard.
 * `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable. No shared cleanup scripts — workstation tidying is one-off with AI.

@@ -14,7 +14,7 @@ Read **`general/agent-temp.md`**.
 
 Required location for working files you author:
 
-1. **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md` (default `%LOCALAPPDATA%\AgentTemp` on Windows).
+1. **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md` (workspace `temp/` — default `%LOCALAPPDATA%\AgentWorkspace\temp` on Windows; see `general/agent-workspace.md`).
 2. Write only under **`scratch/YYYY-MM-DD/{purpose}-….{ext}`**.
 3. Never `$env:TEMP`, profile root, or repo scratch unless committing.
 
