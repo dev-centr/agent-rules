@@ -204,8 +204,14 @@ SKILLS_INSTALL = junction | copy | harness-native | none
 CHAT_FILE_LINKS = markdown-workspace-links | plain-paths | harness-default
 CODE_CITATION = line-range-fence | none | harness-default
 IDE_PROJECT_RULES = mdc-in-repo | claude-rules | none
+AGENT_WORKSPACE_ROOT = <canonical workspace tree>
+AGENT_WORKSPACE_LINK = <optional home junction/symlink>
+AGENT_TEMP_ROOT = <workspace>/temp
+AGENT_UTILITIES_ROOT = <workspace>/utilities
 MCP_CONTEXT7 = available | unavailable
 ----
+
+Agent workspace (utilities + scratch temp; spill stays native): xref:agent-workspace.adoc[Agent workspace on a workstation].
 
 == Skill loading (two paths)
 

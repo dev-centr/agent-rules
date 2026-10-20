@@ -1,0 +1,125 @@
+= Agent workspace on a workstation
+:navtitle: Agent workspace
+:description: Machine-local tree for agent utilities and scratch temp — spill stays in harness paths; junction or symlink for discoverability.
+:page-audience: Operators and agents configuring a personal workstation for AI coding assistants
+:page-usage-context: Explanation on the docs hub; canonical policy files live in the agent-rules git tree
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-10-20
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+One **machine-local** folder holds agent-operated **utilities** and disposable **scratch** files.
+Harness **spill** (oversized tool output the IDE writes) stays in native paths such as `.cursor/projects/<slug>/agent-tools` — not in this tree.
+
+Architecture context:: xref:harness-neutral.adoc[Harness-neutral architecture] (`$CODE_ROOT/harness.md`, `$CODE_ROOT/machine.md`).
+Sibling patterns:: xref:bitwarden-cli-agents.adoc[Bitwarden CLI (agents)] (utilities example).
+
+== Vocabulary
+
+[cols="1,2",options="header"]
+|===
+| Term | Meaning
+
+| **Agent workspace**
+| Root tree on disk for agent utilities + temp (not the code hive, not spill)
+
+| **Scratch / temp**
+| Files the *agent* authors (redirects, probes, migration plans) under `temp/scratch/YYYY-MM-DD/`
+
+| **Utilities**
+| Scripts and helpers the agent runs (`utilities/<topic>/`, e.g. Bitwarden entry)
+
+| **Spill**
+| Harness-written overflow files — **do not move** into the workspace
+
+| **Discoverability link**
+| Short path under home pointing at the canonical workspace root (junction or symlink)
+|===
+
+== Layout
+
+[source,text]
+----
+AGENT_WORKSPACE_ROOT/          # canonical (see harness)
+  README.md
+  utilities/<topic>/           # AGENT_UTILITIES_ROOT
+  temp/                        # AGENT_TEMP_ROOT
+    README.md
+    harness-registry.json5     # optional: one spill *root pattern* per harness
+    scratch/YYYY-MM-DD/
+----
+
+Optional registry file indexes **where each harness spills** (patterns only — not a per-repo file catalog).
+Concrete spill paths usually appear in **tool output** when overflow happens.
+
+== Canonical root vs home link
+
+Keep the **canonical** tree where the OS expects app state; add a **link** so humans can open `~/AgentWorkspace` or `%USERPROFILE%\AgentWorkspace` without duplicating data.
+
+[cols="1,1,1",options="header"]
+|===
+| OS | Canonical default | Discoverability link
+
+| Windows
+| `%LOCALAPPDATA%\AgentWorkspace`
+| Directory **junction** → `%USERPROFILE%\AgentWorkspace`
+
+| Linux / macOS
+| `$XDG_STATE_HOME/AgentWorkspace` or `~/.local/state/AgentWorkspace`
+| **Symlink** `$HOME/AgentWorkspace` → canonical root
+|===
+
+Record in `$CODE_ROOT/harness.md`:
+
+[source,text]
+----
+AGENT_WORKSPACE_ROOT = …
+AGENT_WORKSPACE_LINK = …
+AGENT_TEMP_ROOT = …/temp
+AGENT_UTILITIES_ROOT = …/utilities
+----
+
+Copy keys from link:https://github.com/dev-centr/agent-rules/blob/main/harness.example.md[`harness.example.md`].
+
+== Agent behaviors (skills)
+
+[cols="1,2",options="header"]
+|===
+| Skill | When
+
+| `agent-temp`
+| Writing scratch files, `curl -o`, redirects — use `temp/scratch/` only
+
+| `agent-workspace-global`
+| User asks for a **machine-global** or **profile-root** agent script — route to `utilities/<topic>/` unless they explicitly opt out
+
+| `agent-workspace-migrate`
+| Legacy profile litter, flat `AgentTemp`, or pre-link cleanup — plan, lock probes, confirm no parallel agents before moves
+|===
+
+Portable sources (PR upstream here, not duplicated prose in product repos):
+
+* link:https://github.com/dev-centr/agent-rules/blob/main/general/agent-workspace.md[`general/agent-workspace.md`]
+* link:https://github.com/dev-centr/agent-rules/blob/main/general/agent-temp.md[`general/agent-temp.md`]
+* link:https://github.com/dev-centr/agent-rules/blob/main/general/agent-workspace-migrate.md[`general/agent-workspace-migrate.md`]
+
+Inventory and install: xref:skills-catalog.adoc[Skills catalog] · xref:usage.adoc[Usage].
+
+== Anti-patterns
+
+* Scattering new `.ps1` / shell helpers at profile root “for the agent”
+* Mirroring or relocating **spill** under the workspace
+* Shared cleanup scripts in the agent-rules repo — per-machine plans live under `temp/scratch/…/agent-workspace-migrate/` only

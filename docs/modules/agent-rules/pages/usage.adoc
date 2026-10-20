@@ -22,6 +22,7 @@ endif::[]
 . Clone into your code hive, for example `$CODE_ROOT/github.com/<your-org-or-user>/agent-rules`.
 . Point your assistant at `user.md`, or compose with https://github.com/dev-centr/rules-manager[`rules-manager`].
 . Run skill `harness-setup` (or copy `harness.example.md` → `$CODE_ROOT/harness.md`).
+. Optional workstation layout: xref:agent-workspace.adoc[Agent workspace] (utilities + scratch; spill stays native).
 . Put workstation facts in **`$CODE_ROOT/machine.md`** (never commit). Format: `machine.example.md` in this repository.
 . Optional: install agent skills — shop file link:https://github.com/dev-centr/agent-rules/blob/main/skills/BOOTSTRAP.md[`skills/BOOTSTRAP.md`] · xref:harness-neutral.adoc[Harness-neutral architecture] · xref:bootstrap.adoc[Bootstrap agent skills] · xref:end-of-run-commit-push.adoc[End-of-run commit and push] (why agents auto-commit after chats).
 

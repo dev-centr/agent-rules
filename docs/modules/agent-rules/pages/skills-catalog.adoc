@@ -43,6 +43,15 @@ xref:harness-neutral.adoc[Harness-neutral architecture]
 | `harness-setup`
 | New machine/harness setup, populate harness.md, template boundary
 
+| `agent-temp`
+| Scratch/temp files, `AGENT_TEMP_ROOT/scratch/`, harness-registry; spill stays native
+
+| `agent-workspace-global`
+| Machine-global agent tool, profile-root agent script; route to `utilities/<topic>/`
+
+| `agent-workspace-migrate`
+| Legacy profile litter, flat AgentTemp, workspace cleanup; plan + safety probes
+
 | `sync-agent-rules`
 | Skills/rules drift; catalog vs discovery; `AGENT_RULES_SYNCED_SHA`; `skills-set/*` label; sync across machines
 

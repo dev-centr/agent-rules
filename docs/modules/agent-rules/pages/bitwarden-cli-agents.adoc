@@ -74,6 +74,7 @@ BITWARDEN_AGENT_ENTRY = ensure_bw_unlocked.ps1
 ----
 
 Document script paths and overlay names in `$CODE_ROOT/machine.md` and `$LOCAL_RULES_DIR` (see xref:harness-neutral.adoc[harness-neutral]).
+Prefer **`AGENT_UTILITIES_ROOT/bitwarden/`** under xref:agent-workspace.adoc[Agent workspace] with **`BITWARDEN_AGENT_ENTRY`** in `harness.md` (discoverability via **`AGENT_WORKSPACE_LINK`** when set).
 
 == Agent procedure
 
