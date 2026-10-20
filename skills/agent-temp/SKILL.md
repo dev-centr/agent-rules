@@ -3,7 +3,7 @@ name: agent-temp
 description: >-
   Use when writing temp files, scratch files, curl -o, redirects, large output
   captures, platform agent-tools paths in tool results, AGENT_TEMP_ROOT,
-  manual/, harness-registry.json, profile litter; global agent temp policy.
+  manual/, harness-registry.json5, harness registry, profile litter; global agent temp policy.
 ---
 
 # Agent temp
@@ -19,7 +19,7 @@ Read **`general/agent-temp.md`**.
 ## Platform temp (hard-coded)
 
 - **Do not move** harness spill (`agent-tools`, etc.).
-- If tool output cites a new platform path, optionally update **`AGENT_TEMP_ROOT/harness-registry.json`** (edit JSON; paths only).
+- If tool output cites a new platform path, optionally update **`AGENT_TEMP_ROOT/harness-registry.json5`** (JSON5 with `//` comments; paths only). Keep the header comment block explaining purpose.
 
 ## One-off machine cleanup
 

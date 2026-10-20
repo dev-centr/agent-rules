@@ -33,7 +33,7 @@ AGENT_TEMP_ROOT/
   cursor/                   # platform-hard-coded (do not move contents)
   manual/YYYY-MM-DD/          # all non-platform temp
   harness/<harness-name>/     # optional non-Cursor harness temp
-  harness-registry.json       # optional; platform paths only (see below)
+  harness-registry.json5      # optional; platform paths only (JSON5 — comments OK)
 ```
 
 ## Before writing non-platform temp
@@ -44,9 +44,32 @@ Load skill **`agent-temp`**.
 2. PowerShell: **`$env:USERPROFILE`**, **`$env:LOCALAPPDATA`** — never **`%userprofile%`**
 3. Cite the full path when the user should open the file
 
-## Platform spill paths (optional registry)
+## Harness registry (optional, JSON5)
 
-When tool output names a platform spill file, you may append/update **`harness-registry.json`** at `AGENT_TEMP_ROOT` (paths only, no secrets): `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`. Edit JSON directly — once per path per session is enough.
+**File:** **`harness-registry.json5`** at `AGENT_TEMP_ROOT`. Use **JSON5** (or JSONC-style `//` comments) so the file explains itself — strict `.json` without comments is discouraged.
+
+**Purpose:** index **hard-coded harness temp paths** (platform spill) on this machine. It does not list `manual/` files. Paths only — never secrets or file bodies.
+
+When tool output names a platform spill path, append or update an entry (once per path per session): `id`, `harness`, `platformPath`, `unifiedPath`, `lastSeen`, optional `lastArtifact`, optional `//` note on the entry.
+
+```json5
+// harness-registry.json5 — see general/agent-temp.md
+{
+  schemaVersion: 1,
+  agentTempRoot: 'C:\\…\\AgentTemp',
+  updated: '2026-10-20T00:00:00Z',
+  entries: [
+    {
+      id: 'cursor:projects:empty-window',
+      harness: 'cursor', // HARNESS_NAME from harness.md
+      kind: 'platform-hard-coded',
+      platformPath: 'C:\\Users\\…\\.cursor\\projects\\empty-window\\agent-tools',
+      unifiedPath: 'C:\\…\\AgentTemp\\cursor\\projects\\empty-window\\agent-tools',
+      lastSeen: '2026-10-20T00:00:00Z',
+    },
+  ],
+}
+```
 
 ## Anti-patterns
 

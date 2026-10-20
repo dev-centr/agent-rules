@@ -21,7 +21,7 @@ endif::[]
 
 == 2026-10-20 - Global agent temp location
 
-* `general/agent-temp.md` + skill `agent-temp`: `$AGENT_TEMP_ROOT`, platform `cursor/` (do not move) vs required `manual/` temp; optional `harness-registry.json`; PowerShell `$env:USERPROFILE` guard.
+* `general/agent-temp.md` + skill `agent-temp`: `$AGENT_TEMP_ROOT`, platform `cursor/` (do not move) vs required `manual/` temp; optional **`harness-registry.json5`** (JSON5 + header comments); PowerShell `$env:USERPROFILE` guard.
 * `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable. No shared cleanup scripts — workstation tidying is one-off with AI.
 
 == 2026-10-17 - Hub GitHub topics (direct deps only)
