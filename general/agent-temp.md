@@ -17,7 +17,7 @@ Do not call agent scratch “spill.” Do not put platform spill under `scratch/
 
 | Track | Agent obligation |
 | --- | --- |
-| Platform spill | Do not move, rename, organize, or copy into `AGENT_TEMP_ROOT`. Optional: record paths in `harness-registry.json5`. |
+| Platform spill | Do not move, rename, organize, or copy into `AGENT_TEMP_ROOT`. Optional: one spill root per harness in `harness-registry.json5`. |
 | Scratch / temp | **Required:** `scratch/…` — not `$env:TEMP`, profile root, repos, or `%userprofile%`. |
 
 ## Resolve the root
@@ -36,7 +36,7 @@ Record the concrete path in **`harness.md` only**.
 ```text
 AGENT_TEMP_ROOT/
   README.md                   # machine-local index
-  harness-registry.json5      # optional index of native platform spill paths
+  harness-registry.json5      # optional: one spill root per harness (patterns)
   scratch/YYYY-MM-DD/         # agent scratch only
 ```
 
