@@ -75,6 +75,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; one skill per job. Do not paste bodies here.
 - **Skill authoring:** skill `write-a-skill` (`skills/write-a-skill/`) when creating or editing `SKILL.md` or a skill `description`. That field is trigger words, not a lay blurb.
 - **Harness setup:** skill `harness-setup` when probing a new machine or harness.
+- **Agent workspace cleanup:** skill `agent-workspace-migrate` when migrating legacy flat temp, profile agent litter, or home agent utilities (`general/agent-workspace-migrate.md`).
 - **Skills/rules drift:** skill `sync-agent-rules` when catalog/discovery mismatch, behind origin, or `AGENT_RULES_SYNCED_SHA` stale.
 - **Hive layout:** skill `hive-layout` when cloning org repos, reconciling duplicate paths, or auditing fork placement.
 - **Git worktrees:** skill `git-worktrees` when creating, placing, moving, or migrating linked worktrees (`.worktrees/` path policy).

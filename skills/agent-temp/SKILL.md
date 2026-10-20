@@ -3,7 +3,7 @@ name: agent-temp
 description: >-
   Use when writing temp files, scratch files, curl -o, redirects, large output
   captures, platform agent-tools paths in tool results, AGENT_TEMP_ROOT,
-  scratch/, harness-registry.json5, harness registry, profile litter; global agent temp policy.
+  scratch/, harness-registry.json5, harness registry; global agent temp policy.
 ---
 
 # Agent temp
@@ -27,4 +27,4 @@ Required location for working files you author:
 
 ## One-off machine cleanup
 
-Not covered by this skill. Inventory the user's machine explicitly; do not use generic heuristics from agent-rules scripts.
+Skill **`agent-workspace-migrate`** — profile litter, legacy temp root, utilities relocation (`general/agent-workspace-migrate.md`).

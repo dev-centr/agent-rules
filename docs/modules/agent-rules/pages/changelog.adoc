@@ -22,6 +22,7 @@ endif::[]
 == 2026-10-20 - Agent workspace + temp
 
 * `general/agent-workspace.md`: **`AGENT_WORKSPACE_ROOT`** (`utilities/` + `temp/`); rename from flat `AgentTemp` root. **`AGENT_TEMP_ROOT`** = workspace `temp/` (scratch + optional `harness-registry.json5`). **`AGENT_UTILITIES_ROOT`** for agent-invoked scripts (e.g. Bitwarden entry in `harness.md`).
+* **`general/agent-workspace-migrate.md`** + skill **`agent-workspace-migrate`**: cross-platform profile/legacy cleanup — explain policy, **`PLAN.md`** + **`manifest.csv`**, lock probes, optional `lsof`/`fuser`/`handle`, confirm no parallel agents before moves; no repo cleanup scripts. Cursor rule **`.cursor/rules/agent-workspace-migrate.mdc`** (on demand).
 
 == 2026-10-20 - Global agent temp location (scratch/spill)
 

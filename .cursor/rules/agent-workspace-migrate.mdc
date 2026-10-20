@@ -1,0 +1,17 @@
+---
+description: Agent workspace migration/cleanup — safety probes, plan, user confirm before moves; load skill agent-workspace-migrate
+alwaysApply: false
+---
+
+# Agent workspace migration
+
+When the user asks to clean or migrate **agent profile clutter**, **legacy AgentTemp**, or **home agent utilities**:
+
+1. Load skill **`agent-workspace-migrate`** and read **`general/agent-workspace-migrate.md`**.
+2. Explain policy (**workspace** / **utilities** / **temp/scratch** vs native **spill**).
+3. Run lock/writability probes; optional handle listing if probes fail.
+4. Ask user to confirm **no other agents** are operating on the same paths.
+5. Write **`PLAN.md`** + **`manifest.csv`** under **`temp/scratch/…/agent-workspace-migrate/`**; get approval before moves.
+6. Never move **`agent-tools`** spill into the workspace; no shared cleanup scripts in agent-rules.
+
+Cross-platform detail: **`general/agent-workspace-migrate.md`**.

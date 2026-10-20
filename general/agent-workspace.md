@@ -46,6 +46,10 @@ AGENT_WORKSPACE_ROOT/
 
 When scripts at **`$env:USERPROFILE`** exist only for agents (unlock helpers, probes, session stores), prefer **`AGENT_UTILITIES_ROOT/<topic>/`** and point **`harness.md`** entries (e.g. `BITWARDEN_AGENT_ENTRY`) at the new path. Update machine **`LOCAL_RULES_DIR`** overlays; keep user shortcuts (`.lnk`) in the profile if they are for you, not the agent.
 
+## Migration and cleanup
+
+Legacy profile clutter, flat **`AgentTemp`**, or utilities still in **`$HOME`** / profile root: skill **`agent-workspace-migrate`** (`general/agent-workspace-migrate.md`). Requires user-visible **plan**, **safety probes**, and confirmation that **no parallel agents** are touching the same paths. No shared cleanup scripts in this repo.
+
 ## Harness obligation
 
-Document **`AGENT_WORKSPACE_ROOT`**, **`AGENT_TEMP_ROOT`**, and utility entry paths in **`harness.md`**. Skill **`harness-setup`** records them on probe.
+Document **`AGENT_WORKSPACE_ROOT`**, **`AGENT_TEMP_ROOT`**, and utility entry paths in **`harness.md`**. Skill **`harness-setup`** records them on probe; if layout is legacy, point the user at **`agent-workspace-migrate`**.

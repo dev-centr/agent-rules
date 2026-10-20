@@ -95,4 +95,4 @@ Document **`AGENT_WORKSPACE_ROOT`** and **`AGENT_TEMP_ROOT`** in `$CODE_ROOT/har
 
 ## Cleanup
 
-Temp is disposable. **Past clutter on a workstation** (profile root, old spill) is a **one-off** — use AI with an explicit per-file plan for that machine; do not rely on shared cleanup scripts in agent-rules.
+Temp is disposable. **Profile/home agent litter** and **legacy flat temp roots** — skill **`agent-workspace-migrate`** (`general/agent-workspace-migrate.md`): plan, safety probes, user approval, cross-platform. Do not rely on shared cleanup scripts in agent-rules. **Spill** cleanup is out of scope (never move `agent-tools`).

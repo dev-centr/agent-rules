@@ -49,6 +49,7 @@ Best-effort probe (use whatever the harness exposes):
 | Temp / scratch subfolder | `AGENT_TEMP_ROOT` (= `%AGENT_WORKSPACE_ROOT%/temp` — `general/agent-temp.md`) |
 | Agent utilities folder | `AGENT_UTILITIES_ROOT` (= `%AGENT_WORKSPACE_ROOT%/utilities`) |
 | Optional spill-root cheat sheet | `$AGENT_TEMP_ROOT/harness-registry.json5` — one spill root per `HARNESS_NAME` (`general/agent-temp.md`) |
+| Legacy flat temp / missing workspace | If only flat `AgentTemp` or utilities in profile — suggest skill **`agent-workspace-migrate`** (`general/agent-workspace-migrate.md`) |
 
 **Cursor-like harnesses** often expose: User Rules, `~/.cursor/skills`, `~/.cursor/rules`, `.mdc` project rules, markdown workspace links, line-range citation fences.
 
