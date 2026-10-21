@@ -2,6 +2,10 @@
 
 Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for owned orgs. Skill: **`antora-org-site`**.
 
+## Experimental — antora-next
+
+When the user or task names **antora-next**, **SolidStart docs shell**, **content manifest**, **asciidoctor-d engine**, or an Antora **rewrite** (not incremental/site-rebuild on static hubs), load skill **`antora-next`** first. Default assumption remains **Antora 3 static generate** until then. Hub proposal: antora-supplemental/docs `proposals/antora-next-shell.adoc`.
+
 ## Valentus stays lean
 
 - **Valentus** (`antora-supplemental/valentus-theme`, rolling `v2`) is the house **theme** suggestion — confirm before applying.

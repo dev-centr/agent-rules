@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-20 - antora-next skill
+
+* Skill `antora-next`: experimental rewrite-era triggers (SolidStart shell, content manifest, asciidoctor-d engine); load before Antora 3 defaults; skip `antora-org-site` when next-only.
+* `agents/engineering/antora.md`: experimental next section pointing to skill and hub proposal.
+* `antora-org-site` description: skip when antora-next triggers.
+
 == 2026-10-20 - subscribe-docs-hub-rebuild skill
 
 * Skill `subscribe-docs-hub-rebuild`: hub `repository_dispatch` subscriber checklist (`docs-source-updated`, `extension-updated`, optional `link-cache-invalidate`); optional notify workflows + `DOCS_DISPATCH_TOKEN`; explicit no `update-consumers` on scaffold.
