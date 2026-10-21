@@ -2,6 +2,8 @@
 
 Prefer **self-hosted** webfonts (bundled with the app, e.g. Fontsource / local `woff2`) over Google Fonts or other CDNs.
 
+Choosing *which* face to use (foundries, optical sizing, open vs retail) → `general/type-foundries-and-font-quality.md`, skill **`typeface-selection`**. This file is *how* to load the face you already chose.
+
 ## Why
 
 CDN `@import` / remote stylesheets add DNS, TLS, and CSS→font waterfalls. Waiting on that for first paint is unreliable and turns FOUC into a blank or delayed page when the network is slow.

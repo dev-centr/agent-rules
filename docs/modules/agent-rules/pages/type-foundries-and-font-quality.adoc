@@ -1,0 +1,122 @@
+= Type foundries and font quality
+:navtitle: Type foundries
+:description: How elite foundries engineer type, retail vs open catalogs, and how agents pick faces before self-hosting.
+:page-audience: Designers and developers choosing typography for Dev-Centr-owned sites and apps; agents wiring brand or UI fonts
+:page-usage-context: Explanation on the agent-rules docs component; pairs with self-hosting policy
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-10-20
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience role:: {page-audience}
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+Choosing a typeface and *loading* it on the web are separate decisions.
+This page covers **foundry quality**, **licensing lanes**, and **engineering patterns**; runtime bundling stays in the portable rule `general/self-host-fonts.md` (skill `self-host-fonts`).
+
+Agents: load skill **`typeface-selection`** when picking fonts; then **`self-host-fonts`** for Fontsource / local `woff2` and preload.
+
+== Why one Colophon face on Google Fonts is misleading
+
+Colophon Foundry ships a large **retail** catalog (**Aperçu**, **Basis Grotesque**, **Space Grotesk**, **Fortescue**, and others).
+**DM Sans** on Google Fonts is a **commissioned open-source** companion derived from their commercial grotesk work — not the whole foundry output.
+
+The type world splits into:
+
+* **Foundry-direct / retail** — full families, optical masters, display/text cuts.
+* **Open catalogs** — subsets, commissions, and product fonts (Google Fonts, Fontshare, etc.).
+
+== Foundries often cited for engineering quality
+
+Use as a research shortlist; verify license and cuts for your project.
+
+[cols="1,1,2",options="header"]
+|===
+| Foundry | Region | Notes
+
+| Lineto
+| Switzerland / UK
+| Curated Swiss modernism — Circular, Akkurat, Brown, LL Simplon
+
+| Dinamo
+| Switzerland / Germany
+| Systemic variable fonts — GT America, GT Walsheim, GT Sectra
+
+| Commercial Type
+| US / UK
+| Editorial serifs and neutral sans — Graphik, Lyon, Druk, Marian
+
+| Optimo
+| Switzerland
+| Precision grotesks — Supreme, New Rail Alphabet, Px Grotesk
+
+| Klim Type Foundry
+| New Zealand
+| Rebuilt classics — Founders Grotesk, Tiempos, Signifier, National
+
+| Production Type
+| France
+| Screen-sharp families — Spectral (Google text commission), Panorama
+
+| Colophon Foundry
+| UK
+| Geometric–humanist UI sans — Aperçu, Basis Grotesque, Space Grotesk; open **DM Sans**
+|===
+
+== Patterns in well-engineered families
+
+. **Neo-grotesk / humanist hybrid** — geometric structure with humanist terminals so UI text does not read robotic at small sizes.
+. **Optical sizing** — distinct Display vs Text masters (or a variable `opsz` axis): spacing, stem weight, and ink traps tuned per size range.
+. **Historical model, digital redraw** — shapes informed by specimen history, corrected for screens.
+. **Variable font architecture** — continuous weight/width (and often optical size) without mangled interpolations.
+
+Generic free sans often ship one outline scaled everywhere — the “same style” as a retail face can still feel flat.
+
+== Open catalogs (Google Fonts and peers)
+
+=== How strong work appears for free
+
+* **Paid commissions** — e.g. Colophon **DM Sans**, Production Type **Spectral**.
+* **Product open source** — **Inter**, **Roboto**, **Fira** / **Fira Code** (built for a platform, not a foundry’s full retail line).
+* **Foundry-selected releases** — e.g. TypeTogether (**Literata**, **Alegreya**), Dalton Maag (**Ubuntu**, **Lexend**).
+
+Always read each family’s designer and license page — do not assume every popular Google Font belongs to one foundry.
+
+=== Tradeoffs vs retail
+
+* Optical sizing and feature richness may be narrower on free cuts (variable fonts help).
+* Flagship retail fonts often stay off free catalogs by design (licensing is how boutique foundries sustain work).
+
+== Agent skills (order of operations)
+
+[cols="1,2",options="header"]
+|===
+| Skill | Role
+
+| `typeface-selection`
+| Foundries, quality patterns, retail vs open, shortlist
+
+| `self-host-fonts`
+| Fontsource / local assets, preload, no CDN on critical path
+
+| `logo-svg-marks`
+| SVG logo / favicon via design subagent — not body typography
+|===
+
+Canonical markdown mirror (for git diffs): `general/type-foundries-and-font-quality.md` in the agent-rules repository.
+
+== Third-party UI design skills
+
+Some harnesses ship broad **frontend / UI design** skills (layout, color, anti-slop aesthetics).
+They do not replace this reference: **house type policy** (quality bar, licensing, self-hosting) lives here and in `self-host-fonts`.
+Use UI design skills for composition; use **`typeface-selection`** when the question is *which face* and *why*.

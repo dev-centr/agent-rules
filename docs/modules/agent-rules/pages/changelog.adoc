@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Grok Bot on behalf of Ryan Johnson
-:page-last-edited: 2026-10-06
+:page-last-edited: 2026-10-20
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -18,6 +18,12 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-10-20 - Type foundries reference + typeface-selection skill
+
+* `general/type-foundries-and-font-quality.md` + skill `typeface-selection`: elite foundry shortlist, engineering patterns (optical sizing, VF axes, grotesk/humanist hybrid), retail vs open catalogs; corrected Google Fonts attribution guidance.
+* Docs hub: xref:type-foundries-and-font-quality.adoc[Type foundries and font quality]; `self-host-fonts` cross-links pick vs load.
+* `user.md`, `AGENTS.md`, `skills/CATALOG.md` pointers updated.
 
 == 2026-10-20 - Agent workspace + temp
 

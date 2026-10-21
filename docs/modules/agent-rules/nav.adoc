@@ -13,6 +13,7 @@
 * xref:org-layer.adoc[Org layer]
 * xref:bootstrap.adoc[Bootstrap agent skills]
 * xref:skills-catalog.adoc[Skills catalog]
+* xref:type-foundries-and-font-quality.adoc[Type foundries and font quality]
 * xref:bitwarden-cli-agents.adoc[Bitwarden CLI (agents)]
 * xref:gcloud-cli-agents.adoc[gcloud CLI (agents)]
 * xref:architecture.adoc[Architecture]

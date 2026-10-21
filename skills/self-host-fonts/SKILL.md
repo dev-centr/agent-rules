@@ -13,7 +13,7 @@ Standing preference: detail in `general/self-host-fonts.md`. Prefer bundled font
 
 ## Steps
 
-1. **Pick the face** — keep the brand/type choice; only change *how* it loads.
+1. **Pick the face** — if not already chosen, load skill **`typeface-selection`** first; then keep the brand/type choice and only change *how* it loads.
 2. **Add a self-host package** when available (e.g. `@fontsource-variable/<family>` or static `@fontsource/<family>`). Otherwise copy licensed `woff2` into the app’s static/assets tree.
 3. **Import CSS via the bundler** (entry CSS or root layout) — not a Google Fonts `<link>` / CSS `@import` as the primary path.
 4. **Match `font-family`** to the package’s real name (variable packages often use `"… Variable"`).
