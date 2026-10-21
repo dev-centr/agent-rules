@@ -41,6 +41,8 @@ Windows GUI: plan MSI/MSIX or winget-friendly installers and auto-update (or Sto
 
 Stamp build metadata at CI/compile time. About, `--version`, crash headers, and updaters share one version truth. Prefer platform-native distribution first; add in-app updaters when the channel needs them. Follow type pages instead of forcing GUI patterns onto libraries or services.
 
+CLI and TUI apps: terminal output, logs, `--verbose`, `--json`, and exit codes follow the OpenShellOrg CLI Output standard (`general/cli-output.md`).
+
 Functional shipping notes: skill `owned-changelog`. Version tags: skill `tag-release`. Docs hub: skill `antora-org-site`.
 
 Public web apps and sites: load skill `web-crawlability`. Content-first routes need meaningful raw HTML plus generated sitemap/robots artifacts; hydration and transitions remain client enhancements.

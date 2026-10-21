@@ -25,6 +25,7 @@
 - **GitHub push routing:** before push, probe this account's repo access (skill `github-repo-access`); route to PR when write or branch protection requires it — explain when the user asked to push but GitHub blocks direct push. Detail: `general/github-push-routing.md`.
 - **Text encoding:** never rewrite text files through Windows PowerShell 5.1 `Get-Content` / `Set-Content` / `Out-File` / `>` without explicit UTF-8 (no BOM) - it double-encodes non-ASCII into mojibake. Use file-edit tools, `pwsh` 7, or .NET `UTF8Encoding($false)`; the machine-wide pre-commit hook + CI encoding guard (`tools/encoding-guard`) catch slips. Detail: `general/text-encoding.md`.
 - **GitHub Actions versions:** use the latest major of each action that runs on the current runner Node runtime, verified against its latest release and `action.yml` (`runs.using`), never from memory. Every repo with workflows has a grouped, **monthly** `.github/dependabot.yml` for `github-actions`. Detail: `general/github-actions-versions.md`.
+- **CLI output:** CLIs we build follow the OpenShellOrg CLI Output standard (quiet default: outcome, changes, decisions, log path; failures explain inline; `--verbose`, `--json`). Detail: `general/cli-output.md`.
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
 - Task lists in files: mark done with checkmark emojis.
