@@ -5,6 +5,8 @@
 !/.cursor/**
 !/agents/
 !/agents/**
+!/catalogs/
+!/catalogs/**
 !/docs/
 !/docs/**
 !/general/

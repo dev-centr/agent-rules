@@ -20,11 +20,11 @@ Standing reference: `general/type-foundries-and-font-quality.md`. **Loading** fa
 
 ## Steps
 
-1. **Clarify constraints** — license (OFL-only vs paid web), scripts, weights needed, display vs long-form text, existing brand lock-in.
+1. **Clarify constraints** — user `preference`: **oss**, **retail**, or **mixed**; scripts, weights, display vs long-form text, existing brand lock-in.
 2. **Separate retail research from open catalogs** — flagship boutique faces are often **not** on Google Fonts; open entries are often commissions or product fonts (see general doc table).
 3. **Apply quality patterns** — hybrid grotesk/humanist for UI sans; optical size or VF `opsz`; variable axes for weight/width without distortion; verify kerning and figure sets for the intended sizes.
 4. **Shortlist 2–3 families** with designer/foundry and license URL; note which cuts exist on Fontsource for self-hosting.
-5. **Hand off** — skill **`self-host-fonts`** for bundling; skill **`logo-svg-marks`** only for logo/glyph SVG (not body type).
+5. **Hand off** — skill **`font-project-lock`** to write `.devcentr/fonts.sdl` and apply stack installs; skill **`self-host-fonts`** for web bundling; skill **`logo-svg-marks`** only for logo/glyph SVG (not body type).
 
 ## Do not
 

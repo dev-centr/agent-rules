@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-20 - Project font lock catalog + font-project-lock skill
+
+* `catalogs/project-typefaces.sdl`: curated OSS recommendations + retail metadata (Fontsource npm, foundry checkout links).
+* `general/font-project-lock.md` + skill `font-project-lock`: `.devcentr/fonts.sdl`, paid vs OSS/mixed preference, stack install (web, Flutter, VAE, OS).
+* Cross-links from `typeface-selection`, `user.md`, `AGENTS.md`, `CATALOG.md`.
+
 == 2026-10-20 - Type foundries reference + typeface-selection skill
 
 * `general/type-foundries-and-font-quality.md` + skill `typeface-selection`: elite foundry shortlist, engineering patterns (optical sizing, VF axes, grotesk/humanist hybrid), retail vs open catalogs; corrected Google Fonts attribution guidance.

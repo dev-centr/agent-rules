@@ -97,6 +97,14 @@ Always read each family’s designer and license page — do not assume every po
 * Optical sizing and feature richness may be narrower on free cuts (variable fonts help).
 * Flagship retail fonts often stay off free catalogs by design (licensing is how boutique foundries sustain work).
 
+== Paid vs OSS (user choice)
+
+Dev-Centr **recommends** curated open faces for web and docs (see `catalogs/project-typefaces.sdl` in the agent-rules repo) but allows **retail** faces when the user holds a license.
+Suite chrome (DevCentr Appearance) and **project** pins stay separate — link:https://docs.devcentr.org/platforms/devcentr/specifications/components/appearance.html[Appearance (code font)] vs link:https://docs.devcentr.org/platforms/devcentr/specifications/components/project-typography.html[Project typography (font lock)].
+
+Project lock file: `.devcentr/fonts.sdl` with `preference` `oss`, `retail`, or `mixed`.
+Policy: `general/font-project-lock.md` in agent-rules.
+
 == Agent skills (order of operations)
 
 [cols="1,2",options="header"]
@@ -105,6 +113,9 @@ Always read each family’s designer and license page — do not assume every po
 
 | `typeface-selection`
 | Foundries, quality patterns, retail vs open, shortlist
+
+| `font-project-lock`
+| Write lock file, Fontsource/npm or local retail assets, VAE SDL typography
 
 | `self-host-fonts`
 | Fontsource / local assets, preload, no CDN on critical path

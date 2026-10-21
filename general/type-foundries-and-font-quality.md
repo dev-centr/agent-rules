@@ -2,6 +2,8 @@
 
 Reference for **choosing** typefaces and reading foundry catalogs — not how fonts load on the web (that is `general/self-host-fonts.md`, skill **`self-host-fonts`**).
 
+Users may choose **paid retail** or **open/OSS** faces (or **mixed** roles). Dev-Centr recommends strong OSS options in `catalogs/project-typefaces.sdl` but does not forbid retail when the user holds a license. Pinning and install: `general/font-project-lock.md`, skill **`font-project-lock`**.
+
 ## Two markets
 
 | Market | What you get | Typical license |

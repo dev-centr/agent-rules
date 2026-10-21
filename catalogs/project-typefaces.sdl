@@ -1,0 +1,141 @@
+// Canonical project typeface catalog (OFL/OSS + retail metadata only — no font binaries).
+// Sync copy: visual-app-editor/packages/core/lib/catalog/project-typefaces.sdl
+
+catalog "project-typefaces" version "2026.10.20" {
+  source agent_rules "dev-centr/agent-rules/catalogs/project-typefaces.sdl"
+
+  provider "fontsource" url "https://fontsource.org/" role "default web pin"
+  provider "google_fonts" url "https://fonts.google.com/" role "directory not runtime"
+  provider "type_network" url "https://typography.com/" role "retail checkout"
+  provider "klim" url "https://klim.co.nz/" role "retail checkout"
+  provider "commercial_type" url "https://commercialtype.com/" role "retail checkout"
+
+  face "dm-sans" {
+    display "DM Sans"
+    tier oss
+    license "OFL-1.1"
+    foundry "Colophon Foundry"
+    roles ui-sans text
+    fontsource npm "@fontsource-variable/dm-sans"
+    google_fonts slug "dm-sans"
+    foundry_url "https://www.colophon-foundry.org/"
+    recommend oss_ui_sans
+  }
+
+  face "source-sans-3" {
+    display "Source Sans 3"
+    tier oss
+    license "OFL-1.1"
+    foundry "Adobe"
+    roles ui-sans text docs
+    fontsource npm "@fontsource/source-sans-3"
+    google_fonts slug "source-sans-3"
+    recommend oss_ui_sans
+  }
+
+  face "inter" {
+    display "Inter"
+    tier oss
+    license "OFL-1.1"
+    foundry "Rasmus Andersson"
+    roles ui-sans text
+    fontsource npm "@fontsource-variable/inter"
+    google_fonts slug "inter"
+    recommend oss_ui_sans
+  }
+
+  face "plus-jakarta-sans" {
+    display "Plus Jakarta Sans"
+    tier oss
+    license "OFL-1.1"
+    foundry "Tokotype"
+    roles ui-sans display
+    fontsource npm "@fontsource-variable/plus-jakarta-sans"
+    google_fonts slug "plus-jakarta-sans"
+    recommend oss_ui_sans
+  }
+
+  face "ibm-plex-sans" {
+    display "IBM Plex Sans"
+    tier oss
+    license "OFL-1.1"
+    foundry "IBM / Plex"
+    roles ui-sans text docs
+    fontsource npm "@fontsource/ibm-plex-sans"
+    google_fonts slug "ibm-plex-sans"
+    recommend oss_ui_sans
+  }
+
+  face "literata" {
+    display "Literata"
+    tier oss
+    license "OFL-1.1"
+    foundry "TypeTogether"
+    roles text serif docs
+    fontsource npm "@fontsource/literata"
+    google_fonts slug "literata"
+    recommend oss_text_serif
+  }
+
+  face "spectral" {
+    display "Spectral"
+    tier oss
+    license "OFL-1.1"
+    foundry "Production Type"
+    roles text serif
+    fontsource npm "@fontsource/spectral"
+    google_fonts slug "spectral"
+    recommend oss_text_serif
+  }
+
+  face "jetbrains-mono" {
+    display "JetBrains Mono"
+    tier oss
+    license "OFL-1.1"
+    foundry "JetBrains"
+    roles code ui-mono
+    fontsource npm "@fontsource/jetbrains-mono"
+    os_install scriptbook "examples/fonts/install-jetbrains-mono.cmk"
+    recommend oss_code_mono
+  }
+
+  face "cascadia-mono" {
+    display "Cascadia Mono"
+    tier oss
+    license "OFL-1.1"
+    foundry "Microsoft"
+    roles code ui-mono
+    os_install scriptbook "examples/fonts/install-cascadia-mono.cmk"
+    recommend oss_code_mono default_devcentr_terminal
+  }
+
+  face "graphik" {
+    display "Graphik"
+    tier retail
+    license "commercial"
+    foundry "Commercial Type"
+    roles ui-sans text display
+    retail commercial_type "graphik"
+    foundry_url "https://commercialtype.com/catalog/graphik"
+  }
+
+  face "gt-america" {
+    display "GT America"
+    tier retail
+    license "commercial"
+    foundry "Dinamo"
+    roles ui-sans display
+    retail dinamo "gt-america"
+    foundry_url "https://abcdinamo.com/typefaces/gt-america"
+  }
+
+  face "founders-grotesk" {
+    display "Founders Grotesk"
+    tier retail
+    license "commercial"
+    foundry "Klim Type Foundry"
+    roles ui-sans display
+    retail klim "founders-grotesk"
+    foundry_url "https://klim.co.nz/collections/founders-grotesk"
+  }
+}
