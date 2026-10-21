@@ -31,6 +31,7 @@ House example of dual-axis labels + moving GitHub line tags: Valentus Theme (`2.
 - [ ] Public label X.Y.Z+dep.N where a dep axis exists
 - [ ] GitHub rolling vX / vX.Y moved if that platform is a pin path
 - [ ] Registry publish / refresh only if they asked
+- [ ] **Consumers:** if P is a library, Antora extension, theme, or compose pack with dependents → load skill **`update-consumers`** (Antora: **`antora-extension-consumers`**) and run pin/topic fan-out + **`push-code`** per repo (not implied by tagging alone)
 ```
 
 ## +tags (required when possible)
@@ -93,7 +94,8 @@ git push origin "v$Version"
 
 6. If GitHub Releases or Actions consumers exist → [github.md](github.md) (immutable release, then move `vX` / `vX.Y`).
 7. If a range-resolving registry is the install path → [registries.md](registries.md).
-8. Report: immutable tag URL, public label, which rolling aliases moved, registry URL if any.
+8. If P has downstream playbooks/hubs/libraries (especially Antora extensions, **`facto-stack`**, UI bundles) → skill **`update-consumers`**; do not stop at “tag pushed.” Hub **`repository_dispatch`** notify (optional CI) rebuilds aggregators but **does not** bump their lockfile pins.
+9. Report: immutable tag URL, public label, which rolling aliases moved, registry URL if any, and consumer fan-out summary (repos bumped / skipped / discovery gaps).
 
 ## Do not
 

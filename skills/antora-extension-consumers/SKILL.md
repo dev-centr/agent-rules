@@ -85,6 +85,19 @@ github:antora-supplemental/antora-search-chat#v0.1.4
 
 Rolling lines (`#v0.1`, `#v2` for UI bundles) are allowed when the product documents them (e.g. Valentus `v2` ui-bundle). Do not leave bare `github:org/repo` without a ref unless the hub explicitly floats `main` and accepts lockfile churn.
 
+## Hub rebuild vs consumer pin fan-out
+
+Two complementary mechanisms—use **both** after shipping extension or pack changes:
+
+| Mechanism | What it does | When |
+| --- | --- | --- |
+| **`repository_dispatch`** (`extension-updated` / `docs-source-updated`) | Pokes the hub playbook repo to run a full Antora deploy | Optional CI in each source/extension (`notify-docs-hub*.yml`); needs org/repo secret `DOCS_DISPATCH_TOKEN`. Does **not** change hub lockfile pins. |
+| **`update-consumers` + this skill** | BFS discover via `topic:*`, bump git/npm pins, changelog, push consumer repos | After semver release, rolling line move, or **facto-stack** tag bump that changes member pins inside the pack. Required for hubs pinned to `@antora-supplemental/facto-stack#vX.Y.Z`. |
+
+Pack rule: member extension notify → hub may rebuild **unchanged** graph until **facto-stack** releases and **`topic:facto-stack`** hubs commit a new pack pin. Direct-extension hubs (`topic:<repo>`) need pin bumps via fan-out, not only dispatch.
+
+Templates: `antora-workflow-templates` (`notify-docs-hub-extension.yml`, `install-notify-docs-hub-extension.mjs`). Architecture: antora-supplemental/docs `site-rebuild.adoc`.
+
 ## How this plugs into fan-out
 
 When `update-consumers` matches this specialization:
