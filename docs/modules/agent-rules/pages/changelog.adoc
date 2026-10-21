@@ -19,6 +19,12 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-20 - subscribe-docs-hub-rebuild skill
+
+* Skill `subscribe-docs-hub-rebuild`: hub `repository_dispatch` subscriber checklist (`docs-source-updated`, `extension-updated`, optional `link-cache-invalidate`); optional notify workflows + `DOCS_DISPATCH_TOKEN`; explicit no `update-consumers` on scaffold.
+* `antora-org-site` required item 5 points here for subscribe wiring; `antora-extension-consumers` remains pins/topics only.
+* `skills/CATALOG.md` row added.
+
 == 2026-10-20 - Project font lock catalog + font-project-lock skill
 
 * `catalogs/project-typefaces.sdl`: curated OSS recommendations + retail metadata (Fontsource npm, foundry checkout links).
