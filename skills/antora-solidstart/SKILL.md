@@ -1,20 +1,21 @@
 ---
-name: antora-next
+name: antora-solidstart
 description: >-
-  Use when antora-next, antora rewrite, rewrite antora, SolidStart docs shell,
-  SolidStart docs platform, content manifest, headless antora, asciidoctor-d
-  engine, asciidoctor-d convert, parallel semver extension line, runtime docs
-  platform, not Antora 3, pattern C split artifact, Node orchestrator IPC CLI,
-  upstream contribution not fork; when the user wants a unified SolidStart site
-  instead of separate static Antora output; when planning hot reload compiler or
-  Dlang AsciiDoc engine for docs.
+  Use when antora-solidstart, antora-next (deprecated alias), antora rewrite,
+  rewrite antora, SolidStart docs shell, SolidStart docs platform, content
+  manifest, headless antora, asciidoctor-d engine, asciidoctor-d convert,
+  parallel semver extension line, runtime docs platform, not Antora 3, pattern C
+  split artifact, Node orchestrator IPC CLI, upstream contribution not fork;
+  when the user wants a unified SolidStart site instead of separate static
+  Antora output; when planning hot reload compiler or Dlang AsciiDoc engine for
+  docs. Repo https://github.com/antora-supplemental/antora-solidstart
 ---
 
-# Antora next (experimental)
+# Antora SolidStart (experimental)
 
 **Default remains Antora 3 static** (`@antora/site-generator`, Handlebars UI, facto-stack). When this skill's triggers match, **load this skill first** — do not apply skill `antora-org-site` hub wiring, Valentus/facto-stack pins, or Antora 3 extension `require:` steps unless the task also says to maintain the legacy line.
 
-Canonical hub proposal: antora-supplemental/docs `proposals/antora-next-shell.adoc` (Pattern C split artifact).
+Canonical hub proposal: antora-supplemental/docs `proposals/antora-next-shell.adoc` (Pattern C split artifact). Reader shell repo: https://github.com/antora-supplemental/antora-solidstart (`antora-solidstart`).
 
 ## Architecture (short)
 
@@ -36,7 +37,7 @@ Related shipped docs (legacy line, still valid beside next):
 
 ## Parallel semver
 
-Same git repo may ship **Antora 3** and **antora-next** lines: disjoint majors, `@antora-next/*` or `/next` entry points, explicit playbook `runtime` gate. See Valentus `+antora.N` and `dprint-plugin-asciidoc` dual-release precedents in the hub proposal.
+Same git repo may ship **Antora 3** and **antora-next** product lines: disjoint majors, `@antora-next/*` or `/next` entry points, explicit playbook `runtime` gate. See Valentus `+antora.N` and `dprint-plugin-asciidoc` dual-release precedents in the hub proposal.
 
 ## Upstream stance
 
@@ -44,5 +45,5 @@ Contribute upstream-style; **not** a long-lived fork of `antora/antora`. Complem
 
 ## When to skip other skills
 
-* **`antora-org-site`** — skip default hub/Valentus/facto wiring when the task is antora-next-only; use for dual-track tasks that explicitly maintain both lines.
+* **`antora-org-site`** — skip default hub/Valentus/facto wiring when the task is antora-solidstart-only; use for dual-track tasks that explicitly maintain both lines.
 * **`subscribe-docs-hub-rebuild`** — v1 `repository_dispatch` full generate targets **static Antora 3** hubs until a next-line dispatch story exists.

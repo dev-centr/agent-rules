@@ -2,9 +2,9 @@
 
 Applies when creating or changing Antora playbooks, UI bundles, or docs hubs for owned orgs. Skill: **`antora-org-site`**.
 
-## Experimental — antora-next
+## Experimental — antora-solidstart
 
-When the user or task names **antora-next**, **SolidStart docs shell**, **content manifest**, **asciidoctor-d engine**, or an Antora **rewrite** (not incremental/site-rebuild on static hubs), load skill **`antora-next`** first. Default assumption remains **Antora 3 static generate** until then. Hub proposal: antora-supplemental/docs `proposals/antora-next-shell.adoc`.
+When the user or task names **antora-solidstart**, **antora-next** (deprecated alias), **SolidStart docs shell**, **content manifest**, **asciidoctor-d engine**, or an Antora **rewrite** (not incremental/site-rebuild on static hubs), load skill **`antora-solidstart`** first. Default assumption remains **Antora 3 static generate** until then. Hub proposal: antora-supplemental/docs `proposals/antora-next-shell.adoc`. Reader shell repo: `antora-supplemental/antora-solidstart`.
 
 ## Valentus stays lean
 

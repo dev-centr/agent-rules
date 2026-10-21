@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-21 - antora-solidstart skill rename
+
+* Skill `antora-next` renamed to `antora-solidstart`; `antora-next` remains a deprecated alias in triggers. Points at repo `antora-supplemental/antora-solidstart`.
+* `CATALOG.md`, `antora-org-site`, and `agents/engineering/antora.md` updated for the new skill id.
+
 == 2026-10-20 - antora-next skill
 
 * Skill `antora-next`: experimental rewrite-era triggers (SolidStart shell, content manifest, asciidoctor-d engine); load before Antora 3 defaults; skip `antora-org-site` when next-only.

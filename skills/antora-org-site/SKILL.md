@@ -11,8 +11,9 @@ description: >-
   extension demo playbook, docs/fixtures, facto-stack demo, supplemental demo
   content, demo data catalog, all documentation in docs folder, docs/ layout,
   start_path layout, modules at repo root, tools-docs, platforms-docs.
-  Skip when antora-next, antora rewrite, SolidStart docs shell, content manifest,
-  asciidoctor-d engine, or runtime docs platform — load skill antora-next instead.
+  Skip when antora-solidstart, antora-next (deprecated alias), antora rewrite,
+  SolidStart docs shell, content manifest, asciidoctor-d engine, or runtime docs
+  platform — load skill antora-solidstart instead.
 ---
 
 # Antora org site
