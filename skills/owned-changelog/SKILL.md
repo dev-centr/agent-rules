@@ -18,7 +18,7 @@ If the repo already has a changelog, **match that style** (layout, tense, headin
 - Link the changelog from the README (Changelog section).
 - Index page named **changelog** (timeline of dates + short summaries + links).
 - Detail pages under `changelog-details/` named `date - title` (ASCII hyphen in **filenames** only).
-- Wire into the active docs system (Antora nav, etc.) when docs exist. If the project has no docs, put the changelog at the repo base.
+- **Antora repos keep the changelog inside Antora.** When the repo has `docs/antora.yml` or `docs/modules/`, the changelog is `docs/modules/<module>/pages/changelog.adoc` (+ `changelog-details/`) in the component nav - never a root `CHANGELOG.md` / `changelog.adoc`. Move an existing root changelog there and repoint README links. Only repos with no Antora presence keep the changelog at the repo base.
 - Reader-facing summaries assume a stranger scanning the timeline — not chat context (`general/documentation.md` Audience / POV).
 
 ## Timeline headings (index + detail)

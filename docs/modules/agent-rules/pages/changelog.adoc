@@ -19,6 +19,11 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
+== 2026-10-23 - changelogs inside Antora; hub orgs wire every component
+
+* Skill `owned-changelog`: repos with Antora presence keep the changelog in the Antora component (`pages/changelog.adoc`); a root changelog moves there. Root changelogs only for repos without Antora.
+* Skill `antora-org-site` rule 15: in an org with a docs hub, every component repo has a `docs/antora.yml` component wired into the hub playbook (profile, hub, archived/deprecated repos exempt).
+
 == 2026-10-23 - env registry 5-column table
 
 * Skill `env-names-registry`: the 7-column table becomes 5 columns (Variable, Purpose, Required, If unset, Source); Source holds both where to obtain the value and where to set it.
