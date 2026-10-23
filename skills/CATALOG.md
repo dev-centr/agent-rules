@@ -54,7 +54,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `push-code` | pushing code, git push, push changes, push to remote; end of agent run; batched push after parallel workers (GIT_CLOSEOUT) | active | Logical commits then push; standing end-of-run auth; workers commit-only in swarms |
 | `github-repo-access` | github permissions, viewerPermission, can't push, push, member role, push vs PR, branch protection, record github access | active | Probe + cache in `machine.md`; routes push vs PR (`general/github-push-routing.md`) |
 | `owned-changelog` | changelog, changelog-details, backfill from git, functional change in owned project | active | Match existing repo style |
-| `env-names-registry` | env vars, `.env.example`, `ENV-VARIABLES.md`; names only | active | Never store secret values |
+| `env-names-registry` | env vars, `.env.example`, `environment-variables.adoc` (5-column table); names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, local library-docs fallback | active | Fallback when Context7 missing |
 | `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create` | active | When filing warranted — not after every owned-repo change; Community discussions → `github-community-discussions` first |
 | `github-community-discussions` | GitHub Community discussions, `orgs/community`, `community/community`, `DISCUSSION_TEMPLATE`, `source:ui`, Product Feedback, `gh discussion create` community, paste pack | active | UI+template only; never API/CLI create; standalone (`.issues` optional) |
