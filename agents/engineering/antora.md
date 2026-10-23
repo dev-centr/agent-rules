@@ -17,6 +17,7 @@ When the user or task names **antora-solidstart**, **antora-next** (deprecated a
 - **facto-stack** (`antora-supplemental/facto-stack`) is the named **compose pack** (VS Code extension-pack pattern): Valentus + Lunr + STEM/math + Kroki diagrams + **page-context** (+ optional neighbors documented there).
 - Prefer pointing playbooks at Facto / its `playbook.fragment.yml` over inventing a parallel “full Valentus” product line.
 - Page metadata: `page-*` attrs; Facto sets `page-context-active`. Body fallback pattern in `general/documentation.md`.
+- **Related docs sites (Facto 0.2.65+):** Facto registers `@antora-supplemental/related-docs`. When the org has other docs sites (team/internal, partner, legacy), set pack key `relatedDocs: { sites: [{ name, url, audience, requires_login, description }] }` so every page gets a top/footer link and a generated registry page. When there are none, opt out explicitly with `relatedDocs: { sites: none }`. Left unconfigured, it stays hidden and logs one info hint. Each site should link back to the others.
 - **page-context 0.6+:** teaching byline `Last updated … by …`; authorship/classification in footer; agent credit **displays** as `Name (via Agent)` (source attr may still say `Agent on behalf of Name`).
 - **Keywords:** footer values link to `/home/keywords/{slug}/` (override `page-context-keyword-base`); register `@antora-supplemental/page-context/antora` for generated filtered listings.
 - **page-edit 0.2+:** lead-table **Source** row with `View | Edit` (blob URL derived from edit URL when possible).
