@@ -1,0 +1,85 @@
+---
+name: antora-org-site
+description: >-
+  Use when creating, wiring, or publishing an Antora site, docs site, or
+  docs hub; antora theme; antora-playbook.yml; playbook; GitHub Pages for
+  docs; one Antora site per org; Lunr; antora-search-chat; docs.devcentr.org;
+  Valentus; Valentus theme; facto-stack; Facto; antora-facto; compose pack; KaTeX;
+  stem latexmath; alias-component-to-latest; Kroki; Mermaid; PlantUML;
+  docs audience; visitor POV; naive reader docs; antora-extension-consumers;
+  demo-data, demo-pages, antora-demo samples, content.sources fixtures,
+  extension demo playbook, docs/fixtures, facto-stack demo, supplemental demo
+  content, demo data catalog, all documentation in docs folder, docs/ layout,
+  start_path layout, modules at repo root, tools-docs, platforms-docs.
+  Skip when antora-solidstart, antora-next (deprecated alias), antora rewrite,
+  SolidStart docs shell, content manifest, asciidoctor-d engine, or runtime docs
+  platform — load skill antora-solidstart instead.
+---
+
+# Antora org site
+
+Minimum bar for a published Antora site in an owned org. Detail and hub table: [reference.md](reference.md). **Mock content for stack/extension demos:** [demo-data.md](demo-data.md). Encoding/mojibake: skill `fix-docs-encoding` (transcode, not a refactor).
+
+## Audience role / POV
+
+Before drafting or revising any page under `docs/`, read **Audience role / point of view** and **Antora page title = nav label** in `general/documentation.md`.
+
+1. Set **`page-*` header attrs** (`page-audience`, `page-usage-context`, `page-orig-author`, `page-last-author`, `page-last-edited`, plus optional catalog fields). Lead label **Audience role** (`page-audience`) = **necessary role** (permissions / access / usage expectations — Developer ≠ User, Admin ≠ Member; not “developers performing a specific task”); put surface/channel in `page-usage-context`. Agent-assisted **source**: `<agent> on behalf of <human>` — **display** (page-context 0.6+): `{human} (via {agent})`. Requires **page-context 0.6.2+** for the Audience role label.
+2. Include the **`ifndef::page-context-active[]`** body fallback (teaching pages: `Audience role::` / authors / last updated; **component homes: footer authors only — never render audience-role/usage chrome**). Attrs via `{page-…}` refs.
+3. **Facto** already registers `@antora-supplemental/page-context` and sets `page-context-active` — do not hard-code the extended catalog into the body. Component homes: extension `0.5+` hides audience/usage and puts authorship in the footer (auto ROOT/`index.adoc`, or `:page-context-surface: component-home`). Teaching pages (0.6+): byline + slim lead; authorship/classification in footer. Keywords link to `{page-context-keyword-base}/{slug}/` (default `/home/keywords/{slug}/`); Facto registers `@antora-supplemental/page-context/antora` for listing pages.
+4. **Lede orients without the Audience role table** — humans skip chrome; paragraph one still adopts the role and/or names the situation (`general/documentation.md`). Title doctrine ≠ body doctrine (`agents/editorial/titles.md`).
+5. When wiring a playbook without Facto, either adopt Facto’s fragment or register `page-context` + `page-context-active` yourself (and the optional `/antora` keyword generator + `page-context-keyword-base`).
+6. **One title:** H1 = `nav.adoc` link text; prefer no `:navtitle:`. Section landings: **linked parent** (link text = H1) with nested `**` children — not `.Section` + Overview. **File stays `index.adoc`**; public URL is the folder via indexify.
+7. **Nav titled lists:** never mix `.Title` / dotted headers with sibling `* xref:…` linked parents. A dotted line owns all following `*` items until the next `.Title` (siblings silently nest). No landing → unlinked `* Label` + `**`; with `index.adoc` → linked parent + `**`. Detail: `general/documentation.md`.
+8. **Folder URLs:** set `urls.html_extension_style: indexify` on owned hub playbooks. Do not invent `overview.adoc`; do not advertise `index.html` in prose.
+
+## Required
+
+1. **One public Antora site per org** that already has a hub. Keep component `docs/` in the product repo; **wire** into the hub when the component needs its own URL/xref space (or stay a `home` portal-only stub). Do not publish a second public Antora site on project GitHub Pages (or Netlify/etc. solely for that). Wiring a source does **not** auto-promote it into the site-nav-tree forest — update `include` only when it should be a browseable root. **Hub aggregator:** skill `hub-home-overview` (`name: home`, Overview nav, portal H1, `home::index.adoc`, avoid `/docs/docs/`).
+2. **Hub lives in `{org}/docs`**, not inside `{org}.github.io`. Playbook, supplemental-ui, Facto stack, and GitHub Pages for the public Antora site belong on the docs repo. The marketing site **links** to the hub — never nest Antora output under `public/docs/` (or similar) from the website build (`docs:build` into marketing `public/` is an anti-pattern). Detail: [reference.md](reference.md).
+3. **Lunr** on every published site (`@antora/lunr-extension`). Register Lunr before wrappers.
+4. **AI search** from `antora-supplemental` — prefer [`antora-search-chat`](https://github.com/antora-supplemental/antora-search-chat). If those packages cannot be found after a reasonable search, **stop and alert the user**; wait before inventing a substitute.
+5. **Hub rebuild signals** — At **wire/scaffold** time: skill **`subscribe-docs-hub-rebuild`** (hub `repository_dispatch` subscriber, optional notify workflows, `DOCS_DISPATCH_TOKEN`). For **topics and SemVer git pins** only: skill **`antora-extension-consumers`** (provider/facto-stack rule). At **post-ship** (after `tag-release`): skill **`update-consumers`** — BFS bump pins/changelogs; required for **`facto-stack`** tag moves on hubs. Do not fan-out consumers on scaffold.
+6. **Math on every docs surface**, even unused: Antora `stem: latexmath` + KaTeX/`site-math.js`; Markdown `remark-math` + `rehype-katex`. Real formulas as `stem:[…]` / `$…$`, not raw prose.
+7. Versioned components: `@antora-supplemental/alias-component-to-latest` (or equivalent) until core ships opt-in. Prefer comments on [antora/antora#291](https://gitlab.com/antora/antora/-/issues/291) over duplicate issues.
+8. **Multi-component hubs:** enable `@antora-supplemental/site-nav-tree` with an **`include` allowlist** (plus `order`) so the sidebar forest is curated. **Wiring a repo into `content.sources` ≠ adding a forest root** — thin product stubs prefer a `home` portal page only, or register the source but omit it from `include`. Align the breadcrumb component picker with the same curated set (`site.keys.site_nav_tree_*`). Do **not** repeat the component start page as the first `nav.adoc` item under site-nav-tree (no Component > Component); linked parents are for **section** landings inside the component. Copy `ui/partials/nav-menu.hbs` and load `ui/js/site-nav-tree-current.js` after `site.js`. The extension **wraps navigation data** and keeps default `nav-tree` / expand-collapse — do **not** replace Valentus nav with OpenDevise Navigator unless the hub outgrows inlined nav HTML. **Recommended pairing** (product docs, not a hard skill gate): when you enable site-nav-tree, also ship `@antora-supplemental/nav-typology` + companion UI, and `@antora-supplemental/nav-typology-diataxis` when the hub uses Diátaxis — see Facto / site-nav-tree READMEs.
+9. Brand from the org’s existing assets. Do not invent a one-off palette per component. **Soft default:** prefer a transparent **`logo-mark`** for site/docs chrome and heroes; keep plate-backed marks for favicon / org avatar / profile tile (skill `github-profile-assets`). Users may override.
+10. Repo-local `antora-playbook.yml` for **preview/validation CI** is fine if it does **not** publish a second public site.
+11. A **member-only** sister Antora site is allowed (private playbook + Access). See [reference.md](reference.md).
+12. Apply skill **`web-crawlability`** to public hubs: sitemap + robots artifacts, canonical indexable URLs, and CI checks that representative pages contain meaningful raw HTML.
+13. **Soft:** Style `page-*` metadata presentation in **`@antora-supplemental/page-context`** (point of interpretation), not via one-off per-hub supplemental CSS for the same chrome.
+14. **All documentation lives under `docs/`.** A repo's Antora component sits at `docs/` (`docs/antora.yml` + `docs/modules/<MODULE>/{pages,partials,images,…}`), wired with `start_path: docs`. Never scatter a `modules/` tree at the repo root — no `start_path` points there, so it is dead weight that looks published but is not. Splitting or moving pages means moving them **inside** `docs/modules/…` (or rehoming them to another component's `docs/`), keeping the component's `nav.adoc` in step. **Sole exception:** a multi-component hub aggregator repo (`{org}/docs`) may add sibling `<component>-docs/` start paths (`tools-docs/`, `platforms-docs/`) — one `start_path` defines exactly one component, and a synthetic aggregate component needs its own descriptor whose `nav:` lists modules that live in other repos. Each sibling keeps the same internal `modules/…` layout, its source is listed **last** among that component's sources in every playbook, and the README's Project Structure explains why it is not under `docs/`. Document the layout in the repo README whenever you add, split, or move documentation.
+15. **Every component repo of a hub org has Antora presence.** When an org has a hub (`{org}/docs`), each of its product/component repos carries a `docs/antora.yml` component (a minimal `index.adoc` + `nav.adoc` is enough) wired into the hub playbook `content.sources` - add it to the site-nav-tree `include` only when it should be a browseable root. Exempt: the hub itself, `.github` / `.github-private` profile repos, and archived or deprecated repos (list those for the owner instead of wiring them).
+
+Does **not** forbid mixing Antora with another docs system (e.g. Fumadocs).
+
+## Valentus + Facto (suggestion — confirm)
+
+**Suggest** Valentus (`antora-supplemental/valentus-theme`) as the house **theme**. **Ask before applying it.** Keep an existing theme unless they confirm a switch. After they choose Valentus, customize colors/logo from org brand assets — do not re-poll the UI on every later pass.
+
+**Valentus stays lean.** Do not fold Lunr, STEM/math, Kroki, or page-context into Valentus core / default `v2`. For the usual stack, use the **facto-stack** compose pack (`antora-supplemental/facto-stack`) — Valentus + Lunr + math + Kroki (Mermaid + PlantUML → SVG) + **page-context** — like a VS Code extension pack. Org notes: `agents/engineering/antora.md`.
+
+## AsciiDoc figures
+
+- Quote image alt text that contains commas: `image::file.svg[alt="Setup: OAuth App, IdP, policy"]`.
+- UTF-8 without BOM; ASCII punctuation in SVG labels; skill `fix-docs-encoding` on touched `docs/` before commit.
+
+## Hub refresh (component push ≠ site rebuild)
+
+Pushing a **component** repo updates content on the next hub build — it does **not** by itself publish the aggregator. The `{org}/docs` workflow must run via **schedule**, **`workflow_dispatch`**, and/or **`repository_dispatch`** (from component CI: **`notify-docs-hub.yml`** for content, **`notify-docs-hub-extension.yml`** for extensions) so Pages refreshes. **`extension-updated`** does not bump hub `package.json` / lockfile pins (pack or extension tags still need **`update-consumers`**). After wiring or asset changes, trigger the hub deliberately so `_images/` and new sources go live. Valentus / Facto override details live in product docs (e.g. Valentus `head-meta` / footer-scripts), not as duplicate harness rules.
+
+## Partner footers (related / partner strips)
+
+**One entry point per org** in `footer-content.hbs` and mirrored site footers: prefer the public org homepage; GitHub only when there is no homepage. Do **not** stack homepage + docs hub + GitHub for the same org (no “OSO Docs” beside OpenShellOrg, no “DevCentr Docs” beside DevCentr). Detail: `general/partner-org-entrypoints.md`.
+
+## Deduplicate / migrate (cutover order)
+
+When you find a second public Antora site, or when moving a hub **out of** `{org}.github.io` into `{org}/docs`:
+
+1. Confirm the component is (or will be) in the hub playbook.
+2. **Deploy `{org}/docs` Pages first** (custom domain / `docs.` host live and serving).
+3. Point README “Explore the docs” (and About homepage, unless main-site or product-domain exception) at the hub URL.
+4. **Then** strip Antora from the marketing site (remove nested `public/docs/`, `docs:build` into the website, and errant Pages/workflows) so `/docs/` never 404s during cutover.
+5. Disable leftover per-repo Antora publish jobs; leave build-only CI if useful.
+
+New-repo About homepage policy: skill `bootstrap-org`. Site vs docs split: skill `bootstrap-org` [reference.md](../bootstrap-org/reference.md#site-vs-docs).
