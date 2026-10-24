@@ -48,6 +48,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `hub-home-overview` | hub home component, `name: home`, `site.start_page: home::index.adoc`, Overview nav, portal H1, `/docs/docs/` avoid, Dev-Centr hub pattern | active | Pairs with `antora-org-site` |
 | `update-consumers` | update consumers, bump dependents, recursive fan-out, consumers of consumers, discover dependents after ship, specialization scan | active | Generic BFS; loads `update-consumers.when` specializations |
 | `antora-extension-consumers` | Antora extension consumers, antora-supplemental topics, `topic:antora-search-chat`, SemVer git pins, uses-* rename | active | specializes: update-consumers; topic = repo name |
+| `link-registry` | link registry, named links, `{url-...}` attributes, links:check, links:fix, literal URL rejected in CI, outbound link index, `needs: links` docs CI gate | active | Pairs with `antora-org-site`; tool repo antora-supplemental/link-registry |
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary | active | Voice in `skills/draft-pr/voice.md` |
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User ask **or** end-of-run (`general/end-of-run.md`) |
