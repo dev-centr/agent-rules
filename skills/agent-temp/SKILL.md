@@ -17,6 +17,7 @@ Required location for working files you author:
 1. **`AGENT_TEMP_ROOT`** from `$CODE_ROOT/harness.md` (workspace `temp/` — default `%LOCALAPPDATA%\AgentWorkspace\temp` on Windows; see `general/agent-workspace.md`).
 2. Write only under **`scratch/YYYY-MM-DD/{purpose}-….{ext}`**.
 3. Never `$env:TEMP`, profile root, or repo scratch unless committing.
+4. Throwaway verification files (one-off playbooks, scratch configs, probe output) stay here and are **never committed**. Reports, saved prompts, or migration notes the owner wants kept are history artifacts - skill `owned-changelog`.
 
 ## Platform temp (hard-coded / spill)
 

@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Grok Bot on behalf of Ryan Johnson
-:page-last-edited: 2026-10-23
+:page-last-edited: 2026-10-25
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -18,6 +18,13 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-10-25 - history artifacts filed under the changelog
+
+* Skill `owned-changelog`: saved prompts, generated reports, analyses, and migration notes never sit loose in the repo root. Antora repos file them as unlisted pages in `pages/history/` (include-only fragments in `partials/history/`); repos with no docs site use `changelog/history/` beside a root `CHANGELOG.adoc`. Both link them from the changelog entry or a *History and reports* section.
+* In Antora repos a root `CHANGELOG` may remain only as a stub pointing at the published Antora changelog and its source path.
+* Throwaway verification files stay in agent scratch and are never committed; contributor guides (`STYLE.adoc`, `CONTRIBUTING`) are not history artifacts.
+* Cross-references in `antora-org-site` (rule 16), `public-readme` (repo root hygiene), `record-rule`, `agent-temp`, and `CATALOG.md`. Detail: xref:changelog-details/2026-10-25 - history-artifacts-folder.adoc[History artifacts folder].
 
 == 2026-10-23 - changelogs inside Antora; hub orgs wire every component
 

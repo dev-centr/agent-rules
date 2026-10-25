@@ -1,0 +1,17 @@
+= History artifacts are filed under the changelog, never the repo root
+:description: Skill owned-changelog sends saved prompts, reports, analyses, and migration notes to the changelog's history folder; root CHANGELOG files in Antora repos become stubs.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the history-artifacts filing rule
+:page-orig-author: Grok Bot on behalf of Ryan Johnson
+:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-edited: 2026-10-25
+:hide-page:
+:navtree-parent: changelog.adoc
+
+Agents saved requested reports, prompts, and migration notes as loose files in repository roots, where they cluttered the repo face and were not linked from any history. The rule now gives them one home per repo shape.
+
+* *Antora repos:* `docs/modules/<module>/pages/history/YYYY-MM-DD-<slug>.adoc`, unlisted (`:hide-page:`, `:navtree-parent: changelog.adoc`, not in `nav.adoc`), converted to AsciiDoc where reasonable; include-only fragments in `partials/history/`. The real changelog is the Antora page; a root `CHANGELOG` is only a stub with the published URL and source path.
+* *Repos with no docs site:* root `CHANGELOG.adoc` plus `changelog/history/YYYY-MM-DD-<slug>.adoc` (or a `history/` subfolder of an existing root changelog-details folder).
+* Each history document is linked from its changelog entry and/or a `== History and reports` section.
+* Throwaway verification files (one-off playbooks, scratch configs) stay in `$AGENT_TEMP_ROOT/scratch/` and are never committed. Contributor guides such as `STYLE.adoc` and `CONTRIBUTING` stay where contributor docs belong.
+* Skills touched: `owned-changelog` (new *History artifacts* section and triggers such as "save this report", "save the prompt", "historical context", "migration notes", "analysis doc", "stray root files"), `antora-org-site` rule 16, `public-readme` *Repo root hygiene*, `record-rule`, `agent-temp`, and `skills/CATALOG.md`.

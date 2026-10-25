@@ -54,7 +54,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User ask **or** end-of-run (`general/end-of-run.md`) |
 | `push-code` | pushing code, git push, push changes, push to remote; end of agent run; batched push after parallel workers (GIT_CLOSEOUT) | active | Logical commits then push; standing end-of-run auth; workers commit-only in swarms |
 | `github-repo-access` | github permissions, viewerPermission, can't push, push, member role, push vs PR, branch protection, record github access | active | Probe + cache in `machine.md`; routes push vs PR (`general/github-push-routing.md`) |
-| `owned-changelog` | changelog, changelog-details, backfill from git, functional change in owned project | active | Match existing repo style |
+| `owned-changelog` | changelog, changelog-details, backfill from git, functional change in owned project, save this report, save the prompt, historical context, migration notes, analysis doc, stray root files | active | Match existing repo style; history artifacts → changelog `history/` folder, never repo root |
 | `env-names-registry` | env vars, `.env.example`, `environment-variables.adoc` (5-column table); names only | active | Never store secret values |
 | `outdated-code-protocol` | Context7 unavailable, stale APIs, local library-docs fallback | active | Fallback when Context7 missing |
 | `issue-reports` | issue report, bug report, blocker, upstream coordination, `gh issue create` | active | When filing warranted — not after every owned-repo change; Community discussions → `github-community-discussions` first |
