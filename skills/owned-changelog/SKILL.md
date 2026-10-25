@@ -5,8 +5,8 @@ description: >-
   changelog from git, wiring a changelog into docs, or recording a functional
   change in an owned project; save this report, save the prompt, saved prompt,
   generated report, historical context, migration notes, setup notes, analysis
-  doc, audit write-up, where do reports go, history folder, pages/history,
-  changelog/history, History and reports, stray root files, loose files in repo
+  doc, audit write-up, where do reports go, history folder, changelog-details/history,
+  changelog-details history folder, History and reports, stray root files, loose files in repo
   root, root CHANGELOG stub.
 ---
 
@@ -79,23 +79,23 @@ Do **not** use em dashes in published changelog **headings** for this layout (fi
 
 ## History artifacts (reports, saved prompts, analyses, migration notes)
 
-**Rule:** Saved prompts, generated reports, analyses, migration notes, setup records, and similar historical-context documents (things the owner asked for, or that record how the repo was set up and changed) **never sit loose in the repo root**. They are filed under the changelog's `history` folder and linked from the changelog.
+**Rule:** Saved prompts, generated reports, analyses, migration notes, setup records, and similar historical-context documents (things the owner asked for, or that record how the repo was set up and changed) **never sit loose in the repo root**. They are filed in **`changelog-details/history/`** and linked from the changelog. Why `changelog-details/`: the folder name reads as subordinate to the changelog, so readers go to *the* changelog first; never name a folder with the plural `changelogs`.
 
 | Repo shape | Real changelog | History artifacts go in |
 | --- | --- | --- |
-| Antora docs (`docs/antora.yml`) | `docs/modules/<module>/pages/changelog.adoc` | `docs/modules/<module>/pages/history/YYYY-MM-DD-<slug>.adoc` |
-| No docs site of any kind | root `CHANGELOG.adoc` | `changelog/history/YYYY-MM-DD-<slug>.adoc` |
+| Antora docs (`docs/antora.yml`) | `docs/modules/<module>/pages/changelog.adoc` | `docs/modules/<module>/pages/changelog-details/history/YYYY-MM-DD-<slug>.adoc` |
+| No docs site of any kind | root `CHANGELOG.adoc` | root `changelog-details/history/YYYY-MM-DD-<slug>.adoc` |
 
 **Antora repos**
 
 - History pages are **unlisted**: never in `nav.adoc`; set `:hide-page:` and `:navtree-parent: changelog.adoc` (same as `changelog-details/`). They stay published and reachable by xref.
 - Convert to AsciiDoc where reasonable (headings, lists, tables, code). A verbatim prompt goes in a `[source,text]` or literal block inside the `.adoc` page rather than as a raw `.md`/`.txt`.
-- Content meant only to be `include::`d (not a standalone page) goes in `docs/modules/<module>/partials/history/`.
+- Content meant only to be `include::`d (not a standalone page) goes in `docs/modules/<module>/partials/changelog-details/history/` (house convention; not `partials/history/`).
 - Link each page from the changelog entry it explains and/or from a `== History and reports` section at the end of `changelog.adoc` (one bullet per page: date, xref, one-line purpose).
 
 **Repos with no docs site** (no Antora, MkDocs, Docusaurus, or similar)
 
-- Keep the full changelog in root `CHANGELOG.adoc`; history documents go in **`changelog/history/`** (house default). If the repo already keeps changelog detail pages in a root folder (for example `changelog-details/`), use a `history/` subfolder of that existing folder instead and keep that one convention. Name files `YYYY-MM-DD-<slug>.adoc`.
+- Keep the full changelog in root `CHANGELOG.adoc`; history documents go in root **`changelog-details/history/`** - the only convention (no `changelog/history/` or other alternative). Name files `YYYY-MM-DD-<slug>.adoc`.
 - Link each from the matching changelog entry and/or a `== History and reports` section of `CHANGELOG.adoc`.
 
 **Not history artifacts**
@@ -103,7 +103,7 @@ Do **not** use em dashes in published changelog **headings** for this layout (fi
 - Throwaway verification files (one-off playbooks, scratch configs, probe scripts, test outputs) go in the agent scratch dir (`$AGENT_TEMP_ROOT/scratch/YYYY-MM-DD/`, skill `agent-temp`) and are **never committed**.
 - Contributor guides (`STYLE.adoc`, `CONTRIBUTING.*`, `CODE_OF_CONDUCT.*`, `SECURITY.*`) are not history; they stay where contributor docs belong (root or `.github/` per forge convention, or the docs component's contributor pages).
 
-**Stray root files:** when you find a loose report / prompt / analysis / migration note in the repo root, `git mv` it into the right `history` folder (converting to AsciiDoc where reasonable), repoint any links, and add the changelog link in the same commit.
+**Stray root files:** when you find a loose report / prompt / analysis / migration note in the repo root, `git mv` it into the right `changelog-details/history/` folder (converting to AsciiDoc where reasonable), repoint any links, and add the changelog link in the same commit.
 
 ## Create or backfill
 

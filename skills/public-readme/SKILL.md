@@ -30,7 +30,7 @@ Full templates and trapped-badge notes: [reference.md](reference.md).
 
 ## Repo root hygiene
 
-The root is the repo face: README, LICENSE, contributor guides (`CONTRIBUTING`, `STYLE.adoc`, `SECURITY`), build/manifest files, and at most a changelog. Saved prompts, generated reports, analyses, and migration notes never sit loose in the root - file them under the changelog's `history` folder (skill `owned-changelog`, *History artifacts*). Throwaway verification files stay in agent scratch (skill `agent-temp`). In Antora repos a root `CHANGELOG` is only a stub linking the published Antora changelog.
+The root is the repo face: README, LICENSE, contributor guides (`CONTRIBUTING`, `STYLE.adoc`, `SECURITY`), build/manifest files, and at most a changelog. Saved prompts, generated reports, analyses, and migration notes never sit loose in the root - file them in `changelog-details/history/` (root in repos without a docs site; `docs/modules/<module>/pages/changelog-details/history/` in Antora repos) (skill `owned-changelog`, *History artifacts*). Throwaway verification files stay in agent scratch (skill `agent-temp`). In Antora repos a root `CHANGELOG` is only a stub linking the published Antora changelog.
 
 ## Host adapters
 

@@ -21,7 +21,7 @@ endif::[]
 
 == 2026-10-25 - history artifacts filed under the changelog
 
-* Skill `owned-changelog`: saved prompts, generated reports, analyses, and migration notes never sit loose in the repo root. Antora repos file them as unlisted pages in `pages/history/` (include-only fragments in `partials/history/`); repos with no docs site use `changelog/history/` beside a root `CHANGELOG.adoc`. Both link them from the changelog entry or a *History and reports* section.
+* Skill `owned-changelog`: saved prompts, generated reports, analyses, and migration notes never sit loose in the repo root. Antora repos file them as unlisted pages in `pages/changelog-details/history/` (include-only fragments in `partials/changelog-details/history/`); repos with no docs site use root `changelog-details/history/` beside `CHANGELOG.adoc`. Both link them from the changelog entry or a *History and reports* section.
 * In Antora repos a root `CHANGELOG` may remain only as a stub pointing at the published Antora changelog and its source path.
 * Throwaway verification files stay in agent scratch and are never committed; contributor guides (`STYLE.adoc`, `CONTRIBUTING`) are not history artifacts.
 * Cross-references in `antora-org-site` (rule 16), `public-readme` (repo root hygiene), `record-rule`, `agent-temp`, and `CATALOG.md`. Detail: xref:changelog-details/2026-10-25 - history-artifacts-folder.adoc[History artifacts folder].

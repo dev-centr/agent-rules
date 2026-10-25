@@ -36,7 +36,7 @@ Pick the narrowest scope. If unclear, ask.
 4. **Cross-post when useful.** Portable detail + harness-local summary in `$LOCAL_RULES_DIR` when the harness supports it.
 5. **Commit and push** if the user has been committing in this session.
 
-Saving a **prompt, report, analysis, or migration note** (historical context, not a rule) is a different job: file it under the changelog's `history` folder per skill `owned-changelog` (*History artifacts*) - never loose in the repo root.
+Saving a **prompt, report, analysis, or migration note** (historical context, not a rule) is a different job: file it in `changelog-details/history/` per skill `owned-changelog` (*History artifacts*) - never loose in the repo root.
 
 ## Do not
 
