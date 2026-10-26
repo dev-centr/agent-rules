@@ -45,7 +45,7 @@ Each item states:
 2. **Add** the item with all four fields.
 3. **Verify, then mark done.** When the agent later confirms the step is complete (path gone, approval visible, login works), mark it done:
    - TickTick: use a complete-task tool if the connector has one; otherwise `TICKTICK_UPDATE_TASK` with completed status.
-   - File: flip `- [ ]` to `- [x]` in-line, or delete the line and append it to the done file (`HUMAN_TASKS_DONE_FILE`, default `human-tasks.done.md` beside it) with the completion date.
+   - File: mark done in-line with a checkmark emoji (e.g. ✅) - not `- [x]`, since people often read Markdown/AsciiDoc raw (matches `user.md`: "Task lists in files: mark done with checkmark emojis") - or delete the line and append it to the done file (`HUMAN_TASKS_DONE_FILE`, default `human-tasks.done.md` beside it) with the completion date.
 4. Never mark done on the user's word alone when it can be checked; never mark done unverified.
 5. Mention added/completed items in the final reply.
 

@@ -19,7 +19,9 @@ Through an MCP connector or the TickTick API when available - e.g. Composio MCP,
 
 ## File format
 
+Open items are plain list items; mark done in-line with a checkmark emoji (e.g. ✅) rather than `- [x]`, because people often read Markdown/AsciiDoc raw (same as `user.md`: "Task lists in files: mark done with checkmark emojis"). Or move the item to the done file.
+
 ```markdown
-- [ ] Delete locked folder - where: DESKTOP-1 `Z:\code\foo\.old` - why: locked by Code.exe - source: <link>
-- [x] Approve repo invite - where: github.com/org/repo - why: needs owner approval - source: <link> (done 2026-10-26)
+- Delete locked folder - where: DESKTOP-1 `Z:\code\foo\.old` - why: locked by Code.exe - source: <link>
+- ✅ Approve repo invite - where: github.com/org/repo - why: needs owner approval - source: <link> (done 2026-10-26)
 ```
