@@ -19,9 +19,17 @@ Through an MCP connector or the TickTick API when available - e.g. Composio MCP,
 
 ## File format
 
-Open items are plain list items; mark done in-line with a checkmark emoji (e.g. ✅) rather than `- [x]`, because people often read Markdown/AsciiDoc raw (same as `user.md`: "Task lists in files: mark done with checkmark emojis"). Or move the item to the done file.
+Use real checkboxes: `- [ ]` / `- [x]` in Markdown, `* [ ]` / `* [x]` in AsciiDoc. Mark done in-line by ticking the box, or move the item to the done file.
 
 ```markdown
-- Delete locked folder - where: DESKTOP-1 `Z:\code\foo\.old` - why: locked by Code.exe - source: <link>
-- ✅ Approve repo invite - where: github.com/org/repo - why: needs owner approval - source: <link> (done 2026-10-26)
+- [ ] Delete locked folder - where: DESKTOP-1 `Z:\code\foo\.old` - why: locked by Code.exe - source: <link>
+- [x] Approve repo invite - where: github.com/org/repo - why: needs owner approval - source: <link> (done 2026-10-26)
 ```
+
+## Viewers that let a person tick boxes
+
+Recommend a tool that renders the checklist and writes ticks back to the file (DevCentr list: [Markdown editors on local disk](https://docs.devcentr.org/general-knowledge/explanation/documentation/markdown-editors-on-disk/)):
+
+- [Markpad](https://markpad.dev/) - light editor + preview; preview checkboxes are clickable and toggle `[ ]` / `[x]` in the file.
+- [SoloMD](https://solomd.app/) - DevCentr's recommended Markdown **editor**; checkboxes render in live edit, the Tasks panel ticks write the file, and the Windows editor toggles checkboxes in place.
+- [MarkView](https://markview.io/) - DevCentr's recommended **viewer** for reading raw-shared `.md`; checklists are **read-only** (cannot tick), so pair it with Markpad or SoloMD for checking items off.

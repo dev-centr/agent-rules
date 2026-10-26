@@ -29,7 +29,7 @@
 - **CLI output:** CLIs we build follow the OpenShellOrg CLI Output standard (quiet default: outcome, changes, decisions, log path; failures explain inline; `--verbose`, `--json`). Detail: `general/cli-output.md`.
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
-- Task lists in files: mark done with checkmark emojis.
+- Task lists in files: use real checkboxes (`- [ ]` / `- [x]` Markdown, `* [ ]` / `* [x]` AsciiDoc) and tick them when done, or move done items to a done file; recommend viewers that can tick boxes (skill `human-task-list`).
 - **Human-only steps** (locked-file delete, approval, credential, physical action): add to the person's task list per `HUMAN_TASKS_BACKEND` (dedupe first; mark done once verified). Skill `human-task-list`; detail `general/human-task-list.md`.
 - Changelogs: match the repo’s existing style; owned-project layout is skill `owned-changelog`.
 - Never write secret values into git, docs, `machine.md`, `harness.md`, or `.env.example` (name-only registry: skill `env-names-registry`).
