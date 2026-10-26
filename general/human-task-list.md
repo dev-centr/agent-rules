@@ -33,3 +33,18 @@ Recommend a tool that renders the checklist and writes ticks back to the file (D
 - [Markpad](https://markpad.dev/) - light editor + preview; preview checkboxes are clickable and toggle `[ ]` / `[x]` in the file.
 - [SoloMD](https://solomd.app/) - DevCentr's recommended Markdown **editor**; checkboxes render in live edit, the Tasks panel ticks write the file, and the Windows editor toggles checkboxes in place.
 - [MarkView](https://markview.io/) - DevCentr's recommended **viewer** for reading raw-shared `.md`; checklists are **read-only** (cannot tick), so pair it with Markpad or SoloMD for checking items off.
+
+## Team tasks (org project management)
+
+Personal human-only steps go to the person's backend (`HUMAN_TASKS_BACKEND`). Work a team or org must do goes to the org's project-management tool as an issue or board item, assigned when known.
+
+| Key | Where | Values |
+| --- | --- | --- |
+| `PROJECT_MANAGEMENT` | org overlay `{org}/agent-rules/AGENTS.md` ("Org settings"); rare per-repo override in `<repo>/AGENTS.md` | `github-projects` \| `linear` \| `jira` \| other |
+| `PROJECT_MANAGEMENT_URL` | same | board / project URL |
+
+Why the org overlay: it is the existing house place for org-only settings (created by `scripts/setup-org-agent-rules-wrapper.ps1`, skill `bootstrap-org` phase 3a; `{org}/.github/AGENT-RULES.md` points at it). Declare once per org; do not repeat in each repo's `AGENTS.md` or `CONTRIBUTING.md`.
+
+Resolution: org declaration -> per-repo override (only if the repo genuinely differs) -> default GitHub Issues/Projects in that org, telling the user no declaration exists.
+
+Example: FoodTruckNerdz and DevCentr currently run on GitHub Projects with Linear planned - read the org declaration rather than assuming this.

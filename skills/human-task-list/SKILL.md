@@ -7,12 +7,28 @@ description: >-
   "put it in TickTick", TickTick, HUMAN_TASKS_BACKEND, HUMAN_TASKS_FILE,
   human task list, todo for the user, tasks buried in chat, mark checklist
   item done, follow-up for the user, or when closing out a run that left
-  manual steps.
+  manual steps, team task, org task, assign to teammate, file an issue for
+  the team, project board, GitHub Projects, Linear, PROJECT_MANAGEMENT,
+  PROJECT_MANAGEMENT_URL.
 ---
 
 # Human task list
 
 When the agent cannot finish a step itself, record it on that person's task list instead of leaving it buried in chat. Detail: `general/human-task-list.md`.
+
+## Team tasks (org project management)
+
+Work someone on a team or org must do (not only this user) goes to **that org's project-management tool** as an issue or board item, assigned when the assignee is known. Same item fields and dedupe/verify rules as below.
+
+Resolve the tool:
+
+1. **Org declaration** - `PROJECT_MANAGEMENT` + `PROJECT_MANAGEMENT_URL` in the org overlay `$CODE_ROOT/github.com/<org>/agent-rules/AGENTS.md` (for `dev-centr`, this repo's `AGENTS.md`). Declared once per org - not in per-repo `AGENTS.md` / `CONTRIBUTING.md`.
+2. **Per-repo override** - only when that repo genuinely uses a different tool: the same keys in `<repo>/AGENTS.md`.
+3. **Default** - GitHub Issues / Projects in that org; tell the user the org has no declaration.
+
+Access: forge MCP or `gh` (`gh issue create`, `gh project item-add`); other tools via their MCP connector or API, else tell the user.
+
+## Personal tasks
 
 ## What qualifies
 
