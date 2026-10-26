@@ -11,6 +11,7 @@
 - ISSUES_REPO: optional path to `.issues` workflow repo
 - MACHINE: `$CODE_ROOT/machine.md` (machine rules — this workstation; not per repo)
 - HARNESS: `$CODE_ROOT/harness.md` (harness rules — discovery + behaviors on this machine; not per repo)
+- HUMAN_TASKS_BACKEND: `ticktick` (`ticktick | file | none`; machine override in `$HARNESS`; skill `human-task-list`)
 
 ## Core
 - Plain language: keep explanations easy to read. Default to conversational, direct speech — not jargon-heavy or corporate. Detail: `general/plain-speech.md`.
