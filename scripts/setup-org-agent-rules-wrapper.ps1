@@ -49,6 +49,11 @@ When assembling context for this org's repos, resolve:
 - `AGENT_RULES_PATH` = `$CODE_ROOT/github.com/dev-centr/agent-rules`
 - Org overlay = this `AGENTS.md`
 
+## Org settings
+
+- `PROJECT_MANAGEMENT`: `github-projects` (`github-projects | linear | jira | other`) - where team tasks go (skill `human-task-list`)
+- `PROJECT_MANAGEMENT_URL`: `<board / project URL>`
+
 Shared changes: PR `dev-centr/agent-rules`. Org-only: commit here.
 '@ -f $orgName
     Set-Utf8NoBomContent (Join-Path $path 'AGENTS.md') $text
@@ -61,7 +66,7 @@ function Write-DotGithubPointer($path, $orgName) {
 - Overlay: https://github.com/{0}/agent-rules
 - Shared: https://github.com/dev-centr/agent-rules
 
-The wrapper holds org-specific `AGENTS.md` only. Do not submodule the canonical tree — clone/fetch `dev-centr/agent-rules` instead.
+The wrapper holds org-specific `AGENTS.md` only, including org settings such as `PROJECT_MANAGEMENT` (where team tasks go). Do not submodule the canonical tree — clone/fetch `dev-centr/agent-rules` instead.
 '@ -f $orgName
     Set-Utf8NoBomContent (Join-Path $path 'AGENT-RULES.md') $text
 }

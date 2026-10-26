@@ -153,7 +153,7 @@ After `{org}/.github` exists, run:
 pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-wrapper.ps1 -Org {org}
 ```
 
-That creates `{org}/agent-rules` (pointer README + overlay `AGENTS.md` only) and writes `{org}/.github/AGENT-RULES.md`. Org-only text stays in the wrapper. Shared changes: PR `dev-centr/agent-rules`. Details: [reference.md](reference.md).
+That creates `{org}/agent-rules` (pointer README + overlay `AGENTS.md` only) and writes `{org}/.github/AGENT-RULES.md`. Org-only text stays in the wrapper - including org settings such as `PROJECT_MANAGEMENT` + `PROJECT_MANAGEMENT_URL` (team-task tool; ask during intake, default `github-projects`; skill `human-task-list`). Shared changes: PR `dev-centr/agent-rules`. Details: [reference.md](reference.md).
 
 ### 4. Public website
 

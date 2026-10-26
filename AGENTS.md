@@ -8,6 +8,7 @@
 - `ORG` — `dev-centr`
 - `ISSUES_REPO` — path to your `.issues` workflow repo when used (often personal; see profile)
 - `MACHINE` — `$CODE_ROOT/machine.md` (machine rules — this user's workstation; never commit)
+- `PROJECT_MANAGEMENT` / `PROJECT_MANAGEMENT_URL` - org project-management tool + board URL for team tasks (fill per org; skill `human-task-list`)
 - `HARNESS` — `$CODE_ROOT/harness.md` (harness rules — discovery + behaviors; never commit)
 
 ## Layering (do not conflate)
