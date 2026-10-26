@@ -31,7 +31,7 @@ Use real checkboxes: `- [ ]` / `- [x]` in Markdown, `* [ ]` / `* [x]` in AsciiDo
 Recommend a tool that renders the checklist and writes ticks back to the file (DevCentr list: [Markdown editors on local disk](https://docs.devcentr.org/general-knowledge/explanation/documentation/markdown-editors-on-disk/)):
 
 - [Markpad](https://markpad.dev/) - light editor + preview; preview checkboxes are clickable and toggle `[ ]` / `[x]` in the file.
-- [SoloMD](https://solomd.app/) - DevCentr's recommended Markdown **editor**; checkboxes render in live edit, the Tasks panel ticks write the file, and the Windows editor toggles checkboxes in place.
+- [SoloMD](https://solomd.app/) - DevCentr's recommended Markdown **editor**; the Tasks panel ticks write the file. Clicking a checkbox in the editor is confirmed on **Windows** (in daily use); macOS/Linux are unconfirmed.
 - [MarkView](https://markview.io/) - DevCentr's recommended **viewer** for reading raw-shared `.md`; checklists are **read-only** (cannot tick), so pair it with Markpad or SoloMD for checking items off.
 
 ## Team tasks (org project management)
@@ -48,3 +48,11 @@ Why the org overlay: it is the existing house place for org-only settings (creat
 Resolution: org declaration -> per-repo override (only if the repo genuinely differs) -> default GitHub Issues/Projects in that org, telling the user no declaration exists.
 
 Example: FoodTruckNerdz and DevCentr currently run on GitHub Projects with Linear planned - read the org declaration rather than assuming this.
+
+## Link the list in chat
+
+Whenever the agent reads or writes a task list, the chat reply includes a clickable Markdown link with a descriptive label:
+
+- **File:** the file itself as a `file:///` URL to the absolute local path (e.g. `[Human tasks (DESKTOP-1)](file:///Z:/code/human-tasks.md)`), plus the forge URL when the file is in a pushed repo.
+- **TickTick:** the task(s) created or updated - the TickTick web task URL if the API returns one, otherwise the list/project URL.
+- **Team tasks:** the issue or board item URL.

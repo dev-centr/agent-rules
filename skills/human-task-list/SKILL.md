@@ -63,7 +63,15 @@ Each item states:
    - TickTick: use a complete-task tool if the connector has one; otherwise `TICKTICK_UPDATE_TASK` with completed status.
    - File: tick the real checkbox in-line - `- [ ]` -> `- [x]` (Markdown), `* [ ]` -> `* [x]` (AsciiDoc) - or move the item to the done file (`HUMAN_TASKS_DONE_FILE`, default `human-tasks.done.md` beside it) with the completion date. Viewers that let the person tick boxes: see `general/human-task-list.md`.
 4. Never mark done on the user's word alone when it can be checked; never mark done unverified.
-5. Mention added/completed items in the final reply.
+5. Mention added/completed items in the final reply, with links (below).
+
+## Link the list in chat
+
+Whenever the agent reads or writes a task list, the chat reply includes a clickable Markdown link with a descriptive label:
+
+- **File:** the file itself as a `file:///` URL to the absolute local path (e.g. `[Human tasks (DESKTOP-1)](file:///Z:/code/human-tasks.md)`), plus the forge URL when the file is in a pushed repo.
+- **TickTick:** the task(s) created or updated - the TickTick web task URL if the API returns one, otherwise the list/project URL.
+- **Team tasks:** the issue or board item URL.
 
 ## Do not
 
