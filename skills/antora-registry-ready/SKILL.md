@@ -63,6 +63,13 @@ Registry: https://registry.antora-supplemental.org (repo
       otherwise **likely** with a reason. Same-layer packages are alternatives,
       never inferred compatible. Precedence: declared conflict > Antora
       mismatch > declared/curated > guaranteed > likely.
+- [ ] **One listing per feature** - when a package is another way to use an
+      existing entry (one-require wrapper, recipe, compat shim), set
+      `antoraRegistry.variantOf` to the canonical `host/owner/repo/package`
+      plus a one-line `variantLabel`; when it is deprecated, set
+      `supersededBy` to the replacement's id. Never ship a second entry with
+      the same title. Repos you do not own: the registry's curated
+      `src/data/catalog-groups.ts`.
 - [ ] **Sync and verify** - push, then run the registry "Sync catalog to
       database" workflow (or wait for the scheduled one) and open the live card
       and detail page: preview, swatches, Antora badges, releases table, Works with / Conflicts with.
