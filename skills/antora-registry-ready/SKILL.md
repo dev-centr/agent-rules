@@ -50,9 +50,22 @@ Registry: https://registry.antora-supplemental.org (repo
       `antoraRegistry.antora` repo default > undeclared. Set `engines.antora`
       and tag releases per skill `tag-release`; attach `ui-bundle.zip` to UI
       releases.
+- [ ] **Package relations** - in `antoraRegistry`, declare `requires`,
+      `worksWith`, `conflictsWith` as `{ "<package name | owner/repo>": "<semver>" }`
+      (`requires` implies works-with). Only relations you have tested or that
+      the code depends on.
+- [ ] **Contracts** - `provides` / `uses` as `{ "<contract>": "<version>" }`,
+      e.g. `color-scheme-tokens@0.5`, `light-dark-slots@0.1`,
+      `valentus-layout-markup@4`, `default-ui-markup@2`, `antora-ui-model@3`.
+      The registry marks a cross-layer chain A->B->C **guaranteed** only under
+      strict layering (A's uses met by B or C at compatible versions, B's uses
+      met by C, A not reaching C directly, same B range declared by both);
+      otherwise **likely** with a reason. Same-layer packages are alternatives,
+      never inferred compatible. Precedence: declared conflict > Antora
+      mismatch > declared/curated > guaranteed > likely.
 - [ ] **Sync and verify** - push, then run the registry "Sync catalog to
       database" workflow (or wait for the scheduled one) and open the live card
-      and detail page: preview, swatches, Antora badges, releases table.
+      and detail page: preview, swatches, Antora badges, releases table, Works with / Conflicts with.
 
 ## Do not
 
