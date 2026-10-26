@@ -104,3 +104,7 @@ git push origin "v$Version"
 - Treat GitHub `releases/latest` as a substitute for `v2`
 - Put `+` in workflow `on.push.tags` globs that would fire twice
 - Paste this skill into always-on rules
+
+## Registry readiness
+
+Any Antora extension, theme, or paint touched here must also pass skill `antora-registry-ready` (topics, metadata, previews, scheme declarations, homepage, Antora compatibility) before it is called done.

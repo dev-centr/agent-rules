@@ -60,3 +60,7 @@ Antora topic/pin rules: skill **`antora-extension-consumers`** (topic = upstream
 - **Internet Architecture / Internet Reliability** nests under DevCentr (`general-knowledge` body; portal `dev-centr/docs`). Peer of product SPE Architecture — not a new digital-/sys-architecture org for now.
 - HCI Nerdz **Labels versus wires** remains the symptom ↔ diagnosis/treatment face (not the systems umbrella). Instruction-flows keeps the phrase *Navigating by content*.
 - **connectome-fs** is substrate for content-addressed / wire identity claims.
+
+## Registry readiness (always)
+
+Every Antora extension, theme, UI bundle, or paint an agent creates or changes must be registry-ready in the same change: topics, description and homepage, `antoraRegistry` metadata, previews, `@color-schemes` declarations, and Antora version compatibility (`engines.antora`, `+antora.N` tags). Checklist: skill **`antora-registry-ready`**.

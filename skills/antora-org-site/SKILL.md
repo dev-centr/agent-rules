@@ -88,3 +88,7 @@ When you find a second public Antora site, or when moving a hub **out of** `{org
 5. Disable leftover per-repo Antora publish jobs; leave build-only CI if useful.
 
 New-repo About homepage policy: skill `bootstrap-org`. Site vs docs split: skill `bootstrap-org` [reference.md](../bootstrap-org/reference.md#site-vs-docs).
+
+## Registry readiness
+
+Any Antora extension, theme, or paint touched here must also pass skill `antora-registry-ready` (topics, metadata, previews, scheme declarations, homepage, Antora compatibility) before it is called done.

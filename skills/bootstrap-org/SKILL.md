@@ -213,3 +213,7 @@ Do not restate those procedures here. Point at Business Bootstrap (email tutoria
 **Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; session-scoped site/docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
 
 **Project.** Repo About filled; scaffold matches the loaded profile; repo essentials (encoding-guard caller, monthly grouped `dependabot.yml` for github-actions) committed; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.
+
+## Registry readiness
+
+Any Antora extension, theme, or paint touched here must also pass skill `antora-registry-ready` (topics, metadata, previews, scheme declarations, homepage, Antora compatibility) before it is called done.

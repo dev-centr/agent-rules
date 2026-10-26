@@ -114,3 +114,7 @@ When `update-consumers` matches this specialization:
 - Updating only remembered hive clones and skipping topic search
 - Tagging pack-provided members (or `valentus-theme`) on facto-stack hub playbooks (pollutes `topic:<extension>` search)
 - Pinning members in a facto-stack hub `package.json` just to get a `.bin` or to override a version — bump the pack (or use `facto-maint`)
+
+## Registry readiness
+
+Any Antora extension, theme, or paint touched here must also pass skill `antora-registry-ready` (topics, metadata, previews, scheme declarations, homepage, Antora compatibility) before it is called done.
