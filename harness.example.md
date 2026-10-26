@@ -39,6 +39,10 @@ AGENT_UTILITIES_ROOT = %AGENT_WORKSPACE_ROOT%\utilities
 MCP_CONTEXT7 = available | unavailable
 MCP_OTHER = <optional list>
 
+# Human task list (skill human-task-list) - overrides user.md for this machine
+# HUMAN_TASKS_BACKEND = ticktick | file | none
+# HUMAN_TASKS_FILE = <path>/human-tasks.md
+
 # Last successful sync-agent-rules run (machine-local stamp; skill sync-agent-rules)
 AGENT_RULES_SYNCED_SHA = <git SHA of $AGENT_RULES_PATH HEAD after sync, or empty>
 AGENT_RULES_SYNCED_LABEL = <skills-set/YYYY.MM.DD from nearest tag, or empty>

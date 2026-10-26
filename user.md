@@ -29,6 +29,7 @@
 - Python: always `venv`; prefer `uv` over `pip`; install `uv` in scripts if missing.
 - Build failures: fix project code over downgrading deps; missing icon → stop loop, placeholder or ask.
 - Task lists in files: mark done with checkmark emojis.
+- **Human-only steps** (locked-file delete, approval, credential, physical action): add to the person's task list per `HUMAN_TASKS_BACKEND` (dedupe first; mark done once verified). Skill `human-task-list`; detail `general/human-task-list.md`.
 - Changelogs: match the repo’s existing style; owned-project layout is skill `owned-changelog`.
 - Never write secret values into git, docs, `machine.md`, `harness.md`, or `.env.example` (name-only registry: skill `env-names-registry`).
 - **Release architectures:** default to pattern `common` (win/lin × x64+arm64); GUI apps prefer `desktop` (+ macOS arm64). Dated forms `common/2026`. Skill `release-targets`; detail `general/release-target-patterns.md`.
