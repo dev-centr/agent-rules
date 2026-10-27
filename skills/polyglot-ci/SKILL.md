@@ -15,7 +15,7 @@ House release matrix for owned apps and CLIs. Expand **named patterns** from ski
 
 1. Resolve the release-target pattern (`common`, `desktop`, `lab`, dated `common/2026`, …) via skill `release-targets`.
 2. Copy [workflow.yml](workflow.yml) to `.github/workflows/release.yml` (or merge the `matrix.include` into an existing workflow) so it matches that pattern’s triplets.
-3. Replace the `Build` step with the project's compiler (`dub build`, `cargo build --release`, `pnpm build`, …). Stamp version from the git tag.
+3. Replace the `Build` step with the compiler of the project's own language (from the org design docs; never assume pnpm/TypeScript for a library, runtime, framework or CLI) (`dub build`, `cargo build --release`, `pnpm build`, …). Stamp version from the git tag.
 4. Upload **per-triplet** artifacts named `app-${{ matrix.triplet }}`.
 5. On tags, a `pack` job runs `binary-tailor pack` and attaches **one** `app.bin` to the GitHub Release.
 6. Optional job: `cosmocc` APE **in addition to** native slices — never instead of native GUI/GPU builds.

@@ -28,7 +28,11 @@ Before Intake, resolve **one** profile. Overlay: catalog `defaults` → named/pa
 4. **Implied** (“new CLI”, “Tauri app”, “D library”, “SolidStart site”) → pick the matching catalog name, announce it, continue unless they contradict.
 5. **None of the above** → AskQuestion (or list) the catalog names, grouped org vs project. Do not start scaffolding until they pick one **or** say “defaults only” (catalog `defaults`; org fallback `oss-collective`, project fallback `web-app`).
 
-House site/docs unless the profile overrides: **SolidStart** (`ssr` false, `preset` `"static"`) + **solid-ui** + Tailwind, **pnpm**, **dprint**, allow-list gitignore, **Antora + Valentus v2**, GitHub Pages, Cloudflare **dns-only** in front of github.io. Do not re-poll the framework after a profile loaded.
+House stack for **sites, docs and web apps only** unless the profile overrides: **SolidStart** (`ssr` false, `preset` `"static"`) + **solid-ui** + Tailwind, **pnpm**, **dprint**, allow-list gitignore, **Antora + Valentus v2**, GitHub Pages, Cloudflare **dns-only** in front of github.io. Do not re-poll the framework after a profile loaded.
+
+**Language:** libraries, runtimes, frameworks and CLIs use the org's primary language from its design docs (for example D for openshellorg and dlang-supplemental). If the design docs do not settle it, ask the human. Never default to TypeScript.
+
+Why: openshellorg/shell-framework was scaffolded in TypeScript on 2026-09-27 against a D design, because this web stack was read as a default for every repo; it was rewritten in D for 0.1.0.
 
 Announce the loaded profile name, `kind`, and the skip/session_scope tags in one short line, then continue.
 

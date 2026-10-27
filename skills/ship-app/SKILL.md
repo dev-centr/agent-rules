@@ -15,6 +15,8 @@ If `$CODE_ROOT/github.com/dev-centr/general-knowledge` is missing, clone `https:
 
 When the product is a **publishable library** (or depends on an owned/unpublished library), also load skill `library-registry-choice` before locking dependency metadata.
 
+**Language:** libraries, runtimes, frameworks and CLIs use the org's primary language from its design docs (for example D for openshellorg and dlang-supplemental). If the design docs do not settle it, ask the human. Never default to TypeScript. The SolidStart/pnpm web stack from skill `bootstrap-org` applies only to sites, docs and web apps.
+
 ## Local source of truth
 
 - Hub: `$CODE_ROOT/github.com/dev-centr/general-knowledge/docs/modules/ROOT/pages/explanation/architecture/software-product-essentials.adoc`

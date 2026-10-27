@@ -35,7 +35,7 @@ Run this before locking dependency metadata (`package.json`, `dub.sdl` / `dub.js
 
 ### 1. Identify candidates
 
-Name each library in play (new or dep). Note language/ecosystem and proposed package name.
+Name each library in play (new or dep). Note language/ecosystem and proposed package name. For a new library the language is the org's primary language from its design docs (ask if unclear; never default to TypeScript), and that fixes the registry.
 
 ### 2. Suggest the registry
 
