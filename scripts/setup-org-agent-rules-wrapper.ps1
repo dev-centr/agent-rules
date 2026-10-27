@@ -1,4 +1,7 @@
-# Create or repair {org}/agent-rules wrapper (pointer README + overlay, no submodule).
+# Create {org}/agent-rules wrapper (pointer README + overlay, no submodule) for a NEW org.
+# Safe to re-run: existing README.md / AGENTS.md / .github AGENT-RULES.md are never overwritten;
+# only missing sections (e.g. "## Org settings") are appended. Re-runs happen when repairing an
+# older wrapper (legacy template submodule) or picking up a new template section.
 # Usage:
 #   pwsh setup-org-agent-rules-wrapper.ps1 -Org FoodTruckNerdz
 #   pwsh setup-org-agent-rules-wrapper.ps1 -Org FoodTruckNerdz -CodeRoot Z:\code\github.com
@@ -14,6 +17,35 @@ function Set-Utf8NoBomContent {
     param([string]$Path, [string]$Value)
     $utf8 = New-Object System.Text.UTF8Encoding $false
     [System.IO.File]::WriteAllText($Path, $Value, $utf8)
+}
+
+# Never overwrite an existing org file. Create only when missing; otherwise
+# append whole missing sections (by heading) and report what was skipped.
+function Write-IfMissing {
+    param([string]$Path, [string]$Value, [string[]]$Sections = @())
+    $name = Split-Path $Path -Leaf
+    if (-not (Test-Path $Path)) {
+        Set-Utf8NoBomContent $Path $Value
+        Write-Host "created: $Path"
+        return
+    }
+    $utf8 = New-Object System.Text.UTF8Encoding $false
+    $existing = [System.IO.File]::ReadAllText($Path, $utf8)
+    $added = @()
+    foreach ($heading in $Sections) {
+        if ($existing -match ('(?m)^' + [regex]::Escape($heading) + '\s*$')) { continue }
+        $m = [regex]::Match($Value, '(?ms)^' + [regex]::Escape($heading) + '\s*$.*?(?=^#{1,6} |^Shared changes:|\z)')
+        if ($m.Success) {
+            $existing = $existing.TrimEnd() + "`n`n" + $m.Value.TrimEnd() + "`n"
+            $added += $heading
+        }
+    }
+    if ($added.Count -gt 0) {
+        Set-Utf8NoBomContent $Path $existing
+        Write-Host "kept existing $name; appended missing section(s): $($added -join ', ')"
+    } else {
+        Write-Host "skipped: $Path already exists (left untouched)"
+    }
 }
 
 function Write-WrapperReadme($path, $orgName) {
@@ -35,7 +67,7 @@ Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Instal
 - Org-specific guidance: commit in this repo
 - Shared rules/skills: PR https://github.com/dev-centr/agent-rules
 '@ -f $orgName
-    Set-Utf8NoBomContent (Join-Path $path 'README.md') $text
+    Write-IfMissing (Join-Path $path 'README.md') $text
 }
 
 function Write-WrapperAgents($path, $orgName) {
@@ -56,7 +88,7 @@ When assembling context for this org's repos, resolve:
 
 Shared changes: PR `dev-centr/agent-rules`. Org-only: commit here.
 '@ -f $orgName
-    Set-Utf8NoBomContent (Join-Path $path 'AGENTS.md') $text
+    Write-IfMissing (Join-Path $path 'AGENTS.md') $text @('## Org settings')
 }
 
 function Write-DotGithubPointer($path, $orgName) {
@@ -68,7 +100,7 @@ function Write-DotGithubPointer($path, $orgName) {
 
 The wrapper holds org-specific `AGENTS.md` only, including org settings such as `PROJECT_MANAGEMENT` (where team tasks go). Do not submodule the canonical tree — clone/fetch `dev-centr/agent-rules` instead.
 '@ -f $orgName
-    Set-Utf8NoBomContent (Join-Path $path 'AGENT-RULES.md') $text
+    Write-IfMissing (Join-Path $path 'AGENT-RULES.md') $text
 }
 
 function Remove-TemplateSubmodule {
@@ -111,7 +143,7 @@ try {
     git add -u
     if (git diff --cached --quiet) { Write-Host "wrapper unchanged: $Org/agent-rules" }
     else {
-        git commit -m "Point at canonical agent-rules instead of a pinning submodule."
+        git commit -m "agent-rules wrapper: create missing files / sections (existing content kept)."
         git push
         Write-Host "pushed: $Org/agent-rules"
     }

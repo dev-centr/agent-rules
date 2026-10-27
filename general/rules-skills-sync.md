@@ -9,6 +9,8 @@ the shared agent-rules reference so every machine stays current.
 
 When **local** skills or rule overlays **drift** from the shared reference (`$AGENT_RULES_PATH`), the agent **must** run skill **`sync-agent-rules`** and **apply** updates (fetch/pull reference, repair discovery installs, refresh `$LOCAL_RULES_DIR` / always-on pointers, stamp SHA + label). Do not only diagnose.
 
+**Always sync when local is out of date - no asking, no deferring.** Check at session start (before relying on skills) and again after you commit to, pull, or push `$AGENT_RULES_PATH` yourself: your own commits move `HEAD` past `AGENT_RULES_SYNCED_SHA` and may add catalog skills that are not yet installed. Nothing else updates the stamp automatically.
+
 ## Version model
 
 | Layer | What |

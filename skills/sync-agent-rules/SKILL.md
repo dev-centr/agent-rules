@@ -61,6 +61,9 @@ Run this skill **before** relying on installed skills, and whenever any of these
 - Always-on paste / `$LOCAL_RULES_DIR` still describes an old skill set or omits this sync obligation
 - Personal overlay fork used as a compose/paste source is behind *its* origin (refresh deltas only)
 - User says skills/rules feel out of date on this machine
+- **You just committed, pulled, or pushed `$AGENT_RULES_PATH`** (your own commits move `HEAD` past the stamp and may add uninstalled catalog skills) - sync before ending the run
+
+**Always sync when local is out of date** - do not ask first. Nothing updates the stamp automatically; hive-watch only fetches remotes.
 
 **Hive git remotes:** skill **`hive-watch`** + `$CODE_ROOT/hive-watch.status.json` handle routine remote fetch. Do not conflate “repo behind origin” with skills install drift — run this skill for the latter; run hive-watch (or read its status file) for the former.
 
