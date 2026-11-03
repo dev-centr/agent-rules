@@ -9,7 +9,7 @@ description: >-
 
 # Release target patterns
 
-Which package formats to build per software type: skill `package-formats`.
+Which package formats to build per software type: skill `package-formats` (explanation: https://docs.devcentr.org/general-knowledge/explanation/architecture/distribution-and-packaging/package-formats-by-software-type/).
 
 Read [patterns.sdl](patterns.sdl) and [../../general/release-target-patterns.md](../../general/release-target-patterns.md).
 Docs: https://docs.devcentr.org/general-knowledge/latest/explanation/architecture/release-target-patterns.html
