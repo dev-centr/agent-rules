@@ -41,6 +41,8 @@ Copy the matching **delivery-class** auxiliary matrix (desktop / web / mobile) i
 
 Windows GUI: plan MSI/MSIX or winget-friendly installers and auto-update (or Store/winget) before 1.0. Unix GUI: Store/Sparkle/Homebrew or distro/Flatpak/AppImage; never overwrite a running binary — quit → replace → relaunch.
 
+Package format defaults per artifact type (CLI, GUI, library, service, SDK), with reasons: skill `package-formats`.
+
 Stamp build metadata at CI/compile time. About, `--version`, crash headers, and updaters share one version truth. Prefer platform-native distribution first; add in-app updaters when the channel needs them. Follow type pages instead of forcing GUI patterns onto libraries or services.
 
 CLI and TUI apps: terminal output, logs, `--verbose`, `--json`, and exit codes follow the OpenShellOrg CLI Output standard (`general/cli-output.md`).
