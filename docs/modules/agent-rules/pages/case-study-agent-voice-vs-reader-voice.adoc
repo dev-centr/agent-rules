@@ -32,7 +32,7 @@ link:https://github.com/dev-centr/agent-rules/blob/main/general/documentation.md
 Live cluster (after the rewrite)::
 link:https://hci-nerdz.github.io/blog/broken-links-after-a-url-rename/[Broken links after a URL rename] ·
 link:https://hci-nerdz.github.io/blog/an-alternative-to-urls/[An alternative to URLs] ·
-link:https://hci-nerdz.github.io/docs/hci-nerdz/an-alternative-to-urls.html[docs topic]
+link:https://hci-nerdz.github.io/docs/hci-nerdz/an-alternative-to-urls/[docs topic]
 
 == What we were trying to do
 

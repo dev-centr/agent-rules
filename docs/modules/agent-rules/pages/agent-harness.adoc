@@ -45,7 +45,7 @@ Proposed harness variables (harness + Mixr):
 HARNESS_NAME = harness
 MIXR_ROUTING = on | off
 MIXR_ROUTER = on-device | api | auto
-MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1
+MIXR_ROUTER_BASE_URL = `+http://127.0.0.1:11434/v1+`
 MIXR_ROUTER_MODEL = <local OpenAI-compat router model>
 MIXR_ROUTER_RAM_MIN_MB = 2048
 MIXR_DEFAULT_POLICY = balanced | cheap | quality | byok-only
@@ -141,7 +141,7 @@ The first cross-org UX contract wired into harness metadata is **token provenanc
 
 * Heuristic tokens — dashed underline; assumed, not verified
 * Grounded tokens — solid underline; confirmed by tool output
-* Span annotations emitted alongside streamed text (see link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[HCI Nerdz — Grounded tokens / token provenance])
+* Span annotations emitted alongside streamed text (see link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens/[HCI Nerdz — Grounded tokens / token provenance])
 
 Harness variable (proposed):
 

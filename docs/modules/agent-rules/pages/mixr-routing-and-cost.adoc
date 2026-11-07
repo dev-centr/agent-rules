@@ -22,7 +22,7 @@ It is Cursor *Auto*-shaped in role, not in implementation: policy and catalog li
 [source,text]
 ----
 MIXR_ROUTER = on-device | api | auto
-MIXR_ROUTER_BASE_URL = http://127.0.0.1:11434/v1
+MIXR_ROUTER_BASE_URL = `+http://127.0.0.1:11434/v1+`
 MIXR_ROUTER_MODEL = <local router model id>
 MIXR_ROUTER_RAM_MIN_MB = 2048
 ----

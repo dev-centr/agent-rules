@@ -22,7 +22,7 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-*Actor-model agentic UI* is DevCentr's second cross-org harness UX contract (after link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[grounded tokens]).
+*Actor-model agentic UI* is DevCentr's second cross-org harness UX contract (after link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens/[grounded tokens]).
 
 In plain language: *agent chat is a graph of communicating nodes on disk — not one drifting scroll that pretends to be one topic forever*.
 
@@ -346,7 +346,7 @@ HCI Nerdz owns the attention surface — grid, graph strip, spawn UX, demo, essa
 DevCentr owns harness routing, disk schema, and `$CODE_ROOT/harness.md` variables.
 
 * Essay: link:https://hci-nerdz.github.io/blog/when-chat-should-spawn-a-node/[When chat should spawn a node]
-* Docs: link:https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui.html[HCI Nerdz — Actor-model agentic UI]
+* Docs: link:https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui/[HCI Nerdz — Actor-model agentic UI]
 * Demo: link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Actor-model agentic UI desk]
 
 == What this is not
@@ -359,6 +359,6 @@ DevCentr owns harness routing, disk schema, and `$CODE_ROOT/harness.md` variable
 
 * xref:agent-harness.adoc[Agent harness]
 * xref:harness-neutral.adoc[Harness-neutral architecture]
-* link:https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui.html[HCI Nerdz spec]
+* link:https://hci-nerdz.github.io/docs/hci-nerdz/actor-model-agentic-ui/[HCI Nerdz spec]
 * link:https://hci-nerdz.github.io/demos/actor-model-agentic-ui/[Live demo]
-* link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens.html[Grounded tokens]
+* link:https://hci-nerdz.github.io/docs/hci-nerdz/grounded-tokens/[Grounded tokens]
