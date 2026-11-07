@@ -38,6 +38,8 @@
 - **Public web crawlability:** content routes return meaningful no-JavaScript HTML; generate and maintain `/sitemap.xml` + `/robots.txt`; feeds supplement rather than replace HTML. Skill `web-crawlability`; detail `general/web-crawlability.md`.
 - **Agent workspace:** canonical `$AGENT_WORKSPACE_ROOT` (utilities + `temp/`); discoverability **`$AGENT_WORKSPACE_LINK`** or `~/AgentWorkspace` (junction/symlink). **Scratch** → `$AGENT_TEMP_ROOT/scratch/`. **New machine-global agent tools** → skill `agent-workspace-global` (unless user explicitly opts out). **Migrate/clean:** skill `agent-workspace-migrate`. Spill stays native. `general/agent-workspace.md`, skill `agent-temp`. PowerShell: `$env:USERPROFILE`, never `%userprofile%`.
 
+- **Agent provenance:** before agent edits or commits, load skill `agent-provenance` (Git AI native hooks or generic `agent-v1`; exact exposed model or `unknown`; no third-party notes publication).
+
 ## Environment
 - OS/Shell: default Windows 10/11 unless profile says otherwise; recommend Nushell as user default; agent terminals may be PowerShell 7 (`pwsh`) or Windows PowerShell 5.1 - 5.1 mangles UTF-8 on read/write (`general/text-encoding.md`).
 - Path refresh after tool installs (Windows):

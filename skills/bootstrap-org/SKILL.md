@@ -197,6 +197,16 @@ Transfer with `gh api` (see [reference.md](reference.md)). Hive paths: `$CODE_RO
 
 Partner / related footers and homepage partner rows: **one entry point per org** (homepage preferred; not homepage + docs + GitHub). Detail: `general/partner-org-entrypoints.md`.
 
+### Agent provenance prerequisite
+
+Before the first scaffold edit, use `harness-setup` + `agent-provenance` to detect
+Git AI. An authorized new-machine bootstrap installs/verifies it once; supported
+harnesses use native hooks, while new/unsupported harnesses use `agent-v1` with
+separate harness, model and session identities. Ordinary project bootstrap on an
+existing workstation reports missing tooling instead of silently installing it.
+Keep workstation records in `harness.md` / `machine.md`, not the new repository.
+Check owned-versus-upstream notes-sharing policy before any publication.
+
 ### Project 2a. Repo essentials (every new repo with workflows)
 
 - `.github/workflows/encoding-guard.yml` thin caller (`general/text-encoding.md`).

@@ -72,6 +72,10 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Hive remotes:** skill `hive-watch` + tool [`dev-centr/hive-watch`](https://github.com/dev-centr/hive-watch) — scheduled fetch; agents read `machine.md` stamp + `hive-watch.status.json` instead of per-chat hive fetch. Detail: `general/hive-watch.md`.
 - **Template boundary:** read `general/harness-boundary.md` before editing forkable files; skill `harness-setup` for machine config.
 
+## Agent attribution
+
+- **Agent provenance:** load skill `agent-provenance` before agent edits and commits; use Git AI with separate user/harness/model identities and owned-versus-upstream sharing policy.
+
 ## AI ops
 
 - Stale APIs: Context7 MCP when available per `$HARNESS`; else skill `outdated-code-protocol`.

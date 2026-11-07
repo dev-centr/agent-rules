@@ -1,0 +1,17 @@
+= 2026-11-07
+:page-audience: Maintainers configuring coding agents and reviewing provenance policy
+:page-usage-context: Changelog detail for Git AI bootstrap and generic harness attribution
+:page-orig-author: Ryan Johnson
+:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-edited: 2026-11-07
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Line-level agent provenance
+
+* Add `agent-provenance` with native integration verification and generic `agent-v1` before/after edit adapters for PowerShell and Bash. Harness, model and session are separate from the directing human; unknown identities are explicit, never guessed.
+* Bootstrap installs Git AI only during authorized machine setup and records actual outcomes in machine-local inventory. This documentation change installs nothing.
+* Git AI notes are authoritative; commits retain their logical scope and existing human author/signature rules. Untracked lines are not proof of human authorship.
+* Current upstream documentation says notes synchronize automatically on push/fetch. Third-party contributions need a verified suppression policy before push; omitting an explicit notes push is insufficient.
+* A read-only, owned-repository-allow-listed exporter derives trailers from completed notes, including legacy prompt and current session records. Same-commit automatic trailers remain deferred until staged attribution can be exported accurately; HEAD statistics must not be mislabeled as staged provenance, and signed commits must not be amended automatically.
+* Verification uses local mocks and fixtures, not a Git AI installation or a claim of end-to-end live integration. Model switching and notes-sync suppression must be tested against the installed release during rollout.

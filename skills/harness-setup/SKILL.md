@@ -76,6 +76,22 @@ When `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking:
 
 Ongoing drift (missing links, behind origin, stale `AGENT_RULES_SYNCED_SHA`): skill **`sync-agent-rules`**. Routine git remote awareness: **`hive-watch`** + `machine.md` stamp — not per-chat fetch.
 
+## Step 4a - Install and verify Git AI
+
+Load skill `agent-provenance`. During authorized machine bootstrap, detect
+`git-ai` on PATH and install it if missing using the upstream Windows or POSIX
+installer documented there. Do not install merely because a documentation task
+mentions it. Run `git ai install-hooks` for the current supported harness and
+verify with an actual harness edit in a disposable scratch repository. For a
+new/unsupported harness, wire the generic `agent-v1` before/after adapter instead;
+use the exact exposed model ID or `unknown`, never a guessed identity.
+
+Record actual Git AI version, native/generic/unavailable mode, verification and
+notes-sharing policy in machine-local `harness.md`; record the installation via
+`tool-inventory` in `machine.md`. No Git config changes or hook replacement without
+authorization. Missing transcript access or failed verification is a documented
+gap, not a successful setup. Do not publish notes to third-party upstreams.
+
 ## Step 5 — Verify boundary awareness
 
 Confirm the agent will:

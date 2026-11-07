@@ -3,7 +3,8 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Grok Bot on behalf of Ryan Johnson
-:page-last-edited: 2026-10-25
+:page-last-edited: 2026-11-07
+:toclevels: 3
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -19,102 +20,128 @@ Last updated:: {page-last-edited}
 ****
 endif::[]
 
-== 2026-10-25 - history artifacts filed under the changelog
+== 2026-11-07
+
+=== Line-level agent provenance
+
+* Add Git AI bootstrap, native-hook verification, generic PowerShell/Bash checkpoint adapters, and separate user/harness/model attribution without smaller commits.
+* Protect third-party upstreams from automatic notes publication; distinguish untracked lines from known human work.
+* Include an optional completed-note trailer exporter; same-commit automatic trailers await verified staged attribution. Detail: xref:changelog-details/2026-11-07 - agent-provenance.adoc[Line-level agent provenance].
+
+== 2026-10-25
+
+=== history artifacts filed under the changelog
 
 * Skill `owned-changelog`: saved prompts, generated reports, analyses, and migration notes never sit loose in the repo root. Antora repos file them as unlisted pages in `pages/changelog-details/history/` (include-only fragments in `partials/changelog-details/history/`); repos with no docs site use root `changelog-details/history/` beside `CHANGELOG.adoc`. Both link them from the changelog entry or a *History and reports* section.
 * In Antora repos a root `CHANGELOG` may remain only as a stub pointing at the published Antora changelog and its source path.
 * Throwaway verification files stay in agent scratch and are never committed; contributor guides (`STYLE.adoc`, `CONTRIBUTING`) are not history artifacts.
 * Cross-references in `antora-org-site` (rule 16), `public-readme` (repo root hygiene), `record-rule`, `agent-temp`, and `CATALOG.md`. Detail: xref:changelog-details/2026-10-25 - history-artifacts-folder.adoc[History artifacts folder].
 
-== 2026-10-23 - changelogs inside Antora; hub orgs wire every component
+== 2026-10-23
+
+=== changelogs inside Antora; hub orgs wire every component
 
 * Skill `owned-changelog`: repos with Antora presence keep the changelog in the Antora component (`pages/changelog.adoc`); a root changelog moves there. Root changelogs only for repos without Antora.
 * Skill `antora-org-site` rule 15: in an org with a docs hub, every component repo has a `docs/antora.yml` component wired into the hub playbook (profile, hub, archived/deprecated repos exempt).
 
-== 2026-10-23 - env registry 5-column table
+=== env registry 5-column table
 
 * Skill `env-names-registry`: the 7-column table becomes 5 columns (Variable, Purpose, Required, If unset, Source); Source holds both where to obtain the value and where to set it.
 * Default registry is AsciiDoc `environment-variables.adoc` (Antora page when the repo has Antora docs); `docs/ENV-VARIABLES.md` only for repos without AsciiDoc docs.
 * README links the registry wherever setup or deploy instructions live; no Deployment heading required.
 
-== 2026-10-21 - antora-solidstart skill rename
+== 2026-10-21
+
+=== antora-solidstart skill rename
 
 * Skill `antora-next` renamed to `antora-solidstart`; `antora-next` remains a deprecated alias in triggers. Points at repo `antora-supplemental/antora-solidstart`.
 * `CATALOG.md`, `antora-org-site`, and `agents/engineering/antora.md` updated for the new skill id.
 
-== 2026-10-20 - antora-next skill
+== 2026-10-20
+
+=== antora-next skill
 
 * Skill `antora-next`: experimental rewrite-era triggers (SolidStart shell, content manifest, asciidoctor-d engine); load before Antora 3 defaults; skip `antora-org-site` when next-only.
 * `agents/engineering/antora.md`: experimental next section pointing to skill and hub proposal.
 * `antora-org-site` description: skip when antora-next triggers.
 
-== 2026-10-20 - subscribe-docs-hub-rebuild skill
+=== subscribe-docs-hub-rebuild skill
 
 * Skill `subscribe-docs-hub-rebuild`: hub `repository_dispatch` subscriber checklist (`docs-source-updated`, `extension-updated`, optional `link-cache-invalidate`); optional notify workflows + `DOCS_DISPATCH_TOKEN`; explicit no `update-consumers` on scaffold.
 * `antora-org-site` required item 5 points here for subscribe wiring; `antora-extension-consumers` remains pins/topics only.
 * `skills/CATALOG.md` row added.
 
-== 2026-10-20 - Project font lock catalog + font-project-lock skill
+=== Project font lock catalog + font-project-lock skill
 
 * `catalogs/project-typefaces.sdl`: curated OSS recommendations + retail metadata (Fontsource npm, foundry checkout links).
 * `general/font-project-lock.md` + skill `font-project-lock`: `.devcentr/fonts.sdl`, paid vs OSS/mixed preference, stack install (web, Flutter, VAE, OS).
 * Cross-links from `typeface-selection`, `user.md`, `AGENTS.md`, `CATALOG.md`.
 
-== 2026-10-20 - Type foundries reference + typeface-selection skill
+=== Type foundries reference + typeface-selection skill
 
 * `general/type-foundries-and-font-quality.md` + skill `typeface-selection`: elite foundry shortlist, engineering patterns (optical sizing, VF axes, grotesk/humanist hybrid), retail vs open catalogs; corrected Google Fonts attribution guidance.
 * Docs hub: xref:type-foundries-and-font-quality.adoc[Type foundries and font quality]; `self-host-fonts` cross-links pick vs load.
 * `user.md`, `AGENTS.md`, `skills/CATALOG.md` pointers updated.
 
-== 2026-10-20 - Agent workspace + temp
+=== Agent workspace + temp
 
 * `general/agent-workspace.md`: **`AGENT_WORKSPACE_ROOT`** (`utilities/` + `temp/`); rename from flat `AgentTemp` root. **`AGENT_TEMP_ROOT`** = workspace `temp/` (scratch + optional `harness-registry.json5`). **`AGENT_UTILITIES_ROOT`** for agent-invoked scripts (e.g. Bitwarden entry in `harness.md`).
 * **`general/agent-workspace-migrate.md`** + skill **`agent-workspace-migrate`**: cross-platform profile/legacy cleanup — explain policy, **`PLAN.md`** + **`manifest.csv`**, lock probes, optional `lsof`/`fuser`/`handle`, confirm no parallel agents before moves; no repo cleanup scripts. Cursor rule **`.cursor/rules/agent-workspace-migrate.mdc`** (on demand).
 * **`AGENT_WORKSPACE_LINK`**: junction (Windows) / symlink (Linux, macOS) from home **`AgentWorkspace`** to canonical AppData / XDG state root. Skill **`agent-workspace-global`** + always-on **`.cursor/rules/agent-workspace-global.mdc`** — route new machine-global agent tools to **`utilities/`** unless user explicitly opts out.
 * Docs hub: xref:agent-workspace.adoc[Agent workspace] (`docs/modules/agent-rules`); harness-neutral variable block updated.
 
-== 2026-10-20 - Global agent temp location (scratch/spill)
+=== Global agent temp location (scratch/spill)
 
 * `general/agent-temp.md` + skill `agent-temp`: `$AGENT_TEMP_ROOT` for **`scratch/`** only; platform spill stays at native harness paths (no `AgentTemp/cursor` mirror); optional **`harness-registry.json5`** (one spill root per harness, spill Background comment, tool output for concrete paths); `user.md` + `harness-setup` aligned; PowerShell `$env:USERPROFILE` guard.
 * `harness.example.md`, `general/harness.md`, `harness-setup`, and `general/windows.md` reference the variable. No shared cleanup scripts — workstation tidying is one-off with AI.
 
-== 2026-10-17 - Hub GitHub topics (direct deps only)
+== 2026-10-17
+
+=== Hub GitHub topics (direct deps only)
 
 * Skill `antora-extension-consumers`: **transitive exclusion** — hub playbooks tag direct `require:` / `package.json` / UI bundle pins only, not facto-stack member extensions. `agents/engineering/antora.md` and `antora-org-site` reference updated. Canonical doc: antora-supplemental/docs `hub-github-topics.adoc`.
 
-== 2026-10-17 - Docs hub link-cache-invalidate dispatch
+=== Docs hub link-cache-invalidate dispatch
 
 * Reusable workflow `.github/workflows/docs-hub-link-cache-invalidate-dispatch.yml` (`workflow_call`) and exemplar caller `notify-docs-hub-link-invalidate.yml` (push `docs/**`, `skills/**` on `main`). Org secret `DOCS_HUB_DISPATCH_TOKEN`.
 * Skill `docs-hub-link-invalidate` (multi-hub registry + per-org `DOCS_HUB_DISPATCH_TOKEN` checklist); hub how-to in `general-knowledge` (`how-to/notify-docs-hub-link-changes.adoc`; `home::docs-site/…` aliases).
 
-== 2026-10-16 - Hub home component (Overview + portal H1)
+== 2026-10-16
+
+=== Hub home component (Overview + portal H1)
 
 * New skill `hub-home-overview`: org hub `name: home`, `site.start_page: home::index.adoc`, sidebar **Overview**, portal-branded index H1 with `:navtitle: Overview`, avoid component `docs` when `site.url` ends with `/docs`.
 * `general/documentation.md`, `antora-org-site` (+ reference), `AGENTS.md`, `CATALOG`, and skills catalog page; Dev-Centr hub publishing page `publishing/hub-home-component.adoc`.
 
-== 2026-10-06 - Mermaid CLI 12 keeps the Mermaid 11 diagram layout
+== 2026-10-06
+
+=== Mermaid CLI 12 keeps the Mermaid 11 diagram layout
 
 * Skill `diagram-svg-output` gains Mermaid CLI 12 renderer settings: pin `layout: dagre`, `look: classic`, and `flowchart.wrappingWidth: 200`, set `theme` explicitly, declare `puppeteer`, and compare old and new renders in light and dark mode after a Mermaid major bump.
 * The rules-geography and agent CLI authentication diagrams are regenerated with those settings; the generator now rejects a Mermaid config without them.
 * See xref:changelog-details/2026-10-06 - mermaid-12-classic-layout.adoc[Detailed changelog].
 
-== 2026-10-06 - GitHub Actions Node 24 majors and monthly Dependabot
+=== GitHub Actions Node 24 majors and monthly Dependabot
 
 * New rule `general/github-actions-versions.md`: latest action majors on the current Node runtime, verified against release + `action.yml` (table verified 2026-10-06), never from memory.
 * Repos with workflows require a grouped, monthly `.github/dependabot.yml` for `github-actions`; `polyglot-ci`, `bootstrap-org` and `ship-app` updated.
 * See xref:changelog-details/2026-10-06 - github-actions-node24-dependabot.adoc[Detailed changelog].
 
-== 2026-09-26 - Retarget facto-stack references
+== 2026-09-26
+
+=== Retarget facto-stack references
 
 * Retargeted org notes, skills, and compose-pack cites from `antora-supplemental/antora-facto` to `antora-supplemental/facto-stack` (matches hub publishing docs).
 
-== 2026-09-25 - Fold into Tools forest
+== 2026-09-25
+
+=== Fold into Tools forest
 
 * Antora component renamed from standalone `agent-rules` to `tools` module `agent-rules` (same pattern as Rules Manager, Switchyard, Ibex).
 * Docs URLs move to `/tools/agent-rules/`; hub drops `agent-rules` from the site-nav-tree forest allowlist.
 * See xref:changelog-details/2026-09-25 - fold-into-tools-forest.adoc[Detailed changelog].
 
-== 2026-09-25 - Agent CLI diagrams dark text + Bitwarden table
+=== Agent CLI diagrams dark text + Bitwarden table
 
 * Fixed the **What persists** AsciiDoc table on the Bitwarden CLI agents page (header was outside `|===`).
 * Bound Mermaid text colors (`#my-svg` fill, `.label` / cluster-label color) to `color.text.primary` for `agent-cli-auth-flow` (Bitwarden + gcloud pages) and `rules-geography`; regenerated adaptive/host SVGs.
@@ -122,87 +149,99 @@ endif::[]
 * See xref:changelog-details/2026-09-25 - bitwarden-cli-table-dark-diagram-text.adoc[Detailed changelog].
 
 
-== 2026-09-10 — Desk UX cadence and view modes
+== 2026-09-10
+
+=== Desk UX cadence and view modes
 
 * Locked cadence separation (discussion vs workers; no cross-append into coordinator chat) and three primary desk modes: Linear, Grid, Tree — same graph, different projections.
 * Temporal scrubber is a cross-cutting widget embeddable in any mode, not a fourth primary mode.
 * Mixed workspaces prefer a new `$CHAT_ROOT` / session root rather than one forced coordinator tree.
 * See xref:changelog-details/2026-09-10 - desk-ux-cadence-and-view-modes.adoc[Detailed changelog].
 
-== 2026-09-10 — Themed SVG 0.2.2 inline style variables
+=== Themed SVG 0.2.2 inline style variables
 
 * Regenerated `rules-geography` and `agent-cli-auth-flow` host/adaptive SVGs with `@dev-centr/themed-svg` 0.2.2 so Mermaid inline `!important` colors become `var(--themed-svg-…)`.
 * Pins `@dev-centr/themed-svg` 0.2.2 and `@dev-centr/mermaid-svg-css-vars` 0.1.3 from the registry; manifest `missingTarget` warn; fixed-SVG SHA pins refreshed to match committed originals.
 * See xref:changelog-details/2026-09-10 - themed-svg-0.2.2-inline-vars.adoc[Detailed changelog].
 
-== 2026-09-10 — Audience role + lede orientation
+=== Audience role + lede orientation
 
 * Lead chrome label for `page-audience` is **Audience role** (page-context 0.6.2+); value = necessary role (permissions / access / expectations), not task filler.
 * Ledes must orient without relying on the Audience role table; Usage context keeps surface/channel.
 * Updated `general/documentation.md`, `user.md`, titles module, and writing / Antora skills.
 * See xref:changelog-details/2026-09-10 - audience-role-lede-orientation.adoc[Detailed changelog].
 
-== 2026-09-10 — page-context 0.6 credits + keyword links
+=== page-context 0.6 credits + keyword links
 
 * Documented slim byline / footer map, `Name (via Agent)` display for agent-assisted credits, and keyword → `/home/keywords/\{slug}/` listing convention.
 * Updated `general/documentation.md`, `agents/engineering/antora.md`, `user.md`, and skill `antora-org-site`.
 * See xref:changelog-details/2026-09-10 - page-context-0.6-credits-keywords.adoc[Detailed changelog].
 
-== 2026-09-10 — GitHub Community discussions skill
+=== GitHub Community discussions skill
 
 * Added skill `github-community-discussions`: UI + `DISCUSSION_TEMPLATE` compliance for `community/community` (hard ban on CLI/API create).
 * Standalone success criteria — `.issues` / `ISSUES_REPO` is optional bookkeeping only.
 * Pointer from `issue-reports`; catalog row; portable paste-pack example under the skill folder.
 * See xref:changelog-details/2026-09-10 - github-community-discussions.adoc[Detailed changelog].
 
-== 2026-09-10 — Parallel git close-out (deferred push)
+=== Parallel git close-out (deferred push)
 
 * Multitask / swarm workers commit locally; coordinator batches push after the wave (cuts remote CI rebuild storms).
 * Parents must omit standing push auth from Task briefs (`GIT_CLOSEOUT=commit-only`).
 * Harness variable `GIT_CLOSEOUT`; runtime injects system addendum on spawn.
 * See xref:changelog-details/2026-09-10 - parallel-git-closeout.adoc[Detailed changelog].
 
-== 2026-09-10 — Component home page-context chrome
+=== Component home page-context chrome
 
 * Component start pages never show Audience / Usage context chrome (attrs stay for agents / meta); authorship renders at document end.
 * Aligned with `@antora-supplemental/page-context` 0.5 (`page-context-surface: component-home` or Antora ROOT `index.adoc`).
 * See xref:changelog-details/2026-09-10 - component-home-page-context.adoc[Detailed changelog].
 
-== 2026-09-09 — Consumer fan-out skill split
+== 2026-09-09
+
+=== Consumer fan-out skill split
 
 * Added skill `update-consumers` for generic recursive dependent bumps with a frontmatter specialization scan (`update-consumers.when`).
 * Slimmed `antora-extension-consumers` to Antora topic/pin rules (topic = repo name) as a specialization of `update-consumers`.
 
-== 2026-09-08 — Agent runtime renamed to harness
+== 2026-09-08
+
+=== Agent runtime renamed to harness
 
 * Renamed the DevCentr agent runtime from the Hornet working name to the generic **harness** name across active architecture, integration, and configuration guidance.
 * Reserved Cricket as a possible advisor/conscience-layer name rather than the runtime name.
 * See xref:changelog-details/2026-09-08 - agent-runtime-harness-rename.adoc[Detailed changelog].
 
-== 2026-09-08 — Public web crawlability
+=== Public web crawlability
 
 * Added the `web-crawlability` skill and portable policy: meaningful raw HTML for content routes, generated sitemap and robots artifacts, editorial feeds, and CI maintenance checks.
 * Clarified that client hydration and transitions remain compatible with SSG/SSR, while a sitemap cannot substitute for page content.
 * See xref:changelog-details/2026-09-08 - public-web-crawlability.adoc[Detailed changelog].
 
-== 2026-09-08 — Themed SVG diagrams
+=== Themed SVG diagrams
 
 * Migrated the rules-geography and agent CLI authentication diagrams to reproducible Mermaid sources with explicit semantic palettes, adaptive SVGs, and host-runtime SVGs.
 * Corrected the canonical CSS namespace guidance to `--themed-svg-*`.
 * See xref:changelog-details/2026-09-08 - themed-svg-diagrams.adoc[Detailed changelog].
 
-== 2026-09-07 — Themed SVG diagram contract
+== 2026-09-07
+
+=== Themed SVG diagram contract
 
 * Added portable `diagram-svg-output` policy for accessible, responsive diagrams with bundled light/dark presets and fixed-output options.
 * Standardized semantic palette roles and the external `<img>` theme boundary across Mermaid, Kroki, PlantUML, Graphviz, and hand-authored SVG workflows.
 * See xref:changelog-details/2026-09-07 - themed-svg-diagram-contract.adoc[Detailed changelog].
 
-== 2026-09-04 — Naming notes: Jiminy Cricket / Cricket
+== 2026-09-04
+
+=== Naming notes: Jiminy Cricket / Cricket
 
 * xref:agent-harness.adoc[Agent harness]: open naming notes — Hornet metaphor vs agents; Cricket as harness vs model/advisory voice; three dead U.S. `JIMINY CRICKET` USPTO serials (continued use not filed, un-revivable).
 * See xref:changelog-details/2026-09-04 - jiminy-cricket-naming-notes.adoc[Detailed changelog].
 
-== 2026-09-03 — Voice/title fixes into rules and skills
+== 2026-09-03
+
+=== Voice/title fixes into rules and skills
 
 * `agents/editorial/titles.md`: lede check, slug = title, channel split, title≠body
 * `general/documentation.md`: post-draft Audience gate, channel split table, slug = H1 policy, pass checks 11–12
@@ -210,111 +249,117 @@ endif::[]
 * `user.md` one-liners + hub `editorial-titles.adoc` sections aligned
 * See xref:changelog-details/2026-09-03 - voice-title-rules-into-skills.adoc[Detailed changelog].
 
-== 2026-09-03 — Case study: agent voice vs reader voice
+=== Case study: agent voice vs reader voice
 
 * xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice] — URL-identity retitle/rewrite as worked example (titles, Cool URI, structural chat residue, channel split)
 * See xref:changelog-details/2026-09-03 - case-study-agent-voice-vs-reader-voice.adoc[Detailed changelog].
 
-== 2026-09-03 — Editorial titles (enthymeme + self-test)
+=== Editorial titles (enthymeme + self-test)
 
 * See xref:changelog-details/2026-09-03 - editorial-titles-enthymeme.adoc[Detailed changelog].
 
-== 2026-09-02 — gh --attach filing + provider mirror vision
+== 2026-09-02
+
+=== gh --attach filing + provider mirror vision
 
 * Skills `issues-repo-record` / `issue-reports` / `draft-pr`: prefer GitHub CLI `--attach` (gh ≥ 2.99); keep `.issues/images/` as durable backup; `raw.githubusercontent.com` is fallback only.
 * Always-on issue one-liners updated (`AGENTS.md`, `user.md`, `creator.md`, issue-reports rule).
 * See xref:changelog-details/2026-09-02 - gh-attach-and-mirror-backups.adoc[Detailed changelog].
 
-== 2026-09-02 — UniProvider / OPR cross-link from Mixr
+=== UniProvider / OPR cross-link from Mixr
 
 * xref:mixr-routing-and-cost.adoc[Mixr routing and cost] Related links Open Provider Registry / UniProvider as discovery (Mixr remains routing).
 
-== 2026-09-01 — GitHub push routing (permissions)
+== 2026-09-01
+
+=== GitHub push routing (permissions)
 
 * Skill `github-repo-access`: probe `viewerPermission`, branch protection, fork layout; cache in `$CODE_ROOT/machine.md`; route direct push vs branch+PR vs fork PR vs blocked.
 * `general/github-push-routing.md`: explain PR when the user asked to push but access blocks upstream push; suggest sharing explanation with maintainer.
 * Hooks in `push-code`, `draft-pr`, `end-of-run`, `user.md`.
 * See xref:changelog-details/2026-09-01 - github-push-routing.adoc[Detailed changelog].
 
-== 2026-09-01 — End-of-run rationale (docs + rules)
+=== End-of-run rationale (docs + rules)
 
 * Published xref:end-of-run-commit-push.adoc[why agents commit/push/PR after every chat]: chat is not the system of record; two-machine sync; review in PRs; GitHub per-push audit trail.
 * `general/end-of-run.md` § Why; skills `push-code` / `draft-pr` **When asked why** pointers.
 * See xref:changelog-details/2026-09-01 - end-of-run-rationale.adoc[Detailed changelog].
 
-== 2026-08-30 — Antora nav titled-list absorption
+== 2026-08-30
+
+=== Antora nav titled-list absorption
 
 * House rule: do not mix `.Title` / dotted nav headers with sibling `* xref:…` linked parents — a titled list owns all following `*` items until the next `.Title`.
 * Buckets without a landing: unlinked `* Label` + `**` children (not `.Label`). Buckets with `index.adoc`: linked parent + `**`.
 * Detail: `general/documentation.md`. Pointers in `agents/engineering/antora.md`, skill `antora-org-site`.
 
-== 2026-08-30 — site-nav-tree unwrap (no Component > Component)
+=== site-nav-tree unwrap (no Component > Component)
 
 * Extension flattens Antora's anonymous nav-tree wrapper and unwraps a leading start-page link that duplicates the component root (fixes empty expanded carets + BB > BB).
 * Companion `site-nav-tree-current.js` prefers deepest `is-current-page` when URLs collide across the forest.
 * House rule: under site-nav-tree, do not list the component start page as the first nav item; linked parents are for section landings only.
 
-== 2026-08-30 — site-nav-tree include allowlist
+=== site-nav-tree include allowlist
 
 * Skill `antora-org-site` + `agents/engineering/antora.md`: content source ≠ forest root; prefer `include` allowlist; thin stubs = `home` portal or register+omit from include; breadcrumb picker shares curation.
 * Extension `@antora-supplemental/site-nav-tree` 0.2.0 adds `include` and publishes `site.keys.site_nav_tree_*`.
 
-== 2026-08-30 — Linked parent section landings (drop Overview)
+=== Linked parent section landings (drop Overview)
 
 * Replace the Overview exception: section landings use a **linked parent** whose link text equals the H1 (`* xref:index.adoc[Email]` + `**` children). Do not use `.Section` + Overview; do not invent `overview.adoc`.
 * Keep `index.adoc` + `urls.html_extension_style: indexify` for folder URLs; do not advertise `index.html`.
 * Detail: `general/documentation.md`. Pointers in `user.md`, `AGENTS.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
 
-== 2026-08-30 — Folder URLs (indexify) for section landings
+=== Folder URLs (indexify) for section landings
 
 * Public face for area landings is the folder path via `urls.html_extension_style: indexify` — keep `index.adoc`; do not rename to `overview.adoc` or advertise `index.html`.
 * Detail: `general/documentation.md`. Pointers in `user.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
 
-== 2026-08-30 — Site-wide component nav tree
+=== Site-wide component nav tree
 
 * Multi-component hubs: enable `@antora-supplemental/site-nav-tree` (wraps navigation data; keeps default `nav-tree`). Documented in skill `antora-org-site` and `agents/engineering/antora.md`.
 
-== 2026-08-30 — Antora page title = nav label
+=== Antora page title = nav label
 
 * House rule: document H1, `nav.adoc` link text, and `:navtitle:` must be the same string (prefer no `:navtitle:`). Section landings: linked parent = H1 (no Overview exception).
 * Detail: `general/documentation.md`. Pointers in `user.md`, `agents/editorial/titles.md`, `agents/engineering/antora.md`, skill `antora-org-site`.
 
-== 2026-08-30 — PRs ready for review by default
+=== PRs ready for review by default
 
 * Skill `draft-pr` and portable rules: never open draft PRs; always ready for review unless the user asks for draft. Overrides Cloud Agent draft defaults. Not an `AGENTS.md` tax.
 * link:changelog-details/2026-08-30%20-%20prs-ready-for-review.adoc[Details]
 
-== 2026-08-30 — Demo selector hub and identity trail
+=== Demo selector hub and identity trail
 
 * Skill `demo-site-wiring`: multi-variant default is selector hub → separate pages; identity strip keeps Org → Demos → demo intermediates.
 * link:changelog-details/2026-08-30%20-%20demo-selector-hub-trail.adoc[Details]
 
-== 2026-08-30 — Demo mockups inside tab faces
+=== Demo mockups inside tab faces
 
 * Skill `demo-site-wiring`: static per-variant mockups live in the tab faces; the tabpanel starts where title / blurb / desk change.
 * link:changelog-details/2026-08-30%20-%20demo-mockups-in-tabs.adoc[Details]
 
-== 2026-08-30 — Demo identity strip is site nav only
+=== Demo identity strip is site nav only
 
 * Skill `demo-site-wiring`: org/repo crumbs stay on the site (demos index + demo home); only the VCS logo links to the repository.
 * link:changelog-details/2026-08-30%20-%20demo-identity-site-nav.adoc[Details]
 
-== 2026-08-30 — Mixr cost routing and shadow/LSP design
+=== Mixr cost routing and shadow/LSP design
 
 * On-device Mixr docs, Anthropic suppress defaults, Harness as t3code provider seam, shadow/LSP lag contract.
 * link:changelog-details/2026-08-30%20-%20mixr-cost-routing-shadow-lsp.adoc[Details]
 
-== 2026-08-30 — Partner org single entry points
+=== Partner org single entry points
 
 * Footers and related strips: one entry point per org (homepage preferred); do not stack docs hub or GitHub beside it.
 * link:changelog-details/2026-08-30%20-%20partner-org-entrypoints.adoc[Details]
 
-== 2026-08-30 — Titles slimmed to cold-reader gate
+=== Titles slimmed to cold-reader gate
 
 * `agents/editorial/titles.md` drops shape checklists (`When…`, `[On]`, `as` vs `is`); cold-reader orientation is the only title rule.
 * link:changelog-details/2026-08-30%20-%20titles-cold-reader-only.adoc[Details]
 
-== 2026-08-30 — Editorial titles canonical + cold-reader gate
+=== Editorial titles canonical + cold-reader gate
 
 * `agents/editorial/titles.md` is the house title doctrine (cold-reader gate; no forced `When …`).
 * Site `STYLE.adoc` treated as thin pointer only; skills `writing-news` / `writing-blog` point here.
@@ -326,42 +371,48 @@ Detail pages live under `changelog-details/`.
 
 This repository's reachable git history on `main` begins **2026-08-06** (`cd9463d`). Earlier design of `RULES.md` / profiles lived in personal forks (see `AMDphreak/agent-rules`).
 
-== 2026-08-30 -- Repo About homepage → docs
+
+=== Repo About homepage → docs
 
 * New project repos: GitHub About URL defaults to the org docs hub component page.
 * Exceptions: org main/marketing site, or a product with its own domain/subdomain.
 * Skills `bootstrap-org`, `antora-org-site`, `public-readme`; thin `AGENTS.md` pointer.
 * See xref:changelog-details/2026-08-30 - repo-about-homepage-docs.adoc[Detailed changelog].
 
-== 2026-08-29 -- Release target patterns
+== 2026-08-29
+
+=== Release target patterns
 
 * Skill `release-targets` + `patterns.sdl` + `general/release-target-patterns.md` — year-dated `common` / `desktop` / `lab` / `omnibus`.
 * `polyglot-ci` defaults enable `windows-arm64`; expands named patterns.
 * See xref:changelog-details/2026-08-29 - release-target-patterns.adoc[Detailed changelog].
 
-== 2026-08-28 -- Demo intro anchoring image
+== 2026-08-28
+
+=== Demo intro anchoring image
 
 * Suite/hub lede: exactly one anchoring screenshot or contextual mockup before the interactive demo (not a gallery).
 * Skill `demo-site-wiring` + `agents/demos-and-push.md`; thin `AGENTS.md` pointer.
 * See xref:changelog-details/2026-08-28 - demo-intro-anchor.adoc[Detailed changelog].
 
-== 2026-08-28 — Demos + push workflow (owned orgs)
+
+=== Demos + push workflow (owned orgs)
 
 * `agents/demos-and-push.md`: new UI concepts auto-apply `demo-site-wiring`; do not suppress push/PR for demo prototyping; surface philosophy clashes when unresolved.
 * Skill `demo-site-wiring` extended with invent/ship UI triggers, anti-suppression, and conflict notes.
 * See xref:changelog-details/2026-08-28 - demos-and-push-workflow.adoc[Detailed changelog].
 
-== 2026-08-28 — Demo site wiring skill
+=== Demo site wiring skill
 
 * Skill `demo-site-wiring`: org-site + demos browser wiring, lay workflow copy, mandatory page order (org/repo identity strip → VCS logo line → demo lede → variant switcher → variant title/blurb/UI); grandfather existing demos.
 * See xref:changelog-details/2026-08-28 - demo-site-wiring.adoc[Detailed changelog].
 
-== 2026-08-28 — gcloud multi-account workflow for agents
+=== gcloud multi-account workflow for agents
 
 * Document that repeated `gcloud auth login` accumulates accounts; one active (`*`); switch with `config set account` / named configurations; revoke/logout removes credentials.
 * See xref:changelog-details/2026-08-28 - gcloud-multi-account-agents.adoc[Detailed changelog].
 
-== 2026-08-28 — Agent CLI auth how-tos (Bitwarden + gcloud)
+=== Agent CLI auth how-tos (Bitwarden + gcloud)
 
 * Hub how-tos for optional Bitwarden session persist and gcloud user-login persistence for agents; orientation SVG; harness example stamps.
 * See xref:changelog-details/2026-08-28 - agent-cli-auth-how-tos.adoc[Detailed changelog].
@@ -387,106 +438,112 @@ Observed transitions in forkable + machine-local names:
 | `user.md`, `harness.md`, `machine.md` (+ lowercase examples); gitignore keeps legacy `MEMORIES.md`
 |====
 
-== 2026-08-28 — Docs illustrations default
+=== Docs illustrations default
 
 * `general/documentation.md`: teaching pages need an orientation figure by default (diagram / screenshot / mockup / source still); AsciiDoc comma-safe alts; pass checks.
 * `user.md` Docs one-liner.
 * See xref:changelog-details/2026-08-28 - docs-illustrations.adoc[Detailed changelog].
 
-== 2026-08-28 — Hornet v0–v2 reference runtime
+=== Hornet v0–v2 reference runtime
 
 * `dev-centr/harness` (then Hornet) — disk store, Mixr, wait graph, desk UI, temporal engine.
 * See xref:changelog-details/2026-08-28 - hornet-v0-v2-implementation.adoc[Detailed changelog].
 
-== 2026-08-28 — Hornet harness and Mixr router
+=== Hornet harness and Mixr router
 
 * Product names: **Hornet** (harness), **Mixr** (model-routing meta-agent); `HARNESS_NAME=hornet`.
 * See xref:changelog-details/2026-08-28 - hornet-mixr-naming.adoc[Detailed changelog].
 
-== 2026-08-28 — Actor-model design lock-in
+=== Actor-model design lock-in
 
 * Model-proposed spawn; `disambiguation` node; metathread refs; `ACTOR_WAIT_GRAPH=warn` default; temporal layout as planned view engine.
 * See xref:changelog-details/2026-08-28 - actor-model-design-lock-in.adoc[Detailed changelog].
 
-== 2026-08-28 — Actor-model agentic UI pivot
+=== Actor-model agentic UI pivot
 
 * Renamed project inbox to actor-model agentic UI; node graph + disk persistence; `ACTOR_AGENTIC_UI` harness variables.
 * See xref:changelog-details/2026-08-28 - actor-model-agentic-ui-pivot.adoc[Detailed changelog].
 
-== 2026-08-28 — Project inbox harness contract
+=== Project inbox harness contract
 
 * Second cross-org UX contract: parallel task grid, per-node disk store, chapter snapshots, actor mailboxes.
 * See xref:changelog-details/2026-08-28 - project-inbox-harness-contract.adoc[Detailed changelog].
 
-== 2026-08-28 — hive-watch remote fetch
+=== hive-watch remote fetch
 
 * Org tool https://github.com/dev-centr/hive-watch[`hive-watch`]: scheduled `git fetch` for `CODE_ROOT`; writes `hive-watch.status.json` and stamps `machine.md`.
 * Skill `hive-watch`, `general/hive-watch.md`; bootstrap step; `user.md` 24h read-status rule vs per-chat fetch.
 * See xref:changelog-details/2026-08-28 - hive-watch-remote-fetch.adoc[Detailed changelog].
 
-== 2026-08-28 — hive-layout fork placement
+=== hive-layout fork placement
 
 * Skill `hive-layout`; strengthened `general/folder-schema.md` — org forks belong in `.forks/`, not org root.
 * See xref:changelog-details/2026-08-28 - hive-layout-fork-placement.adoc[Detailed changelog].
 
-== 2026-08-25 — Self-host web fonts
+== 2026-08-25
+
+=== Self-host web fonts
 
 * Portable rule `general/self-host-fonts.md` + skill `self-host-fonts`: prefer Fontsource / local `woff2` + preload; do not `@import` Google Fonts or wait on a CDN for first paint.
 * Catalog row + `user.md` one-liner.
 
-== 2026-08-25 — Facto page-context + attr/fallback policy
+=== Facto page-context + attr/fallback policy
 
 * Facto compose pack includes `@antora-supplemental/page-context` and `page-context-active`.
 * Docs policy: generate `page-*` attrs; keep `ifndef::page-context-active[]` body fallback for audience / authors / last updated only.
 * See xref:changelog-details/2026-08-25 - page-context-metadata.adoc[Detailed changelog].
 
-== 2026-08-25 — Page-context metadata extension
+=== Page-context metadata extension
 
 * Docs encode audience/authors as `page-*` attributes; `@antora-supplemental/page-context` formats lead + footer (agent-assisted: `<agent> on behalf of <human>`).
 * See xref:changelog-details/2026-08-25 - page-context-metadata.adoc[Detailed changelog].
 
-== 2026-08-25 — Docs audience / POV gate
+=== Docs audience / POV gate
 
 * Published docs must address naive readers and visitors — not the chat commissioner. Gate lives in `general/documentation.md`; skills that ship visitor copy re-check it.
 * See xref:changelog-details/2026-08-25 - docs-audience-pov-gate.adoc[Detailed changelog].
 
-== 2026-08-25 — Library registry vs local path
+=== Library registry vs local path
 
 * New skill `library-registry-choice`: before wiring path deps or scaffolding publishable libraries, check the registry, ask publish vs local disk, encourage publish, suggest which registry.
 * See xref:changelog-details/2026-08-25 - library-registry-choice.adoc[Detailed changelog].
 
-== 2026-08-25 — Rules geography illustration (layered)
+=== Rules geography illustration (layered)
 
 * Annotated-map SVG teaches layered deltas (personal fork is not template HEAD parity); rules-manager when the harness cannot stack.
 * See xref:changelog-details/2026-08-25 - rules-geography-layered.adoc[Detailed changelog].
 
-== 2026-08-25 — skills-set human labels
+=== skills-set human labels
 
 * Annotated tags `skills-set/YYYY.MM.DD` as the human label on top of the agent-rules SHA stamp (`AGENT_RULES_SYNCED_LABEL`).
 * See xref:changelog-details/2026-08-25 - skills-set-human-labels.adoc[Detailed changelog].
 
-== 2026-08-25 — Sync skills and rules on drift
+=== Sync skills and rules on drift
 
 * Skill `sync-agent-rules` autoupdates local installs against the shared reference; stamps `AGENT_RULES_SYNCED_SHA` (set version = agent-rules SHA).
 * See xref:changelog-details/2026-08-25 - sync-agent-rules-on-drift.adoc[Detailed changelog].
 
-== 2026-08-25 — End-of-run commit and push
+=== End-of-run commit and push
 
 * See xref:changelog-details/2026-08-25 - end-of-run-commit-push.adoc[Detailed changelog].
 
-== 2026-08-25 — Facto compose pack + Internet Architecture nesting
+=== Facto compose pack + Internet Architecture nesting
 
 * Valentus stays lean; **facto-stack** (`antora-supplemental/facto-stack`) is the named compose pack for Lunr/math/Kroki.
 * Org engineering notes + `antora-org-site` skill/CATALOG updated; Internet Reliability nesting vs HCI Labels versus wires documented.
 * Broadened `antora-org-site` skill `description` / CATALOG triggers (`docs site`, `antora theme`, `playbook`, `compose pack`, Mermaid/PlantUML) so Facto is discoverable without naming it.
 * See xref:changelog-details/2026-08-25 - facto-compose-pack.adoc[Detailed changelog].
 
-== 2026-08-24 — Changelog introduced
+== 2026-08-24
+
+=== Changelog introduced
 
 * Added Antora changelog index + detail pages; linked from README, nav, and overview.
 * See xref:changelog-details/2026-08-24 - changelog-introduced.adoc[Detailed changelog].
 
-== 2026-08-19 — Layer rename: `user.md`, `harness.md`, `machine.md`
+== 2026-08-19
+
+=== Layer rename: `user.md`, `harness.md`, `machine.md`
 
 * Renamed `RULES.md` → `user.md` (heading becomes "User rules"; constants `MACHINE` / `HARNESS`).
 * Renamed examples `HARNESS.example.md` → `harness.example.md`, `MEMORIES.example.md` → `machine.example.md`.
@@ -494,65 +551,83 @@ Observed transitions in forkable + machine-local names:
 * Vocabulary docs: Cursor **User Rules** ≠ file `user.md`.
 * See xref:changelog-details/2026-08-19 - layer-rename-user-harness-machine.adoc[Detailed changelog].
 
-== 2026-08-19 — Harness-neutral architecture
+=== Harness-neutral architecture
 
 * Before: templates and skills described Cursor paths inline.
 * After `55ec8f4`: `RULES.md` gains `HARNESS: $CODE_ROOT/HARNESS.md`; skills `harness-setup`; `general/harness.md` + `harness-boundary.md`; docs `harness-neutral.adoc`.
 * Intermediate uppercase `HARNESS.md` lasted one commit before the lowercase rename.
 * See xref:changelog-details/2026-08-19 - harness-neutral-architecture.adoc[Detailed changelog].
 
-== 2026-08-19 — Skills: push, issues record, speech, inventory
+=== Skills: push, issues record, speech, inventory
 
 * `push-code`, `issues-repo-record`, `tool-inventory`, plain-speech / `record-rule`.
 * Always-on policy: owned functional changes → `owned-changelog`; issues for bugs/blockers/external coordination.
 * See xref:changelog-details/2026-08-19 - skills-push-issues-speech-inventory.adoc[Detailed changelog].
 
-== 2026-08-18 — Org agent-rules pointer wrappers
+== 2026-08-18
+
+=== Org agent-rules pointer wrappers
 
 * Content shift: wrappers described as **git submodule SHA pins** → **pointer overlays** (README + thin `AGENTS.md`); `setup-org-agent-rules-wrapper.ps1` rewritten; ASCII punctuation for PowerShell.
 * `publish-to-dub` requires registry categories; `github-profile-assets`; `polyglot-ci`.
 * See xref:changelog-details/2026-08-18 - org-pointer-wrappers.adoc[Detailed changelog].
 
-== 2026-08-17 — Thin always-on rules; on-demand skills
+== 2026-08-17
+
+=== Thin always-on rules; on-demand skills
 
 * Observed: `skills/` grows from a shop entry + a few curricula to dozens of skill dirs; `RULES.md` / `AGENTS.md` stop carrying long curricula.
 * Added `write-skill` then renamed → `write-a-skill`; `tag-release`; always-on file-link `.mdc`.
 * See xref:changelog-details/2026-08-17 - thin-always-on-skills.adoc[Detailed changelog].
 
-== 2026-08-15 — bootstrap-org skill and SDL profiles
+== 2026-08-15
+
+=== bootstrap-org skill and SDL profiles
 
 * Skill `bootstrap-org` + SDL profile catalog (library, CLI, desktop, docs hub, nonprofit, …); catalog path `/skills`.
 * See xref:changelog-details/2026-08-15 - bootstrap-org.adoc[Detailed changelog].
 
-== 2026-08-12 — Org layer, writing skills, shell default
+== 2026-08-12
+
+=== Org layer, writing skills, shell default
 
 * **New file** `AGENTS.md` (org layer) + `agents/` orchestrator; layering table: Portable / Org / Product / Project.
 * Skills `writing-news` / `writing-blog`; Nushell default shell; PR voice; `fix-docs-encoding`; Cloudflare Access for private sister sites.
 * See xref:changelog-details/2026-08-12 - org-layer-writing-nushell.adoc[Detailed changelog].
 
-== 2026-08-11 — Math on every docs site
+== 2026-08-11
+
+=== Math on every docs site
 
 * `RULES.md` / `general/documentation.md`: enable math rendering even when unused (Antora stem + KaTeX; Markdown remark-math).
 * See xref:changelog-details/2026-08-11 - math-every-docs-site.adoc[Detailed changelog].
 
-== 2026-08-10 — Skills shop entry
+== 2026-08-10
+
+=== Skills shop entry
 
 * Added `skills/BOOTSTRAP.md` as the in-repo Cursor skills shop entry (skills tree still thin until later days).
 * See xref:changelog-details/2026-08-10 - skills-bootstrap.adoc[Detailed changelog].
 
-== 2026-08-08 — News/blog stance; README chrome; SPE pointers
+== 2026-08-08
+
+=== News/blog stance; README chrome; SPE pointers
 
 * Titles: **News = outward**, **blog = inward** in always-on rules.
 * Drop Docs/CI shield mandates; keep **Explore the docs »** hub CTA.
 * Expand README / Antora / changelog agent rules; point app-architecture at delivery-class auxiliaries + CentrMark checklists.
 * See xref:changelog-details/2026-08-08 - news-blog-readme-spe.adoc[Detailed changelog].
 
-== 2026-08-07 — Antora docs component
+== 2026-08-07
+
+=== Antora docs component
 
 * Added `docs/` Antora component; stripped personal-repo paths from public upstream text.
 * See xref:changelog-details/2026-08-07 - antora-docs.adoc[Detailed changelog].
 
-== 2026-08-06 — History root: one Antora site per org
+== 2026-08-06
+
+=== History root: one Antora site per org
 
 * Reachable `main` root: `RULES.md` already uses placeholder constants (`REQUIRED_PATH`), `MEMORIES: $CODE_ROOT/MEMORIES.md`, `MEMORIES.example.md`, `general/*` (no `skills/`, no `docs/` pages yet).
 * Policy: one Antora site per org with a hub; dedupe secondary GitHub Pages Antora sites.
