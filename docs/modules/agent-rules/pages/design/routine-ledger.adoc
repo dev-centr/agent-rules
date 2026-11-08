@@ -288,9 +288,9 @@ Rules:
 * Never post upstream (comments, reviews, PRs) without Ryan's approval. Draft first.
 * If verification fails, record the failing repro in the run file and keep the watch open.
 
-=== Missed-opportunities sweep
+=== Missed-opportunities bootstrap
 
-A periodic routine (proposal: weekly) looks over recent blockers and workarounds in session notes, TODO comments, and open tasks. It then registers missing watches, or proposes them when the owner or scope is unclear.
+When this ruleset is first adopted, a one-time bootstrap pass reads all existing history (session transcripts and notes, TODO comments, open tasks, and known blockers and workarounds). It registers missing watches, or proposes them when the owner or scope is unclear, and records in the ledger that the bootstrap is complete. After that there is no recurring sweep: agents register watches as they run into blockers. The bootstrap reruns only for a newly onboarded harness or org, and only over history not already covered.
 
 == Security
 
@@ -320,4 +320,4 @@ A periodic routine (proposal: weekly) looks over recent blockers and workarounds
 . *Identity:* one GitHub App for all harnesses, or a separate token per harness?
 . *Grok Bot:* how Grok Bot routines are registered as a target (API, `repository_dispatch` relay, or a routine that polls the ledger).
 . *Lease defaults* and heartbeat interval.
-. *Sweep cadence* and which sources the missed-opportunities sweep reads.
+. *Bootstrap scope*: which history sources the one-time missed-opportunities bootstrap reads, and how coverage is recorded so it never repeats.

@@ -9,5 +9,5 @@ The spec covers:
 * GitHub Projects as a quiet dashboard, with claims and locks in ordered issue comments (earliest valid claim wins, leases, heartbeats, session IDs);
 * a shared per-machine timer CLI that sets native timers from ledger orders and calls harnesses through declarative targets, with secrets referenced by name only;
 * project-management adapters with recorded discovery, stored in each org's `agent-rules` layer, or in Ryan's ledger for guest repos;
-* proactive dependency watches and a missed-opportunities sweep;
+* proactive dependency watches and a one-time missed-opportunities bootstrap over existing history;
 * security, non-goals, and open questions (file format, archive cadence, identity, Grok Bot target).
