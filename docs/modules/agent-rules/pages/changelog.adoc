@@ -22,6 +22,10 @@ endif::[]
 
 == 2026-11-08
 
+=== Routine ledger design (draft)
+
+* Added draft design spec xref:design/routine-ledger.adoc[Routine ledger]: git-backed routine ledger, Projects dashboard with issue-comment claims, shared timer CLI with declarative harness targets, project-management adapters, and proactive dependency watches (xref:changelog-details/2026-11-08 - routine-ledger-design.adoc[details]).
+
 === Git AI in guest repositories
 
 * Add skill `git-ai-guest-repos`: no attribution notes reach repositories Ryan does not own until the project agrees, plus a drafted-first negotiation flow and outcome records.

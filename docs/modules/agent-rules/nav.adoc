@@ -17,4 +17,5 @@
 * xref:bitwarden-cli-agents.adoc[Bitwarden CLI (agents)]
 * xref:gcloud-cli-agents.adoc[gcloud CLI (agents)]
 * xref:architecture.adoc[Architecture]
+* xref:design/routine-ledger.adoc[Routine ledger (design draft)]
 * xref:changelog.adoc[Changelog]
