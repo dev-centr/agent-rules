@@ -1,0 +1,13 @@
+{
+  schema: "routine-ledger/run/1",
+  routine: "watch-git-ai-2399",
+  run_id: "20261109T1500Z",
+  scheduled_at: "2026-11-09T15:00:00Z",
+  status: "done",
+  issue_url: "https://github.com/amdphreak/routine-ledger/issues/12",
+  claimed_by: { harness: "cursor-desktop", session_id: "example-session-0002" },
+  started_at: "2026-11-09T15:01:10Z",
+  finished_at: "2026-11-09T15:20:00Z",
+  changed: false,
+  result: "No meaningful change.",
+}

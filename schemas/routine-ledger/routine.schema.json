@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/routine.schema.json",
+  "title": "Routine definition (routines/<id>.json5)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "id", "owner", "kind", "trigger", "prompt", "requires", "lease", "catch_up", "created_by"],
+  "properties": {
+    "schema": { "const": "routine-ledger/routine/1" },
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "owner": { "$ref": "common.schema.json#/$defs/handle" },
+    "kind": { "enum": ["routine", "watch", "bootstrap"] },
+    "trigger": {
+      "type": "object", "additionalProperties": false, "required": ["type"],
+      "properties": {
+        "type": { "enum": ["cron", "interval", "event", "once"] },
+        "cron": { "type": "string" }, "tz": { "type": "string" },
+        "every": { "$ref": "common.schema.json#/$defs/duration" },
+        "event": { "type": "string" }, "at": { "$ref": "common.schema.json#/$defs/timestamp" }
+      },
+      "allOf": [
+        { "if": { "properties": { "type": { "const": "cron" } } }, "then": { "required": ["cron", "tz"] } },
+        { "if": { "properties": { "type": { "const": "interval" } } }, "then": { "required": ["every"] } },
+        { "if": { "properties": { "type": { "const": "event" } } }, "then": { "required": ["event"] } },
+        { "if": { "properties": { "type": { "const": "once" } } }, "then": { "required": ["at"] } }
+      ]
+    },
+    "prompt": { "type": "string", "minLength": 1 },
+    "requires": { "$ref": "common.schema.json#/$defs/capabilities" },
+    "preferred_targets": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/id" } },
+    "lease": { "$ref": "common.schema.json#/$defs/duration" },
+    "catch_up": { "enum": ["skip", "run-once", "run-all"] },
+    "status": { "enum": ["active", "paused", "retired"], "default": "active" },
+    "watch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["urls", "conditions", "action", "notify", "retire_when"],
+      "properties": {
+        "urls": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/url" } },
+        "conditions": { "type": "array", "minItems": 1, "items": { "enum": ["fix-merged", "release-shipped", "related-issue", "state-change", "new-comment-by-maintainer"] } },
+        "action": { "type": "string", "minLength": 1 },
+        "notify": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/handle" } },
+        "retire_when": { "type": "array", "minItems": 1, "items": { "enum": ["fix-verified-and-released", "owner-cancels"] } },
+        "last_seen": { "type": "object" }
+      }
+    },
+    "project_item": { "type": "string" },
+    "created_by": { "$ref": "common.schema.json#/$defs/sessionRef" },
+    "created_at": { "$ref": "common.schema.json#/$defs/timestamp" }
+  },
+  "if": { "properties": { "kind": { "const": "watch" } } }, "then": { "required": ["watch"] }
+}

@@ -1,0 +1,24 @@
+// Dependency watch: git-ai notes leak to guest remotes.
+{
+  schema: "routine-ledger/routine/1",
+  id: "watch-git-ai-2399",
+  owner: "amdphreak",
+  kind: "watch",
+  trigger: { type: "cron", cron: "0 9 * * *", tz: "America/Chicago" },
+  prompt: "Check git-ai-project/git-ai#2399 and PR #2400. On meaningful change, verify independently: read the diff, build, run tests and the end-to-end repro. Report only on change. Never post upstream.",
+  requires: ["shell", "gh", "rust-build"],
+  lease: "45m",
+  catch_up: "run-once",
+  watch: {
+    urls: [
+      "https://github.com/git-ai-project/git-ai/issues/2399",
+      "https://github.com/git-ai-project/git-ai/pull/2400",
+    ],
+    conditions: ["fix-merged", "release-shipped", "related-issue"],
+    action: "Independently verify: diff, build, tests, end-to-end repro against a guest remote.",
+    notify: ["amdphreak"],
+    retire_when: ["fix-verified-and-released", "owner-cancels"],
+  },
+  created_by: { harness: "grok-bot", session_id: "example-session-0001" },
+  created_at: "2026-11-08T08:30:00Z",
+}

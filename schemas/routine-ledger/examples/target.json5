@@ -1,0 +1,11 @@
+{
+  schema: "routine-ledger/target/1",
+  id: "example-http-harness",
+  kind: "http",
+  capabilities: ["web", "comment-only"],
+  url: "https://api.example.invalid/v1/runs",
+  method: "POST",
+  secrets: ["EXAMPLE_TOKEN"],
+  headers: { Authorization: "Bearer {{secret.EXAMPLE_TOKEN}}" },
+  body: { routine: "{{routine.id}}", prompt: "{{routine.prompt}}", issue: "{{run.issue_url}}" },
+}
