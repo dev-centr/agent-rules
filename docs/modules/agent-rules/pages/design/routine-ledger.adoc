@@ -179,7 +179,7 @@ Each harness registers a *target file* in `targets/`. The CLI invokes any target
 
 === Example target
 
-Neutral JSON5 is used here for illustration only. Ryan prefers SDL; the final format is an open question.
+Decided: ledger files (routines, runs, targets, records) use JSON5, validated against a JSON Schema. Every reader (the timer CLI, GitHub Actions, cloud agents, harnesses in any language) has a mature JSON5 parser or can convert it to JSON. SDL stays for files read only by DevCentr's own D tools, such as `.devcentr/fonts.sdl`.
 
 [source,json5]
 ----
@@ -313,10 +313,8 @@ When this ruleset is first adopted, a one-time bootstrap pass reads all existing
 [#open-questions]
 == Open questions
 
-. *File format:* SDL (Ryan's preference) versus JSON5 or YAML for routines, runs, targets, and records.
 . *Archive cadence:* monthly roll-up? How long to keep per-run files?
 . *Run issues:* one issue per run, or one rolling issue per routine?
-. *"Anthropic API-based git alternative":* Ryan mentioned it; not yet identified. Which product, and is it open source?
 . *Identity:* one GitHub App for all harnesses, or a separate token per harness?
 . *Grok Bot:* how Grok Bot routines are registered as a target (API, `repository_dispatch` relay, or a routine that polls the ledger).
 . *Lease defaults* and heartbeat interval.
