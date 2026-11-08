@@ -1,0 +1,19 @@
+= 2026-11-08: Routine ledger skill and schemas (step 1)
+:description: First implementation step of the routine ledger: the agent-facing skill, JSON Schemas, examples, and tests.
+
+Step 1 of the xref:design/routine-ledger.adoc[routine ledger design] is implemented.
+
+== Added
+
+* `skills/routine-ledger/SKILL.md`: agents register routines, triggers, and dependency watches instead of acting once; check for missed runs at session start; and follow the claim, start, heartbeat, and finish protocol. Protocol messages are fenced `json5` blocks in run-issue comments, and the earliest valid claim wins. The skill also covers the Projects dashboard fields, PR and comment fallbacks for cloud workers, project-management discovery with a TickTick confirmation task, the one-time missed-opportunities bootstrap, and a manual `gh` procedure to use until the `routine-timer` CLI exists.
+* `schemas/routine-ledger/`: JSON Schema 2020-12 for `routine`, `run`, `target` (`http`, `command`, `github_dispatch`; secrets by name only; allowlisted template variables), `machine`, `pm-record` (contact is a handle, never an email), `claim-comment`, and `bootstrap-record`, plus shared `common` definitions. `examples/` holds one valid JSON5 file per schema.
+* `skills/routine-ledger/validate.mjs` and `test.ps1`: validate every example, reject seven negative cases (for example, an email contact or an unknown placeholder), and check the SKILL.md frontmatter, UTF-8 without BOM, and LF line endings. They run on Windows PowerShell 5.1 and pwsh with Node 18+.
+
+== Decisions recorded
+
+* The ledger format is JSON5 with JSON Schema. SDL is used only for D files that are DevCentr-only.
+* The missed-opportunities check is a one-time bootstrap over existing history, recorded in `bootstrap/<scope>.json5`. It reruns only for a newly onboarded harness or org, over history not yet covered.
+
+== Not yet built
+
+The `routine-timer` CLI, native timer installation, the webhook relay Action, and the Linear and Jira adapters.

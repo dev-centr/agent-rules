@@ -77,6 +77,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `tool-inventory` | tools changed, record tool inventory, update local tool list snapshot | active | Harness-agnostic; writes via `machine.md` or `TOOL-INVENTORY.md` |
 | `logo-svg-marks` | create product logo/icon/favicon SVG on first scaffold or brand pass; `assets/icons`; glyph/mark/mono; redo logo; hideous icon | active | **First try** via Opus design subagent — not only after rejection |
 | `diagram-svg-output` | create/render/export/edit diagram, flowchart, architecture map, sequence diagram, Mermaid, PlantUML, Kroki, Graphviz, diagram SVG, themed SVG, dark/light diagram, web-compatible SVG | active | Runtime-inline host default; external adaptive + fixed/paired modes; semantic token presets |
+| `routine-ledger` | recurring/scheduled/event-driven task, remind me, check back, watch issue/PR/release, when X ships, missed run, routine, trigger, cron, Task Scheduler, repository_dispatch, claim/lease/heartbeat, harness target, dependency watch, upstream blocker workaround, project-management discovery, onboarding harness/org | active | Ledger `<owner>/routine-ledger`; JSON5 + `schemas/routine-ledger/`; issue-comment claims; one-time bootstrap; manual `gh` procedure until `routine-timer` |
 
 ## Adding a skill (checklist)
 

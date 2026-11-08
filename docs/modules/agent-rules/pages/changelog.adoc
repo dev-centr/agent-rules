@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-08
 
+=== Routine ledger skill and schemas
+
+* Added skill `routine-ledger` (step 1 of the xref:design/routine-ledger.adoc[routine ledger design]): register routines and dependency watches proactively, check for missed runs at session start, claim runs through issue comments, discover project-management tools, and run the one-time bootstrap.
+* Added JSON Schema 2020-12 schemas, with JSON5 examples, for routine, run, target, machine, pm-record, claim-comment, and bootstrap-record in `schemas/routine-ledger/`. `skills/routine-ledger/test.ps1` validates them.
+* Decided: the ledger format is JSON5 with JSON Schema (xref:changelog-details/2026-11-08 - routine-ledger-skill.adoc[details]).
+
 === Routine ledger design (draft)
 
 * Added draft design spec xref:design/routine-ledger.adoc[Routine ledger]: git-backed routine ledger, Projects dashboard with issue-comment claims, shared timer CLI with declarative harness targets, project-management adapters, and proactive dependency watches (xref:changelog-details/2026-11-08 - routine-ledger-design.adoc[details]).
