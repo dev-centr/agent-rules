@@ -66,7 +66,7 @@ reference page instead of explaining everything in the post.
 - Channel: GitHub Discussions if enabled; else an issue; else whatever the
   project's CONTRIBUTING names (mailing list, forum, email).
 - Link: DevCentr public reference page on Git AI attribution in guest repos
-  (TODO: fill in the published URL).
+  <https://docs.devcentr.org/home/reference/git-ai-attribution-in-guest-repositories/>.
 - **Draft first.** Ryan reads and approves every post; never post on your own.
 - One ask per project; if there is no answer, do not re-ask for at least 90 days.
 
@@ -76,7 +76,7 @@ Draft template:
 > wrote each line, stored as git notes (`refs/notes/ai`), separate from commits.
 > Before any of our contributions include those notes here, we'd like to know
 > whether this project wants them. Background and privacy details:
-> <DevCentr reference link>. Either answer is fine; if you'd rather not, a line in
+> https://docs.devcentr.org/home/reference/git-ai-attribution-in-guest-repositories/. Either answer is fine; if you'd rather not, a line in
 > CONTRIBUTING.md or AGENTS.md helps other contributors' tools respect that.
 
 ## Recording the outcome
