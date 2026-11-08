@@ -1,0 +1,18 @@
+= 2026-11-08
+:page-audience: Maintainers configuring coding agents and reviewing provenance policy
+:page-usage-context: Changelog detail for Git AI guest-repository policy and the git-ai#2399 gate
+:page-orig-author: Ryan Johnson
+:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-edited: 2026-11-08
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Git AI in guest repositories
+
+* Add `git-ai-guest-repos`: no Git AI notes reach repositories Ryan does not own (including forks that PR upstream) until the project agrees; `.gitignore` cannot block notes because they are refs, not files.
+* Hard gate on https://github.com/git-ai-project/git-ai/issues/2399[git-ai#2399]: repository allow/exclude filters do not stop notes being written or pushed, and filtering is per repository, not per remote. Git AI is not installed on machines with guest repositories while it is unresolved.
+* Agents verify claimed fixes themselves (diff review plus a scratch reproduction with bare remotes and `git ls-remote <remote> 'refs/notes/*'`) rather than trusting a closed issue or release note.
+* Post-push check for guest remotes; any notes found are reported, never deleted without approval.
+* Negotiation flow: short drafted ask linking a DevCentr reference page, Ryan approves every post, outcome recorded; accepted, declined (CONTRIBUTING/AGENTS.md guidance PR linking the discussion), or no response (no re-ask for 90 days).
+* Proposed upstream mechanism: a project-controlled `.gitattributes`-style opt-out checked per remote; not yet implemented upstream.
+* Evidence: plain Git does not push `refs/notes/*` without a refspec (scratch test). Git AI's pre-push handler pushes notes itself; installed-release suppression is not verified end to end.

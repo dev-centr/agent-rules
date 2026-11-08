@@ -54,6 +54,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary | active | Voice in `skills/draft-pr/voice.md` |
 | `agent-provenance` | before agent edits, Git AI, git-ai, agent-v1, unknown harness/model, AI blame, notes, provenance trailers | active | Native hooks or generic before/after checkpoints; separate user/harness/model; owned-only notes sharing; optional completed-note trailer exporter |
+| `git-ai-guest-repos` | guest repos, upstream forks, Git AI notes on push, refs/notes/ai, proposing Git AI to a project, git-ai#2399 | active | No notes to guest remotes until the project agrees; #2399 install gate with self-verified fixes; drafted-first negotiation; post-push ls-remote check |
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User ask **or** end-of-run (`general/end-of-run.md`) |
 | `push-code` | pushing code, git push, push changes, push to remote; end of agent run; batched push after parallel workers (GIT_CLOSEOUT) | active | Logical commits then push; standing end-of-run auth; workers commit-only in swarms |
 | `github-repo-access` | github permissions, viewerPermission, can't push, push, member role, push vs PR, branch protection, record github access | active | Probe + cache in `machine.md`; routes push vs PR (`general/github-push-routing.md`) |

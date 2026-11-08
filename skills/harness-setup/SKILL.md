@@ -86,6 +86,11 @@ verify with an actual harness edit in a disposable scratch repository. For a
 new/unsupported harness, wire the generic `agent-v1` before/after adapter instead;
 use the exact exposed model ID or `unknown`, never a guessed identity.
 
+**Guard:** before installing, follow skill `git-ai-guest-repos` and check
+[git-ai#2399](https://github.com/git-ai-project/git-ai/issues/2399) yourself. While it is
+unresolved, do not install Git AI on a machine that holds guest repositories or forks
+of third-party projects; record the hold in `harness.md` instead.
+
 Record actual Git AI version, native/generic/unavailable mode, verification and
 notes-sharing policy in machine-local `harness.md`; record the installation via
 `tool-inventory` in `machine.md`. No Git config changes or hook replacement without

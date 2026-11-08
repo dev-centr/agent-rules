@@ -158,9 +158,12 @@ Notes sharing is not authorized by permission merely to make a local commit.
 no extra provenance trailers and no notes publication. Merely omitting an explicit
 notes push is **not sufficient**, because Git AI auto-syncs. Before any push,
 verify a supported no-sync/exclusion policy for the installed release and every
-push remote; if unavailable/unverified, stop and report rather than push. The
-`exclude_repositories` configuration is a possible full opt-out, not a verified
-local-only tracking switch. Do not change global config without authorization.
+push remote; if unavailable/unverified, stop and report rather than push. The `exclude_repositories` configuration does **not** stop notes being written or pushed
+([git-ai#2399](https://github.com/git-ai-project/git-ai/issues/2399), open; filtering is
+per repository, not per remote). While it is unresolved, do not install Git AI on a
+machine that holds guest repositories or forks, and follow skill **`git-ai-guest-repos`**
+for the status check, reproduction, post-push `ls-remote` verification, and how to
+propose or record a project's decision. Do not change global config without authorization.
 
 Notes no longer embed transcript messages (removed v1.3.4); legacy prompt records
 may have `messages_url`, while current session records do not. Input transcripts

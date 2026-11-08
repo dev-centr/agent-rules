@@ -3,7 +3,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Grok Bot on behalf of Ryan Johnson
-:page-last-edited: 2026-11-07
+:page-last-edited: 2026-11-08
 :toclevels: 3
 
 ifndef::page-context-active[]
@@ -19,6 +19,13 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-11-08
+
+=== Git AI in guest repositories
+
+* Add skill `git-ai-guest-repos`: no attribution notes reach repositories Ryan does not own until the project agrees, plus a drafted-first negotiation flow and outcome records.
+* Gate Git AI installation on https://github.com/git-ai-project/git-ai/issues/2399[git-ai#2399] (filters do not stop notes being written or pushed, per-remote gap); agents verify claimed fixes by reproduction. Detail: xref:changelog-details/2026-11-08 - git-ai-guest-repos.adoc[Git AI in guest repositories].
 
 == 2026-11-07
 
