@@ -36,7 +36,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `writing-news` | News item, ship note, org announcement, news channel body | active | `skills/writing-news/` |
 | `writing-blog` | Blog post, essay, philosophy, thinking-in-public body | active | `skills/writing-blog/` |
 | `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` | <!-- mojibake-guard: allow -->
-| `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", DUB/code.dlang.org categories | active | `dubx` + `dub-publish`; official `dub` has no publish command |
+| `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", DUB/code.dlang.org categories, README.md for code.dlang.org | active | `dubx` + `dub-publish`; official `dub` has no publish command. Registry reads root `README.md` only |
 | `library-registry-choice` | create library, path/`file:` dependency, publish vs local disk, registry for new package, unpublished owned dep | active | Ask publish vs path; encourage registry; suggest which |
 | `bootstrap-org` | bootstrap an org, initialize an org, create a GitHub organization, SDL profile, org agent-rules overlay | active | Fast identity/project path; house org init uses pointer overlay |
 | `github-profile-assets` | GitHub org profile assets, `profile/assets/`, org avatar PNG 256 | active | Pairs with `bootstrap-org` |
@@ -52,7 +52,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `antora-extension-consumers` | Antora extension consumers, antora-supplemental topics, `topic:antora-search-chat`, SemVer git pins, uses-* rename | active | specializes: update-consumers; topic = repo name |
 | `antora-registry-ready` | Antora extension/theme/paint/UI bundle create or edit, registry.antora-supplemental.org, antoraRegistry block, @color-schemes, preview.png, antora-light-theme / antora-dark-theme topics, engines.antora, +antora.N, Antora 3 vs 4 compat, catalog-sync, theme not listed | active | Always-on rule in `agents/engineering/antora.md`; pairs with `antora-extension-consumers`, `tag-release` |
 | `link-registry` | link registry, named links, `{url-...}` attributes, links:check, links:fix, literal URL rejected in CI, outbound link index, `needs: links` docs CI gate | active | Pairs with `antora-org-site`; tool repo antora-supplemental/link-registry |
-| `public-readme` | README.md, README.adoc, public repo face, Best-README | active | GitHub adapter default |
+| `public-readme` | README.md, README.adoc, public repo face, Best-README, code.dlang.org readme, npm readme | active | GitHub adapter default. DUB and npm need root `README.md` |
 | `draft-pr` | open/draft a pull request, `gh pr create`, PR title, PR summary | active | Voice in `skills/draft-pr/voice.md` |
 | `git-commit` | git commit, commit message, commit staged/unstaged changes | active | User ask **or** end-of-run (`general/end-of-run.md`) |
 | `push-code` | pushing code, git push, push changes, push to remote; end of agent run; batched push after parallel workers (GIT_CLOSEOUT) | active | Logical commits then push; standing end-of-run auth; workers commit-only in swarms |

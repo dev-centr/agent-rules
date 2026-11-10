@@ -4,7 +4,7 @@ Pick **one** primary registry from the language/ecosystem. Mention the CLI or sk
 
 | Ecosystem | Primary registry | Typical publish path |
 | --- | --- | --- |
-| **D** | [code.dlang.org](https://code.dlang.org) (DUB) | Skill `publish-to-dub` (`dubx` / `dub-publish`); SemVer tags |
+| **D** | [code.dlang.org](https://code.dlang.org) (DUB) | Skill `publish-to-dub` (`dubx` / `dub-publish`); SemVer tags; root `README.md` (the registry does not render AsciiDoc) |
 | **JavaScript / TypeScript** | [npmjs.com](https://www.npmjs.com) (npm) | `pnpm publish` / npm after `tag-release` as needed |
 | **Python** | [PyPI](https://pypi.org) | `uv publish` / twine; version from project metadata |
 | **Rust** | [crates.io](https://crates.io) | `cargo publish` |

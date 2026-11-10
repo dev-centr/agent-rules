@@ -3,7 +3,8 @@ name: publish-to-dub
 description: >-
   Use when the user says "publish to dub", "publish to dlang", "publish
   dlang", register a D package, DUB categories, code.dlang.org categories,
-  dubx categories, dub-publish, or asks to publish to the DUB registry.
+  dubx categories, dub-publish, README.md for code.dlang.org, DUB readme,
+  or asks to publish to the DUB registry.
   Official dub has no publish command.
 ---
 # Publish to DUB (code.dlang.org)
@@ -23,6 +24,7 @@ Prefer `dubx <verb>` when `dubx` is on `PATH`. Same verbs work as `dub-publish <
 
 ```
 - [ ] Package root (dub.sdl / dub.json) + origin URL
+- [ ] Root `README.md` (registry reads this path only; AsciiDoc is not rendered)
 - [ ] dubx and/or dub-publish on PATH
 - [ ] Credentials saved (never -p)
 - [ ] Dry-run register
@@ -34,6 +36,8 @@ Prefer `dubx <verb>` when `dubx` is on `PATH`. Same verbs work as `dub-publish <
 ```
 
 **Categories are not optional.** Register (or any later publish/audit) is incomplete until the package has 1–4 taxonomy ids on the registry. Infer them, `dubx categories` immediately, then verify. Do not leave the slot empty for the user to fill in the web UI.
+
+**Root `README.md` is not optional.** The registry reads `/README.md` at the tagged commit and renders it as Markdown. `README.adoc` is not shown. If the package only has AsciiDoc, add a root `README.md` with the same install and use text before tagging. GitHub shows `README.md` when both files exist, so the Markdown file has to be a real listing. Do not rename or delete it to restore the AsciiDoc face. A new readme is invisible on code.dlang.org until the next SemVer tag.
 
 ## 1. Tools
 

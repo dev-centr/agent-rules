@@ -12,7 +12,7 @@ Do **not** batch-script README rewrites across repos. Hand-edit each file so sta
 |-----------|----------------|
 | **Default (owned / first-party)** | Prefer **AsciiDoc** (`README.adoc`). On GitHub, use embedded HTML for the centered title/header; use `[.text-center]` (or HTML) for other centered blocks. |
 | **Fork of an upstream project** | **Retain Markdown** if upstream is Markdown. Do not convert away from the fork’s face format. |
-| **Package registry that only parses Markdown** (npm, crates.io listing copy, etc.) | Keep or add a **Markdown** README (or registry-facing copy) for the registry. Do **not** delete a Markdown copy that exists for that reason. Deep docs may still be AsciiDoc/Antora. |
+| **Package registry that only parses Markdown** (npm, crates.io, code.dlang.org) | Keep or add a root **`README.md`**. Do **not** delete or rename it. code.dlang.org reads `/README.md` only and does not render `README.adoc`. GitHub prefers `README.md` when both exist, so the Markdown file is a real listing (install, use, license). Deep docs may still be AsciiDoc/Antora. |
 | **Major user-facing + Best-README HTML centering** | GitHub’s AsciiDoc subset centers poorly; **`README.md`** as the repo face is fine (deep docs under `docs/`). |
 
 ## Docs link (org repos)

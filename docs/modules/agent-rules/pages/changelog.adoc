@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-10
 
+=== DUB registry readme
+
+code.dlang.org reads root `README.md` only. A D package keeps `README.adoc` and adds that Markdown file.
+
+* Detail: xref:changelog-details/2026-11-10 - dub-readme-md.adoc[DUB registry readme].
+
 === Agent bus
 
 The catalog skill is `agent-bus`. The repo is `dev-centr/agent-bus`.

@@ -1,0 +1,15 @@
+= DUB registry readme
+:description: code.dlang.org reads root README.md only, so a D package adds that file beside README.adoc.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the DUB registry Markdown readme rule
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-10
+:hide-page:
+:navtree-parent: changelog.adoc
+
+The DUB registry reads `/README.md` from the tagged commit and renders it as Markdown. It does not render `README.adoc`.
+
+* `general/environment.md` and `user.md` name code.dlang.org next to npm. Do not rename or delete the Markdown file.
+* Skill `public-readme` and skill `publish-to-dub` say the Markdown file is a real listing, because GitHub shows `README.md` when both files exist.
+* The registry copy appears on the next SemVer tag, not when the file lands on the default branch.

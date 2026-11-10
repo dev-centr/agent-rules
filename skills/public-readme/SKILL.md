@@ -39,7 +39,7 @@ The root is the repo face: README, LICENSE, contributor guides (`CONTRIBUTING`, 
 | **GitHub (default)** | `shields.io/github/…`; dest `github.com/OWNER/REPO/{graphs/contributors,network/members,stargazers,issues,blob/BRANCH/LICENSE}` | HTML `<a href><img>` **inside** `<div align="center">` — GFM does not resolve Markdown links there. `contrib.rocks` optional on full tier. AsciiDoc face: HTML passthrough header; keep `link=` on local `image:` macros. |
 | **GitLab / others** | Equivalent host badge APIs and forge paths (`/-/issues`, forks, stars). shields.io has GitLab metrics. | `<div align="center">` usually works. Native AsciiDoc is often fine without `env-github`. Skip contrib.rocks unless that host is supported. |
 
-**Registry listing copy** (npm, crates.io): keep or add Markdown even if deep docs are AsciiDoc. Do not delete a Markdown README that exists for a registry.
+**Registry listing copy** (npm, crates.io, code.dlang.org): keep or add a root `README.md` even if deep docs are AsciiDoc. Do not delete or rename that file. code.dlang.org reads `/README.md` only and renders it as Markdown. `README.adoc` is not the registry page. GitHub shows `README.md` when both exist, so the Markdown listing has to carry install and use, not a one-line pointer.
 
 **Fork of upstream:** retain upstream’s face format.
 

@@ -16,5 +16,5 @@ Read one of `general/windows.md`, `general/mac.md`, or `general/linux.md` after 
 
 - Clone git repositories using `general/folder-schema.md` with root set to the `CODE_ROOT` constant from your active `profiles/*.md` file.
 - Before bulk clone or dedupe: verify GitHub `fork` flag; skill `hive-layout`.
-- Prefer **AsciiDoc** for README and project docs unless Markdown is explicitly requested for a host (for example npm).
-- Do not rename `README.md` files that are made for package hosts like npm.
+- Prefer **AsciiDoc** for README and project docs unless a host only reads Markdown (npm, crates.io, and the DUB registry at code.dlang.org).
+- Do not rename or delete a root `README.md` that exists for a package registry. npm and code.dlang.org read that file. The DUB registry reads `/README.md` only and renders it as Markdown. `README.adoc` does not appear there. A D package keeps the AsciiDoc file and adds a root `README.md` with the same install and use text. GitHub shows `README.md` when both files exist, so the Markdown file has to be a real listing. Detail: skill `public-readme`, skill `publish-to-dub`.
