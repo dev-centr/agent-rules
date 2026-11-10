@@ -1,4 +1,5 @@
 = Changelog
+:toclevels: 3
 :page-audience: Maintainers and readers tracking functional history of this component
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
@@ -21,11 +22,19 @@ endif::[]
 
 == 2026-11-10
 
+=== Session router loop
+
 Skill `session-router` sends a missing harness feature through the session-router catalog.
 
 * Doors stay in the catalog, not in the skill body: harness MCP, CLI wrapper, hack profile, then a warned state-database write.
 * An unlisted release reuses the newest older profile. A failed inherited hack is a fork and an upstream pull request of `dev-centr/session-router`.
 * Detail: xref:changelog-details/2026-11-10 - session-router-loop.adoc[Session router loop].
+
+=== D catalog command
+
+The skill runs the D catalog with `dub run --compiler=ldc2` instead of the Python package.
+
+* Detail: xref:changelog-details/2026-11-10 - session-router-d.adoc[D catalog command].
 
 == 2026-10-25 - history artifacts filed under the changelog
 

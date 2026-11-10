@@ -14,7 +14,7 @@ The catalog is `dev-centr/session-router`, file `removed-features.md`. Read it b
 
 ## Loop
 
-1. Run `session-router resolve --app <app> --version <release> --operation <name>` from that repo (`python -m session_router` with `PYTHONPATH=src` when it is not installed).
+1. Run `dub run --compiler=ldc2 -- resolve --app <app> --version <release> --operation <name>` from that repo. Pass `--compiler=ldc2` when DMD is not on `PATH`.
 2. Use the first door it prints.
    - `mcp`: call the harness MCP tool it names. Do not add a second copy on the polyglot MCP.
    - `cli`: the polyglot MCP may wrap that command, and only that command.

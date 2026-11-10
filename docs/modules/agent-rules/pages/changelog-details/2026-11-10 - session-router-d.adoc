@@ -1,0 +1,14 @@
+= D catalog command
+:description: The session-router skill runs the D catalog with dub instead of the Python package.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the session-router skill command
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-10
+:hide-page:
+:navtree-parent: changelog.adoc
+
+The catalog command moved from a Python package to a Dub executable. The skill now runs `dub run --compiler=ldc2` from `dev-centr/session-router`.
+
+* Pass `--compiler=ldc2` when DMD is not on `PATH`.
+* Door order, version inheritance, and the state-database warning are unchanged. The skill still does not copy a hack into its body.
