@@ -8,7 +8,7 @@ description: >-
   and open a pull request, repair-needed, worst-case state database,
   --worst-case --i-understand, polyglot MCP CLI wrapper, session-router,
   harness interconnect, agent interconnect, agentic interconnect,
-  harness router, harness manager, harness talker, agent hub, agent commander.
+  harness router, harness manager, harness talker, agent commander.
 ---
 
 # Agent bus
