@@ -1,0 +1,17 @@
+= Agents loop into the session router and its pull-request update
+:description: Skill session-router reads dev-centr/session-router instead of inventing a hack, and a failed inherited profile comes back as a pull request.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the session-router skill
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-11-10
+:hide-page:
+:navtree-parent: changelog.adoc
+
+Agents that needed a harness command the studio no longer exposes were inventing a fresh workaround in the chat. The skill now points at the catalog in `dev-centr/session-router`.
+
+* `removed-features.md` is the file a reader offers a workaround from. `AGENTS.md` in that repo points at it.
+* `session-router resolve` picks the door. The skill body does not copy the profile.
+* Versions with no profile, and builds of commits between releases, use the newest older profile. `inherited=true` prints the repair checklist.
+* The self-update is a fork of `dev-centr/session-router` and an upstream pull request that adds the version which failed. The harness itself is not the fork.
+* The state-database door stays last. The skill tells the agent to repeat the warning and wait for a yes before `--worst-case --i-understand`.
