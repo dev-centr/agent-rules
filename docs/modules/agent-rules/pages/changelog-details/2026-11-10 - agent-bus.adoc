@@ -8,7 +8,7 @@
 :hide-page:
 :navtree-parent: changelog.adoc
 
-The catalog that was `session-router` is `dev-centr/agent-bus`. The skill name is `agent-bus`.
+The catalog that was `session-router` is `dev-centr/agent-bus`. The skill name is `agent-bus`. Harness interconnect, agent interconnect, and the other search phrases in that repo's readme point here.
 
 * An agent drives a harness, including the harness it is already in.
 * `layer=mcp` calls the harness MCP and does not add a second copy on the polyglot MCP.

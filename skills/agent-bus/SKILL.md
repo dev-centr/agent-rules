@@ -6,7 +6,9 @@ description: >-
   profiles/<app>/<version>.json, prompt an existing desktop chat,
   inherit the previous hack, commits between releases, fork the catalog
   and open a pull request, repair-needed, worst-case state database,
-  --worst-case --i-understand, polyglot MCP CLI wrapper, session-router.
+  --worst-case --i-understand, polyglot MCP CLI wrapper, session-router,
+  harness interconnect, agent interconnect, agentic interconnect,
+  harness router, harness manager, harness talker, agent hub, agent commander.
 ---
 
 # Agent bus

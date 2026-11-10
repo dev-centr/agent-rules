@@ -33,6 +33,7 @@ code.dlang.org reads root `README.md` only. A D package keeps `README.adoc` and 
 The catalog skill is `agent-bus`. The repo is `dev-centr/agent-bus`.
 
 * `layer=mcp` is the harness's own MCP. `layer=harness-commander` is the CLI wrapper, the hack profile, and the warned state-database write.
+* Search phrases such as harness interconnect and agent interconnect stay on this skill. The package name stays `agent-bus`.
 * Detail: xref:changelog-details/2026-11-10 - agent-bus.adoc[Agent bus].
 
 === Session router loop
