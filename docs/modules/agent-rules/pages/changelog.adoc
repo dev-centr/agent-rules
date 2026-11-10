@@ -22,6 +22,13 @@ endif::[]
 
 == 2026-11-10
 
+=== Agent bus
+
+The catalog skill is `agent-bus`. The repo is `dev-centr/agent-bus`.
+
+* `layer=mcp` is the harness's own MCP. `layer=harness-commander` is the CLI wrapper, the hack profile, and the warned state-database write.
+* Detail: xref:changelog-details/2026-11-10 - agent-bus.adoc[Agent bus].
+
 === Session router loop
 
 Skill `session-router` sends a missing harness feature through the session-router catalog.

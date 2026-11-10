@@ -1,0 +1,16 @@
+= Agent bus
+:description: The session-router skill and catalog are now agent-bus, and hops outside MCP are harness-commander.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the agent-bus rename
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-10
+:hide-page:
+:navtree-parent: changelog.adoc
+
+The catalog that was `session-router` is `dev-centr/agent-bus`. The skill name is `agent-bus`.
+
+* An agent drives a harness, including the harness it is already in.
+* `layer=mcp` calls the harness MCP and does not add a second copy on the polyglot MCP.
+* `layer=harness-commander` is the CLI wrapper, the release-keyed hack, and the warned state-database write.
+* A failed inherited hack is still a fork and an upstream pull request of `dev-centr/agent-bus`.
