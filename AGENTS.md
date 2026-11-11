@@ -76,6 +76,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 
 - Stale APIs: Context7 MCP when available per `$HARNESS`; else skill `outdated-code-protocol`.
 - Agent skills: `skills/BOOTSTRAP.md` + `skills/CATALOG.md`; one skill per job. Do not paste bodies here.
+- **Long-session desktop and agent uptime:** skill `long-session-engines`. Session engine, optional UI thin host plus UI engine, nested crash loops. Detail: `general/long-session-engines.md`.
 - **Skill authoring:** skill `write-a-skill` (`skills/write-a-skill/`) when creating or editing `SKILL.md` or a skill `description`. That field is trigger words, not a lay blurb.
 - **Harness setup:** skill `harness-setup` when probing a new machine or harness.
 - **Agent workspace cleanup:** skill `agent-workspace-migrate` when migrating legacy flat temp, profile agent litter, or home agent utilities (`general/agent-workspace-migrate.md`).

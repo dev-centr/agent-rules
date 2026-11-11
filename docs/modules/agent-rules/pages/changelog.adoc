@@ -22,6 +22,11 @@ endif::[]
 
 == 2026-11-10
 
+=== Long-session engines
+
+* Skill `long-session-engines` for desktop apps and agent sessions that stay open. The session engine owns the queue. A UI thin host can reload a UI engine without closing the window. A nested engine restarts without taking its parent down.
+* Detail: xref:changelog-details/2026-11-10 - long-session-engines.adoc[Long-session engines].
+
 === DUB registry readme
 
 code.dlang.org reads root `README.md` only. A D package keeps `README.adoc` and adds that Markdown file.

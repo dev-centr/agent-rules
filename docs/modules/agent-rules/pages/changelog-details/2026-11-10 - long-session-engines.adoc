@@ -1,0 +1,12 @@
+= 2026-11-10
+
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Long-session engines
+
+Skill `long-session-engines` records three uptime options for a long-running desktop app or agent session.
+
+The session engine owns the queue and the session file. One UI program is enough when the window may restart. A UI thin host plus a UI engine keeps the window open across a screen swap. A nested engine restarts in its own loop so a crashing child does not take the parent down.
+
+Diagrams in `general/long-session-engines.md` use shape, not color.
