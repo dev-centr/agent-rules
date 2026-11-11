@@ -62,13 +62,16 @@ Use this when the window should stay open across a screen update. The host creat
 ```mermaid
 flowchart TB
   session[("Session file")]
+  tasks[("Task file")]
   seng["Session engine"]
   host(["UI thin host"])
   uieng{{"UI engine"}}
 
   seng -->|serve the queue| session
+  seng -->|write tasks| tasks
   host -->|sync on start| session
   host -->|load and reload| uieng
+  uieng -->|reload on change| tasks
 ```
 
 The session engine's update dance is unchanged. The host keeps its handle on the session file while it swaps the UI engine.
