@@ -1,0 +1,11 @@
+= 2026-11-12
+
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Schema.org on public pages
+
+`general/web-crawlability.md` now requires Schema.org JSON-LD in the raw HTML of a public content page.
+Skill `web-crawlability` carries the same step.
+Docs pages are `TechArticle`. News, blog, product, and source pages use their own types.
+JSON Schema remains the file-shape contract.

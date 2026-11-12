@@ -49,6 +49,6 @@ CLI and TUI apps: terminal output, logs, `--verbose`, `--json`, and exit codes f
 
 Functional shipping notes: skill `owned-changelog`. Version tags: skill `tag-release`. Docs hub: skill `antora-org-site`.
 
-Public web apps and sites: load skill `web-crawlability`. Content-first routes need meaningful raw HTML plus generated sitemap/robots artifacts; hydration and transitions remain client enhancements.
+Public web apps and sites: load skill `web-crawlability`. Content-first routes need meaningful raw HTML, generated sitemap/robots artifacts, and Schema.org JSON-LD that matches the visible page. Hydration and transitions remain client enhancements.
 
 **Product SVG logo / app glyph:** when the app needs an icon or mark family, load skill **`logo-svg-marks` on the first brand pass** (Opus design subagent; glyph + tile + mono) — do not ship a parent-authored placeholder SVG and wait for rejection.
