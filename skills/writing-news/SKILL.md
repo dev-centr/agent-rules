@@ -26,3 +26,7 @@ Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/
 News vs blog on the same topic: no `you` / first person; no thesis-as-conversation; reads as shared record not inward essay.
 Re-run Audience role / POV pass checks in `general/documentation.md` **after** draft.
 Filename / URL slug matches the public title.
+
+## Published page
+
+When the item is placed on a public route, that page is Schema.org `NewsArticle` in the raw HTML. The JSON-LD headline and publisher match the visible article. Skill `web-crawlability`.

@@ -9,3 +9,5 @@
 Skill `web-crawlability` carries the same step.
 Docs pages are `TechArticle`. News, blog, product, and source pages use their own types.
 JSON Schema remains the file-shape contract.
+
+Skills that publish later work point at the same rule: `writing-news` (`NewsArticle`), `writing-blog` (`BlogPosting`), `demo-site-wiring` (`WebPage` or `SoftwareApplication`), `hub-home-overview` (playbook `schema_org_name` and `schema_org_url`), and `public-readme` (the README is not the JSON-LD host).

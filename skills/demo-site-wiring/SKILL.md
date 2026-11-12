@@ -174,6 +174,7 @@ When concurrent edits or competing design philosophies collide on demos/docs: pr
 - [ ] Active variant: title + blurb **outside** the facsimile + interactive UI inside
 - [ ] Skipped retrofit of unrelated historical demos
 - [ ] Did not suppress push/PR for prototyping; pushed so work is visible elsewhere
+- [ ] Public demo HTML follows skill `web-crawlability`, including Schema.org JSON-LD that matches the visible page (`WebPage`, or `SoftwareApplication` when the page is the product)
 
 ## Do not
 

@@ -32,6 +32,7 @@ Related: skill `antora-org-site`, `general/documentation.md` (nav/title rules), 
 6. **Avoid `/docs/docs/`** — when GitHub Pages (or `site.url`) already ends with `/docs`, do **not** name the hub component `docs`. Published hub segment is `/home/` (plus indexify folder URL for the start page). Playbook `content.sources` still use `start_path: docs` pointing at each repo’s `docs/` folder — that is unrelated to the component **name**.
 7. **site-nav-tree** — put `home` first in `include` / `order`. Prefer **Overview** over **Home** in product nav so forest roots do not collide with the Home component title (extension also synthesizes Overview when missing).
 8. **page-context** — hub component home is a **component home**: footer authors only; no audience-role chrome (`antora-org-site` + page-context 0.5+).
+9. **Schema.org** — playbook keys `schema_org_name` and `schema_org_url` name the organization. Docs pages stay `TechArticle`. Skill `web-crawlability`.
 
 ## Do not
 
@@ -42,4 +43,4 @@ Related: skill `antora-org-site`, `general/documentation.md` (nav/title rules), 
 ## Verify
 
 - Local/playbook build: site entry opens `home` start page; sidebar first link reads **Overview**; browser path has `/home/` (or your `site.url` + `/home/`), not `/docs/docs/`.
-- After deploy: sitemap/indexable URL for the portal uses the `home` component segment.
+- After deploy: sitemap/indexable URL for the portal uses the `home` component segment. A representative page includes Schema.org JSON-LD for the organization and the site.

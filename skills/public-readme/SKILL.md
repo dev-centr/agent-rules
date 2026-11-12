@@ -27,6 +27,7 @@ Full templates and trapped-badge notes: [reference.md](reference.md).
 - **Built With** grouped by role (runtime / UI / docs / packaging), not a sticker row
 - Section back-to-top; Contact from real profile fields; omit empty Roadmap/Acknowledgments
 - Do not add a Docs/CI chip to the header unless that repo already uses one
+- Schema.org JSON-LD belongs on the public HTML page (docs hub or product site), not in the README. A library's public page type is `SoftwareSourceCode`. Skill `web-crawlability`
 
 ## Repo root hygiene
 

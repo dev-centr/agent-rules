@@ -25,6 +25,7 @@ endif::[]
 === Schema.org on public pages
 
 * Public content pages state what they are with Schema.org JSON-LD in the raw HTML. Skill `web-crawlability` and `general/web-crawlability.md` carry the types and the CI check.
+* News, blog, demo, hub, and README skills point at that rule, so a later publishing task emits the matching page type.
 * Detail: xref:changelog-details/2026-11-12 - schema-org-public-pages.adoc[Schema.org on public pages].
 
 == 2026-11-10

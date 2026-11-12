@@ -31,3 +31,7 @@ Read `body.md` in this folder for the full checklist. Titles + ledes: **`agents/
 - Lede stays in the same concrete register as the title (especially symptom faces)
 - Audience role / POV pass checks in `general/documentation.md` re-run **after** draft, not only before
 - Filename / URL slug matches the public title
+
+## Published page
+
+When the essay is placed on a public route, that page is Schema.org `BlogPosting` in the raw HTML. The JSON-LD headline and publisher match the visible essay. Skill `web-crawlability`.
