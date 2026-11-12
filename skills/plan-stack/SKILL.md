@@ -22,7 +22,7 @@ Do not use TickTick, a human task file, or `routine-ledger` for items the agent 
 
 ## File
 
-`plan-stack.kdl` at the workspace root the human bound this chat to.
+`plan-stack.kdl` at the workspace root the human bound this chat to. The first lines are comments: what the file is, that `plan` is optional, and which item to resume.
 
 - An org folder (many repos, not one product checkout) keeps the file there. It is not copied into each child repo.
 - A single-repo workspace keeps the same filename and does not commit it. Denylist gitignores gain the name. Allow-list gitignores do not allow-list it.

@@ -22,9 +22,15 @@ The workspace may be one repo or an org directory that contains many repos. One 
 
 Session state, not product source. A denylist gitignore lists `plan-stack.kdl`. An allow-list gitignore does not exception it. An org directory that is not a git repo just holds the file.
 
+## Header
+
+Every `plan-stack.kdl` starts with comments. The comments say what the file is, that `plan` is optional, and which item to resume. A later turn reads the comments before the items.
+
 ## Shape
 
 ```kdl
+// Workspace plan stack. Not a product source file. Not a human task list.
+// `plan` is optional. Resume the active item, or the first open item whose needs are done.
 stack {
   item "expand-editor" title="Build the expand-in-place editor" status=open {
     needs "lang-island"
