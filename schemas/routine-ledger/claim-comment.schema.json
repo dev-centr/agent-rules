@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/claim-comment.schema.json",
+  "title": "Protocol comment body (fenced json5 block in a run issue)",
+  "type": "object", "additionalProperties": false,
+  "required": ["routine_ledger", "kind", "routine", "run_id", "harness", "session_id", "at"],
+  "properties": {
+    "routine_ledger": { "const": 1 },
+    "kind": { "enum": ["claim", "start", "heartbeat", "finish", "release"] },
+    "routine": { "$ref": "common.schema.json#/$defs/id" },
+    "run_id": { "type": "string" },
+    "harness": { "$ref": "common.schema.json#/$defs/id" },
+    "session_id": { "type": "string", "minLength": 1 },
+    "machine": { "type": "string" },
+    "capabilities": { "$ref": "common.schema.json#/$defs/capabilities" },
+    "at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "lease_expires": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "claim_comment": { "type": "string", "description": "URL or id of the winning claim comment (start)." },
+    "status": { "enum": ["done", "failed", "skipped"] },
+    "result": { "type": "string", "maxLength": 2000 }
+  },
+  "allOf": [
+    { "if": { "properties": { "kind": { "const": "claim" } } }, "then": { "required": ["capabilities", "lease_expires"] } },
+    { "if": { "properties": { "kind": { "enum": ["start", "heartbeat"] } } }, "then": { "required": ["lease_expires"] } },
+    { "if": { "properties": { "kind": { "const": "start" } } }, "then": { "required": ["claim_comment"] } },
+    { "if": { "properties": { "kind": { "const": "finish" } } }, "then": { "required": ["status"] } }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/target.schema.json",
+  "title": "Harness target (targets/<harness-id>.json5)",
+  "type": "object",
+  "required": ["schema", "id", "kind", "capabilities"],
+  "properties": {
+    "schema": { "const": "routine-ledger/target/1" },
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "kind": { "enum": ["http", "command", "github_dispatch", "agent_bus"] },
+    "capabilities": { "$ref": "common.schema.json#/$defs/capabilities" },
+    "machines": { "type": "array", "items": { "type": "string" } },
+    "secrets": { "description": "Names resolved locally; never values.", "type": "array", "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" } }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "kind": { "const": "http" },
+        "url": { "$ref": "common.schema.json#/$defs/templated", "pattern": "^https://" },
+        "method": { "enum": ["GET", "POST", "PUT", "PATCH"] },
+        "headers": { "type": "object", "additionalProperties": { "$ref": "common.schema.json#/$defs/templated" } },
+        "body": { "$ref": "#/$defs/templatedValue" }
+      },
+      "required": ["url", "method"],
+      "propertyNames": { "enum": ["schema", "id", "kind", "capabilities", "machines", "secrets", "url", "method", "headers", "body"] }
+    },
+    {
+      "properties": {
+        "kind": { "const": "command" },
+        "program": { "type": "string", "minLength": 1, "not": { "pattern": "\\{\\{" } },
+        "args": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/templated" } }
+      },
+      "required": ["program", "args"],
+      "propertyNames": { "enum": ["schema", "id", "kind", "capabilities", "machines", "secrets", "program", "args"] }
+    },
+    {
+      "properties": {
+        "kind": { "const": "agent_bus" },
+        "app": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "operation": { "type": "string", "minLength": 1 },
+        "chat_id": { "type": "string", "minLength": 1 },
+        "launch": { "enum": ["wait", "launch"] },
+        "presence": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "process": { "type": "string", "minLength": 1 },
+            "assume": { "const": "running" }
+          }
+        },
+        "launch_program": { "type": "string", "minLength": 1 },
+        "launch_args": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["app", "version", "operation", "chat_id"],
+      "propertyNames": { "enum": ["schema", "id", "kind", "capabilities", "machines", "secrets", "app", "version", "operation", "chat_id", "launch", "presence", "launch_program", "launch_args"] }
+    },
+    {
+      "properties": {
+        "kind": { "const": "github_dispatch" },
+        "repo": { "type": "string", "pattern": "^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$" },
+        "event_type": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "token_secret": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+        "client_payload": { "$ref": "#/$defs/templatedValue" }
+      },
+      "required": ["repo", "event_type", "token_secret"],
+      "propertyNames": { "enum": ["schema", "id", "kind", "capabilities", "machines", "secrets", "repo", "event_type", "token_secret", "client_payload"] }
+    }
+  ],
+  "$defs": {
+    "templatedValue": {
+      "anyOf": [
+        { "$ref": "common.schema.json#/$defs/templated" },
+        { "type": ["number", "boolean", "null"] },
+        { "type": "array", "items": { "$ref": "#/$defs/templatedValue" } },
+        { "type": "object", "additionalProperties": { "$ref": "#/$defs/templatedValue" } }
+      ]
+    }
+  }
+}

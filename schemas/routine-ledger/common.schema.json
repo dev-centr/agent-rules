@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/common.schema.json",
+  "title": "Routine ledger shared definitions",
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,99}$" },
+    "capability": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,49}$" },
+    "capabilities": { "type": "array", "items": { "$ref": "#/$defs/capability" }, "uniqueItems": true },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "duration": { "type": "string", "pattern": "^[0-9]+[smhd]$" },
+    "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "handle": {
+      "description": "A GitHub/Linear/TickTick handle. Never an email address.",
+      "type": "string", "pattern": "^@?[A-Za-z0-9][A-Za-z0-9._/-]{0,99}$", "not": { "pattern": "@.*\\." }
+    },
+    "templated": {
+      "description": "String that may contain {{routine.*}}, {{run.*}}, {{machine.*}} or {{secret.NAME}} placeholders only.",
+      "type": "string",
+      "not": { "pattern": "\\{\\{(?!\\s*(routine\\.(id|prompt)|run\\.(id|issue_url|scheduled_at)|machine\\.id|secret\\.[A-Z][A-Z0-9_]*)\\s*\\}\\})" }
+    },
+    "sessionRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["harness", "session_id"],
+      "properties": { "harness": { "$ref": "#/$defs/id" }, "session_id": { "type": "string", "minLength": 1, "maxLength": 200 } }
+    }
+  }
+}

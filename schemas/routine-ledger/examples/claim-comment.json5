@@ -1,0 +1,12 @@
+{
+  routine_ledger: 1,
+  kind: "claim",
+  routine: "watch-git-ai-2399",
+  run_id: "20261109T1500Z",
+  harness: "cursor-desktop",
+  session_id: "example-session-0002",
+  machine: "ab9557fa",
+  capabilities: ["shell", "gh", "rust-build", "windows"],
+  at: "2026-11-09T15:00:40Z",
+  lease_expires: "2026-11-09T15:45:40Z",
+}

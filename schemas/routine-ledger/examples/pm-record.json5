@@ -1,0 +1,11 @@
+// Guest org: stored in the owner's ledger, unconfirmed.
+{
+  schema: "routine-ledger/pm-record/1",
+  scope: "git-ai-project",
+  tool: "issues-only",
+  routines_at: "amdphreak/routine-ledger",
+  claims_at: "amdphreak/routine-ledger issues",
+  evidence: ["No linked Projects; no Linear/Jira mention in README, CONTRIBUTING.md, AGENTS.md"],
+  confirmed: false,
+  last_verified: { at: "2026-11-08T08:30:00Z", by: { harness: "grok-bot", session_id: "example-session-0001" } },
+}

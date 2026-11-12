@@ -1,0 +1,12 @@
+{
+  schema: "routine-ledger/machine/1",
+  id: "ab9557fa",
+  label: "Ryan desktop",
+  os: "windows",
+  scheduler: "task-scheduler",
+  targets: ["cursor-desktop"],
+  timers: [{ routine: "watch-git-ai-2399", native_id: "\\RoutineLedger\\watch-git-ai-2399", next_run: "2026-11-10T15:00:00Z" }],
+  refresh_every: "30m",
+  last_sync: "2026-11-09T15:00:00Z",
+  updated_at: "2026-11-09T15:00:00Z",
+}

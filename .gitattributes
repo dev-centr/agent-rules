@@ -2,3 +2,5 @@
 # Hook scripts run under sh; CRLF would break them on Windows checkouts with core.autocrlf=true.
 tools/encoding-guard/hooks/* text eol=lf
 *.sh text eol=lf
+skills/routine-ledger/** text eol=lf
+schemas/routine-ledger/** text eol=lf

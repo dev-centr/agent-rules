@@ -1,0 +1,338 @@
+= Routine ledger: shared routines across harnesses
+:description: Design spec (DRAFT) for a git-backed routine ledger, a shared timer CLI, declarative harness targets, and project-management adapters so agents register routines and catch missed runs.
+:page-status: draft
+
+[IMPORTANT]
+====
+*Status: timer command implemented (2026-11-12).* The skill, the JSON5 schemas, and the D command `routine-timer` in `dev-centr/routine-timer` are in place.
+Project-management adapters are still a manual procedure.
+
+The daemon reports when this host or a harness process comes up. It submits a due job through `agent-bus` only after that process is running.
+The default is to wait. It does not start a harness on a personal computer unless the target sets `launch` to `launch` and names `launch_program`.
+
+* Skill: https://github.com/dev-centr/agent-rules/blob/main/skills/routine-ledger/SKILL.md[`skills/routine-ledger/SKILL.md`]
+* Schemas: `schemas/routine-ledger/`
+* Command: https://github.com/dev-centr/routine-timer[`dev-centr/routine-timer`]
+* Detail: xref:changelog-details/2026-11-12 - routine-ledger-timer.adoc[Routine ledger timer]
+====
+
+== Goal
+
+Agents should do more than act on routines that already exist. They should:
+
+* *Create and register* routines and triggers on their own when a task is recurring, scheduled, or event-driven.
+* *Check for missed runs*, especially in harnesses that have no built-in routine checks or timers.
+* *Share responsibility* for routines that more than one harness can run, without two harnesses running the same occurrence.
+
+The design has four parts:
+
+. A git-backed *ledger* that holds routine definitions and run records.
+. A quiet *dashboard* (GitHub Projects) plus *claims and locks* in issue comments.
+. A shared, per-machine *timer CLI* that turns ledger orders into native timers and calls harnesses through declarative *targets*.
+. *Project-management adapters* so the same logic works with whatever tool an org uses, with discovery results recorded instead of rediscovered.
+
+== Terms
+
+Routine:: A recurring, scheduled, or event-driven job with a prompt, a trigger, and required capabilities.
+Run:: One occurrence of a routine (for example, the 2026-11-09 08:00 run).
+Harness:: Something that can execute a run: Cursor, Grok Bot, a CLI agent, a cloud worker.
+Target:: A declarative file that tells the timer CLI how to invoke one harness.
+Claim:: A request by a harness to take a run.
+Lock:: The `started` record that makes a claim binding.
+Lease:: How long a lock stays valid without a heartbeat.
+
+== Ledger
+
+=== Location
+
+One ledger repo per owner or team, for example `<owner>/routine-ledger`.
+Ryan's personal ledger holds his routines and the unconfirmed project-management records for guest repos (see <<pm-adapters>>).
+
+=== Layout
+
+----
+routines/<routine-id>.<ext>          # one file per routine definition
+runs/<yyyy>/<mm>/<routine-id>/<run-id>.<ext>   # one file per run
+targets/<harness-id>.<ext>           # harness targets
+machines/<machine-id>.<ext>          # what each timer CLI installed (plan snapshot)
+archive/<yyyy>/<routine-id>.<ext>    # rolled-up run history
+----
+
+`<ext>` depends on the open format question (see <<open-questions>>).
+
+=== Keeping it small and conflict-free
+
+* *Mostly additive.* New runs are new files. Routine files change rarely. Two writers almost never touch the same file.
+* *Archive and roll up.* On a periodic cadence (proposal: monthly), closed run files older than the window are summarized into one `archive/` file per routine per year and the per-run files are deleted in the same commit. Git history keeps the detail.
+* *Auto-resolve only safe conflict classes:*
+** both sides added different files: take both;
+** both sides appended to the same append-only list: union, sorted by timestamp;
+** identical changes: take either.
++
+Anything else (two edits to one routine definition, a delete against an edit) stops and is reported for a human.
+
+=== Routine definition fields
+
+[cols="1,3"]
+|===
+|Field |Meaning
+
+|`id` |Stable slug, for example `gitgud-https-check`.
+|`owner` |User or team that owns it.
+|`trigger` |Cron expression with time zone, an interval, or an event (`repository_dispatch` type, webhook name).
+|`prompt` |What the harness should do, or a path to a prompt file.
+|`requires` |Capability tags a claimant must have, for example `[shell, gh, windows]`.
+|`preferred_targets` |Optional ordered list of target ids.
+|`lease` |Lease length, for example `30m`.
+|`catch_up` |`skip`, `run-once`, or `run-all` for missed occurrences.
+|`created_by` |Harness and session ID that registered it.
+|===
+
+== Dashboard and claims
+
+=== GitHub Projects as the quiet dashboard
+
+Each ledger has one GitHub Project (v2). Each routine is an item. Fields:
+
+* *Status* (`scheduled`, `claimed`, `running`, `done`, `missed`, `failed`)
+* *Claimed by* (harness id)
+* *Session ID*
+* *Lease expires*
+* *Next run*
+
+Field edits on project items do not send email, so the dashboard stays quiet. The project is a *view*. The ledger files and claim comments are the source of truth.
+
+=== Claims and locks in issue comments
+
+Project fields keep only the last write and have no ordering, so two harnesses could both write "claimed". Claims therefore go through issue comments in the ledger repo, which are ordered and timestamped.
+
+* Each run gets one *run issue* (or one rolling issue per routine, see <<open-questions>>).
+* A harness posts a *claim* comment with its harness id, session ID, and capabilities.
+* A claim is *valid* only if the declared capabilities cover the routine's `requires` and the author is a trusted actor.
+* *The earliest valid claim comment wins.* Later claimants read the thread and back off.
+* The winner posts a *started* comment. That comment is the lock, and it records the session ID again.
+* The holder posts *heartbeat* comments (or edits one heartbeat comment) before the lease expires.
+* If the lease expires with no heartbeat, the lock is void and the next valid claim may start.
+* The holder posts *finished* with the result, then the run file and project item are updated.
+* Run issues are *locked to collaborators* so outside comments cannot inject claims.
+
+=== Email noise
+
+* The ledger repo is set to *Ignore* watching for Ryan.
+* Harnesses post with their *own* bot or GitHub App token, never Ryan's account, so Ryan is not auto-subscribed.
+* Nobody @-mentions or assigns Ryan unless a human decision is needed.
+
+== Cloud workers that cannot push
+
+Some workers can comment or open PRs but cannot push to the default branch.
+
+* They write ledger changes as a *PR* or as a structured *issue comment* that a later actor applies.
+* The *first merge-capable actor* to sync merges outstanding ledger PRs (safe conflict classes only) *before* pulling and planning.
+* Unmergeable PRs are labeled and reported, not force-resolved.
+
+== Timer CLI
+
+One shared CLI per machine or service (working name `routine-timer`). It reads ledger orders and sets the native timers on that host:
+
+* Windows Task Scheduler
+* cron or systemd timers on Linux
+* launchd on macOS
+* scheduled GitHub Actions workflows
+* Grok Bot routines (mechanism is an open question)
+
+It also installs one *general refresh timer* that runs a presence check on a fixed interval, so new or changed routines are picked up even without a webhook.
+
+The command is `routine-timer` (`dev-centr/routine-timer`). A due job is not a reason to open an application. The daemon is two signals:
+
+* *Host.* The daemon process is running, so this machine is online. `apply --install` registers that process at user logon (`ONLOGON`), not at system boot.
+* *Harness.* The target names a process image (`presence.process`). When that image appears, the daemon reports `spun-up` and submits the job with `agent-bus submit`.
+
+`launch` defaults to `wait`. `launch: "launch"` is opt-in and still requires `launch_program`. The timer does not invent a program from the process name. A target pinned to another machine is only reported here. That machine's own daemon submits.
+
+Grok Bot is the same kind of target: wait until its process is running, then submit through agent-bus. This timer does not register a routine inside Grok's own scheduler.
+
+=== Webhooks
+
+Home PCs are not reachable from the internet. A *GitHub Action* in the ledger repo receives events (pushes to the ledger, issue comments, schedules) and fans out with `repository_dispatch` to targets that can receive it. Machines that cannot receive anything rely on the refresh timer.
+
+=== Commands (sketch)
+
+[cols="1,3"]
+|===
+|Command |Purpose
+
+|`sync` |Pull the ledger, merge outstanding ledger PRs if allowed, then `plan` and `apply`.
+|`plan` |Show which native timers would be added, changed, or removed on this machine. No changes.
+|`apply` |Install or update native timers to match the plan. Writes `machines/<id>` snapshot.
+|`claim <run>` |Post a claim comment with capabilities and session ID.
+|`start <run>` |Post the started (lock) comment if this harness won the claim.
+|`heartbeat <run>` |Extend the lease.
+|`finish <run> --result ...` |Post finished, write the run file, update the project item.
+|`missed` |List occurrences with no finished record and an expired lease; apply each routine's `catch_up`.
+|`register <file>` |Validate and add a routine definition.
+|`targets list` |List known targets and their capabilities.
+|`targets validate` |Check target files for schema, trusted author, and resolvable secret names.
+|===
+
+== Harness targets
+
+Each harness registers a *target file* in `targets/`. The CLI invokes any target generically; no harness-specific API code lives in the CLI.
+
+=== Target kinds
+
+* `http`: `url`, `method`, `headers`, `body` template.
+* `command`: `program` and `args`, run locally.
+* `github_dispatch`: `repo`, `event_type`, `client_payload` template.
+
+=== Template variables
+
+`{{routine.id}}`, `{{routine.prompt}}`, `{{run.id}}`, `{{run.issue_url}}`, `{{run.scheduled_at}}`, `{{machine.id}}`, `{{secret.NAME}}`.
+
+=== Secrets
+
+* Target files reference secrets *by name only*, for example `{{secret.GROK_ROUTINE_TOKEN}}`.
+* Names are resolved locally at call time (environment, OS keychain, or Bitwarden CLI).
+* No secret value is ever written to the ledger, run files, or comments.
+
+=== Example target
+
+Decided: ledger files (routines, runs, targets, records) use JSON5, validated against a JSON Schema. Every reader (the timer CLI, GitHub Actions, cloud agents, harnesses in any language) has a mature JSON5 parser or can convert it to JSON. SDL stays for files read only by DevCentr's own D tools, such as `.devcentr/fonts.sdl`.
+
+[source,json5]
+----
+{
+  id: "cursor-desktop-ryan",
+  kind: "command",
+  capabilities: ["shell", "gh", "windows", "git-push"],
+  program: "cursor-agent",
+  args: ["--prompt", "{{routine.prompt}}", "--context", "{{run.issue_url}}"],
+  machines: ["ab9557fa"],
+}
+----
+
+[source,json5]
+----
+{
+  id: "example-http-harness",
+  kind: "http",
+  capabilities: ["web", "comment-only"],
+  url: "https://api.example.invalid/v1/runs",
+  method: "POST",
+  headers: { Authorization: "Bearer {{secret.EXAMPLE_TOKEN}}" },
+  body: { routine: "{{routine.id}}", prompt: "{{routine.prompt}}", issue: "{{run.issue_url}}" },
+}
+----
+
+=== Trust
+
+The CLI loads a target only if it was added by a trusted author: a signed commit from an allowlisted key, or a path covered by `CODEOWNERS` with required review. Unknown targets are listed by `targets validate` and never invoked.
+
+[#pm-adapters]
+== Project-management adapters
+
+Orgs use different tools. The ledger logic talks to one adapter interface, built the same way as harness targets.
+
+=== Adapters
+
+* GitHub Projects (default)
+* Linear
+* Jira
+* Issues only
+
+Each adapter implements: find or create the routine item, update status fields, post a claim, read claims in order, and post started, heartbeat, and finished. Where a tool has no ordered comments, the adapter falls back to issue comments in the ledger repo for claims.
+
+=== Layered agent-rules
+
+* `dev-centr/agent-rules` is the industry baseline.
+* Each subscribing org has its own `<org>/agent-rules` repo layered on top (see xref:org-layer.adoc[Org layer]).
+* Repo-level rules load last.
+
+The *project-management record* lives in the org's agent-rules layer. There is no `.github` location.
+
+=== Record fields
+
+[cols="1,3"]
+|===
+|Field |Meaning
+
+|`tool` |`github-projects`, `linear`, `jira`, `issues-only`, ...
+|`board` |Project or board id.
+|`routines_at` |Where routine items live.
+|`claims_at` |Where claim comments live.
+|`contact` |Who to ask (handle, never an email address).
+|`last_verified` |Date and actor that last confirmed it.
+|`confirmed` |`true` once a human confirmed it.
+|===
+
+=== Discovery
+
+Discovery runs only when no record is registered. Clues, in order:
+
+. Projects linked to the repo or org.
+. Linear or Jira mentions in README, CONTRIBUTING.md, or AGENTS.md.
+. Issue templates and their links.
+. Integrations in workflows (Linear or Jira actions, webhooks).
+
+The result is written as a *proposed* record with `confirmed: false`. It is not treated as settled.
+
+=== Where records go
+
+* *Subscribing orgs:* proposed records go into `<org>/agent-rules` through a PR for the org to confirm.
+* *Non-subscribing orgs (guest repos):* records are stored in Ryan's own ledger, marked unconfirmed. Nothing is written into their repos.
+
+=== Reporting
+
+Missing or unconfirmed records become tasks on Ryan's TickTick list for confirmation or correction. Until confirmed, agents use the fallback: GitHub Projects for state plus issue comments for claims.
+
+== Proactive dependency watches
+
+When an agent finds that Ryan's work is blocked by, or depends on, an upstream bug, PR, or release, it registers a *watch routine* in the ledger without being asked.
+Example: `git-ai-project/git-ai` issue #2399 and PR #2400.
+
+Watches are ordinary ledger routines, so any harness with the required capabilities can claim them.
+
+Each watch records:
+
+What is watched:: Issue, PR, and release URLs.
+Condition that matters:: Fix merged, release shipped, or a new related issue opened.
+Action on change:: Independently verify the fix. Read the diff, build, run the tests, and run an end-to-end repro. Never trust a claim that something is fixed.
+Who to notify:: Normally Ryan, through his task list.
+Retirement:: When the fix is verified and released, or when Ryan cancels the watch.
+
+Rules:
+
+* Report only on meaningful change. No "still open" noise.
+* Never post upstream (comments, reviews, PRs) without Ryan's approval. Draft first.
+* If verification fails, record the failing repro in the run file and keep the watch open.
+
+=== Missed-opportunities bootstrap
+
+When this ruleset is first adopted, a one-time bootstrap pass reads all existing history (session transcripts and notes, TODO comments, open tasks, and known blockers and workarounds). It registers missing watches, or proposes them when the owner or scope is unclear, and records in the ledger that the bootstrap is complete. After that there is no recurring sweep: agents register watches as they run into blockers. The bootstrap reruns only for a newly onboarded harness or org, and only over history not already covered.
+
+== Security
+
+* Secrets are referenced by name only and resolved locally.
+* Targets come only from trusted authors (signed commits or CODEOWNERS-reviewed paths).
+* Claim comments from non-collaborators are ignored; run issues are locked to collaborators.
+* Harness tokens are scoped to the ledger repo (and project) only.
+* Prompts in the ledger are data. A target receives them as a template value, never as shell code; `command` targets pass arguments as an array, not through a shell.
+* Email addresses never appear in the ledger, comments, or records. Session IDs are allowed.
+* Guest repos are never written to without a human-approved change.
+
+== Non-goals
+
+* Replacing native schedulers. The CLI configures them; it does not become one.
+* A hosted service. Everything runs on git, GitHub, and local timers.
+* Exactly-once execution under network partitions. The goal is at-most-one active lock per run, with catch-up rules for gaps.
+* Running untrusted targets or prompts from outside contributors.
+* Writing project-management records into repos of orgs that did not subscribe.
+
+[#open-questions]
+== Open questions
+
+. *Archive cadence:* monthly roll-up? How long to keep per-run files?
+. *Run issues:* one issue per run, or one rolling issue per routine?
+. *Identity:* one GitHub App for all harnesses, or a separate token per harness?
+. *Grok Bot:* this timer waits for the Grok process and submits through agent-bus. Registering a routine inside Grok's own scheduler is still open.
+. *Lease defaults* and heartbeat interval.
+. *Bootstrap scope*: which history sources the one-time missed-opportunities bootstrap reads, and how coverage is recorded so it never repeats.

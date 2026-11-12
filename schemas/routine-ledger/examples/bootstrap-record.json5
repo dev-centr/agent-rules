@@ -1,0 +1,14 @@
+{
+  schema: "routine-ledger/bootstrap/1",
+  scope: "owner:amdphreak",
+  status: "complete",
+  sources: [
+    { kind: "transcripts", ref: "grok-bot sessions", covered_until: "2026-11-08T08:00:00Z" },
+    { kind: "tasks", ref: "TickTick inbox", covered_until: "2026-11-08T08:00:00Z" },
+  ],
+  covered_until: "2026-11-08T08:00:00Z",
+  registered: ["watch-git-ai-2399"],
+  proposed: [],
+  by: { harness: "grok-bot", session_id: "example-session-0001" },
+  completed_at: "2026-11-08T09:00:00Z",
+}

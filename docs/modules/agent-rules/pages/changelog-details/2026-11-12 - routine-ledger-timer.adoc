@@ -1,0 +1,19 @@
+= 2026-11-12
+:description: The routine ledger skill, schemas, and the D timer that waits for a harness before calling agent-bus.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the routine ledger timer
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Routine ledger timer
+
+Recurring work now has a shared record and a command that can pick it up from more than one harness.
+
+* Skill `routine-ledger` tells an agent to register a routine instead of trusting chat memory, and how claims, watches, and missed runs work.
+* JSON5 files under `schemas/routine-ledger/` are the contract. An `agent_bus` target names the harness door. `launch` is `wait` or `launch`.
+* `dev-centr/routine-timer` reads that ledger. While it is running, the host is online. It reports when a named harness process appears.
+* A due job is submitted with `agent-bus submit` only after that process is running. The default does not start the harness. `launch: "launch"` is opt-in and requires `launch_program`.
+* `apply --install` registers the daemon at user logon, not at system boot.

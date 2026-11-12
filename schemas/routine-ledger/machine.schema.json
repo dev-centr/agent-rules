@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/machine.schema.json",
+  "title": "Machine snapshot (machines/<machine-id>.json5)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "id", "os", "scheduler", "targets", "timers", "updated_at"],
+  "properties": {
+    "schema": { "const": "routine-ledger/machine/1" },
+    "id": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "label": { "type": "string" },
+    "os": { "enum": ["windows", "linux", "macos", "github-actions", "hosted"] },
+    "scheduler": { "enum": ["task-scheduler", "systemd", "cron", "launchd", "github-actions", "grok-bot", "manual"] },
+    "targets": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/id" } },
+    "timers": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["routine", "native_id"],
+        "properties": { "routine": { "$ref": "common.schema.json#/$defs/id" }, "native_id": { "type": "string" }, "next_run": { "$ref": "common.schema.json#/$defs/timestamp" } }
+      }
+    },
+    "refresh_every": { "$ref": "common.schema.json#/$defs/duration" },
+    "last_sync": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "presence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["host"],
+      "properties": {
+        "host": { "enum": ["online", "offline"] },
+        "host_since": { "$ref": "common.schema.json#/$defs/timestamp" },
+        "harnesses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "state"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "state": { "enum": ["online", "offline"] },
+              "since": { "$ref": "common.schema.json#/$defs/timestamp" }
+            }
+          }
+        }
+      }
+    },
+    "waiting": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["routine", "run_id", "reason"],
+        "properties": {
+          "routine": { "$ref": "common.schema.json#/$defs/id" },
+          "run_id": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 },
+          "since": { "$ref": "common.schema.json#/$defs/timestamp" }
+        }
+      }
+    }
+  }
+}

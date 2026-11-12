@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/run.schema.json",
+  "title": "Run record (runs/<yyyy>/<mm>/<routine-id>/<run-id>.json5)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "routine", "run_id", "scheduled_at", "status"],
+  "properties": {
+    "schema": { "const": "routine-ledger/run/1" },
+    "routine": { "$ref": "common.schema.json#/$defs/id" },
+    "run_id": { "type": "string", "pattern": "^[0-9]{8}T[0-9]{4}Z(-[a-z0-9]+)?$" },
+    "scheduled_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "status": { "enum": ["scheduled", "claimed", "running", "done", "missed", "failed", "skipped"] },
+    "issue_url": { "$ref": "common.schema.json#/$defs/url" },
+    "claimed_by": { "$ref": "common.schema.json#/$defs/sessionRef" },
+    "started_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "finished_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "result": { "type": "string", "maxLength": 2000 },
+    "changed": { "type": "boolean", "description": "Watches: true only when a meaningful change was found." },
+    "verification": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "diff_read": { "type": "boolean" }, "built": { "type": "boolean" },
+        "tests_passed": { "type": "boolean" }, "repro_passed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

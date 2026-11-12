@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/pm-record.schema.json",
+  "title": "Project-management record",
+  "description": "Lives in <org>/agent-rules for subscribing orgs; in the owner's ledger (pm/<org>.json5, confirmed=false) for guest repos.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "scope", "tool", "routines_at", "claims_at", "confirmed", "last_verified"],
+  "properties": {
+    "schema": { "const": "routine-ledger/pm-record/1" },
+    "scope": { "type": "string", "pattern": "^[A-Za-z0-9-]+(/[A-Za-z0-9._-]+)?$", "description": "org or org/repo" },
+    "tool": { "enum": ["github-projects", "linear", "jira", "issues-only", "other"] },
+    "board": { "type": "string" },
+    "routines_at": { "type": "string", "minLength": 1 },
+    "claims_at": { "type": "string", "minLength": 1 },
+    "contact": { "$ref": "common.schema.json#/$defs/handle" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "confirmed": { "type": "boolean" },
+    "task_url": { "$ref": "common.schema.json#/$defs/url" },
+    "last_verified": {
+      "type": "object", "additionalProperties": false, "required": ["at", "by"],
+      "properties": { "at": { "$ref": "common.schema.json#/$defs/timestamp" }, "by": { "$ref": "common.schema.json#/$defs/sessionRef" } }
+    }
+  }
+}

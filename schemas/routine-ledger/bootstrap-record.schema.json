@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.devcentr.org/schemas/routine-ledger/bootstrap-record.schema.json",
+  "title": "One-time missed-opportunities bootstrap record (bootstrap/<scope>.json5)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "scope", "status", "sources", "covered_until", "by"],
+  "properties": {
+    "schema": { "const": "routine-ledger/bootstrap/1" },
+    "scope": { "type": "string", "description": "harness:<id>, org:<name>, or owner:<handle>" , "pattern": "^(harness|org|owner):[A-Za-z0-9._-]+$" },
+    "status": { "enum": ["in-progress", "complete"] },
+    "sources": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["kind", "ref"],
+        "properties": {
+          "kind": { "enum": ["transcripts", "repo-history", "issues", "tasks", "memory", "changelog", "todo-comments"] },
+          "ref": { "type": "string" },
+          "covered_from": { "$ref": "common.schema.json#/$defs/timestamp" },
+          "covered_until": { "$ref": "common.schema.json#/$defs/timestamp" }
+        }
+      }
+    },
+    "covered_until": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "registered": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/id" } },
+    "proposed": { "type": "array", "items": { "type": "string" } },
+    "by": { "$ref": "common.schema.json#/$defs/sessionRef" },
+    "completed_at": { "$ref": "common.schema.json#/$defs/timestamp" }
+  },
+  "if": { "properties": { "status": { "const": "complete" } } }, "then": { "required": ["completed_at"] }
+}

@@ -33,3 +33,6 @@
 !/.github/**
 !/tools/
 !/tools/**
+!/schemas/
+!/schemas/**
+skills/**/node_modules/
