@@ -1,11 +1,10 @@
 ---
 name: plan-stack
 description: >-
-  Use when a chat has no project stack, plan-stack.kdl, meta-plan, dependency
-  stack, original ask buried, conversation drifted, side issue first, outstanding
-  list, after several conversation changes, standard chat, org folder workspace,
-  many repos in one workspace, Cursor projects limited to one repository,
-  resume the backlog, what was next, keep working on the backlog.
+  Use when a chat has no project stack, plan-stack.kdl, per-chat outcomes,
+  session ask list, agent workspace sessions, not the plan-stack daemon,
+  original ask buried, conversation drifted, side issue first, outstanding
+  list, resume the backlog, what was next, keep working on the backlog.
 ---
 
 # Plan stack
@@ -22,10 +21,11 @@ Do not use TickTick, a human task file, or `routine-ledger` for items the agent 
 
 ## File
 
-`plan-stack.kdl` at the workspace root the human bound this chat to. The first lines are comments: what the file is, that `plan` is optional, and which item to resume.
+`$AGENT_WORKSPACE_ROOT/sessions/<chat-id>/plan-stack.kdl`. Agent notes, not a product file and not the workspace root of a repo.
 
-- An org folder (many repos, not one product checkout) keeps the file there. It is not copied into each child repo.
-- A single-repo workspace keeps the same filename and does not commit it. Denylist gitignores gain the name. Allow-list gitignores do not allow-list it.
+The first lines are comments a person can read: what the list is, that `plan` may be omitted, and what `status` and `needs` mean.
+
+This skill is not the `dev-centr/plan-stack` wait-queue daemon. Recurring work shared across harnesses stays on the routine ledger (git). A later local database would cache those stores and answer a path query. It does not replace the git ledger.
 
 ## Attention
 

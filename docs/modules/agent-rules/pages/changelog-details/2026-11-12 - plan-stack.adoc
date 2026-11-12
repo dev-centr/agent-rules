@@ -15,4 +15,6 @@ Standard chat does not keep a stack across topic changes. Cursor cloud Projects 
 * Skill `plan-stack` and `general/plan-stack.md` describe `plan-stack.kdl` at the workspace root.
 * An item that must land first is `active`. The original item lists that id under `needs` and stays `open`.
 * The in-chat todo widget, TickTick, and `routine-ledger` are different records. Agent work this chat must resume goes on the plan stack.
-* The file opens with comments. `plan` is an optional link to a design write-up.
+* The file opens with comments written for a person who finds it. `plan` may name a design write-up, and it can be omitted.
+* Per-chat files live under the agent workspace `sessions/<chat-id>/`. They are not committed into a product repository.
+* Recurring handoff between harnesses stays the git-backed routine ledger. Memory, a local database, and that git ledger are three reaches of one kind of node. The database does not replace the git history.

@@ -10,27 +10,45 @@ Skill: `skills/plan-stack/SKILL.md`.
 | --- | --- |
 | Harness already keeps a multi-repo project stack | Use that. Do not also keep this file. |
 | Cursor cloud Projects (one repo, cloud) | That list covers its one repo. An org folder of many repos still needs this file. |
-| Standard chat, including an in-chat todo widget | `plan-stack.kdl` at the workspace root. |
+| Standard chat, including an in-chat todo widget | `plan-stack.kdl` under the agent workspace `sessions/<chat-id>/`. |
 
 TickTick and `HUMAN_TASKS_BACKEND` are steps only a person can do (`general/human-task-list.md`). `routine-ledger` is recurring work and upstream watches. Agent work that this chat must resume stays here.
 
 ## Where
 
-`plan-stack.kdl` at the workspace root.
+One file per chat: `$AGENT_WORKSPACE_ROOT/sessions/<chat-id>/plan-stack.kdl`.
 
-The workspace may be one repo or an org directory that contains many repos. One file for that root. Do not split a copy into each child repo.
+That tree is this machine's agent notes (`general/agent-workspace.md`). The file is not part of a product repository and not part of a code workspace a person opened to work on a project. A person browsing a repo should not find a chat's open work sitting in it.
 
-Session state, not product source. A denylist gitignore lists `plan-stack.kdl`. An allow-list gitignore does not exception it. An org directory that is not a git repo just holds the file.
+## Not the other plan-stack
+
+`dev-centr/plan-stack` is a local daemon and a visual queue of estimated waits. This file is the list of outcomes for one chat. They share a name and not a store.
+
+## Same record, different stores
+
+These are the same kind of node at different reaches. Do not ship a second task product for each reach.
+
+| Store | Reach | What it is good for |
+| --- | --- | --- |
+| Memory | This turn | The path already loaded: ancestor summaries and the active node's children. Rebuilt at the start of a turn. Not something another harness can read. |
+| Local database | This machine, while it is up | A path query without opening every node. A cache. CLI and MCP are doors onto that cache. |
+| Git ledger | Harnesses and machines that are not up at the same time | The shared copy and the audit trail. The [routine ledger](https://github.com/dev-centr/agent-rules/blob/main/docs/modules/agent-rules/pages/design/routine-ledger.adoc) is this store for recurring work. |
+
+A chat outcome is not a routine. Recurring handoff stays in the routine ledger. One chat's outcomes stay in the session file. If a later query service is built, it caches the git ledger and the session tree. It does not replace the git ledger. The git history is how a person checks what a harness claimed while another machine was off.
+
+The in-memory copy is only as good as the summaries written when the idea arrived. It does not recover a sentence that was never stored.
 
 ## Header
 
-Every `plan-stack.kdl` starts with comments. The comments say what the file is, that `plan` is optional, and which item to resume. A later turn reads the comments before the items.
+Every `plan-stack.kdl` starts with comments a person can read. The comments say what the file is, that it is outside any product repository, that `plan` may be omitted, and how `status` and `needs` read. A later reader uses the comments before the entries.
 
 ## Shape
 
 ```kdl
-// Workspace plan stack. Not a product source file. Not a human task list.
-// `plan` is optional. Resume the active item, or the first open item whose needs are done.
+// Work still open for one chat. Kept with this machine's agent notes, not in a product repository.
+// `plan` may name a design write-up, and it can be omitted.
+// `needs` lists outcomes that have to be finished before this one.
+// `status` is open, active, done, or dropped. The active entry is the one underway.
 stack {
   item "expand-editor" title="Build the expand-in-place editor" status=open {
     needs "lang-island"

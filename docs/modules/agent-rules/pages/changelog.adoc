@@ -27,7 +27,9 @@ endif::[]
 * Skill `plan-stack` keeps `plan-stack.kdl` at the workspace root when the harness mode has no multi-repo stack.
 * A prerequisite is pushed in front of the original ask. The original ask stays until it is unblocked.
 * TickTick remains the list of steps only a person can do.
-* Every `plan-stack.kdl` starts with comments that say what the file is and which item to resume. `plan` stays optional.
+* Every `plan-stack.kdl` starts with comments a person can read. `plan` may be omitted.
+* The file lives under the agent workspace `sessions/<chat-id>/`, not in a product repository.
+* The routine ledger stays the shared git record for recurring handoff. A local database would be a cache and a query door, not a replacement.
 * Detail: xref:changelog-details/2026-11-12 - plan-stack.adoc[Plan stack for standard chat].
 
 === Schema.org on public pages

@@ -48,6 +48,9 @@ AGENT_WORKSPACE_ROOT/
     README.md
     harness-registry.json5      # optional: one spill root per harness
     scratch/YYYY-MM-DD/
+  sessions/                     # per-chat agent notes (not product source, not scratch)
+    <chat-id>/
+      plan-stack.kdl            # outcomes still open for that chat
 ```
 
 **Do not** put platform spill under this tree. **Do not** commit secrets into `utilities/` — use local secret files gitignored on the machine.
