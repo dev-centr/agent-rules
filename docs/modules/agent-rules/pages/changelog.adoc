@@ -24,13 +24,20 @@ endif::[]
 
 === Plan stack for standard chat
 
-* Skill `plan-stack` keeps `plan-stack.kdl` at the workspace root when the harness mode has no multi-repo stack.
+* Skill `plan-stack` keeps `plan-stack.kdl` for a harness mode that has no multi-repo stack.
 * A prerequisite is pushed in front of the original ask. The original ask stays until it is unblocked.
 * TickTick remains the list of steps only a person can do.
 * Every `plan-stack.kdl` starts with comments a person can read. `plan` may be omitted.
 * The file lives under the agent workspace `sessions/<chat-id>/`, not in a product repository.
 * The routine ledger stays the shared git record for recurring handoff. A local database would be a cache and a query door, not a replacement.
 * Detail: xref:changelog-details/2026-11-12 - plan-stack.adoc[Plan stack for standard chat].
+
+=== Chat location aliases
+
+* A workspace move leaves the old transcript in place and can mint a new chat id. Those folders stay aliases of the first chat id.
+* `scripts/plan-stack-locations.ps1 record-move` is how the location record hears about the move. The agent that just moved the workspace runs it before the next task.
+* `resolve` returns a hint when a link does not open. `repair` marks a gathered folder live and keeps the old keys.
+* Detail: xref:changelog-details/2026-11-12 - chat-location-aliases.adoc[Chat location aliases].
 
 === Schema.org on public pages
 

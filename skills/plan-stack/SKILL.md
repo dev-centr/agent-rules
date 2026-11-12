@@ -4,7 +4,9 @@ description: >-
   Use when a chat has no project stack, plan-stack.kdl, per-chat outcomes,
   session ask list, agent workspace sessions, not the plan-stack daemon,
   original ask buried, conversation drifted, side issue first, outstanding
-  list, resume the backlog, what was next, keep working on the backlog.
+  list, resume the backlog, what was next, keep working on the backlog,
+  workspace move, move_agent_to_root, transcript folder, new chat history,
+  record-move, plan-stack-locations, link does not resolve.
 ---
 
 # Plan stack
@@ -26,6 +28,22 @@ Do not use TickTick, a human task file, or `routine-ledger` for items the agent 
 The first lines are comments a person can read: what the list is, that `plan` may be omitted, and what `status` and `needs` mean.
 
 This skill is not the `dev-centr/plan-stack` wait-queue daemon. Recurring work shared across harnesses stays on the routine ledger (git). A later local database would cache those stores and answer a path query. It does not replace the git ledger.
+
+## Workspace move
+
+Cursor keeps the old transcript under the old workspace slug and can mint a new chat id. That is still this chat. The session directory stays the first id. Do not start a second `plan-stack.kdl`.
+
+After `move_agent_to_root` succeeds, before the next task, record both folders:
+
+`powershell -NoProfile -File $AGENT_RULES_PATH/scripts/plan-stack-locations.ps1 record-move --canonical <first-id> --from-cursor-chat <old-id> --to-cursor-chat <new-id> --from-project-key <old-slug> --to-project-key <new-slug> --from-root <old-folder> --to-root <new-folder>`
+
+Use `pwsh -NoProfile -File` when PowerShell 7 is installed. The script is the same.
+
+The database cannot see the move. This command is the notification. If the harness prompt names a transcript id that is not the session folder you have been using, the move was not recorded yet. Run `record-move`, then keep reading the stack from the canonical session.
+
+A link that does not open is a `resolve` miss. Show its `hint`. `workspace-fragmented` means the chat has more than one folder. `never-recorded` means `record-move` has not been run. `file-missing` means the recorded folder is gone. None of those mean the chat was deleted.
+
+When you can see the files gathered into one folder, run `repair` with that folder and the transcript id it belongs to. Old keys stay as aliases. Detail: `general/plan-stack.md`.
 
 ## Attention
 

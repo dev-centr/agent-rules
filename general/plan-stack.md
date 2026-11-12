@@ -20,6 +20,33 @@ One file per chat: `$AGENT_WORKSPACE_ROOT/sessions/<chat-id>/plan-stack.kdl`.
 
 That tree is this machine's agent notes (`general/agent-workspace.md`). The file is not part of a product repository and not part of a code workspace a person opened to work on a project. A person browsing a repo should not find a chat's open work sitting in it.
 
+The directory name is the canonical chat id: the first id recorded for that conversation. A workspace move must not start a second directory.
+
+## Transcript locations
+
+Cursor stores each chat under a directory named from the workspace path (`z-code-github-com-…`). Renaming that folder, or moving the chat onto a new workspace, leaves the old transcript where it was and starts a second directory. The second directory can have a new chat id. Those two directories are one conversation. The plan stack stays under the first id.
+
+A link stores three things: the canonical chat id, the Cursor transcript id that held the sentence, and the segment and turn inside that transcript. It may also store a short quote of the sentence. It does not store a project slug or a folder path. The slug changes when the workspace is renamed. Segment numbers are not global: each transcript folder starts its own `segment_000.md`. A bare segment number from the other folder is a different sentence.
+
+Aliases live in `sessions/<canonical-id>/locations.kdl`. Each Cursor chat id, project slug, workspace URI, and transcript folder is a row. One row of each kind is `live=true` (the folder Cursor is writing now). Older rows stay, with `role=original` on the first value and `role=alias` on the rest. `sessions/location-index.kdl` maps a Cursor chat id, or one transcript folder, to the canonical id. A project slug is not an index key. Many chats share one workspace folder.
+
+The database cannot watch Cursor's directories. The agent that just moved the workspace is the only party that knows both paths. After that move succeeds, and before the next task, that agent runs `record-move`. That call is the notification. There is no other signal. The command adds the new id and the new folder as aliases and marks them live. It does not create a second plan stack.
+
+`resolve` opens the transcript the link named. When that file is in an older folder, the result says so and names the live folder. When the file is in none of the recorded folders, the result is a miss. The miss carries `status`, `reason`, `canonical`, and `hint`. `reason` is `never-recorded`, `workspace-fragmented`, or `file-missing`. The hint says which keys were tried and why a path-shaped link failed: Cursor split the chat across workspace paths, and the old key is still an alias of the canonical id. A caller shows that hint. It does not treat the miss as a deleted chat.
+
+When a later agent can see that the files were gathered back into one folder, it runs `repair` and passes the folder it found, with the transcript id those files belong to. Repair marks that folder live, sets the others `present`, `missing`, or `reunited`, and keeps every old key. Links that stored the canonical id and the transcript id do not need new paths. `resolve` follows the transcript id to whichever folder is live for it. Another transcript's segment numbers are not copied onto that folder.
+
+A later MCP or HTTP door returns the same fields the CLI prints. It does not invent a second shape.
+
+Commands, from this repo. `powershell` is Windows PowerShell. Use `pwsh -NoProfile -File` when PowerShell 7 is installed. The script is the same.
+
+```text
+powershell -NoProfile -File scripts/plan-stack-locations.ps1 record-move --canonical <first-chat-id> --from-cursor-chat <id> --to-cursor-chat <id> --from-project-key <slug> --to-project-key <slug> --from-root <folder> --to-root <folder>
+powershell -NoProfile -File scripts/plan-stack-locations.ps1 resolve --chat <id> [--cursor-chat <id>] [--segment <n>] [--turn <n>] [--quote <text>]
+powershell -NoProfile -File scripts/plan-stack-locations.ps1 repair --chat <id> [--cursor-chat <id> --live-root <folder>] [--live-project-key <slug>] [--files-moved]
+powershell -NoProfile -File scripts/plan-stack-locations.ps1 show --chat <id>
+```
+
 ## Not the other plan-stack
 
 `dev-centr/plan-stack` is a local daemon and a visual queue of estimated waits. This file is the list of outcomes for one chat. They share a name and not a store.

@@ -1,0 +1,19 @@
+= 2026-11-12
+:description: Aliases so a chat link still resolves after Cursor splits transcript folders on a workspace move.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for chat location aliases
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Chat location aliases
+
+Cursor names a chat's transcript directory from the workspace path. A rename or a workspace move leaves the old files in place and starts a second directory, sometimes under a new chat id. The sidebar for the new path does not show the old chat.
+
+* The session directory stays the first chat id. Later ids and folders are aliases in `sessions/<canonical-id>/locations.kdl`. `sessions/location-index.kdl` maps a Cursor chat id or one transcript folder to that id. A project slug is not an index key.
+* A link stores the canonical id, the transcript id that held the sentence, and the segment and turn in that transcript. Segment numbers restart in each folder.
+* `scripts/plan-stack-locations.ps1 record-move` is the notification. The agent that completed the move runs it before the next task. Nothing else can see both paths.
+* `resolve` prints `status`, `reason`, `canonical`, `via`, `path`, and `hint`. A miss says whether the chat was never recorded, split across folders, or the recorded folder is gone.
+* `repair` marks a folder the agent found live, and keeps the old keys so existing links still resolve.

@@ -49,8 +49,10 @@ AGENT_WORKSPACE_ROOT/
     harness-registry.json5      # optional: one spill root per harness
     scratch/YYYY-MM-DD/
   sessions/                     # per-chat agent notes (not product source, not scratch)
-    <chat-id>/
+    location-index.kdl          # cursor chat id or transcript folder -> canonical chat id
+    <chat-id>/                  # canonical id: the first id recorded for that conversation
       plan-stack.kdl            # outcomes still open for that chat
+      locations.kdl             # later ids and folders that are the same chat
 ```
 
 **Do not** put platform spill under this tree. **Do not** commit secrets into `utilities/` — use local secret files gitignored on the machine.
