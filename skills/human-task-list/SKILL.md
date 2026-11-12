@@ -32,7 +32,7 @@ Access: forge MCP or `gh` (`gh issue create`, `gh project item-add`); other tool
 
 ## What qualifies
 
-Only steps the **human** must do because the AI cannot: locked-file deletes, approvals, credentials/sign-ins/2FA, physical actions, GUI-only or elevated steps the harness blocks. Not general todos the agent can do itself.
+Only steps the **human** must do because the AI cannot: locked-file deletes, approvals, credentials/sign-ins/2FA, physical actions, GUI-only or elevated steps the harness blocks. Not general todos the agent can do itself. Those stay on `plan-stack.kdl` (skill `plan-stack`).
 
 ## Backend (per person or machine)
 

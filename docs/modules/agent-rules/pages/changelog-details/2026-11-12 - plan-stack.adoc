@@ -1,0 +1,17 @@
+= 2026-11-12
+:description: A workspace plan stack so standard chat can resume an original ask after a prerequisite.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the plan stack
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Plan stack for standard chat
+
+Standard chat does not keep a stack across topic changes. Cursor cloud Projects covers one repository and does not span an org folder of many repos.
+
+* Skill `plan-stack` and `general/plan-stack.md` describe `plan-stack.kdl` at the workspace root.
+* An item that must land first is `active`. The original item lists that id under `needs` and stays `open`.
+* The in-chat todo widget, TickTick, and `routine-ledger` are different records. Agent work this chat must resume goes on the plan stack.

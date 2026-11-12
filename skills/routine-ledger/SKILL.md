@@ -17,6 +17,7 @@ Command: `dev-centr/routine-timer` (`routine-timer`). It submits due work with `
 ## 1. Register, do not just act once
 
 - If a request is recurring, scheduled, or "when X happens", register a routine in the ledger in addition to doing the first run.
+- A one-conversation prerequisite stays on `plan-stack.kdl` (skill `plan-stack`). It is not a routine.
 - If work is blocked by an upstream bug, PR, or release, register a dependency watch without being asked (section 6).
 - Set `requires` to capabilities, not a harness name. `preferred_targets` is a hint only.
 - Tell the owner the routine id and the file path. Registering is allowed. Posting outside the ledger is not.

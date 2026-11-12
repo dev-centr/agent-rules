@@ -2,6 +2,8 @@
 
 Steps that only a person can do - deleting a locked file, granting an approval, entering a credential, a physical action - get lost in chat. Agents record each one on that person's task list, and check it off once verified.
 
+Work the agent can do, including a prerequisite that showed up mid-chat, stays on `plan-stack.kdl` (skill `plan-stack`). That file is not a second job for TickTick.
+
 Skill: `skills/human-task-list/SKILL.md`.
 
 ## Keys

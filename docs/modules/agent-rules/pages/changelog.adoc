@@ -22,6 +22,13 @@ endif::[]
 
 == 2026-11-12
 
+=== Plan stack for standard chat
+
+* Skill `plan-stack` keeps `plan-stack.kdl` at the workspace root when the harness mode has no multi-repo stack.
+* A prerequisite is pushed in front of the original ask. The original ask stays until it is unblocked.
+* TickTick remains the list of steps only a person can do.
+* Detail: xref:changelog-details/2026-11-12 - plan-stack.adoc[Plan stack for standard chat].
+
 === Schema.org on public pages
 
 * Public content pages state what they are with Schema.org JSON-LD in the raw HTML. Skill `web-crawlability` and `general/web-crawlability.md` carry the types and the CI check.
