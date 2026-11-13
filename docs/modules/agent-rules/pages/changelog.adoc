@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-12
 
+=== Text for a new user
+
+* Skill `new-user-text` applies when a textual interface or a teaching document is written.
+* The first screen says what the thing does and which actions to try. The command list and the internal model follow.
+* Detail: xref:changelog-details/2026-11-12 - new-user-text.adoc[Text for a new user].
+
 === Skip a static site when a homepage is imported
 
 * Org init generates `{org}.github.io` only when no homepage on any host is part of the import.

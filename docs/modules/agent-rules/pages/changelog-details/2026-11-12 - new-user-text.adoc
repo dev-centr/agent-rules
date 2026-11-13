@@ -1,0 +1,17 @@
+= 2026-11-12
+:description: Textual interfaces and teaching documents open with a start path for a new person.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for new-user text
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Text for a new user
+
+A command's first screen, an error, an empty state, and a guide are how a new person learns the controls.
+
+* Skill `new-user-text` and `general/new-user-text.md` say the first sentence is what the thing does, then the actions to try, then the rest of the interface grouped by job.
+* A special word is explained the first time it appears. An error says the next step.
+* Published pages still name their reader in `general/documentation.md`.
