@@ -1,0 +1,17 @@
+= 2026-11-12
+:description: The coordination suite database holds the plan tree, and a wait points at a plan node.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the coordination suite store
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Coordination suite store
+
+The shared store for agent plans is `dev-centr/coordination`. An agent opens a plan node. A wait row points at that node and records the estimate, the status, and the wait-hub id.
+
+* Skill `plan-stack` names that database. The session `plan-stack.kdl` remains the file a person can read. `coordination import` loads it.
+* After a workspace move, `coordination record-move` is the notification. The PowerShell location script remains the fallback that writes the file.
+* The plan-stack wait queue mirrors a phase into the database and does not replace a title the plan tree already has.

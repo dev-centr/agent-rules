@@ -38,6 +38,12 @@ endif::[]
 * The routine ledger stays the shared git record for recurring handoff. A local database would be a cache and a query door, not a replacement.
 * Detail: xref:changelog-details/2026-11-12 - plan-stack.adoc[Plan stack for standard chat].
 
+=== Coordination suite store
+
+* `dev-centr/coordination` is the database for the plan tree. A wait points at a plan node and keeps the estimate and the live signal.
+* The plan-stack wait queue writes through to that database when it is up, and keeps its JSON file when it is not.
+* Detail: xref:changelog-details/2026-11-12 - coordination-suite.adoc[Coordination suite store].
+
 === Chat location aliases
 
 * A workspace move leaves the old transcript in place and can mint a new chat id. Those folders stay aliases of the first chat id.
