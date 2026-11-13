@@ -1,0 +1,18 @@
+= 2026-11-12
+:description: Org init does not generate a static site when a homepage is already being imported.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for bootstrap site generation
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Skip a static site when a homepage is imported
+
+Init used to treat `{org}.github.io` as the org homepage even when the project already published a site on another host.
+
+* Skill `bootstrap-org` generates the static site only when no homepage is part of the import.
+* Netlify, Cloudflare Pages, Vercel, a custom domain, and another Pages site all count.
+* The imported URL is the org website. A second static site, including a stub, is not created.
+* Profile defaults record the gate as `generate "only-if-no-imported-homepage"`.

@@ -16,6 +16,7 @@ defaults {
 		ssr false
 		preset "static"
 		host "github-pages"
+		generate "only-if-no-imported-homepage"
 		cloudflare "dns-only"
 		news "/news/"
 		blog "/blog/"

@@ -40,7 +40,7 @@ Install: [`BOOTSTRAP.md`](./BOOTSTRAP.md). Architecture: https://docs.devcentr.o
 | `fix-docs-encoding` | Mojibake (`â€œ`), SVG Encoding/EntityName errors, post-edit Antora SVG/adoc on Windows | active | Transcode repair script in `skills/fix-docs-encoding/scripts/` | <!-- mojibake-guard: allow -->
 | `publish-to-dub` | "publish to dub", "publish to dlang", "publish dlang", DUB/code.dlang.org categories, README.md for code.dlang.org | active | `dubx` + `dub-publish`; official `dub` has no publish command. Registry reads root `README.md` only |
 | `library-registry-choice` | create library, path/`file:` dependency, publish vs local disk, registry for new package, unpublished owned dep | active | Ask publish vs path; encourage registry; suggest which |
-| `bootstrap-org` | bootstrap an org, initialize an org, create a GitHub organization, SDL profile, org agent-rules overlay | active | Fast identity/project path; house org init uses pointer overlay |
+| `bootstrap-org` | bootstrap an org, initialize an org, create a GitHub organization, SDL profile, org agent-rules overlay, imported homepage | active | Fast identity/project path; no new static site when a homepage is imported |
 | `github-profile-assets` | GitHub org profile assets, `profile/assets/`, org avatar PNG 256 | active | Pairs with `bootstrap-org` |
 | `tag-release` | tag a release, ship a version, cut `vX.Y.Z`, rolling `v2`/`v2.x` | active | `github.md` + `registries.md` siblings |
 | `write-a-skill` | author/edit agent skill, `SKILL.md`, skill frontmatter, YAML `description`; trigger words | active | Harness-neutral authoring; layout may use harness-specific scaffolds |

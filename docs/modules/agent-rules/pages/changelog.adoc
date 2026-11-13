@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-12
 
+=== Skip a static site when a homepage is imported
+
+* Org init generates `{org}.github.io` only when no homepage on any host is part of the import.
+* An existing Netlify, Cloudflare Pages, Vercel, custom-domain, or other Pages site is the homepage. A second static site is not created.
+* Detail: xref:changelog-details/2026-11-12 - imported-homepage-skips-static-site.adoc[Imported homepage skips the static site].
+
 === Plan stack for standard chat
 
 * Skill `plan-stack` keeps `plan-stack.kdl` for a harness mode that has no multi-repo stack.

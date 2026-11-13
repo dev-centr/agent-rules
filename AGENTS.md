@@ -62,6 +62,7 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Internet Architecture / Reliability:** systems content in `general-knowledge`; portal peer nav in `dev-centr/docs`. HCI *Labels versus wires* / *Host-held history* are symptom ↔ diagnosis faces; connectome-fs is substrate. Provider search + mirror backups: encyclopedia page under Internet Architecture.
 - **Public README chrome:** skill `public-readme`; hub link **Explore the docs »** → org docs.
 - **Repo About homepage:** on new project repos, set GitHub About URL to the org docs hub component page unless the repo is the org main/marketing site or a product with its own domain/subdomain (skill `bootstrap-org`).
+- **Imported homepage:** during org or project init, do not generate `{org}.github.io` or another static marketing site when a homepage on any host is being imported (Netlify, Cloudflare Pages, Vercel, a custom domain, or another Pages site). Skill `bootstrap-org`.
 - **Changelogs:** every owned project, functional changes — skill `owned-changelog`.
 - **Config:** SDL (`.sdl`) on DevCentr-owned / `sdlang-d` surfaces; KDL (`.kdl`) greenfield outside that stack; JSON5 in the JSON family. No Extended SDL/XDL.
 - **Issues:** file for bugs, blockers, and external coordination — not routine owned-repo work (`owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push; prefer `gh --attach` for media, keep `images/` as backup); never chat-only.

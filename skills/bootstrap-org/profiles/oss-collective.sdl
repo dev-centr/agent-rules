@@ -11,6 +11,7 @@ profile "oss-collective" {
 		preset "static"
 		ssr false
 		host "github-pages"
+		// Name of the generated site. Create it only when no homepage is imported.
 		repo "{org}.github.io"
 	}
 

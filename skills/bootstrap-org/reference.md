@@ -25,6 +25,7 @@ Classic SDL only (no Extended SDL/XDL). Strings are quoted; nested blocks as in 
 | `.github-private` | Member-only text that **differs** from public |
 | Notable-repo lists on profile | Never (site/docs instead) |
 | Custom domain / CNAME file | Domain bought and TXT-verified |
+| New static site / `{org}.github.io` | No homepage on any host is being imported in this init |
 | Cloudflare orange-cloud in front of github.io | Never |
 | Private team docs | Members + secrets |
 | Org `infra` / Pulumi | DNS/email/keys they would otherwise copy again |
@@ -39,7 +40,8 @@ Classic SDL only (no Extended SDL/XDL). Strings are quoted; nested blocks as in 
 Org metadata (website = public site):
 
 ```powershell
-gh api -X PATCH orgs/{org} -f name='Display Name' -f description='One line.' -f blog='https://{org}.github.io' -f company='@org' -f location='...'
+# blog = the public homepage. Use the imported site URL when init brought one in.
+gh api -X PATCH orgs/{org} -f name='Display Name' -f description='One line.' -f blog='https://{public-site}' -f company='@org' -f location='...'
 gh api orgs/{org}/repos --jq '.[].name'
 ```
 
@@ -117,7 +119,7 @@ Wrong audience = first-person maintainer notes, “start here”, duplicating Di
 - **Site** (`{org}.github.io` or custom domain): landing, news/blog routes, partner links, CTA to docs.
 - **Docs hub**: teaching + reference; one public Antora (or peer) site per org — playbook + Pages live in **`{org}/docs`**, not nested under the marketing repo.
 - Do **not** embed the public Antora hub in `{org}.github.io` (no `docs:build` into `public/docs/`). Website **links**; docs repo **publishes**. Skill `antora-org-site` owns hub wiring, cutover order, and refresh triggers.
-- Do not stand up `{org}.github.io` if a canonical marketing host already exists.
+- Generate `{org}.github.io` only when init is not importing a homepage on any host (Netlify, Cloudflare Pages, Vercel, a custom domain, or another Pages site). An imported homepage is the org site. Do not add a second static site or a stub beside it.
 
 Private member docs (Access in front of static) are **not** the public hub. See Business Bootstrap org infra + general-knowledge Cloudflare Access how-to.
 
@@ -151,6 +153,7 @@ Tracking hostnames (`links`, not `click` unless making a privacy claim); do not 
 10. Brand assets only in the site **or** only in `.github`.
 11. Forks-org over-sync: prefer `.clones` + selective rebrand over mirroring every upstream repo live.
 12. Registry identity (npm, DUB, …) does not follow GitHub transfer until package metadata is updated.
+13. **github.io beside an imported homepage.** A Netlify, Pages, or custom-domain site that arrived with the project is already the homepage. Creating `{org}.github.io` duplicates it.
 
 ## Hand-off (do not duplicate)
 

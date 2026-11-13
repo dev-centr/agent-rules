@@ -5,8 +5,11 @@ description: >-
   create a GitHub organization, start a company or nonprofit, scaffold a
   CLI/library/Tauri/desktop/web app, populate org data, set up .github,
   github.io, an Antora docs hub, pick a bootstrap profile, paste a profile { }
-  block, or create an org agent-rules overlay. Repo About homepage, GitHub
-  About URL, docs hub component URL. Named SDL profiles: oss-collective,
+  block, or create an org agent-rules overlay. Imported homepage, existing
+  Netlify site, Cloudflare Pages, or another host already publishing the
+  site: do not create github.io. Static site only when no homepage is
+  imported. Repo About homepage, GitHub About URL, docs hub component URL.
+  Named SDL profiles: oss-collective,
   product-org, nonprofit, web-app, library, cli, desktop, docs-hub, forks-org.
 ---
 
@@ -101,7 +104,7 @@ Project bootstrap (kind project):
 - [ ] 1 Repo identity (About / homepage / license)
 - [ ] 2 Scaffold per profile (library / cli / desktop / web-app)
 - [ ] 2a Repo essentials: encoding-guard caller workflow + `.github/dependabot.yml` (github-actions, grouped, monthly)
-- [ ] 3 Optional SolidStart static + solid-ui marketing site
+- [ ] 3 SolidStart static marketing site only if this project has no homepage on any host
 - [ ] 4 Docs contribute to the org hub (no second public docs site)
 - [ ] 5 Product Essentials Band A for that artifact type
 ```
@@ -161,14 +164,18 @@ That creates `{org}/agent-rules` (pointer README + overlay `AGENTS.md` only) and
 
 ### 4. Public website
 
-| Situation | Default |
-| --- | --- |
-| No custom domain | `{org}.github.io` |
-| Domain bought + TXT verified | CNAME in the Pages repo; DNS **grey-cloud** (not proxied) in front of github.io |
-| Canonical site already exists elsewhere | Do **not** invent a competing homepage; optional stub only |
-| Product vs org | Separate product hostname from org hub when both exist |
+Generate a new static site only when this init is **not** importing a homepage.
 
-Use the loaded profile’s `site { }` (SolidStart static + solid-ui unless overridden). Wire prominent **Explore the docs »** once a docs hub exists. After org birth, update the **personal** hub/org list if they have one.
+An imported homepage is a public site that already exists for the org or the project being brought in, on any host: Netlify, Cloudflare Pages, Vercel, an existing custom domain, or another Pages site. A transfer, a rename, or a URL the user names in the same session counts.
+
+| Situation | Do |
+| --- | --- |
+| A homepage is being imported | Do not create `{org}.github.io` or a second static marketing site. Do not leave a stub. Org `blog` and the About homepage are the imported URL. |
+| No homepage is imported, and there is no custom domain | Create `{org}.github.io` (SolidStart static, unless the profile overrode the stack) |
+| No homepage is imported, and the domain is bought and TXT-verified | Create that Pages site, then CNAME. DNS stays **grey-cloud** (not proxied) in front of github.io |
+| A product hostname and an org homepage are both real | Keep them separate. If the imported site is the one they treat as the public homepage, it is the homepage. Do not add github.io beside it. |
+
+Use the loaded profile’s `site { }` for stack and host **when** a site is generated. `generate "only-if-no-imported-homepage"` on `defaults` is that gate. Wire prominent **Explore the docs »** once a docs hub exists. After org birth, update the **personal** hub/org list if they have one.
 
 ### 5. Docs hub
 
@@ -214,7 +221,7 @@ Do not restate those procedures here. Point at Business Bootstrap (email tutoria
 
 ## Done when
 
-**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; session-scoped site/docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
+**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; the public site is the imported homepage **or** a generated static site, never both; session-scoped docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
 
 **Project.** Repo About filled; scaffold matches the loaded profile; repo essentials (encoding-guard caller, monthly grouped `dependabot.yml` for github-actions) committed; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.
 
