@@ -11,3 +11,5 @@ The standard is canonical. Do not copy it here; read it when designing what a co
 - Provide `--verbose` (+ `<TOOL>_VERBOSE`), `--json` / JSON Lines, per-OS log locations with rotation, meaningful exit codes, results on stdout and diagnostics on stderr.
 
 Cite requirement ids (`CO-n`) in reviews and issues.
+
+Help text is not a string in `main`. It is an authored `help.sdl` rendered by prohelp. Skill `openshell-cli`. Detail: `general/openshell-cli.md`.

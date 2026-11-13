@@ -30,6 +30,8 @@ The first lines are comments a person can read: what the list is, that `plan` ma
 
 This skill is not the `dev-centr/plan-stack` column process. Recurring work shared across harnesses stays on the routine ledger (git). The command `agent-coordinator` (`dev-centr/coordination`) is the database: `plan` is the tree, and `schedule wait` points at a node. It does not replace the git ledger. The column process keeps JSON files when that database is down. Those files are not the routine ledger.
 
+`agent-coordinator serve` can run more than once: another port, or one copy printing in a terminal and one in the background. Starting it follows skill `service-manager`. The column process on port 17358 is one process per machine. A second start finds that process. It does not get a `server 1` id unless a second copy becomes a real case, and then the same skill applies.
+
 ## Workspace move
 
 Cursor keeps the old transcript under the old workspace slug and can mint a new chat id. That is still this chat. The session directory stays the first id. Do not start a second `plan-stack.kdl`.

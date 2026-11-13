@@ -39,7 +39,7 @@ Validate with `node skills/routine-ledger/validate.mjs <schema> <file>` or with 
 `routine-timer` has to be able to call `agent-bus` (`AGENT_BUS_BIN`, `AGENT_BUS_PROFILES`, or `--agent-bus` and `--profiles`).
 
 - `status` reports whether this host and each named harness process are up. It does not submit.
-- `serve` repeats that check. The first time the host or a harness process comes up, it prints `spun-up`.
+- `serve` repeats that check. The first time the host or a harness process comes up, it prints `spun-up`. One timer per machine. A second start finds that process. Stop takes no id. Skill `service-manager` applies only if a second timer on the same machine becomes a real case.
 - A due routine is submitted only when the target's process is already running. The line is `submit ... via=agent-bus`.
 - Default `launch` is `wait`. The timer does not open Cursor, Grok, or any other program.
 - `launch: "launch"` is opt-in and requires `launch_program`. The process image is for detection only. The timer does not reuse it as the program to start.

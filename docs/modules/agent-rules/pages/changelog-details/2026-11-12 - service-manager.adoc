@@ -1,0 +1,18 @@
+= 2026-11-12
+:description: Dev-Centr points at the OpenShellOrg Service Manager standard for any service that can run more than once.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the service manager pointer
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Service manager standard
+
+`general/service-manager.md` points at the OpenShellOrg page. The rules are not copied here. Skill `service-manager` is what an agent loads before writing a start command.
+
+* A manager holds every instance, assigns `1` and `server 1`, and exits when the last instance is gone.
+* Start detaches. `-listen` keeps output in that terminal. Status names the terminal that spawned each instance and the terminal that is showing it.
+* A singleton stays one process and does not use that id space.
+* Skill `openshell-cli` sends a CLI through prohelp. `help.sdl` is the only help text. A new D command uses prohelp-cli and arsd.cli.

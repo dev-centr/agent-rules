@@ -46,7 +46,7 @@ Package format defaults per artifact type (CLI, GUI, library, service, SDK), wit
 
 Stamp build metadata at CI/compile time. About, `--version`, crash headers, and updaters share one version truth. Prefer platform-native distribution first; add in-app updaters when the channel needs them. Follow type pages instead of forcing GUI patterns onto libraries or services.
 
-CLI and TUI apps: terminal output, logs, `--verbose`, `--json`, and exit codes follow the OpenShellOrg CLI Output standard (`general/cli-output.md`).
+CLI and TUI apps: load skill `openshell-cli` before writing the command. Help is an authored `help.sdl` rendered by prohelp. A new D command uses prohelp-cli and arsd.cli. A service that can run more than once also loads skill `service-manager`. A singleton does not use that id space.
 
 **Login:** a password, passphrase, or PIN is unfinished until the sign-in surface can reset it. That surface may be a website, an app screen, or a CLI command. Provider-only sign-in with no local password does not add a password reset. Detail: `general/login-reset.md`.
 

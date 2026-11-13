@@ -21,6 +21,10 @@ An error or a refusal says what to do next. The internal reason can follow in on
 
 An empty screen says the command or the control that fills it.
 
+## A service start screen
+
+A command that starts a service which can run more than once uses the start card in the Service Manager standard. Skill `service-manager`. The first sentence says whether this window can close or is showing the output. The id and the stop command follow. The log path is the last line.
+
 ## Documents
 
 Open on the task. Then the vocabulary. Then the reference. The first commands in a README are the ones a new person runs.

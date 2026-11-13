@@ -10,6 +10,8 @@ description: >-
 
 **Prefer this desktop tool over per-chat `git fetch`.** [`hive-watch`](https://github.com/dev-centr/hive-watch) runs as **`hived`** (daemon) + **tray/HUD** (Electron). It fetches on a schedule and when local/remotes change, then writes machine-local status agents read.
 
+`hived` is a singleton on this machine: one daemon. A second start finds that process. Stop takes no id. Skill `service-manager` applies only if a second hive-watch process on the same machine becomes a real case.
+
 ## Artifacts
 
 | Path | Role |

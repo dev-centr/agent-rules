@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-12
 
+=== Service manager standard
+
+* A service that can run more than once follows the OpenShellOrg Service Manager standard. The text lives in OpenShellOrg. Skill `service-manager` is how an agent applies it. `hived` and `routine-timer serve` stay singletons.
+* Skill `openshell-cli` is the gate for a new or changed command: CLI Output, CLI Help, CLI Dispatch, and prohelp. Help is `help.sdl`, not a string in `main`. A new D command uses prohelp-cli and arsd.cli.
+* Detail: xref:changelog-details/2026-11-12 - service-manager.adoc[Service manager standard].
+
 === Password login includes a reset
 
 * A sign-in that uses a password, passphrase, or PIN includes a reset on that sign-in surface.

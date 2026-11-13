@@ -4,7 +4,7 @@ description: >-
   Use when designing a textual interface, CLI help, first-run message, usage
   text, error message, empty state, prompt, status line, writing a document,
   README, help page, guide, onboarding, beginner, new user, getting used to
-  the interface, help text, --help.
+  the interface, help text, --help, serve, -listen.
 ---
 
 # Text for a new user
@@ -24,6 +24,10 @@ The full reference stays on the same screen, below that start path. A new person
 The first time a special word appears, say what it means in the same sentence. "Board" with no gloss is a private name. "The id in the first column is what later commands call a board" teaches the word.
 
 An error says what happened and the next step. One sentence of the internal model may follow when the person needs it to choose. It does not lead.
+
+## A service start screen
+
+When the screen starts a service that can run more than once, that screen is the start card in the Service Manager standard. Load skill `service-manager`. The first sentence says the instance is in the background, or that this window is showing it. The id and the stop command come next. `-listen` is how to watch the lines here. The log path is the last line.
 
 ## Documents
 
