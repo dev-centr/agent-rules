@@ -52,6 +52,7 @@ AGENT_WORKSPACE_ROOT/
     location-index.kdl          # cursor chat id or transcript folder -> canonical chat id
     <chat-id>/                  # canonical id: the first id recorded for that conversation
       plan-stack.kdl            # outcomes still open for that chat
+      context.kdl               # detected chat kind: harness-stack, cloud-project, or standard-chat
       locations.kdl             # later ids and folders that are the same chat
 ```
 

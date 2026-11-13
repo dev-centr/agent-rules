@@ -4,7 +4,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Grok Bot on behalf of Ryan Johnson
-:page-last-edited: 2026-11-12
+:page-last-edited: 2026-11-13
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -19,6 +19,14 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-11-13
+
+=== A new message joins the plan
+
+* A standard chat writes its kind in `context.kdl` from the harness prompt: `harness-stack`, `cloud-project`, or `standard-chat`.
+* Each new message is added to `plan-stack.kdl`. It does not replace the item already underway.
+* Detail: xref:changelog-details/2026-11-13 - plan-stack-interruption.adoc[A new message joins the plan].
 
 == 2026-11-12
 

@@ -1,0 +1,18 @@
+= 2026-11-13
+:description: A standard chat records its kind and adds each new message to the plan instead of replacing the item underway.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the plan stack interruption rule
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-13
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== A new message joins the plan
+
+The plan stack already told a standard chat where to keep open work. It did not say what to do when the next message arrived while an item was still open.
+
+* The agent classifies the turn from the harness prompt and writes `context.kdl` beside the plan. The kinds are `harness-stack`, `cloud-project`, and `standard-chat`.
+* A harness that already keeps a multi-repo stack uses that stack. A one-repo cloud project list covers that repo. Everything else is a standard chat and uses `plan-stack.kdl`.
+* A steer, a follow-up, or a correction is a new item. The item already underway stays `open` until its needs are done.
+* `agent-coordinator plan import` loads the file when the command is available. People also call this list the agent planner. The command name stays `agent-coordinator`.

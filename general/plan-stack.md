@@ -14,6 +14,42 @@ Skill: `skills/plan-stack/SKILL.md`.
 
 TickTick and `HUMAN_TASKS_BACKEND` are steps only a person can do (`general/human-task-list.md`). `routine-ledger` is recurring work and upstream watches. Agent work that this chat must resume stays here.
 
+People say "agent-planner" for this list. The command is `agent-coordinator`.
+
+## Chat kind
+
+Classify the turn from the harness prompt before the first write, and again when that prompt gains or loses a project stack. The harness name comes from `$HARNESS` (`HARNESS_NAME`). The kind comes from features in the prompt.
+
+| What this turn's prompt contains | kind |
+| --- | --- |
+| A multi-repo project stack the harness already keeps | `harness-stack` |
+| A one-repo cloud project list | `cloud-project` |
+| Neither | `standard-chat` |
+
+`harness-stack` uses that stack and does not also keep this file. `cloud-project` uses that list for its one repo. Work across an org folder of repos still uses this file. `standard-chat` uses this file. An in-chat todo widget is not this file.
+
+Store the result in `sessions/<chat-id>/context.kdl`, next to the plan. The next turn reads that file before it chooses work.
+
+```kdl
+// Chat kind for this conversation. Read this before choosing the next step.
+// kind is harness-stack, cloud-project, or standard-chat.
+context {
+  kind "standard-chat"
+  harness "cursor"
+  reason "The prompt has no multi-repo project stack and no one-repo cloud project list."
+}
+```
+
+## Every new message
+
+A standard chat adds each new user message to the list. A steer, a follow-up, or a correction does not replace the item already underway.
+
+1. Read `context.kdl` and `plan-stack.kdl`.
+2. Add the new ask as its own item. If it has to happen first, set it `active`, add its id to the previous active item's `needs`, and set that previous item `open`.
+3. Do not mark the previous item `dropped`, and do not start a new list.
+4. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
+5. Say the active item's title in one sentence, then do that item.
+
 ## Where
 
 One file per chat: `$AGENT_WORKSPACE_ROOT/sessions/<chat-id>/plan-stack.kdl`.
