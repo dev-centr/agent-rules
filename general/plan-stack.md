@@ -49,13 +49,13 @@ powershell -NoProfile -File scripts/plan-stack-locations.ps1 show --chat <id>
 
 ## Not the other plan-stack
 
-`dev-centr/plan-stack` is the schedule view: estimated waits, session columns, and a phase that points at a plan node. This file is the list of outcomes for one chat. The shared database for both is `dev-centr/coordination`. A wait there stores the estimate and the live signal. The plan title stays on the node.
+`dev-centr/plan-stack` draws schedule columns: estimated waits, and a phase that points at a plan node. This file is the list of outcomes for one chat. The command for both is `agent-coordinator` in `dev-centr/coordination`. `plan` is the tree. `schedule wait` stores the estimate and the live signal. The plan title stays on the node.
 
 ## Coordination suite
 
-`coordinationd` on `127.0.0.1:17359` is the local database. The command `coordination` is the thin door. The same process serves the browser and, with `--public` and a hosted token, the online database Dev-Centr can sell. A workstation token stays on this machine.
+`agent-coordinator serve` on `127.0.0.1:17359` is the local database and the browser. `--public` with a hosted token is the online database Dev-Centr can sell. A workstation token stays on this machine.
 
-Import this chat's `plan-stack.kdl` and `locations.kdl` with `coordination import`. After a workspace move, `coordination record-move` writes the database. The location file remains the copy a person can read when the database is down. The git routine ledger remains the copy when no machine is up.
+Import this chat's `plan-stack.kdl` and `locations.kdl` with `agent-coordinator plan import`. After a workspace move, `agent-coordinator plan record-move` writes the database. The location file remains the copy a person can read when the database is down. The column process keeps its own JSON files in that case. Those files are not the routine ledger. The git routine ledger remains the copy for recurring work when no machine is up.
 
 ## Same record, different stores
 

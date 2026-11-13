@@ -1,0 +1,17 @@
+= 2026-11-12
+:description: The command for the plan tree and the wait on a node is agent-coordinator.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the agent-coordinator command
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Agent coordinator command
+
+Skill `plan-stack` names the command a person types for the shared plan.
+
+* `agent-coordinator plan` is the plan tree, including `import`, `record-move`, `resolve`, and `repair`.
+* `agent-coordinator schedule wait` writes the wait on a node. The column process on port 17358 draws those waits.
+* When the database is down, that process keeps its JSON files. Those files are not the routine ledger.

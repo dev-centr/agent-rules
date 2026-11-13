@@ -6,7 +6,8 @@ description: >-
   original ask buried, conversation drifted, side issue first, outstanding
   list, resume the backlog, what was next, keep working on the backlog,
   workspace move, move_agent_to_root, transcript folder, new chat history,
-  record-move, plan-stack-locations, link does not resolve.
+  record-move, plan-stack-locations, link does not resolve,
+  agent-coordinator, schedule wait.
 ---
 
 # Plan stack
@@ -27,17 +28,17 @@ Do not use TickTick, a human task file, or `routine-ledger` for items the agent 
 
 The first lines are comments a person can read: what the list is, that `plan` may be omitted, and what `status` and `needs` mean.
 
-This skill is not the `dev-centr/plan-stack` wait-queue daemon. Recurring work shared across harnesses stays on the routine ledger (git). The coordination suite (`dev-centr/coordination`) is the database for the plan tree and the waits that point at it. It does not replace the git ledger.
+This skill is not the `dev-centr/plan-stack` column process. Recurring work shared across harnesses stays on the routine ledger (git). The command `agent-coordinator` (`dev-centr/coordination`) is the database: `plan` is the tree, and `schedule wait` points at a node. It does not replace the git ledger. The column process keeps JSON files when that database is down. Those files are not the routine ledger.
 
 ## Workspace move
 
 Cursor keeps the old transcript under the old workspace slug and can mint a new chat id. That is still this chat. The session directory stays the first id. Do not start a second `plan-stack.kdl`.
 
-After `move_agent_to_root` succeeds, before the next task, record both folders with `coordination record-move`. The database cannot see the move. That command is the notification. When the command is not built yet, write the same fact with:
+After `move_agent_to_root` succeeds, before the next task, record both folders with `agent-coordinator plan record-move`. The database cannot see the move. That command is the notification. When the command is not built yet, write the same fact with:
 
 `powershell -NoProfile -File $AGENT_RULES_PATH/scripts/plan-stack-locations.ps1 record-move --canonical <first-id> --from-cursor-chat <old-id> --to-cursor-chat <new-id> --from-project-key <old-slug> --to-project-key <new-slug> --from-root <old-folder> --to-root <new-folder>`
 
-Use `pwsh -NoProfile -File` when PowerShell 7 is installed. The script is the same. `coordination import` reads that file into the database. If the harness prompt names a transcript id that is not the session folder you have been using, the move was not recorded yet. Run `record-move`, then keep reading the stack from the canonical session.
+Use `pwsh -NoProfile -File` when PowerShell 7 is installed. The script is the same. `agent-coordinator plan import` reads that file into the database. If the harness prompt names a transcript id that is not the session folder you have been using, the move was not recorded yet. Run `record-move`, then keep reading the stack from the canonical session.
 
 A link that does not open is a `resolve` miss. Show its `hint`. `workspace-fragmented` means the chat has more than one folder. `never-recorded` means `record-move` has not been run. `file-missing` means the recorded folder is gone. None of those mean the chat was deleted.
 

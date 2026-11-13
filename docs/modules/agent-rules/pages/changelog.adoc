@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-12
 
+=== Agent coordinator command
+
+* `agent-coordinator plan` is the plan tree. `agent-coordinator schedule wait` writes the wait on a node.
+* The column process keeps JSON files when that database is down. Those files are not the routine ledger.
+* Detail: xref:changelog-details/2026-11-12 - agent-coordinator-command.adoc[Agent coordinator command].
+
 === Text for a new user
 
 * Skill `new-user-text` applies when a textual interface or a teaching document is written.
