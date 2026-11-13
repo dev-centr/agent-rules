@@ -42,13 +42,13 @@ context {
 
 ## Every new message
 
-A standard chat reads each new user message, adds that ask to the plan, and then returns to the item already underway when that item does not depend on the new ask. A steer, a follow-up, or a correction does not replace the item already underway.
+A standard chat reads each new user message and updates the plan. The message may revise an item already listed, or it may be new work. Then the chat returns to the item already underway when that item does not depend on the update. A steer, a follow-up, or a correction does not replace the item already underway.
 
 1. Read `context.kdl` and `plan-stack.kdl`.
-2. Decide whether the item already underway depends on the new ask.
-3. Add the new ask as its own item. Do not mark the item underway `dropped`, and do not start a new list.
-4. If the item underway does not depend on the new ask, leave it `active` and keep working on it. The new item stays `open`.
-5. If the item underway depends on the new ask, set the new item `active` and add its id to the older item's `needs`. The older item stays `open`.
+2. Decide whether the message revises an item already on the tree, or is new work. Decide whether the item underway depends on that change.
+3. Update the tree. If the message changes an existing outcome, revise that item's title, needs, plan, or status. Do not add a second item for the same outcome. If it is new work, add an item. Do not mark the item underway `dropped`, and do not start a new list.
+4. If the item underway does not depend on the update, leave it `active` and keep working on it. A newly added item stays `open`. A revision of some other item keeps that item's status unless the message changed it.
+5. If the item underway depends on the update, set the blocking item `active` and add its id to the older item's `needs`. The older item stays `open`. When the message revises the item underway, that item stays `active` and the next step is the revised work.
 6. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
 7. Say the active item's title in one sentence, then do that item.
 
@@ -146,6 +146,6 @@ One `active` item. `open` items wait. `done` stays on the file so a later turn c
 ## Order of work
 
 1. Read the file before the next implementation step. Create it when this chat already has more than one outcome and the file is missing. Record only outcomes the human asked for or that a named plan already lists.
-2. Add the new ask, then keep the item already underway `active` when it does not depend on that ask. When it does, the new item is `active` and the original item gains that id in `needs` and stays `open`.
+2. Update the tree: revise an existing item when the message changes that outcome, or add an item when the work is new. Keep the item already underway `active` when it does not depend on that update. When it does, the blocking item is `active` and the original item gains that id in `needs` and stays `open`. A revision of the item underway stays on that same item.
 3. When the prerequisite is `done`, mark `active` the item that needed it, if every other need is `done`.
 4. Say the resumed item in one sentence, then do that item. Do not ask what was next when the file already says.

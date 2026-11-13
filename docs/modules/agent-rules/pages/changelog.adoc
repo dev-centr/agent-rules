@@ -25,8 +25,8 @@ endif::[]
 === A new message joins the plan
 
 * A standard chat writes its kind in `context.kdl` from the harness prompt: `harness-stack`, `cloud-project`, or `standard-chat`.
-* Each new message is added to `plan-stack.kdl`. It does not replace the item already underway.
-* After that add, the item already underway continues when it does not depend on the new ask. The new item stays open.
+* Each new message updates `plan-stack.kdl`. A change to work already listed revises that item. New work is a new item. Neither replaces the item already underway.
+* After that update, the item already underway continues when it does not depend on the change. A newly added item stays open.
 * Detail: xref:changelog-details/2026-11-13 - plan-stack-interruption.adoc[A new message joins the plan].
 
 == 2026-11-12

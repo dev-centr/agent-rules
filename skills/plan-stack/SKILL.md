@@ -9,7 +9,8 @@ description: >-
   record-move, plan-stack-locations, link does not resolve,
   agent-coordinator, agent-planner, schedule wait, interruption, steer,
   steer without interrupting, new message while work is open, context.kdl,
-  chat kind, continue the old work, does not depend.
+  chat kind, continue the old work, does not depend, update the plan
+  tree, modifying an existing item.
 ---
 
 # Plan stack
@@ -57,10 +58,10 @@ context {
 When the kind is `standard-chat`, or `cloud-project` work spans more than one repo, read the new message before changing the plan. A steer, a follow-up, or a correction does not replace the item already underway.
 
 1. Read `context.kdl` and `plan-stack.kdl`.
-2. Decide whether the item already underway depends on the new ask.
-3. Add the new ask as its own item. Do not mark the item underway `dropped`, and do not start a new list.
-4. If the item underway does not depend on the new ask, leave it `active` and keep working on it. The new item stays `open`.
-5. If the item underway depends on the new ask, set the new item `active` and add its id to the older item's `needs`. The older item stays `open`.
+2. Decide whether the message revises an item already on the tree, or is new work. Decide whether the item underway depends on that change.
+3. Update the tree. If the message changes an existing outcome, revise that item's title, needs, plan, or status. Do not add a second item for the same outcome. If it is new work, add an item. Do not mark the item underway `dropped`, and do not start a new list.
+4. If the item underway does not depend on the update, leave it `active` and keep working on it. A newly added item stays `open`. A revision of some other item keeps that item's status unless the message changed it.
+5. If the item underway depends on the update, set the blocking item `active` and add its id to the older item's `needs`. The older item stays `open`. When the message revises the item underway, that item stays `active` and the next step is the revised work.
 6. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
 7. Say the active item's title in one sentence, then do that item.
 
