@@ -14,5 +14,6 @@ The plan stack already told a standard chat where to keep open work. It did not 
 
 * The agent classifies the turn from the harness prompt and writes `context.kdl` beside the plan. The kinds are `harness-stack`, `cloud-project`, and `standard-chat`.
 * A harness that already keeps a multi-repo stack uses that stack. A one-repo cloud project list covers that repo. Everything else is a standard chat and uses `plan-stack.kdl`.
-* A steer, a follow-up, or a correction is a new item. The item already underway stays `open` until its needs are done.
+* A steer, a follow-up, or a correction is a new item. After it is on the tree, the item already underway stays `active` when it does not depend on the new ask. The new item stays `open`.
+* The new item becomes `active` only when the item underway depends on it. The older item lists that id under `needs` and stays `open`.
 * `agent-coordinator plan import` loads the file when the command is available. People also call this list the agent planner. The command name stays `agent-coordinator`.

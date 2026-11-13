@@ -42,13 +42,15 @@ context {
 
 ## Every new message
 
-A standard chat adds each new user message to the list. A steer, a follow-up, or a correction does not replace the item already underway.
+A standard chat reads each new user message, adds that ask to the plan, and then returns to the item already underway when that item does not depend on the new ask. A steer, a follow-up, or a correction does not replace the item already underway.
 
 1. Read `context.kdl` and `plan-stack.kdl`.
-2. Add the new ask as its own item. If it has to happen first, set it `active`, add its id to the previous active item's `needs`, and set that previous item `open`.
-3. Do not mark the previous item `dropped`, and do not start a new list.
-4. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
-5. Say the active item's title in one sentence, then do that item.
+2. Decide whether the item already underway depends on the new ask.
+3. Add the new ask as its own item. Do not mark the item underway `dropped`, and do not start a new list.
+4. If the item underway does not depend on the new ask, leave it `active` and keep working on it. The new item stays `open`.
+5. If the item underway depends on the new ask, set the new item `active` and add its id to the older item's `needs`. The older item stays `open`.
+6. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
+7. Say the active item's title in one sentence, then do that item.
 
 ## Where
 
@@ -144,6 +146,6 @@ One `active` item. `open` items wait. `done` stays on the file so a later turn c
 ## Order of work
 
 1. Read the file before the next implementation step. Create it when this chat already has more than one outcome and the file is missing. Record only outcomes the human asked for or that a named plan already lists.
-2. A prerequisite idea is a new `active` item. The original item gains that id in `needs` and stays `open`.
+2. Add the new ask, then keep the item already underway `active` when it does not depend on that ask. When it does, the new item is `active` and the original item gains that id in `needs` and stays `open`.
 3. When the prerequisite is `done`, mark `active` the item that needed it, if every other need is `done`.
 4. Say the resumed item in one sentence, then do that item. Do not ask what was next when the file already says.

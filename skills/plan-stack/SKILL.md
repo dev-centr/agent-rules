@@ -9,7 +9,7 @@ description: >-
   record-move, plan-stack-locations, link does not resolve,
   agent-coordinator, agent-planner, schedule wait, interruption, steer,
   steer without interrupting, new message while work is open, context.kdl,
-  chat kind.
+  chat kind, continue the old work, does not depend.
 ---
 
 # Plan stack
@@ -54,13 +54,15 @@ context {
 
 ## Every new message
 
-When the kind is `standard-chat`, or `cloud-project` work spans more than one repo, a new user message is added to the list. A steer, a follow-up, or a correction does not replace the item already underway.
+When the kind is `standard-chat`, or `cloud-project` work spans more than one repo, read the new message before changing the plan. A steer, a follow-up, or a correction does not replace the item already underway.
 
 1. Read `context.kdl` and `plan-stack.kdl`.
-2. Add the new ask as its own item. If it has to happen first, set it `active`, add its id to the previous active item's `needs`, and set that previous item `open`.
-3. Do not mark the previous item `dropped`, and do not start a new list.
-4. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
-5. Say the active item's title in one sentence, then do that item.
+2. Decide whether the item already underway depends on the new ask.
+3. Add the new ask as its own item. Do not mark the item underway `dropped`, and do not start a new list.
+4. If the item underway does not depend on the new ask, leave it `active` and keep working on it. The new item stays `open`.
+5. If the item underway depends on the new ask, set the new item `active` and add its id to the older item's `needs`. The older item stays `open`.
+6. Run `agent-coordinator plan import` when that command is on the path or already built under `dev-centr/coordination`.
+7. Say the active item's title in one sentence, then do that item.
 
 Do not use TickTick, a human task file, or `routine-ledger` for items the agent can do. Those stay human steps, team boards, and recurring or upstream watches.
 
@@ -94,7 +96,7 @@ Before choosing the next implementation step, read `context.kdl` and the plan fi
 
 Resume the `active` item. If none is `active`, resume the first `open` item whose `needs` are all `done`. Name that item in one sentence, then do it.
 
-A new idea that must happen first becomes its own item with `status=active`. Add its id to the older item's `needs`. Leave the older item `open`. When the new item is `done`, set the older one `active` if its other needs are done.
+After the new message is on the tree, keep working on the item already underway when that item does not depend on the new ask. Switch only when it does: the new item becomes `active`, and the older item lists that id under `needs` and stays `open`. When the new item is `done`, set the older one `active` if its other needs are done.
 
 Finished items stay `done`. Drop an item only when the human cancels it (`dropped`).
 
