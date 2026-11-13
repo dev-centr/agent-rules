@@ -1,0 +1,15 @@
+= 2026-11-12
+:description: A password login includes a reset on the sign-in surface, for sites and for other programs.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for login reset
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-12
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Password login includes a reset
+
+* `general/login-reset.md` is the rule. `user.md` carries the one-line pointer.
+* Skills `bootstrap-org` and `ship-app` follow it when that work adds a password login.
+* A website is one case. A desktop app, a CLI, a TUI, and a service follow the same rule.

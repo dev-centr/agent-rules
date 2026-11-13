@@ -2,7 +2,8 @@
 name: ship-app
 description: >-
   Use when scaffolding, building, shipping, packaging, or maintaining an
-  application, GUI, CLI, TUI, library, game client, or service; Software
+  application, GUI, CLI, TUI, library, game client, or service; login,
+  password reset, forgot password; Software
   Product Essentials; About dialog; Help; debug dump; auto-update; installer;
   MSI; MSIX; winget; CI release pipeline; calling 1.0 done.
 ---
@@ -46,6 +47,8 @@ Package format defaults per artifact type (CLI, GUI, library, service, SDK), wit
 Stamp build metadata at CI/compile time. About, `--version`, crash headers, and updaters share one version truth. Prefer platform-native distribution first; add in-app updaters when the channel needs them. Follow type pages instead of forcing GUI patterns onto libraries or services.
 
 CLI and TUI apps: terminal output, logs, `--verbose`, `--json`, and exit codes follow the OpenShellOrg CLI Output standard (`general/cli-output.md`).
+
+**Login:** a password, passphrase, or PIN is unfinished until the sign-in surface can reset it. That surface may be a website, an app screen, or a CLI command. Provider-only sign-in with no local password does not add a password reset. Detail: `general/login-reset.md`.
 
 Functional shipping notes: skill `owned-changelog`. Version tags: skill `tag-release`. Docs hub: skill `antora-org-site`.
 

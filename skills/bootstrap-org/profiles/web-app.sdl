@@ -16,6 +16,7 @@ profile "web-app" {
 		if_auth {
 			host "netlify"
 			preset "netlify"
+			// A password login includes a reset on the sign-in surface. general/login-reset.md
 		}
 	}
 

@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-12
 
+=== Password login includes a reset
+
+* A sign-in that uses a password, passphrase, or PIN includes a reset on that sign-in surface.
+* The rule covers websites, apps, CLIs, TUIs, and services. Provider-only sign-in with no local password does not add a password reset.
+* Detail: xref:changelog-details/2026-11-12 - login-reset.adoc[Password login includes a reset].
+
 === Agent coordinator command
 
 * `agent-coordinator plan` is the plan tree. `agent-coordinator schedule wait` writes the wait on a node.

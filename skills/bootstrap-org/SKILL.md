@@ -3,7 +3,8 @@ name: bootstrap-org
 description: >-
   Use when the user asks to bootstrap an org or project, initialize an org,
   create a GitHub organization, start a company or nonprofit, scaffold a
-  CLI/library/Tauri/desktop/web app, populate org data, set up .github,
+  CLI/library/Tauri/desktop/web app, password login, password reset,
+  populate org data, set up .github,
   github.io, an Antora docs hub, pick a bootstrap profile, paste a profile { }
   block, or create an org agent-rules overlay. Imported homepage, existing
   Netlify site, Cloudflare Pages, or another host already publishing the
@@ -54,7 +55,7 @@ Batch remaining questions (AskQuestion when available). Skip items the profile a
 - Custom domain bought / verified? (else github.io)
 - Sibling / partner orgs to cross-link (do not absorb; footers: one homepage entry point per org — `general/partner-org-entrypoints.md`)
 - Repos to transfer vs leave (org)
-- Auth/login this session? (`web-app` then Netlify overlay)
+- Auth/login this session? (`web-app` then Netlify overlay). A password, passphrase, or PIN needs a reset on the sign-in surface before that login is done. Same rule for a CLI, app, or service. Detail: `general/login-reset.md`.
 - Registry / language (`library`)
 - Legal entity needed *this session*? Profile default is no
 
