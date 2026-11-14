@@ -1,0 +1,17 @@
+= 2026-11-13
+:description: Operator mail notes point at the draft email addendum and put the spoof warning in the same thread.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the email protocol addendum pointer
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-13
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Email addendum draft
+
+The spoof warning filed in the recipient's mailbox is in the same thread as the spoofed message.
+
+`general/org-mail-addresses.md`, skill `org-mail-addresses`, and skill `bootstrap-org` point at the draft specification. They do not copy it.
+
+https://team.docs.userdata.cloud/home/reference/email-protocol-addendum/[Email protocol addendum] is that draft, on the userdata.cloud member site.

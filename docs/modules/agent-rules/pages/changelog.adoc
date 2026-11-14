@@ -22,6 +22,11 @@ endif::[]
 
 == 2026-11-13
 
+=== Email addendum draft
+
+* The spoof warning is a new message in the same thread as the spoofed message. Operator mail notes point at the draft specification.
+* Detail: xref:changelog-details/2026-11-13 - email-protocol-addendum.adoc[Email addendum draft].
+
 === Operator mail addresses
 
 * Each owned apex gets `support@`, `postmaster@`, and `abuse@`. `mailer-daemon@` is a platform address and stays in the inbox.

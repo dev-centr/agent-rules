@@ -53,7 +53,9 @@ Compare the attached original on `fbl@` to mail the platform sent (sending IP, D
 
 When inbound mail for a local user claims to be from an address we control (including `mailer-daemon@`) and the sending IP or DKIM signature is not ours, or a platform IP has no matching bounce id or VERP token, treat it as a spoof.
 
-Tell the recipient in two places. Put a warning in the web UI. Also deliver a new message into that user's own mailbox explaining the spoof, so an IMAP or other mail app shows it with no web UI. The new message is from the platform (`mailer-daemon` or a notices address we control), addressed to the user. It is not an SMTP autoreply to the forged sender. Do not send anything to the spoof's envelope sender. That would be backscatter.
+Tell the recipient in two places. Put a warning in the web UI. Also deliver a new message into that user's own mailbox explaining the spoof, in the same thread as the spoofed message, so an IMAP or other mail app shows it with no web UI. The new message is from the platform (`mailer-daemon` or a notices address we control), addressed to the user. It is not an SMTP autoreply to the forged sender. Do not send anything to the spoof's envelope sender. That would be backscatter.
+
+Draft specification: https://team.docs.userdata.cloud/home/reference/email-protocol-addendum/ (member site). Source: `userdata-cloud/team-docs` `docs/modules/ROOT/pages/reference/email-protocol-addendum.adoc`.
 
 The operator incident still goes to the detector that reads `fbl@`. `abuse@` stays the public human contact. A spoof does not remove the `mailer-daemon` inbox whitelist.
 
