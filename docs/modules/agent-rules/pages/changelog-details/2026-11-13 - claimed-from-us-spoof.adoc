@@ -1,0 +1,19 @@
+= 2026-11-13
+:description: A spoof of an address we control is warned in the web UI and by a new message in the recipient's mailbox.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the claimed-from-us spoof warning
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-13
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Warn the mailbox about a spoof
+
+Inbound mail for a local user that claims to be from an address we control, including `mailer-daemon@`, is a spoof when the sending IP or DKIM signature is not ours, or when a platform IP has no matching bounce id or VERP token.
+
+The recipient is told in two places. The web UI shows a warning. A new message is also filed in that user's own mailbox, so an IMAP or other mail app shows it with no web UI. That message is from the platform (`mailer-daemon` or a notices address we control) and is addressed to the user. It is not an SMTP autoreply to the forged sender. Nothing is sent to the spoof's envelope sender.
+
+The operator incident still goes to the detector that reads the Feedback Loop (FBL) address `fbl@`. `abuse@` stays the public human contact. A spoof does not remove the `mailer-daemon` inbox whitelist.
+
+Filing that warning into the mailbox has to live in a mail server we can modify. A third-party mailbox host for end users does not give us a place to file it.

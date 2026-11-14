@@ -222,6 +222,8 @@ Do not restate those procedures here. Point at Business Bootstrap (email tutoria
 
 When the org owns domains, each apex gets `support@`, `postmaster@`, and `abuse@`. Do not invent a `mail.` hostname, and do not enable a catch-all. `mailer-daemon@`, where that address exists, is hard-whitelisted and is not a user. Detail: `general/org-mail-addresses.md` (skill `org-mail-addresses`).
 
+When inbound mail for a local user claims to be from an address we control, and the sending IP or DKIM signature is not ours, or a platform IP has no matching bounce id or VERP token, treat it as a spoof. Warn that person in the web UI and with a new message in their mailbox. Do not send anything to the forged envelope sender. The operator incident still goes to the detector that reads the Feedback Loop (FBL) address `fbl@`. `abuse@` stays the public human contact. Same detail page.
+
 ## Done when
 
 **Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; the public site is the imported homepage **or** a generated static site, never both; session-scoped docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.

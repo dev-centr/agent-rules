@@ -1,5 +1,5 @@
 = 2026-11-13
-:description: abuse@ stays the public human contact. Automated ARF feedback loops go to fbl@.
+:description: abuse@ stays the public human contact. A Feedback Loop (FBL) copy goes to fbl@.
 :page-audience: Maintainers tracking agent-rules documentation changes
 :page-usage-context: Changelog detail for the abuse@ and fbl@ split
 :page-orig-author: Grok 4.7 on behalf of Ryan Johnson
@@ -8,10 +8,10 @@
 :hide-page:
 :navtree-parent: changelog.adoc
 
-== Feedback loops go to fbl
+== Feedback Loop (FBL) copies
 
 `abuse@` is the public contact a person or another postmaster writes to. A person reads it. It is not the inbox for feedback-loop aggregates, Postmaster Tools, or the hijack detector.
 
-Automated ARF feedback loops go to `fbl@` on that domain. `fbl@` is not the published public contact. The detector reads `fbl@`. A spam complaint does not un-whitelist `mailer-daemon` and does not turn `abuse@` into a machine inbox.
+A Feedback Loop (FBL) sends its automated copy to `fbl@` on that domain. `fbl@` is not the published public contact. The detector reads `fbl@`. A spam complaint does not un-whitelist `mailer-daemon` and does not turn `abuse@` into a machine inbox.
 
-Gmail does not send per-message ARF. Do not point Postmaster Tools at `abuse@`.
+Gmail does not send these per-message copies. Do not point Postmaster Tools at `abuse@`.

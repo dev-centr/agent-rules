@@ -14,9 +14,11 @@ Do not invent a `mail.` hostname on every domain. User addresses, when a person 
 - `abuse@`
 - `bounces@`
 - `mailer-daemon@`
-- `fbl@`
+- Feedback Loop (FBL): `fbl@`
 
-`bounces@mail.userdata.cloud` is the envelope return path for mail the platform sends. A later delivery-status notice uses a null envelope sender and From `mailer-daemon@mail.userdata.cloud`. Those two addresses are operator destinations, not user accounts. `fbl@` is the automated feedback-loop address on each domain that already receives mail, including `mail.userdata.cloud`. It is not a published public contact.
+A Feedback Loop is a program a mailbox provider (Yahoo, Microsoft, and others) offers the sender. When someone at that provider marks the sender's message as spam, the provider emails a copy to an address the sender registered. The copy uses the Abuse Reporting Format (RFC 5965): the complaint outside, the original message attached. Our registered address for that automated copy is `fbl@`. `abuse@` is not that address. Gmail does not send these per-message copies.
+
+`bounces@mail.userdata.cloud` is the envelope return path for mail the platform sends. A later delivery-status notice uses a null envelope sender and From `mailer-daemon@mail.userdata.cloud`. Those two addresses are operator destinations, not user accounts. `fbl@` is on each domain that already receives mail, including `mail.userdata.cloud`. It is not a published public contact.
 
 ## mailer-daemon is hard-whitelisted
 
@@ -36,11 +38,19 @@ Anything this organization controls that is reported as spam is a cause for conc
 
 The Spam button at Gmail, Yahoo, or Microsoft does not forward the message to the operator. That provider trains its own filter. Never report `mailer-daemon`, or any platform address, with that button.
 
-Automated Abuse Reporting Format feedback loops (RFC 5965), where a provider offers them, go to `fbl@` on that domain. `fbl@` is not the published public contact. The detector reads `fbl@`. Do not register those loops to `abuse@`.
-
-Gmail does not send per-message ARF copies. Gmail complaint rates are aggregate, via Postmaster Tools. Do not point Postmaster Tools at `abuse@`.
+The detector reads `fbl@`. Do not register that loop to `abuse@`. Gmail complaint rates are aggregate, via Postmaster Tools. Do not point Postmaster Tools at `abuse@`.
 
 Compare the attached original on `fbl@` to mail the platform sent: sending IP, DKIM, and the bounce id or VERP token. A foreign IP is forgery. A platform IP with no matching send is a hijacked credential or daemon. Record it. Leave the inbox whitelist in place.
+
+## A claimed-from-us spoof
+
+When inbound mail for a local user claims to be from an address we control (including `mailer-daemon@`) and the sending IP or DKIM signature is not ours, or a platform IP has no matching bounce id or VERP token, treat it as a spoof.
+
+Tell the recipient in two places. Put a warning in the web UI. Also deliver a new message into that user's own mailbox explaining the spoof, so an IMAP or other mail app shows it with no web UI. The new message is from the platform (`mailer-daemon` or a notices address we control), addressed to the user. It is not an SMTP autoreply to the forged sender. Do not send anything to the spoof's envelope sender. That would be backscatter.
+
+The operator incident still goes to the detector that reads `fbl@`. `abuse@` stays the public human contact. A spoof does not remove the `mailer-daemon` inbox whitelist.
+
+This delivery behavior has to live in a mail server we can modify. A third-party mailbox host for end users does not give us a place to file that warning.
 
 ## DNS
 

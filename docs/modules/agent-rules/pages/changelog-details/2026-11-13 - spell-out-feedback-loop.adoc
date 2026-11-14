@@ -1,0 +1,15 @@
+= 2026-11-13
+:description: The first mention of the address is Feedback Loop (FBL), with a short definition of the provider program.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for spelling out Feedback Loop
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-13
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Spell out Feedback Loop
+
+The first mention of this address in the operator-mail skill and in `general/org-mail-addresses.md` is Feedback Loop (FBL).
+
+A Feedback Loop is a program a mailbox provider (Yahoo, Microsoft, and others) offers the sender. When someone at that provider marks the sender's message as spam, the provider emails a copy to an address the sender registered. The copy uses the Abuse Reporting Format (RFC 5965): the complaint outside, the original message attached. Our registered address for that automated copy is `fbl@`. `abuse@` is not that address. Gmail does not send these per-message copies.

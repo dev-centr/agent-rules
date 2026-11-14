@@ -3,7 +3,7 @@
 :page-audience: Maintainers and readers tracking functional history of this component
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
-:page-last-author: Grok Bot on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
 :page-last-edited: 2026-11-13
 
 ifndef::page-context-active[]
@@ -32,10 +32,21 @@ endif::[]
 * A spam report about an address, a sending IP, or a domain this organization controls is investigated. It is not a reason to blacklist that address or to drop the `mailer-daemon` inbox whitelist.
 * Detail: xref:changelog-details/2026-11-13 - spam-complaint-is-an-incident.adoc[A spam complaint is an incident].
 
-=== Feedback loops go to fbl
+=== Feedback Loop (FBL) copies
 
-* `abuse@` stays the public contact a person reads. Automated ARF feedback loops go to `fbl@`, which is not the published contact. Gmail Postmaster Tools is not pointed at `abuse@`.
-* Detail: xref:changelog-details/2026-11-13 - feedback-loops-go-to-fbl.adoc[Feedback loops go to fbl].
+* `abuse@` stays the public contact a person reads. A Feedback Loop (FBL) sends its automated copy to `fbl@`, which is not the published contact. Gmail Postmaster Tools is not pointed at `abuse@`.
+* Detail: xref:changelog-details/2026-11-13 - feedback-loops-go-to-fbl.adoc[Feedback Loop (FBL) copies].
+
+=== Warn the mailbox about a spoof
+
+* Inbound mail for a local user that claims to be from an address we control, when the sending IP, DKIM, or bounce id does not match, is a spoof.
+* The recipient gets a web UI warning and a new message in their own mailbox. Nothing is sent to the forged envelope sender.
+* Detail: xref:changelog-details/2026-11-13 - claimed-from-us-spoof.adoc[Warn the mailbox about a spoof].
+
+=== Spell out Feedback Loop
+
+* The first mention of that address is Feedback Loop (FBL), with a short definition of the provider program next to it.
+* Detail: xref:changelog-details/2026-11-13 - spell-out-feedback-loop.adoc[Spell out Feedback Loop].
 
 === A new message joins the plan
 
