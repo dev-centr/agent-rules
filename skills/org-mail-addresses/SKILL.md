@@ -2,7 +2,7 @@
 name: org-mail-addresses
 description: >-
   Use when setting up org email, support@, postmaster@, abuse@,
-  mailer-daemon, bounces@, default addresses on a domain, hard whitelist,
+  mailer-daemon, bounces@, fbl@, default addresses on a domain, hard whitelist,
   do not mark mailer-daemon as spam, do not un-whitelist, spam complaint,
   feedback loop, Abuse Reporting Format, RFC 5965, Postmaster Tools,
   Email Routing, catch-all, bootstrap domain email, or operator mail
@@ -21,7 +21,9 @@ On each apex the org controls:
 - `postmaster@`
 - `abuse@`
 
-Do not invent a `mail.` hostname on other domains. On `mail.userdata.cloud` only, also keep `postmaster@`, `abuse@`, `bounces@`, and `mailer-daemon@`. `bounces@` is the envelope return path. A DSN uses a null envelope sender and From `mailer-daemon@`. Those two are operator destinations, not user accounts. Do not open `name@mail.userdata.cloud` until a person has an account.
+`abuse@` is the public contact a person or another postmaster writes to. A person reads it. It is not an automated aggregate inbox.
+
+Do not invent a `mail.` hostname on other domains. On `mail.userdata.cloud` only, also keep `postmaster@`, `abuse@`, `bounces@`, `mailer-daemon@`, and `fbl@`. `bounces@` is the envelope return path. A DSN uses a null envelope sender and From `mailer-daemon@`. Those two are operator destinations, not user accounts. `fbl@` is also created on each apex that already has Email Routing and `abuse@`. It is not a published public contact. Do not open `name@mail.userdata.cloud` until a person has an account. Do not add `fbl@` on a null-MX parked domain.
 
 Do not enable a catch-all. Do not reserve a username blacklist.
 
@@ -39,9 +41,11 @@ If creating the filter needs a new mailbox login or a broader settings scope, sa
 
 A spam complaint about anything the org controls is an incident. That includes `mailer-daemon`, `support`, `postmaster`, `abuse`, `bounces`, any other address, the sending IPs, and the domains. Investigate it. Do not blacklist the address and do not remove the inbox whitelist.
 
-Do not press the Spam button at Gmail, Yahoo, or Microsoft for `mailer-daemon` or any platform address. That button trains the provider's filter and does not forward the message. Complaints to investigate arrive at `abuse@` in Abuse Reporting Format (RFC 5965) when a feedback loop is registered to that address. Gmail does not send per-message copies; its rates are aggregate in Postmaster Tools.
+Do not press the Spam button at Gmail, Yahoo, or Microsoft for `mailer-daemon` or any platform address. That button trains the provider's filter and does not forward the message. It does not turn `abuse@` into a machine inbox.
 
-Compare the attached original to mail the platform sent (sending IP, DKIM, bounce id or VERP token). A foreign IP is forgery. A platform IP with no matching send is a hijacked credential or daemon. Record it. Leave the whitelist in place. Detail: `general/org-mail-addresses.md`.
+Automated ARF feedback loops go to `fbl@` on that domain. `fbl@` is not the published public contact. The detector reads `fbl@`. Gmail does not send per-message ARF. Do not point Postmaster Tools at `abuse@`.
+
+Compare the attached original on `fbl@` to mail the platform sent (sending IP, DKIM, bounce id or VERP token). A foreign IP is forgery. A platform IP with no matching send is a hijacked credential or daemon. Record it. Leave the whitelist in place. Detail: `general/org-mail-addresses.md`.
 
 ## DNS
 
