@@ -27,6 +27,11 @@ endif::[]
 * Each owned apex gets `support@`, `postmaster@`, and `abuse@`. `mailer-daemon@` is a platform address and stays in the inbox.
 * Detail: xref:changelog-details/2026-11-13 - operator-mail-addresses.adoc[Operator mail addresses].
 
+=== A spam complaint is an incident
+
+* A spam report about an address, a sending IP, or a domain this organization controls is investigated. It is not a reason to blacklist that address or to drop the `mailer-daemon` inbox whitelist.
+* Detail: xref:changelog-details/2026-11-13 - spam-complaint-is-an-incident.adoc[A spam complaint is an incident].
+
 === A new message joins the plan
 
 * A standard chat writes its kind in `context.kdl` from the harness prompt: `harness-stack`, `cloud-project`, or `standard-chat`.

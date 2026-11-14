@@ -27,6 +27,18 @@ On every domain where `mailer-daemon@` exists (at least `mailer-daemon@mail.user
 
 If the mailbox connection can read mail but cannot create filters, write this rule and stop. Do not guess a destination, and do not start a login to widen access unless the person asks.
 
+## A spam complaint is an incident
+
+Anything this organization controls that is reported as spam is a cause for concern and investigation. That includes `mailer-daemon`, `support`, `postmaster`, `abuse`, `bounces`, any other address on these domains, the sending IPs, and the domains themselves. A spam complaint is an incident. It is not a reason to blacklist the address or to remove the inbox whitelist.
+
+The Spam button at Gmail, Yahoo, or Microsoft does not forward the message to the operator. That provider trains its own filter. Never report `mailer-daemon`, or any platform address, with that button.
+
+Complaints the operator can investigate arrive at `abuse@` as an Abuse Reporting Format message (RFC 5965) when a provider has a feedback loop: the complaint is outside, and the original message is attached. Register those loops to `abuse@` on that domain.
+
+Gmail does not send per-message copies. Gmail complaint rates are aggregate, via Postmaster Tools.
+
+Compare the attached original to mail the platform sent: sending IP, DKIM, and the bounce id or VERP token. A foreign IP is forgery. A platform IP with no matching send is a hijacked credential or daemon. Record it. Leave the inbox whitelist in place.
+
 ## DNS
 
 Read MX before changing a zone. If MX already points at a provider, do not replace it. Add the three apex addresses in that provider when the logged-in tooling can. If there is no MX, Cloudflare Email Routing is acceptable. The forward destination must already be verified on the account.

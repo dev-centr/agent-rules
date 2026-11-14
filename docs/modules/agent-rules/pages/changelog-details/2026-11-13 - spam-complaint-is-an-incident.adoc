@@ -1,0 +1,17 @@
+= 2026-11-13
+:description: A spam report about an address, a sending IP, or a domain is an incident. It does not remove the mailer-daemon inbox whitelist.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for spam complaints on operator mail
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-13
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== A spam complaint is an incident
+
+Anything this organization controls that is reported as spam is investigated. That includes `mailer-daemon`, `support`, `postmaster`, `abuse`, `bounces`, any other address, the sending IPs, and the domains. The report is not a reason to blacklist the address or to drop the inbox whitelist.
+
+The Spam button at Gmail, Yahoo, or Microsoft trains that provider's filter and does not forward the message. Platform addresses are not reported that way. Complaints to investigate arrive at `abuse@` in Abuse Reporting Format (RFC 5965) when a feedback loop is registered there. Gmail rates are aggregate in Postmaster Tools, not per-message copies.
+
+The attached original is compared to mail the platform sent. A foreign IP is forgery. A platform IP with no matching send is a hijacked credential or daemon. Record it. Leave the whitelist in place.
