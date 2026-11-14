@@ -22,6 +22,11 @@ endif::[]
 
 == 2026-11-13
 
+=== Operator mail addresses
+
+* Each owned apex gets `support@`, `postmaster@`, and `abuse@`. `mailer-daemon@` is a platform address and stays in the inbox.
+* Detail: xref:changelog-details/2026-11-13 - operator-mail-addresses.adoc[Operator mail addresses].
+
 === A new message joins the plan
 
 * A standard chat writes its kind in `context.kdl` from the harness prompt: `harness-stack`, `cloud-project`, or `standard-chat`.

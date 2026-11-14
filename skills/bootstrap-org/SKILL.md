@@ -220,6 +220,8 @@ Keep **human** vs **product** vs **marketing** mail on separate vendors/hosts. I
 
 Do not restate those procedures here. Point at Business Bootstrap (email tutorial, stage defaults, org `infra` pattern) and implement only what they confirmed.
 
+When the org owns domains, each apex gets `support@`, `postmaster@`, and `abuse@`. Do not invent a `mail.` hostname, and do not enable a catch-all. `mailer-daemon@`, where that address exists, is hard-whitelisted and is not a user. Detail: `general/org-mail-addresses.md` (skill `org-mail-addresses`).
+
 ## Done when
 
 **Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; the public site is the imported homepage **or** a generated static site, never both; session-scoped docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.

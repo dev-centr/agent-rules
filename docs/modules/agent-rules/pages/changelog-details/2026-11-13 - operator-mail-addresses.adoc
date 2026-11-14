@@ -1,0 +1,17 @@
+= 2026-11-13
+:description: Owned domains get support, postmaster, and abuse at the apex, and mailer-daemon stays in the inbox.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for operator mail addresses
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-13
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Operator mail addresses
+
+Each domain the organization controls gets `support@`, `postmaster@`, and `abuse@` at the apex. Those are operator destinations, not a username blacklist, and there is no catch-all.
+
+`mailer-daemon@` is a platform address. It is delivered to the inbox and is not used to train a spam filter. Google once had a compromised mailer daemon that sent spam; after that spam was reported, later legitimate mail from the same address kept landing in spam. The whitelist stays.
+
+The practice is `general/org-mail-addresses.md`. Skill `org-mail-addresses` applies it. Bootstrap points at that file when a new org owns domains.
