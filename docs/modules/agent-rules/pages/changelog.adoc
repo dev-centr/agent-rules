@@ -4,7 +4,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: Grok 4.7 on behalf of Ryan Johnson
-:page-last-edited: 2026-11-13
+:page-last-edited: 2026-11-15
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -19,6 +19,14 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-11-15
+
+=== Collapsible AsciiDoc contents
+
+* Public AsciiDoc READMEs put the generated table of contents in a details expander after the centered header.
+* Skill `public-readme` uses `:toc: macro`, an empty `:toc-title:`, and `toc::[]` between the passthroughs that open and close that expander.
+* Detail: xref:changelog-details/2026-11-15 - collapsible-asciidoc-toc.adoc[Collapsible AsciiDoc contents].
 
 == 2026-11-13
 

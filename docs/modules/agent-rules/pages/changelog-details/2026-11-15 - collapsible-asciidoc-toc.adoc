@@ -1,0 +1,17 @@
+= 2026-11-15
+:description: Public AsciiDoc READMEs collapse the table of contents under the centered header.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the AsciiDoc README table of contents expander
+:page-orig-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-author: Grok 4.7 on behalf of Ryan Johnson
+:page-last-edited: 2026-11-15
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Collapsible AsciiDoc contents
+
+Skill `public-readme` places the AsciiDoc table of contents in a `<details>` expander after the centered header, the same place the Markdown blank uses.
+
+`:toc: macro` with `toc::[]` after the header puts the list under the badges and title. The macro sits between two passthroughs, because a passthrough does not expand macros. An empty `:toc-title:` leaves the generated title div with no text. The summary text is Table of Contents. The HTML5 converter still writes that empty div. Unsetting the attribute writes the word `null` in Asciidoctor.js 2.0.26.
+
+On GitHub, a bare `:toc:` places the list above the header. `:toc: preamble` emits no list when the header is HTML rather than an AsciiDoc document title.

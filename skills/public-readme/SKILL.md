@@ -4,7 +4,9 @@ description: >-
   Use when creating or revising a public README, README.md, or README.adoc;
   GitHub-facing repo face; GitLab README; Best-README; Explore the docs;
   shields.io badges; Built With; contrib.rocks; for-the-badge chrome;
-  visitor-facing README; naive reader repo face.
+  visitor-facing README; naive reader repo face; AsciiDoc TOC;
+  table of contents above the header; toc::[]; :toc: macro;
+  details summary Table of Contents; toc-title.
 ---
 
 # Public README
@@ -23,7 +25,7 @@ Full templates and trapped-badge notes: [reference.md](reference.md).
 - Linked metric badges (destination = the thing represented, never the shield image URL)
 - Org repos with a docs hub: **Explore the docs »** text link → hub component URL, not a second per-repo Antora Pages site. No extra Docs/CI shield that fights the established chrome
 - Align GitHub **About homepage** with that same hub component URL for ordinary project repos (exceptions: org main/marketing site, or a product with its own domain/subdomain — skill `bootstrap-org`)
-- TOC when more than three sections
+- TOC when more than three sections, under the centered header. Markdown: `<details><summary>Table of Contents</summary>` after the header `</div>`. AsciiDoc: `:toc: macro`, an empty `:toc-title:`, and one `toc::[]` between passthroughs that open and close that same `<details>` block, after the header. On GitHub, bare `:toc:` places the TOC above that header, and `:toc: preamble` emits no TOC, because this header is not an AsciiDoc document title
 - **Built With** grouped by role (runtime / UI / docs / packaging), not a sticker row
 - Section back-to-top; Contact from real profile fields; omit empty Roadmap/Acknowledgments
 - Do not add a Docs/CI chip to the header unless that repo already uses one

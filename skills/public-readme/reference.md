@@ -42,7 +42,53 @@ Personal-user repos: skip the org-hub docs CTA unless that user publishes a docs
 
 ## Table of contents
 
-Include a TOC when the README has **more than three** sections (collapsible `<details>` is fine on Markdown).
+Include a TOC when the README has **more than three** sections.
+
+Markdown: a collapsible `<details>` block **after** the centered header `</div>`. Source order is the display order. See the blank.
+
+AsciiDoc: the centered header is an HTML passthrough, not an AsciiDoc document title. GitHub renders the README as embeddable HTML, so automatic TOC placement does not sit under that header.
+
+| Attribute | Result on GitHub with this header |
+| --- | --- |
+| `:toc:` or `:toc: auto` | TOC at the top of the page, above the badges and title |
+| `:toc: preamble` | No TOC. A preamble exists only when the document has an AsciiDoc title (`= Title`), and this header has none |
+| `:toc: macro` and `toc::[]` after the header | TOC under the header |
+
+Use the macro inside a `<details>` expander so the list matches the Markdown blank. One `toc::[]`, after both the `ifdef::env-github[]` header and the `ifndef::env-github[]` title block, and before the first `==` section. Split the expander: a passthrough does not expand macros, so `toc::[]` sits between the opening and closing passthroughs.
+
+```asciidoc
+:toc: macro
+:toclevels: 2
+:toc-title:
+:sectanchors:
+
+ifdef::env-github[]
+++++
+<div align="center">
+…
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
+= project_title
+
+project_description
+endif::[]
+
+++++
+<details>
+<summary>Table of Contents</summary>
+++++
+toc::[]
+++++
+</details>
+++++
+
+== About
+```
+
+The HTML5 converter always writes `<div id="toctitle" class="title">`. An empty `:toc-title:` leaves that div with no text, so `<summary>Table of Contents</summary>` is the only visible label. `:toc-title!:` writes the word `null` in Asciidoctor.js 2.0.26. GitHub's published HTML allow-list includes `details` and `summary`.
 
 ## Markdown header (required shape)
 
@@ -128,7 +174,18 @@ ifdef::env-github[]
 </div>
 ++++
 endif::[]
+
+++++
+<details>
+<summary>Table of Contents</summary>
+++++
+toc::[]
+++++
+</details>
+++++
 ```
+
+`:toc: macro` and an empty `:toc-title:` go with that `toc::[]`. See **Table of contents** for the GitHub placement of `:toc:` and `:toc: preamble` with this header.
 
 Built With: nested lists by role; `link:homepage[image:shield[Name]]` so the badge opens the project site.
 
