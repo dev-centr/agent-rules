@@ -22,7 +22,7 @@ Skills are for **heavy curricula** split **one skill per job** (e.g. `writing-ne
 
 ## On-ramp A — configure yourself
 
-1. Run skill **`harness-setup`** if `$CODE_ROOT/harness.md` is missing.
+1. Run skill **`harness-setup`** if `$CODE_ROOT/harness.md` is missing. During authorized machine setup, install/verify Git AI per **`agent-provenance`**; record native or generic integration in machine-local inventory before agent edits.
 2. Install [**hive-watch**](https://github.com/dev-centr/hive-watch) — release installer or hive clone; tray + `hived` daemon; run once; enable start at login. Skill **`hive-watch`**. Agents read `machine.md` + `hive-watch.status.json` instead of fetching remotes every chat. Pairs with [**rules-manager**](https://github.com/dev-centr/rules-manager) for agent-rules compose. Detail: `general/hive-watch.md`.
 3. Create `skills/<skill-name>/` with `SKILL.md` (`name` + trigger-word `description` — skill `write-a-skill`) and progressive-disclosure siblings.
 4. Install into `$SKILLS_DISCOVERY_ROOT` per `SKILLS_INSTALL` in `$harness.md` (junction, copy, or harness-native — **record method in harness.md, not in templates**).
@@ -35,7 +35,7 @@ Paste (and `@`-mention this file):
 
 ```text
 Follow skills/BOOTSTRAP.md in this agent-rules clone.
-Run skill harness-setup if $CODE_ROOT/harness.md is missing.
+Run skill harness-setup if $CODE_ROOT/harness.md is missing; install/verify Git AI per agent-provenance during authorized machine bootstrap (native hooks or generic agent-v1).
 Install hive-watch (dev-centr/hive-watch); run once; schedule daily fetch.
 Install agent skills under skills/<name>/ per harness.md.
 YAML description = trigger words (skill write-a-skill), not a lay blurb.
