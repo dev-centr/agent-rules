@@ -22,7 +22,7 @@ AsciiDoc house schema (minimal required attrs):
 :page-audience: New Dev-Centr members and anyone adopting agent-rules on a fresh machine
 :page-usage-context: Full teaching page on the docs hub (not a sidebar snippet or agent playbook)
 :page-orig-author: Ryan Johnson
-:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
 :page-last-edited: 2026-08-25
 ```
 
@@ -33,12 +33,12 @@ Optional but encouraged when known: `page-doc-type` / `page-diataxis`, `page-sta
 | `page-audience` | yes (for teaching pages) | **Audience role** (**lead** table) — **not shown** on component home surfaces |
 | `page-usage-context` | when not obvious | Usage context (**lead**) — **not shown** on component home surfaces |
 | `page-orig-author` | yes | Original author (**footer**; set once) |
-| `page-last-author` | yes | Latest contributor — teaching **byline** (`Last updated … by …`); also footer on component homes. Source form `<agent> on behalf of <human>` **displays** as `{human} (via {agent})` |
+| `page-last-author` | yes | Latest contributor — teaching **byline** (`Last updated … by …`); also footer on component homes. Set `name`, `harness`, and `model` as separate keys. The byline links to the page's commit history. |
 | `page-last-edited` | yes (when you know it) | Teaching **byline** date; omitted from footer when shown in byline |
 | `page-keywords` / `page-tags` | encouraged | Footer **Keywords** / **Tags** — each value links to `{page-context-keyword-base}/{slug}/` (default `/home/keywords/{slug}/`); register `@antora-supplemental/page-context/antora` so listings exist |
 | `page-context-surface` | optional | `component-home` (or `home`) forces home chrome when Antora attrs are missing |
 
-**Display vs source for agent-assisted credits:** keep writing `:page-last-author: Cursor agent on behalf of Ryan Johnson` in AsciiDoc. page-context **0.6+** shows `Ryan Johnson (via Cursor)` with optional GitHub avatar.
+**Display vs source for agent-assisted credits:** write `name`, `harness`, and `model` as separate keys. page-context 0.8 shows `Ryan Johnson, harness Cursor, agent grok-4.7` and links that byline to the page's commit history. It does not link a profile or show an avatar. A legacy `Cursor agent on behalf of Ryan Johnson` still displays as `Ryan Johnson via Cursor` and is not labeled a harness.
 
 ### Audience role (`page-audience`) — permissions, access, expectations
 
@@ -173,7 +173,7 @@ Do **not** mix agent-obligation copy into visitor pages. Agent playbooks stay in
 - Putting author/contributor chrome in the **lead** of a component home (footer only)
 - Hard-coding extended metadata into the body when Facto/`page-context` is available (attrs + `ifndef` fallback only for audience / authors / last updated)
 - Unwrapped hard-coded lists **and** the extension (duplicate chrome) — use `ifndef::page-context-active[]` or attrs-only
-- Crediting only an agent without `on behalf of <human>`
+- Crediting only an agent, with no person in `name`
 - Writing as a **chat continuation** (“as we discussed”, “per your setup”, assuming filled constants the stranger never set)
 - **Insider deixis** without teaching (“this user’s machine”, “your agent probes…”) when the stranger has no “this user” yet
 - Leading with **house variable soup** (`$AGENT_RULES_PATH`, `$CODE_ROOT`, …) before saying who the page is for
@@ -195,7 +195,7 @@ Worked example (titles + openings + Cool URI + chat residue): docs hub `agent-ru
 
 1. Are `page-audience`, `page-orig-author`, `page-last-author` (and `page-last-edited` when known) set in the header?
 2. Is the `ifndef::page-context-active[]` fallback present (teaching: audience role / authors / last updated; **component home: footer authors only, no audience lead**)?
-3. Agent-assisted credits use `<agent> on behalf of <human>`?
+3. Agent-assisted credits set `name`, `harness`, and `model` separately?
 4. Facto / hub playbook registers `page-context` and sets `page-context-active` when using Antora?
 5. Component home: no visible Audience role / Usage context; authorship at document end?
 6. Could a smart stranger who never opened this chat follow the page?
@@ -220,22 +220,38 @@ Skills that ship visitor copy must re-check this gate: `antora-org-site`, `publi
 
 ### Attribution strings
 
-| How the work was done | Credit string |
-| --- | --- |
-| Human only | `Ryan Johnson` (display name; forge handle OK) |
-| Agent-assisted | `<agent> on behalf of <human>` — e.g. `Cursor agent on behalf of Ryan Johnson` |
+Use separate fields. A model id is not too long, and it is not a secret. The old one-slot string put whatever the agent typed into a single credit, and the byline treated that whole string as the product. `Grok 4.7` in that slot is the model written where a harness name was expected.
 
-- **`<agent>`** = harness/product readers recognize (`Cursor agent`, `Claude Code`, `Hermes`, …), not an internal model slug.
-- **`<human>`** = person who directed or owns the change.
-- Do **not** list only the agent. Do **not** invent agent credit when history was clearly human-only.
-- Backfill from git when missing: first commit adding the file → original; latest substantive → latest. Add `on behalf of` only when the session was agent-assisted (e.g. `Co-authored-by: Cursor`). If unsure, credit the human alone.
+| Field | What to write |
+| --- | --- |
+| Person | `name=Ryan Johnson` |
+| Harness | `harness=Cursor` — the product that ran the session (`Cursor`, `Claude Code`, `grok-bot`) |
+| Agent | `model=grok-4.7` — the id the harness exposed, version included when that id has one |
+
+```asciidoc
+:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+```
+
+- Human only: `name=Ryan Johnson` (or a plain `Ryan Johnson` when no agent was involved).
+- Do **not** list only the agent. Do **not** invent a model id. If the harness does not expose one, omit `model`.
+- Do **not** put the model in `harness`, and do **not** put the harness in `model`.
+- A legacy `Grok 4.7 on behalf of Ryan Johnson` line is one unlabeled credit. Leave old pages as they are unless you know the harness and the model for that edit. Do not guess a split.
+- Backfill from git when the human name is missing: first commit adding the file → original; latest substantive → latest. If unsure the edit was agent-assisted, credit the human alone.
+
+The byline links to that page's commit history. It does not link a person's profile. Contributor profile links belong on the forge history page.
+
+### Contributors graph
+
+GitHub's contributors graph counts the commit author and a `Co-authored-by: Name <email>` trailer when that email belongs to a GitHub account. A GPG signature does not add a contributor. Git notes do not either.
+
+Cursor shows up because the Cursor app adds `Co-authored-by: Cursor <cursoragent@cursor.com>`, and that mailbox is the `cursoragent` account. Grok has no such account. Writing `Grok 4.7` into a byline or an `Agent-Model` trailer does not create a graph entry. A harness appears on the graph only when a real GitHub account exists for it and the commit trailer uses that account's email. Do not invent an email for Grok, xAI, or a model.
 
 Changelog **detail** pages may inherit from the index when thin stubs; otherwise set their own attrs.
 
 ### Pass checks (authors)
 
 1. Both original and latest attrs are present.
-2. Agent-assisted edits use `<agent> on behalf of <human>`.
+2. Agent-assisted edits set `name`, `harness`, and `model` on separate keys. A model id is not written into `harness`.
 3. Original was not overwritten by a later edit.
 
 ## Illustrations and figures (default)

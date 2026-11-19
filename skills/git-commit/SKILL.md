@@ -18,7 +18,9 @@ Load skill `agent-provenance` before the first agent edit, not only at commit ti
 Use native Git AI hooks when verified; otherwise wrap writes with `agent-v1`.
 After committing, inspect notes/stats for the actual user, harness and model;
 report missing instrumentation rather than guessing. Preserve existing author,
-signing and Co-authored-by rules. Optional model/harness trailers are owned-repo
+signing and Co-authored-by rules. Do not add a Co-authored-by trailer for a
+model, and do not invent an email so a harness shows up on the contributors
+graph. Optional model/harness trailers are owned-repo
 only and must come from attribution data, never a manually remembered model list.
 Do not use HEAD stats as the staged commit's provenance or automatically amend
 signed commits. Notes may auto-sync on push: check the skill's upstream/privacy

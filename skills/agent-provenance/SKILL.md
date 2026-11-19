@@ -13,6 +13,20 @@ Keep logical commits; do not split features by model. Git AI checkpoints provide
 line-level provenance between commits. Existing human author/signing and harness
 co-author rules stay unchanged: provenance is metadata, not a cryptographic signature.
 
+## Contributors graph
+
+GitHub's contributors graph is not Git AI, and it is not a GPG signature.
+The graph counts the commit author and a `Co-authored-by: Name <email>` trailer
+when that email is on a GitHub account. Cursor appears because the Cursor app
+adds `Co-authored-by: Cursor <cursoragent@cursor.com>`. Grok has no such account.
+"Grok Bot is not a native Git AI integration" means checkpoints are manual. It
+does not block the graph, and it does not put Grok on the graph.
+
+Do not invent a `Co-authored-by` email for Grok, xAI, or a model. A model id
+belongs in the Git AI `model` field, the `Agent-Model` trailer, and the docs
+byline `model` key. A harness appears on the graph only after a real GitHub
+account exists for that harness and the trailer uses that account's email.
+
 ## Identity and trust
 
 Git AI's `agent_id` has separate `tool` (harness), `model`, and `id` (session)

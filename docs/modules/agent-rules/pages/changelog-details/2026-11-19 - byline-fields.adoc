@@ -1,0 +1,14 @@
+= 2026-11-19
+:page-audience: Maintainers setting docs credits and reading the contributors graph
+:page-usage-context: Changelog detail for byline fields and GitHub contributor avatars
+:page-orig-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-edited: 2026-11-19
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Bylines name the person, the harness, and the agent
+
+* `general/documentation.md` now stores the person, the harness, and the model on separate keys. `grok-4.7` is a model. `Cursor` is a harness. Older pages that say `Grok 4.7 on behalf of Ryan Johnson` used the one slot the byline had, so the model was shown as if it were the product. Those lines stay until someone knows both values for that edit.
+* `@antora-supplemental/page-context` 0.8.0 links the byline to the page's commit history and drops profile links and avatars.
+* GitHub's contributors graph counts a commit author and a `Co-authored-by` email that belongs to a GitHub account. Signing a commit does not add an avatar. Git AI notes do not either. Cursor is on the graph because the app adds `cursoragent@cursor.com`. Grok has no GitHub account to sign as, and "not a native Git AI integration" only means its notes are checkpointed by hand.
