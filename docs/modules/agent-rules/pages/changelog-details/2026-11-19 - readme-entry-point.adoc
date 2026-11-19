@@ -1,0 +1,19 @@
+= 2026-11-19
+:page-audience: Maintainers writing a public README
+:page-usage-context: Changelog detail for the README entry-point rule
+:page-orig-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-edited: 2026-11-19
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== README is the entry point
+
+Skill `public-readme` treats the README as the entry point. Readers often never see the docs site first. Write it so it stands alone: what this is, who it is for, and the first action.
+
+When the real entry is a longer doc, the top of the README says so in one or two sentences and links both:
+
+* the in-repo source of that doc (a path or AsciiDoc xref that survives a published URL move)
+* the published page URL when one exists
+
+The README is not a sequel to a page the reader has not opened. Task-write-up and docs-build pipeline asides stay out of it ("the task write-up is…", "published on the next docs build").

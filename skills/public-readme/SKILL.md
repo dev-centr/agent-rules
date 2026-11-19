@@ -4,7 +4,8 @@ description: >-
   Use when creating or revising a public README, README.md, or README.adoc;
   GitHub-facing repo face; GitLab README; Best-README; Explore the docs;
   shields.io badges; Built With; contrib.rocks; for-the-badge chrome;
-  visitor-facing README; naive reader repo face; AsciiDoc TOC;
+  visitor-facing README; naive reader repo face; README entry point;
+  README stands alone; reader has not opened the docs; AsciiDoc TOC;
   table of contents above the header; toc::[]; :toc: macro;
   details summary Table of Contents; toc-title.
 ---
@@ -14,6 +15,15 @@ description: >-
 Repo **face** layout for owned / org repositories. Not product docs (those stay in `docs/`). Blanks: [dev-centr/readme-template](https://github.com/dev-centr/readme-template). Hand-edit per repo — do not batch-script rewrites.
 
 **Audience:** the forge visitor / downstream user — never the chat commissioner. Apply **Audience / point of view** in `general/documentation.md` before drafting. Lead with who the README is for. Wrong voice = maintainer notes, session TODOs, or agent briefing paste.
+
+**Entry point.** The README is the entry point. Readers often never see the docs site first. Write it so it stands alone: what this is, who it is for, and the first action.
+
+When the real entry is a longer doc, the top of the README says so in one or two sentences and links both:
+
+- the in-repo source of that doc (a path or AsciiDoc xref that survives a published URL move)
+- the published page URL when one exists
+
+Do not write the README as a sequel to a page the reader has not opened. Do not put task-write-up or docs-build pipeline asides in the README ("the task write-up is…", "published on the next docs build").
 
 **GitHub is the default adapter** (known to work). Other forges: same sections and chrome; swap metric URLs; do not copy GitHub-only AsciiDoc `ifdef::env-github[]` unless that host needs it.
 

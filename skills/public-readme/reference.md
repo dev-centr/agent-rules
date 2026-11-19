@@ -199,4 +199,4 @@ Keep install one-liners near the top. Light Contact/License only; do not bury re
 
 ## Relation to Diátaxis / Antora
 
-README ≠ product docs. Preserve useful README body; deep material stays in `docs/`. See also `general/documentation.md`.
+The README is the entry point and stands alone: what this is, who it is for, and the first action. Preserve the useful README body. Deep product docs stay in `docs/`. When a longer doc is the real entry, the top of the README says so and links the in-repo source and the published URL. Do not write it as a sequel to a page the reader has not opened. See also `general/documentation.md`.

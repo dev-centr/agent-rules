@@ -22,12 +22,19 @@ endif::[]
 
 == 2026-11-19
 
+=== README is the entry point
+
+* A public README stands alone: what this is, who it is for, and the first action. Readers often never open the docs site first.
+* When a longer doc is the real entry, the top of the README says so and links the in-repo source and the published URL.
+* Detail: xref:changelog-details/2026-11-19 - readme-entry-point.adoc[README is the entry point].
+
 === Bylines name the person, the harness, and the agent
 
 * Docs credits use `name`, `harness`, and `model` as separate keys. A model id such as `grok-4.7` is the agent. It is not written into the harness field.
 * The byline links to the page's commit history. It does not link a contributor profile. That change is in `@antora-supplemental/page-context` 0.8.0.
 * The contributors graph still depends on a GitHub account email in `Co-authored-by`. A signature and a Git AI note do not add an avatar. Grok has no such account.
 * Detail: xref:changelog-details/2026-11-19 - byline-fields.adoc[Bylines name the person, the harness, and the agent].
+
 
 == 2026-11-15
 
