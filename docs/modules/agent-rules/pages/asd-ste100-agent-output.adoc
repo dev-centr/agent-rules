@@ -1,0 +1,128 @@
+= ASD-STE100 for agent output (reference)
+:description: Bookmark ASD-STE100 (Simplified Technical English) as an optional agent output constraint—not Dev-Centr house policy.
+:page-audience: Authors experimenting with agent rules, skills, and assistant output style
+:page-usage-context: Docs-hub reference; evaluate before adopting in rules, skills, or product copy
+:page-orig-author: Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-11-20
+:page-doc-type: reference
+:page-status: draft
+
+ifndef::page-context-active[]
+[.page-context.page-context-lead]
+****
+Audience:: {page-audience}
+Status:: {page-status} — bookmark for later trial, not adopted house doctrine
+****
+
+[.page-context.page-context-footer]
+****
+Original author:: {page-orig-author}
+Latest contributor:: {page-last-author}
+Last updated:: {page-last-edited}
+****
+endif::[]
+
+This page records an **external idea** worth trying: prompt agents toward **ASD-STE100** (*Simplified Technical English*), the aerospace maintenance-manual controlled language.
+
+Dev-Centr has **not** adopted it.
+House voice for public titles and reader-facing docs stays in xref:editorial-titles.adoc[Editorial titles] and xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice].
+Use this reference when you want leaner tool output, error text, or handoffs—not when you are shipping outward essays or cold-reader hooks.
+
+== What ASD-STE100 is
+
+European aerospace industry groups created ASD-STE100 in the 1980s so non-native English mechanics could follow maintenance instructions without fatal misreadings.
+The Aerospace, Security and Defence Industries Association of Europe (ASD) still maintains the standard.
+
+It is a **controlled natural language**: bounded vocabulary, one meaning per word, short sentences, one instruction per sentence, active voice, simple tenses.
+
+Official overview: link:https://www.asd-ste100.org/[asd-ste100.org].
+
+== Core rules (summary)
+
+These are the constraints practitioners usually copy into agent prompts—not the full certification manual.
+
+* *Vocabulary* — roughly 900 approved general words, plus project-specific technical nouns and verbs.
+* *One word, one part of speech, one meaning* — e.g. *close* means shut, not near; *follow* means come after, not obey.
+* *Sentence length* — up to 20 words per procedural step; up to 25 words per descriptive sentence.
+* *One idea per sentence* — no multi-clause stacks.
+* *Tense and voice* — past, present, and simple future; active voice; avoid passive and progressive stacks.
+* *Noun clusters* — do not stack more than three nouns in a row.
+
+== Why it spread in Claude and agent workflows
+
+Anthropic engineers and downstream developers started parking STE-style instructions in `CLAUDE.md`, Claude Code `/output-style` profiles, and agent skills for two overlapping reasons.
+
+. *Less model bloat* — STE-style constraints cut padded intros, hedging, and thesaurus padding in assistant replies.
+. *Machine-to-machine clarity* — when one agent reads another agent's output, a tool schema, or an error string, ambiguity breaks execution the same way it breaks a mechanic alone with a manual.
+
+*Ecosystem notes (not endorsements):*
+
+* Lydia Hallie (Anthropic Claude Code) shared a custom output-style setup built around STE ideas.
+* Anthropic's official Writing Skills plugin lists ASD-STE100 as one measurable writing framework.
+
+== Practical adoption: "80% STE," not certification mode
+
+Strict 100% ASD-STE100 can drop nuance and necessary context in general explanations.
+Many practitioners—including developers who popularized the trick in public—prompt for **about 80% compliance** rather than audit-grade STE.
+
+Use strict mode only where misread cost is high (procedures, safety, irreversible ops).
+Use STE-flavored mode for explanatory prose: keep structure (short sentences, one idea, active voice) and allow normal vocabulary range.
+
+A sibling pattern already exists elsewhere in Dev-Centr docs: the business-bootstrap GCP transfer how-to uses strict STE for steps and STE-flavored prose for explanation (see that component's changelog for *GCP project transfer*).
+
+== Where to try it in this stack
+
+[cols="2,3"]
+|===
+| Surface | Suggested use
+
+| User Rules / `AGENTS.md` overlay
+| Optional paragraph under AI ops: "Prefer STE-flavored output for tool errors and step lists."
+
+| Skill `talk-normal`
+| Orthogonal — talk-normal is explicit user opt-in for casual chat tone; STE is constraint-first clarity. Do not blend without naming the winner on conflict.
+
+| Skill `new-user-text`
+| Complements first-screen and error copy; STE helps imperative UI strings; house rule still requires naming the reader on published pages (`general/documentation.md`).
+
+| Product / public docs
+| *Not* a substitute for xref:editorial-titles.adoc[Editorial titles] or cold-reader gates on titles and openings.
+
+| Multi-agent / coordinator output
+| Strong fit for status lines, spawn briefs, and structured handoffs where another model parses without asking follow-ups.
+|===
+
+== Starter prompt fragment (copy-ready)
+
+Paste into a rule file or output-style block; tune the percentage to taste.
+
+[source]
+----
+Write in Simplified Technical English (ASD-STE100) at about 80% compliance.
+
+Use short sentences. One instruction per sentence for procedures.
+Use active voice and simple verb tenses.
+Use common words; avoid metaphor and filler openers.
+Give one meaning per word in this reply (do not reuse a word as a different part of speech).
+Cap procedural steps at 20 words when possible.
+Keep explanations clear; do not drop safety-critical context for brevity.
+----
+
+== Related house material
+
+* xref:editorial-titles.adoc[Editorial titles] — outward title doctrine
+* xref:case-study-agent-voice-vs-reader-voice.adoc[Case study: agent voice vs reader voice] — when agent habits collide with reader voice
+* Skill `new-user-text` — textual interfaces for new users
+* Skill `talk-normal` — optional casual tone (user must ask)
+
+== Open evaluation (why this page exists)
+
+Ryan Johnson bookmarked this pattern before committing it to shared rules.
+When you trial it, note:
+
+* Does it shrink agent chatter without hiding blockers?
+* Does it improve tool-loop reliability?
+* Where does it fight editorial title doctrine or teaching voice?
+
+Record outcomes in your fork's overlay or open a PR to `dev-centr/agent-rules` if the house should adopt a named skill or `general/*.md` pointer.

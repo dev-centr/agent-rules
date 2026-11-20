@@ -4,7 +4,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
-:page-last-edited: 2026-11-19
+:page-last-edited: 2026-11-20
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -19,6 +19,13 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-11-20
+
+=== ASD-STE100 agent output reference
+
+* Bookmark page for Simplified Technical English as an optional agent output constraint—not adopted house policy; includes ecosystem context, 80% compliance note, and a starter prompt fragment.
+* Detail: xref:changelog-details/2026-11-20 - asd-ste100-reference.adoc[ASD-STE100 agent output reference].
 
 == 2026-11-19
 
@@ -35,6 +42,11 @@ endif::[]
 * The contributors graph still depends on a GitHub account email in `Co-authored-by`. A signature and a Git AI note do not add an avatar. Grok has no such account.
 * Detail: xref:changelog-details/2026-11-19 - byline-fields.adoc[Bylines name the person, the harness, and the agent].
 
+=== Code provenance trailers
+
+* The skill is `code-provenance`. Provenance belongs to the code. The former name was `agent-provenance`.
+* Summary trailers are `Harness:` and `Model:`, each with one value. The Git AI note still stores the pair. The model line does not repeat the harness.
+* Detail: xref:changelog-details/2026-11-19 - code-provenance.adoc[Code provenance trailers].
 
 == 2026-11-15
 

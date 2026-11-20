@@ -1,0 +1,14 @@
+= 2026-11-20
+:description: Bookmark ASD-STE100 as optional agent output style—not house policy.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for ASD-STE100 reference page
+:page-orig-author: Cursor agent on behalf of Ryan Johnson
+:page-last-author: Cursor agent on behalf of Ryan Johnson
+:page-last-edited: 2026-11-20
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== ASD-STE100 agent output reference
+
+* New xref:asd-ste100-agent-output.adoc[ASD-STE100 for agent output (reference)]: controlled English summary, Claude/agent-workflow context, 80%-compliance note, copy-ready prompt fragment, and contrast with editorial titles / talk-normal / new-user-text.
+* Status is draft bookmark only—no `general/*.md` rule or catalog skill yet.
