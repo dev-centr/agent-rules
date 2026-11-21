@@ -49,8 +49,8 @@ Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly
 ## Obligations (always)
 
 - **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
-- Write explanations in plain language.
-- **File names in chat:** follow `$CODE_ROOT/harness.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: markdown workspace-relative links — see `general/harness.md`.
+- **File names in chat:** when you mention a file you are working on, just edited, or that the user asked about, load skill `chat-file-links`.
+- **Harness skills:** some harnesses have no rules support. Assume a harness worth using auto-inserts skills from context. If this harness does not, say so in the chat, explain that org and user skills will not load by themselves, and suggest a harness that supports contextual skills.
 - **Template boundary:** never embed machine paths or harness-specific paths in forkable templates — see `general/harness-boundary.md`.
 - Treat `.gitignore` as an allow-list unless the project says otherwise (exclude `*` then allow specific).
 - **Sync with remote before multi-file work:** in each affected git repo, `git fetch` and check `git status -sb` for `behind`. If the branch tracks a remote and is behind, pull/rebase (or merge) **before** coding. Do not invent a large change set against a stale local HEAD.

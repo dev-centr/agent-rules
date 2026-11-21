@@ -6,7 +6,8 @@ description: >-
   CLI/library/Tauri/desktop/web app, password login, password reset,
   populate org data, set up .github,
   github.io, an Antora docs hub, pick a bootstrap profile, paste a profile { }
-  block, or create an org agent-rules overlay. Imported homepage, existing
+  block, docs template, which docs template, DOCS_TEMPLATE,
+  templates/docs-default.md, or create an org agent-rules overlay. Imported homepage, existing
   Netlify site, Cloudflare Pages, or another host already publishing the
   site: do not create github.io. Static site only when no homepage is
   imported. Repo About homepage, GitHub About URL, docs hub component URL.
@@ -58,6 +59,7 @@ Batch remaining questions (AskQuestion when available). Skip items the profile a
 - Auth/login this session? (`web-app` then Netlify overlay). A password, passphrase, or PIN needs a reset on the sign-in surface before that login is done. Same rule for a CLI, app, or service. Detail: `general/login-reset.md`.
 - Registry / language (`library`)
 - Legal entity needed *this session*? Profile default is no
+- Docs template, when `kind` is **org** (ask once): suggested default is `templates/docs-default.md` in `dev-centr/agent-rules` (https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md). Accepting the suggestion records that URL. A different template records the path or URL they name. Write `## Docs template` into `{org}/agent-rules/AGENTS.md` and the same URL into `{org}/.github/AGENT-RULES.md`. For `dev-centr`, record it in `dev-centr/agent-rules/AGENTS.md`. If `DOCS_TEMPLATE` is already in the org overlay, do not ask again. Do not paste the template body into the org file.
 
 When the profile or session includes a **publishable library** (or a consumer that would path-depend on an owned/unpublished library), load skill **`library-registry-choice`** before locking package/dependency metadata: check published status if consuming, ask publish vs local disk, encourage publish, suggest the registry.
 
@@ -161,7 +163,7 @@ After `{org}/.github` exists, run:
 pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-wrapper.ps1 -Org {org}
 ```
 
-That creates `{org}/agent-rules` (pointer README + overlay `AGENTS.md` only) and writes `{org}/.github/AGENT-RULES.md`. Org-only text stays in the wrapper - including org settings such as `PROJECT_MANAGEMENT` + `PROJECT_MANAGEMENT_URL` (team-task tool; ask during intake, default `github-projects`; skill `human-task-list`). The script never overwrites an existing wrapper `README.md`, overlay `AGENTS.md`, or `.github/AGENT-RULES.md`: it creates missing files and only appends missing sections (e.g. `## Org settings`), printing what it skipped. Shared changes: PR `dev-centr/agent-rules`. Details: [reference.md](reference.md).
+That creates `{org}/agent-rules` (pointer README + overlay `AGENTS.md` only) and writes `{org}/.github/AGENT-RULES.md`. Org-only text stays in the wrapper - including org settings such as `PROJECT_MANAGEMENT` + `PROJECT_MANAGEMENT_URL` (team-task tool; ask during intake, default `github-projects`; skill `human-task-list`) and `DOCS_TEMPLATE` (the docs template chosen at intake; suggested default `https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md`). Pass `-DocsTemplateUrl` when they chose a different template. The script never overwrites an existing wrapper `README.md`, overlay `AGENTS.md`, or `.github/AGENT-RULES.md`: it creates missing files and only appends missing sections (e.g. `## Org settings`, `## Docs template`), printing what it skipped. Shared changes: PR `dev-centr/agent-rules`. Details: [reference.md](reference.md).
 
 ### 4. Public website
 
@@ -207,7 +209,7 @@ Partner / related footers and homepage partner rows: **one entry point per org**
 
 ### Agent provenance prerequisite
 
-Before the first scaffold edit, use `harness-setup` + `agent-provenance` to detect
+Before the first scaffold edit, use `harness-setup` + `code-provenance` to detect
 Git AI. An authorized new-machine bootstrap installs/verifies it once; supported
 harnesses use native hooks, while new/unsupported harnesses use `agent-v1` with
 separate harness, model and session identities. Ordinary project bootstrap on an
@@ -236,7 +238,7 @@ When inbound mail for a local user claims to be from an address we control, and 
 
 ## Done when
 
-**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; the public site is the imported homepage **or** a generated static site, never both; session-scoped docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
+**Org.** About filled; avatar asset exists (uploaded or waiting); public `.github` + `profile/README.md` render (`?view_as=public`); house `{org}/agent-rules` overlay exists **or** was skipped as out of workflow; `DOCS_TEMPLATE` is recorded in that overlay and in `{org}/.github/AGENT-RULES.md` when the overlay was created; the public site is the imported homepage **or** a generated static site, never both; session-scoped docs exist or were skipped; news/blog not conflated; deeper ops linked, not silently skipped.
 
 **Project.** Repo About filled; scaffold matches the loaded profile; repo essentials (encoding-guard caller, monthly grouped `dependabot.yml` for github-actions) committed; Product Essentials Band A for that type is started (not deferred as polish); docs contribute to the org hub **or** were skipped; optional marketing site uses SolidStart static + solid-ui unless the profile overrode it.
 

@@ -104,14 +104,14 @@ Shop entry: `skills/BOOTSTRAP.md`. Inventory: `skills/CATALOG.md`.
 
 ## Chat file references
 
+Default behavior is skill `chat-file-links` (`CHAT_FILE_LINKS` = `markdown-workspace-links`).
+
 Follow `CHAT_FILE_LINKS` and `CODE_CITATION` from `$CODE_ROOT/harness.md`:
 
-- **`markdown-workspace-links`** — file name as markdown link to workspace-relative path (forward slashes). Example: [`SKILL.md`](skills/write-a-skill/SKILL.md).
+- **`markdown-workspace-links`** — skill `chat-file-links`.
 - **`line-range-fence`** — code regions use the harness line-range citation format when citing existing code.
 - **`plain-paths`** — workspace-relative paths in backticks; no special link syntax.
 - **`harness-default`** — use whatever link/citation behavior this harness documents; record the choice in `harness.md` after probing.
-
-Do not use `file://` or Windows backslashes in chat links. Do not link incidental mentions of a common filename as a concept.
 
 ## Stale APIs
 

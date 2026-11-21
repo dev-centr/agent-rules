@@ -10,7 +10,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Org,
     [string]$CodeRoot = $(if ($env:code) { $env:code + '\github.com' } elseif ($env:CODE_ROOT) { $env:CODE_ROOT + '\github.com' } else { 'Z:\code\github.com' }),
-    [string]$CanonicalUrl = 'https://github.com/dev-centr/agent-rules'
+    [string]$CanonicalUrl = 'https://github.com/dev-centr/agent-rules',
+    [string]$DocsTemplateUrl = 'https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md'
 )
 
 function Set-Utf8NoBomContent {
@@ -70,7 +71,7 @@ Clone or fetch that repo (`$CODE_ROOT/github.com/dev-centr/agent-rules`). Instal
     Write-IfMissing (Join-Path $path 'README.md') $text
 }
 
-function Write-WrapperAgents($path, $orgName) {
+function Write-WrapperAgents($path, $orgName, $docsUrl) {
     $text = @'
 # {0} org overlay
 
@@ -86,12 +87,19 @@ When assembling context for this org's repos, resolve:
 - `PROJECT_MANAGEMENT`: `github-projects` (`github-projects | linear | jira | other`) - where team tasks go (skill `human-task-list`)
 - `PROJECT_MANAGEMENT_URL`: `<board / project URL>`
 
+## Docs template
+
+- `DOCS_TEMPLATE`: {1}
+- Clone path: `templates/docs-default.md` inside `dev-centr/agent-rules` when that URL is the suggested default.
+- Suggested default unless intake chose another URL. Do not paste the template body here.
+- When you apply this template, or when someone asks what this org's docs rules are, link the template file in chat (workspace-relative markdown link when the canonical clone is in the workspace; otherwise the URL above).
+
 Shared changes: PR `dev-centr/agent-rules`. Org-only: commit here.
-'@ -f $orgName
-    Write-IfMissing (Join-Path $path 'AGENTS.md') $text @('## Org settings')
+'@ -f $orgName, $docsUrl
+    Write-IfMissing (Join-Path $path 'AGENTS.md') $text @('## Org settings', '## Docs template')
 }
 
-function Write-DotGithubPointer($path, $orgName) {
+function Write-DotGithubPointer($path, $orgName, $docsUrl) {
     $text = @'
 # Agent Rules
 
@@ -99,8 +107,13 @@ function Write-DotGithubPointer($path, $orgName) {
 - Shared: https://github.com/dev-centr/agent-rules
 
 The wrapper holds org-specific `AGENTS.md` only, including org settings such as `PROJECT_MANAGEMENT` (where team tasks go). Do not submodule the canonical tree — clone/fetch `dev-centr/agent-rules` instead.
-'@ -f $orgName
-    Write-IfMissing (Join-Path $path 'AGENT-RULES.md') $text
+
+## Docs template
+
+- `DOCS_TEMPLATE`: {1}
+- The overlay `AGENTS.md` records the same choice. A clone of this repo shows it without a machine-local Cursor settings file.
+'@ -f $orgName, $docsUrl
+    Write-IfMissing (Join-Path $path 'AGENT-RULES.md') $text @('## Docs template')
 }
 
 function Remove-TemplateSubmodule {
@@ -137,7 +150,7 @@ try {
 
     Remove-TemplateSubmodule
     Write-WrapperReadme $wrapperPath $Org
-    Write-WrapperAgents $wrapperPath $Org
+    Write-WrapperAgents $wrapperPath $Org $DocsTemplateUrl
 
     git add README.md AGENTS.md
     git add -u
@@ -166,7 +179,7 @@ if (Test-Path $dotGithubPath) {
             }
         }
 
-        Write-DotGithubPointer $dotGithubPath $Org
+        Write-DotGithubPointer $dotGithubPath $Org $DocsTemplateUrl
         git add -f AGENT-RULES.md .gitmodules 2>$null
         git add -u
 

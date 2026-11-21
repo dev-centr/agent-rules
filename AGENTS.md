@@ -73,9 +73,16 @@ Repo-local `AGENTS.md` in the active project is **additive** — read it when yo
 - **Hive remotes:** skill `hive-watch` + tool [`dev-centr/hive-watch`](https://github.com/dev-centr/hive-watch) — scheduled fetch; agents read `machine.md` stamp + `hive-watch.status.json` instead of per-chat hive fetch. Detail: `general/hive-watch.md`.
 - **Template boundary:** read `general/harness-boundary.md` before editing forkable files; skill `harness-setup` for machine config.
 
+## Docs template
+
+- `DOCS_TEMPLATE`: https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md
+- Path in this repo: `templates/docs-default.md`
+- This org uses the suggested default. Replace the URL to choose a different template. Do not paste the template body into this file.
+- When you apply this template, or when someone asks what this org's docs rules are, link [`docs-default.md`](templates/docs-default.md).
+
 ## Agent attribution
 
-- **Agent provenance:** load skill `agent-provenance` before agent edits and commits; use Git AI with separate user/harness/model identities and owned-versus-upstream sharing policy.
+- **Code provenance:** load skill `code-provenance` before agent edits and commits; use Git AI with separate user/harness/model identities and owned-versus-upstream sharing policy.
 
 ## AI ops
 

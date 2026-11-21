@@ -1,0 +1,18 @@
+= 2026-11-20
+:description: Docs preferences move to a default template; chat file names load a skill.
+:page-audience: Maintainers tracking agent-rules documentation changes
+:page-usage-context: Changelog detail for the docs template and chat file links
+:page-orig-author: Ryan Johnson
+:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-edited: 2026-11-20
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Docs template and chat file links
+
+* Removed the always-on sentence `Plain language: keep explanations easy to read.` from `user.md` (and the conversational sentence that followed it on that bullet). `general/plain-speech.md` stays on disk and is no longer linked from the preamble.
+* Chat file names are skill `chat-file-links`. The preamble tells the agent to load that skill when it mentions a file it is working on, just edited, or that the user asked about.
+* Diátaxis, AsciiDoc, page-audience / page-usage-context / page-orig-author / page-last-author, and news-outward / blog-inward title rules moved into `templates/docs-default.md`. The personal preamble points at that file and does not state them as unconditional law.
+* `bootstrap-org` asks once which docs template to use. Accepting the suggestion records the default template URL in the org overlay and in `{org}/.github/AGENT-RULES.md`.
+* A harness warning in `user.md` tells the agent to say so when the harness does not auto-insert skills from context.
+* The affirmative-wording sentence was left in place. No docs viewer was added.

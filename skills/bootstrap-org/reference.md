@@ -60,6 +60,8 @@ pwsh $CODE_ROOT/github.com/dev-centr/agent-rules/scripts/setup-org-agent-rules-w
 
 Creates `{org}/agent-rules` with a pointer README and overlay `AGENTS.md`. Does **not** add a git submodule (a SHA pin goes stale). Writes `AGENT-RULES.md` in `{org}/.github`. Shared rules: clone/fetch `dev-centr/agent-rules` as `AGENT_RULES_PATH`. Shared changes: PR that repo. Org-only: commit the wrapper.
 
+`DOCS_TEMPLATE` in the overlay is a URL (default `https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md`). The same URL is in `{org}/.github/AGENT-RULES.md`, so a clone of the org `.github` repo or the wrapper still shows the choice without a machine-local Cursor settings file. Pass `-DocsTemplateUrl` when intake chose a different template. Do not paste the template body into the org repo.
+
 Skip this script for orgs the user does not own.
 
 Git submodules record one commit. `git pull` on the wrapper does not float `dev-centr/agent-rules`. Dependabot can bump a SHA, but that is still a pin. House orgs therefore **point** at the canonical repo instead of vendoring it.

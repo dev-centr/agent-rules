@@ -22,6 +22,11 @@ endif::[]
 
 == 2026-11-20
 
+=== Docs template and chat file links
+
+* Diátaxis, AsciiDoc, page audience, and title preferences moved out of the personal preamble into the suggested default template. Orgs point at that file. Chat file names load skill `chat-file-links`.
+* Detail: xref:changelog-details/2026-11-20 - docs-template-and-chat-file-links.adoc[Docs template and chat file links].
+
 === ASD-STE100 agent output reference
 
 * Bookmark page for Simplified Technical English as an optional agent output constraint—not adopted house policy; includes ecosystem context, 80% compliance note, and a starter prompt fragment.

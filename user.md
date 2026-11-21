@@ -14,12 +14,12 @@
 - HUMAN_TASKS_BACKEND: `ticktick` (`ticktick | file | none`; machine override in `$HARNESS`; skill `human-task-list`)
 
 ## Core
-- Plain language: keep explanations easy to read. Default to conversational, direct speech — not jargon-heavy or corporate. Detail: `general/plain-speech.md`.
 - Tool inventory record: keep a local snapshot of which tools are available on the current machine. Detail: `general/tool-inventory.md` (skill `tool-inventory`).
 - **Harness-neutral:** read `$HARNESS` and `general/harness.md` when chat formatting, skill discovery, or always-on injection behavior matters. Skill `harness-setup` probes a new machine or harness.
 - **Sync skills/rules on drift - always, without asking:** whenever local is out of date (at session start and after any commit/pull in `$AGENT_RULES_PATH`, compare `HEAD` to `AGENT_RULES_SYNCED_SHA`; any mismatch or missing catalog skill counts), when discovery install, always-on paste, or `$AGENT_RULES_PATH` SHA drifts from the shared reference, run skill `sync-agent-rules` and apply updates (stamp `AGENT_RULES_SYNCED_SHA` + `AGENT_RULES_SYNCED_LABEL` / `skills-set/*` in `$HARNESS`). Detail: `general/rules-skills-sync.md`.
 - **Template boundary:** never write machine paths, harness names, or usernames into forkable templates — see `general/harness-boundary.md`.
-- **File names in chat:** follow `CHAT_FILE_LINKS` in `$HARNESS` (default: markdown link to workspace-relative path, forward slashes). Detail: `general/harness.md`.
+- **File names in chat:** when you mention a file you are working on, just edited, or that the user asked about, load skill `chat-file-links`.
+- **Harness skills:** some harnesses have no rules support. Assume a harness worth using auto-inserts skills from context. If this harness does not do that, say so in the chat, explain that org and user skills will not load by themselves, and suggest using a harness that supports contextual skills.
 - Gitignore: allow-list (`*` then `!path`); update when adding files. Do **not** allow-list `machine.md` or `harness.md`.
 - **Hive remotes (prefer hive-watch):** do not `git fetch` the whole hive at chat start. Read **Last checked** in `$MACHINE` (hive-watch block) and `$CODE_ROOT/hive-watch.status.json`. If checked within **24h**, trust the status file; pull/rebase only repos you will edit that show behind. If stale, prefer the **hive-watch** tray/daemon (skill `hive-watch`) — not a blanket fetch every chat. Detail: `general/hive-watch.md`.
 - **End of agent run:** if the run changed files, compose logical commits and push before the final reply (skill `push-code`). Detail: `general/end-of-run.md`. In multitask / multi-subagent / harness swarm waves: workers **commit only**; parent pushes once after the wave (`general/parallel-git-closeout.md`) — omit push auth from worker briefs.
@@ -40,7 +40,7 @@
 - **Login reset:** a sign-in that uses a password, passphrase, or PIN includes a reset on that sign-in surface (website, app, CLI, TUI, or service). Provider-only sign-in with no local password does not add one. Detail: `general/login-reset.md`.
 - **Agent workspace:** canonical `$AGENT_WORKSPACE_ROOT` (utilities + `temp/`); discoverability **`$AGENT_WORKSPACE_LINK`** or `~/AgentWorkspace` (junction/symlink). **Scratch** → `$AGENT_TEMP_ROOT/scratch/`. **New machine-global agent tools** → skill `agent-workspace-global` (unless user explicitly opts out). **Migrate/clean:** skill `agent-workspace-migrate`. Spill stays native. `general/agent-workspace.md`, skill `agent-temp`. PowerShell: `$env:USERPROFILE`, never `%userprofile%`.
 
-- **Agent provenance:** before agent edits or commits, load skill `agent-provenance` (Git AI native hooks or generic `agent-v1`; exact exposed model or `unknown`; no third-party notes publication).
+- **Code provenance:** before agent edits or commits, load skill `code-provenance` (Git AI native hooks or generic `agent-v1`; exact exposed model or `unknown`; no third-party notes publication).
 
 ## Environment
 - OS/Shell: default Windows 10/11 unless profile says otherwise; recommend Nushell as user default; agent terminals may be PowerShell 7 (`pwsh`) or Windows PowerShell 5.1 - 5.1 mangles UTF-8 on read/write (`general/text-encoding.md`).
@@ -70,18 +70,15 @@
 - Issues: file for bugs, blockers, and external coordination — not routine owned-repo work (skill `owned-changelog`). When filing: skills `issue-reports` + `issues-repo-record` (when `ISSUES_REPO` set; always push; prefer `gh --attach`, keep `images/` backup); never chat-only.
 
 ## Docs
-- Structure: Diátaxis (tutorials, how-to, explanation, reference).
-- Format: AsciiDoc by default; retain Markdown on upstream forks; keep/add Markdown when a package registry only parses Markdown. npm and code.dlang.org read root `README.md`. The DUB registry does not render AsciiDoc. A D package adds that Markdown file beside `README.adoc`. Do not rename or delete it. Detail: skill `public-readme`, skill `publish-to-dub`.
+- **Docs template (not personal law):** Diátaxis, AsciiDoc, page audience, news vs blog, and titles are an org choice. Suggested default: [`docs-default.md`](templates/docs-default.md) (`https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md`). Initializing an org asks once which template to use (skill `bootstrap-org`) and writes that pointer into the org's committed `{org}/agent-rules` overlay and `{org}/.github/AGENT-RULES.md`. Later sessions read the pointer and do not ask again. When you apply the template, or when a user asks what the org's docs rules are, link the template file (workspace-relative markdown link; skill `chat-file-links`).
 - **Illustrations:** new/updated teaching pages need at least one figure (diagram, screenshot, mockup, or source still) unless pure tabular reference or a thin changelog stub. Detail: `general/documentation.md`.
 - **Diagram SVG output:** whenever creating, rendering, exporting, or substantially editing a diagram in any context, load skill `diagram-svg-output`; ship standalone SVG with bundled light/dark presets and fixed output when required.
-- **Audience role / POV:** `page-audience` renders as **Audience role** (Facto/`page-context` 0.6.2+); keep `ifndef::page-context-active[]` fallback (teaching: audience role / authors; **component homes: footer authors only — never show audience-role/usage chrome**). Value = **necessary role** (permissions / access / usage expectations — Developer ≠ User, Admin ≠ Member; not task padding). Surface/channel → `page-usage-context`. **Lede must orient without the Audience role table** (chrome ≠ body orientation). Agent-assisted **source** form: `<agent> on behalf of <human>` — **display** (page-context 0.6+): `Name (via Agent)`. Keywords link to `/home/keywords/{slug}/` listings. **Re-check after drafting** (no structural chat residue in openings; slug = H1 unless named absorb). Detail: `general/documentation.md`. Case study: docs hub `case-study-agent-voice-vs-reader-voice`.
-- Titles: cold-reader + enthymeme — `$AGENT_RULES_PATH/agents/editorial/titles.md`. Title **and lede** orient a stranger **without relying on Audience role chrome**; do not “fix” implication-dense titles into fully scoped theses unless asked; **slug = title**. News outward / blog inward via `writing-news` / `writing-blog`. **Antora:** H1 = `nav.adoc` label = no divergent `:navtitle:`; section landings = linked parent (link text = H1) + `index.adoc` + `html_extension_style: indexify` — never `.Section` + Overview, never mix `.Title` with sibling linked parents, never `overview.adoc` / advertise `index.html` — `general/documentation.md`. In-repo IDE rules per `IDE_PROJECT_RULES` in `$HARNESS`; this file stays the paste preamble.
+- In-repo IDE rules follow `IDE_PROJECT_RULES` in `$HARNESS`. This file stays the paste preamble.
 - Project facts: `AGENTS.md` + README/docs. Do not commit per-repo `machine.md`.
 - On demand (do not inline): `antora-org-site`, `public-readme`, `ship-app`, `draft-pr`, `writing-news`, `writing-blog`, `issue-reports`, `issues-repo-record`, `demo-site-wiring`, `logo-svg-marks`, `typeface-selection` — `skills/CATALOG.md`.
 - **Product SVG logos (first pass):** when creating or shipping a product logo / app glyph / favicon SVG family, load skill `logo-svg-marks` **immediately** and run the Opus design subagent — do not invent the mark in the coding agent and wait for rejection. Detail: `skills/logo-svg-marks/SKILL.md`.
 
 ## AI ops
-- AsciiDoc: checklists `* [ ]`; blank line after **bold** headings; list continuations `+`; images `image::`.
 - **Machine rules:** **only** `$CODE_ROOT/machine.md`. Create if missing; counter from 1. Never commit. Format: `machine.example.md`.
 - **Harness rules:** **only** `$CODE_ROOT/harness.md`. Create via skill `harness-setup` if missing. Never commit. Format: `harness.example.md`.
 - Stale APIs: Context7 MCP when `MCP_CONTEXT7 = available` in `$HARNESS`; else skill `outdated-code-protocol`.

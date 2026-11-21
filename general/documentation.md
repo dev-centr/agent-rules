@@ -2,6 +2,8 @@
 
 Read this file when you **author, structure, or publish** project documentation for repositories the user owns. Skip it for pure code tasks with no doc impact.
 
+Suggested default when an org has not chosen another template: [`docs-default.md`](../templates/docs-default.md) (https://github.com/dev-centr/agent-rules/blob/main/templates/docs-default.md). The org records that pointer in its committed agent-rules overlay. This file is the long gate that template applies. It is not personal always-on law. When you apply the template, or when someone asks what the org's docs rules are, link the template file.
+
 ## Audience role / point of view (required gate)
 
 **Published docs are for the reader on the page — not for the person in this chat.**
@@ -244,7 +246,7 @@ The byline links to that page's commit history. It does not link a person's prof
 
 GitHub's contributors graph counts the commit author and a `Co-authored-by: Name <email>` trailer when that email belongs to a GitHub account. A GPG signature does not add a contributor. Git notes do not either.
 
-Cursor shows up because the Cursor app adds `Co-authored-by: Cursor <cursoragent@cursor.com>`, and that mailbox is the `cursoragent` account. Grok has no such account. Writing `Grok 4.7` into a byline or an `Agent-Model` trailer does not create a graph entry. A harness appears on the graph only when a real GitHub account exists for it and the commit trailer uses that account's email. Do not invent an email for Grok, xAI, or a model.
+Cursor shows up because the Cursor app adds `Co-authored-by: Cursor <cursoragent@cursor.com>`, and that mailbox is the `cursoragent` account. Grok has no such account. Writing `Grok 4.7` into a byline or a `Model` trailer does not create a graph entry. A harness appears on the graph only when a real GitHub account exists for it and the commit trailer uses that account's email. Do not invent an email for Grok, xAI, or a model.
 
 Changelog **detail** pages may inherit from the index when thin stubs; otherwise set their own attrs.
 

@@ -7,8 +7,8 @@ These apply universally unless a profile says otherwise.
 
 ## General best practices
 
-- Write explanations as if for readers who want plain language.
-- **File names in chat:** follow `$CODE_ROOT/harness.md` (`CHAT_FILE_LINKS`, `CODE_CITATION`). Default: highlight the **file name** as a markdown link to the workspace-relative path (forward slashes). Example: [`SKILL.md`](skills/write-a-skill/SKILL.md). Detail: `general/harness.md`.
+- **File names in chat:** when you mention a file you are working on, just edited, or that the user asked about, load skill `chat-file-links`.
+- **Harness skills:** some harnesses have no rules support. Assume a harness worth using auto-inserts skills from context. If this harness does not, say so in the chat, explain that org and user skills will not load by themselves, and suggest a harness that supports contextual skills.
 - Use `.gitignore` as an allow-list with additional exclusions. Exclude all files by default and update the allowlist when adding new files.
 - Always put Python projects in a `venv`.
 - When building a project fails, check for outdated code instead of downgrading dependencies. If a build fails because of a missing icon, stop building. Instead, import icons from a free icon library online to build the app, or ask the user to add the missing icon.
