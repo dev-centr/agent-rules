@@ -17,4 +17,4 @@ Every site added to the catalog records:
 
 1. **Live URL**
 2. **Date added (`YYYY-MM-DD`)** — required minimum so future readers know which design era earned inclusion
-3. **Direct Wayback Machine archive snapshot in source** — ensures local readers and agents (without the published hub's Linkinator hover button) can inspect the historical design directly; tag the archive link with `role=lini-skip` so it is not double-wrapped on the published hub
+3. **Direct Wayback Machine archive snapshot in source** — ensures local readers and agents (without the published hub's Linkinator hover button) can inspect the historical design directly; Linkinator (`v0.1.13+`) skips `archive.org` automatically (use `role=linkinator-skip` for explicit opt-out on other links)
