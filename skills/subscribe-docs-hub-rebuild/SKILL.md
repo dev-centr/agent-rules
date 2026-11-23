@@ -67,17 +67,27 @@ Optional: resolve `github.event.client_payload.ref` for checkout when dispatch c
 * Greenfield template: https://github.com/antora-supplemental/antora-github-deploy-template
 * How-to prose: https://docs.antora-supplemental.org/antora-deployment/#auto-rebuild-when-content-sources-or-extensions-update
 
-## Publisher side (optional on source/extension repos)
+## Publisher side (prefer GitHub CI automation; quiet agent fallback)
 
-Automatic push → hub rebuild is **optional**. Agents and humans can always poke with `gh api repos/{org}/docs/dispatches`.
+**Preferred:** let **GitHub Actions** detect docs pushes and trigger the hub automatically via `repository_dispatch` (`notify-docs-hub.yml` + org/repo secret `DOCS_DISPATCH_TOKEN` or `DOCS_HUB_DISPATCH_TOKEN`) instead of relying on agents to redeploy hubs manually.
 
-When you want CI notify:
-
-1. Copy from https://github.com/antora-supplemental/antora-workflow-templates
+1. Copy from https://github.com/antora-supplemental/antora-workflow-templates (or call the org reusable workflow in `{org}/.github`):
    * **`notify-docs-hub.yml`** — content repos (`docs-source-updated`, usually `docs/**` paths)
    * **`notify-docs-hub-extension.yml`** — extensions/themes/packs (`extension-updated`)
 2. Bulk install on many extension repos: `node scripts/install-notify-docs-hub-extension.mjs` (manifest `notify-extension-repos.json` in that repo).
-3. Org (or repo) secret **`DOCS_DISPATCH_TOKEN`**: PAT or GitHub App token with permission to `repository_dispatch` on the hub. If unset, notify workflows log and exit 0 (safe for forks).
+3. Org (or repo) secret **`DOCS_DISPATCH_TOKEN`** (or **`DOCS_HUB_DISPATCH_TOKEN`** for link-cache invalidation): fine-grained PAT or GitHub App token with `contents: write` / `repository_dispatch` permission on the hub. If unset, notify workflows log and exit 0 (safe for forks).
+
+**Quiet agent fallback (until GitHub CI auto-notify is active):** when an agent pushes `docs/**` changes to a content-source repo whose dependent docs hub is **not** yet auto-triggered by GitHub Actions (notify workflow missing, or `DOCS_DISPATCH_TOKEN` / `DOCS_HUB_DISPATCH_TOKEN` unset on org/repo):
+
+1. Quietly trigger the dependent hub rebuild right after push:
+   ```bash
+   gh api repos/{org}/docs/dispatches \
+     -f event_type=docs-source-updated \
+     -f "client_payload[source]=<owner>/<repo>" \
+     -f "client_payload[ref]=main" \
+     -f "client_payload[sha]=<sha>"
+   ```
+2. **Suggest (or wire) the GitHub CI auto-notify workflow** (`notify-docs-hub.yml` + org dispatch secret) in lieu of repeated manual agent dispatches, and if the org secret is missing, add a one-time human task (`human-task-list`) to configure it.
 
 **Do not** install publisher workflows on a brand-new extension until something actually depends on it — the hub subscription is what matters at scaffold time.
 

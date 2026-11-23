@@ -7,9 +7,13 @@ the shared agent-rules reference so every machine stays current.
 
 ## Rule
 
-When **local** skills or rule overlays **drift** from the shared reference (`$AGENT_RULES_PATH`), the agent **must** run skill **`sync-agent-rules`** and **apply** updates (fetch/pull reference, repair discovery installs, refresh `$LOCAL_RULES_DIR` / always-on pointers, stamp SHA + label). Do not only diagnose.
+When **local** skills, rule overlays, or rules/skills dependencies **drift** from the shared reference (`$AGENT_RULES_PATH`), the agent **must** run skill **`sync-agent-rules`** and **apply** updates (fetch/pull reference, repair discovery installs across **all active harnesses** on the workstation, verify `PATH` integrity and auto-install missing rules/skills dependencies, refresh `$LOCAL_RULES_DIR` / always-on pointers, stamp SHA + label). Do not only diagnose.
 
 **Always sync when local is out of date - no asking, no deferring.** Check at session start (before relying on skills) and again after you commit to, pull, or push `$AGENT_RULES_PATH` yourself: your own commits move `HEAD` past `AGENT_RULES_SYNCED_SHA` and may add catalog skills that are not yet installed. Nothing else updates the stamp automatically.
+
+**Canonical-first (multi-harness):** never author a shared skill directly inside a harness's private skills directory. Add it under `$AGENT_RULES_PATH/skills/<name>/`, register it in `skills/CATALOG.md`, and run `sync-agent-rules` so every harness on the machine picks it up automatically.
+
+**Dependencies & Windows `PATH` check:** before reporting a dependency CLI (`git-ai`, `uv`, `hive-watch`, etc.) missing on Windows, compare process `PATH` against Registry `Machine` + `User` `PATH` to catch Explorer `PATH`-length truncation (`general/windows.md`). Auto-install missing ungated dependencies (`encoding-guard`, `uv`, etc.); for `git-ai`, check the `git-ai-guest-repos` `#2399` gate first and either auto-install (when clear or explicitly overridden) or record the hold in `$HARNESS`.
 
 ## Version model
 

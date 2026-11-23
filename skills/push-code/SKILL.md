@@ -115,6 +115,8 @@ git push -u origin HEAD
 
 3. `git status -sb` — confirm clean and synced.
 
+4. **Dependent docs hubs (when `docs/**` changed in a content-source repo):** prefer GitHub Actions `repository_dispatch` (`notify-docs-hub.yml` + org dispatch secret per skill `subscribe-docs-hub-rebuild`) so GitHub handles redeploys automatically. If CI auto-notify is missing or its dispatch secret is unset, quietly dispatch `docs-source-updated` to dependent hub(s) via `gh api repos/{org}/docs/dispatches` and suggest wiring GitHub CI auto-notify instead of relying on agents.
+
 Return the remote branch state (ahead/behind gone, push succeeded).
 
 ## When commits already exist

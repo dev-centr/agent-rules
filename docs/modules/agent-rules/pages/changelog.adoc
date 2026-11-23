@@ -3,8 +3,8 @@
 :page-audience: Maintainers and readers tracking functional history of this component
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
-:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
-:page-last-edited: 2026-11-20
+:page-last-author: name=Ryan Johnson; harness=Antigravity; model=Gemini 4 Neon
+:page-last-edited: 2026-11-23
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -19,6 +19,15 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-11-23
+
+=== Web UI design references, multi-harness sync, and hub auto-rebuild
+
+* Added skill `web-ui-design-references` (`general/web-ui-design-references.md`) so requests for good web design or UI inspiration consult `general-knowledge` `reference/notable-web-ui-designs.adoc` and `ai-site-design-contract.adoc` instead of regressing to generic defaults.
+* Extended `sync-agent-rules`, `general/rules-skills-sync.md`, `general/windows.md`, and `harness.example.md` with canonical-first multi-harness skill syncing, Windows `PATH` truncation detection against Registry `Machine` + `User`, and automatic installation of missing ungated rules/skills dependencies (`git-ai` checks the `#2399` guest-repo gate first).
+* Updated `subscribe-docs-hub-rebuild`, `push-code`, and `user.md` to prefer GitHub Actions `repository_dispatch` for dependent docs-hub rebuilds, with a quiet post-push `gh api` dispatch fallback and CI-wiring suggestion whenever automated CI notify is missing or unset.
+* Detail: xref:changelog-details/2026-11-23 - web-ui-references-multi-harness-sync-and-hub-auto-rebuild.adoc[Web UI design references, multi-harness sync, and hub auto-rebuild].
 
 == 2026-11-20
 

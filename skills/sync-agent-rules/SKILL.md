@@ -43,12 +43,14 @@ Do not move existing `skills-set/*` tags. SHA remains source of truth if a machi
 | --- | --- |
 | Canonical skills + portable/org templates | `$AGENT_RULES_PATH` (usually `$CODE_ROOT/github.com/dev-centr/agent-rules`) |
 | Personal overlay (optional) | fork under `$CODE_ROOT/.../<you>/.forks/agent-rules` — profiles / personal tweaks / personal-only skills; **not** a HEAD-parity mirror of the template |
-| Discovery install | `$SKILLS_DISCOVERY_ROOT` from `$CODE_ROOT/harness.md` |
+| Discovery install | `$SKILLS_DISCOVERY_ROOT` (+ optional `$SKILLS_DISCOVERY_ROOTS_EXTRA` / shared config such as `skills.json`) from `$CODE_ROOT/harness.md` |
 | Machine-local IDE overlay | `$LOCAL_RULES_DIR` from `$harness.md` |
 | Always-on paste slot | `$ALWAYS_ON_RULES` from `$harness.md` |
 | Last successful sync | `AGENT_RULES_SYNCED_SHA`, `AGENT_RULES_SYNCED_LABEL`, `AGENT_RULES_SYNCED_AT` in `$harness.md` |
 
 If `$CODE_ROOT/harness.md` is missing, run skill **`harness-setup`** first, then continue here.
+
+**Canonical-first rule (multi-harness workstations):** never author a shared/team skill directly inside a harness's private skills folder (for example `~/.gemini/config/skills/` or `~/.cursor/skills/`). Create or edit the canonical folder under `$AGENT_RULES_PATH/skills/<name>/`, register it in `skills/CATALOG.md`, and run this skill so **every** active harness on the machine discovers the new addition.
 
 ## When (mandatory)
 
@@ -88,16 +90,31 @@ Record after fetch/pull:
 - `REF_SHA=$(git -C $AGENT_RULES_PATH rev-parse HEAD)`
 - `REF_LABEL` = newest `skills-set/*` tag that points at `HEAD`, else newest `skills-set/*` reachable from `HEAD` (`git describe --tags --match "skills-set/*" --exact-match` then fall back to `git describe --tags --match "skills-set/*" --abbrev=0`), else empty
 
-### 2. Reconcile skill discovery
+### 2. Reconcile skill discovery (all active harnesses)
 
-When `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking/copying:
+When `SKILLS_DISCOVERY_ROOT` (and any `SKILLS_DISCOVERY_ROOTS_EXTRA` in `$harness.md`) is set and `SKILLS_INSTALL` supports linking/copying:
 
 1. Read `skills/CATALOG.md` — active team skills only.
-2. For each active catalog name: ensure `$SKILLS_DISCOVERY_ROOT/<name>/` exists and resolves to `$AGENT_RULES_PATH/skills/<name>/` (or the install method recorded in `$harness.md`).
-3. Remove or replace **broken** links and **deprecated** discovery entries (e.g. removed routers) that still sit in the discovery root.
-4. Leave **personal-only** packs that are not in the shared catalog (document them; do not delete without asking).
+2. For each active catalog name: ensure `$SKILLS_DISCOVERY_ROOT/<name>/` (and every independent extra discovery root that does not already import the primary root via config) exists and resolves to `$AGENT_RULES_PATH/skills/<name>/` (or the install method recorded in `$harness.md`).
+3. When a second harness imports the primary root via config (for example a `skills.json` pointing at the primary discovery dir), link into the primary root and remove redundant split-only junctions in the secondary root so one canonical install serves all harnesses cleanly.
+4. Remove or replace **broken** links and **deprecated** discovery entries (e.g. removed routers) that still sit in any discovery root.
+5. Leave **personal-only** packs that are not in the shared catalog (document them; do not delete without asking).
 
 When discovery is `none`: confirm agents can read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly; skip link repair.
+
+### 2b. Check PATH integrity and auto-install rules/skills dependencies
+
+Before declaring any dependency CLI (`git-ai`, `uv`, `node`, `pnpm`, `gh`, `hive-watch`, etc.) missing:
+
+1. **Windows `PATH` truncation / corruption check (`general/windows.md`):** compare process `$env:Path` against Registry `Machine` + `User` `PATH`. Windows Explorer and legacy process launchers can silently drop or truncate `User` `PATH` when `PATH` exceeds ~2047 characters. Refresh `$env:Path` from Registry `Machine` + `User` in the session before concluding a binary is missing, and warn if Registry `User` `PATH` is bloated/duplicated or exceeds 2047 characters (record in `$harness.md` / `$machine.md`).
+2. **Auto-install missing ungated dependencies** that the rules/skills system relies on:
+   - **Encoding guard** (`tools/encoding-guard/install-global-hooks.mjs`): check `--status`; if not installed, install it machine-wide and re-verify.
+   - **`uv`** (Python toolchain): install if missing after full-`PATH` refresh.
+   - **`hive-watch`** (`dev-centr/hive-watch`): verify status/install per skill `hive-watch`; flag or install if absent.
+3. **Git AI (`git-ai`, required by `code-provenance`):**
+   - Check the **`git-ai-guest-repos`** `#2399` safety gate first (`git-ai#2399` / `#2485`) on any workstation that holds guest repositories or forks.
+   - If the workstation holds **no** guest repos/forks, or `#2399` is verified fixed end-to-end per `git-ai-guest-repos`, or the user explicitly overrides the gate: **auto-install `git-ai`** via the upstream installer (`code-provenance`), refresh `PATH`, run `git ai install-hooks`, verify, and record in `$harness.md` + `$machine.md`.
+   - If `#2399` is still open on a workstation with guest repos/forks: **do not** silently install `git-ai`; record `GIT_AI_STATUS = hold (git-ai#2399 open; checked YYYY-MM-DD)` in `$harness.md` and tell the user so they can keep the hold or explicitly override it.
 
 ### 3. Refresh local rule overlays
 

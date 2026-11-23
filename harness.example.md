@@ -18,11 +18,19 @@ ALWAYS_ON_RULES = <description or path>
 # Where this harness discovers installed agent skills (if any)
 SKILLS_DISCOVERY_ROOT = <path or "none — load from $AGENT_RULES_PATH/skills/<name>/ directly">
 
+# Optional additional harness skill roots or shared-import configs on multi-harness workstations
+# SKILLS_DISCOVERY_ROOTS_EXTRA = <comma-separated independent roots, or none>
+# SKILLS_SHARED_CONFIG = <e.g. ~/.gemini/config/skills.json importing primary root>
+
 # Machine-local rules overlay — does not sync across machines or harness accounts
 LOCAL_RULES_DIR = <path or none>
 
 # How to link canonical skills into SKILLS_DISCOVERY_ROOT (examples below)
 SKILLS_INSTALL = <junction | copy | harness-native | none>
+
+# Dependency & PATH health (checked by sync-agent-rules)
+# GIT_AI_STATUS = installed (<version>) | hold (git-ai#2399 open; checked YYYY-MM-DD) | unavailable
+# WINDOWS_PATH_TRUNCATION = ok | detected (process <N> vs Machine <M> + User <U>; <K> User entries dropped)
 
 # Chat / editor behaviors (see general/harness.md)
 CHAT_FILE_LINKS = markdown-workspace-links | plain-paths | harness-default

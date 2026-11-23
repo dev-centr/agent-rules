@@ -15,6 +15,8 @@ Use this file when `ENVIRONMENT = windows` in your profile (or when you are clea
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 ```
 
+- **Windows `PATH` truncation / corruption check (before calling any CLI missing):** Windows Explorer and legacy process launchers can silently truncate or drop the entire `User` `PATH` when `PATH` exceeds ~2047 characters. Before concluding a tool (such as `git-ai`, `uv`, `rg`, `nu`, or `pnpm`) is not installed, compare process `$env:Path.Length` against Registry `Machine` + `User` `PATH`, refresh `$env:Path` from Registry (`Machine + ";" + User`), and re-run `Get-Command`. If Registry `User` `PATH` exceeds 2047 characters or contains duplicate/stale directories, record the truncation in `$HARNESS` / `$MACHINE` and flag it for cleanup (e.g. deduplicating or using `pathman`).
+
 ## Node and Python tooling
 
 - Use **`pnpm`** for Node. For one-off tools: `pnpm dlx`; for project binaries: `pnpm exec`. Global CLIs: `pnpm add -g`. Never bare `pnpm add` / `npm install` from the user profile home — detail: `general/node-cli-install.md`.
