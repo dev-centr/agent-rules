@@ -22,6 +22,11 @@ endif::[]
 
 == 2026-11-23
 
+=== One canonical form for human-learned tokens
+
+* Added portable rule `general/one-canonical-form.md` (and one-liner in `user.md`): use one clear semantic name without synonym aliases wherever humans must learn a token by memory, while preserving synonyms for search/AI trigger matching and hidden time-boxed deprecations for external migrations.
+* Detail: xref:changelog-details/2026-11-23 - one-canonical-form.adoc[One canonical form for human-learned tokens].
+
 === Web UI design references, multi-harness sync, and hub auto-rebuild
 
 * Added skill `web-ui-design-references` (`general/web-ui-design-references.md`) so requests for good web design or UI inspiration consult `general-knowledge` `reference/notable-web-ui-designs.adoc` and `ai-site-design-contract.adoc` instead of regressing to generic defaults.

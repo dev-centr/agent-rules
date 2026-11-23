@@ -1,0 +1,11 @@
+= 2026-11-23
+
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== One canonical form for human-learned tokens
+
+Added `general/one-canonical-form.md` and a one-line pointer in `user.md`.
+
+* Prohibits synonym aliases for syntax, keys, roles, CLI verbs, API names, and house terminology that humans must recall from memory, favoring one semantic domain-level name instead.
+* Draws explicit boundaries so the rule does not suppress synonyms in search/AI skill trigger matching, systematic short/long ergonomic pairs (`-f` / `--force`), or hidden time-boxed deprecations when migrating real external consumers.
