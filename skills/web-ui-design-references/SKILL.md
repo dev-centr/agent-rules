@@ -35,5 +35,5 @@ Edit `$CODE_ROOT/github.com/dev-centr/general-knowledge/docs/modules/ROOT/pages/
 
 1. Include the canonical **live URL**.
 2. Record **Added (`YYYY-MM-DD`)** — required minimum for every entry.
-3. Include a **direct Wayback Machine snapshot URL** (`https://web.archive.org/web/<timestamp>/<url>`) verified to return HTTP 200 on or near the date added. Linkinator (`v0.1.13+`) skips `archive.org` and configured archive providers automatically; use `role=linkinator-skip` only when opting out an arbitrary link explicitly. If no recent snapshot exists yet, capture one via Wayback Machine or link the calendar (`https://web.archive.org/web/*/<url>`) and note that a dated snapshot is pending.
+3. Include a **direct Wayback Machine snapshot URL** (`https://web.archive.org/web/<timestamp>/<url>`) verified to return HTTP 200 on or near the date added. Linkinator (`v0.1.14+`) skips `archive.org` and configured archive providers automatically; mark archival links on other hosts semantically with `role=archival`. If no recent snapshot exists yet, capture one via Wayback Machine or link the calendar (`https://web.archive.org/web/*/<url>`) and note that a dated snapshot is pending.
 4. Keep notes concrete and honest — do not fabricate visual details you have not inspected.
