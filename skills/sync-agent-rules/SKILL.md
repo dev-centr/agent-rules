@@ -43,14 +43,17 @@ Do not move existing `skills-set/*` tags. SHA remains source of truth if a machi
 | --- | --- |
 | Canonical skills + portable/org templates | `$AGENT_RULES_PATH` (usually `$CODE_ROOT/github.com/dev-centr/agent-rules`) |
 | Personal overlay (optional) | fork under `$CODE_ROOT/.../<you>/.forks/agent-rules` — profiles / personal tweaks / personal-only skills; **not** a HEAD-parity mirror of the template |
-| Discovery install | `$SKILLS_DISCOVERY_ROOT` (+ optional `$SKILLS_DISCOVERY_ROOTS_EXTRA` / shared config such as `skills.json`) from `$CODE_ROOT/harness.md` |
-| Machine-local IDE overlay | `$LOCAL_RULES_DIR` from `$harness.md` |
-| Always-on paste slot | `$ALWAYS_ON_RULES` from `$harness.md` |
-| Last successful sync | `AGENT_RULES_SYNCED_SHA`, `AGENT_RULES_SYNCED_LABEL`, `AGENT_RULES_SYNCED_AT` in `$harness.md` |
+| Discovery install | **This harness's** `$SKILLS_DISCOVERY_ROOT` from `$CODE_ROOT/harness.md` (its own harness section) |
+| Machine-local IDE overlay | **This harness's** `$LOCAL_RULES_DIR` from `$harness.md` |
+| Always-on paste slot | **This harness's** `$ALWAYS_ON_RULES` from `$harness.md` |
+| Last successful sync | **Per-harness** `AGENT_RULES_SYNCED_SHA`, `AGENT_RULES_SYNCED_LABEL`, `AGENT_RULES_SYNCED_AT` in `$harness.md` |
 
-If `$CODE_ROOT/harness.md` is missing, run skill **`harness-setup`** first, then continue here.
+If `$CODE_ROOT/harness.md` is missing (or lacks a section for the currently running harness), run skill **`harness-setup`** first, then continue here.
 
-**Canonical-first rule (multi-harness workstations):** never author a shared/team skill directly inside a harness's private skills folder (for example `~/.gemini/config/skills/` or `~/.cursor/skills/`). Create or edit the canonical folder under `$AGENT_RULES_PATH/skills/<name>/`, register it in `skills/CATALOG.md`, and run this skill so **every** active harness on the machine discovers the new addition.
+**Canonical-first, harness-isolated rule:**
+- Never author a shared/team skill directly inside a harness's private skills folder. Create or edit the canonical folder under `$AGENT_RULES_PATH/skills/<name>/` and register it in `skills/CATALOG.md`.
+- **Each harness maintains only its own skills, rules, and sync stamp.** Do **not** depend on, import from, or edit another harness's files (for example, Antigravity must not read from or edit `~/.cursor/`, and Cursor must not touch `~/.gemini/` or `~/.claude/`). When another harness next runs, it compares `$AGENT_RULES_PATH` `HEAD` against **its own** sync stamp in `$harness.md` and updates its own files autonomously.
+- If a harness struggles to follow multi-hop references to canonical files, generate thin one-level shim skills/rules inside **this harness's** own directory pointing at the canonical files rather than crossing into another harness's directory.
 
 ## When (mandatory)
 
@@ -90,17 +93,17 @@ Record after fetch/pull:
 - `REF_SHA=$(git -C $AGENT_RULES_PATH rev-parse HEAD)`
 - `REF_LABEL` = newest `skills-set/*` tag that points at `HEAD`, else newest `skills-set/*` reachable from `HEAD` (`git describe --tags --match "skills-set/*" --exact-match` then fall back to `git describe --tags --match "skills-set/*" --abbrev=0`), else empty
 
-### 2. Reconcile skill discovery (all active harnesses)
+### 2. Reconcile this harness's own skill discovery
 
-When `SKILLS_DISCOVERY_ROOT` (and any `SKILLS_DISCOVERY_ROOTS_EXTRA` in `$harness.md`) is set and `SKILLS_INSTALL` supports linking/copying:
+When **this harness's** `SKILLS_DISCOVERY_ROOT` is set and `SKILLS_INSTALL` supports linking, copying, or shim generation:
 
-1. Read `skills/CATALOG.md` — active team skills only.
-2. For each active catalog name: ensure `$SKILLS_DISCOVERY_ROOT/<name>/` (and every independent extra discovery root that does not already import the primary root via config) exists and resolves to `$AGENT_RULES_PATH/skills/<name>/` (or the install method recorded in `$harness.md`).
-3. When a second harness imports the primary root via config (for example a `skills.json` pointing at the primary discovery dir), link into the primary root and remove redundant split-only junctions in the secondary root so one canonical install serves all harnesses cleanly.
-4. Remove or replace **broken** links and **deprecated** discovery entries (e.g. removed routers) that still sit in any discovery root.
-5. Leave **personal-only** packs that are not in the shared catalog (document them; do not delete without asking).
+1. Read `skills/CATALOG.md` — active team skills only (skipping any skill explicitly listed in this harness's `SKILLS_EXCLUDED` setting in `$harness.md`), plus any personal skills from the personal overlay repo when configured.
+2. For each active skill: ensure **this harness's** `$SKILLS_DISCOVERY_ROOT/<name>/` exists and resolves directly to `$AGENT_RULES_PATH/skills/<name>/` (junction, symlink, copy, or thin shim — never pointing into another harness's discovery directory).
+3. Remove or replace **broken** links and **deprecated** discovery entries (e.g. removed routers) inside **this harness's** discovery root only.
+4. Leave **personal-only** packs that are not in the shared catalog (document them; do not delete without asking).
+5. **Do not modify other harnesses' discovery roots, rules, or sync stamps.** Leave other harnesses' sections in `$harness.md` untouched so they detect drift and self-update on their next run.
 
-When discovery is `none`: confirm agents can read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly; skip link repair.
+When discovery is `none`: confirm this harness can read `$AGENT_RULES_PATH/skills/<name>/SKILL.md` directly; skip link repair.
 
 ### 2b. Check PATH integrity and auto-install rules/skills dependencies
 

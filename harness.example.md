@@ -16,17 +16,19 @@ HARNESS_VERSION = <optional; if the harness exposes a version string>
 ALWAYS_ON_RULES = <description or path>
 
 # Where this harness discovers installed agent skills (if any)
+# Multi-harness workstations: give each harness its own `## Harness: <name>` section
+# with its own SKILLS_DISCOVERY_ROOT, LOCAL_RULES_DIR, and AGENT_RULES_SYNCED_* stamp.
+# Do NOT cross-import or edit another harness's files.
 SKILLS_DISCOVERY_ROOT = <path or "none — load from $AGENT_RULES_PATH/skills/<name>/ directly">
 
-# Optional additional harness skill roots or shared-import configs on multi-harness workstations
-# SKILLS_DISCOVERY_ROOTS_EXTRA = <comma-separated independent roots, or none>
-# SKILLS_SHARED_CONFIG = <e.g. ~/.gemini/config/skills.json importing primary root>
+# Optional comma-separated skills intentionally omitted for this harness
+# SKILLS_EXCLUDED = <e.g. writing-blog, writing-news>
 
 # Machine-local rules overlay — does not sync across machines or harness accounts
 LOCAL_RULES_DIR = <path or none>
 
 # How to link canonical skills into SKILLS_DISCOVERY_ROOT (examples below)
-SKILLS_INSTALL = <junction | copy | harness-native | none>
+SKILLS_INSTALL = <junction | symlink | copy | shim | harness-native | none>
 
 # Dependency & PATH health (checked by sync-agent-rules)
 # GIT_AI_STATUS = installed (<version>) | hold (git-ai#2399 open; checked YYYY-MM-DD) | unavailable
