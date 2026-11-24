@@ -54,4 +54,6 @@ Functional shipping notes: skill `owned-changelog`. Version tags: skill `tag-rel
 
 Public web apps and sites: load skill `web-crawlability`. Content-first routes need meaningful raw HTML, generated sitemap/robots artifacts, and Schema.org JSON-LD that matches the visible page. Hydration and transitions remain client enhancements.
 
+Interactive web apps (Web Band B): load skill `agent-operable-web-ui` to plan a progressive structured state/action surface (feature-detected WebMCP `document.modelContext` or a behavior-driven bridge such as Vercel UI SDK) with safety gates and server authz intact; mark N/A for static/brochure sites.
+
 **Product SVG logo / app glyph:** when the app needs an icon or mark family, load skill **`logo-svg-marks` on the first brand pass** (Opus design subagent; glyph + tile + mono) — do not ship a parent-authored placeholder SVG and wait for rejection.

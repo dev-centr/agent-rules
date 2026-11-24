@@ -29,6 +29,7 @@ If the local clone is missing, clone `https://github.com/dev-centr/general-knowl
 - Stamp build metadata at CI/compile time; About, `--version`, crash headers, and updaters must share one version truth.
 - Prefer platform-native distribution first; add in-app updaters when channels or UX require it.
 - Follow type-specific pages instead of forcing GUI patterns onto libraries or services.
+- For interactive web apps (Web Band B), plan a progressive **agent-operable UI surface** (skill `agent-operable-web-ui`; `reference/agent-operable-web-ui.adoc` and `how-to/add-agent-operable-web-ui.adoc` in `general-knowledge`) via feature-detected WebMCP (`document.modelContext`) or a structured UI bridge with safety gates; mark N/A on static/brochure sites.
 
 ## Relationship to other layers
 

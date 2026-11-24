@@ -4,7 +4,7 @@
 :page-usage-context: Timeline index on the docs hub; detail pages under `changelog-details/` inherit this audience unless scoped narrower
 :page-orig-author: Ryan Johnson
 :page-last-author: name=Ryan Johnson; harness=Antigravity; model=Gemini 4 Neon
-:page-last-edited: 2026-11-23
+:page-last-edited: 2026-11-24
 
 ifndef::page-context-active[]
 [.page-context.page-context-lead]
@@ -19,6 +19,14 @@ Latest contributor:: {page-last-author}
 Last updated:: {page-last-edited}
 ****
 endif::[]
+
+== 2026-11-24
+
+=== Agent-operable web UI rule and skill
+
+* Added portable rule `general/agent-operable-web-ui.md`, on-demand skill `agent-operable-web-ui` (`skills/agent-operable-web-ui/SKILL.md`), catalog entry in `skills/CATALOG.md`, thin pointer in `user.md`, and downstream inclusion in `skills/ship-app/`.
+* Points to the canonical Dev-Centr docs in `general-knowledge` (`reference/agent-operable-web-ui.adoc`, `how-to/add-agent-operable-web-ui.adoc`, and Web Band B in `explanation/architecture/classes/web.adoc`), treating the semantic state/action abstraction layer (WebMCP `document.modelContext` and Vercel UI SDK as a beta reference implementation) as progressive enhancement with safety gates.
+* Detail: xref:changelog-details/2026-11-24 - agent-operable-web-ui.adoc[Agent-operable web UI rule and skill].
 
 == 2026-11-23
 

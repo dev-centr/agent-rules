@@ -1,0 +1,12 @@
+= 2026-11-24
+
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Agent-operable web UI rule and skill
+
+Integrated the **agent-operable web UI** abstraction layer (Web Band B in `general-knowledge`) into `agent-rules`:
+
+* Added `general/agent-operable-web-ui.md` (portable rule module; no machine paths or harness names) covering progressive adoption (declarative WebMCP forms, feature-detected imperative `document.modelContext.registerTool`, and Vercel UI SDK as a beta Apache-2.0 reference implementation) plus safety gates (`allow`, `source === "agent"`, server-authoritative authz).
+* Added skill `skills/agent-operable-web-ui/SKILL.md` and registered it in `skills/CATALOG.md`.
+* Added downstream inclusion in `skills/ship-app/SKILL.md` and `skills/ship-app/reference.md`, and a one-line pointer in `user.md` beside `web-crawlability`.
