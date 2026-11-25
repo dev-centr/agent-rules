@@ -1,0 +1,15 @@
+= 2026-11-19
+:page-audience: Maintainers reading commit trailers and Git AI notes
+:page-usage-context: Changelog detail for the code-provenance rename and trailer fields
+:page-orig-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-author: name=Ryan Johnson; harness=Cursor; model=grok-4.7
+:page-last-edited: 2026-11-19
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Code provenance trailers
+
+* Skill `code-provenance` records who produced a change to the code. The old name `agent-provenance` named the producer. The subject of the record is the code.
+* Git AI notes already store `agent_id.tool` and `agent_id.model` as separate fields. No UI or log was reading the summary trailers.
+* The exporter had been writing `Agent-Model: cursor/grok-4.7` so a flat list could still show which model belonged to which harness after the lines were sorted apart. That put the harness inside the model value. The trailers are now `Harness: cursor` and `Model: grok-4.7`.
+* `<slug>` was a description of the harness id (`cursor`, `grok-bot`), not a field and not the trailer text.
