@@ -36,6 +36,8 @@ When `$CODE_ROOT` is known, read in parallel:
 2. `$CODE_ROOT/machine.md` (create from `machine.example.md` if missing)
 3. Active machine profile in your fork: `profiles/<machine>.md`
 
+On Windows (`ENVIRONMENT = windows`), also run the mandatory **Windows `PATH` truncation safety check** (`general/windows-path-safety.md`, skill `windows-path-safety`) on the first shell command of every new conversation (or natively on process launch in owned harnesses such as `dev-centr/harness`, which auto-repair process `PATH` and surface the fix or error in the UI with a link to https://docs.devcentr.org/general-knowledge/reference/windows-path-truncation/).
+
 ## Variables (resolved from harness.md)
 
 | Variable | Purpose |

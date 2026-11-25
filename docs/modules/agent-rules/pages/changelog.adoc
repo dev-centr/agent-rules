@@ -22,6 +22,12 @@ endif::[]
 
 == 2026-11-24
 
+=== Mandatory Windows PATH truncation safety check and skill
+
+* Added portable rule `general/windows-path-safety.md`, canonical skill `windows-path-safety` (`skills/windows-path-safety/SKILL.md`), catalog entry in `skills/CATALOG.md`, and thin pointers in `user.md`, `AGENTS.md`, `MAIN.md`, `general/windows.md`, `general/harness.md`, and `skills/sync-agent-rules/SKILL.md`.
+* Elevates Windows `PATH` truncation detection from a reactive CLI-missing check to a mandatory start-of-conversation safety check for third-party AI harnesses (treating every new Windows conversation as a session boundary and refreshing per command on stateless runners) and a native process-launch auto-repair + UI alert requirement for owned harnesses (`dev-centr/harness`), linking to https://docs.devcentr.org/general-knowledge/reference/windows-path-truncation/.
+* Detail: xref:changelog-details/2026-11-24 - windows-path-truncation-safety.adoc[Mandatory Windows PATH truncation safety check and skill].
+
 === Agent-operable web UI rule and skill
 
 * Added portable rule `general/agent-operable-web-ui.md`, on-demand skill `agent-operable-web-ui` (`skills/agent-operable-web-ui/SKILL.md`), catalog entry in `skills/CATALOG.md`, thin pointer in `user.md`, and downstream inclusion in `skills/ship-app/`.

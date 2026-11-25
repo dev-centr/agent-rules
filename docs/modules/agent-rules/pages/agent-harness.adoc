@@ -178,6 +178,7 @@ When `graph-grid` (defaults: `ACTOR_NODE_STORE=jsonl-per-node`, `ACTOR_WAIT_GRAP
 * Grid shows task nodes; fork panel loads `nodes/\{id}/chat.jsonl`
 * Coordinator thread is continuous with summarization; hierarchical and global-context modes are views over the same store
 * **Git close-out** — parallel task leaves get `gitCloseout` + system addendum (`commit-only` / `coordinator-batch`) so inherited end-of-run push does not fire on every worker; coordinator pushes after the wave (see xref:end-of-run-commit-push.adoc[End-of-run commit and push])
+* **Windows `PATH` truncation guard** — on process launch / `harness serve`, the runtime checks inherited process `PATH` against Registry `Machine` + `User` `PATH`, auto-repairs its own process `PATH` when Windows Explorer truncated or dropped `User` `PATH`, exposes `/api/env-health` and `/api/health`, and renders a visible UI alert (repair summary or error) linking to link:https://docs.devcentr.org/general-knowledge/reference/windows-path-truncation/[Windows PATH truncation in AI harnesses]
 * Temporal layout (planned) — reusable timeline widget with global and per-node scopes
 
 Full spec: xref:actor-model-agentic-ui.adoc[Actor-model agentic UI]. Deprecated alias: xref:project-inbox.adoc[Project inbox (renamed)].

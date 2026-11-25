@@ -1,0 +1,16 @@
+= Mandatory Windows PATH truncation safety check and skill
+:page-audience: Maintainers and AI coding agents operating on Windows workstations
+:page-usage-context: Changelog detail for the mandatory Windows PATH truncation safety rule and skill
+:page-orig-author: Ryan Johnson
+:page-last-author: name=Ryan Johnson; harness=Antigravity; model=Gemini 4 Neon
+:page-last-edited: 2026-11-24
+
+Previously, `general/windows.md` and `skills/sync-agent-rules/SKILL.md` treated Windows `PATH` truncation checks as reactive ("before declaring a CLI missing"). Because Windows Explorer silently drops `User` `PATH` past ~2,047 characters and agents inside third-party chats cannot tell whether a new conversation shares a checked host process, this change makes the check mandatory up front.
+
+== Summary of changes
+
+* Added `general/windows-path-safety.md` specifying:
+** Mandatory conversation-start check for third-party AI harnesses on Windows (plus per-command Registry refresh in stateless subprocess runners, once-per-conversation user report, and `$HARNESS` recording).
+** Native process-launch check, automatic process `PATH` repair, and visible UI alert (fix summary or error) with a direct link to link:https://docs.devcentr.org/general-knowledge/reference/windows-path-truncation/[Windows PATH truncation in AI harnesses] for owned harnesses such as `dev-centr/harness`.
+* Added canonical skill `skills/windows-path-safety/SKILL.md` and registered it in `skills/CATALOG.md`.
+* Wired thin pointers in `user.md`, `AGENTS.md`, `MAIN.md`, `general/windows.md`, `general/harness.md`, `skills/sync-agent-rules/SKILL.md`, and `docs/modules/agent-rules/pages/agent-harness.adoc`.

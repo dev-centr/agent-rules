@@ -49,6 +49,7 @@ Optional heavy curricula are **agent skills** under `skills/` (not MAIN assembly
 ## Obligations (always)
 
 - **OS/Shell:** Assume **Windows 10/11** when on this profile’s host. Recommend **Nushell** as the user default shell on all OSes. Agent terminal commands may still run under **PowerShell 7** when that is the IDE shell—do not confuse the two.
+- **Windows `PATH` truncation safety check (mandatory):** on Windows, treat every new conversation as a session boundary and compare process `PATH` against Registry `Machine` + `User` `PATH` on the first shell command (skill `windows-path-safety`; detail `general/windows-path-safety.md`). Owned harnesses run this natively on process launch, auto-repair, and alert in the UI with https://docs.devcentr.org/general-knowledge/reference/windows-path-truncation/.
 - **File names in chat:** when you mention a file you are working on, just edited, or that the user asked about, load skill `chat-file-links`.
 - **Harness skills:** some harnesses have no rules support. Assume a harness worth using auto-inserts skills from context. If this harness does not, say so in the chat, explain that org and user skills will not load by themselves, and suggest a harness that supports contextual skills.
 - **Template boundary:** never embed machine paths or harness-specific paths in forkable templates — see `general/harness-boundary.md`.

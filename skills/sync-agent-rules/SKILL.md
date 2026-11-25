@@ -109,7 +109,7 @@ When discovery is `none`: confirm this harness can read `$AGENT_RULES_PATH/skill
 
 Before declaring any dependency CLI (`git-ai`, `uv`, `node`, `pnpm`, `gh`, `hive-watch`, etc.) missing:
 
-1. **Windows `PATH` truncation / corruption check (`general/windows.md`):** compare process `$env:Path` against Registry `Machine` + `User` `PATH`. Windows Explorer and legacy process launchers can silently drop or truncate `User` `PATH` when `PATH` exceeds ~2047 characters. Refresh `$env:Path` from Registry `Machine` + `User` in the session before concluding a binary is missing, and warn if Registry `User` `PATH` is bloated/duplicated or exceeds 2047 characters (record in `$harness.md` / `$machine.md`).
+1. **Windows `PATH` truncation / corruption check (mandatory — skill `windows-path-safety`, `general/windows-path-safety.md`):** compare process `$env:Path` against Registry `Machine` + `User` `PATH` at session/conversation start (and before concluding any binary is missing). Windows Explorer and legacy process launchers can silently drop or truncate `User` `PATH` when `PATH` exceeds ~2,047 characters. Refresh `$env:Path` from Registry `Machine` + `User` when truncated, report once with https://docs.devcentr.org/general-knowledge/reference/windows-path-truncation/, and record in `$harness.md` / `$machine.md`.
 2. **Auto-install missing ungated dependencies** that the rules/skills system relies on:
    - **Encoding guard** (`tools/encoding-guard/install-global-hooks.mjs`): check `--status`; if not installed, install it machine-wide and re-verify.
    - **`uv`** (Python toolchain): install if missing after full-`PATH` refresh.
